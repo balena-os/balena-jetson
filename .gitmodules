@@ -1,3 +1,6 @@
 [submodule "balena-yocto-scripts"]
 	path = balena-yocto-scripts
 	url = git@github.com:balena-os/balena-yocto-scripts.git
+[submodule "layers/meta-balena"]
+	path = layers/meta-balena
+	url = git@github.com:balena-os/meta-balena.git
