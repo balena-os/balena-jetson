@@ -7,3 +7,6 @@
 [submodule "layers/poky"]
 	path = layers/poky
 	url = git@github.com:balena-os/poky.git
+[submodule "layers/meta-openembedded"]
+	path = layers/meta-openembedded
+	url = https://github.com/openembedded/meta-openembedded.git
