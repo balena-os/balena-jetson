@@ -1,0 +1,3 @@
+[submodule "balena-yocto-scripts"]
+	path = balena-yocto-scripts
+	url = git@github.com:balena-os/balena-yocto-scripts.git
