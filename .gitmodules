@@ -13,3 +13,6 @@
 [submodule "layers/meta-rust"]
 	path = layers/meta-rust
 	url = https://github.com/meta-rust/meta-rust.git
+[submodule "layers/meta-tegra"]
+	path = layers/meta-tegra
+	url = https://github.com/balena-os/meta-tegra.git
