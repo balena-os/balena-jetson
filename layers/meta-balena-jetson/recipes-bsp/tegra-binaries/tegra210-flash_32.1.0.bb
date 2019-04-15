@@ -72,7 +72,9 @@ do_configure() {
     cp "${DEPLOY_DIR_IMAGE}/u-boot-dtb.bin" ./u-boot-dtb.bin
 
     if [ -n "${KERNEL_ARGS}" ]; then
-        fdtput -t s ./${DTBFILE} /chosen bootargs "${KERNEL_ARGS}"
+        # Disable framebuffer console
+        KERNEL_ARGS_NO_FBCONSOLE=$(echo ${KERNEL_ARGS} | sed 's/console=tty0/ /g')
+        fdtput -t s ./${DTBFILE} /chosen bootargs "${KERNEL_ARGS_NO_FBCONSOLE}"
     else
         fdtput -d ./${DTBFILE} /chosen bootargs
     fi
@@ -128,6 +130,9 @@ do_configure() {
         > ./flash.xml.in
 
     python tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${MACHINE}.cfg" --cfg flash.xml.in --cmd "sign"
+
+    # Disable cboot displayed vendor logo
+    dd if=/dev/zero of=./bmp.blob count=1 bs=70900
 
     cp -r signed/* ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp -r *.img    ${DEPLOY_DIR_IMAGE}/bootfiles/
