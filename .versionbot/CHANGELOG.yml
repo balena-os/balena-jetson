@@ -1,1 +1,33 @@
-[]
+- commits:
+    - subject: 'jetson-nano.svg: Add icon for Jetson Nano'
+      hash: 0fde15621242c3d5ad43f354e94e5540e1b4f526
+      body: ''
+      footer:
+        Changelog-entry: 'jetson-nano.svg: Add icon for Jetson Nano'
+        changelog-entry: 'jetson-nano.svg: Add icon for Jetson Nano'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+    - subject: 'usb-modeswitch: Fix crash on 64 bit platforms'
+      hash: 4c4951a9023e6d3f444952032f8b52394f6caf8d
+      body: |
+        Add patch needed to prevent crashes when using modems
+      footer:
+        Changelog-entry: 'usb-modeswitch: Fix crash on 64 bit platforms'
+        changelog-entry: 'usb-modeswitch: Fix crash on 64 bit platforms'
+        Author: Florin Sarbu <florin@balena.io>
+        author: Florin Sarbu <florin@balena.io>
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+    - subject: 'jetson-nano.coffee: Added coffee file'
+      hash: 0c47287eda62b0d2668bc46fa4588e52c6e5f6d2
+      body: ''
+      footer:
+        Changelog-entry: 'jetson-nano.coffee: Added coffee file'
+        changelog-entry: 'jetson-nano.coffee: Added coffee file'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.32.0+rev1
+  date: 2019-04-19T14:22:56.398Z
