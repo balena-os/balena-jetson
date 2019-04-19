@@ -1,0 +1,71 @@
+#!/bin/sh
+set -o errexit
+
+# Script which writes the appropriate
+# device tree with embedded cmdline
+# and updates the kernel, as well as
+# the rest of the bootloader binaries
+
+new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive")
+echo "New partition is ${new_part}"
+
+blockdev=$(basename "$new_part")
+rootstr=$(ls -l /dev/disk/by-label/ |grep "${blockdev}")
+rootl=""
+
+case "$rootstr" in
+    *resin-rootA*)
+        rootl="A"
+        ;;
+    *resin-rootB*)
+        rootl="B"
+        ;;
+    *)
+        rootl="Undefined"
+        ;;
+esac
+
+echo "New root is resin-root${rootl}"
+
+dtbfile="tegra194-p2888-0001-p2822-0000-root${rootl}_sigheader.dtb.encrypt"
+kernel="boot_sigheader.img.encrypt"
+
+partitions=$(cat /resin-boot/bootfiles/partition_specification194.txt)
+for n in ${partitions}; do
+    part_name=$(echo $n | cut -d ':' -f 1)
+    file_name=$(echo $n | cut -d ':' -f 2)
+
+    if [ $part_name = "flashxml" ] || [ -z "${part_name##*kernel*}" ] || [ $part_name = "bootloader-dtb" ]; then
+        continue
+    fi
+
+    file_path=$(find /dev/disk/by-partlabel/ -name $part_name)
+
+    if [ "x$file_path" = "x" ]; then
+        continue
+    fi
+
+    if [ ! $file_name = "xusb_sil_rel_fw" ] && [ ! $file_name = "bmp.blob" ] ; then
+        file_name=$(echo $file_name | sed 's/\.\([^.]*\)$/_sigheader.\1/')
+        file_name="${file_name}.encrypt"
+    fi
+
+    echo "[INFO] Writing $file_name to $file_path"
+
+    dd if=/resin-boot/bootfiles/$file_name of=$file_path
+    dd if=/resin-boot/bootfiles/$file_name of=${file_path}_b
+done
+
+echo "[INFO] Writing ${dtbfile} to specific partitions..."
+dd if=/resin-boot/bootfiles/${dtbfile} of=/dev/disk/by-partlabel/bootloader-dtb
+dd if=/resin-boot/bootfiles/${dtbfile} of=/dev/disk/by-partlabel/bootloader-dtb_b
+dd if=/resin-boot/bootfiles/${dtbfile} of=/dev/disk/by-partlabel/kernel-dtb
+dd if=/resin-boot/bootfiles/${dtbfile} of=/dev/disk/by-partlabel/kernel-dtb_b
+
+echo "[INFO] Writing kernel ${kernel} to specific partitions..."
+
+dd if=/resin-boot/bootfiles/${kernel}  of=/dev/disk/by-partlabel/kernel
+dd if=/resin-boot/bootfiles/${kernel}  of=/dev/disk/by-partlabel/kernel_b
+
+sync
+echo "Done."
