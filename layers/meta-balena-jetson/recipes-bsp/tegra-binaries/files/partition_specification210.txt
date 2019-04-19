@@ -1,0 +1,11 @@
+TBC:nvtboot_cpu.bin.encrypt:256
+RP1:tegra210-p3448-0000-p3449-0000-a02.dtb.encrypt:896
+EBT:cboot.bin.encrypt:1152
+WB0:warmboot.bin.encrypt:128
+BPF:sc7entry-firmware.bin.encrypt:384
+TOS:tos-mon-only.img.encrypt:1152
+EKS:eks.img:128
+LNX:u-boot-dtb.bin.encrypt:1280
+DTB:tegra210-p3448-0000-p3449-0000-a02.dtb.encrypt:896
+RP4:rp4.blob:256
+BMP:bmp.blob:160
