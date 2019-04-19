@@ -158,6 +158,10 @@ FILES_${PN} += "${BINARY_INSTALL_PATH}"
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
+do_install[nostamp] = "1"
+do_deploy[nostamp] = "1"
+do_configure[nostamp] = "1"
+
 do_configure[depends] += " virtual/bootloader:do_deploy"
 do_configure[depends] += " tegra-binaries:do_preconfigure"
 do_configure[depends] += " virtual/kernel:do_deploy"
