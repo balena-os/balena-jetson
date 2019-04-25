@@ -1,4 +1,18 @@
 - commits:
+    - subject: Fix primary partition number
+      hash: b32ae35396a62b6eae8cdda49bb5d2332dad5094
+      body: |
+        Otherwise the ImageMaker cannot get the right partition for the
+        configuration.
+      footer:
+        Changelog-entry: Fix primary partition number
+        changelog-entry: Fix primary partition number
+        Signed-off-by: Gergely Imreh <gergely@balena.io>
+        signed-off-by: Gergely Imreh <gergely@balena.io>
+      author: Gergely Imreh
+  version: 2.32.0+rev2
+  date: 2019-04-25T12:29:30.461Z
+- commits:
     - subject: 'jetson-nano.svg: Add icon for Jetson Nano'
       hash: 0fde15621242c3d5ad43f354e94e5540e1b4f526
       body: ''
