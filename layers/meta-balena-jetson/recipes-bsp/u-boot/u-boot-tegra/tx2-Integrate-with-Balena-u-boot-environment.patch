@@ -1,0 +1,74 @@
+From 8e18ffbbc9ee098a70097623b89b01ce09467a30 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 27 May 2019 08:34:49 +0200
+Subject: [PATCH] Integrate with Balena u-boot environment
+
+Integrate tx2 on L4T 32.1 with Balena u-boot env
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ configs/p2771-0000-500_defconfig | 7 ++++++-
+ include/config_distro_bootcmd.h  | 8 ++++++--
+ 2 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/configs/p2771-0000-500_defconfig b/configs/p2771-0000-500_defconfig
+index 64ee92f5d3..1416258eda 100644
+--- a/configs/p2771-0000-500_defconfig
++++ b/configs/p2771-0000-500_defconfig
+@@ -16,7 +16,7 @@ CONFIG_CMD_I2C=y
+ CONFIG_CMD_USB=y
+ # CONFIG_CMD_FPGA is not set
+ CONFIG_CMD_GPIO=y
+-# CONFIG_CMD_SETEXPR is not set
++CONFIG_CMD_SETEXPR=y
+ CONFIG_CMD_DHCP=y
+ # CONFIG_CMD_NFS is not set
+ CONFIG_CMD_MII=y
+@@ -37,3 +37,8 @@ CONFIG_DM_USB=y
+ CONFIG_POWER_DOMAIN=y
+ CONFIG_TEGRA186_POWER_DOMAIN=y
+ CONFIG_POSITION_INDEPENDENT=y
++CONFIG_CMD_PART=y
++CONFIG_PARTITION_UUIDS=y
++CONFIG_CMD_IMPORTENV=y
++CONFIG_CMD_FAT=y
++CONFIG_BOOTDELAY=0
+diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
+index d7182244cb..0af35aeda3 100644
+--- a/include/config_distro_bootcmd.h
++++ b/include/config_distro_bootcmd.h
+@@ -315,7 +315,7 @@
+ 	"boot_targets=" BOOT_TARGET_DEVICES(BOOTENV_DEV_NAME) "\0"
+ 
+ #ifndef BOOT_TARGET_DEFAULTDEVPLIST
+-#define BOOT_TARGET_DEFAULTDEVPLIST	"1"
++#define BOOT_TARGET_DEFAULTDEVPLIST	"18"
+ #endif
+ #define BOOTENV_SET_DEFAULTDEVPLIST \
+ 	"defaultdevplist=" BOOT_TARGET_DEFAULTDEVPLIST "\0"
+@@ -352,7 +352,7 @@
+ 		"fi\0"                                                    \
+ 	\
+ 	"boot_a_script="                                                  \
+-		"load ${devtype} ${devnum}:${distro_bootpart} "           \
++		"load ${resin_dev_type} ${resin_dev_index}:${resin_boot_part} "\
+ 			"${scriptaddr} ${prefix}${script}; "              \
+ 		"source ${scriptaddr}\0"                                  \
+ 	\
+@@ -392,8 +392,12 @@
+ 	BOOT_TARGET_DEVICES(BOOTENV_DEV)                                  \
+ 	\
+ 	"distro_bootcmd=" BOOTENV_SET_SCSI_NEED_INIT                      \
++         "setenv resin_kernel_load_addr ${loadaddr}; "                    \
+ 		"for target in ${boot_targets}; do "                      \
++                    "if env exist resin_set_kernel_root; then "           \
++                        "run resin_set_kernel_root; run set_os_cmdline; " \
+ 			"run bootcmd_${target}; "                         \
++                     "fi; "                                               \
+ 		"done\0"
+ 
+ #ifndef CONFIG_BOOTCOMMAND
+-- 
+2.17.1
+
