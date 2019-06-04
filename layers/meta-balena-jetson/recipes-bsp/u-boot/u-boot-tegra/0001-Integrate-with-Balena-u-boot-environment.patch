@@ -71,7 +71,7 @@ index d718224..a1f382d 100644
 -			"run bootcmd_${target}; "                         \
 -		"done\0"
 +	"if env exist resin_set_kernel_root; then "                       \
-+		"run resin_set_kernel_root; "                             \
++		"run resin_set_kernel_root; run set_os_cmdline; "         \
 +		"run bootcmd_${target}; "                                 \
 +	"fi; "                                                            \
 +	"done\0"
