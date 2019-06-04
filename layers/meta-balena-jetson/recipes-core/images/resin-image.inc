@@ -21,9 +21,35 @@ RESIN_BOOT_PARTITION_FILES_jetson-nano = " \
     bootfiles/bmp.blob:/bootfiles/BMP \
 "
 
+do_rootfs_resinos-img_jetson-tx2[depends] += " tegra186-flash-dry:do_deploy \
+                                               virtual/kernel:do_deploy \
+"
+
+
+RESIN_BOOT_PARTITION_FILES_jetson-tx2 = " \
+    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
+    boot/extlinux.conf:/extlinux/extlinux.conf \
+"
+
 IMAGE_ROOTFS_SIZE = "487424"
-RESIN_BOOT_SIZE = "80960"
+
+RESIN_BOOT_SIZE_jetson-nano = "80960"
+RESIN_BOOT_SIZE_jetson-tx2="101440"
 
 PARTITION_TABLE_TYPE = "gpt"
 
 IMAGE_INSTALL_append_jetson-nano = " tegra210-flash"
+IMAGE_INSTALL_append_jetson-tx2 = " \
+    tegra186-flash-dry \
+    parted \
+    gptfdisk \
+    tegra-firmware-brcm \
+    tegra-brcm-patchram \
+    bluez5 \
+    bt-scripts \
+    linux-firmware-bcm4354 \
+    fan-startup \
+    tegra-nvpmodel \
+    tegra-configs-nvstartup \
+    tegra-configs-udev \
+"
