@@ -11,13 +11,15 @@ DEPENDS = " \
     tegra-bootfiles \
     tegra186-flashtools-native \
     dtc-native \
- "
+    bsdiff-native \
+"
 
 inherit deploy pythonnative perlnative
 
 SRC_URI = " \
     file://resinOS-flash186.xml \
     file://partition_specification186.txt \
+    file://boot0.bindiff \
 "
 
 IMAGE_UBOOT ??= "u-boot-dtb"
@@ -157,12 +159,40 @@ do_configure() {
     cp -r *.bin    ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp -r *.blob   ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp ${DEPLOY_DIR_IMAGE}/${DTBFILE} ${DEPLOY_DIR_IMAGE}/bootfiles/
+
+
+    # This is the new boot0, which needs to be patched due to some bytes
+    # that differ between our generated image and tegra host tools one, most
+    # probably they are added during flashing
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=newboot.img
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=newboot.img seek=3584 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=newboot.img seek=16384 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_prod.bin.encrypt of=newboot.img seek=32768 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_prod.bin.encrypt of=newboot.img seek=294912 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_cold_boot_bct_MB1.bct of=newboot.img seek=557456 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_cold_boot_bct_MB1.bct of=newboot.img seek=622992 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/dram-ecc_sigheader.bin.encrypt of=newboot.img seek=688128 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/badpage_sigheader.bin.encrypt of=newboot.img seek=743424 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/badpage_sigheader.bin.encrypt of=newboot.img seek=748032 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_sigheader.bin.encrypt of=newboot.img seek=752640 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_sigheader.bin.encrypt of=newboot.img seek=883712 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_sigheader.bin.encrypt of=newboot.img seek=1014784 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_sigheader.bin.encrypt of=newboot.img seek=1276928 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_d15_prod_cr_sigheader.bin.encrypt of=newboot.img seek=1539072 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_d15_prod_cr_sigheader.bin.encrypt of=newboot.img seek=1801216 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=newboot.img seek=2063360 bs=1
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=newboot.img seek=2067456 bs=1
+    dd if=/dev/zero of=newboot.img seek=2071552 bs=1 count=2122752
+
+    bspatch newboot.img boot0.img ${WORKDIR}/boot0.bindiff
+    cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img
 }
 
 do_install() {
     install -d ${D}/${BINARY_INSTALL_PATH}
     cp -r ${S}/tegraflash/signed/* ${D}/${BINARY_INSTALL_PATH}
     cp ${WORKDIR}/partition_specification186.txt ${D}/${BINARY_INSTALL_PATH}/
+    cp ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img ${D}/${BINARY_INSTALL_PATH}/
     rm -rf ${DEPLOY_DIR_IMAGE}/tegra-binaries
 }
 
