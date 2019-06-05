@@ -36,8 +36,9 @@ LNXFILE="${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin"
 IMAGE_TEGRAFLASH_KERNEL ?= "${DEPLOY_DIR_IMAGE}/${LNXFILE}"
 BINARY_INSTALL_PATH = "/opt/tegra-binaries"
 
-ROOTA_ARGS="root=LABEL=resin-rootA ro rootwait rootfstype=ext4 OS=l4t"
-ROOTB_ARGS="root=LABEL=resin-rootB ro rootwait rootfstype=ext4 OS=l4t"
+OS_KERNEL_CMDLINE ?= "${@bb.utils.contains('DEVELOPMENT_IMAGE','1','','console=null quiet splash vt.global_cursor_default=0 consoleblank=0',d)}"
+ROOTA_ARGS="root=LABEL=resin-rootA ro rootwait rootfstype=ext4 ${KERNEL_ARGS} ${OS_KERNEL_CMDLINE}"
+ROOTB_ARGS="root=LABEL=resin-rootB ro rootwait rootfstype=ext4 ${KERNEL_ARGS} ${OS_KERNEL_CMDLINE}"
 
 BOOTFILES=" \
     bmp.blob \
@@ -93,7 +94,27 @@ signfile() {
         bootloader_dtb ${DTBFILE}"
 
     tegraflashpy=$(which tegraflash.py)
-    python $tegraflashpy --chip 0x19 --bl nvtboot_recovery_cpu_t194.bin --sdram_config ${sdramcfg} --odmdata ${ODMDATA} --applet mb1_t194_prod.bin --soft_fuses tegra194-mb1-soft-fuses-l4t.cfg --cmd "sign$1" --cfg flash.xml.in --uphy_config tegra194-mb1-uphy-lane-p2888-0000-p2822-0000.cfg --device_config tegra19x-mb1-bct-device-sdmmc.cfg --misc_config tegra194-mb1-bct-misc-flash.cfg --misc_cold_boot_config tegra194-mb1-bct-misc-l4t.cfg --pinmux_config tegra19x-mb1-pinmux-p2888-0000-a04-p2822-0000-b01.cfg --gpioint_config tegra194-mb1-bct-gpioint-p2888-0000-p2822-0000.cfg --pmic_config tegra194-mb1-bct-pmic-p2888-0001-a04-p2822-0000.cfg --pmc_config tegra19x-mb1-padvoltage-p2888-0000-a00-p2822-0000-a00.cfg --prod_config tegra19x-mb1-prod-p2888-0000-p2822-0000.cfg --scr_config tegra194-mb1-bct-scr-cbb-mini.cfg --scr_cold_boot_config tegra194-mb1-bct-scr-cbb-mini.cfg --br_cmd_config tegra194-mb1-bct-reset-p2888-0000-p2822-0000.cfg --dev_params tegra194-br-bct-sdmmc.cfg --bins "${bins}"
+    python $tegraflashpy --chip 0x19 \
+    --bl nvtboot_recovery_cpu_t194.bin \
+    --sdram_config ${sdramcfg} \
+    --odmdata ${ODMDATA} \
+    --applet mb1_t194_prod.bin \
+    --soft_fuses tegra194-mb1-soft-fuses-l4t.cfg \
+    --cmd "sign$1" \
+    --cfg flash.xml.in \
+    --uphy_config tegra194-mb1-uphy-lane-p2888-0000-p2822-0000.cfg \
+    --device_config tegra19x-mb1-bct-device-sdmmc.cfg \
+    --misc_config tegra194-mb1-bct-misc-flash.cfg \
+    --misc_cold_boot_config tegra194-mb1-bct-misc-l4t.cfg \
+    --pinmux_config tegra19x-mb1-pinmux-p2888-0000-a04-p2822-0000-b01.cfg \
+    --gpioint_config tegra194-mb1-bct-gpioint-p2888-0000-p2822-0000.cfg \
+    --pmic_config tegra194-mb1-bct-pmic-p2888-0001-a04-p2822-0000.cfg \
+    --pmc_config tegra19x-mb1-padvoltage-p2888-0000-a00-p2822-0000-a00.cfg \
+    --prod_config tegra19x-mb1-prod-p2888-0000-p2822-0000.cfg \
+    --scr_config tegra194-mb1-bct-scr-cbb-mini.cfg \
+    --scr_cold_boot_config tegra194-mb1-bct-scr-cbb-mini.cfg \
+    --br_cmd_config tegra194-mb1-bct-reset-p2888-0000-p2822-0000.cfg \
+    --dev_params tegra194-br-bct-sdmmc.cfg --bins "${bins}"
 }
 
 do_configure() {
@@ -136,8 +157,6 @@ do_configure() {
     # Add rootA/rootB and save as separate dtbs to be used when
     # switching partitions
     bootargs="`fdtget ./${DTBFILE} /chosen bootargs 2>/dev/null`"
-    bootargs=$(echo ${bootargs} | sed 's/console=tty0/ /g')
-    bootargs=$(echo ${bootargs} | sed 's/console=ttyTCU0/console=ttyTHS0/g')
     fdtput -t s ./tegra194-p2888-0001-p2822-0000-rootA.dtb /chosen bootargs "$bootargs ${ROOTA_ARGS}"
     fdtput -t s ./tegra194-p2888-0001-p2822-0000-rootB.dtb /chosen bootargs "$bootargs ${ROOTB_ARGS}"
 
