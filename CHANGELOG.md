@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.37.0+rev1
+## (2019-06-05)
+
+* Update meta-balena from v2.32.0 to v2.37.0 [Alexandru Costache]
+* Update to trigger VersionBot with `meta-balena` [Alexandru Costache]
+
 # v2.32.0+rev2
 ## (2019-04-25)
 
