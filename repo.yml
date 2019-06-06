@@ -3,4 +3,4 @@ type: 'yocto-based OS image'
 reviewers: 1
 upstream:
   repo: 'meta-balena'
-  url: 'http://github.com/resin-os/meta-balena'
+  url: 'http://github.com/balena-os/meta-balena'

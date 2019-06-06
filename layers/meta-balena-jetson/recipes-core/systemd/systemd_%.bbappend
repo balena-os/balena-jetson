@@ -1,8 +1,3 @@
-do_install_append() {
-    # disable fb console
-    rm -rf ${D}${sysconfdir}/systemd/system/getty.target.wants/getty@tty1.service
-}
-
 do_install_append_jetson-nano(){
     # On jetson nano, tegra_wdt_t21x module pings
     # the watchdog internally unless a userspace

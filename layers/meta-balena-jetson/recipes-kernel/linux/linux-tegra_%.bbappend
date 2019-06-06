@@ -14,6 +14,15 @@ RESIN_CONFIGS[tegra-wdt-t21x] = " \
     CONFIG_TEGRA21X_WATCHDOG=m \
 "
 
+RESIN_CONFIGS_append = " fatconfig"
+
+RESIN_CONFIGS[fatconfig] = " \
+    CONFIG_MSDOS_FS=y \
+    CONFIG_VFAT_FS=y \
+    CONFIG_NLS_ASCII=y \
+    CONFIG_NLS_CODEPAGE_437=y \
+"
+
 KERNEL_ROOTSPEC = "\${resin_kernel_root} ro rootwait"
 
 generate_extlinux_conf() {
@@ -26,7 +35,7 @@ MENU TITLE Boot Options
 LABEL primary
       MENU LABEL primary ${KERNEL_IMAGETYPE}
       LINUX /${KERNEL_IMAGETYPE}
-      APPEND \${cbootargs} ${kernelRootspec}
+      APPEND \${cbootargs} ${kernelRootspec} \${os_cmdline}
 EOF
 }
 
