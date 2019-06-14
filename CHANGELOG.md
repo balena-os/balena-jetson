@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.37.0+rev2
+## (2019-06-14)
+
+* jetson-xavier.coffee: Add coffee file for Jetson Xavier [Alexandru Costache]
+
 # v2.37.0+rev1
 ## (2019-06-05)
 

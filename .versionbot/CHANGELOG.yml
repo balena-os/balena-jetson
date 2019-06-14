@@ -1,4 +1,16 @@
 - commits:
+    - subject: 'jetson-xavier.coffee: Add coffee file for Jetson Xavier'
+      hash: 4a77d7706a9ed17e954fd7a24db72185927d28f8
+      body: ''
+      footer:
+        Changelog-entry: 'jetson-xavier.coffee: Add coffee file for Jetson Xavier'
+        changelog-entry: 'jetson-xavier.coffee: Add coffee file for Jetson Xavier'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.37.0+rev2
+  date: 2019-06-14T08:29:58.519Z
+- commits:
     - subject: Update meta-balena from v2.32.0 to v2.37.0
       hash: ec2471cf213e99a35e74de0db9a92c0be77ceb88
       body: ''
