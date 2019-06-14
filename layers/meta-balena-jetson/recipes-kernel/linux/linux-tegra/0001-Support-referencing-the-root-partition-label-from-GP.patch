@@ -1,0 +1,81 @@
+From e155561fd4476e8db6d14759cc041a0d34fe4dbb Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 25 Mar 2019 15:24:37 +0100
+Subject: [PATCH] Support referencing the root partition label from GPT as
+ argument to the root= option on the kernel command line in analogy to
+ referencing the partition uuid as root=PARTUUID=<uuid>.
+
+Specifying the partition label instead of the uuid is often much
+easier, e.g. in embedded environments when there is an
+A/B rootfs partition scheme for interruptible firmware updates
+(i.e. rootfsA/ rootfsB).
+
+The partition label can be queried with the blkid command.
+
+Signed-off-by: Nikolaus Voss <nikolaus.voss@loewensteinmedical.de>
+
+Upstream-Status: Inappropriate [backport]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ init/do_mounts.c | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+diff --git a/init/do_mounts.c b/init/do_mounts.c
+index 1902a1c8..6b77f25 100644
+--- a/init/do_mounts.c
++++ b/init/do_mounts.c
+@@ -177,6 +177,24 @@ static dev_t devt_from_partuuid(const char *uuid_str)
+ 	}
+ 	return res;
+ }
++
++/**
++ * match_dev_by_label - callback for finding a partition using its label
++ * @dev:	device passed in by the caller
++ * @data:	opaque pointer to the label to match
++ *
++ * Returns 1 if the device matches, and 0 otherwise.
++ */
++static int match_dev_by_label(struct device *dev, const void *data)
++{
++	const char *label = data;
++	struct hd_struct *part = dev_to_part(dev);
++
++	if (part->info && !strcmp(label, part->info->volname))
++		return 1;
++
++	return 0;
++}
+ #endif
+ 
+ /*
+@@ -200,6 +218,8 @@ static dev_t devt_from_partuuid(const char *uuid_str)
+  *	   a partition with a known unique id.
+  *	8) <major>:<minor> major and minor number of the device separated by
+  *	   a colon.
++ *	9) PARTLABEL=<name> with name being the GPT partition label.
++ *	   MSDOS partitions do not support labels!
+  *
+  *	If name doesn't have fall into the categories above, we return (0,0).
+  *	block_class is used to check if something is a disk name. If the disk
+@@ -221,6 +241,17 @@ dev_t name_to_dev_t(const char *name)
+ 		if (!res)
+ 			goto fail;
+ 		goto done;
++	} else if (strncmp(name, "PARTLABEL=", 10) == 0) {
++		struct device *dev;
++
++		dev = class_find_device(&block_class, NULL, name + 10,
++					&match_dev_by_label);
++		if (!dev)
++			goto fail;
++
++		res = dev->devt;
++		put_device(dev);
++		goto done;
+ 	}
+ #endif
+ 
+-- 
+2.7.4
+

@@ -7,6 +7,8 @@ SRC_URI_append = " \
     file://0001-revert-random-fix-crng_ready-test.patch \
 "
 
+SRC_URI_append_jetson-xavier = " file://0001-Support-referencing-the-root-partition-label-from-GP.patch "
+
 TEGRA_INITRAMFS_INITRD = "0"
 
 RESIN_CONFIGS_append = " tegra-wdt-t21x"

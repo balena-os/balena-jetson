@@ -21,9 +21,40 @@ RESIN_BOOT_PARTITION_FILES_jetson-nano = " \
     bootfiles/bmp.blob:/bootfiles/BMP \
 "
 
+do_rootfs_resinos-img_jetson-xavier[depends] += " tegra194-flash-dry:do_deploy "
+
+RESIN_BOOT_PARTITION_FILES_jetson-xavier = " \
+    bootfiles/mb1_t194_prod_sigheader.bin.encrypt:/bootfiles/mb1_t194_prod_sigheader.bin.encrypt \
+    bootfiles/spe_t194_sigheader.bin.encrypt:/bootfiles/spe_t194_sigheader.bin.encrypt \
+    bootfiles/nvtboot_t194_sigheader.bin.encrypt:/bootfiles/nvtboot_t194_sigheader.bin.encrypt \
+    bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt:/bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt \
+    bootfiles/slot_metadata.bin:/bootfiles/slot_metadata.bin \
+    bootfiles/bmp.blob:/bootfiles/bmp.blob \
+    bootfiles/mce_c10_prod_cr_sigheader.bin.encrypt:/bootfiles/mce_c10_prod_cr_sigheader.bin.encrypt \
+    bootfiles/mts_c10_prod_cr_sigheader.bin.encrypt:/bootfiles/mts_c10_prod_cr_sigheader.bin.encrypt \
+    bootfiles/cboot_t194_sigheader.bin.encrypt:/bootfiles/cboot_t194_sigheader.bin.encrypt \
+    bootfiles/tos-mon-only_t194_sigheader.img.encrypt:/bootfiles/tos-mon-only_t194_sigheader.img.encrypt \
+    bootfiles/eks_sigheader.img.encrypt:/bootfiles/eks_sigheader.img.encrypt \
+    bootfiles/bpmp_t194_sigheader.bin.encrypt:/bootfiles/bpmp_t194_sigheader.bin.encrypt \
+    bootfiles/tegra194-a02-bpmp-p2888-a04_sigheader.dtb.encrypt:/bootfiles/tegra194-a02-bpmp-p2888-a04_sigheader.dtb.encrypt \
+    bootfiles/xusb_sil_rel_fw:/bootfiles/xusb_sil_rel_fw \
+    bootfiles/camera-rtcpu-rce_sigheader.img.encrypt:/bootfiles/camera-rtcpu-rce_sigheader.img.encrypt \
+    bootfiles/adsp-fw_sigheader.bin.encrypt:/bootfiles/adsp-fw_sigheader.bin.encrypt \
+    bootfiles/warmboot_t194_prod_sigheader.bin.encrypt:/bootfiles/warmboot_t194_prod_sigheader.bin.encrypt \
+    bootfiles/boot_sigheader.img.encrypt:/bootfiles/boot_sigheader.img.encrypt \
+    bootfiles/tegra194-p2888-0001-p2822-0000-rootA_sigheader.dtb.encrypt:/bootfiles/tegra194-p2888-0001-p2822-0000-rootA_sigheader.dtb.encrypt \
+    bootfiles/tegra194-p2888-0001-p2822-0000-rootB_sigheader.dtb.encrypt:/bootfiles/tegra194-p2888-0001-p2822-0000-rootB_sigheader.dtb.encrypt \
+    tegra-binaries/partition_specification194.txt:/bootfiles/partition_specification194.txt \
+"
+
+# The space resinOS takes will amount to 1GiB
 IMAGE_ROOTFS_SIZE = "487424"
-RESIN_BOOT_SIZE = "80960"
+
+# Need space for all the above signed update binaries
+RESIN_BOOT_SIZE_jetson-nano = "80960"
+RESIN_BOOT_SIZE_jetson-xavier = "121440"
 
 PARTITION_TABLE_TYPE = "gpt"
 
 IMAGE_INSTALL_append_jetson-nano = " tegra210-flash"
+IMAGE_INSTALL_append_jetson-xavier = " tegra194-flash-dry fan-startup"
