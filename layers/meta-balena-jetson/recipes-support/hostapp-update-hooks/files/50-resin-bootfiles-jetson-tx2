@@ -1,0 +1,75 @@
+#!/bin/sh
+
+NVIDIA_PART_OFFSET="4097"
+DEV_PATH=/dev/mmcblk0
+UPGRADE_PARTITIONS=0
+BIN_INSTALL_PATH="/opt/tegra-binaries"
+
+info_log()
+{
+    echo "[INFO] $@"
+}
+
+update_partition_binaries()
+{
+    for line in $(cat $1); do
+        part_name=$(echo $line | cut -d ':' -f 1)
+        file_name=$(echo $line | cut -d ':' -f 2)
+        dd oflag=dsync if="${BIN_INSTALL_PATH}/${file_name}" of="/dev/disk/by-partlabel/$part_name"
+    done
+}
+
+NUM_ADSP_PART=$(parted -s ${DEV_PATH} print | grep adsp | wc -l)
+if [ ${NUM_ADSP_PART} -lt 2 ]; then
+    # adsp-fw partitions are mandatory only on L4T 32.2
+    info_log "ADSP firmware partition NOT found:${NUM_ADSP_PART}. Will upgrade partition table to L4T 32.2"
+    UPGRADE_PARTITIONS=1
+else
+    info_log "Found ${NUM_ADSP_PART} ADSP firmware partitions. No need to upgrade GPT"
+fi
+
+if [ ${UPGRADE_PARTITIONS} -eq 1 ]; then
+    info_log "Removing old L4T 28.2 partitions"
+    idx=1
+    while [ $idx -le 11 ]; do
+        parted -s ${DEV_PATH} rm ${idx}
+        idx=$(expr ${idx} \+ 1)
+    done
+
+    info_log "Proceeding to create new L4T partitions"
+
+    partitions=$(cat "${BIN_INSTALL_PATH}/partition_specification186.txt")
+
+    start=${NVIDIA_PART_OFFSET}
+    for n in ${partitions}; do
+        part_name=$(echo $n | cut -d ':' -f 1)
+        file_name=$(echo $n | cut -d ':' -f 2)
+        part_size=$(echo $n | cut -d ':' -f 3)
+        end=$(expr ${start} \+ ${part_size} \- 1)
+        parted -s ${DEV_PATH} unit s mkpart $part_name ${start} ${end}
+        dd if="${BIN_INSTALL_PATH}/${file_name}" of=${DEV_PATH} conv=notrunc seek=${start} bs=512
+        start=$(expr ${end} \+ 1)
+    done
+
+    info_log "Created L4T 32.2 partitions"
+
+    # Another issue with parted is incorrect number of partition entries
+    # in gpt header at position 0x250. Fix gpt header so it can be interpreted
+    # by the first bootloaders.
+    sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${DEV_PATH}
+    x
+    l
+    28
+    r
+    w
+EOF
+
+elif [ ${UPGRADE_PARTITIONS} -eq 0 ]; then
+    update_partition_binaries "${BIN_INSTALL_PATH}/partition_specification186.txt"
+fi
+
+# Regardless of whether the GPT has been altered, update boot part
+echo 0 > /sys/block/mmcblk0boot0/force_ro
+dd if="${BIN_INSTALL_PATH}/boot0.img" of=/dev/mmcblk0boot0
+sync
+echo 1 > /sys/block/mmcblk0boot0/force_ro

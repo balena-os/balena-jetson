@@ -9,3 +9,10 @@ HOSTAPP_HOOKS_append_jetson-nano    = " 99-resin-uboot \
 DEPENDS_${PN}_append_jetson-xavier  = " tegra194-flash-dry"
 
 HOSTAPP_HOOKS_append_jetson-xavier  = " 99-resin-bootfiles-xavier"
+
+DEPENDS_${PM}_append_jetson-tx2 = " tegra186-flash-dry"
+
+HOSTAPP_HOOKS_append_jetson-tx2 = " \
+    99-resin-uboot \
+    50-resin-bootfiles-jetson-tx2 \
+"
