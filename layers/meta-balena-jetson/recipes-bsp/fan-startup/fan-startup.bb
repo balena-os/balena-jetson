@@ -14,9 +14,9 @@ S = "${WORKDIR}"
 
 do_install () {
     install -d ${D}/${systemd_unitdir}/system
-    install -m 0755 ${WORKDIR}/fan-startup.service ${D}/${systemd_unitdir}/system/fan-startup.service
+    install -m 0644 ${WORKDIR}/fan-startup.service ${D}/${systemd_unitdir}/system/fan-startup.service
 }
 
 SYSTEMD_SERVICE_${PN} = "fan-startup.service"
 
-COMPATIBLE_MACHINE = "jetson-xavier"
+COMPATIBLE_MACHINE = "(jetson-xavier|jetson-tx2)"
