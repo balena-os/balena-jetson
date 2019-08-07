@@ -70,6 +70,7 @@ do_configure() {
     local f
 
     sed -i -e "s/\[DTB_NAME\]/$(echo ${DTBFILE} | cut -d '.' -f 1)/g" ${WORKDIR}/partition_specification186.txt
+    sed -i -e "s/DTB_NAME/${DTBFILE}/g" ${WORKDIR}/resinOS-flash186.xml
     if [ -d ${DEPLOY_DIR_IMAGE}/bootfiles ]; then
          rm -rf ${DEPLOY_DIR_IMAGE}/bootfiles
     fi;

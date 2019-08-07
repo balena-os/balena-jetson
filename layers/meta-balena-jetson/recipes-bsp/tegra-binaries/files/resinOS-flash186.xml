@@ -215,7 +215,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> tegra186-quill-p3310-1000-c03-00-base.dtb </filename>
+            <filename> DTB_NAME </filename>
         </partition>
         <partition name="bootloader-dtb_b" type="data" oem_sign="true">
             <allocation_policy> sequential </allocation_policy>
@@ -224,7 +224,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> tegra186-quill-p3310-1000-c03-00-base.dtb </filename>
+            <filename> DTB_NAME </filename>
         </partition>
         <partition name="secure-os" type="data" oem_sign="true">
             <allocation_policy> sequential </allocation_policy>
@@ -368,7 +368,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> tegra186-quill-p3310-1000-c03-00-base.dtb </filename>
+	    <filename> DTB_NAME </filename>
         </partition>
         <partition name="kernel-dtb_b" type="data" oem_sign="true">
             <allocation_policy> sequential </allocation_policy>
@@ -377,7 +377,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> tegra186-quill-p3310-1000-c03-00-base.dtb </filename>
+            <filename> DTB_NAME </filename>
         </partition>
         <partition name="resin-boot" type="data">
             <allocation_policy> sequential </allocation_policy>
