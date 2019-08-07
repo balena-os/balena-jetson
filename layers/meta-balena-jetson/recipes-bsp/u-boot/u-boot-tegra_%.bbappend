@@ -19,4 +19,5 @@ SRC_URI_append_jetson-tx2 = " \
     file://0001-Add-part-index-command.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
     file://0001-Increase-default-u-boot-environment-size.patch \
+    file://0001-menu-Use-default-menu-entry-from-extlinux.conf.patch \
 "
