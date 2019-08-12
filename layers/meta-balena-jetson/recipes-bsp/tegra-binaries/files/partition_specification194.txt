@@ -7,7 +7,7 @@ mts-mce:mce_c10_prod_cr.bin:1000
 mts-proper:mts_c10_prod_cr.bin:8192
 cpu-bootloader:cboot_t194.bin:1024
 bootloader-dtb:tegra194-p2888-0001-p2822-0000-rootA.dtb:768
-secure-os:tos-mon-only_t194.img:4096
+secure-os:tos-trusty_t194.img:4096
 eks:eks.img:256
 bpmp-fw:bpmp_t194.bin:2048
 bpmp-fw-dtb:tegra194-a02-bpmp-p2888-a04.dtb:2048

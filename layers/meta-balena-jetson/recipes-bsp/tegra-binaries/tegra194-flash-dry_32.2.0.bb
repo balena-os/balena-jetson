@@ -57,7 +57,7 @@ BOOTFILES=" \
     preboot_d15_prod_cr.bin \
     slot_metadata.bin \
     spe_t194.bin \
-    tos-mon-only_t194.img \
+    tos-trusty_t194.img \
     warmboot_t194_prod.bin \
     xusb_sil_rel_fw \
     cbo.dtb \
@@ -89,7 +89,7 @@ signfile() {
         bpmp_fw bpmp_t194.bin; \
         bpmp_fw_dtb tegra194-a02-bpmp-p2888-a04.dtb; \
         spe_fw spe_t194.bin; \
-        tlk tos-mon-only_t194.img; \
+        tlk tos-trusty_t194.img; \
         eks eks.img; \
         bootloader_dtb ${DTBFILE}"
 
@@ -97,7 +97,7 @@ signfile() {
     python $tegraflashpy --chip 0x19 \
     --bl nvtboot_recovery_cpu_t194.bin \
     --sdram_config ${sdramcfg} \
-    --odmdata ${ODMDATA} \
+    --odmdata 0x9190000 \
     --applet mb1_t194_prod.bin \
     --soft_fuses tegra194-mb1-soft-fuses-l4t.cfg \
     --cmd "sign$1" \
@@ -235,7 +235,9 @@ do_deploy[nostamp] = "1"
 do_configure[nostamp] = "1"
 
 do_configure[depends] += " tegra-binaries:do_preconfigure"
-do_configure[depends] += " virtual/kernel:do_deploy"
+do_configure[depends] += " virtual/kernel:do_deploy \
+                           virtual/bootloader:do_deploy \
+"
 do_install[depends] += " virtual/kernel:do_deploy"
 do_populate_lic[depends] += "tegra-binaries:do_unpack"
 
