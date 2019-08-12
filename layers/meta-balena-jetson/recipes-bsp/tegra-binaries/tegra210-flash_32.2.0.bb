@@ -72,9 +72,7 @@ do_configure() {
     cp "${DEPLOY_DIR_IMAGE}/u-boot-dtb.bin" ./u-boot-dtb.bin
 
     if [ -n "${KERNEL_ARGS}" ]; then
-        # Disable framebuffer console
-        KERNEL_ARGS_NO_FBCONSOLE=$(echo ${KERNEL_ARGS} | sed 's/console=tty0/ /g')
-        fdtput -t s ./${DTBFILE} /chosen bootargs "${KERNEL_ARGS_NO_FBCONSOLE}"
+        fdtput -t s ./${DTBFILE} /chosen bootargs "${KERNEL_ARGS}"
     else
         fdtput -d ./${DTBFILE} /chosen bootargs
     fi
@@ -89,7 +87,7 @@ do_configure() {
     # tegraflash.py script will sign all binaries
     # mentioned for signing in flash.xml.in
     cp ${WORKDIR}/resinOS-flash210.xml flash.210.in
-
+    sed -i -e "s/\[DTBNAME\]/${DTBFILE}/g" ${WORKDIR}/partition_specification210.txt
     # prep env for tegraflash
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra210-flash/${SOC_FAMILY}-flash-helper.sh ./
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra210-flash/tegraflash.py ./
@@ -110,7 +108,6 @@ do_configure() {
 
     cat "flash.210.in" | sed \
         -e"s,EBTFILE,cboot.bin," -e"s,EBTSIZE,$ebtsize," \
-        -e"s,LNXFILE,u-boot-dtb.bin," \
         -e"/NCTFILE/d" -e"s,NCTTYPE,data," \
         -e"/SOSFILE/d" \
         -e"s,NXC,NVC," -e"s,NVCTYPE,bootloader," -e"s,NVCFILE,nvtboot.bin," -e "s,NVCSIZE,$nvcsize," \
