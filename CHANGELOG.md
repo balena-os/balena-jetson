@@ -1,6 +1,55 @@
 Change log
 -----------
 
+# v2.39.0+rev1
+## (2019-08-12)
+
+* Add support for TX2 on l4t 32.2 [Alexandru Costache]
+
+<details>
+<summary> Update the meta-balena submodule from v2.38.0 to v2.39.0 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.39.0
+> ### (2019-07-31)
+> 
+> * usb-modeswitch-data: Switch Huawei E3372 12d1:1f01 to mbim mode [Alexandru Costache]
+> * Fix rollback altboots to prevent good reboots by supervisor triggering rollback. [Zubair Lutfullah Kakakhel]
+> * Devices using u-boot. Remove any BOOTDELAY for production images. Add a 2 seconds delay for development images [Zubair Lutfullah Kakakhel]
+> * Devices using u-boot. Enable CONFIG_CMD_SETEXPR for all devices. Required for rollbacks to work [Zubair Lutfullah Kakakhel]
+> * Devices using u-boot. Enable rollback-altboot by handling bootcount via meta-balena. [Zubair Lutfullah Kakakhel]
+> * Production Devices using u-boot. Enable CONFIG_RESET_TO_RETRY to reset a device in case it drops into a u-boot shell [Zubair Lutfullah Kakakhel]
+> * Remove confusing networkmanager https connectivity warning [Zubair Lutfullah Kakakhel]
+> * Increase fs.inotify.max_user_instances to 512 [Zubair Lutfullah Kakakhel]
+> * Update balena-supervisor to v10.0.3 [Cameron Diver]
+> * Fix balena hello-world healthcheck [Zubair Lutfullah Kakakhel]
+> * Add nf_table kernel modules [Zubair Lutfullah Kakakhel]
+> * hostapp-update-hooks: Use correct source for inactive sysroot [Alexandru Costache]
+> * Add extra healthcheck to balena service. It will spin up a hello-world container as well [Zubair Lutfullah Kakakhel]
+> * Update balena-supervisor to v9.18.8 [Cameron Diver]
+> * image-resin.bbclass: fixed a typo [Kyle Harding]
+> * kernel-resin: Add support for CH340 family of usb-serial adapters [Sebastian Panceac]
+> * resin-proxy-config: add missing reserved ip ranges to default noproxy [Will Boyce]
+> * Reduce data partition size from 1G to 192M [Zubair Lutfullah Kakakhel]
+
+> ## meta-balena-2.38.3
+> ### (2019-07-10)
+> 
+> * resin-proxy-config: fix up incorrect bash subshell command [Matthew McGinn]
+
+> ## meta-balena-2.38.2
+> ### (2019-06-27)
+> 
+> * Update to kernel-modules-headers v0.0.20 to fix missing target modpost binary on kernel 5.0.3 [Florin Sarbu]
+> * Update to kernel-modules-headers v0.0.19 to fix target objtool compile issue on kernel 5.0.3 [Florin Sarbu]
+
+> ## meta-balena-2.38.1
+> ### (2019-06-20)
+> 
+> * Add warrior to compatible layers for meta-balena-common [Florin Sarbu]
+> * Fix image-resin.bbclass to be able to use deprecated layers [Andrei Gherzan]
+> * Fix kernel-devsrc on thud when kernel version < 4.10 [Andrei Gherzan]
+</details>
+
 # v2.38.0+rev1
 ## (2019-06-17)
 
