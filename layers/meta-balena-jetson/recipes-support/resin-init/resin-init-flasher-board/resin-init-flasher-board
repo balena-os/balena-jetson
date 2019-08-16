@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+# we create boot0.img inside tegra186-flash-dry
+echo 0 > /sys/block/mmcblk0boot0/force_ro
+dd if=/opt/tegra-binaries/boot0.img of=/dev/mmcblk0boot0 ; sync
+echo 1 > /sys/block/mmcblk0boot0/force_ro
+
+
+# Relocate secondary gpt after writing image to the emmc with dd
+# Not doing so will cause failure and lockup in initramfs data expander
+sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk /dev/mmcblk0
+    v
+    w
+EOF

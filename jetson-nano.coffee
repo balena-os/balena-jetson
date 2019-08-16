@@ -29,7 +29,7 @@ module.exports =
 		machine: 'jetson-nano'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-sumo'
+		version: 'yocto-warrior'
 		deployArtifact: 'resin-image-jetson-nano.resinos-img'
 		compressed: true
 

@@ -1,6 +1,5 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${MACHINE}:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI_append = " \
     file://resindataexpander \
-    "
-
+"

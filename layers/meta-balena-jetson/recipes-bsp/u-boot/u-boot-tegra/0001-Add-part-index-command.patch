@@ -1,0 +1,78 @@
+From d042198430b8492aa36569ac745b5bd113862916 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Fri, 2 Aug 2019 14:42:49 +0200
+Subject: [PATCH] Create command to extract partition index by name
+
+  This command is useful for extracting partition index
+  when the partition label is known, like for instance
+  resin-boot.
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ cmd/part.c | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
+
+diff --git a/cmd/part.c b/cmd/part.c
+index 414031e6f3..3444fb6d22 100644
+--- a/cmd/part.c
++++ b/cmd/part.c
+@@ -180,6 +180,38 @@ static int do_part_size(int argc, char * const argv[])
+ 	return 0;
+ }
+ 
++static int do_part_index(int argc, char * const argv[])
++{
++        struct blk_desc *desc;
++        char buff[6] = "0";
++        int p, ret;
++        disk_partition_t info;
++
++        if (argc < 4)
++                return CMD_RET_USAGE;
++
++        ret = blk_get_device_by_str(argv[0], argv[1], &desc);
++
++        if (ret < 0)
++                return 1;
++
++        for (p = 1; p < 128; p++) {
++                int r = part_get_info(desc, p, &info);
++
++                if (r != 0)
++                        continue;
++
++                if (!strncmp(argv[2], info.name, strlen(argv[2]) > 31 ? 31 : strlen(argv[2]))) {
++                        sprintf(buff, "0x%X\0", p);
++                        break;
++            }
++        }
++
++        setenv(argv[3], buff);
++
++        return 0;
++}
++
+ static int do_part(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
+ {
+ 	if (argc < 2)
+@@ -193,6 +225,8 @@ static int do_part(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
+ 		return do_part_start(argc - 2, argv + 2);
+ 	else if (!strcmp(argv[1], "size"))
+ 		return do_part_size(argc - 2, argv + 2);
++        else if (!strcmp(argv[1], "index"))
++                return do_part_index(argc - 2, argv + 2);
+ 
+ 	return CMD_RET_USAGE;
+ }
+@@ -213,4 +247,7 @@ U_BOOT_CMD(
+ 	"    - set environment variable to the start of the partition (in blocks)\n"
+ 	"part size <interface> <dev> <part> <varname>\n"
+ 	"    - set environment variable to the size of the partition (in blocks)"
++        "\npart index <interface> <dev> <partname> <varname>\n"
++        "    - save index of partname in varname\n"
++
+ );
+-- 
+2.17.1
+

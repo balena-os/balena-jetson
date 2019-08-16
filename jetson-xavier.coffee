@@ -2,6 +2,7 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
 BOARD_PREPARE  = 'Put the NVidia Jetson Xavier board in recovery mode'
+FLASH_SCRIPT_DOWNLOAD = 'Obtain the flashing script from: https://github.com/balena-os/balena-jetson-nano/blob/master/layers/meta-balena-jetson/recipes-scripts/flash_xavier.sh'
 FLASH_SCRIPT = 'Unzip BalenaOS image and execute: sudo ./flash_xavier.sh <path_to_balenaOS.img>'
 DONE_FLASHING  = 'Follow the instructions printed by the flashing script'
 module.exports =
@@ -15,6 +16,7 @@ module.exports =
 
 	instructions: [
 		BOARD_PREPARE
+		FLASH_SCRIPT_DOWNLOAD
 		FLASH_SCRIPT
 		DONE_FLASHING
 	]
@@ -30,7 +32,7 @@ module.exports =
 		machine: 'jetson-xavier'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-sumo'
+		version: 'yocto-warrior'
 		deployArtifact: 'resin-image-jetson-xavier.resinos-img'
 		compressed: true
 

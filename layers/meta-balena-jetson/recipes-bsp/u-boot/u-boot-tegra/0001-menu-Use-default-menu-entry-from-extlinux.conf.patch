@@ -1,0 +1,49 @@
+From 089862d02e31a5d56447e7451ef2b8866766006a Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Wed, 7 Aug 2019 11:47:06 +0200
+Subject: [PATCH] menu: Use default menu entry from extlinux.conf
+
+If CONFIG_BOOT_RETRY is set, timeout from
+extlinux.conf menu will not matter anymore
+as the first one is used to determine timeout
+for user input.
+
+Since separate extlinux.conf files are used for
+flasher and normal images, there's no point in
+waiting for the menu defined timeout.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ common/menu.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/common/menu.c b/common/menu.c
+index c53030f365..f56fbc603f 100644
+--- a/common/menu.c
++++ b/common/menu.c
+@@ -193,6 +193,21 @@ static inline int menu_interactive_choice(struct menu *m, void **choice)
+ 
+ 		menu_display(m);
+ 
++#ifdef CONFIG_BOOT_RETRY_TIME
++		/*
++		 *  If CONFIG_BOOT_RETRY_TIME is set, it will be used to determine
++		 *  timeout from last keyboard input and thus override
++		 *  extlinux.conf's timeout. If negative, it will be necessary
++		 *  for user to input menu choice, otherwise board will never boot.
++		 *  See cli_readline_into_buffer() and bootretry.c.
++		 *
++		 *  Since for Tegra we always use a single entry
++		 *  in the extlinux.conf file and a separate one for flasher,
++		 *  there's no point in using the timeout defined in the menu.
++		 */
++		return menu_default_choice(m, choice);
++#endif
++
+ 		if (!m->item_choice) {
+ 			readret = cli_readline_into_buffer("Enter choice: ",
+ 							   cbuf,
+-- 
+2.17.1
+
