@@ -1,0 +1,24 @@
+From 87d800f9f2c744e7b3d36fc14e4e2724ef32cb4a Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Wed, 21 Aug 2019 11:31:54 +0200
+Subject: [PATCH] mttcan_ivc: Fix build failure with kernel 4.9
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ nvidia/drivers/net/can/mttcan/ivc/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nvidia/drivers/net/can/mttcan/ivc/Makefile b/nvidia/drivers/net/can/mttcan/ivc/Makefile
+index 4ce03181dd87..5b70f54b4081 100644
+--- a/nvidia/drivers/net/can/mttcan/ivc/Makefile
++++ b/nvidia/drivers/net/can/mttcan/ivc/Makefile
+@@ -20,4 +20,4 @@ obj-$(CONFIG_MTTCAN_IVC) := mttcan_ivc.o
+ mttcan_ivc-y = m_ttcan_linux_ivc.o ../hal/m_ttcan.o
+ mttcan_ivc-y += ../hal/m_ttcan_list.o ../hal/m_ttcan_ram.o
+ 
+-ccflags-y += -I$(src)/../include
++ccflags-y += -I$(srctree.nvidia)/drivers/net/can/mttcan/include
+-- 
+2.17.1
+
