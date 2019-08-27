@@ -17,6 +17,7 @@ SRC_URI_append_jetson-tx2 = " \
     file://tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb \
     file://d3-rsp-fpdlink-ov10640-single-j2.dtb \
     file://tegra186-tx2-blackboard.dtb \
+    file://tegra186-tx2-cti-ASG008-base.dtb \
     file://realsense_hid_linux-yocto_4.4.patch \
     file://realsense_metadata_linux-yocto_4.4.patch \
     file://realsense_powerlinefrequency_control_fix_linux-yocto_4.4.patch \
@@ -182,4 +183,8 @@ do_deploy_append_srd3-tx2() {
 
 do_deploy_append_blackboard-tx2() {
     cp ${WORKDIR}/tegra186-tx2-blackboard.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_sprocket-tx2() {
+   cp ${WORKDIR}/tegra186-tx2-cti-ASG008-base.dtb "${DEPLOYDIR}"
 }
