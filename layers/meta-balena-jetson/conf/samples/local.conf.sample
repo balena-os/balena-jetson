@@ -1,6 +1,6 @@
 # Supported machines
 #MACHINE ?= "jetson-nano"
-
+# TODO: AIVERO Do we still need explicit mention of the other carrier boards here as before?
 # We use the overlayfs docker storage driver on the Nvidia Jetson Nano
 BALENA_STORAGE = "overlay2"
 
