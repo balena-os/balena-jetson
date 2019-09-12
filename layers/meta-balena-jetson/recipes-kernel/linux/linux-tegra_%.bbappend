@@ -15,6 +15,7 @@ SRC_URI_append_jetson-tx2 = " \
     file://tegra186-tx2-cti-ASG001-USB3.dtb \
     file://tegra186-tx2-aetina-n510.dtb \
     file://tegra186-tx2-aetina-n310.dtb \
+    file://tegra186-tx2-aetina-mb1-bct-pinmux-quill-p3310-1000-c03.cfg \
     file://tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb \
     file://d3-rsp-fpdlink-ov10640-single-j2.dtb \
     file://tegra186-tx2-blackboard.dtb \
@@ -178,6 +179,7 @@ do_deploy_append_n510-tx2() {
 }
 do_deploy_append_n310-tx2() {
     cp ${WORKDIR}/tegra186-tx2-aetina-n310.dtb "${DEPLOYDIR}"
+    cp ${WORKDIR}/tegra186-tx2-aetina-mb1-bct-pinmux-quill-p3310-1000-c03.cfg "${DEPLOYDIR}"
 }
 
 do_deploy_append_srd3-tx2() {

@@ -136,6 +136,11 @@ do_configure() {
 
     cp ${WORKDIR}/resinOS-flash186.xml ./flash.xml.in
 
+    # ##########################################################################
+    # TODO: Select .cfg file based on which board is being used, similar to ln38
+    # ##########################################################################
+    PINMUX_CONFIG_n310-tx2= "${DEPLOY_DIR_IMAGE}/tegra186-tx2-aetina-mb1-bct-pinmux-quill-p3310-1000-c03.cfg"
+
     flashapp=$(which tegraflash.py)
     python $flashapp \
     --bl nvtboot_recovery_cpu.bin \
