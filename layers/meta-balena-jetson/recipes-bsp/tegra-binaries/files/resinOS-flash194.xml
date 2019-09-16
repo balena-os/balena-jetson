@@ -139,7 +139,6 @@
             <percent_reserved> 0 </percent_reserved>
         </partition>
     </device>
-
     <device type="sdmmc_user" instance="3">
         <partition name="master_boot_record" type="protective_master_boot_record">
             <allocation_policy> sequential </allocation_policy>
@@ -466,14 +465,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-        </partition>
-        <partition name="UDA" type="data">
-            <allocation_policy> sequential </allocation_policy>
-            <filesystem_type> basic </filesystem_type>
-            <file_system_attribute> 0 </file_system_attribute>
-            <allocation_attribute> 0x8 </allocation_attribute>
-            <percent_reserved> 0 </percent_reserved>
-            <align_boundary> 4096 </align_boundary>
         </partition>
         <partition name="resin-boot" type="data">
             <allocation_policy> sequential </allocation_policy>
