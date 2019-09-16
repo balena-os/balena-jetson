@@ -1,0 +1,26 @@
+From e53ff5bf09a54af77f3f2f7c7282e38c33093377 Mon Sep 17 00:00:00 2001
+From: Scott Ware <scott.r.ware@intel.com>
+Date: Mon, 27 Nov 2017 15:27:40 +0000
+Subject: [PATCH 4/4] Fix incomplete PowerLineFrequency enumeration map
+
+Upstream-Status: Backport
+Signed-off-by: Scott Ware <scott.r.ware@intel.com>
+---
+ drivers/media/usb/uvc/uvc_ctrl.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/media/usb/uvc/uvc_ctrl.c b/drivers/media/usb/uvc/uvc_ctrl.c
+index 3e59b28..888d32c 100644
+--- a/drivers/media/usb/uvc/uvc_ctrl.c
++++ b/drivers/media/usb/uvc/uvc_ctrl.c
+@@ -356,6 +356,7 @@ static struct uvc_menu_info power_line_frequency_controls[] = {
+ 	{ 0, "Disabled" },
+ 	{ 1, "50 Hz" },
+ 	{ 2, "60 Hz" },
++	{ 3, "Auto" },
+ };
+ 
+ static struct uvc_menu_info exposure_auto_controls[] = {
+-- 
+1.9.1
+
