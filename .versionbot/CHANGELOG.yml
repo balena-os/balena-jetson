@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.3.7
+      hash: cf88a7761c806dc7801b14224beda1c81dad6b7d
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.3.7
+        changelog-entry: Update balena-yocto-scripts to v1.3.7
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.39.0+rev2
+  date: 2019-09-16T07:44:15.542Z
+- commits:
     - subject: Add support for TX2 on l4t 32.2
       hash: d464801108d04206d5d3dbc7f4366285568f53b2
       body: |
