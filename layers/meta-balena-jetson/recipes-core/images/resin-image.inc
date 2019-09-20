@@ -73,16 +73,16 @@ IMAGE_INSTALL_append_jetson-nano = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
-    balena-rollback-drop-in \
 "
 
 IMAGE_INSTALL_append_jetson-xavier = " \
     tegra194-flash-dry \
     fan-startup \
+    parted \
+    gptfdisk \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
-    balena-rollback-drop-in \
 "
 
 IMAGE_INSTALL_append_jetson-tx2 = " \
@@ -97,6 +97,5 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     tegra-brcm-patchram \
     linux-firmware-bcm4354 \
     tegra-firmware-xusb \
-    balena-rollback-drop-in \
     bt-scripts \
 "
