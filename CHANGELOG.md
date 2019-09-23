@@ -1,6 +1,55 @@
 Change log
 -----------
 
+# v2.43.0+rev1
+## (2019-09-16)
+
+* linux-tegra: Port patches from old TX2 repository [Alexandru Costache]
+
+<details>
+<summary> Update the meta-balena submodule from v2.39.0 to v2.43.0 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.43.0
+> ### (2019-09-13)
+> 
+> * Update NetworkManager to 1.20.2 [Andrei Gherzan]
+> * Update ModemManager to 1.10.6 [Andrei Gherzan]
+
+> ## meta-balena-2.42.0
+> ### (2019-09-13)
+> 
+> * A small fix in initramfs when /dev/console is invalid due to whatever reason [Zubair Lutfullah Kakakhel]
+> * Add automated testing for external kernel module header tarballs [Zubair Lutfullah Kakakhel]
+> * Make sure correct utsrelease.h is packaged [Zubair Lutfullah Kakakhel]
+> * Fix a bug where application containers with new systemd versions were failing to start in cases. Switch to systemd cgroup driver in balenaEngine [Zubair Lutfullah Kakakhel]
+
+> ## meta-balena-2.41.1
+> ### (2019-09-03)
+> 
+> * Update ModemManager to version 1.10.4 [Florin Sarbu]
+> * Fix for some innocous systemd tmpfile warnings /var/run -> /run ones [Zubair Lutfullah Kakakhel]
+> * Fix for rollbacks where the inactive partition mount was unavailable when altboot triggered [Zubair Lutfullah Kakakhel]
+> * kernel-resin: Enable FTDI USB-serial convertors driver [Sebastian Panceac]
+
+> ## meta-balena-2.41.0
+> ### (2019-08-22)
+> 
+> * Fix a hang in initramfs for warrior production images [Zubair Lutfullah Kakakhel]
+> * Update balena-engine to 18.09.8 [Robert Günzler]
+> * Avoid overlayfs mounts in poky's volatile-binds [Andrei Gherzan]
+
+> ## meta-balena-2.40.0
+> ### (2019-08-14)
+> 
+> * Update balena-supervisor to v10.2.2 [Cameron Diver]
+> * Workaround for a cornercase bug in PersistentLogging where journalctl filled the state partition. Vacuum the journal on boot. [Zubair Lutfullah Kakakhel]
+</details>
+
+# v2.39.0+rev2
+## (2019-09-16)
+
+* Update balena-yocto-scripts to v1.3.7 [Zubair Lutfullah Kakakhel]
+
 # v2.39.0+rev1
 ## (2019-08-12)
 

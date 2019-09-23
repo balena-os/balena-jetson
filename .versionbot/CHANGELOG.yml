@@ -1,4 +1,372 @@
 - commits:
+    - subject: 'linux-tegra: Port patches from old TX2 repository'
+      hash: 9ffdd3e19ca1cfe12dec91dfaed08233bdb292ab
+      body: |
+        Brought in kernel patches existing in the old repository
+        and rebased the ones below to apply and work on kernel
+        4.9 as some of the functions already exists here.
+
+        Rebased or ported patches:
+        - 0001-Expose-spidev-to-the-userspace.patch
+        - 0001-Support-referencing-the-root-partition-label-from-GP.patch
+        - 0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch
+        - 0001-revert-random-fix-crng_ready-test.patch
+        - 0002-mttcan-ivc-enable.patch
+        - 0002-qmi_wwan-Update-from-4.14-kernel.patch
+        - realsense_metadata_linux-yocto_4.4.patch
+      footer:
+        Changelog-entry: 'linux-tegra: Port patches from old TX2 repository'
+        changelog-entry: 'linux-tegra: Port patches from old TX2 repository'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+    - subject: Update the meta-balena submodule from v2.39.0 to v2.43.0
+      hash: ad19ec5aae1c1337550be16daa0e557099186044
+      body: |
+        Update meta-balena from 2.39.0 to 2.43.0
+      footer:
+        Changelog-entry: Update the meta-balena submodule from v2.39.0 to v2.43.0
+        changelog-entry: Update the meta-balena submodule from v2.39.0 to v2.43.0
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: Update NetworkManager to 1.20.2
+              hash: bcb6d85cc3b75d2f41a64fc9a6e0e15b428040f1
+              body: |
+                Fixes #1660
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update NetworkManager to 1.20.2
+                changelog-entry: Update NetworkManager to 1.20.2
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Update ModemManager to 1.10.6
+              hash: f6c82203c1a8f0613a900ce9d8ce749087fab99d
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update ModemManager to 1.10.6
+                changelog-entry: Update ModemManager to 1.10.6
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+          version: meta-balena-2.43.0
+          date: 2019-09-13T15:33:28.973Z
+        - commits:
+            - subject: >-
+                A small fix in initramfs when /dev/console is invalid due to
+                whatever reason
+              hash: b5574aeb86ea6b6763f1c25c4b53a45d3e207eb5
+              body: >
+                We would just check for the existence of console=null in kernel
+                cmdline
+
+
+                A better way would be to check the presence of a valid symlink
+                for fd0,
+
+                fd1 and fd2. And assign them to /dev/null if unavailable.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  A small fix in initramfs when /dev/console is invalid due to
+                  whatever reason
+                changelog-entry: >-
+                  A small fix in initramfs when /dev/console is invalid due to
+                  whatever reason
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Add automated testing for external kernel module header tarballs
+              hash: aef272d20b471308790bfa63426f73a3ce334884
+              body: >
+                We'd like to run a simple hello-world external module build test
+                using
+
+                the headers we have generated. This recipe does that in a docker
+
+                container
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Add automated testing for external kernel module header
+                  tarballs
+                changelog-entry: >-
+                  Add automated testing for external kernel module header
+                  tarballs
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Make sure correct utsrelease.h is packaged
+              hash: 5f9717081524d475009f5bf9277b30bf29c1c371
+              body: >
+                It was observed that on some machines (Variscite mx8m) the
+
+                utsrelease.h header is regenerated with incomplete content when
+
+                running "make prepare0" (utsrelease.h will not contain the short
+
+                git revision although the kernel's abiversion includes it and
+
+                as such the external modules built using this utsrelease.h
+                header
+
+                will fail to load because of this mismatch).
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Make sure correct utsrelease.h is packaged
+                changelog-entry: Make sure correct utsrelease.h is packaged
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Fix a bug where application containers with new systemd versions
+                were failing to start in cases. Switch to systemd cgroup driver
+                in balenaEngine
+              hash: a79f18a3e094721d1fc134afbae7a4773b697414
+              body: >
+                The default driver is cgroupfs. We switch to systemd so that
+                there is
+
+                one cgroup manager in our OS.
+
+
+                Otherwise, systemd will have its own cgroup manager and cgroupfs
+                will
+
+                be another cgroup manager via balenaEngine daemon.
+
+
+                Fixes #1645 which contains more information
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: >-
+                  Fix a bug where application containers with new systemd
+                  versions were failing to start in cases. Switch to systemd
+                  cgroup driver in balenaEngine
+                changelog-entry: >-
+                  Fix a bug where application containers with new systemd
+                  versions were failing to start in cases. Switch to systemd
+                  cgroup driver in balenaEngine
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.42.0
+          date: 2019-09-13T08:06:05.129Z
+        - commits:
+            - subject: Update ModemManager to version 1.10.4
+              hash: 6f300a3fc01521ceadd3f8a50c9157d070525dde
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update ModemManager to version 1.10.4
+                changelog-entry: Update ModemManager to version 1.10.4
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+            - subject: >-
+                Fix for some innocous systemd tmpfile warnings /var/run -> /run
+                ones
+              hash: 25bb6364dfff2a65d7f53f71a35ef74f24f7d7a9
+              body: >
+                Otherwise systemd complains:
+
+                localhost systemd-tmpfiles[525]:
+                [/etc/tmpfiles.d/balena-tmpfiles.conf:1] Line references path
+                below legacy directory /var/run/, updating /var/run/docker.pid →
+                /run/docker.pid; please update the tmpfiles.d/ drop-in file
+                accordingly.
+
+                localhost systemd-tmpfiles[525]:
+                [/etc/tmpfiles.d/balena-tmpfiles.conf:2] Line references path
+                below legacy directory /var/run/, updating /var/run/balena.pid →
+                /run/balena.pid; please update the tmpfiles.d/ drop-in file
+                accordingly.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Fix for some innocous systemd tmpfile warnings /var/run ->
+                  /run ones
+                changelog-entry: >-
+                  Fix for some innocous systemd tmpfile warnings /var/run ->
+                  /run ones
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Fix for rollbacks where the inactive partition mount was
+                unavailable when altboot triggered
+              hash: 856a3d1ad8dbf3b7a87689bbedac23c9148b3d79
+              body: >
+                PR #1441 changed mnt-sysroot-inactive to an automount. But there
+                is no
+
+                way to easily add a udev dependency to the automount. As a
+                result,
+
+                when rollbacks tries to access the inactive partition, it fails.
+
+                Let's add systemd-udev-settle.service to the rollback services.
+
+
+                This will only delay the first boot after a HUP which is
+                reasonable.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Fix for rollbacks where the inactive partition mount was
+                  unavailable when altboot triggered
+                changelog-entry: >-
+                  Fix for rollbacks where the inactive partition mount was
+                  unavailable when altboot triggered
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: 'kernel-resin: Enable FTDI USB-serial convertors driver'
+              hash: 40616a274cd7f055397b5acda0fdd6540e797410
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+                signed-off-by: Sebastian Panceac <sebastian@balena.io>
+              author: Sebastian Panceac
+          version: meta-balena-2.41.1
+          date: 2019-09-03T13:27:47.892Z
+        - commits:
+            - subject: Fix a hang in initramfs for warrior production images
+              hash: 4c44265a7dd13760a89c235068500bf6f315f651
+              body: >
+                When `console=null` is passed in the kernel cmdline for
+                production
+
+                images, the system doesn't boot. Traced to initramfs not
+                starting any
+
+                process such as udev with the right file descripters for 0,1,2
+
+
+                Add workaround for that issue. This got exposed with a systemd
+                bump.
+
+                More details here
+                https://github.com/systemd/systemd/issues/13332
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix a hang in initramfs for warrior production images
+                changelog-entry: Fix a hang in initramfs for warrior production images
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Update balena-engine to 18.09.8
+              hash: 9bcd0ffcc7d6efde45f2bc1eaeaafe1092374c40
+              body: |
+                Includes improvements and fixes to the journald logdriver
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update balena-engine to 18.09.8
+                changelog-entry: Update balena-engine to 18.09.8
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+            - subject: Avoid overlayfs mounts in poky's volatile-binds
+              hash: b7b6163d955a3bf76a1759b60ed82ccc5fcce6d0
+              body: >
+                Our root filesystem is overlayfs or aufs. When latter, the
+                system
+
+                crashes when reading a lower directory file. We avoid this by
+                always
+
+                falling back to copy and mount (as if overlayfs is not
+                available).
+
+
+                Fixes #1618
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Avoid overlayfs mounts in poky's volatile-binds
+                changelog-entry: Avoid overlayfs mounts in poky's volatile-binds
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+          version: meta-balena-2.41.0
+          date: 2019-08-22T14:25:04.139Z
+        - commits:
+            - subject: Update balena-supervisor to v10.2.2
+              hash: 3afbe138f115fa15611cb823caa6664dbb093a8b
+              body: ''
+              footer:
+                Changelog-entry: Update balena-supervisor to v10.2.2
+                changelog-entry: Update balena-supervisor to v10.2.2
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Cameron Diver <cameron@balena.io>
+                signed-off-by: Cameron Diver <cameron@balena.io>
+              author: Cameron Diver
+            - subject: >-
+                Workaround for a cornercase bug in PersistentLogging where
+                journalctl filled the state partition. Vacuum the journal on
+                boot.
+              hash: 8284da08f245ed6da8308d558bb8dfcc66de9691
+              body: >
+                We have found a rare corner case bug where the journal bloats
+                beyond
+
+                its limit and fills the state partition. Triggering a vacuum on
+                reboot
+
+                helps a bit in case the device is restarted to recover its
+                function.
+
+
+                Fixes #1423
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Workaround for a cornercase bug in PersistentLogging where
+                  journalctl filled the state partition. Vacuum the journal on
+                  boot.
+                changelog-entry: >-
+                  Workaround for a cornercase bug in PersistentLogging where
+                  journalctl filled the state partition. Vacuum the journal on
+                  boot.
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.40.0
+          date: 2019-08-14T09:40:49.562Z
+  version: 2.43.0+rev1
+  date: 2019-09-16T10:16:46.617Z
+- commits:
+    - subject: Update balena-yocto-scripts to v1.3.7
+      hash: cf88a7761c806dc7801b14224beda1c81dad6b7d
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.3.7
+        changelog-entry: Update balena-yocto-scripts to v1.3.7
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.39.0+rev2
+  date: 2019-09-16T07:44:15.542Z
+- commits:
     - subject: Add support for TX2 on l4t 32.2
       hash: d464801108d04206d5d3dbc7f4366285568f53b2
       body: |
