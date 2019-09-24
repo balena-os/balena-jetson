@@ -25,7 +25,7 @@ device_specific_configuration_jetson-nano() {
 # We leave this space way larger than currently
 # needed because other larger partitions are
 # added from one Jetpack release to another
-DEVICE_SPECIFIC_SPACE_jetson-xavier = "270336"
+DEVICE_SPECIFIC_SPACE_jetson-xavier = "458752"
 
 # Binaries are signed and packed into
 # a partition and the flaser script
@@ -35,20 +35,25 @@ DEVICE_SPECIFIC_SPACE_jetson-xavier = "270336"
 
 do_image_resinos-img_jetson-xavier[depends] += " tegra194-flash-dry:do_deploy"
 device_specific_configuration_jetson-xavier() {
-    START=${RESIN_IMAGE_ALIGNMENT}
-    BOOTFILES_FS="xavier-bootfiles.img"
-    dd if=/dev/zero of=${WORKDIR}/${BOOTFILES_FS} seek=81920 count=0 bs=1024
-    mkfs.vfat -n "bootfiles" -S 512 -F 16 ${WORKDIR}/${BOOTFILES_FS}
-    bootfiles=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification194.txt)
-    for n in ${bootfiles}; do
-       part_name=$(echo $n | cut -d ':' -f 1)
-       file_name=$(echo $n | cut -d ':' -f 2)
-       file_path=$(find ${DEPLOY_DIR_IMAGE}/bootfiles -name $file_name)
-       mcopy -n -o -i ${WORKDIR}/${BOOTFILES_FS} -sv ${file_path} ::
+    partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification194.txt)
+    NVIDIA_PART_OFFSET=20480
+    START=${NVIDIA_PART_OFFSET}
+    for n in ${partitions}; do
+      part_name=$(echo $n | cut -d ':' -f 1)
+      file_name=$(echo $n | cut -d ':' -f 2)
+      part_size=$(echo $n | cut -d ':' -f 3)
+      file_path=$(find ${DEPLOY_DIR_IMAGE}/bootfiles -name $file_name)
+      END=$(expr ${START} \+ ${part_size} \- 1)
+      echo "Will write $part_name from ${START} to ${END} part size: $part_size"
+      parted -s ${RESIN_RAW_IMG} unit B mkpart $part_name ${START} ${END}
+      # The padding partition exists to allow for the device specific space to
+      # be a multiple of 4096. We don't write anything to it for the moment.
+      if [ ! "$file_name" = "none.bin" ]; then
+        dd if=$file_path of=${RESIN_RAW_IMG} conv=notrunc seek=$(expr ${START} \/ 512) bs=512
+      fi
+      START=$(expr ${END} \+ 1)
     done
-    END=$(expr ${START} \+ 81920)
-    parted -s ${RESIN_RAW_IMG} unit KiB mkpart "bootfiles" ${START} ${END}
-    dd if=${WORKDIR}/${BOOTFILES_FS} of=${RESIN_RAW_IMG} conv=notrunc seek=1 bs=$(expr 1024 \* ${START})
+
 }
 
 RESIN_BOOT_PARTITION_FILES_append_jetson-tx2 = " \
