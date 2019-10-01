@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.3.8
+      hash: 612eafbc2664bb54f841edb02b180a1de1b2e9f4
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.3.8
+        changelog-entry: Update balena-yocto-scripts to v1.3.8
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.43.0+rev3
+  date: 2019-10-01T07:30:15.140Z
+- commits:
     - subject: 'resin-image: Remove tegra udev drop-in'
       hash: 63b464918c409ad3f411e2a93767d6b7d6ea8fdf
       body: |
