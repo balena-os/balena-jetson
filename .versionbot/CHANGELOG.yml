@@ -1,4 +1,22 @@
 - commits:
+    - subject: 'resin-image: Remove tegra udev drop-in'
+      hash: 63b464918c409ad3f411e2a93767d6b7d6ea8fdf
+      body: |
+        Rollback-health was updated in meta balena,
+        therefore the tegra drop-in is no longer necessary.
+
+        Also install partitioning utilities that are useful
+        for debugging issues with tegra devices that have
+        many partitions.
+      footer:
+        Changelog-entry: 'resin-image: Remove tegra udev drop-in'
+        changelog-entry: 'resin-image: Remove tegra udev drop-in'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.43.0+rev2
+  date: 2019-09-30T12:33:51.830Z
+- commits:
     - subject: 'linux-tegra: Port patches from old TX2 repository'
       hash: 9ffdd3e19ca1cfe12dec91dfaed08233bdb292ab
       body: |

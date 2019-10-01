@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.43.0+rev2
+## (2019-09-30)
+
+* resin-image: Remove tegra udev drop-in [Alexandru Costache]
+
 # v2.43.0+rev1
 ## (2019-09-16)
 
