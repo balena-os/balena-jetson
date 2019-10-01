@@ -15,7 +15,7 @@ BALENA_STORAGE = "overlay2"
 #RESINHUP ?= "yes"
 
 # Set this to change the supervisor tag used
-#TARGET_TAG ?= "master"
+#SUPERVISOR_TAG ?= "master"
 
 # Compress final raw image
 #RESIN_RAW_IMG_COMPRESSION ?= "xz"
