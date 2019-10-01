@@ -1,0 +1,10 @@
+#!/bin/sh
+
+blockdev_enabled() {
+    return 0
+}
+
+blockdev_run() {
+    # Trigger ioctl to read partitions
+    /sbin/blockdev --rereadpt /dev/mmcblk0
+}

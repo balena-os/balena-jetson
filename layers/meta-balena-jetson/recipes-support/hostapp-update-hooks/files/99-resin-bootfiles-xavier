@@ -6,7 +6,7 @@ set -o errexit
 # and updates the kernel, as well as
 # the rest of the bootloader binaries
 
-new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive")
+new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
 echo "New partition is ${new_part}"
 
 blockdev=$(basename "$new_part")
@@ -35,7 +35,7 @@ for n in ${partitions}; do
     part_name=$(echo $n | cut -d ':' -f 1)
     file_name=$(echo $n | cut -d ':' -f 2)
 
-    if [ $part_name = "flashxml" ] || [ -z "${part_name##*kernel*}" ] || [ $part_name = "bootloader-dtb" ]; then
+    if [ -z "${part_name##*kernel*}" ] || [ -z "${part_name##*bootloader-dtb*}" ] || [ $file_name = "none.bin" ]; then
         continue
     fi
 
@@ -43,11 +43,6 @@ for n in ${partitions}; do
 
     if [ "x$file_path" = "x" ]; then
         continue
-    fi
-
-    if [ ! $file_name = "xusb_sil_rel_fw" ] && [ ! $file_name = "bmp.blob" ] ; then
-        file_name=$(echo $file_name | sed 's/\.\([^.]*\)$/_sigheader.\1/')
-        file_name="${file_name}.encrypt"
     fi
 
     echo "[INFO] Writing $file_name to $file_path"
