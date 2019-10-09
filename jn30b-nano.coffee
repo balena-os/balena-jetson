@@ -8,7 +8,7 @@ module.exports =
 	version: 1
 	slug: 'jn30b-nano'
 	aliases: [ 'jn30b-nano' ]
-	name: 'Auvidea JN30B Jetson Nano'
+	name: 'Auvidea JN30B Nano'
 	arch: 'aarch64'
 	state: 'experimental'
 
