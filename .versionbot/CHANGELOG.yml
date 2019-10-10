@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'jetson-xavier: Switch to BETA'
+      hash: cae120b8c7a9d6748251a4535de23c9757b2738f
+      body: |
+        Currently the xavier is marked as community,
+        but support for it was added by Balena.
+        Switch this board to BETA.
+      footer:
+        Changelog-entry: 'jetson-xavier: Switch to BETA'
+        changelog-entry: 'jetson-xavier: Switch to BETA'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.43.0+rev4
+  date: 2019-10-10T06:59:13.993Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.3.8
       hash: 612eafbc2664bb54f841edb02b180a1de1b2e9f4
       body: ''

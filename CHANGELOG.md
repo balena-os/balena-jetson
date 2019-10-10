@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.43.0+rev4
+## (2019-10-10)
+
+* jetson-xavier: Switch to BETA [Alexandru Costache]
+
 # v2.43.0+rev3
 ## (2019-10-01)
 
