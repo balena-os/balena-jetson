@@ -34,7 +34,7 @@ SRC_URI_append_jetson-tx2 = " \
 "
 
 SRC_URI_append_jetson-nano = " \
-    file://tegra210-p3448-0002-p3449-0000-b00.dtb \
+    file://tegra210-p3448-0000-p3449-0000-a02.dtb \
 "
 
 TEGRA_INITRAMFS_INITRD = "0"
@@ -191,5 +191,5 @@ do_deploy_append_blackboard-tx2() {
 }
 
 do_deploy_append_jn30b-nano() {
-    cp ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00.dtb  "${DEPLOYDIR}"
+    cp ${WORKDIR}/tegra210-p3448-0000-p3449-0000-a02.dtb "${DEPLOYDIR}"
 }
