@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev2
+## (2019-10-22)
+
+* Update balena-yocto-scripts to v1.4.0 [Florin Sarbu]
+
 # v2.44.0+rev1
 ## (2019-10-18)
 
