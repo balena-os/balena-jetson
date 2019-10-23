@@ -33,8 +33,8 @@ SRC_URI_append_jetson-tx2 = " \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
 "
 
-SRC_URI_append_jetson-nano = " \
-    file://tegra210-p3448-0000-p3449-0000-a02.dtb \
+SRC_URI_append_jn30b = " \
+    file://tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb \
 "
 
 TEGRA_INITRAMFS_INITRD = "0"
@@ -191,5 +191,5 @@ do_deploy_append_blackboard-tx2() {
 }
 
 do_deploy_append_jn30b-nano() {
-    cp ${WORKDIR}/tegra210-p3448-0000-p3449-0000-a02.dtb "${DEPLOYDIR}"
+    cp ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb "${DEPLOYDIR}"
 }
