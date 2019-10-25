@@ -26,7 +26,7 @@ SRC_URI = " \
 # kernel build, this is why we need to specify
 # them here instead of machine.conf.
 KERNEL_DEVICETREE_jetson-nano = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0000-p3449-0000-a02.dtb"
-KERNEL_DEVICETREE_jn30b = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb"
+KERNEL_DEVICETREE_jn30b-nano = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb"
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 LNXSIZE ?= "67108864"
 

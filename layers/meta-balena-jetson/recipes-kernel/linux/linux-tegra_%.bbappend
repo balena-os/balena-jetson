@@ -33,7 +33,7 @@ SRC_URI_append_jetson-tx2 = " \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
 "
 
-SRC_URI_append_jn30b = " \
+SRC_URI_append_jetson-nano = " \
     file://tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb \
 "
 

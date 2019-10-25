@@ -1,12 +1,12 @@
 [submodule "balena-yocto-scripts"]
 	path = balena-yocto-scripts
-	url = git@github.com:balena-os/balena-yocto-scripts.git
+	url = https://github.com/balena-os/balena-yocto-scripts.git
 [submodule "layers/meta-balena"]
 	path = layers/meta-balena
-	url = git@github.com:balena-os/meta-balena.git
+	url = https://github.com/balena-os/meta-balena.git
 [submodule "layers/poky"]
 	path = layers/poky
-	url = git@github.com:balena-os/poky.git
+	url = https://github.com/balena-os/poky.git
 [submodule "layers/meta-openembedded"]
 	path = layers/meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
