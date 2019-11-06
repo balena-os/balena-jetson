@@ -29,7 +29,7 @@ IMAGE_UBOOT ??= "u-boot-dtb"
 KERNEL_DEVICETREE_orbitty-tx2 = "${DEPLOY_DIR_IMAGE}/tegra186-tx2-cti-ASG001-USB3.dtb"
 KERNEL_DEVICETREE_n510-tx2 = "${DEPLOY_DIR_IMAGE}/tegra186-quill-p3310-1000-c03-00-base.dtb"
 KERNEL_DEVICETREE_spacely-tx2 = "${DEPLOY_DIR_IMAGE}/tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb"
-KERNEL_DEVICETREE_srd3-tx2 = "${DEPLOY_DIR_IMAGE}/d3-rsp-fpdlink-ov10640-single-j2.dtb"
+KERNEL_DEVICETREE_srd3-tx2 = "${DEPLOY_DIR_IMAGE}/d3-tx2-rsp-fpdlink.dtb"
 KERNEL_DEVICETREE_blackboard-tx2 = "${DEPLOY_DIR_IMAGE}/tegra186-tx2-blackboard.dtb"
 
 LNXFILE="u-boot-dtb.bin"
