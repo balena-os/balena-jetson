@@ -7,6 +7,8 @@ inherit resin-u-boot
 RESIN_BOOT_PART_jetson-nano = "0xC"
 RESIN_DEFAULT_ROOT_PART_jetson-nano = "0xD"
 
+SRCREV = "8e576d30001dc06552b017fab22e00fe7145b8da"
+
 # These changes are necessary since balenaOS 2.39.0
 # for all boards that use u-boot
 SRC_URI_append = " \
