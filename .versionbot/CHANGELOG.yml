@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'jn30b-nano: Add coffee file and icon'
+      hash: 64a67a7acd7123595db01c0863afb4e9852d547e
+      body: |
+        Change submitted by Willem Remie
+      footer:
+        Author: Willem Remie
+        author: Willem Remie
+        Changelog-entry: 'jn30b-nano: Add coffee file and icon'
+        changelog-entry: 'jn30b-nano: Add coffee file and icon'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.44.0+rev3
+  date: 2019-11-11T14:44:45.134Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.4.0
       hash: ccdde950aac28dca1f22fb18ece3925bdab45f96
       body: ''

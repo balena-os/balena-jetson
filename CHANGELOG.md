@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev3
+## (2019-11-11)
+
+* jn30b-nano: Add coffee file and icon [Alexandru Costache]
+
 # v2.44.0+rev2
 ## (2019-10-22)
 
