@@ -31,7 +31,7 @@ module.exports =
 		image: 'resin-image'
 		fstype: 'resinos-img'
 		version: 'yocto-warrior'
-		deployArtifact: 'resin-image-jetson-nano.resinos-img'
+		deployArtifact: 'resin-image-jn30b-nano.resinos-img'
 		compressed: true
 
 	options: [ networkOptions.group ]
