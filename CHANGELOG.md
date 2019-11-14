@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.45.0+rev2
+## (2019-11-14)
+
+* jn30b-nano: Fix deploy artifact name [Alexandru Costache]
+
 # v2.45.0+rev1
 ## (2019-11-12)
 

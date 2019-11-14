@@ -1,4 +1,16 @@
 - commits:
+    - subject: 'jn30b-nano: Fix deploy artifact name'
+      hash: 953f549603e8ea7b48323b3d6a7707bef6f885f4
+      body: ''
+      footer:
+        Changelog-entry: 'jn30b-nano: Fix deploy artifact name'
+        changelog-entry: 'jn30b-nano: Fix deploy artifact name'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.45.0+rev2
+  date: 2019-11-14T11:31:33.134Z
+- commits:
     - subject: Update meta-balena from v2.44.0 to v2.45.0
       hash: fbc5a230bd4a396c0008145cf3608690acc2c169
       body: |
