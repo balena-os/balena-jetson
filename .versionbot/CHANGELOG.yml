@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.5.2
+      hash: c142c6853e28f29405a4b0ed92be79b5a5c9ea53
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.5.2
+        changelog-entry: Update balena-yocto-scripts to v1.5.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.45.0+rev3
+  date: 2019-11-19T09:27:21.251Z
+- commits:
     - subject: 'jn30b-nano: Fix deploy artifact name'
       hash: 953f549603e8ea7b48323b3d6a7707bef6f885f4
       body: ''
