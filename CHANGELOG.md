@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.45.1+rev2
+## (2019-11-27)
+
+* jn30b-nano: Update icon [Alexandru Costache]
+
 # v2.45.1+rev1
 ## (2019-11-27)
 

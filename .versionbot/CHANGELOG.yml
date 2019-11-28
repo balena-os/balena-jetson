@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'jn30b-nano: Update icon'
+      hash: 799a0e6f0fe380e37cdb141e72a1e2928a55e191
+      body: |
+        Icon provided by board contributor
+        resembled the jetson-nano one. Let's
+        add a specific graphic for this device
+        to avoid potential confusion in dashboard.
+      footer:
+        Changelog-entry: 'jn30b-nano: Update icon'
+        changelog-entry: 'jn30b-nano: Update icon'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.45.1+rev2
+  date: 2019-11-27T16:18:38.541Z
+- commits:
     - subject: Update meta-balena from v2.45.0 to v2.45.1
       hash: 603f34f9f02731a5d0f560f983ab721276f736c9
       body: |
