@@ -9,8 +9,6 @@ DTBFILE_jn30b-nano = "tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb"
 
 # Name update files as partition names for easier updating
 RESIN_BOOT_PARTITION_FILES_jetson-nano = " \
-    boot/extlinux.conf:/extlinux/extlinux.conf \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     bootfiles/nvtboot_cpu.bin.encrypt:/bootfiles/TBC \
     bootfiles/${DTBFILE}.encrypt:/bootfiles/RP1 \
     bootfiles/cboot.bin.encrypt:/bootfiles/EBT \
