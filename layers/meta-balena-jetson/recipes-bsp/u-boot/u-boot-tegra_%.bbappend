@@ -18,6 +18,7 @@ SRC_URI_append = " \
 
 SRC_URI_append_jetson-nano = " \
     file://nano-Integrate-with-Balena-u-boot-environment.patch \
+    file://load-extlinux.conf-and-kernel-from-root-partit.patch \
 "
 
 # In l4t 28.2 below partitions were 0xC and 0xD
