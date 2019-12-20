@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'u-boot: Use kernel extlinux.conf on Nano'
+      hash: 674368963dcb1e4006b2978132537f9c49aaa508
+      body: |
+        meta-openembedded u-boot class deployed a
+        generic extlinux.conf to the root partition.
+
+        Remove that one and switch to the one provided
+        by the kernel recipe.
+      footer:
+        Changelog-entry: 'u-boot: Use kernel extlinux.conf on Nano'
+        changelog-entry: 'u-boot: Use kernel extlinux.conf on Nano'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.45.1+rev3
+  date: 2019-12-18T12:19:38.387Z
+- commits:
     - subject: 'jn30b-nano: Update icon'
       hash: 799a0e6f0fe380e37cdb141e72a1e2928a55e191
       body: |

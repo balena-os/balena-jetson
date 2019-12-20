@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.45.1+rev3
+## (2019-12-18)
+
+* u-boot: Use kernel extlinux.conf on Nano [Alexandru Costache]
+
 # v2.45.1+rev2
 ## (2019-11-27)
 
