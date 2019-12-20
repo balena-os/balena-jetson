@@ -1,0 +1,33 @@
+From 1a0cd97c8ba417ee95f9f215a765b5bcab164b5a Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 16 Dec 2019 14:40:34 +0100
+Subject: [PATCH] uboot: Load extlinux.conf and kernel from root partition
+
+Loading the kernel from the boot partition causes problems
+after a rollback-altboot, when the kernel did not boot
+completely into the rootfs. A new kernel will try to
+load the old modules from the rootfs and fail, leaving
+the board disconnected from the dashboard.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ include/config_distro_bootcmd.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
+index 5222ed366a..728ab6cab6 100644
+--- a/include/config_distro_bootcmd.h
++++ b/include/config_distro_bootcmd.h
+@@ -379,7 +379,7 @@
+ 		"\0"                                                      \
+ 	\
+ 	"scan_dev_for_boot_part="                                         \
+-		"part list ${devtype} ${devnum} -bootable devplist; "     \
++                "setenv devplist $resin_root_part; "                      \
+ 		"env exists devplist || setenv devplist $defaultdevplist; "\
+ 		"for distro_bootpart in ${devplist}; do "                 \
+ 			"if fstype ${devtype} "                           \
+-- 
+2.17.1
+
