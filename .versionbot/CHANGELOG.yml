@@ -1,4 +1,29 @@
 - commits:
+    - subject: Change the state to 'new' in the coffee file
+      hash: d120ff52b52d41e73ba08421fef33078d264d681
+      body: |
+        Change the state field to 'new'
+        instead of 'experimental'
+      footer:
+        Changelog-entry: Change the state to 'new' in the coffee file
+        changelog-entry: Change the state to 'new' in the coffee file
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+    - subject: Change the state to 'released' in the coffee files
+      hash: 138d34db8df24e3ca929ab8cc5838aa765f6e840
+      body: |
+        Change the state field to 'released'
+        instead of 'experimental'
+      footer:
+        Changelog-entry: Change the state to 'released' in the coffee files
+        changelog-entry: Change the state to 'released' in the coffee files
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.45.1+rev4
+  date: 2020-01-15T15:39:07.851Z
+- commits:
     - subject: 'u-boot: Use kernel extlinux.conf on Nano'
       hash: 674368963dcb1e4006b2978132537f9c49aaa508
       body: |
