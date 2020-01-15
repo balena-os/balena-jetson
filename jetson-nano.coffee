@@ -10,7 +10,7 @@ module.exports =
 	aliases: [ 'jetson-nano' ]
 	name: 'Nvidia Jetson Nano'
 	arch: 'aarch64'
-	state: 'experimental'
+	state: 'released'
 
 	instructions: [
 		instructions.ETCHER_SD

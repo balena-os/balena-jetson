@@ -15,7 +15,7 @@ module.exports =
 	aliases: [ 'spacely-tx2' ]
 	name: 'CTI Spacely TX2'
 	arch: 'aarch64'
-	state: 'experimental'
+	state: 'released'
 
 	stateInstructions:
 		postProvisioning: postProvisioningInstructions
