@@ -1,0 +1,49 @@
+From cdd555efcbf2a70e4887d6eaadbe4b1a7a6202f8 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Tue, 21 Jan 2020 11:54:31 +0100
+Subject: [PATCH] TX2 - Load extlinux from rootfs for emmc
+
+If board is booted from emmc - mmcblk0 - extlinux.conf
+and Image will be loaded from the current active
+root partition, in case it exists there. In the case
+of a rollback altboot to a previous rootfs version which
+doesn't have extlinux in the rootfs, it will fall back to
+loading the kernel from the boot partiton to avoid complete
+failure.
+
+Otherwise, if booted from sd-card, they will be loaded
+as usual, from the bootable partition flash-boot.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ include/config_distro_bootcmd.h | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
+index 1a10922bf0..ee480d9d1b 100644
+--- a/include/config_distro_bootcmd.h
++++ b/include/config_distro_bootcmd.h
+@@ -387,7 +387,18 @@
+ 		"\0"                                                      \
+ 	\
+ 	"scan_dev_for_boot_part="                                         \
+-		"part list ${devtype} ${devnum} -bootable devplist; "     \
++		"if test \"0\" =  \"${devnum}\"; "                        \
++		"then "                                                   \
++		"   if test -e ${devtype} ${devnum}:${resin_root_part} boot/extlinux/extlinux.conf; then " \
++		"       echo Found extlinux.conf on root part: ${resin_root_part}; " \
++		"       setenv devplist ${resin_root_part}; "             \
++		"   else "                                                \
++		"       echo Could not find extlinux.conf on root part, using boot part: ${resin_boot_part}; " \
++		"       setenv devplist ${resin_boot_part}; "             \
++		"   fi; "						  \
++		"else "                                                   \
++		"   part list ${devtype} ${devnum} -bootable devplist; "  \
++		"fi; "                                                    \
+ 		"env exists devplist || setenv devplist $defaultdevplist; " \
+ 		"for distro_bootpart in ${devplist}; do "                 \
+ 			"if fstype ${devtype} "                           \
+-- 
+2.17.1
+
