@@ -1,4 +1,46 @@
 - commits:
+    - subject: Add Gasket driver for Coral Edge TPUs
+      hash: 5fe7822a48e6bc5720a74437be7bc63bd1c9d3de
+      body: >
+        Add the gasket and apex kernel modules to support PCIe-based Coral Edge
+        TPUs
+      footer:
+        Changelog-entry: Add Gasket driver for Coral Edge TPUs
+        changelog-entry: Add Gasket driver for Coral Edge TPUs
+        Signed-off-by: Matt Hodgson <matthodgson@mac.com>
+        signed-off-by: Matt Hodgson <matthodgson@mac.com>
+      author: Matt Hodgson
+    - subject: Add m2pcie-tx2 machine
+      hash: bd5b19f408668f7a9749984a6368e84e74a8f484
+      body: >
+        Add a new TX2-based machine with ODMDATA set to configuration 1
+        (0x90000)
+      footer:
+        Changelog-entry: Add m2pcie-tx2 machine
+        changelog-entry: Add m2pcie-tx2 machine
+        Signed-off-by: Matt Hodgson <matthodgson@mac.com>
+        signed-off-by: Matt Hodgson <matthodgson@mac.com>
+      author: Matt Hodgson
+    - subject: >-
+        Remove the usb-modeswitch patch that fixes crashes on 64 bits
+        architectures
+      hash: d33dba52d8b4b8f3e7abda89abd9f84bc833c103
+      body: |
+        We will be using usb-modeswitch version 2.5.2 in meta-balena
+        and this patch is not needed anymore with this newer version.
+      footer:
+        Changelog-entry: >-
+          Remove the usb-modeswitch patch that fixes crashes on 64 bits
+          architectures
+        changelog-entry: >-
+          Remove the usb-modeswitch patch that fixes crashes on 64 bits
+          architectures
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.45.1+rev4
+  date: 2020-01-22T22:05:27.498Z
+- commits:
     - subject: 'u-boot: Use kernel extlinux.conf on Nano'
       hash: 674368963dcb1e4006b2978132537f9c49aaa508
       body: |

@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v2.45.1+rev4
+## (2020-01-22)
+
+* Add Gasket driver for Coral Edge TPUs [Matt Hodgson]
+* Add m2pcie-tx2 machine [Matt Hodgson]
+* Remove the usb-modeswitch patch that fixes crashes on 64 bits architectures [Florin Sarbu]
+
 # v2.45.1+rev3
 ## (2019-12-18)
 
