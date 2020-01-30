@@ -1,0 +1,48 @@
+From a60c06153cef5ca6a822fa23fbbf27985f7aaae1 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Thu, 30 Jan 2020 13:33:24 +0100
+Subject: [PATCH] tegra-gpio: Mark gpio as disabled when freed
+
+This fixes a regression in Jetpack 4.2.1
+when flashing a board with SPI enabled.
+
+Patch backported from:
+https://devtalk.nvidia.com/default/topic/1050427/jetson-nano/
+enabling-spidev-on-the-jetson-nano-is-hanging-when-flashing/4
+
+At the time of creating this patch, JP4.3 kernel at
+L4T 32.2.1 does not appear to include this patch. Either
+the issue was fixed by other approach, or it may be included later.
+
+Upstream-status: Inappropriate[backport]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ drivers/gpio/gpio-tegra.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/drivers/gpio/gpio-tegra.c b/drivers/gpio/gpio-tegra.c
+index e1010440f32d..bc13118b9a5b 100644
+--- a/drivers/gpio/gpio-tegra.c
++++ b/drivers/gpio/gpio-tegra.c
+@@ -223,10 +223,18 @@ static int tegra_gpio_request(struct gpio_chip *chip, unsigned offset)
+ 	return pinctrl_request_gpio(chip->base + offset);
+ }
+ 
++static void tegra_gpio_disable(struct tegra_gpio_info *tgi, int gpio)
++{
++       tegra_gpio_mask_write(tgi, GPIO_MSK_CNF(tgi, gpio), gpio, 0);
++}
++
+ static void tegra_gpio_free(struct gpio_chip *chip, unsigned offset)
+ {
++	struct tegra_gpio_info *tgi = gpiochip_get_data(chip);
++
+ 	pinctrl_free_gpio(chip->base + offset);
+ 	tegra_gpio_restore_gpio_state(offset);
++	tegra_gpio_disable(tgi, offset);
+ }
+ 
+ static void tegra_gpio_set(struct gpio_chip *chip, unsigned offset, int value)
+-- 
+2.17.1
+
