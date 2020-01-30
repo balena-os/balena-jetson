@@ -37,6 +37,10 @@ SRC_URI_append_jn30b-nano = " \
     file://tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb \
 "
 
+SRC_URI_append_jetson-nano = " \
+    file://nano-mark-gpio-as-disabled-when-freed.patch \
+"
+
 TEGRA_INITRAMFS_INITRD = "0"
 
 RESIN_CONFIGS_append = " tegra-wdt-t21x debug_kmemleak "
