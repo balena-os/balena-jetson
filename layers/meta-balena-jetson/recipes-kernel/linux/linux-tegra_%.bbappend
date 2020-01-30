@@ -35,6 +35,7 @@ SRC_URI_append_jetson-tx2 = " \
 
 SRC_URI_append_spi-jetson-nano = " \
     file://tegra210-p3448-0002-p3449-0000-b00-SPI-JP4.2.2.dtb \
+    file://0001-spi-patch-linux-drivers-gpio-tegra.patch \
 "
 
 SRC_URI_append_jn30b-nano = " \
