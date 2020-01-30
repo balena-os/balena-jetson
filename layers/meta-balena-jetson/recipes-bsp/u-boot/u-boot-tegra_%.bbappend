@@ -7,7 +7,7 @@ inherit resin-u-boot
 RESIN_BOOT_PART_jetson-nano = "0xC"
 RESIN_DEFAULT_ROOT_PART_jetson-nano = "0xD"
 
-SRCREV = "8e576d30001dc06552b017fab22e00fe7145b8da"
+#SRCREV = "8e576d30001dc06552b017fab22e00fe7145b8da"
 
 # These changes are necessary since balenaOS 2.39.0
 # for all boards that use u-boot
@@ -17,8 +17,7 @@ SRC_URI_append = " \
 "
 
 SRC_URI_append_jetson-nano = " \
-    file://nano-Integrate-with-Balena-u-boot-environment.patch \
-    file://nano-load-extlinux.conf-and-kernel-from-root-partit.patch \
+    file://nano-Integrate-with-Balena-and-load-kernel-from-root.patch \
 "
 
 # In l4t 28.2 below partitions were 0xC and 0xD

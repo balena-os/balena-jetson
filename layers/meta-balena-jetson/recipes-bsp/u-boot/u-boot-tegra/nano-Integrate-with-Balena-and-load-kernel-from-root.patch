@@ -1,20 +1,25 @@
-From ce2454c2946b0abd637d6942cbbf46b7f1020d10 Mon Sep 17 00:00:00 2001
+From 9362f6102d0b340e6870904881ef1c216d953848 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Fri, 12 Apr 2019 08:25:33 +0200
-Subject: [PATCH] Integrate with Balena u-boot environment
+Date: Wed, 29 Jan 2020 12:45:13 +0100
+Subject: [PATCH] nano: Integrate with Balena and load kernel from rootfs
 
-Upstream-Status: Inappropriate [configuration]
+This is a port to L4T 32.3 of the patches existent
+on L4T 32.2.
+
+It integrates BalenaOS with Jetson Nano's u-boot.
+
+Upstream-status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  configs/p3450-porg_defconfig    |  6 +++++-
- include/config_distro_bootcmd.h | 14 +++++++++-----
- 2 files changed, 14 insertions(+), 6 deletions(-)
+ include/config_distro_bootcmd.h | 16 ++++++++++------
+ 2 files changed, 15 insertions(+), 7 deletions(-)
 
 diff --git a/configs/p3450-porg_defconfig b/configs/p3450-porg_defconfig
-index 31893df..3753b5e 100644
+index 7175365848..e4737f2dec 100644
 --- a/configs/p3450-porg_defconfig
 +++ b/configs/p3450-porg_defconfig
-@@ -18,7 +18,7 @@ CONFIG_CMD_DFU=y
+@@ -20,7 +20,7 @@ CONFIG_CMD_DFU=y
  CONFIG_CMD_USB_MASS_STORAGE=y
  # CONFIG_CMD_FPGA is not set
  CONFIG_CMD_GPIO=y
@@ -23,16 +28,16 @@ index 31893df..3753b5e 100644
  CONFIG_CMD_DHCP=y
  # CONFIG_CMD_NFS is not set
  CONFIG_CMD_MII=y
-@@ -44,3 +44,7 @@ CONFIG_USB_GADGET_DOWNLOAD=y
- CONFIG_G_DNL_MANUFACTURER="NVIDIA"
+@@ -47,3 +47,7 @@ CONFIG_G_DNL_MANUFACTURER="NVIDIA"
  CONFIG_G_DNL_VENDOR_NUM=0x0955
  CONFIG_G_DNL_PRODUCT_NUM=0x701a
+ CONFIG_BOOTP_PREFER_SERVERIP=y
 +CONFIG_CMD_PART=y
 +CONFIG_PARTITION_UUIDS=y
 +CONFIG_CMD_IMPORTENV=y
 +CONFIG_BOOTDELAY=0
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index d718224..a1f382d 100644
+index d7182244cb..1c3cfdaf92 100644
 --- a/include/config_distro_bootcmd.h
 +++ b/include/config_distro_bootcmd.h
 @@ -315,7 +315,7 @@
@@ -53,16 +58,17 @@ index d718224..a1f382d 100644
  			"${scriptaddr} ${prefix}${script}; "              \
  		"source ${scriptaddr}\0"                                  \
  	\
-@@ -380,7 +380,7 @@
+@@ -379,7 +379,8 @@
+ 		"\0"                                                      \
  	\
  	"scan_dev_for_boot_part="                                         \
- 		"part list ${devtype} ${devnum} -bootable devplist; "     \
--		"env exists devplist || setenv devplist $defaultdevplist; " \
-+		"env exists devplist || setenv devplist $defaultdevplist; "\
+-		"part list ${devtype} ${devnum} -bootable devplist; "     \
++		"setenv devplist $resin_root_part; "			  \
++		"env exists devplist || part list ${devtype} ${devnum} -bootable devplist; "     \
+ 		"env exists devplist || setenv devplist $defaultdevplist; " \
  		"for distro_bootpart in ${devplist}; do "                 \
  			"if fstype ${devtype} "                           \
- 					"${devnum}:${distro_bootpart} "   \
-@@ -392,9 +392,13 @@
+@@ -392,10 +393,13 @@
  	BOOT_TARGET_DEVICES(BOOTENV_DEV)                                  \
  	\
  	"distro_bootcmd=" BOOTENV_SET_SCSI_NEED_INIT                      \
@@ -70,14 +76,15 @@ index d718224..a1f382d 100644
  		"for target in ${boot_targets}; do "                      \
 -			"run bootcmd_${target}; "                         \
 -		"done\0"
+-
 +	"if env exist resin_set_kernel_root; then "                       \
 +		"run resin_set_kernel_root; run set_os_cmdline; "         \
 +		"run bootcmd_${target}; "                                 \
 +	"fi; "                                                            \
 +	"done\0"
- 
  #ifndef CONFIG_BOOTCOMMAND
  #define CONFIG_BOOTCOMMAND "run distro_bootcmd"
+ #endif
 -- 
-2.7.4
+2.17.1
 
