@@ -1,6 +1,6 @@
-diff a/drivers/gpio/gpio-tegra.c b/drivers/gpio/gpio-tegra.c
---- drivers/gpio/gpio-tegra.c
-+++ drivers/gpio/gpio-tegra_new.c
+diff a/kernel-source/drivers/gpio/gpio-tegra.c b/kernel-source/drivers/gpio/gpio-tegra.c
+--- kernel-source/drivers/gpio/gpio-tegra.c
++++ kernel-source/drivers/gpio/gpio-tegra_new.c
 @@ -223,10 +223,18 @@
         return pinctrl_request_gpio(chip->base + offset);
  }
