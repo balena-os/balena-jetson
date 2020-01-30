@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.45.1+rev4
+## (2020-01-30)
+
+* linux-tegra: Fix hang on Nano during flash if SPI enabled [Alexandru Costache]
+* Remove the usb-modeswitch patch that fixes crashes on 64 bits architectures [Florin Sarbu]
+
 # v2.45.1+rev3
 ## (2019-12-18)
 

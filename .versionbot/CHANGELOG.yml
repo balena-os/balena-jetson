@@ -1,4 +1,35 @@
 - commits:
+    - subject: 'linux-tegra: Fix hang on Nano during flash if SPI enabled'
+      hash: c168d6642f03ef95599d178d21f15bdcebd6fda5
+      body: |
+        This patch fixes issues if SPI is enabled
+        during flashing.
+      footer:
+        Changelog-entry: 'linux-tegra: Fix hang on Nano during flash if SPI enabled'
+        changelog-entry: 'linux-tegra: Fix hang on Nano during flash if SPI enabled'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+    - subject: >-
+        Remove the usb-modeswitch patch that fixes crashes on 64 bits
+        architectures
+      hash: d33dba52d8b4b8f3e7abda89abd9f84bc833c103
+      body: |
+        We will be using usb-modeswitch version 2.5.2 in meta-balena
+        and this patch is not needed anymore with this newer version.
+      footer:
+        Changelog-entry: >-
+          Remove the usb-modeswitch patch that fixes crashes on 64 bits
+          architectures
+        changelog-entry: >-
+          Remove the usb-modeswitch patch that fixes crashes on 64 bits
+          architectures
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.45.1+rev4
+  date: 2020-01-30T12:50:29.818Z
+- commits:
     - subject: 'u-boot: Use kernel extlinux.conf on Nano'
       hash: 674368963dcb1e4006b2978132537f9c49aaa508
       body: |
