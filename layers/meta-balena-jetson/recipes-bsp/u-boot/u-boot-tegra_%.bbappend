@@ -18,7 +18,7 @@ SRC_URI_append = " \
 
 SRC_URI_append_jetson-nano = " \
     file://nano-Integrate-with-Balena-u-boot-environment.patch \
-    file://load-extlinux.conf-and-kernel-from-root-partit.patch \
+    file://nano-load-extlinux.conf-and-kernel-from-root-partit.patch \
 "
 
 # In l4t 28.2 below partitions were 0xC and 0xD
@@ -28,6 +28,7 @@ RESIN_DEFAULT_ROOT_PART_jetson-tx2 = "0x19"
 SRC_URI_append_jetson-tx2 = " \
     file://0001-Add-part-index-command.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
+    file://tx2-Load-extlinux-from-rootfs-for-emmc.patch \
 "
 
 # extlinux will now be installed in the rootfs,
