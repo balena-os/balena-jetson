@@ -1,4 +1,16 @@
 - commits:
+    - subject: Switch jetson-nano state to new
+      hash: 0f3852bc946e92f953d624ca651a669cfcfb4870
+      body: ''
+      footer:
+        Changelog-entry: Switch jetson-nano state to new
+        changelog-entry: Switch jetson-nano state to new
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.47.0+rev2
+  date: 2020-02-01T18:09:04.700Z
+- commits:
     - subject: Update meta-balena from v2.45.1 to v2.47.0
       hash: b82dbac9956302ca2078637f3ae1c55c223c0379
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.0+rev2
+## (2020-02-01)
+
+* Switch jetson-nano state to new [Alexandru Costache]
+
 # v2.47.0+rev1
 ## (2020-01-31)
 
