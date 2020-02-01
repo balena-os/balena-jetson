@@ -16,7 +16,7 @@ module.exports =
 	aliases: [ 'jetson-tx2' ]
 	name: 'Nvidia Jetson TX2'
 	arch: 'aarch64'
-	state: 'experimental'
+	state: 'released'
 
 	stateInstructions:
 		postProvisioning: postProvisioningInstructions
