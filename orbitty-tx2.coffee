@@ -16,7 +16,7 @@ module.exports =
 	aliases: [ 'orbitty-tx2' ]
 	name: 'CTI Orbitty TX2'
 	arch: 'aarch64'
-	state: 'experimental'
+	state: 'released'
 
 	stateInstructions:
 		postProvisioning: postProvisioningInstructions
