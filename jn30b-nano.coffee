@@ -10,7 +10,7 @@ module.exports =
 	aliases: [ 'jn30b-nano' ]
 	name: 'Auvidea JN30B Nano'
 	arch: 'aarch64'
-	state: 'experimental'
+	state: 'new'
 	community: 'true'
 
 	instructions: [
