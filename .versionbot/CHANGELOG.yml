@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'jetson-nano: Fix typo in jetson nano coffee files'
+      hash: b8f57a77a9bbcb5e38df5ec982167bf348bc05e1
+      body: |
+        This fixes a typo in the board flashing instructions.
+      footer:
+        Changelog-entry: 'jetson-nano: Fix typo in jetson nano coffee files'
+        changelog-entry: 'jetson-nano: Fix typo in jetson nano coffee files'
+        Signed-off-by: Matthew McGinn <mamcgi@gmail.com>
+        signed-off-by: Matthew McGinn <mamcgi@gmail.com>
+      author: Matthew McGinn
+  version: 2.47.0+rev3
+  date: 2020-02-04T10:30:45.088Z
+- commits:
     - subject: Switch jetson-nano state to new
       hash: 0f3852bc946e92f953d624ca651a669cfcfb4870
       body: ''

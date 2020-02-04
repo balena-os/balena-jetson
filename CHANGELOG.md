@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.0+rev3
+## (2020-02-04)
+
+* jetson-nano: Fix typo in jetson nano coffee files [Matthew McGinn]
+
 # v2.47.0+rev2
 ## (2020-02-01)
 
