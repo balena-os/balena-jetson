@@ -152,6 +152,7 @@ KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
 KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"
 
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
+KERNEL_ROOTSPEC_jn30b-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-tx2 = " \${resin_kernel_root} ro rootwait sdhci_tegra.en_boot_part_access=1"
 KERNEL_ROOTSPEC_jetson-xavier = ""
 
