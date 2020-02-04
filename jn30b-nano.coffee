@@ -1,7 +1,7 @@
 deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
-BOARD_POWEROFF = 'Remove power from the board and insert frelshy burnt SD-CARD.'
+BOARD_POWEROFF = 'Remove power from the board and insert freshly burnt SD-CARD.'
 BOARD_POWERON  = 'Power on the board.'
 
 module.exports =
