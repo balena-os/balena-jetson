@@ -1,4 +1,29 @@
 - commits:
+    - subject: 'linux-tegra: Update dtb for spacely-tx2 to 32.2'
+      hash: 59b323b142f92e36d20adf1fe0b88387f8e20ea4
+      body: |
+        This dtb is taken directly from vendor's website,
+        for TX2 on L4T 32.2.0 JP 4.2.1.
+      footer:
+        Changelog-entry: 'linux-tegra: Update dtb for spacely-tx2 to 32.2'
+        changelog-entry: 'linux-tegra: Update dtb for spacely-tx2 to 32.2'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+    - subject: 'linux-tegra: Update orbitty tx2 dtb to 32.2'
+      hash: ac4eaf21deec39e2ab900feaba5fec26d1305383
+      body: |
+        This dtb is taken directly from vendor's website,
+        for TX2 on L4T 32.2.0 JP 4.2.1.
+      footer:
+        Changelog-entry: 'linux-tegra: Update orbitty tx2 dtb to 32.2'
+        changelog-entry: 'linux-tegra: Update orbitty tx2 dtb to 32.2'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.47.0+rev5
+  date: 2020-02-05T09:53:25.749Z
+- commits:
     - subject: Update meta-rust to include 1.36
       hash: de3a9d8f189a88f0b9cb777df28977a9f5563548
       body: ''

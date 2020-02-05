@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.47.0+rev5
+## (2020-02-05)
+
+* linux-tegra: Update dtb for spacely-tx2 to 32.2 [Alexandru Costache]
+* linux-tegra: Update orbitty tx2 dtb to 32.2 [Alexandru Costache]
+
 # v2.47.0+rev4
 ## (2020-02-05)
 
