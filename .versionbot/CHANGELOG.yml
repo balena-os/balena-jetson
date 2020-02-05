@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update meta-rust to include 1.36
+      hash: de3a9d8f189a88f0b9cb777df28977a9f5563548
+      body: ''
+      footer:
+        Changelog-entry: Update meta-rust to include 1.36
+        changelog-entry: Update meta-rust to include 1.36
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.47.0+rev4
+  date: 2020-02-05T07:44:04.897Z
+- commits:
     - subject: 'jetson-nano: Fix typo in jetson nano coffee files'
       hash: b8f57a77a9bbcb5e38df5ec982167bf348bc05e1
       body: |
