@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update meta-rust to include 1.36
+      hash: 2015fbe3154798ec2e976541930325eda34d02c9
+      body: ''
+      footer:
+        Changelog-entry: Update meta-rust to include 1.36
+        changelog-entry: Update meta-rust to include 1.36
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.47.0+rev6
+  date: 2020-02-10T17:01:05.808Z
+- commits:
     - subject: 'linux-tegra: Update dtb for spacely-tx2 to 32.2'
       hash: 59b323b142f92e36d20adf1fe0b88387f8e20ea4
       body: |
