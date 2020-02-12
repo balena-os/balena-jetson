@@ -41,11 +41,6 @@ SRC_URI_append_jetson-tx2 = " \
     file://realsense_camera_formats_linux-yocto_4.4.patch \
     file://realsense_format_desc_4.4.patch \
     file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
-    file://0002-NFLX-2019-001-SACK-Panic.patch \
-    file://0003-NFLX-2019-001-SACK-Panic-for-lteq-4.14.patch \
-    file://0004-NFLX-2019-001-SACK-Slowness.patch \
-    file://0005-NFLX-2019-001-Resour-Consump-Low-MSS.patch \
-    file://0006-NFLX-2019-001-Resour-Consump-Low-MSS.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
 "
 
