@@ -30,6 +30,14 @@ SRC_URI_append_jetson-tx2 = " \
     file://tx2-Load-extlinux-from-rootfs-for-emmc.patch \
 "
 
+RESIN_BOOT_PART_jetson-tx1 = "0xB"
+RESIN_DEFAULT_ROOT_PART_jetson-tx1 = "0xC"
+
+SRC_URI_append_jetson-tx1 = " \
+    file://0001-Add-part-index-command.patch \
+    file://tx1-Integrate-with-BalenaOS-environment.patch \
+"
+
 # extlinux will now be installed in the rootfs,
 # near the kernel, initrd is not used
 do_install_append() {
