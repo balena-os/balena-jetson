@@ -31,6 +31,8 @@ KERNEL_DEVICETREE_n510-tx2 = "${DEPLOY_DIR_IMAGE}/tegra186-quill-p3310-1000-c03-
 KERNEL_DEVICETREE_spacely-tx2 = "${DEPLOY_DIR_IMAGE}/tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb"
 KERNEL_DEVICETREE_srd3-tx2 = "${DEPLOY_DIR_IMAGE}/d3-tx2-rsp-fpdlink.dtb"
 KERNEL_DEVICETREE_blackboard-tx2 = "${DEPLOY_DIR_IMAGE}/tegra186-tx2-blackboard.dtb"
+KERNEL_DEVICETREE_jetson-tx2-6 = "${DEPLOY_DIR_IMAGE}/tegra186-tx2-6.dtb"
+
 
 LNXFILE="u-boot-dtb.bin"
 IMAGE_TEGRAFLASH_KERNEL="${DEPLOY_DIR_IMAGE}/${LNXFILE}"

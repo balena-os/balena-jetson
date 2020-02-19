@@ -33,6 +33,10 @@ SRC_URI_append_jetson-tx2 = " \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
 "
 
+SRC_URI_append_jetson-tx2-6 = " \
+    file://tegra186-tx2-6.dtb \
+"
+
 SRC_URI_append_jn30b-nano = " \
     file://tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb \
 "
@@ -126,6 +130,15 @@ RESIN_CONFIGS[can] = " \
                 CONFIG_MTTCAN_IVC=m \
 "
 
+RESIN_CONFIGS_append_jetson-tx2-6 = " iwlwifi"
+RESIN_CONFIGS_DEPS[iwlwifi] = " \
+                CONFIG_HAS_IOMEM=m \
+                CONFIG_IWLDVM=m \
+                CONFIG_IWLMVM=m \
+                CONFIG_IWLWIFI=m \
+                CONFIG_MAC80211=m \
+"
+
 RESIN_CONFIGS_append_srd3-tx2 = " tpg"
 
 KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
@@ -196,4 +209,8 @@ do_deploy_append_blackboard-tx2() {
 
 do_deploy_append_jn30b-nano() {
     cp ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_jetson-tx2-6() {
+    cp ${WORKDIR}/tegra186-tx2-6.dtb "${DEPLOYDIR}"
 }
