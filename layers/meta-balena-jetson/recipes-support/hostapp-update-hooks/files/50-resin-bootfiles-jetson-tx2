@@ -29,7 +29,7 @@ else
 fi
 
 if [ ${UPGRADE_PARTITIONS} -eq 1 ]; then
-    info_log "Removing old L4T 28.2 partitions"
+    info_log "Removing old L4T 28.X partitions"
     idx=1
     while [ $idx -le 11 ]; do
         parted -s ${DEV_PATH} rm ${idx}
@@ -51,7 +51,7 @@ if [ ${UPGRADE_PARTITIONS} -eq 1 ]; then
         start=$(expr ${end} \+ 1)
     done
 
-    info_log "Created L4T 32.2 partitions"
+    info_log "Created L4T 32.X partitions"
 
     # Another issue with parted is incorrect number of partition entries
     # in gpt header at position 0x250. Fix gpt header so it can be interpreted

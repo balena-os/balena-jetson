@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -o errexit
+
+BIN_INSTALL_PATH="/opt/tegra-binaries"
+
+if [ ! -e /dev/mmcblk0boot0 ]; then
+    echo "[INFO] mmcblk0boot0 partition not present! Please add sdhci_tegra.en_boot_part_access=1 to your extlinux.conf or kernel cmdline!"
+    exit 1
+fi
+
+update_partition_binaries()
+{
+    for line in $(cat $1); do
+        part_name=$(echo $line | cut -d ':' -f 1)
+        file_name=$(echo $line | cut -d ':' -f 2)
+        dd oflag=dsync if="${BIN_INSTALL_PATH}/${file_name}" of="/dev/disk/by-partlabel/$part_name"
+    done
+}
+
+update_partition_binaries "${BIN_INSTALL_PATH}/partition_specification210_tx1.txt"
+
+# Regardless of whether the GPT has been altered or not, update boot part
+# so that nonces from bct here match the ones in the partitions above
+echo 0 > /sys/block/mmcblk0boot0/force_ro
+dd if="${BIN_INSTALL_PATH}/boot0.img" of=/dev/mmcblk0boot0
+sync
+echo 1 > /sys/block/mmcblk0boot0/force_ro
