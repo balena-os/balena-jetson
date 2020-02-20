@@ -10,3 +10,9 @@ do_install_append_jetson-nano(){
     # keepalive internally.
     echo "" > ${D}/${sysconfdir}/systemd/system.conf.d/watchdog.conf
 }
+
+
+do_install_append_jetson-tx1(){
+    # Same as for the jetson nano, since both are tegra210
+    echo "" > ${D}/${sysconfdir}/systemd/system.conf.d/watchdog.conf
+}
