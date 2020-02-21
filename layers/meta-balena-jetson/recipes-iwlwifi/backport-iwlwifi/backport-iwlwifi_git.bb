@@ -36,13 +36,12 @@ do_configure() {
 MODULES_INSTALL_TARGET="install"
 
 do_install_append() {
-    sad09iasd0iasd && f09uaisdalskdas
 	## install configs and service scripts
 	install -d ${D}${sysconfdir}/modprobe.d
 	install -m 0644 ${WORKDIR}/iwlwifi.conf ${D}${sysconfdir}/modprobe.d
 }
 
-#RDEPENDS_${PN} = "linux-firmware-iwlwifi"
+RDEPENDS_${PN} = "linux-firmware-iwlwifi"
 
 KERNEL_MODULE_AUTOLOAD_append_jetson-tx2-6 = " iwlwifi"
 
