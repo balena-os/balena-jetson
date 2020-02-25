@@ -1,0 +1,5311 @@
+From 361691c1b4b205084975d69c5b35347537b60596 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 24 Feb 2020 14:48:09 +0100
+Subject: [PATCH 5/5] dts: Add D3 dtbs
+
+Upstream-Status: Backport
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ arch/arm64/boot/dts/d3/Makefile               |  30 +
+ arch/arm64/boot/dts/d3/README.md              |  55 ++
+ arch/arm64/boot/dts/d3/d3-2xocto-cam0-3.dtsi  |  91 +++
+ .../arm64/boot/dts/d3/d3-2xocto-cam12-15.dtsi |  90 +++
+ arch/arm64/boot/dts/d3/d3-2xocto-cam4-7.dtsi  |  91 +++
+ arch/arm64/boot/dts/d3/d3-2xocto-cam8-11.dtsi |  91 +++
+ arch/arm64/boot/dts/d3/d3-2xocto-cameras.dtsi |  25 +
+ arch/arm64/boot/dts/d3/d3-cic-cam0.dtsi       |  49 ++
+ arch/arm64/boot/dts/d3/d3-cic-cam2.dtsi       |  36 ++
+ arch/arm64/boot/dts/d3/d3-config-eeprom.dtsi  |  38 ++
+ .../boot/dts/d3/d3-jetson-bsp-version.dtsi.in |  19 +
+ arch/arm64/boot/dts/d3/d3-reset-full.dtsi     |  61 ++
+ arch/arm64/boot/dts/d3/d3-reset-port.dtsi     |  20 +
+ arch/arm64/boot/dts/d3/d3-rsp-cam0.dtsi       | 105 ++++
+ arch/arm64/boot/dts/d3/d3-rsp-cam1.dtsi       | 106 ++++
+ arch/arm64/boot/dts/d3/d3-rsp-cam2.dtsi       | 108 ++++
+ arch/arm64/boot/dts/d3/d3-rsp-cam3.dtsi       | 108 ++++
+ arch/arm64/boot/dts/d3/d3-rsp-cam4.dtsi       | 107 ++++
+ arch/arm64/boot/dts/d3/d3-rsp-cam5.dtsi       | 106 ++++
+ arch/arm64/boot/dts/d3/d3-string-utils.dtsi   |  45 ++
+ arch/arm64/boot/dts/d3/d3-tegra-nvcsi.dtsi    |  78 +++
+ arch/arm64/boot/dts/d3/d3-tx2-cic.dts         |  24 +
+ arch/arm64/boot/dts/d3/d3-tx2-cic.dtsi        | 266 +++++++++
+ arch/arm64/boot/dts/d3/d3-tx2-rsp-fpdlink.dts |  40 ++
+ arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl1.dts   |  40 ++
+ arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl2.dts   |  40 ++
+ arch/arm64/boot/dts/d3/d3-tx2-rsp.dts         |  27 +
+ arch/arm64/boot/dts/d3/d3-tx2-rsp.dtsi        | 550 ++++++++++++++++++
+ .../boot/dts/d3/d3-xavier-2xocto-ar0820.dts   |  25 +
+ .../boot/dts/d3/d3-xavier-2xocto-imx390.dts   |  25 +
+ .../dts/d3/d3-xavier-2xocto-imx390rcm.dts     |  25 +
+ .../boot/dts/d3/d3-xavier-2xocto-ov10640.dts  |  25 +
+ .../boot/dts/d3/d3-xavier-2xocto-vg6768.dts   |  25 +
+ arch/arm64/boot/dts/d3/d3-xavier-2xocto.dts   |  28 +
+ arch/arm64/boot/dts/d3/d3-xavier-2xocto.dtsi  | 195 +++++++
+ .../boot/dts/d3/d3-xavier-cic-ar0820.dts      |  25 +
+ .../boot/dts/d3/d3-xavier-cic-imx390.dts      |  25 +
+ .../boot/dts/d3/d3-xavier-cic-imx390rcm.dts   |  25 +
+ .../boot/dts/d3/d3-xavier-cic-ov10640.dts     |  25 +
+ .../boot/dts/d3/d3-xavier-cic-vg6768.dts      |  25 +
+ arch/arm64/boot/dts/d3/d3-xavier-cic.dts      |  24 +
+ arch/arm64/boot/dts/d3/d3-xavier-cic.dtsi     | 250 ++++++++
+ arch/arm64/boot/dts/d3/d3-xavier.dtsi         |  28 +
+ .../d3-cam-ar0820-fpdlink-template.dtsi       | 115 ++++
+ .../d3-cam-ar0820-template.dtsi               | 106 ++++
+ .../d3-cam-imx390-modes.dtsi                  | 113 ++++
+ .../d3-cam-imx390-template.dtsi               |  72 +++
+ .../d3-cam-imx390rcm-template.dtsi            |  74 +++
+ .../d3-cam-ov10640-template.dtsi              | 155 +++++
+ .../d3-cam-vg6768-template.dtsi               | 106 ++++
+ .../d3/templated-cameras/d3-check-cam.dtsi    |  53 ++
+ .../d3-gmsl-cam-template.dtsi                 | 128 ++++
+ .../d3/templated-cameras/d3-overlays-cam.dtsi | 160 +++++
+ .../d3/templated-cameras/d3-reset-cam.dtsi    |  22 +
+ .../templated-deserializers/d3-check-des.dtsi |  35 ++
+ .../d3-des-max9286-template.dtsi              |  56 ++
+ .../d3-des-max9296-template.dtsi              |  57 ++
+ .../d3-des-ub960-template.dtsi                |  85 +++
+ .../templated-deserializers/d3-reset-des.dtsi |  13 +
+ .../d3-check-ser-fpdlink.dtsi                 |  35 ++
+ .../d3-check-ser-gmsl.dtsi                    |  38 ++
+ .../templated-serializers/d3-reset-ser.dtsi   |  21 +
+ .../d3-ser-max9295-template.dtsi              |  39 ++
+ .../d3-ser-max96705-template.dtsi             |  39 ++
+ .../d3-ser-ub953-template.dtsi                |  35 ++
+ 65 files changed, 4778 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/d3/Makefile
+ create mode 100644 arch/arm64/boot/dts/d3/README.md
+ create mode 100644 arch/arm64/boot/dts/d3/d3-2xocto-cam0-3.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-2xocto-cam12-15.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-2xocto-cam4-7.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-2xocto-cam8-11.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-2xocto-cameras.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-cic-cam0.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-cic-cam2.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-config-eeprom.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-jetson-bsp-version.dtsi.in
+ create mode 100644 arch/arm64/boot/dts/d3/d3-reset-full.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-reset-port.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-rsp-cam0.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-rsp-cam1.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-rsp-cam2.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-rsp-cam3.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-rsp-cam4.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-rsp-cam5.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-string-utils.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-tegra-nvcsi.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-tx2-cic.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-tx2-cic.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-tx2-rsp-fpdlink.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl1.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl2.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-tx2-rsp.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-tx2-rsp.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-2xocto-ar0820.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-2xocto-imx390.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-2xocto-imx390rcm.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-2xocto-ov10640.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-2xocto-vg6768.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-2xocto.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-2xocto.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-cic-ar0820.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-cic-imx390.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-cic-imx390rcm.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-cic-ov10640.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-cic-vg6768.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-cic.dts
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier-cic.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/d3-xavier.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ar0820-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390-modes.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390rcm-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ov10640-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-cam-vg6768-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-check-cam.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-gmsl-cam-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-overlays-cam.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-cameras/d3-reset-cam.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-deserializers/d3-check-des.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-deserializers/d3-des-max9286-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-deserializers/d3-des-max9296-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-deserializers/d3-des-ub960-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-deserializers/d3-reset-des.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-serializers/d3-check-ser-fpdlink.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-serializers/d3-check-ser-gmsl.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-serializers/d3-reset-ser.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-serializers/d3-ser-max9295-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-serializers/d3-ser-max96705-template.dtsi
+ create mode 100644 arch/arm64/boot/dts/d3/templated-serializers/d3-ser-ub953-template.dtsi
+
+diff --git a/arch/arm64/boot/dts/d3/Makefile b/arch/arm64/boot/dts/d3/Makefile
+new file mode 100644
+index 000000000000..c4e2f6e25bf9
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/Makefile
+@@ -0,0 +1,30 @@
++# This is included in the kernel make system. Just add the dts you
++# want compiled to d3-dtb-y
++
++# RSP - FPDLINK3
++d3-dtb-y += d3-tx2-rsp-fpdlink.dtb
++
++# RSP - GMSL2
++#d3-dtb-y += d3-tx2-rsp-gmsl2.dtb
++
++# Tx2 CIC
++d3-dtb-y += d3-tx2-cic.dtb
++
++# Until eeprom support is added to overload, these trees have hardcoded kernel
++# parameters to specify cameras.
++
++# Xavier CIC
++d3-dtb-y += d3-xavier-cic.dtb
++d3-dtb-y += d3-xavier-cic-imx390.dtb
++d3-dtb-y += d3-xavier-cic-imx390rcm.dtb
++d3-dtb-y += d3-xavier-cic-ov10640.dtb
++d3-dtb-y += d3-xavier-cic-vg6768.dtb
++d3-dtb-y += d3-xavier-cic-ar0820.dtb
++
++# Xavier 2xOcto
++d3-dtb-y += d3-xavier-2xocto.dtb
++d3-dtb-y += d3-xavier-2xocto-imx390.dtb
++d3-dtb-y += d3-xavier-2xocto-imx390rcm.dtb
++d3-dtb-y += d3-xavier-2xocto-ov10640.dtb
++d3-dtb-y += d3-xavier-2xocto-ar0820.dtb
++d3-dtb-y += d3-xavier-2xocto-vg6768.dtb
+diff --git a/arch/arm64/boot/dts/d3/README.md b/arch/arm64/boot/dts/d3/README.md
+new file mode 100644
+index 000000000000..ca9b5c628e64
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/README.md
+@@ -0,0 +1,55 @@
++# Using Overlays
++
++The overlay-loader plugin runs early during the init process of our kernel.
++It looks for nodes in /overlay-loader/ in the device tree. These overlays can
++be activated using kernel parameter `active_overlays=name_name_1,node_name_2`.
++Our nodes follow the convention `[camera model]_[port_index]`. Thus a mix of
++cams on RSP may look like `active_overlays=imx390_0,ov10640_1,vg6768_2`.
++
++overlay-loader has very verbose output. This can be seen by searching for
++"overlay-loader" in dmesg. It will log all the params that it matched and
++applied overlays for.
++
++```
++# sample tree of an overlay fragment
++
++overlay-loader
++|
++|-->fragment
++|   |
++|   |-->param
++|   |
++|   |-->override@N
++|   |   |
++|   |   |-->target
++|   |   |
++|   |   |-->_overlay_
++```
++
++
++# Adding to the "new" device tree
++
++All templates have been split into their respective type. They should include
++their own resets and checks.
++
++A camera consists of 3 includes which are to be read in the following order.
++This should be done in d3-[platform]-[boardname]-cam[camnumber]-template.dtsi.
++
++1. d3-des-[deserializermodel]-template.dtsi
++2. d3-ser-[serializermodel]-template.dtsi
++3. d3-cam-[cammodel]-template.dtsi
++
++Please look at an existing template for a similar device to understand what
++is required for a new one.
++
++
++# Important notes
++
++CIC is a deviation from this pattern, its deserializers are hard coded in
++d3-[board]-cic.dtsi because it only has 1 of each deserializer. It doesn't
++need templates.
++
++All overlays are currently created by the camera templates using the include
++`d3-overlays-cam.dtsi`. The overlay DTSI file is included by a camera-specific
++DTSI file in the templated-cameras/ subdirectory. As the cameras are what we
++are trying to activate or deactivate from a high level.
+diff --git a/arch/arm64/boot/dts/d3/d3-2xocto-cam0-3.dtsi b/arch/arm64/boot/dts/d3/d3-2xocto-cam0-3.dtsi
+new file mode 100644
+index 000000000000..db0c398ac174
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-2xocto-cam0-3.dtsi
+@@ -0,0 +1,91 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++
++/* General ports configuration */
++#define STATUS disabled
++#define ORIENTATION 1
++#define POSITION bottomleft
++
++#define IOVDD_SUPPLY <&p2822_vdd_1v8_cvb>
++#define AVDD_SUPPLY <&fpd_vdd_0_3>
++#define RESET_PIN <&gpio_i2c_3_74 13 GPIO_ACTIVE_LOW>
++
++#define TEGRA_SINTERFACE serial_a
++#define CSI_PORT 0
++#define CSI_LANES 4
++
++#define I2C_ADDR 3180000
++#define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++
++#define EEPROM_ADDR 54
++#define IMG_BUS 2
++
++/* UB960 */
++#define DES_ADDR 30
++#include "templated-deserializers/d3-des-ub960-template.dtsi"
++
++/* Port 0 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 0
++#define DES_LINK 0
++#define PORT_IDX 0
++#define ENDPOINT_A 0
++#define ENDPOINT_B 1
++#define SER_ADDR 40
++#define IMG_ADDR 60
++
++#include "d3-2xocto-cameras.dtsi"
++
++#if 0
++/* Port 1 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 1
++#define DES_LINK 1
++#define PORT_IDX 1
++#define ENDPOINT_A 2
++#define ENDPOINT_B 3
++#define SER_ADDR 41
++#define IMG_ADDR 61
++
++#include "d3-2xocto-cameras.dtsi"
++
++/* Port 2 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 2
++#define DES_LINK 2
++#define PORT_IDX 2
++#define ENDPOINT_A 4
++#define ENDPOINT_B 5
++#define SER_ADDR 42
++#define IMG_ADDR 62
++
++#include "d3-2xocto-cameras.dtsi"
++
++/* Port 3 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 3
++#define DES_LINK 3
++#define PORT_IDX 3
++#define ENDPOINT_A 6
++#define ENDPOINT_B 7
++#define SER_ADDR 43
++#define IMG_ADDR 63
++
++#include "d3-2xocto-cameras.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-2xocto-cam12-15.dtsi b/arch/arm64/boot/dts/d3/d3-2xocto-cam12-15.dtsi
+new file mode 100644
+index 000000000000..a5edea756cec
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-2xocto-cam12-15.dtsi
+@@ -0,0 +1,90 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++#include "d3-reset-full.dtsi"
++
++/* General ports configuration */
++#define STATUS disabled
++#define ORIENTATION 1
++#define POSITION topleft
++
++#define IOVDD_SUPPLY <&p2822_vdd_1v8_cvb>
++#define AVDD_SUPPLY <&fpd_vdd_12_15>
++#define RESET_PIN <&gpio_i2c_3_74 15 GPIO_ACTIVE_LOW>
++
++#define TEGRA_SINTERFACE serial_g
++#define CSI_PORT 6
++#define CSI_LANES 4
++
++#define I2C_ADDR 3180000
++#define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++
++#define EEPROM_ADDR 54
++#define IMG_BUS 2
++
++/* UB960 */
++#define DES_ADDR 36
++#include "templated-deserializers/d3-des-ub960-template.dtsi"
++
++/* Port 0 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 0
++#define DES_LINK 0
++#define PORT_IDX 3
++#define ENDPOINT_A 6
++#define ENDPOINT_B 7
++#define SER_ADDR 4c
++#define IMG_ADDR 6c
++
++#include "d3-2xocto-cameras.dtsi"
++
++#if 0
++/* Port 1 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 1
++#define DES_LINK 1
++#define PORT_IDX 13
++#define ENDPOINT_A 26
++#define ENDPOINT_B 27
++#define SER_ADDR 4d
++#define IMG_ADDR 6d
++
++#include "d3-2xocto-cameras.dtsi"
++
++/* Port 2 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 2
++#define DES_LINK 2
++#define PORT_IDX 14
++#define ENDPOINT_A 28
++#define ENDPOINT_B 29
++#define SER_ADDR 4e
++#define IMG_ADDR 6e
++
++#include "d3-2xocto-cameras.dtsi"
++
++/* Port 3 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 3
++#define DES_LINK 3
++#define PORT_IDX 15
++#define ENDPOINT_A 30
++#define ENDPOINT_B 31
++#define SER_ADDR 4f
++#define IMG_ADDR 6f
++
++#include "d3-2xocto-cameras.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-2xocto-cam4-7.dtsi b/arch/arm64/boot/dts/d3/d3-2xocto-cam4-7.dtsi
+new file mode 100644
+index 000000000000..62a13bb2ecea
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-2xocto-cam4-7.dtsi
+@@ -0,0 +1,91 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++
++/* General ports configuration */
++#define STATUS disabled
++#define ORIENTATION 1
++#define POSITION centerleft
++
++#define IOVDD_SUPPLY <&p2822_vdd_1v8_cvb>
++#define AVDD_SUPPLY <&fpd_vdd_4_7>
++#define RESET_PIN <&gpio_i2c_3_74 12 GPIO_ACTIVE_LOW>
++
++#define TEGRA_SINTERFACE serial_c
++#define CSI_PORT 2
++#define CSI_LANES 4
++
++#define I2C_ADDR 3180000
++#define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++
++#define EEPROM_ADDR 54
++#define IMG_BUS 2
++
++/* UB960 */
++#define DES_ADDR 32
++#include "templated-deserializers/d3-des-ub960-template.dtsi"
++
++/* Port 0 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 0
++#define DES_LINK 0
++#define PORT_IDX 1
++#define ENDPOINT_A 2
++#define ENDPOINT_B 3
++#define SER_ADDR 44
++#define IMG_ADDR 64
++
++#include "d3-2xocto-cameras.dtsi"
++
++#if 0
++/* Port 1 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 1
++#define DES_LINK 1
++#define PORT_IDX 5
++#define ENDPOINT_A 10
++#define ENDPOINT_B 11
++#define SER_ADDR 45
++#define IMG_ADDR 65
++
++#include "d3-2xocto-cameras.dtsi"
++
++/* Port 2 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 2
++#define DES_LINK 2
++#define PORT_IDX 6
++#define ENDPOINT_A 12
++#define ENDPOINT_B 13
++#define SER_ADDR 46
++#define IMG_ADDR 66
++
++#include "d3-2xocto-cameras.dtsi"
++
++/* Port 3 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 3
++#define DES_LINK 3
++#define PORT_IDX 7
++#define ENDPOINT_A 14
++#define ENDPOINT_B 15
++#define SER_ADDR 47
++#define IMG_ADDR 67
++
++#include "d3-2xocto-cameras.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-2xocto-cam8-11.dtsi b/arch/arm64/boot/dts/d3/d3-2xocto-cam8-11.dtsi
+new file mode 100644
+index 000000000000..a0191b560a9a
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-2xocto-cam8-11.dtsi
+@@ -0,0 +1,91 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++
++/* General ports configuration */
++#define STATUS disabled
++#define ORIENTATION 1
++#define POSITION centerright
++
++#define IOVDD_SUPPLY <&p2822_vdd_1v8_cvb>
++#define AVDD_SUPPLY <&fpd_vdd_8_11>
++#define RESET_PIN <&gpio_i2c_3_74 14 GPIO_ACTIVE_LOW>
++
++#define TEGRA_SINTERFACE serial_e
++#define CSI_PORT 4
++#define CSI_LANES 4
++
++#define I2C_ADDR 3180000
++#define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++
++#define EEPROM_ADDR 54
++#define IMG_BUS 2
++
++/* UB960 */
++#define DES_ADDR 34
++#include "templated-deserializers/d3-des-ub960-template.dtsi"
++
++/* Port 0 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 0
++#define DES_LINK 0
++#define PORT_IDX 2
++#define ENDPOINT_A 4
++#define ENDPOINT_B 5
++#define SER_ADDR 48
++#define IMG_ADDR 68
++
++#include "d3-2xocto-cameras.dtsi"
++
++#if 0
++/* Port 1 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 1
++#define DES_LINK 1
++#define PORT_IDX 9
++#define ENDPOINT_A 18
++#define ENDPOINT_B 19
++#define SER_ADDR 49
++#define IMG_ADDR 69
++
++#include "d3-2xocto-cameras.dtsi"
++
++/* Port 2 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 2
++#define DES_LINK 2
++#define PORT_IDX 10
++#define ENDPOINT_A 20
++#define ENDPOINT_B 21
++#define SER_ADDR 4a
++#define IMG_ADDR 6a
++
++#include "d3-2xocto-cameras.dtsi"
++
++/* Port 3 */
++#include "d3-reset-port.dtsi"
++
++#define PORT_VCID 3
++#define DES_LINK 3
++#define PORT_IDX 11
++#define ENDPOINT_A 22
++#define ENDPOINT_B 23
++#define SER_ADDR 4b
++#define IMG_ADDR 6b
++
++#include "d3-2xocto-cameras.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-2xocto-cameras.dtsi b/arch/arm64/boot/dts/d3/d3-2xocto-cameras.dtsi
+new file mode 100644
+index 000000000000..5c739ec0cd4e
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-2xocto-cameras.dtsi
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++/* UB953 */
++#include "templated-serializers/d3-ser-ub953-template.dtsi"
++
++/* Possible Cams*/
++#include "d3-tegra-nvcsi.dtsi"
++#include "templated-cameras/d3-cam-ov10640-template.dtsi"
++#include "templated-cameras/d3-cam-imx390-template.dtsi"
++#include "templated-cameras/d3-cam-imx390rcm-template.dtsi"
++// TODO: This camera works, but adding support for it puts the DTB file over
++// the maximum size of 512 KB.
++// #include "templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi"
++
+diff --git a/arch/arm64/boot/dts/d3/d3-cic-cam0.dtsi b/arch/arm64/boot/dts/d3/d3-cic-cam0.dtsi
+new file mode 100644
+index 000000000000..53d2ed06b29a
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-cic-cam0.dtsi
+@@ -0,0 +1,49 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++
++#define DES_NODE ds90ub960
++#ifdef D3_BOARD_XAVIER_CIC
++#	define DES_PATH /proc/device-tree/i2c@3180000/mux@70/i2c@0/ub960@32
++#endif
++#ifdef D3_BOARD_TX2_CIC
++#	define DES_PATH /proc/device-tree/i2c@3180000/mux@70/i2c@0/ub960@32
++#endif
++#define SER_ADDR 3c
++#define IMG_BUS 9
++#define IMG_ADDR 48
++#define CSI_PORT 0
++#define CSI_LANES 4
++#define IOVDD_SUPPLY <&vdd_1v8_ap>
++#define AVDD_SUPPLY <&vdd_1v8_ap>
++#define STATUS disabled
++#define TEGRA_SINTERFACE serial_a
++/* A is CSI_PORT * 2 */
++#define ENDPOINT_A 0
++/* B is A+1 */
++#define ENDPOINT_B 1
++#define POSITION rear
++#define ORIENTATION 1
++#define PORT_VCID 0
++#define DES_LINK 0
++
++/* Include possible serializers */
++#include "templated-serializers/d3-ser-ub953-template.dtsi"
++
++/* Include possible cams */
++#include "d3-tegra-nvcsi.dtsi"
++#include "templated-cameras/d3-cam-ov10640-template.dtsi"
++#include "templated-cameras/d3-cam-imx390-template.dtsi"
++#include "templated-cameras/d3-cam-imx390rcm-template.dtsi"
++#include "templated-cameras/d3-cam-vg6768-template.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/d3-cic-cam2.dtsi b/arch/arm64/boot/dts/d3/d3-cic-cam2.dtsi
+new file mode 100644
+index 000000000000..a2cf8185dec9
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-cic-cam2.dtsi
+@@ -0,0 +1,36 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++
++#define CSI_PORT 2
++#define CSI_LANES 4
++#define DES_NODE max9296
++#define ENDPOINT_A 4
++#define ENDPOINT_B 5
++#define TEGRA_SINTERFACE serial_c
++#define STATUS disabled
++#define DES_PATH /proc/device-tree/i2c@3180000/mux@70/i2c@1/max9296@48
++#define GMSL_RESET_BIT_RATES <3000 187>
++#define IMG_BUS 40
++#define IMG_ADDR 10
++#define SER_ADDR 62
++#define EEPROM_ADDR 54
++#define POSITION centerright
++#define ORIENTATION 1
++#define PORT_VCID 0
++#define DES_LINK 0
++
++#include "d3-tegra-nvcsi.dtsi"
++#include "templated-serializers/d3-ser-max9295-template.dtsi"
++#include "templated-cameras/d3-cam-ar0820-template.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/d3-config-eeprom.dtsi b/arch/arm64/boot/dts/d3/d3-config-eeprom.dtsi
+new file mode 100644
+index 000000000000..dcdf21f70dbb
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-config-eeprom.dtsi
+@@ -0,0 +1,38 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++/* This file is a no-op unless an earlier file has defined a label
++ * for the configuration EEPROM. */
++#ifdef D3_CONFIG_EEPROM
++
++/* Make sure this file isn't included twice with an EEPROM selected, since
++ * we don't want to silently override a config-EEPROM selection. */
++#ifdef D3_CONFIG_EEPROM_INCLUDE_GUARD
++#error "d3-config-eeprom.dtsi included more than once.  I am not sure which you want to use!"
++#endif /*D3_CONFIG_EEPROM_INCLUDE_GUARD*/
++
++#define D3_CONFIG_EEPROM_INCLUDE_GUARD
++
++/* Tell the overlay loader which EEPROM to read configuration settings from. */
++/ {
++	chosen {
++		d3,config-eeprom@0 {
++			/* Reference the nvmem in the manner required by
++			 * kernel/kernel-4.9/Documentation/devicetree/bindings/nvmem/nvmem.txt
++			 */
++			nvmem = <&D3_CONFIG_EEPROM>;
++			nvmem-names = "overlay";
++		};
++	};
++};
++#endif /* D3_CONFIG_EEPROM */
+diff --git a/arch/arm64/boot/dts/d3/d3-jetson-bsp-version.dtsi.in b/arch/arm64/boot/dts/d3/d3-jetson-bsp-version.dtsi.in
+new file mode 100644
+index 000000000000..ed63b683a6cd
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-jetson-bsp-version.dtsi.in
+@@ -0,0 +1,19 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++/* This file is processed by autoconf. See d3-jetson-bsp-version.dtsi.in */
++#define D3_JETSON_BSP_VERSION_MAJOR @D3_JETSON_BSP_MAJOR@
++#define D3_JETSON_BSP_VERSION_MINOR @D3_JETSON_BSP_MINOR@
++#define D3_JETSON_BSP_VERSION_PATCH @D3_JETSON_BSP_PATCH@
++
++#define D3_JETSON_BSP_VERSION "@D3_JETSON_BSP_VERSION@"
+diff --git a/arch/arm64/boot/dts/d3/d3-reset-full.dtsi b/arch/arm64/boot/dts/d3/d3-reset-full.dtsi
+new file mode 100644
+index 000000000000..3da396d1f1b3
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-reset-full.dtsi
+@@ -0,0 +1,61 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++// Resets all values USED or MADE by a cam template
++
++#include "templated-cameras/d3-reset-cam.dtsi"
++#include "templated-serializers/d3-reset-ser.dtsi"
++#include "templated-deserializers/d3-reset-des.dtsi"
++
++#undef DES_NODE
++#undef DES_LINK_NODE
++#undef DES_LINK_PATH
++#undef DES_LINK
++#undef SER_MODEL
++#undef SEN_OUT_NODE
++#undef SEN_PATH
++#undef SER_NODE_OVERLAY
++#undef DES_PATH
++#undef SER_ADDR
++#undef IMG_BUS
++#undef IMG_ADDR
++#undef CSI_PORT
++#undef CSI_LANES
++#undef RESET_PIN
++#undef STATUS
++#undef TEGRA_SINTERFACE
++#undef ENDPOINT_A
++#undef ENDPOINT_B
++#undef POSITION
++#undef IS_ENABLED
++#undef IMG_BUS
++#undef I2C_ADDR
++#undef DES_ADDR
++#undef ORIENTATION
++#undef GMSL_LINK
++#undef GMSL_RESET_BIT_RATES
++#undef EEPROM_ADDR
++#undef AVDD_SUPPLY
++#undef CAM_MODULE
++#undef PORT_IDX
++#undef ERR_GPIO
++#undef INTERRUPTS
++#undef INTERRUPT_GPIO
++#undef LOCK_GPIO
++#undef RESET_PIN
++#undef FPD_PASS_GPIO
++#undef FPD_LOCK_GPIO
++#undef I2C_BASE_PATH
++#undef CAM_NODE_NAME
++#undef PORT_VCID
++
+diff --git a/arch/arm64/boot/dts/d3/d3-reset-port.dtsi b/arch/arm64/boot/dts/d3/d3-reset-port.dtsi
+new file mode 100644
+index 000000000000..b498b0e8ac0f
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-reset-port.dtsi
+@@ -0,0 +1,20 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#undef PORT_VCID
++#undef DES_LINK
++#undef PORT_IDX
++#undef ENDPOINT_A
++#undef ENDPOINT_B
++#undef SER_ADDR
++#undef IMG_ADDR
+diff --git a/arch/arm64/boot/dts/d3/d3-rsp-cam0.dtsi b/arch/arm64/boot/dts/d3/d3-rsp-cam0.dtsi
+new file mode 100644
+index 000000000000..6afd28df2939
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-rsp-cam0.dtsi
+@@ -0,0 +1,105 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++#define CSI_PORT 0
++#define STATUS disabled
++#define TEGRA_SINTERFACE serial_a
++#define POSITION bottomleft
++#define ORIENTATION 1
++#define IOVDD_SUPPLY <&vdd_1v8_ap>
++#define AVDD_SUPPLY <&vdd_1v8_ap>
++#define RESET_PIN <&gpio_i2c_8_74 5 GPIO_ACTIVE_LOW> //TODO: REVIEW THIS
++#define ENDPOINT_A 0
++#define ENDPOINT_B 1
++#define EEPROM_ADDR 55
++#define PORT_VCID 0
++#define DES_LINK 0
++
++#ifdef D3_BOARD_RSP_FPDLINK
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* UB960 */
++#	define RESET_PIN <&gpio_i2c_8_74 5 GPIO_ACTIVE_LOW>
++#	define FPD_PASS_GPIO <&gpio_i2c_8_74 6 GPIO_ACTIVE_HIGH>
++#	define FPD_LOCK_GPIO <&gpio_i2c_8_74 7 GPIO_ACTIVE_HIGH>
++#	define DES_ADDR 30
++#	include "templated-deserializers/d3-des-ub960-template.dtsi"
++/* UB954 */
++#	define IMG_ADDR 48
++#	define IMG_BUS 2
++#	define SER_ADDR 3c
++#	include "templated-serializers/d3-ser-ub953-template.dtsi"
++/* Possible Cams */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-cameras/d3-cam-ov10640-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390rcm-template.dtsi"
++#	include "templated-cameras/d3-cam-vg6768-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi"
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL1
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9286 */
++#	define DES_ADDR 48
++#	define ERR_GPIO <&gpio_i2c_8_74 2 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_74>
++#	define INTERRUPTS <1 IRQ_TYPE_EDGE_BOTH 2 IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_74 1 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_74 7 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x41 0x40>
++#	define IMG_ADDR <0x11 0x10>
++#	include "templated-deserializers/d3-des-max9286-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	define IMG_BUS 40
++#	define IMG_ADDR 11
++#	define SER_ADDR 41
++/* ar231 */
++#	include "d3-tegra-nvcsi.dtsi"
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL2
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9296 */
++#	define DES_ADDR 48
++#	define ERR_GPIO <&gpio_i2c_8_74 2 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_74>
++#	define INTERRUPTS <1 IRQ_TYPE_EDGE_BOTH 2 IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_74 1 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_74 7 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x41 0x40>
++#	define IMG_ADDR <0x11 0x10>
++#	include "templated-deserializers/d3-des-max9296-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	define IMG_BUS 40
++#	define IMG_ADDR 11
++#	define SER_ADDR 41
++/* ar0820 */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-serializers/d3-ser-max9295-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-template.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-rsp-cam1.dtsi b/arch/arm64/boot/dts/d3/d3-rsp-cam1.dtsi
+new file mode 100644
+index 000000000000..3319a792b7b3
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-rsp-cam1.dtsi
+@@ -0,0 +1,106 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++#define CSI_PORT 1
++#define STATUS disabled
++#define TEGRA_SINTERFACE serial_b
++#define POSITION centerleft
++#define ORIENTATION 1
++#define ENDPOINT_A 2
++#define ENDPOINT_B 3
++#define ORIENTATION 1
++#define IOVDD_SUPPLY <&vdd_1v8_ap>
++#define AVDD_SUPPLY <&vdd_1v8_ap>
++#define RESET_PIN <&gpio_i2c_8_74 13 GPIO_ACTIVE_LOW>
++#define EEPROM_ADDR 56
++#define PORT_VCID 0
++
++#define DES_LINK 0
++
++#ifdef D3_BOARD_RSP_FPDLINK
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* UB960 */
++#	define RESET_PIN <&gpio_i2c_8_74 13 GPIO_ACTIVE_LOW>
++#	define FPD_PASS_GPIO <&gpio_i2c_8_74 14 GPIO_ACTIVE_HIGH>
++#	define FPD_LOCK_GPIO <&gpio_i2c_8_74 15 GPIO_ACTIVE_HIGH>
++#	define DES_ADDR 32
++#	include "templated-deserializers/d3-des-ub960-template.dtsi"
++/* UB954 */
++#	define IMG_ADDR 4a
++#	define IMG_BUS 2
++#	define SER_ADDR 3e
++#	include "templated-serializers/d3-ser-ub953-template.dtsi"
++/* Load Cams */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-cameras/d3-cam-ov10640-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390rcm-template.dtsi"
++#	include "templated-cameras/d3-cam-vg6768-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi"
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL1
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9286 */
++#	define DES_ADDR 4a
++#	define ERR_GPIO <&gpio_i2c_8_74 10 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_74>
++#	define INTERRUPTS <9 IRQ_TYPE_EDGE_BOTH 0xA IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_74 9 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_74 15 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x42 0x40>
++#	define IMG_ADDR <0x12 0x10>
++#	include "templated-deserializers/d3-des-max9286-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	include "d3-tegra-nvcsi.dtsi"
++#	define IMG_BUS 41
++#	define IMG_ADDR 12
++#	define SER_ADDR 42
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL2
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9296 */
++#	define DES_ADDR 4a
++#	define ERR_GPIO <&gpio_i2c_8_74 10 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_74>
++#	define INTERRUPTS <9 IRQ_TYPE_EDGE_BOTH 0xA IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_74 9 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_74 15 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x42 0x40>
++#	define IMG_ADDR <0x12 0x10>
++#	include "templated-deserializers/d3-des-max9296-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	define IMG_BUS 41
++#	define IMG_ADDR 16
++#	define SER_ADDR 42
++/* ar0820 */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-serializers/d3-ser-max9295-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-template.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-rsp-cam2.dtsi b/arch/arm64/boot/dts/d3/d3-rsp-cam2.dtsi
+new file mode 100644
+index 000000000000..dc6c847471fa
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-rsp-cam2.dtsi
+@@ -0,0 +1,108 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++#define CSI_PORT 2
++#define STATUS disabled
++#define TEGRA_SINTERFACE serial_c
++#define POSITION centerright
++#define ORIENTATION 1
++#define ENDPOINT_A 4
++#define ENDPOINT_B 5
++#define ORIENTATION 1
++#define IOVDD_SUPPLY <&vdd_1v8_ap>
++#define AVDD_SUPPLY <&vdd_1v8_ap>
++#define RESET_PIN <&gpio_i2c_8_75 5 GPIO_ACTIVE_LOW>
++#define EEPROM_ADDR 57
++#define PORT_VCID 0
++
++#define DES_LINK 0
++
++#ifdef D3_BOARD_RSP_FPDLINK
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* UB960 */
++#	define RESET_PIN <&gpio_i2c_8_75 5 GPIO_ACTIVE_LOW>
++#	define FPD_PASS_GPIO <&gpio_i2c_8_75 6 GPIO_ACTIVE_HIGH>
++#	define FPD_LOCK_GPIO <&gpio_i2c_8_75 7 GPIO_ACTIVE_HIGH>
++#	define DES_ADDR 34
++#	include "templated-deserializers/d3-des-ub960-template.dtsi"
++/* UB954 */
++#	define IMG_BUS 2
++#	define IMG_ADDR 4c
++#	define SER_ADDR 40
++#	include "templated-serializers/d3-ser-ub953-template.dtsi"
++/* Possible Cams */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-cameras/d3-cam-ov10640-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390rcm-template.dtsi"
++#	include "templated-cameras/d3-cam-vg6768-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi"
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL1
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9286 */
++#	define DES_ADDR 4c
++#	define ERR_GPIO <&gpio_i2c_8_75 2 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_75>
++#	define INTERRUPTS <1 IRQ_TYPE_EDGE_BOTH 2 IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_75 1 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_75 7 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x43 0x40>
++#	define IMG_ADDR <0x13 0x10>
++#	define GMSL_LINK gmsl_link0
++#	include "templated-deserializers/d3-des-max9286-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	include "d3-tegra-nvcsi.dtsi"
++#	define IMG_BUS 42
++#	define IMG_ADDR 13
++#	define SER_ADDR 43
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL2
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9296 */
++#	define DES_ADDR 68
++#	define ERR_GPIO <&gpio_i2c_8_75 2 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_75>
++#	define INTERRUPTS <1 IRQ_TYPE_EDGE_BOTH 2 IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_75 1 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_75 7 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x43 0x40>
++#	define IMG_ADDR <0x13 0x10>
++#	define GMSL_LINK gmsl_link0
++#	include "templated-deserializers/d3-des-max9296-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	define IMG_BUS 42
++#	define IMG_ADDR 13
++#	define SER_ADDR 43
++/* ar0820 */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-serializers/d3-ser-max9295-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-template.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-rsp-cam3.dtsi b/arch/arm64/boot/dts/d3/d3-rsp-cam3.dtsi
+new file mode 100644
+index 000000000000..8ae247c70151
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-rsp-cam3.dtsi
+@@ -0,0 +1,108 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++#define CSI_PORT 3
++#define STATUS disabled
++#define TEGRA_SINTERFACE serial_d
++#define POSITION topleft
++#define ORIENTATION 1
++#define ENDPOINT_A 6
++#define ENDPOINT_B 7
++#define ORIENTATION 1
++#define IOVDD_SUPPLY <&vdd_1v8_ap>
++#define AVDD_SUPPLY <&vdd_1v8_ap>
++#define RESET_PIN <&gpio_i2c_8_75 13 GPIO_ACTIVE_LOW>
++#define EEPROM_ADDR 58
++#define PORT_VCID 0
++
++#define DES_LINK 0
++
++#ifdef D3_BOARD_RSP_FPDLINK
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* UB960 */
++#	define RESET_PIN <&gpio_i2c_8_75 13 GPIO_ACTIVE_LOW>
++#	define FPD_PASS_GPIO <&gpio_i2c_8_75 14 GPIO_ACTIVE_HIGH>
++#	define FPD_LOCK_GPIO <&gpio_i2c_8_75 15 GPIO_ACTIVE_HIGH>
++#	define DES_ADDR 36
++#	include "templated-deserializers/d3-des-ub960-template.dtsi"
++/* UB954 */
++#	define IMG_ADDR 4e
++#	define IMG_BUS 2
++#	define SER_ADDR 42
++#	include "templated-serializers/d3-ser-ub953-template.dtsi"
++/* Possible Cams */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-cameras/d3-cam-ov10640-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390rcm-template.dtsi"
++#	include "templated-cameras/d3-cam-vg6768-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi"
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL1
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9286 */
++#	define DES_ADDR 68
++#	define ERR_GPIO <&gpio_i2c_8_75 10 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_75>
++#	define INTERRUPTS <9 IRQ_TYPE_EDGE_BOTH 0xa IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_75 9 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_75 15 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x44 0x40>
++#	define IMG_ADDR <0x14 0x10>
++#	define GMSL_LINK gmsl_link0
++#	include "templated-deserializers/d3-des-max9286-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	include "d3-tegra-nvcsi.dtsi"
++#	define IMG_BUS 16
++#	define IMG_ADDR 14
++#	define SER_ADDR 44
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL2
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9296 */
++#	define DES_ADDR 6c
++#	define ERR_GPIO <&gpio_i2c_8_75 10 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_75>
++#	define INTERRUPTS <9 IRQ_TYPE_EDGE_BOTH 0xa IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_75 9 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_75 15 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x44 0x40>
++#	define IMG_ADDR <0x14 0x10>
++#	define GMSL_LINK gmsl_link0
++#	include "templated-deserializers/d3-des-max9296-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	define IMG_BUS 20
++#	define IMG_ADDR 14
++#	define SER_ADDR 44
++/* ar0820 */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-serializers/d3-ser-max9295-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-template.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-rsp-cam4.dtsi b/arch/arm64/boot/dts/d3/d3-rsp-cam4.dtsi
+new file mode 100644
+index 000000000000..46ef77527435
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-rsp-cam4.dtsi
+@@ -0,0 +1,107 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++#define CSI_PORT 4
++#define STATUS disabled
++#define TEGRA_SINTERFACE serial_e
++#define POSITION bottomright
++#define ORIENTATION 1
++#define ENDPOINT_A 8
++#define ENDPOINT_B 9
++#define ORIENTATION 1
++#define IOVDD_SUPPLY <&vdd_1v8_ap>
++#define AVDD_SUPPLY <&vdd_1v8_ap>
++#define RESET_PIN <&gpio_i2c_8_76 5 GPIO_ACTIVE_LOW>
++#define EEPROM_ADDR 55
++#define PORT_VCID 0
++
++#define DES_LINK 0
++
++#ifdef D3_BOARD_RSP_FPDLINK
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* UB960 */
++#	define RESET_PIN <&gpio_i2c_8_76 5 GPIO_ACTIVE_LOW>
++#	define FPD_PASS_GPIO <&gpio_i2c_8_76 6 GPIO_ACTIVE_HIGH>
++#	define FPD_LOCK_GPIO <&gpio_i2c_8_76 7 GPIO_ACTIVE_HIGH>
++#	define DES_ADDR 38
++#	include "templated-deserializers/d3-des-ub960-template.dtsi"
++/* UB954 */
++#	define IMG_ADDR 50
++#	define IMG_BUS 2
++#	define SER_ADDR 44
++#	include "templated-serializers/d3-ser-ub953-template.dtsi"
++/* Possible Cams */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-cameras/d3-cam-ov10640-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390rcm-template.dtsi"
++#	include "templated-cameras/d3-cam-vg6768-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi"
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL1
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9286 */
++#	define DES_ADDR 6a
++#	define ERR_GPIO <&gpio_i2c_8_76 2 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_76>
++#	define INTERRUPTS <1 IRQ_TYPE_EDGE_BOTH 2 IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_76 1 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_76 7 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x45 0x40>
++#	define IMG_ADDR <0x15 0x10>
++#	define GMSL_LINK gmsl_link0
++#	include "templated-deserializers/d3-des-max9286-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	include "d3-tegra-nvcsi.dtsi"
++#	define IMG_BUS 44
++#	define IMG_ADDR 15
++#	define SER_ADDR 45
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL2
++#	define I2C_ADDR c240000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9296 */
++#	define DES_ADDR 48
++#	define ERR_GPIO <&gpio_i2c_8_76 2 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_76>
++#	define INTERRUPTS <1 IRQ_TYPE_EDGE_BOTH 2 IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_76 1 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_76 7 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x45 0x40>
++#	define IMG_ADDR <0x15 0x10>
++#	include "templated-deserializers/d3-des-max9296-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	define IMG_BUS 44
++#	define IMG_ADDR 15
++#	define SER_ADDR 45
++/* ar0820 */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-serializers/d3-ser-max9295-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-template.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-rsp-cam5.dtsi b/arch/arm64/boot/dts/d3/d3-rsp-cam5.dtsi
+new file mode 100644
+index 000000000000..0c85eb7c7303
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-rsp-cam5.dtsi
+@@ -0,0 +1,106 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-full.dtsi"
++#define CSI_PORT 5
++#define STATUS disabled
++#define TEGRA_SINTERFACE serial_f
++#define POSITION topright
++#define ORIENTATION 1
++#define IOVDD_SUPPLY <&vdd_1v8_ap>
++#define AVDD_SUPPLY <&vdd_1v8_ap>
++#define RESET_PIN <&gpio_i2c_8_76 13 GPIO_ACTIVE_LOW>
++#define ENDPOINT_A 10
++#define ENDPOINT_B 11
++#define EEPROM_ADDR 56
++#define PORT_VCID 0
++
++#define DES_LINK 0
++
++#ifdef D3_BOARD_RSP_FPDLINK
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* UB960 */
++#	define RESET_PIN <&gpio_i2c_8_76 13 GPIO_ACTIVE_LOW>
++#	define FPD_PASS_GPIO <&gpio_i2c_8_76 14 GPIO_ACTIVE_HIGH>
++#	define FPD_LOCK_GPIO <&gpio_i2c_8_76 15 GPIO_ACTIVE_HIGH>
++#	define DES_ADDR 3a
++#	include "templated-deserializers/d3-des-ub960-template.dtsi"
++/* UB954 */
++#	define IMG_ADDR 52
++#	define IMG_BUS 2
++#	define SER_ADDR 46
++#	include "templated-serializers/d3-ser-ub953-template.dtsi"
++/* Possible Cams */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-cameras/d3-cam-ov10640-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390-template.dtsi"
++#	include "templated-cameras/d3-cam-imx390rcm-template.dtsi"
++#	include "templated-cameras/d3-cam-vg6768-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi"
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL1
++#	define I2C_ADDR 3180000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9286 */
++#	define DES_ADDR 6c
++#	define ERR_GPIO <&gpio_i2c_8_76 10 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_76>
++#	define INTERRUPTS <9 IRQ_TYPE_EDGE_BOTH 0xa IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_76 9 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_76 15 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x46 0x40>
++#	define IMG_ADDR <0x16 0x10>
++#	define GMSL_LINK gmsl_link0
++#	include "templated-deserializers/d3-des-max9286-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	include "d3-tegra-nvcsi.dtsi"
++#	define IMG_BUS 45
++#	define IMG_ADDR 16
++#	define SER_ADDR 46
++#endif
++
++
++#ifdef D3_BOARD_RSP_GMSL2
++#	define I2C_ADDR c240000
++#	define I2C_BASE_PATH CONCAT_2(/proc/device-tree/i2c@,I2C_ADDR)
++#	define CSI_LANES 2
++/* MAX9296 */
++#	define DES_ADDR 4a
++#	define ERR_GPIO <&gpio_i2c_8_76 10 GPIO_ACTIVE_HIGH>
++#	define INTERRUPT_GPIO <&gpio_i2c_8_76>
++#	define INTERRUPTS <9 IRQ_TYPE_EDGE_BOTH 0xa IRQ_TYPE_EDGE_BOTH>
++#	define LOCK_GPIO <&gpio_i2c_8_76 9 GPIO_ACTIVE_HIGH>
++#	define RESET_PIN <&gpio_i2c_8_76 15 GPIO_ACTIVE_LOW>
++#	define SER_ADDR <0x46 0x40>
++#	define IMG_ADDR <0x16 0x10>
++#	include "templated-deserializers/d3-des-max9296-template.dtsi"
++#	undef SER_ADDR
++#	undef IMG_ADDR
++/* generic cam info */
++#	define GMSL_RESET_BIT_RATES <3000 187>
++#	define IMG_BUS 45
++#	define IMG_ADDR 12
++#	define SER_ADDR 46
++/* ar0820 */
++#	include "d3-tegra-nvcsi.dtsi"
++#	include "templated-serializers/d3-ser-max9295-template.dtsi"
++#	include "templated-cameras/d3-cam-ar0820-template.dtsi"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-string-utils.dtsi b/arch/arm64/boot/dts/d3/d3-string-utils.dtsi
+new file mode 100644
+index 000000000000..3b2c0112a8a8
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-string-utils.dtsi
+@@ -0,0 +1,45 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#ifndef D3_STRING_UTILS_H__
++#define D3_STRING_UTILS_H__
++
++#define X_STR(a) #a
++#define STR(a) X_STR(a)
++
++#define X_CONCAT_2(a,b) a##b
++#define CONCAT_2(a,b) X_CONCAT_2(a,b)
++
++#define X_CONCAT_3(a,b,c) a##b##c
++#define CONCAT_3(a,b,c) X_CONCAT_3(a,b,c)
++
++#define X_CONCAT_4(a,b,c,d) a##b##c##d
++#define CONCAT_4(a,b,c,d) X_CONCAT_4(a,b,c,d)
++
++#define X_CONCAT_5(a,b,c,d,e) a##b##c##d##e
++#define CONCAT_5(a,b,c,d,e) X_CONCAT_5(a,b,c,d,e)
++
++#define X_CONCAT_6(a,b,c,d,e,f) a##b##c##d##e##f
++#define CONCAT_6(a,b,c,d,e,f) X_CONCAT_6(a,b,c,d,e,f)
++
++#define X_CONCAT_8(a,b,c,d,e,f,g,h) a##b##c##d##e##f##g##h
++#define CONCAT_8(a,b,c,d,e,f,g,h) X_CONCAT_8(a,b,c,d,e,f,g,h)
++
++#define HEX_PREFIX(a) CONCAT_2(0x, a)
++#define AMPER_PREFIX(a) CONCAT_2(&, a)
++
++#define JOIN_2(a,b) a b
++#define JOIN_3(a,b,c) a b c
++#define JOIN_4(a,b,c,d) a b c d
++
++#endif
+diff --git a/arch/arm64/boot/dts/d3/d3-tegra-nvcsi.dtsi b/arch/arm64/boot/dts/d3/d3-tegra-nvcsi.dtsi
+new file mode 100644
+index 000000000000..2e790f8afbeb
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-tegra-nvcsi.dtsi
+@@ -0,0 +1,78 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++// Compatibility for where port_idx corresponds to csi_port
++#ifndef PORT_IDX
++#	define PORT_IDX CSI_PORT
++#endif
++
++#define VI_PORT_NODE CONCAT_2(vi_port_,PORT_IDX)
++#define VI_IN_NODE CONCAT_2(vi_in_,PORT_IDX)
++#define CHAN_NODE CONCAT_2(chan_,PORT_IDX)
++#define CSI_IN_NODE CONCAT_2(csi_in_,PORT_IDX)
++#define CSI_OUT_NODE CONCAT_2(csi_out_,PORT_IDX)
++#define CAM_MODULE_NODE CONCAT_2(cam_module, PORT_IDX)
++
++&CAM_MODULE_NODE {
++	position = STR(POSITION);
++	status = STR(STATUS);
++	orientation = STR(ORIENTATION);
++
++        drivernode0 {
++		pcl_id = "v4l2_sensor";
++		status = STR(STATUS);
++	};
++};
++
++&vi_base {
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		VI_PORT_NODE: port@PORT_IDX {
++			status = STR(STATUS);
++			reg = <PORT_IDX>;
++			VI_IN_NODE: endpoint {
++				status = STR(STATUS);
++				port-index = <CSI_PORT>;
++				bus-width = <CSI_LANES>;
++			};
++		};
++	};
++};
++
++&csi_base {
++	CHAN_NODE: channel@PORT_IDX {
++		status = STR(STATUS);
++		reg = <PORT_IDX>;
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			port@0 {
++				status = STR(STATUS);
++				reg = <0>;
++				CSI_IN_NODE: endpoint@ENDPOINT_A {
++					status = STR(STATUS);
++					port-index = <CSI_PORT>;
++					bus-width = <CSI_LANES>;
++				};
++			};
++			port@1 {
++				status = STR(STATUS);
++				reg = <1>;
++				CSI_OUT_NODE: endpoint@ENDPOINT_B {
++					status = STR(STATUS);
++				};
++			};
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-tx2-cic.dts b/arch/arm64/boot/dts/d3/d3-tx2-cic.dts
+new file mode 100644
+index 000000000000..bc820a0e749f
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-tx2-cic.dts
+@@ -0,0 +1,24 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-string-utils.dtsi"
++
++#include "d3-tx2-cic.dtsi"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-tx2-cic.dtsi b/arch/arm64/boot/dts/d3/d3-tx2-cic.dtsi
+new file mode 100644
+index 000000000000..27c1772d720c
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-tx2-cic.dtsi
+@@ -0,0 +1,266 @@
++/*
++ * d3-tx2-cic.dtsi D3 Engineering Camera Interface Card
++ * Designed for use with an Nvidia Jetson TX2
++ *
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "tegra186-quill-p3310-1000-a00-00-base.dts"
++#define D3_BOARD_TX2_CIC
++#define TX2_CIC
++#define D3_CONFIG_EEPROM d3_cic_eeprom
++
++/ {
++        nvidia,dtsfilename = __FILE__;
++        nvidia,dtbbuildtime = __DATE__, __TIME__;
++
++	/* I2C_CAM, DT alias: i2c2 (clock: C6, data: D6) */
++        i2c@3180000 {
++
++		/* Microchip 24AA1026 (U28) */
++		D3_CONFIG_EEPROM: eeprom@50 {
++			status = "okay";
++			compatible = "atmel,early24c1024";
++				/* "early" so the driver will be loaded by
++				 * early-at24, in time to be used by
++				 * config-eeprom. */
++			reg = <0x50>;
++			pagesize = <128>;
++
++		};
++
++		/* I2C MUX: TCA9546 (U27) */
++		mux@70 {
++			status = "okay";
++			compatible = "nxp,pca9546";
++			reg = <0x70>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++			vcc-supply = <&en_vdd_cam>;
++			vcc-pullup-supply = <&en_vdd_cam>;
++
++			i2c_fpdlink: i2c@0 {
++				status = "okay";
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				i2c-mux,deselect-on-exit;
++
++				/*  DS90UB960 Deserializer (U1) */
++				ds90ub960: ub960@32 {
++					status = "okay";
++					compatible = "d3,ub960";
++					reg = <0x32>;
++					#address-cells = <1>;
++					#size-cells = <0>;
++					iovdd-supply = <&en_vdd_cam>;
++					avdd-supply = <&fpd_vdd>;
++					pdb-gpios = <&tegra_main_gpio TEGRA_MAIN_GPIO(R, 1) GPIO_ACTIVE_LOW>;
++					/* Valid values are: 1600, 1200, 800, 400 NOTE
++					 * that 1600 is dependent upon REFCLK. For a 25Mhz
++					 * REFCLK the speed is 1600, for 23 Mhz is it
++					 * 1472, for for 26Mhz it is 1664
++					 *
++					 * If this is not present 1600* is used
++					 */
++					csi-tx-speed-mbps = <1600>;
++					/* 1,2,3, or 4 */
++					csi-lane-count = <4>;
++
++					/* 0, or 1 */
++					csi-continuous-clock = <1>;
++
++					ds90ub960_link0: link@0 {
++						reg = <0>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++
++					ds90ub960_link1: link@1 {
++						status = "disabled";
++						reg = <1>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++
++					ds90ub960_link2: link@2 {
++						status = "disabled";
++						reg = <2>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++
++					ds90ub960_link3: link@3 {
++						status = "disabled";
++						reg = <3>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++				};
++			};
++
++			i2c_gmsl: i2c@1 {
++				status = "okay";
++				reg = <1>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				i2c-mux,deselect-on-exit;
++
++				/* MAX929 Deserializer (U2) */
++				max9296: max9296@48 {
++					status = "okay";
++					compatible = "maxim,max9296";
++					reg = <0x48>;
++					#address-cells = <1>;
++					#size-cells = <0>;
++					vdd-supply = <&en_vdd_cam>;
++					gmsl-supply = <&gmsl_vdd>;
++					reset-gpios = <&tegra_main_gpio TEGRA_MAIN_GPIO(R, 5) GPIO_ACTIVE_LOW>;
++					gmsl-lock-gpios = <&gpio_i2c_2_74 7 GPIO_ACTIVE_HIGH>;
++					gmsl-err-gpios = <&gpio_i2c_2_74 15 GPIO_ACTIVE_HIGH>;
++					csi-tx-speed-mbps = <1600>;
++					csi-lane-count = <4>;
++					csi-continuous-clock = <1>;
++
++					max9296_link0: link@0 {
++						reg = <0>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++
++					max9296_link1: link@1 {
++						reg = <1>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++				};
++			};
++
++			/* Bus 2 is not used */
++			i2c_exp: i2c@2 {
++				status = "okay";
++				reg = <2>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				i2c-mux,deselect-on-exit;
++			};
++
++			/* Bus 3 is not used */
++			i2c_test: i2c@3 {
++				status = "okay";
++				reg = <3>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				i2c-mux,deselect-on-exit;
++			};
++		};
++
++		/* I2C GPIO expander TCA9539 (U29) */
++		gpio_i2c_2_74: gpio@74 {
++			status = "okay";
++			compatible = "ti,tca9539";
++			reg = <0x74>;
++			#gpio-cells = <2>;
++			gpio-controller;
++			vcc-supply = <&en_vdd_cam>;
++			interrupt-controller;
++			interrupt-parent = <&tegra_aon_gpio>;
++			interrupts = <TEGRA_AON_GPIO(AA, 2) IRQ_TYPE_EDGE_BOTH>;
++		};
++
++		/* I2C GPIO expander TCA9539 (U31) */
++		gpio_i2c_2_76: gpio@76 {
++			status = "okay";
++			compatible = "ti,tca9539";
++			reg = <0x76>;
++			#gpio-cells = <2>;
++			gpio-controller;
++			vcc-supply = <&en_vdd_cam>;
++			interrupt-controller;
++			interrupt-parent = <&tegra_aon_gpio>;
++			interrupts = <TEGRA_AON_GPIO(AA, 2) IRQ_TYPE_EDGE_BOTH>;
++		};
++	};
++
++	fixed-regulators {
++		/* 1.1V regulator (U5) */
++		fpd_vdd_1v1: regulator@300 {
++			status = "okay";
++			reg = <0x12c>;
++			regulator-name = "fpd-1v1";
++			compatible = "regulator-fixed";
++			regulator-always-on;
++				/* EN pulled to VDD_1V8_SLP from SOM to CIC */
++			regulator-min-microvolt = <1100000>;
++			regulator-max-microvolt = <1100000>;
++			vin-supply = <&en_vdd_cam>;
++		};
++		/* 1.2V regulator (U20) */
++		gmsl_vdd_1v2: regulator@301 {
++			status = "okay";
++			reg = <0x12d>;
++			regulator-name = "gmsl-1v2";
++			compatible = "regulator-fixed";
++			regulator-always-on;
++				/* EN pulled to VDD_1V8_SLP from SOM to CIC */
++			regulator-min-microvolt = <1200000>;
++			regulator-max-microvolt = <1200000>;
++			vin-supply = <&en_vdd_cam>;
++		};
++		/* GMSL regulator (U30) */
++		/* Controlled by the Camera Connector Pin 93 */
++		gmsl_vdd: regulator@302 {
++			status = "okay";
++			reg = <0x12e>;
++			regulator-name = "gmsl_vdd";
++			compatible = "regulator-fixed";
++			gpio = <&tegra_main_gpio TEGRA_MAIN_GPIO(R, 0) GPIO_ACTIVE_LOW>;
++			enable-active-high;
++		};
++		/* FPD-Link regulator (U21) */
++		/* Controlled by the Camera Connector Pin 90 */
++		fpd_vdd: regulator@303 {
++			status = "okay";
++			reg = <0x12f>;
++			regulator-name = "fpd_vdd";
++			compatible = "regulator-fixed";
++			gpio = <&tegra_main_gpio TEGRA_MAIN_GPIO(N, 2) GPIO_ACTIVE_LOW>;
++			enable-active-high;
++		};
++	};
++
++	host1x {
++		vi@15700000 {
++			num-channels = <6>;
++			vi_ports: ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				/* ports will be included here */
++			};
++		};
++
++		nvcsi@150c0000 {
++			num-channels = <6>;
++			/* channels will be included here */
++		};
++	};
++
++	tegra-camera-platform {
++		num_csi_lanes = <8>;
++		max_lane_speed = <1500000>;
++	};
++};
++
++#include "d3-cic-cam0.dtsi"
++#include "d3-cic-cam2.dtsi"
++
++#include "d3-config-eeprom.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/d3-tx2-rsp-fpdlink.dts b/arch/arm64/boot/dts/d3/d3-tx2-rsp-fpdlink.dts
+new file mode 100644
+index 000000000000..ca5b6ec08f49
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-tx2-rsp-fpdlink.dts
+@@ -0,0 +1,40 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++/*
++ * Device tree for the FPDLink version of the RSP board
++ * Include:
++ *  - the common parts of the base board (d3-rsp-dtsi)
++ *  - the FPDLink deserializers (d3-rsp-fpdlink-des.dtsi)
++ *  - the camera modules
++ */
++
++#include "d3-string-utils.dtsi"
++
++#define D3_BOARD_RSP_FPDLINK
++#include "d3-tx2-rsp.dtsi"
++#include "d3-rsp-cam0.dtsi"
++#include "d3-rsp-cam1.dtsi"
++#include "d3-rsp-cam2.dtsi"
++#include "d3-rsp-cam3.dtsi"
++#include "d3-rsp-cam4.dtsi"
++#include "d3-rsp-cam5.dtsi"
++
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl1.dts b/arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl1.dts
+new file mode 100644
+index 000000000000..a28a440034b6
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl1.dts
+@@ -0,0 +1,40 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++/*
++ * Device tree for the GMSL version of the RSP board
++ * Include:
++ *  - the common parts of the base board (d3-rsp-dtsi)
++ *  - the GMSL deserializers (d3-rsp-gmsl-des.dtsi)
++ *  - the camera modules
++ */
++
++#include "d3-string-utils.dtsi"
++
++#define D3_BOARD_RSP_GMSL1
++#include "d3-tx2-rsp.dtsi"
++#include "d3-rsp-cam0.dtsi"
++#include "d3-rsp-cam1.dtsi"
++#include "d3-rsp-cam2.dtsi"
++#include "d3-rsp-cam3.dtsi"
++#include "d3-rsp-cam4.dtsi"
++#include "d3-rsp-cam5.dtsi"
++
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl2.dts b/arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl2.dts
+new file mode 100644
+index 000000000000..94385e5dac80
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-tx2-rsp-gmsl2.dts
+@@ -0,0 +1,40 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++/*
++ * Device tree for the GMSL version of the RSP board
++ * Include:
++ *  - the common parts of the base board (d3-rsp-dtsi)
++ *  - the GMSL deserializers (d3-rsp-gmsl-des.dtsi)
++ *  - the camera modules
++ */
++
++#include "d3-string-utils.dtsi"
++
++#define D3_BOARD_RSP_GMSL2
++#include "d3-tx2-rsp.dtsi"
++#include "d3-rsp-cam0.dtsi"
++#include "d3-rsp-cam1.dtsi"
++#include "d3-rsp-cam2.dtsi"
++#include "d3-rsp-cam3.dtsi"
++#include "d3-rsp-cam4.dtsi"
++#include "d3-rsp-cam5.dtsi"
++
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-tx2-rsp.dts b/arch/arm64/boot/dts/d3/d3-tx2-rsp.dts
+new file mode 100644
+index 000000000000..6963937fa950
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-tx2-rsp.dts
+@@ -0,0 +1,27 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++/*
++ * Device tree for the FPDLink version of the RSP board
++ * Include:
++ *  - the common parts of the base board (d3-rsp-dtsi)
++ *  - the FPDLink deserializers (d3-rsp-fpdlink-des.dtsi)
++ *  - the camera modules
++ */
++#include "d3-rsp.dtsi"
++#include "d3-rsp-cam0.dtsi"
++#include "d3-rsp-cam1.dtsi"
++#include "d3-rsp-cam2.dtsi"
++#include "d3-rsp-cam3.dtsi"
++#include "d3-rsp-cam4.dtsi"
++#include "d3-rsp-cam5.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/d3-tx2-rsp.dtsi b/arch/arm64/boot/dts/d3/d3-tx2-rsp.dtsi
+new file mode 100644
+index 000000000000..1be456d87e22
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-tx2-rsp.dtsi
+@@ -0,0 +1,550 @@
++/*
++ * D3 Engineering NVIDIA RSP
++ *
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "tegra186-quill-p3310-1000-c03-00-base.dts"
++#include <dt-bindings/media/camera.h>
++#include "dt-bindings/clock/tegra186-clock.h"
++#include "t18x-common-platforms/tegra186-hdmi.dtsi"
++#include "tegra186-soc/tegra186-camera.dtsi"
++
++/ {
++	rtcpu@b000000 {
++		status = "okay";
++	};
++
++	/* Add fan tach_gpio to pwm_fan_shared_data */
++	pfsd {
++		tach_gpio = <&tegra_main_gpio TEGRA_MAIN_GPIO(X, 4) IRQ_TYPE_EDGE_BOTH>;
++	};
++
++	/* Give pwm_fan.c a regulator to look at in leiu of vdd_fan */
++	pwm-fan {
++		vdd-fan-supply = <&battery_reg>;
++	};
++
++	/* Pin A9 (GPIO3_PBB.00) is connected to the SYNC_EXT signal, which is
++	 * an optional input to the TX2. By default, this pin is an output and
++	 * was pulling this signal low. Setting it to an input so that it can
++	 * be driven properly
++	 *
++	 * Pin B19 (GPIO3_PI.05) is connected to FAN_DISABLE. This pin is set
++	 * HIGH by default, thus preventing us from controlling the fan. This
++	 * pin is not used by the pwm_fan.c driver so we take over and set it
++	 * as a low output.
++	 */
++	gpio@2200000 {
++		sync_ext {
++			gpio-hog; //Take over a pin
++			status = "okay";
++			input; //This can be 'input', 'output-low' or 'output-high'
++			gpios = <TEGRA_MAIN_GPIO(BB, 0) 0>;
++			label = "sync_ext";
++		};
++		gpio11_ap_wake_bt {
++			gpio-hog;
++			status = "okay";
++			output-low;
++			gpios = <TEGRA_MAIN_GPIO(I, 5) 0>;
++			label = "fan_disable";
++		};
++	};
++
++	/* I2C_GP0, DT alias: i2c1 (clock: E15, data: D15) */
++	i2c@c240000 {
++		/* EEPROM */
++		m24512@57 {
++			status = "okay";
++			compatible = "atmel,24c512"; /* TODO: verify compatibility */
++			reg = <0x57>;
++			pagesize = <128>;
++		};
++
++		/* clock */
++		cdcel937@6d {
++			status = "disabled";
++			compatible = "d3,?";
++			reg = <0x6d>;
++		};
++	};
++
++	/* I2C_GP1, DT alias: i2c0 (clock: A21, data: A20) */
++	i2c@3160000 {
++		/* U71, (pg. 35) */
++		/* there's a 9539 on the 2597 board at the same address. delete it */
++		/delete-node/ ina3221x@42;
++		/delete-node/ ina3221x@43;
++		/delete-node/ gpio@74;
++		/* /delete-node/ gpio@77; */
++		gpio_i2c_0_74: gpio@74 {
++			status = "okay";
++			compatible = "ti,tca9539";
++			reg = <0x74>;
++			#gpio-cells = <2>;
++			gpio-controller;
++			vcc-supply = <&vdd_3v3>;
++			interrupts = <TEGRA_MAIN_GPIO(N, 2) GPIO_ACTIVE_LOW>;
++		};
++
++		tmp112@48 {
++			status = "okay";
++			compatible = "tmp112";
++			reg = <0x48>;
++		};
++
++		tmp112@49 {
++			status = "okay";
++			compatible = "tmp112";
++			reg = <0x49>;
++		};
++
++		tmp112@4b {
++			status = "okay";
++			compatible = "tmp112";
++			reg = <0x4b>;
++		};
++
++		ads1115@4a {
++			status = "disabled";
++			compatible = "d3,?";
++			reg = <0x4a>;
++		};
++	};
++
++	/* I2C_GP2, alias i2c7 (clock: C11, data: C10) */
++	/* Display/Expansion connector */
++	/* The base address was verified on another project */
++	i2c@31c0000 {
++	};
++
++	/* I2C_GP3, DT alias: i2c8 (clock: C12, data: C13) */
++	i2c@31e0000 {
++		gpio_i2c_8_74: tca9539@74 {
++			status = "okay";
++			compatible = "ti,tca9539";
++			reg = <0x74>;
++			#gpio-cells = <2>;
++			gpio-controller;
++			vcc-supply = <&vdd_1v8_ap>;
++			/* #interrupt-cells = <2>; */
++			/* interrupt-controller; */
++			/* interrupt-parent = <&tegra_main_gpio>; */
++			/* interrupts = <TEGRA_MAIN_GPIO(B, 4) IRQ_TYPE_EDGE_BOTH>; */
++		};
++
++		gpio_i2c_8_75: tca9539@75 {
++			status = "okay";
++			compatible = "ti,tca9539";
++			reg = <0x75>;
++			#gpio-cells = <2>;
++			gpio-controller;
++			vcc-supply = <&vdd_1v8_ap>;
++			/* #interrupt-cells = <2>; */
++			/* interrupt-controller; */
++			/* interrupt-parent = <&tegra_main_gpio>; */
++			/* interrupts = <TEGRA_MAIN_GPIO(B, 4) IRQ_TYPE_EDGE_BOTH>; */
++		};
++
++		gpio_i2c_8_76: tca9539@76 {
++			status = "okay";
++			compatible = "ti,tca9539";
++			reg = <0x76>;
++			#gpio-cells = <2>;
++			gpio-controller;
++			vcc-supply = <&vdd_1v8_ap>;
++			/* #interrupt-cells = <2>; */
++			/* interrupt-controller; */
++			/* interrupt-parent = <&tegra_main_gpio>; */
++			/* interrupts = <TEGRA_MAIN_GPIO(B, 4) IRQ_TYPE_EDGE_BOTH>; */
++		};
++
++	};
++
++	pinmux@2430000 {
++		common {
++			/* XO2_PROGRAMN - A29 - SDIO_RST# - GPIO_WAN3 */
++			gpio_wan3_pb6 {
++				status = "okay";
++				nvidia,pins = "gpio_wan3_pb6";
++				nvidia,function = "rsvd0";
++				nvidia,pull = <TEGRA_PIN_PULL_UP>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++
++			/* XO2_INITN - A23 - GPIO_EXP0_INT - GPIO_MDM1 */
++			gpio_mdm1_py0 {
++				status = "okay";
++				nvidia,pins = "gpio_mdm1_py0";
++				nvidia,function = "rsvd0";
++				nvidia,pull = <TEGRA_PIN_PULL_UP>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++
++			/* XO2_DONE - A22 - GPIO_EXP1_INT - GPIO_MDM7 */
++			gpio_mdm7_py6 {
++				status = "okay";
++				nvidia,pins = "gpio_mdm7_py6";
++				nvidia,function = "rsvd0";
++				nvidia,pull = <TEGRA_PIN_PULL_UP>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++
++			/* SOM_FPGA_GPIO0 - H8 - GPIO2_CAM0_RST# - QSPI_CS_N */
++			/* Used for FPGA reset. */
++			qspi_cs_n_pr5 {
++				status = "okay";
++				nvidia,pins = "qspi_cs_n_pr5";
++				nvidia,function = "rsvd1";
++				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
++			};
++		};
++	};
++
++	gpio@2200000 {
++		machxo2-programn {
++			status = "okay";
++			gpio-hog;
++			input;
++			gpios = <TEGRA_MAIN_GPIO(B, 6) 0>; /* linux gpio334 */
++			label = "xo2_programn";
++		};
++
++		machxo2-reset {
++			status = "okay";
++			gpio-hog;
++			output-low;
++			gpios = <TEGRA_MAIN_GPIO(R, 5) 0>; /* linux gpio461 */
++			label = "xo2_reset";
++		};
++	};
++
++	/* Pinmux for SPI0 */
++	pinmux@2430000 {
++		common {
++			gpio_sen1_pv1 {
++				nvidia,pins = "gpio_sen1_pv1";
++				nvidia,function = "spi2";
++				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++
++			gpio_sen2_pv2 {
++				nvidia,pins = "gpio_sen2_pv2";
++				nvidia,function = "spi2";
++				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
++				nvidia,tristate = <TEGRA_PIN_ENABLE>;
++				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++
++			gpio_sen3_pv3 {
++				nvidia,pins = "gpio_sen3_pv3";
++				nvidia,function = "spi2";
++				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++
++			gpio_sen4_pv4 {
++				nvidia,pins = "gpio_sen4_pv4";
++				nvidia,function = "spi2";
++				nvidia,pull = <TEGRA_PIN_PULL_UP>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++		};
++	};
++
++	/* SPI0, alias spi1 (E3, E4, F3, F4) Lattice X02. */
++	spi@c260000 {
++		status = "okay";
++		/delete-node/ spi-touch-sharp19x12@0;
++
++		machxo2: machxo2_mgr@0 {
++			status = "okay";
++			compatible = "lattice,machxo2-slave-spi";
++			reg = <0>;
++			spi-max-frequency = <8000000>;
++		};
++	};
++
++	machxo2_region {
++		status = "okay";
++		compatible = "fpga-region";
++		fpga-mgr = <&machxo2>;
++		#address-cells = <0x1>;
++		#size-cells = <0x1>;
++
++		firmware-name = "machxo2.bin";
++	};
++
++	pinmux@2430000 {
++		common {
++			/* SOM_FPGA_GPIO1 - H13 - GPIO8_ALS_PROX_INT - GPIO_PQ4 */
++			gpio_pq4_pi4 {
++				status = "okay";
++				nvidia,pins = "gpio_pq4_pi4";
++				nvidia,function = "rsvd0";
++				nvidia,pull = <TEGRA_PIN_PULL_UP>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
++			};
++		};
++	};
++
++	gpio@2200000 {
++		machxo2-gpios {
++			status = "okay";
++			gpio-hog;
++			output-high;
++			gpios = <TEGRA_MAIN_GPIO(I, 4) 0>; /* linux gpio388 */
++			label = "som_fpga_gpio1";
++		};
++	};
++
++	pinmux@2430000 {
++		common {
++			/* SOM_FPGA_GPIO2 - H14 - SPI2_CLK - GPIO_WAN5 */
++			gpio_wan5_ph0 {
++				status = "okay";
++				nvidia,pins = "gpio_wan5_ph0";
++				nvidia,function = "spi1";
++				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++
++			/* SOM_FPGA_GPIO3 - H15 - SPI2_MISO - GPIO_WAN6 */
++			gpio_wan6_ph1 {
++				status = "okay";
++				nvidia,pins = "gpio_wan6_ph1";
++				nvidia,function = "spi1";
++				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
++				nvidia,tristate = <TEGRA_PIN_ENABLE>;
++				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++
++			/* SOM_FPGA_GPIO4 - G15 - SPI2_MOSI - GPIO_WAN7 */
++			gpio_wan7_ph2 {
++				status = "okay";
++				nvidia,pins = "gpio_wan7_ph2";
++				nvidia,function = "spi1";
++				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++
++			/* SOM_FPGA_GPIO5 - G16 - SPI2_CS0# - GPIO_WAN8 */
++			gpio_wan8_ph3 {
++				status = "okay";
++				nvidia,pins = "gpio_wan8_ph3";
++				nvidia,function = "spi1";
++				nvidia,pull = <TEGRA_PIN_PULL_UP>;
++				nvidia,tristate = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
++				nvidia,lpdr = <TEGRA_PIN_DISABLE>;
++			};
++		};
++	};
++
++	/* SPI2, alias spi0 (G15, G16, H14, H15) */
++	spi@3210000 {
++		status = "okay";
++
++		spidev@0 {
++			status = "okay";
++			compatible = "spidev";
++			reg = <0>;
++			spi-max-frequency = <8000000>;
++		};
++	};
++
++	/* SPI1, alias spi3 (E14, F13, F14, G13) */
++	spi@3240000 { /* TODO: verify the base address */
++
++	};
++
++	host1x {
++		nvcsi@150c0000 {
++			num-channels = <6>;
++			num-ports = <12>;
++		};
++		vi@15700000 {
++			num-channels = <6>;
++		};
++		nvdisplay@15200000 {
++			status = "disabled";
++			/delete-property/ avdd_lcd-supply;
++		};
++		/* HDMI0 */
++		nvdisplay@15220000 {
++			status = "okay";
++			/delete-property/ vdd_hdmi_5v0-supply;
++			vdd_hdmi_5v0-supply = <&battery_reg>;
++			avdd_hdmi-supply = <&spmic_ldo7>;
++			avdd_hdmi_pll-supply = <&spmic_sd2>;
++			win-mask = <0x7>;
++		};
++		sor {
++			status = "okay";
++			/delete-property/ nvidia,hpd-gpio;
++			nvidia,hpd-gpio = <&tegra_main_gpio TEGRA_MAIN_GPIO(P, 0) GPIO_ACTIVE_HIGH>;
++			hdmi-display {
++				disp-default-out {
++					nvidia,out-flags = <TEGRA_DC_OUT_HOTPLUG_HIGH>;
++				};
++			};
++		};
++		dpaux@155c0000 {
++			status = "okay";
++		};
++		/* HDMI1 */
++		nvdisplay@15210000 {
++			status = "okay";
++			/delete-property/ vdd_hdmi_5v0-supply;
++			vdd_hdmi_5v0-supply = <&battery_reg>;
++		};
++		sor1 {
++			status = "okay";
++			/delete-property/ nvidia,hpd-gpio;
++			nvidia,hpd-gpio = <&tegra_main_gpio TEGRA_MAIN_GPIO(P, 1) GPIO_ACTIVE_HIGH>;
++			hdmi-display {
++				disp-default-out {
++					nvidia,out-flags = <TEGRA_DC_OUT_HOTPLUG_HIGH>;
++				};
++			};
++		};
++		dpaux@15040000 {
++			status = "okay";
++		};
++	};
++
++	fixed-regulators {
++		/* regulator@17 was controlled by the same gpio pin */
++		/delete-node/ regulator@17;
++		/* FPD/GMSL power bank 0 */
++		vdd_bank_0: regulator@300 {
++			status = "okay";
++			reg = <0x12c>;
++			regulator-name = "vdd_bank_0";
++			compatible = "regulator-fixed";
++			regulator-always-on;
++			enable-active-high;
++			gpio = <&gpio_i2c_0_74 0 GPIO_ACTIVE_HIGH>;
++		};
++
++		/* regulator@8 was controlled by the same pin */
++		/delete-node/ regulator@8;
++		/* FPD/GMSL power bank 1 */
++		vdd_bank_1: regulator@301 {
++			status = "okay";
++			reg = <0x12d>;
++			regulator-name = "vdd_bank_1";
++			compatible = "regulator-fixed";
++			regulator-always-on;
++			enable-active-high;
++			gpio = <&gpio_i2c_0_74 3 GPIO_ACTIVE_HIGH>;
++		};
++		vdd_bank_io: regulator@302 {
++			status = "disabled";
++			reg = <302>;
++			regulator-name = "vdd_bank_io";
++			compatible = "regulator-fixed";
++			enable-active-high;
++			gpio = <&gpio_i2c_0_74 6 GPIO_ACTIVE_HIGH>;
++		};
++	};
++
++	pinctrl@3520000 {
++		/delete-property/ vbus-2-supply;
++		vbus-2-supply = <&battery_reg>;
++	};
++
++	mttcan@c310000 {
++		/delete-property/ gpio_can_stb;
++		/delete-property/ gpio_can_en;
++		/* Nvidia suggests that we don't use the pin D16 as GPIO
++		 * https://devtalk.nvidia.com/default/topic/1022844/d16-ao_dmic_in_dat-pin-in-tx2-as-gpio/?offset=3
++		 */
++		gpio_can_stb = <&tegra_aon_gpio TEGRA_AON_GPIO(AA, 4) GPIO_ACTIVE_LOW>;
++	};
++
++	mttcan@c320000 {
++		/delete-property/ gpio_can_stb;
++		/delete-property/ gpio_can_en;
++		gpio_can_stb = <&tegra_aon_gpio TEGRA_AON_GPIO(AA, 6) GPIO_ACTIVE_LOW>;
++	};
++
++	sdhci@3400000 {
++		/delete-property/ wp-gpios;
++		/delete-property/ wp-inverted;
++	};
++
++	/* This is used by nvcamera-daemon (and probably the argus
++	 * daemon). This is not needed if you only need v4l2. */
++	tegra-camera-platform {
++		compatible = "nvidia, tegra-camera-platform";
++
++		/**
++		 * Physical settings to calculate max ISO BW
++		 *
++		 * num_csi_lanes = <>;
++		 * Total number of CSI lanes when all cameras are active
++		 *
++		 * max_lane_speed = <>;
++		 * Max lane speed in Kbit/s
++		 *
++		 * min_bits_per_pixel = <>;
++		 * Min bits per pixel
++		 *
++		 * vi_peak_byte_per_pixel = <>;
++		 * Max byte per pixel for the VI ISO case
++		 *
++		 * vi_bw_margin_pct = <>;
++		 * Vi bandwidth margin in percentage
++		 *
++		 * max_pixel_rate = <>;
++		 * Max pixel rate in Kpixel/s for the ISP ISO case
++		 *
++		 * isp_peak_byte_per_pixel = <>;
++		 * Max byte per pixel for the ISP ISO case
++		 *
++		 * isp_bw_margin_pct = <>;
++		 * Isp bandwidth margin in percentage
++		 */
++		num_csi_lanes = <12>;
++		min_bits_per_pixel = <12>;
++		max_pixel_rate = <222750>;
++		vi_peak_byte_per_pixel = <2>;
++		vi_bw_margin_pct = <25>;
++		isp_peak_byte_per_pixel = <5>;
++		isp_bw_margin_pct = <25>;
++		max_lane_speed = <1500000>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-2xocto-ar0820.dts b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-ar0820.dts
+new file mode 100644
+index 000000000000..011b021f990a
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-ar0820.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-2xocto.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "ar0820fpdlink_0,ar0820fpdlink_1,ar0820fpdlink_2,ar0820fpdlink_3";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-2xocto-imx390.dts b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-imx390.dts
+new file mode 100644
+index 000000000000..c60890ab4060
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-imx390.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-2xocto.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "imx390_0,imx390_1,imx390_2,imx390_3";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-2xocto-imx390rcm.dts b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-imx390rcm.dts
+new file mode 100644
+index 000000000000..edb7ad2a3c5a
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-imx390rcm.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-2xocto.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "imx390rcm_0,imx390rcm_1,imx390rcm_2,imx390rcm_3";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-2xocto-ov10640.dts b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-ov10640.dts
+new file mode 100644
+index 000000000000..4b5526ba4a13
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-ov10640.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-2xocto.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "ov10640_0,ov10640_1,ov10640_2,ov10640_3,ov10640_4,ov10640_5,ov10640_6,ov10640_7,ov10640_8,ov10640_9,ov10640_10,ov10640_11,ov10640_12,ov10640_13,ov10640_14,ov10640_15";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-2xocto-vg6768.dts b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-vg6768.dts
+new file mode 100644
+index 000000000000..93f20237c2ab
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-2xocto-vg6768.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-2xocto.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "vg6768_0,vg6768_1,vg6768_2,vg6768_3";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-2xocto.dts b/arch/arm64/boot/dts/d3/d3-xavier-2xocto.dts
+new file mode 100644
+index 000000000000..f49c727a7339
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-2xocto.dts
+@@ -0,0 +1,28 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-string-utils.dtsi"
++
++#include "d3-xavier-2xocto.dtsi"
++#include "d3-2xocto-cam0-3.dtsi"
++#include "d3-2xocto-cam4-7.dtsi"
++#include "d3-2xocto-cam8-11.dtsi"
++#include "d3-2xocto-cam12-15.dtsi"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-2xocto.dtsi b/arch/arm64/boot/dts/d3/d3-xavier-2xocto.dtsi
+new file mode 100644
+index 000000000000..d2e71b151544
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-2xocto.dtsi
+@@ -0,0 +1,195 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++#include "d3-xavier.dtsi"
++
++/ {
++
++    /* I2C_GP3, DT alias: i2c3 (clock: F53, data: E53) */
++    i2c@3180000 {
++
++        /* Microchip 24AA1026 (U26) */
++        eeprom@50 {
++            status = "okay";
++            compatible = "atmel,24c1024";
++            reg = <0x50>;
++            pagesize = <128>;
++        };
++
++        /* I2C GPIO expander PCAL9539A (U34) */
++        gpio_i2c_3_74: gpio@74 {
++            status = "okay";
++            compatible = "nxp,pca9539";
++            reg = <0x74>;
++            #gpio-cells = <2>;
++            gpio-controller;
++            vcc-supply = <&p2822_vdd_1v8_cvb>;
++        };
++
++        /* I2C GPIO expander PCAL9539A (U35) */
++        gpio_i2c_3_75: gpio@75 {
++            status = "okay";
++            compatible = "nxp,pca9539";
++            reg = <0x75>;
++            #gpio-cells = <2>;
++            gpio-controller;
++            vcc-supply = <&p2822_vdd_1v8_cvb>;
++        };
++
++        /* I2C GPIO expander PCAL9539A (U36) */
++        gpio_i2c_3_76: gpio@76 {
++            status = "okay";
++            compatible = "nxp,pca9539";
++            reg = <0x76>;
++            #gpio-cells = <2>;
++            gpio-controller;
++            vcc-supply = <&p2822_vdd_1v8_cvb>;
++        };
++
++        /* ub960 deserializers will be included here (U1, U4, U7, U10) */
++    };
++
++    /* I2C_GP2, DT alias: i2c2 (clock: J61, data: K61) */
++    i2c@c240000 {
++
++        /* I2C GPIO expander PCAL9539A (U37) */
++        gpio_i2c_2_77: gpio@77 {
++            status = "okay";
++            compatible = "nxp,pca9539";
++            reg = <0x77>;
++            #gpio-cells = <2>;
++            gpio-controller;
++            vcc-supply = <&p2822_vdd_1v8_cvb>;
++        };
++    };
++
++    fixed-regulators {
++        /* 1.1V regulator (U21) */
++        fpd_vdd_1v1: regulator@300 {
++            status = "okay";
++            reg = <0x12c>;
++            regulator-name = "fpd-1v1";
++            compatible = "regulator-fixed";
++            regulator-always-on;
++            regulator-min-microvolt = <1100000>;
++            regulator-max-microvolt = <1100000>;
++            vin-supply = <&p2822_vdd_1v8_cvb>;
++        };
++        /* J19: 1-2 = VDD_12V0, 2-3 = VDD_5V0 */
++        vdd_in_fpd: regulator@301 {
++            compatible = "regulator-fixed";
++            reg = <301>;
++            regulator-name = "vdd_in_fpd";
++            regulator-min-microvolt = <12000000>;
++            regulator-max-microvolt = <12000000>;
++        };
++
++        /* FPD-Link 0-3 regulator (U13) */
++        fpd_vdd_0_3: regulator@302 {
++            status = "okay";
++            reg = <302>;
++            regulator-name = "fpd_vdd_1_4";
++            compatible = "regulator-fixed";
++            enable-active-high;
++            regulator-always-on;
++            gpio = <&gpio_i2c_2_77 0 GPIO_ACTIVE_HIGH>;
++        };
++        /* FPD-Link 4-7 regulator (U16) */
++        fpd_vdd_4_7: regulator@303 {
++            status = "okay";
++            reg = <303>;
++            regulator-name = "fpd_vdd_5_8";
++            compatible = "regulator-fixed";
++            enable-active-high;
++            regulator-always-on;
++            gpio = <&gpio_i2c_2_77 3 GPIO_ACTIVE_HIGH>;
++        };
++        /* FPD-Link 8-11 regulator (U17) */
++        fpd_vdd_8_11: regulator@304 {
++            status = "okay";
++            reg = <304>;
++            regulator-name = "fpd_vdd_9_12";
++            compatible = "regulator-fixed";
++            enable-active-high;
++            regulator-always-on;
++            gpio = <&gpio_i2c_2_77 8 GPIO_ACTIVE_HIGH>;
++        };
++        /* FPD-Link 12-15 regulator (U20) */
++        fpd_vdd_12_15: regulator@305 {
++            status = "okay";
++            reg = <305>;
++            regulator-name = "fpd_vdd_13_16";
++            compatible = "regulator-fixed";
++            enable-active-high;
++            regulator-always-on;
++            gpio = <&gpio_i2c_2_77 11 GPIO_ACTIVE_HIGH>;
++        };
++    };
++    /* This is used by nvcamera-daemon (and probably the argus
++     * daemon). This is not needed if you only need v4l2. */
++    tegra-camera-platform {
++        compatible = "nvidia, tegra-camera-platform";
++
++        /**
++        * Physical settings to calculate max ISO BW
++        *
++        * num_csi_lanes = <>;
++        * Total number of CSI lanes when all cameras are active
++        *
++        * max_lane_speed = <>;
++        * Max lane speed in Kbit/s
++        *
++        * min_bits_per_pixel = <>;
++        * Min bits per pixel
++        *
++        * vi_peak_byte_per_pixel = <>;
++        * Max byte per pixel for the VI ISO case
++        *
++        * vi_bw_margin_pct = <>;
++        * Vi bandwidth margin in percentage
++        *
++        * max_pixel_rate = <>;
++        * Max pixel rate in Kpixel/s for the ISP ISO case
++        *
++        * isp_peak_byte_per_pixel = <>;
++        * Max byte per pixel for the ISP ISO case
++        *
++        * isp_bw_margin_pct = <>;
++        * Isp bandwidth margin in percentage
++        */
++        num_csi_lanes = <16>;
++        max_lane_speed = <1500000>;
++        min_bits_per_pixel = <10>;
++        /* max_pixel_rate = <222750>; */
++        /* max_pixel_rate = <445500>; */
++        max_pixel_rate = <750000>;
++
++        vi_peak_byte_per_pixel = <2>;
++        vi_bw_margin_pct = <25>;
++        isp_peak_byte_per_pixel = <5>;
++        isp_bw_margin_pct = <25>;
++    };
++};
++
++&vi_base {
++    num-channels = <4>;
++    vi_ports: ports {
++        #address-cells = <1>;
++        #size-cells = <0>;
++        /* ports will be included here */
++    };
++};
++
++&csi_base {
++    num-channels = <4>;
++    /* channels will be included here */
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-cic-ar0820.dts b/arch/arm64/boot/dts/d3/d3-xavier-cic-ar0820.dts
+new file mode 100644
+index 000000000000..74bdf65349c4
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-cic-ar0820.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-cic.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "ar0820_2";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-cic-imx390.dts b/arch/arm64/boot/dts/d3/d3-xavier-cic-imx390.dts
+new file mode 100644
+index 000000000000..229d6d4fc418
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-cic-imx390.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-cic.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "imx390_0";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-cic-imx390rcm.dts b/arch/arm64/boot/dts/d3/d3-xavier-cic-imx390rcm.dts
+new file mode 100644
+index 000000000000..6b8b5014994d
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-cic-imx390rcm.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-cic.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "imx390rcm_0";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-cic-ov10640.dts b/arch/arm64/boot/dts/d3/d3-xavier-cic-ov10640.dts
+new file mode 100644
+index 000000000000..4d1bb8a7306f
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-cic-ov10640.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-cic.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "ov10640_0";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-cic-vg6768.dts b/arch/arm64/boot/dts/d3/d3-xavier-cic-vg6768.dts
+new file mode 100644
+index 000000000000..a133deccd30a
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-cic-vg6768.dts
+@@ -0,0 +1,25 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-xavier-cic.dts"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++	overlay-loader {
++		active_overlays = "vg6768_0";
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-cic.dts b/arch/arm64/boot/dts/d3/d3-xavier-cic.dts
+new file mode 100644
+index 000000000000..bd84e1698a87
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-cic.dts
+@@ -0,0 +1,24 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-string-utils.dtsi"
++
++#include "d3-xavier-cic.dtsi"
++#include "d3-jetson-bsp-version.dtsi"
++
++/ {
++	nvidia,dtsfilename = __FILE__;
++	nvidia,dtbbuildtime = __DATE__, __TIME__;
++	d3,jetson-bsp-version = D3_JETSON_BSP_VERSION;
++	d3,jetson-bsp-build-id = D3_JETSON_BSP_BUILDID;
++};
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier-cic.dtsi b/arch/arm64/boot/dts/d3/d3-xavier-cic.dtsi
+new file mode 100644
+index 000000000000..b8954991a737
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier-cic.dtsi
+@@ -0,0 +1,250 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++#include "d3-xavier.dtsi"
++#define D3_BOARD_XAVIER_CIC
++
++/ {
++
++	/* I2C_CAM, DT alias: i2c2 (clock: C6, data: D6) */
++	i2c@3180000 {
++
++		/* Microchip 24AA1026 (U28) */
++		eeprom@50 {
++			status = "okay";
++			compatible = "atmel,24c1024";
++			reg = <0x50>;
++			pagesize = <128>;
++
++		};
++
++		/* I2C MUX: TCA9546 (U27) */
++		mux@70 {
++			status = "okay";
++			compatible = "nxp,pca9546";
++			reg = <0x70>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++			vcc-supply = <&p2822_vdd_1v8_cvb>;
++			vcc-pullup-supply = <&p2822_vdd_1v8_cvb>;
++
++			i2c_fpdlink: i2c@0 {
++				status = "okay";
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				i2c-mux,deselect-on-exit;
++
++				/*  DS90UB960 Deserializer (U1) */
++				ds90ub960: ub960@32 {
++					status = "okay";
++					compatible = "d3,ub960";
++					reg = <0x32>;
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					iovdd-supply = <&p2822_vdd_1v8_cvb>;
++					avdd-supply = <&fpd_vdd>;
++					pdb-gpios = <&tegra_main_gpio TEGRA_MAIN_GPIO(T, 6) GPIO_ACTIVE_LOW>;
++					/* Valid values are: 1600, 1200, 800, 400 NOTE
++					 * that 1600 is dependent upon REFCLK. For a 25Mhz
++					 * REFCLK the speed is 1600, for 23 Mhz is it
++					 * 1472, for for 26Mhz it is 1664
++					 *
++					 * If this is not present 1600* is used
++					 */
++					csi-tx-speed-mbps = <1600>;
++					/* 1,2,3, or 4 */
++					csi-lane-count = <4>;
++
++					/* 0, or 1 */
++					csi-continuous-clock = <1>;
++
++					ds90ub960_link0: link@0 {
++						reg = <0>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++
++					ds90ub960_link1: link@1 {
++						status = "disabled";
++						reg = <1>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++
++					ds90ub960_link2: link@2 {
++						status = "disabled";
++						reg = <2>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++
++					ds90ub960_link3: link@3 {
++						status = "disabled";
++						reg = <3>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++				};
++			};
++
++			i2c_gmsl: i2c@1 {
++				status = "okay";
++				reg = <1>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				i2c-mux,deselect-on-exit;
++
++				/* MAX929 Deserializer (U2) */
++				max9296: max9296@48 {
++					status = "okay";
++					compatible = "maxim,max9296";
++					reg = <0x48>;
++					#address-cells = <1>;
++					#size-cells = <0>;
++					vdd-supply = <&p2822_vdd_1v8_cvb>;
++					gmsl-supply = <&gmsl_vdd>;
++					reset-gpios = <&tegra_main_gpio TEGRA_MAIN_GPIO(H, 3) GPIO_ACTIVE_LOW>;
++					gmsl-lock-gpios = <&gpio_i2c_2_74 7 GPIO_ACTIVE_HIGH>;
++					gmsl-err-gpios = <&gpio_i2c_2_74 15 GPIO_ACTIVE_HIGH>;
++					csi-tx-speed-mbps = <1600>;
++					csi-lane-count = <4>;
++					csi-continuous-clock = <1>;
++					max9296_link0: link@0 {
++						reg = <0>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++
++					max9296_link1: link@1 {
++						reg = <1>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++					};
++				};
++			};
++
++			/* Bus 2 is not used */
++			i2c_exp: i2c@2 {
++				status = "okay";
++				reg = <2>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				i2c-mux,deselect-on-exit;
++			};
++
++			/* Bus 3 is not used */
++			i2c_test: i2c@3 {
++				status = "okay";
++				reg = <3>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				i2c-mux,deselect-on-exit;
++			};
++		};
++
++		/* I2C GPIO expander TCA9539 (U29) */
++		gpio_i2c_2_74: gpio@74 {
++			status = "okay";
++			compatible = "ti,tca9539";
++			reg = <0x74>;
++			#gpio-cells = <2>;
++			gpio-controller;
++			vcc-supply = <&p2822_vdd_1v8_cvb>;
++			/* interrupt-controller; */
++			/* interrupt-parent = <&tegra_aon_gpio>; */
++			/* interrupts = <TEGRA_AON_GPIO(AA, 2) IRQ_TYPE_EDGE_BOTH>; */
++		};
++
++		/* I2C GPIO expander TCA9539 (U31) */
++		gpio_i2c_2_76: gpio@76 {
++			status = "okay";
++			compatible = "ti,tca9539";
++			reg = <0x76>;
++			#gpio-cells = <2>;
++			gpio-controller;
++			vcc-supply = <&p2822_vdd_1v8_cvb>;
++			/* interrupt-controller; */
++			/* interrupt-parent = <&tegra_aon_gpio>; */
++			/* interrupts = <TEGRA_AON_GPIO(AA, 2) IRQ_TYPE_EDGE_BOTH>; */
++		};
++	};
++
++	fixed-regulators {
++		/* 1.1V regulator (U5) */
++		fpd_vdd_1v1: regulator@300 {
++			status = "okay";
++			reg = <0x12c>;
++			regulator-name = "fpd-1v1";
++			compatible = "regulator-fixed";
++			regulator-always-on;
++			regulator-min-microvolt = <1100000>;
++			regulator-max-microvolt = <1100000>;
++			vin-supply = <&p2822_vdd_1v8_cvb>;
++		};
++		/* 1.2V regulator (U20) */
++		gmsl_vdd_1v2: regulator@301 {
++			status = "okay";
++			reg = <0x12d>;
++			regulator-name = "gmsl-1v2";
++			compatible = "regulator-fixed";
++			regulator-always-on;
++			regulator-min-microvolt = <1200000>;
++			regulator-max-microvolt = <1200000>;
++			vin-supply = <&p2822_vdd_1v8_cvb>;
++		};
++		/* GMSL regulator (U30) */
++		/* Controlled by the Camera Connector Pin 93 */
++		gmsl_vdd: regulator@302 {
++			status = "okay";
++			reg = <0x12e>;
++			regulator-name = "gmsl_vdd";
++			compatible = "regulator-fixed";
++			regulator-always-on;
++			gpio = <&tegra_main_gpio TEGRA_MAIN_GPIO(H, 6) GPIO_ACTIVE_LOW>;
++			enable-active-high;
++		};
++		/* FPD-Link regulator (U21) */
++		/* Controlled by the Camera Connector Pin 90 */
++		fpd_vdd: regulator@303 {
++			status = "okay";
++			reg = <0x12f>;
++			regulator-name = "fpd_vdd";
++			compatible = "regulator-fixed";
++			regulator-always-on;
++			gpio = <&tegra_main_gpio TEGRA_MAIN_GPIO(T, 5) GPIO_ACTIVE_LOW>;
++			enable-active-high;
++		};
++	};
++
++	tegra-camera-platform {
++		num_csi_lanes = <8>;
++		max_lane_speed = <1500000>;
++	};
++};
++
++
++&vi_base {
++	num-channels = <6>;
++	vi_ports: ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++	};
++};
++
++&csi_base {
++	num-channels = <6>;
++};
++
++#include "d3-cic-cam0.dtsi"
++#include "d3-cic-cam2.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/d3-xavier.dtsi b/arch/arm64/boot/dts/d3/d3-xavier.dtsi
+new file mode 100644
+index 000000000000..a64b6ce93b10
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/d3-xavier.dtsi
+@@ -0,0 +1,28 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++#include "../nvidia/platform/t19x/galen/kernel-dts/tegra194-p2888-0001-p2822-0000.dts"
++
++#define TEGRA_MAIN_GPIO TEGRA194_MAIN_GPIO
++#define TEGRA_MAIN_GPIO_RANGE TEGRA194_MAIN_GPIO_RANGE
++#define TEGRA_MAIN_GPIO_BASE TEGRA194_MAIN_GPIO_BASE
++#define TEGRA_AON_GPIO TEGRA194_AON_GPIO
++#define TEGRA_AON_GPIO_RANGE TEGRA194_AON_GPIO_RANGE
++#define TEGRA_AON_GPIO_BASE TEGRA194_AON_GPIO_BASE
++
++/ {
++    chosen
++    {
++        bootargs = "root=/dev/mmcblk0p1 rw rootwait console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 rootfstype=ext4  ";
++        board-has-eeprom;
++    };
++};
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi
+new file mode 100644
+index 000000000000..8dd8dc30a50b
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ar0820-fpdlink-template.dtsi
+@@ -0,0 +1,115 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-cam.dtsi"
++#include "d3-check-cam.dtsi"
++
++
++#define CAM_MODEL ar0820fpdlink
++#define DRIVER_NAME ar0820
++
++#define CAM_NODE CONCAT_3(CAM_MODEL,_,PORT_IDX)
++#define CAM_NODE_NAME CONCAT_3(CAM_MODEL,@,IMG_ADDR)
++#define SEN_OUT_NODE CONCAT_2(sen_out_,CAM_NODE)
++
++#define SEN_PATH CONCAT_3(SER_PATH,/,CAM_NODE_NAME)
++#define SER_NODE_OVERLAY 		\
++	gpio-rmten = <0x0>;			\
++	gpio-out-src = <0x1>;		\
++	gpio-out-en = <0x1>;		\
++	gpio-in-en = <0x0>;			\
++	hs-clk-div = <2>;			\
++	div-m-val = <1>;			\
++	div-n-val = <40>;			\
++	fsync-gpio = <0>;           \
++	i2c-voltage-sel = <0x1>;
++
++&SER_NODE {
++		CAM_NODE: CAM_NODE_NAME {
++			status = STR(STATUS);
++			compatible = "d3,ar0820";
++			reg = <HEX_PREFIX(IMG_ADDR)>;
++			devnode = STR(CONCAT_2(video,PORT_IDX));
++			physical-addr = <0x10>;
++
++			physical_w = "27.30";
++			physical_h = "21.80";
++			sensor_model = "ar0820";
++			use_decibel_gain = "false";
++			mclk = "extperiph1";
++
++			mode0 {
++				mclk_khz = "25000"; /* CSI driving clock */
++				num_lanes = STR(CSI_LANES);
++				tegra_sinterface = STR(TEGRA_SINTERFACE);
++				discontinuous_clk = "no"; /* should I set this to yes? */
++				dpcm_enable = "false";
++				cil_settletime = "0";
++				csi_pixel_bit_depth = "12";
++				mode_type = "bayer";
++				pixel_phase = "grbg";
++				active_w = "3848";
++				active_h = "2168";
++				readout_orientation = "0";
++				line_length = "3968";
++				inherent_gain = "1";
++				mclk_multiplier = "9";
++				pix_clk_hz = "200000000";
++				serdes_pix_clk_hz = "4000000000";
++				vc_id = STR(PORT_VCID);
++
++				/* 1-30 dB in .3 dB steps */
++				min_gain_val = "1.0";
++				max_gain_val = "15.0";
++				min_framerate = "20";
++				max_framerate = "20";
++
++				/* Units are microseconds */
++				min_exp_time = "30";
++				max_exp_time = "33333";
++				embedded_metadata_height = "0";
++
++				min_hdr_ratio = "1";
++				max_hdr_ratio = "1";
++				dynamic_pixel_bit_depth = "12";
++			};
++			ports {
++				status = STR(STATUS);
++				#address-cells = <1>;
++				#size-cells = <0>;
++				port@0 {
++					reg = <0>;
++					SEN_OUT_NODE: endpoint {
++						status = STR(STATUS);
++						port-index = <CSI_PORT>;
++						bus-width = <CSI_LANES>;
++						remote-endpoint = <&CSI_IN_NODE>;
++						vc-id = <PORT_VCID>;
++					};
++				};
++			};
++
++		};
++
++		/* CAT24C64; ON Semi. 64K EEPROM, 8192 8-bit words. */
++		eeprom@EEPROM_ADDR {
++			status = STR(STATUS);
++			compatible = "24c64";
++			reg = <HEX_PREFIX(EEPROM_ADDR)>;
++			pagesize = <32>;
++			physical-addr = <0x54>;
++		};
++};
++
++
++#include "d3-overlays-cam.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ar0820-template.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ar0820-template.dtsi
+new file mode 100644
+index 000000000000..4f5385458d92
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ar0820-template.dtsi
+@@ -0,0 +1,106 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-cam.dtsi"
++#include "d3-check-cam.dtsi"
++
++
++#define CAM_MODEL ar0820
++
++#define CAM_NODE CONCAT_3(CAM_MODEL,_,PORT_IDX)
++#define CAM_NODE_NAME CONCAT_3(CAM_MODEL,@,IMG_ADDR)
++#define SEN_OUT_NODE CONCAT_2(sen_out_,CAM_NODE)
++
++#define SEN_PATH CONCAT_3(SER_PATH,/link@0/,CAM_NODE_NAME)
++#define SER_NODE_OVERLAY
++
++&SER_NODE {
++	link@0 {
++		CAM_NODE: CAM_NODE_NAME {
++			status = STR(STATUS);
++			compatible = "d3,ar0820";
++			reg = <HEX_PREFIX(IMG_ADDR)>;
++			devnode = STR(CONCAT_2(video,PORT_IDX));
++			physical-addr = <0x10>;
++
++			physical_w = "27.30";
++			physical_h = "21.80";
++			sensor_model = "ar0820";
++			use_decibel_gain = "false";
++			mclk = "extperiph1";
++
++			mode0 {
++				mclk_khz = "25000"; /* CSI driving clock */
++				num_lanes = STR(CSI_LANES);
++				tegra_sinterface = STR(TEGRA_SINTERFACE);
++				discontinuous_clk = "yes"; /* should I set this to yes? */
++				dpcm_enable = "false";
++				cil_settletime = "0";
++				csi_pixel_bit_depth = "12";
++				mode_type = "bayer";
++				pixel_phase = "grbg";
++				active_w = "3848";
++				active_h = "2168";
++				readout_orientation = "0";
++				line_length = "3968";
++				inherent_gain = "1";
++				mclk_multiplier = "9";
++				pix_clk_hz = "200000000";
++				vc_id = STR(PORT_VCID);
++
++				/* 1-30 dB in .3 dB steps */
++				min_gain_val = "1.0";
++				max_gain_val = "15.0";
++				min_framerate = "30";
++				max_framerate = "30";
++
++				/* Units are microseconds */
++				min_exp_time = "30";
++				max_exp_time = "33333";
++				embedded_metadata_height = "0";
++
++				min_hdr_ratio = "1";
++				max_hdr_ratio = "1";
++				dynamic_pixel_bit_depth = "12";
++			};
++			ports {
++				status = STR(STATUS);
++				#address-cells = <1>;
++				#size-cells = <0>;
++				port@0 {
++					reg = <0>;
++					SEN_OUT_NODE: endpoint {
++						status = STR(STATUS);
++						port-index = <CSI_PORT>;
++						bus-width = <CSI_LANES>;
++						remote-endpoint = <&CSI_IN_NODE>;
++						vc-id = <PORT_VCID>;
++					};
++				};
++			};
++
++		};
++
++		/* CAT24C64; ON Semi. 64K EEPROM, 8192 8-bit words. */
++		eeprom@EEPROM_ADDR {
++			status = STR(STATUS);
++			compatible = "24c64";
++			reg = <HEX_PREFIX(EEPROM_ADDR)>;
++			pagesize = <32>;
++			physical-addr = <0x54>;
++		};
++	};
++};
++
++
++#include "d3-overlays-cam.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390-modes.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390-modes.dtsi
+new file mode 100644
+index 000000000000..472304891944
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390-modes.dtsi
+@@ -0,0 +1,113 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering.  All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++#ifdef IMX390_COMMON
++#	undef IMX390_COMMON
++#endif
++#define IMX390_COMMON					\
++	mclk_khz = "25000";				\
++	num_lanes = STR(CSI_LANES);			\
++	tegra_sinterface = STR(TEGRA_SINTERFACE);	\
++	discontinuous_clk = "no";			\
++	dpcm_enable = "false";				\
++	cil_settletime = "0";				\
++	csi_pixel_bit_depth = "12";			\
++	pixel_phase = "rggb";				\
++	active_w = "1936";				\
++	active_h = "1100";				\
++	readout_orientation = "0";			\
++	inherent_gain = "1";				\
++	serdes_pix_clk_hz = "535000000";		\
++	pix_clk_hz = "148500000";			\
++	embedded_metadata_height = "1";			\
++	min_hdr_ratio = "1.737";			\
++	max_hdr_ratio = "1.737";			\
++	vc_id = STR(PORT_VCID)
++
++#ifdef IMX390_LINEAR_COMMON
++#	undef IMX390_LINEAR_COMMON
++#endif
++#define IMX390_LINEAR_COMMON			\
++	IMX390_COMMON;				\
++	mode_type = "bayer";			\
++	line_length = "4400";			\
++	min_gain_val = "0";			\
++	max_gain_val = "30";			\
++	min_framerate = "30";			\
++	max_framerate = "30";			\
++	min_exp_time = "30";			\
++	max_exp_time = "33333";			\
++	dynamic_pixel_bit_depth = "12";		\
++	num_control_point = "0"
++
++
++/* SP1L */
++mode0 {
++	IMX390_LINEAR_COMMON;
++};
++
++/* SP1H */
++mode1 {
++	IMX390_LINEAR_COMMON;
++};
++
++
++/* SP2h */
++mode2 {
++	IMX390_LINEAR_COMMON;
++};
++
++
++/* HDR */
++#if D3_IMX390_HDR_ENABLE
++mode3 {
++	IMX390_COMMON;
++	mode_type = "bayer_wdr_pwl";
++
++	/* 60 fps */
++	line_length = "2200";
++
++	/* Gain is currently fixed in HDR mode */
++	min_gain_val = "0";
++	max_gain_val = "0";
++
++	min_framerate = "60";
++	max_framerate = "60";
++
++	/* Units are microseconds */
++	min_exp_time = "11000";
++	max_exp_time = "11000";
++
++	/* Xavier supports up to 20bpp, Tx2 supports up to 24bpp */
++	dynamic_pixel_bit_depth = "20";
++	/* Xavier supports up to 9 control points. */
++	num_control_point = "9";
++	control_point_x_0 = "0";
++	control_point_y_0 = "0";
++	control_point_x_1="474";
++	control_point_y_1="474";
++	control_point_x_2="1359";
++	control_point_y_2="916";
++	control_point_x_3="5226";
++	control_point_y_3="1752";
++	control_point_x_4="11006";
++	control_point_y_4="2290";
++	control_point_x_5="18490";
++	control_point_y_5="2574";
++	control_point_x_6="71038";
++	control_point_y_6="2767";
++	control_point_x_7="272927";
++	control_point_y_7="3140";
++	control_point_x_8="1048575";
++	control_point_y_8="3855";
++};
++#endif	/* D3_IMX390_HDR_ENABLE */
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390-template.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390-template.dtsi
+new file mode 100644
+index 000000000000..c053fc83a6e1
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390-template.dtsi
+@@ -0,0 +1,72 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-cam.dtsi"
++#include "d3-check-cam.dtsi"
++
++#define CAM_MODEL imx390
++
++#define CAM_NODE CONCAT_3(CAM_MODEL,_,PORT_IDX)
++#define CAM_NODE_NAME CONCAT_3(CAM_MODEL,@,IMG_ADDR)
++#define SEN_OUT_NODE CONCAT_2(sen_out_,CAM_NODE)
++
++#define SEN_PATH CONCAT_3(SER_PATH,/,CAM_NODE_NAME)
++#define SER_NODE_OVERLAY	\
++gpio-rmten = <0x0>; \
++gpio-out-src = <0x1>; \
++gpio-out-en = <0xF>; \
++gpio-in-en = <0x0>; \
++hs-clk-div = <0x1>; \
++div-m-val = <0x1>; \
++div-n-val = <0x28>;
++
++&SER_NODE {
++	CAM_NODE: CAM_NODE_NAME {
++		status = STR(STATUS);
++		compatible = "d3,imx390";
++		reg = <HEX_PREFIX(IMG_ADDR)>;
++
++		devnode = STR(CONCAT_2(video,PORT_IDX));
++
++		mclk = "extperiph1";
++		physical_w = "5.37";
++		physical_h = "4.04";
++		sensor_model = "imx390";
++		use_decibel_gain = "true";
++		use_sensor_mode_id = "true";
++
++		physical-addr = <0x21>;
++		deserializer = <&DES_NODE>;
++
++#		include "d3-cam-imx390-modes.dtsi"
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			status = STR(STATUS);
++			port@0 {
++				reg = <0>;
++				SEN_OUT_NODE: endpoint {
++					status = STR(STATUS);
++					port-index = <CSI_PORT>;
++					bus-width = <CSI_LANES>;
++					remote-endpoint = <&CSI_IN_NODE>;
++					vc-id = <PORT_VCID>;
++				};
++			};
++		};
++	};
++};
++
++#include "d3-overlays-cam.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390rcm-template.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390rcm-template.dtsi
+new file mode 100644
+index 000000000000..8c3d3dcb8001
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-imx390rcm-template.dtsi
+@@ -0,0 +1,74 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-cam.dtsi"
++#include "d3-check-cam.dtsi"
++
++
++#define CAM_MODEL imx390rcm
++#define DRIVER_NAME imx390
++
++#define CAM_NODE CONCAT_3(CAM_MODEL,_,PORT_IDX)
++#define CAM_NODE_NAME CONCAT_3(CAM_MODEL,@,IMG_ADDR)
++#define SEN_OUT_NODE CONCAT_2(sen_out_,CAM_NODE)
++
++#define SEN_PATH CONCAT_3(SER_PATH,/,CAM_NODE_NAME)
++#define SER_NODE_OVERLAY	\
++gpio-rmten = <0x0>; \
++gpio-out-src = <0x3>; \
++gpio-out-en = <0xF>; \
++gpio-in-en = <0x0>; \
++hs-clk-div = <0x2>; \
++div-m-val = <0x1>; \
++div-n-val = <0x25>;
++
++
++&SER_NODE {
++	CAM_NODE: CAM_NODE_NAME {
++		status = STR(STATUS);
++		compatible = "d3,imx390";
++		reg = <HEX_PREFIX(IMG_ADDR)>;
++
++		devnode = STR(CONCAT_2(video,PORT_IDX));
++
++		mclk = "extperiph1";
++		physical_w = "5.37";
++		physical_h = "4.04";
++		sensor_model = "imx390";
++		use_decibel_gain = "true";
++		use_sensor_mode_id = "true";
++		physical-addr = <0x1a>;
++		deserializer = <&DES_NODE>;
++
++#		include "d3-cam-imx390-modes.dtsi"
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			status = STR(STATUS);
++			port@0 {
++				reg = <0>;
++				SEN_OUT_NODE: endpoint {
++					status = STR(STATUS);
++					port-index = <CSI_PORT>;
++					bus-width = <CSI_LANES>;
++					remote-endpoint = <&CSI_IN_NODE>;
++					vc-id = <PORT_VCID>;
++				};
++			};
++		};
++	};
++};
++
++#include "d3-overlays-cam.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ov10640-template.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ov10640-template.dtsi
+new file mode 100644
+index 000000000000..8d10dbf270bd
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-ov10640-template.dtsi
+@@ -0,0 +1,155 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-cam.dtsi"
++#include "d3-check-cam.dtsi"
++
++
++#define CAM_MODEL ov10640
++
++#define CAM_NODE CONCAT_3(CAM_MODEL,_,PORT_IDX)
++#define CAM_NODE_NAME CONCAT_3(CAM_MODEL,@,IMG_ADDR)
++#define SEN_OUT_NODE CONCAT_2(sen_out_, CAM_NODE)
++
++#define SEN_PATH CONCAT_3(SER_PATH,/,CAM_NODE_NAME)
++#define SER_NODE_OVERLAY			\
++	gpio-rmten = <0x0>;			\
++	gpio-out-src = <0x6>;			\
++	gpio-out-en = <0x3>;			\
++	gpio-in-en = <0x4>;			\
++	hs-clk-div = <2>;			\
++	div-m-val = <1>;			\
++	div-n-val = <40>;			\
++	fsync-gpio = <0>;			\
++	wait-for-self-configure;
++
++
++#define OV10640_MODE_COMMON				\
++	mclk_khz = "25000";				\
++	mclk_multiplier = "22.0";			\
++	num_lanes = STR(CSI_LANES);			\
++	tegra_sinterface = STR(TEGRA_SINTERFACE);	\
++	discontinuous_clk = "no";			\
++	dpcm_enable = "false";				\
++	cil_settletime = "0";				\
++	csi_pixel_bit_depth = "12";			\
++	pixel_phase = "bggr";				\
++	active_w = "1280";				\
++	active_h = "1080";				\
++	readout_orientation = "0";			\
++	line_length = "1450";				\
++	inherent_gain = "1";				\
++	serdes_pix_clk_hz = "535000000";		\
++	pix_clk_hz = "71428571";			\
++	min_framerate = "30";				\
++	max_framerate = "30";				\
++	embedded_metadata_height = "0";			\
++	vc_id = STR(PORT_VCID)
++
++
++&SER_NODE {
++	CAM_NODE: CAM_NODE_NAME {
++		status = STR(STATUS);
++		compatible = "d3,ov10640";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		reg = <HEX_PREFIX(IMG_ADDR)>;
++		physical-addr = <0x32>;
++		devnode = STR(CONCAT_2(video,PORT_IDX));
++		mclk = "extperiph1";
++		physical_w = "5.41";
++		physical_h = "4.57";
++		sensor_model = "ov10640";
++
++		use_decibel_gain = "false";
++		use_sensor_mode_id = "true";
++
++		deserializer = <&DES_NODE>;
++
++		/* Long exposure mode (linear) */
++		mode0 {
++			OV10640_MODE_COMMON;
++			mode_type = "bayer";
++			min_gain_val = "1.0";
++			max_gain_val = "8.0";
++			/* minimum is one line */
++			min_exp_time = "20";
++			/* maximum is (frame period - 6 lines) */
++			max_exp_time = "33698";
++			min_hdr_ratio = "1";
++			max_hdr_ratio = "1";
++		};
++
++		/* 3 exposure HDR mode  */
++#if D3_OV10640_HDR_ENABLE
++		mode1 {
++			OV10640_MODE_COMMON;
++			mode_type = "bayer_wdr_pwl";
++			/* min == max to disable AE gain
++			 * control in HDR mode. */
++			min_gain_val = "1.0";
++			max_gain_val = "8.0";
++
++			min_exp_time = "640";
++			max_exp_time = "32640";
++
++			/* 1 row / 1 row */
++			min_hdr_ratio = "1024.0";
++			/* 1660 rows / 1/32 row */
++			max_hdr_ratio = "1024.0";
++			dynamic_pixel_bit_depth = "20";
++			/* num_control_point = "4"; */
++			/* control_point_x_0 = "2047"; */
++			/* control_point_y_0 = "511"; */
++			/* control_point_x_1 = "16383"; */
++			/* control_point_y_1 = "1407"; */
++			/* control_point_x_2 = "65535"; */
++			/* control_point_y_2 = "2175"; */
++			/* control_point_x_3 = "1048575"; */
++			/* control_point_y_3 = "4095"; */
++			num_control_point = "5";
++			control_point_x_0 = "0";
++			control_point_y_0 = "0";
++			control_point_x_1 = "2048";
++			control_point_y_1 = "512";
++			control_point_x_2 = "16384";
++			control_point_y_2 = "1408";
++			control_point_x_3 = "65536";
++			control_point_y_3 = "2176";
++			control_point_x_4 = "1048576";
++			control_point_y_4 = "4096";
++
++		};
++#endif /* D3_OV10640_HDR_ENABLE */
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			status = STR(STATUS);
++			port@0 {
++				reg = <0>;
++				SEN_OUT_NODE: endpoint {
++					vc-id = <PORT_VCID>;
++					status = STR(STATUS);
++					port-index = <CSI_PORT>;
++					bus-width = <CSI_LANES>;
++					remote-endpoint = <&CSI_IN_NODE>;
++				};
++			};
++		};
++
++	};
++};
++
++#include "d3-overlays-cam.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-vg6768-template.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-vg6768-template.dtsi
+new file mode 100644
+index 000000000000..c2502d274e04
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-cam-vg6768-template.dtsi
+@@ -0,0 +1,106 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-cam.dtsi"
++#include "d3-check-cam.dtsi"
++
++
++#define CAM_MODEL vg6768
++
++#define CAM_NODE CONCAT_3(CAM_MODEL,_,PORT_IDX)
++#define CAM_NODE_NAME CONCAT_3(CAM_MODEL,@,IMG_ADDR)
++#define SEN_OUT_NODE CONCAT_2(sen_out_, CAM_NODE)
++
++#define SEN_PATH CONCAT_3(SER_PATH,/,CAM_NODE_NAME)
++#define SER_NODE_OVERLAY	\
++gpio-rmten = <0x0>; \
++gpio-out-src = <0x3>; \
++hs-clk-div = <0x1>; \
++div-m-val = <0x3>; \
++div-n-val = <0x7d>; \
++gpio-out-en = <0xf>; \
++gpio-in-en = <0x0>;
++
++
++&SER_NODE {
++	CAM_NODE: vg6768@IMG_ADDR {
++		status = STR(STATUS);
++		compatible = "d3,vg6768";
++		reg = <HEX_PREFIX(IMG_ADDR)>;
++
++		devnode = STR(CONCAT_2(video,PORT_IDX));
++
++		mclk = "extperiph1";
++		physical_w = "27.30";
++		physical_h = "21.80";
++		sensor_model = "vg6768";
++		use_decibel_gain = "true";
++
++		physical-addr = <0x11>;
++
++		mode0 {
++			mclk_khz = "24000";
++			num_lanes = STR(CSI_LANES);
++			tegra_sinterface = STR(TEGRA_SINTERFACE);
++			discontinuous_clk = "no";
++			dpcm_enable = "false";
++			cil_settletime = "0";
++			dynamic_pixel_bit_depth = "12";
++			csi_pixel_bit_depth = "12";
++			mode_type = "bayer";
++			pixel_phase = "rggb";
++			/* This is here to avoid seeing the warning from
++			 * Nvidia's code. TODO patch the kernel to remove
++			 * the warning. */
++			pixel_t = "rgb3";
++
++			active_w = "1920";
++			active_h = "1080";
++			readout_orientation = "0";
++			line_length = "3840";
++			inherent_gain = "1";
++			serdes_pix_clk_hz = "535000000";
++			pix_clk_hz = "148500000";
++
++			min_gain_val = "0"; /* dB */
++			max_gain_val = "30"; /* dB */
++			min_hdr_ratio = "1";
++			max_hdr_ratio = "1";
++			min_framerate = "30";
++			max_framerate = "30";
++			min_exp_time = "118";
++			max_exp_time = "660000";
++			embedded_metadata_height = "0";
++			vc_id = STR(PORT_VCID);
++		};
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			status = STR(STATUS);
++			port@0 {
++				reg = <0>;
++				SEN_OUT_NODE: endpoint {
++					status = STR(STATUS);
++					port-index = <CSI_PORT>;
++					bus-width = <CSI_LANES>;
++					remote-endpoint = <&CSI_IN_NODE>;
++					vc-id = <PORT_VCID>;
++				};
++			};
++		};
++	};
++};
++
++#include "d3-overlays-cam.dtsi"
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-check-cam.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-check-cam.dtsi
+new file mode 100644
+index 000000000000..d7909b44fea9
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-check-cam.dtsi
+@@ -0,0 +1,53 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#ifndef SER_PATH
++#	error "Missing definition: SER_PATH"
++#endif
++#ifndef SER_NODE
++#	error "Missing definition: SER_NODE"
++#endif
++#ifndef SER_ADDR
++#	error "Missing definition: SER_ADDR"
++#endif
++#ifndef IMG_BUS
++#	error "Missing definition: IMG_BUS"
++#endif
++#ifndef IMG_ADDR
++#	error "Missing definition: IMG_ADDR"
++#endif
++#ifndef CSI_PORT
++#	error "Missing definition: CSI_PORT"
++#endif
++// Compatibility for where port_idx corresponds to csi_port
++#ifndef PORT_IDX
++#	define PORT_IDX CSI_PORT
++#endif
++#ifndef CSI_LANES
++#	error "Missing definition: CSI_LANES"
++#endif
++#ifndef TEGRA_SINTERFACE
++#	error "Missing definition: TEGRA_SINTERFACE"
++#endif
++#ifndef POSITION
++#	error "Missing definition: POSITION"
++#endif
++#ifndef STATUS
++#	define STATUS disabled
++#endif
++#ifndef ORIENTATION
++#	define ORIENTATION 1
++#endif
++#ifndef PORT_VCID
++#   error "Missing definition: PORT_VCID"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-gmsl-cam-template.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-gmsl-cam-template.dtsi
+new file mode 100644
+index 000000000000..2c5d13db029b
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-gmsl-cam-template.dtsi
+@@ -0,0 +1,128 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#define X_CONCAT(a,b) a##b
++#define CONCAT(a,b) X_CONCAT(a,b)
++
++#define XX_STR_CONCAT(a) #a
++#define X_STR_CONCAT(a,b) XX_STR_CONCAT(a##b)
++#define STR_CONCAT(a,b) X_STR_CONCAT(a,b)
++
++#define HEX_PREFIX(a) CONCAT(0x, a)
++
++&GMSL_LINK {
++	serializer@SER_ADDR {
++		compatible = "d3,?";
++		status = "okay";
++		reg = <HEX_PREFIX(SER_ADDR)>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++	};
++	sensor@IMG_ADDR {
++		status = "okay";
++		compatible = "d3,somesensor";
++		reg = <HEX_PREFIX(IMG_ADDR)>;
++		devnode = "CONCAT(video,PORT_IDX)";
++
++		physical_w = "27.30";
++		physical_h = "21.80";
++		sensor_model = "sensor_?";
++		use_decibel_gain = "true";
++
++		mode0 {
++			mclk_khz = "27000";
++			num_lanes = "2";
++			tegra_sinterface = TEGRA_SINTERFACE;
++			discontinuous_clk = "no";
++			dpcm_enable = "false";
++			cil_settletime = "0";
++			csi_pixel_bit_depth = "12";
++			mode_type = "bayer";
++			pixel_phase = "rggb";
++			active_w = "1936";
++			active_h = "1100";
++			readout_orientation = "0";
++			line_length = "4400";
++			inherent_gain = "1";
++			mclk_multiplier = "5";
++			pix_clk_hz = "148500000";
++
++			/* 1-30 dB in .3 dB steps */
++			min_gain_val = "1.0";
++			max_gain_val = "30.0";
++			min_framerate = "30";
++			max_framerate = "30";
++
++			/* Units are microseconds */
++			min_exp_time = "30";
++			max_exp_time = "33333";
++			embedded_metadata_height = "1";
++		};
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			port@0 {
++				reg = <0>;
++				CONCAT(sen_out,PORT_IDX): endpoint {
++					status = "okay";
++					port-index = <CSI_PORT>;
++					bus-width = <2>;
++					remote-endpoint = <&CONCAT(csi_in,PORT_IDX)>;
++				};
++			};
++		};
++	};
++};
++
++&vi_base {
++	ports {
++		port@CSI_PORT {
++			status = "okay";
++			reg = <CSI_PORT>;
++			CONCAT(vi_in,PORT_IDX): endpoint {
++				status = "okay";
++				port-index = <CSI_PORT>;
++				bus-width = <2>;
++				remote-endpoint = <&CONCAT(csi_out,PORT_IDX)>;
++			};
++		};
++	};
++};
++
++&csi_base {
++	channel@CSI_PORT {
++		status = "okay";
++		reg = <CSI_PORT>;
++		ports {
++			port@0 {
++				status = "okay";
++				reg = <0>;
++				CONCAT(csi_in,PORT_IDX): endpoint@ENDPOINT_A {
++					status = "okay";
++					port-index = <CSI_PORT>;
++					bus-width = <2>;
++					remote-endpoint = <&CONCAT(sen_out,PORT_IDX)>;
++				};
++			};
++
++			port@1 {
++				status = "okay";
++				reg = <1>;
++				CONCAT(csi_out,PORT_IDX): endpoint@ENDPOINT_B {
++					remote-endpoint = <&CONCAT(vi_in,PORT_IDX)>;
++				};
++			};
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-overlays-cam.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-overlays-cam.dtsi
+new file mode 100644
+index 000000000000..38b4a7a034ae
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-overlays-cam.dtsi
+@@ -0,0 +1,160 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++
++
++#ifndef SEN_PATH
++#	error "Missing definition: SEN_PATH"
++#endif
++#ifndef CSI_PORT
++#	error "Missing definition: CSI_PORT"
++#endif
++#ifndef CAM_NODE
++#	error "Missing definition: CAM_NODE"
++#endif
++#ifndef VI_PORT_NODE
++#	error "Missing definition: VI_PORT_NODE"
++#endif
++#ifndef VI_IN_NODE
++#	error "Missing definition: VI_IN_NODE"
++#endif
++#ifndef CHAN_NODE
++#	error "Missing definition: CHAN_NODE"
++#endif
++#ifndef CSI_IN_NODE
++#	error "Missing definition: CSI_IN_NODE"
++#endif
++#ifndef CSI_OUT_NODE
++#	error "Missing definition: CSI_OUT_NODE"
++#endif
++#ifndef SER_NODE
++#	error "Missing definition: SER_NODE"
++#endif
++#ifndef CAM_MODULE_NODE
++#	error "Missing definition: CAM_MODULE_NODE"
++#endif
++#ifndef SER_NODE_OVERLAY
++#	error "Missing definition: SER_NODE_OVERLAY"
++#endif
++#ifndef POSITION
++#	error "Missing definition: POSITION"
++#endif
++#ifndef CAM_MODEL
++#	error "Missing definition: CAM_MODEL"
++#endif
++#ifndef IMG_ADDR
++#	error "Missing definition: IMG_ADDR"
++#endif
++#ifndef IMG_BUS
++#	error "Missing definition: IMG_BUS"
++#endif
++#ifndef SEN_OUT_NODE
++#	error "Missing definition: SEN_OUT_NODE"
++#endif
++#ifndef DES_NODE
++#	error "Missing definition: DES_NODE"
++#endif
++#ifndef DRIVER_NAME
++#	define DRIVER_NAME CAM_MODEL
++#endif
++
++
++/{
++	overlay-loader {
++		fragment-d3-CAM_MODEL@PORT_IDX {
++			param = STR(CAM_NODE);
++			override@0 {
++				target = <&CAM_NODE>;
++				_overlay_ {
++					status = "okay";
++					ports {
++						status = "okay";
++					};
++				};
++			};
++			override@1 {
++				target = <&VI_PORT_NODE>;
++				_overlay_ {
++					status = "okay";
++				};
++			};
++			override@2 {
++				target = <&VI_IN_NODE>;
++				_overlay_ {
++					status = "okay";
++					vc-id = <PORT_VCID>;
++					remote-endpoint = <&CSI_OUT_NODE>;
++				};
++			};
++			override@3 {
++				target = <&CHAN_NODE>;
++				_overlay_ {
++					status = "okay";
++					ports {
++						port@0 {
++							status = "okay";
++						};
++						port@1 {
++							status = "okay";
++						};
++					};
++				};
++			};
++			override@4 {
++				target = <&CSI_IN_NODE>;
++				_overlay_ {
++					status = "okay";
++					remote-endpoint = <&SEN_OUT_NODE>;
++				};
++			};
++			override@5 {
++				target = <&CSI_OUT_NODE>;
++				_overlay_ {
++					status = "okay";
++					remote-endpoint = <&VI_IN_NODE>;
++				};
++			};
++			override@6 {
++				target = <&SER_NODE>;
++				_overlay_ {
++					status = "okay";
++					SER_NODE_OVERLAY
++				};
++			};
++			override@7 {
++				target = <&CAM_MODULE_NODE>;
++				_overlay_ {
++					status = "okay";
++					badge = STR(CONCAT_4(d3_,POSITION,_,CAM_MODEL));
++					drivernode0 {
++						status = "okay";
++						devname = STR(JOIN_2(DRIVER_NAME,CONCAT_3(IMG_BUS,-00,IMG_ADDR)));
++						proc-device-tree = STR(SEN_PATH);
++					};
++				};
++			};
++			override@8 {
++				target = <&SEN_OUT_NODE>;
++				_overlay_ {
++					status = "okay";
++				};
++			};
++			override@9 {
++				target = <&DES_NODE>;
++				_overlay_ {
++					status = "okay";
++				};
++			};
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/templated-cameras/d3-reset-cam.dtsi b/arch/arm64/boot/dts/d3/templated-cameras/d3-reset-cam.dtsi
+new file mode 100644
+index 000000000000..1f690277a837
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-cameras/d3-reset-cam.dtsi
+@@ -0,0 +1,22 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++// resets everything set by a cam template
++
++#undef CAM_MODEL
++#undef CAM_NODE
++#undef CAM_NODE_NAME
++#undef SEN_OUT_NODE
++#undef SEN_PATH
++#undef SER_NODE_OVERLAY
++#undef DRIVER_NAME
+diff --git a/arch/arm64/boot/dts/d3/templated-deserializers/d3-check-des.dtsi b/arch/arm64/boot/dts/d3/templated-deserializers/d3-check-des.dtsi
+new file mode 100644
+index 000000000000..d01d6b5632f6
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-deserializers/d3-check-des.dtsi
+@@ -0,0 +1,35 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#ifndef DES_ADDR
++#	error "Missing definition: DES_ADDR"
++#endif
++
++#ifndef RESET_PIN
++#	define RESET_PIN <>
++#endif
++#ifndef STATUS
++#	define STATUS disabled
++#endif
++
++#ifndef IOVDD_SUPPLY
++#   error "Missing definition: IOVDD_SUPPLY"
++#endif
++
++#ifndef AVDD_SUPPLY
++#   error "Missing definition: AVDD_SUPPLY"
++#endif
++
++#ifndef CSI_LANES
++#   error "Missing definition: CSI_LANES"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/templated-deserializers/d3-des-max9286-template.dtsi b/arch/arm64/boot/dts/d3/templated-deserializers/d3-des-max9286-template.dtsi
+new file mode 100644
+index 000000000000..fa742a551f84
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-deserializers/d3-des-max9286-template.dtsi
+@@ -0,0 +1,56 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-des.dtsi"
++#include "d3-check-des.dtsi"
++
++#define DES_NAME max9286
++#define DES_PATH CONCAT_3(\
++I2C_BASE_PATH,/,\
++CONCAT_3(DES_NAME,@,DES_ADDR))
++
++#define DES_NODE CONCAT_3(DES_NAME,_,DES_ADDR)
++
++/ {
++	CONCAT_2(i2c@,I2C_ADDR) {
++		DES_NODE: DES_NAME@DES_ADDR {
++			status = "okay";
++			/* We must force on all deserializers for proper bus
++			 * ordering to occur */
++			compatible = "maxim,max9286";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			vdd-supply = <&vdd_1v8_ap>;
++			gmsl-supply = <&vdd_bank_0>;
++			csi-tx-speed-mbps = <1600>;
++			csi-lane-count = <2>;
++			csi-continuous-clock = <1>;
++			gmsl-1;
++			/* variable properties */
++			reg = <HEX_PREFIX(DES_ADDR)>;
++			reset-gpios = RESET_PIN;
++			gmsl-lock-gpios = LOCK_GPIO;
++			gmsl-err-gpios = ERR_GPIO;
++			interrupt-parent = INTERRUPT_GPIO;
++			interrupts = INTERRUPTS;
++			ser-addr = SER_ADDR;
++			img-addr = IMG_ADDR;
++
++			CONCAT_2(DES_NODE,_link0): link@0 {
++				reg = <0>;
++				#address--cells = <1>;
++				#size-cells = <0>;
++			};
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/templated-deserializers/d3-des-max9296-template.dtsi b/arch/arm64/boot/dts/d3/templated-deserializers/d3-des-max9296-template.dtsi
+new file mode 100644
+index 000000000000..5db64722843b
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-deserializers/d3-des-max9296-template.dtsi
+@@ -0,0 +1,57 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++
++#include "d3-reset-des.dtsi"
++#include "d3-check-des.dtsi"
++
++#define DES_NAME max9296
++#define DES_PATH CONCAT_3(\
++I2C_BASE_PATH,/,\
++CONCAT_3(DES_NAME,@,DES_ADDR))
++
++#define DES_NODE CONCAT_3(DES_NAME,_,DES_ADDR)
++
++/ {
++	CONCAT_2(i2c@,I2C_ADDR) {
++		DES_NODE: DES_NAME@DES_ADDR {
++			status = "okay";
++			/* We must force on all deserializers for proper bus
++			 * ordering to occur */
++			compatible = "maxim,max9296";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			vdd-supply = <&vdd_1v8_ap>;
++			gmsl-supply = <&vdd_bank_0>;
++			csi-tx-speed-mbps = <1600>;
++			csi-lane-count = <2>;
++			csi-continuous-clock = <1>;
++			gmsl-1;
++			/* variable properties */
++			reg = <HEX_PREFIX(DES_ADDR)>;
++			reset-gpios = RESET_PIN;
++			gmsl-lock-gpios = LOCK_GPIO;
++			gmsl-err-gpios = ERR_GPIO;
++			interrupt-parent = INTERRUPT_GPIO;
++			interrupts = INTERRUPTS;
++			ser-addr = SER_ADDR;
++			img-addr = IMG_ADDR;
++
++			CONCAT_2(DES_NODE,_link0): link@0 {
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/templated-deserializers/d3-des-ub960-template.dtsi b/arch/arm64/boot/dts/d3/templated-deserializers/d3-des-ub960-template.dtsi
+new file mode 100644
+index 000000000000..f4496e0a6742
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-deserializers/d3-des-ub960-template.dtsi
+@@ -0,0 +1,85 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-des.dtsi"
++#include "d3-check-des.dtsi"
++
++#define DES_NAME ub960
++#define DES_PATH CONCAT_3(\
++I2C_BASE_PATH,/,\
++CONCAT_3(DES_NAME,@,DES_ADDR))
++
++#define DES_NODE CONCAT_3(DES_NAME,_,DES_ADDR)
++
++/ {
++	CONCAT_2(i2c@,I2C_ADDR) {
++		/* Deserializer */
++		DES_NODE: DES_NAME@DES_ADDR {
++			status = STR(STATUS);
++			/* the ub920 driver can operate the 954 */
++			compatible = "d3,ub960";
++			reg = <HEX_PREFIX(DES_ADDR)>;
++			iovdd-supply = IOVDD_SUPPLY;
++			avdd-supply = AVDD_SUPPLY;
++			pdb-gpios = RESET_PIN;
++			csi-lane-count = <CSI_LANES>;
++			csi-tx-speed-mbps = <1600>;
++			csi-continuous-clock = <1>;
++
++			/* Frame Synchronization Mode (FS_MODE field in FS_CTL register)
++			 *
++			 * 0x0 = internally generated framesync
++			 * 0x8 = external framesync from gpio 0
++			 * 0x9 = external framesync from gpio 1
++			 * 0xa = external framesync from gpio 2
++			 * 0xb = external framesync from gpio 3
++			 *
++			 * If this field is omitted, 0x0 is used.  It's value can be ignored
++			 * if the imager is not operating in a triggered mode.
++			 */
++			frame-sync-mode = <8>;
++
++			/* Internally generated FrameSync's high and low time, in microseconds.
++			 *
++			 * If these fields are omitted, they are configured for 15 ms high,
++			 * 35 ms low (20 Hz). Their value can be ignored if an internal
++			 * FrameSync is not being used
++			 */
++			frame-sync-high-time-us = <15000>;
++			frame-sync-low-time-us = <35000>;
++
++			#address-cells = <1>;
++			#size-cells = <0>;
++			CONCAT_2(DES_NODE,_link0): link@0 {
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++			CONCAT_2(DES_NODE,_link1): link@1 {
++				reg = <1>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++			CONCAT_2(DES_NODE,_link2): link@2 {
++				reg = <2>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++			CONCAT_2(DES_NODE,_link3): link@3 {
++				reg = <3>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/templated-deserializers/d3-reset-des.dtsi b/arch/arm64/boot/dts/d3/templated-deserializers/d3-reset-des.dtsi
+new file mode 100644
+index 000000000000..cfab9bc9c54c
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-deserializers/d3-reset-des.dtsi
+@@ -0,0 +1,13 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
+diff --git a/arch/arm64/boot/dts/d3/templated-serializers/d3-check-ser-fpdlink.dtsi b/arch/arm64/boot/dts/d3/templated-serializers/d3-check-ser-fpdlink.dtsi
+new file mode 100644
+index 000000000000..ba59f91840ac
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-serializers/d3-check-ser-fpdlink.dtsi
+@@ -0,0 +1,35 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#ifndef SER_ADDR
++#	error "Missing definition: SER_ADDR"
++#endif
++#ifndef CSI_PORT
++#	error "Missing definition: CSI_PORT"
++#endif
++// Compatibility for where port_idx corresponds to csi_port
++#ifndef PORT_IDX
++#	define PORT_IDX CSI_PORT
++#endif
++#ifndef DES_PATH
++#	error "Missing definition: DES_PATH"
++#endif
++#ifndef IMG_BUS
++#	error "Missing definition: IMG_BUS"
++#endif
++#ifndef STATUS
++#	define STATUS disabled
++#endif
++#ifndef DES_LINK
++#   error "Missing definition: DES_LINK"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/templated-serializers/d3-check-ser-gmsl.dtsi b/arch/arm64/boot/dts/d3/templated-serializers/d3-check-ser-gmsl.dtsi
+new file mode 100644
+index 000000000000..55fa2328ebdf
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-serializers/d3-check-ser-gmsl.dtsi
+@@ -0,0 +1,38 @@
++/*
++ * Copyright (c) 2018-2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#ifndef SER_ADDR
++#	error "Missing definition: SER_ADDR"
++#endif
++#ifndef CSI_PORT
++#	error "Missing definition: CSI_PORT"
++#endif
++// Compatibility for where port_idx corresponds to csi_port
++#ifndef PORT_IDX
++#	define PORT_IDX CSI_PORT
++#endif
++#ifndef DES_PATH
++#	error "Missing definition: DES_PATH"
++#endif
++#ifndef GMSL_RESET_BIT_RATES
++#	error "Missing definition: GMSL_RESET_BIT_RATES"
++#endif
++#ifndef IMG_BUS
++#	error "Missing definition: IMG_BUS"
++#endif
++#ifndef STATUS
++#	define STATUS disabled
++#endif
++#ifndef DES_LINK
++#   error "Missing definition: DES_LINK"
++#endif
+diff --git a/arch/arm64/boot/dts/d3/templated-serializers/d3-reset-ser.dtsi b/arch/arm64/boot/dts/d3/templated-serializers/d3-reset-ser.dtsi
+new file mode 100644
+index 000000000000..aa9f186e10a6
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-serializers/d3-reset-ser.dtsi
+@@ -0,0 +1,21 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "../templated-cameras/d3-reset-cam.dtsi"
++// resets everything creates by a serializer or sensor
++
++#undef SER_MODEL
++#undef SER_NODE
++#undef SER_NODE_NAME
++#undef SER_PATH
++#undef DES_LINK_NODE
+diff --git a/arch/arm64/boot/dts/d3/templated-serializers/d3-ser-max9295-template.dtsi b/arch/arm64/boot/dts/d3/templated-serializers/d3-ser-max9295-template.dtsi
+new file mode 100644
+index 000000000000..cf0b0230ea1e
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-serializers/d3-ser-max9295-template.dtsi
+@@ -0,0 +1,39 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-ser.dtsi"
++#include "d3-check-ser-gmsl.dtsi"
++
++#define SER_MODEL max9295
++#define SER_NODE CONCAT_3(SER_MODEL,_,PORT_IDX)
++#define SER_NODE_NAME CONCAT_3(SER_MODEL,@,SER_ADDR)
++#define SER_PATH CONCAT_3(DES_PATH,/link@0/,SER_NODE_NAME)
++#define DES_LINK_NODE CONCAT_3(DES_NODE,_link, DES_LINK)
++
++&DES_LINK_NODE {
++	SER_NODE: SER_NODE_NAME {
++		compatible = "maxim,max9295";
++		status = STR(STATUS);
++		reg = <HEX_PREFIX(SER_ADDR)>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		physical-addr = <0x62>;
++		gmsl-reset-bit-rates = GMSL_RESET_BIT_RATES;
++		link@0 {
++			reg = <0>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++			bus-number = <IMG_BUS>;
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/templated-serializers/d3-ser-max96705-template.dtsi b/arch/arm64/boot/dts/d3/templated-serializers/d3-ser-max96705-template.dtsi
+new file mode 100644
+index 000000000000..5714b786f32f
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-serializers/d3-ser-max96705-template.dtsi
+@@ -0,0 +1,39 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-ser.dtsi"
++#include "d3-check-ser-gmsl.dtsi"
++
++#define SER_MODEL max96705
++#define SER_NODE CONCAT_3(SER_MODEL,_,PORT_IDX)
++#define SER_NODE_NAME CONCAT_3(SER_MODEL,@,SER_ADDR)
++#define SER_PATH CONCAT_3(DES_PATH,/link@0/,SER_NODE_NAME)
++#define DES_LINK_NODE CONCAT_3(DES_NODE,_link, DES_LINK)
++
++&DES_LINK_NODE {
++	SER_NODE: SER_NODE_NAME {
++		compatible = "maxim,max96705";
++		status = STR(STATUS);
++		reg = <HEX_PREFIX(SER_ADDR)>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		physical-addr = <0x40>;
++		//gmsl-reset-bit-rates = GMSL_RESET_BIT_RATES;
++		link@0 {
++			reg = <0>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++			bus-number = <IMG_BUS>;
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/d3/templated-serializers/d3-ser-ub953-template.dtsi b/arch/arm64/boot/dts/d3/templated-serializers/d3-ser-ub953-template.dtsi
+new file mode 100644
+index 000000000000..20116b374ceb
+--- /dev/null
++++ b/arch/arm64/boot/dts/d3/templated-serializers/d3-ser-ub953-template.dtsi
+@@ -0,0 +1,35 @@
++/*
++ * Copyright (c) 2019, D3 Engineering. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; version 2 of the License.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ */
++
++#include "d3-reset-ser.dtsi"
++#include "d3-check-ser-fpdlink.dtsi"
++
++#define SER_MODEL ub953
++#define SER_NODE CONCAT_3(SER_MODEL,_,PORT_IDX)
++#define SER_NODE_NAME CONCAT_3(SER_MODEL,@,SER_ADDR)
++#define SER_PATH CONCAT_5(DES_PATH,/link@,DES_LINK,/,SER_NODE_NAME)
++#define DES_LINK_NODE CONCAT_3(DES_NODE,_link, DES_LINK)
++
++&DES_LINK_NODE {
++	SER_NODE: SER_NODE_NAME {
++		compatible = "d3,ub953";
++		status = STR(STATUS);
++		physical-addr = <0x18>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		reg = <HEX_PREFIX(SER_ADDR)>;
++		csi-lane-count = <4>;
++		csi-continuous-clock = <1>;
++		i2c-voltage-sel = <0x0>;
++	};
++};
+-- 
+2.17.1
+
