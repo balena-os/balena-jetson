@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.0+rev7
+## (2020-02-28)
+
+* Add firmware for the Intel 9260 wifi adapter [Vicentiu Galanopulo]
+
 # v2.47.0+rev6
 ## (2020-02-10)
 

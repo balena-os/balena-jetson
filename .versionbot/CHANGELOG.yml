@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add firmware for the Intel 9260 wifi adapter
+      hash: ab20b26ad134dce0539edb4c08551265de15b72b
+      body: |
+        Customer request to add firmware for the Intel 9260 wifi
+        adapter
+      footer:
+        Changelog-entry: Add firmware for the Intel 9260 wifi adapter
+        changelog-entry: Add firmware for the Intel 9260 wifi adapter
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.47.0+rev7
+  date: 2020-02-28T16:10:34.856Z
+- commits:
     - subject: Update meta-rust to include 1.36
       hash: 2015fbe3154798ec2e976541930325eda34d02c9
       body: ''
