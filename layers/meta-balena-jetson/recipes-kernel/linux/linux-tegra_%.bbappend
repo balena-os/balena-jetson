@@ -4,6 +4,22 @@ FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 
 SCMVERSION="n"
 
+SRC_URI_append_srd3-tx2 = " \
+    file://d3_defconfig \
+    file://0001-d3-BSP-2.0.0.patch \
+    file://0002-d3-Remove-symlinks.patch \
+    file://0003-d3-Backport-D3-drivers.patch \
+    file://0004-d3-nvidia-Backport-nvidia-subtree-from-D3.patch \
+    file://0005-d3-dts-Add-D3-dtbs.patch \
+"
+
+# Remove default meta-tegra defconfig
+SRC_URI_remove_srd3-tx2 = " file://defconfig"
+
+do_configure_prepend_srd3-tx2(){
+   cat ${WORKDIR}/d3_defconfig > ${WORKDIR}/defconfig
+}
+
 # Prevent delayed booting
 # and support using partition label to load rootfs
 # in the case of jetson-xavier and tx2 flasher
@@ -126,7 +142,11 @@ RESIN_CONFIGS[can] = " \
                 CONFIG_MTTCAN_IVC=m \
 "
 
-RESIN_CONFIGS_append_srd3-tx2 = " tpg"
+RESIN_CONFIGS[d3_hdr] = " \
+	CONFIG_D3_IMX390_HDR_ENABLE=y \
+"
+
+RESIN_CONFIGS_append_srd3-tx2 = " tpg d3_hdr"
 
 KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
 KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"

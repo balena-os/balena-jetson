@@ -1,0 +1,85 @@
+From 3a5c35df4b84b913fdebd103e640639f0199603b Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 24 Feb 2020 13:15:13 +0100
+Subject: [PATCH 4/5] nvidia: Backport nvidia subtree from D3
+
+Backported from
+https://github.com/D3Engineering/
+nvidia-kernel-linux-nvidia/tree/acb1f4bc1d4570072a8b51a3806446efa03c170b
+
+Upstream-status: Backport
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ .../media/platform/tegra/camera/camera_common.c  | 16 ++++++++++++++++
+ .../media/platform/tegra/camera/sensor_common.c  |  2 ++
+ .../net/ethernet/nvidia/pcie/tegra_vnet.c        |  1 +
+ .../pci/endpoint/functions/pci-epf-tegra-vnet.c  |  1 +
+ 4 files changed, 20 insertions(+)
+
+diff --git a/nvidia/drivers/media/platform/tegra/camera/camera_common.c b/nvidia/drivers/media/platform/tegra/camera/camera_common.c
+index dd2780f06f9e..6b6d8bed8fc4 100644
+--- a/nvidia/drivers/media/platform/tegra/camera/camera_common.c
++++ b/nvidia/drivers/media/platform/tegra/camera/camera_common.c
+@@ -111,6 +111,22 @@ static const struct camera_common_colorfmt camera_common_color_fmts[] = {
+ 		V4L2_COLORSPACE_SRGB,
+ 		V4L2_PIX_FMT_VYUY,
+ 	},
++	{
++               MEDIA_BUS_FMT_SBGGR12_1X12,
++               V4L2_COLORSPACE_SRGB,
++               V4L2_PIX_FMT_SBGGR12,
++       },
++       {
++               MEDIA_BUS_FMT_SGRBG12_1X12,
++               V4L2_COLORSPACE_SRGB,
++               V4L2_PIX_FMT_SGRBG12,
++       },
++       {
++               MEDIA_BUS_FMT_RGB888_1X24,
++               V4L2_COLORSPACE_SRGB,
++               V4L2_PIX_FMT_BGR24,
++       },
++
+ 	/*
+ 	 * The below two formats are not supported by VI4,
+ 	 * keep them at the last to ensure they get discarded
+diff --git a/nvidia/drivers/media/platform/tegra/camera/sensor_common.c b/nvidia/drivers/media/platform/tegra/camera/sensor_common.c
+index 75a3af2280f7..4ae0f20f8286 100644
+--- a/nvidia/drivers/media/platform/tegra/camera/sensor_common.c
++++ b/nvidia/drivers/media/platform/tegra/camera/sensor_common.c
+@@ -208,6 +208,8 @@ static int extract_pixel_format(
+ 		*format = V4L2_PIX_FMT_SRGGB12;
+ 	else if (strncmp(pixel_t, "bayer_wdr_pwl_rggb12", size) == 0)
+ 		*format = V4L2_PIX_FMT_SRGGB12;
++        else if (strncmp(pixel_t, "bayer_wdr_pwl_bggr12", size) == 0)
++                *format = V4L2_PIX_FMT_SGRBG12;
+ 	else if (strncmp(pixel_t, "bayer_wdr_dol_rggb10", size) == 0)
+ 		*format = V4L2_PIX_FMT_SRGGB10;
+ 	else if (strncmp(pixel_t, "bayer_xbggr10p", size) == 0)
+diff --git a/nvidia/drivers/net/ethernet/nvidia/pcie/tegra_vnet.c b/nvidia/drivers/net/ethernet/nvidia/pcie/tegra_vnet.c
+index bd3e81f41860..bcd0994bc4af 100644
+--- a/nvidia/drivers/net/ethernet/nvidia/pcie/tegra_vnet.c
++++ b/nvidia/drivers/net/ethernet/nvidia/pcie/tegra_vnet.c
+@@ -964,6 +964,7 @@ static void process_ctrl_msg(struct work_struct *work)
+ 	struct ep_ring_buf *ep_mem = &tvnet->ep_mem;
+ 	struct ep_own_cnt *ep_cnt = ep_mem->ep_cnt;
+ 	struct ctrl_msg msg;
++	msg.msg_id = CTRL_MSG_LINK_UP;
+ 
+ 	while (tvnet_ivc_rd_available(ep_cnt, host_cnt, EP2H_CTRL)) {
+ 		tvnet_read_ctrl_msg(tvnet, &msg);
+diff --git a/nvidia/drivers/pci/endpoint/functions/pci-epf-tegra-vnet.c b/nvidia/drivers/pci/endpoint/functions/pci-epf-tegra-vnet.c
+index 73e80ab32306..2035de3f825f 100644
+--- a/nvidia/drivers/pci/endpoint/functions/pci-epf-tegra-vnet.c
++++ b/nvidia/drivers/pci/endpoint/functions/pci-epf-tegra-vnet.c
+@@ -1004,6 +1004,7 @@ static void process_ctrl_msg(struct work_struct *work)
+ 	struct ep_ring_buf *ep_ring_buf = &tvnet->ep_ring_buf;
+ 	struct ep_own_cnt *ep_cnt = ep_ring_buf->ep_cnt;
+ 	struct ctrl_msg msg;
++	msg.msg_id = CTRL_MSG_LINK_UP;
+ 
+ 	while (tvnet_ivc_rd_available(ep_cnt, host_cnt, H2EP_CTRL)) {
+ 		tvnet_read_ctrl_msg(tvnet, &msg);
+-- 
+2.17.1
+

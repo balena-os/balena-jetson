@@ -98,3 +98,7 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     tegra-firmware-xusb \
     bt-scripts \
 "
+
+IMAGE_INSTALL_append_srd3-tx2 = " \
+    machxo2 \
+"
