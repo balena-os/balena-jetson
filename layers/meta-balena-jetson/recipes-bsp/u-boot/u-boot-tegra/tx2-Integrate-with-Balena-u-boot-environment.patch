@@ -1,19 +1,19 @@
-From 1d7b62afcf37c9b21c986d9b3f737067363e41c4 Mon Sep 17 00:00:00 2001
+From 3bca5f3f371ad392739b14f4598ca6c02ed01b33 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Mon, 27 May 2019 08:34:49 +0200
+Date: Wed, 12 Feb 2020 16:16:45 +0100
 Subject: [PATCH] Integrate with Balena u-boot environment
 
-Integrate tx2 on L4T 32.2 with Balena u-boot env
+Integrate tx2 on L4T 32.3 with Balena u-boot env
 
 Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  configs/p2771-0000-500_defconfig |  7 ++++++-
  include/config_distro_bootcmd.h  | 18 ++++++++++++++++--
- 2 files changed, 23 insertions(+), 3 deletions(-)
+ 2 files changed, 22 insertions(+), 3 deletions(-)
 
 diff --git a/configs/p2771-0000-500_defconfig b/configs/p2771-0000-500_defconfig
-index 64ee92f5d3..d8d8e29b33 100644
+index e819756722..39baea3c1b 100644
 --- a/configs/p2771-0000-500_defconfig
 +++ b/configs/p2771-0000-500_defconfig
 @@ -16,7 +16,7 @@ CONFIG_CMD_I2C=y
@@ -25,17 +25,17 @@ index 64ee92f5d3..d8d8e29b33 100644
  CONFIG_CMD_DHCP=y
  # CONFIG_CMD_NFS is not set
  CONFIG_CMD_MII=y
-@@ -37,3 +37,8 @@ CONFIG_DM_USB=y
- CONFIG_POWER_DOMAIN=y
+@@ -38,3 +38,8 @@ CONFIG_POWER_DOMAIN=y
  CONFIG_TEGRA186_POWER_DOMAIN=y
  CONFIG_POSITION_INDEPENDENT=y
+ CONFIG_BOOTP_PREFER_SERVERIP=y
 +CONFIG_CMD_PART=y
 +CONFIG_PARTITION_UUIDS=y
 +CONFIG_CMD_IMPORTENV=y
 +CONFIG_CMD_FAT=y
 +CONFIG_ENV_IS_NOWHERE=y
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index d7182244cb..b03e592f0e 100644
+index d8a43b7fd6..bf3cf7d009 100644
 --- a/include/config_distro_bootcmd.h
 +++ b/include/config_distro_bootcmd.h
 @@ -315,7 +315,7 @@
@@ -52,7 +52,7 @@ index d7182244cb..b03e592f0e 100644
  	\
  	"boot_a_script="                                                  \
 -		"load ${devtype} ${devnum}:${distro_bootpart} "           \
-+		"load ${resin_dev_type} ${resin_dev_index}:${resin_boot_part} "\
++		"load ${resin_dev_type} ${resin_dev_index}:${resin_boot_part} " \
  			"${scriptaddr} ${prefix}${script}; "              \
  		"source ${scriptaddr}\0"                                  \
  	\
@@ -71,7 +71,7 @@ index d7182244cb..b03e592f0e 100644
  	"scan_dev_for_boot="                                              \
  		"echo Scanning ${devtype} "                               \
  				"${devnum}:${distro_bootpart}...; "       \
-@@ -392,8 +400,14 @@
+@@ -403,8 +411,14 @@
  	BOOT_TARGET_DEVICES(BOOTENV_DEV)                                  \
  	\
  	"distro_bootcmd=" BOOTENV_SET_SCSI_NEED_INIT                      \

@@ -1,34 +1,31 @@
-From 9949797e989aeead1977fbd5357c261c44c171ed Mon Sep 17 00:00:00 2001
+From abf6e0a566804bb2ade282411720a58000b2d6c0 Mon Sep 17 00:00:00 2001
 From: Niclas Moeslund Overby <noverby@prozum.dk>
 Date: Thu, 20 Dec 2018 09:44:27 +0100
-Subject: Add missing device desc
+Subject: [PATCH] Add missing device desc
 
 ---
- drivers/media/v4l2-core/v4l2-ioctl.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ drivers/media/v4l2-core/v4l2-ioctl.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
 diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 724cb904..17dc8dfc 100644
+index 0c559476b8e5..ae76e5a1ea10 100644
 --- a/drivers/media/v4l2-core/v4l2-ioctl.c
 +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1156,6 +1156,20 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_PIX_FMT_Y16:		descr = "16-bit Greyscale"; break;
- 	case V4L2_PIX_FMT_Y16_BE:	descr = "16-bit Greyscale BE"; break;
- 	case V4L2_PIX_FMT_Y10BPACK:	descr = "10-bit Greyscale (Packed)"; break;
-+	case V4L2_PIX_FMT_Y8I:	descr = "Interleaved 8-bit Greyscale"; break;
-+	case V4L2_PIX_FMT_Y12I:	descr = "Interleaved 12-bit Greyscale"; break;
-+	case V4L2_PIX_FMT_Z16:	descr = "16-bit Depth"; break;
-+	case V4L2_PIX_FMT_INZI: descr = "Planar 10:16 Greyscale Depth"; break;
-+	case V4L2_PIX_FMT_Y8:   descr = "Greyscale 8-bit"; break;
-+	case V4L2_PIX_FMT_RAW8:	descr = "Raw data 8-bit"; break;
-+	case V4L2_PIX_FMT_RW10:	descr = "Raw data 10-bit"; break;
-+	case V4L2_PIX_FMT_RW16:	descr = "Raw data 16-bit"; break;
-+	case V4L2_PIX_FMT_INVZ:	descr = "16 Depth"; break;
-+	case V4L2_PIX_FMT_INVR:	descr = "16 Depth"; break;
-+	case V4L2_PIX_FMT_INRI:	descr = "24 Depth/IR 16:8"; break;
-+	case V4L2_PIX_FMT_INVI:	descr = "8 IR"; break;
-+	case V4L2_PIX_FMT_RELI:	descr = "8 IR alternating on off illumination"; break;
-+	case V4L2_PIX_FMT_W10:		descr = "Packed raw data 10-bit"; break;
+@@ -1177,6 +1177,17 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 	case V4L2_PIX_FMT_Y8I:		descr = "Interleaved 8-bit Greyscale"; break;
+ 	case V4L2_PIX_FMT_Y12I:		descr = "Interleaved 12-bit Greyscale"; break;
+ 	case V4L2_PIX_FMT_Z16:		descr = "16-bit Depth"; break;
++	case V4L2_PIX_FMT_INZI:		descr = "Planar 10:16 Greyscale Depth"; break;
++	case V4L2_PIX_FMT_Y8:		descr = "Greyscale 8-bit"; break;
++	case V4L2_PIX_FMT_RAW8:		descr = "Raw data 8-bit"; break;
++	case V4L2_PIX_FMT_RW10:		descr = "Raw data 10-bit"; break;
++	case V4L2_PIX_FMT_RW16:		descr = "Raw data 16-bit"; break;
++	case V4L2_PIX_FMT_INVZ:		descr = "16 Depth"; break;
++	case V4L2_PIX_FMT_INVR:		descr = "16 Depth"; break;
++	case V4L2_PIX_FMT_INRI:		descr = "24 Depth/IR 16:8"; break;
++	case V4L2_PIX_FMT_INVI:		descr = "8 IR"; break;
++	case V4L2_PIX_FMT_RELI:		descr = "8 IR alternating on off illumination"; break;
++	case V4L2_PIX_FMT_W10:          descr = "Packed raw data 10-bit"; break;
  	case V4L2_PIX_FMT_PAL8:		descr = "8-bit Palette"; break;
  	case V4L2_PIX_FMT_UV8:		descr = "8-bit Chrominance UV 4-4"; break;
  	case V4L2_PIX_FMT_YVU410:	descr = "Planar YVU 4:1:0"; break;

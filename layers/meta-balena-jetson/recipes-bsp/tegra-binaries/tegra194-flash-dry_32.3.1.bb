@@ -57,7 +57,6 @@ BOOTFILES=" \
     preboot_d15_prod_cr.bin \
     slot_metadata.bin \
     spe_t194.bin \
-    tos-trusty_t194.img \
     warmboot_t194_prod.bin \
     xusb_sil_rel_fw \
     cbo.dtb \
@@ -129,6 +128,7 @@ do_configure() {
     ln -s "${STAGING_DATADIR}/tegraflash/${MACHINE}.cfg" .
     ln -s "${STAGING_DATADIR}/tegraflash/${MACHINE}-override.cfg" .
     ln -s "${DEPLOY_DIR_IMAGE}/cboot-${MACHINE}.bin" ./cboot_t194.bin
+    ln -s "${DEPLOY_DIR_IMAGE}/tos-${MACHINE}.img" ./tos-trusty_t194.img
 
     mkdir -p ${DEPLOY_DIR_IMAGE}/bootfiles
     cp ./cboot_t194.bin ${DEPLOY_DIR_IMAGE}/bootfiles/
@@ -240,6 +240,9 @@ do_configure[depends] += " tegra-binaries:do_preconfigure"
 do_configure[depends] += " virtual/kernel:do_deploy \
                            virtual/bootloader:do_deploy \
 "
+do_configure[depends] += " cboot:do_deploy"
+do_configure[depends] += " tos-prebuilt:do_deploy"
+
 do_install[depends] += " virtual/kernel:do_deploy"
 do_populate_lic[depends] += "tegra-binaries:do_unpack"
 

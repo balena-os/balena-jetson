@@ -57,6 +57,13 @@ RESIN_BOOT_PARTITION_FILES_jetson-tx2 = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
+# Keep these in boot also, for a plain u-boot
+# to boot a flasher image.
+RESIN_BOOT_PARTITION_FILES_jetson-tx1 = " \
+    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
+    boot/extlinux.conf:/extlinux/extlinux.conf \
+"
+
 # The space resinOS takes will amount to 1GiB
 IMAGE_ROOTFS_SIZE = "487424"
 
@@ -64,6 +71,7 @@ IMAGE_ROOTFS_SIZE = "487424"
 RESIN_BOOT_SIZE_jetson-nano = "80960"
 RESIN_BOOT_SIZE_jetson-xavier = "121440"
 RESIN_BOOT_SIZE_jetson-tx2="80960"
+RESIN_BOOT_SIZE_jetson-tx1="80960"
 
 PARTITION_TABLE_TYPE = "gpt"
 
@@ -101,4 +109,15 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
 
 IMAGE_INSTALL_append_srd3-tx2 = " \
     machxo2 \
+"
+IMAGE_INSTALL_append_jetson-tx1 = " \
+    tegra210-flash-dry \
+    parted \
+    tegra-nvpmodel \
+    tegra-configs-nvstartup \
+    tegra-configs-udev \
+    tegra-firmware-brcm \
+    tegra-brcm-patchram \
+    linux-firmware-bcm4354 \
+    bt-scripts \
 "

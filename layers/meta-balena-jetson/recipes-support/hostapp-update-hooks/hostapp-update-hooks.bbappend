@@ -21,3 +21,8 @@ HOSTAPP_HOOKS_append_jetson-tx2 = " \
     99-resin-uboot \
     50-resin-bootfiles-jetson-tx2 \
 "
+
+HOSTAPP_HOOKS_append_jetson-tx1 = " \
+    99-resin-uboot \
+    50-resin-bootfiles-jetson-tx1 \
+"
