@@ -1,4 +1,52 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.5.4
+      hash: c1888d022b8100f3b714fc105e5b69f0f5c08193
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.5.4
+        changelog-entry: Update balena-yocto-scripts to v1.5.4
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+    - subject: Update meta-balena from v2.47.0 to v2.47.1
+      hash: f80b3d094b519b956fb3833397bf97805acce8f3
+      body: |
+        Update meta-balena from 2.47.0 to 2.47.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.47.0 to v2.47.1
+        changelog-entry: Update meta-balena from v2.47.0 to v2.47.1
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: >-
+                Affects 2.45+ on all devices. Fix dangling sshd services on
+                failed connections that would grow and cause cpu load to keep
+                rising. See issue 1837 in meta-balena for more detail.
+              hash: 0759f60bda559377bfb10361167222d4e0de6d01
+              body: |
+                This reverts commit 6d5de094c3f0d9f2f06a1c58abc5eb9dc256cf79.
+                Fixes #1837
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Affects 2.45+ on all devices. Fix dangling sshd services on
+                  failed connections that would grow and cause cpu load to keep
+                  rising. See issue 1837 in meta-balena for more detail.
+                changelog-entry: >-
+                  Affects 2.45+ on all devices. Fix dangling sshd services on
+                  failed connections that would grow and cause cpu load to keep
+                  rising. See issue 1837 in meta-balena for more detail.
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.47.1
+          date: 2020-02-13T11:54:53.438Z
+  version: 2.47.1+rev1
+  date: 2020-03-02T09:39:38.967Z
+- commits:
     - subject: Add firmware for the Intel 9260 wifi adapter
       hash: ab20b26ad134dce0539edb4c08551265de15b72b
       body: |
