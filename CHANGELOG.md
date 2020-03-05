@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.1+rev3
+## (2020-03-05)
+
+* tegra210-flash: Update JN30B Nano dtb [Alexandru Costache]
+
 # v2.47.1+rev2
 ## (2020-03-03)
 
