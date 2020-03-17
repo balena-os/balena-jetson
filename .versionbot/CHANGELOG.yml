@@ -1,4 +1,31 @@
 - commits:
+    - subject: 'tegra210-flash: Update JN30B Nano dtb'
+      hash: 51db2fe66a647961de57ed810d1fb9abb291571f
+      body: ''
+      footer:
+        Changelog-entry: 'tegra210-flash: Update JN30B Nano dtb'
+        changelog-entry: 'tegra210-flash: Update JN30B Nano dtb'
+        Author: Willem Remie
+        author: Willem Remie
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.47.1+rev3
+  date: 2020-03-05T09:56:31.743Z
+- commits:
+    - subject: 'u-boot: Adapt TX2 integration patch to 32.3.1 u-boot'
+      hash: 163a1c42377e6baa3c54d52721a3d0494b5d3572
+      body: |
+        These sort of patches need rebasing whenever L4T changes.
+      footer:
+        Changelog-entry: 'u-boot: Adapt TX2 integration patch to 32.3.1 u-boot'
+        changelog-entry: 'u-boot: Adapt TX2 integration patch to 32.3.1 u-boot'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.47.1+rev2
+  date: 2020-03-03T19:56:45.018Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.5.4
       hash: c1888d022b8100f3b714fc105e5b69f0f5c08193
       body: ''

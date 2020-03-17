@@ -26,7 +26,7 @@ SRC_URI = " \
 # kernel build, this is why we need to specify
 # them here instead of machine.conf.
 KERNEL_DEVICETREE_jetson-nano = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0000-p3449-0000-a02.dtb"
-KERNEL_DEVICETREE_jn30b-nano = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.2.2.dtb"
+KERNEL_DEVICETREE_jn30b-nano = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.3.dtb"
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 LNXSIZE ?= "67108864"
 
@@ -50,7 +50,6 @@ tegraflash_roundup_size() {
 
 BOOTFILES=" \
     bmp.blob \
-    cboot.bin \
     eks.img \
     nvtboot_recovery.bin \
     nvtboot.bin \
@@ -58,7 +57,6 @@ BOOTFILES=" \
     warmboot.bin \
     rp4.blob \
     sc7entry-firmware.bin \
-    tos-mon-only.img \
 "
 
 do_configure() {
@@ -85,6 +83,9 @@ do_configure() {
         cp "${STAGING_DATADIR}/tegraflash/$f" .
     done
 
+    ln -s "${DEPLOY_DIR_IMAGE}/cboot-${MACHINE}.bin" ./cboot.bin
+    ln -sf "${DEPLOY_DIR_IMAGE}/tos-${MACHINE}.img" ./tos-mon-only.img
+
     ln -s ${STAGING_BINDIR_NATIVE}/tegra210-flash .
     mkdir -p ${DEPLOY_DIR_IMAGE}/bootfiles
 
@@ -108,8 +109,6 @@ do_configure() {
     local wb0size=$(tegraflash_roundup_size warmboot.bin)
     local tossize=$(tegraflash_roundup_size tos-mon-only.img)
 
-    head -n 1 ${STAGING_DATADIR}/nv_tegra/nv_tegra_release > ./nv_tegra_release
-
     cat "flash.210.in" | sed \
         -e"s,EBTFILE,cboot.bin," -e"s,EBTSIZE,$ebtsize," \
         -e"/NCTFILE/d" -e"s,NCTTYPE,data," \
@@ -128,9 +127,9 @@ do_configure() {
         -e"s,EFISIZE,67108864," -e"/EFIFILE/d" \
         -e"s,BCTSIZE,${BOOTPART_SIZE}," -e"s,PPTSIZE,$gptsize," \
         -e"s,PPTFILE,ppt.img," -e"s,GPTFILE,gpt.img," \
-        > ./flash.xml.in
+        > ./flash.xml
 
-    python tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${MACHINE}.cfg" --cfg flash.xml.in --cmd "sign"
+    python tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${MACHINE}.cfg" --cfg flash.xml --cmd "sign" --keep --odmdata "${ODMDATA}"
 
     # Disable cboot displayed vendor logo
     dd if=/dev/zero of=./bmp.blob count=1 bs=70900
@@ -166,6 +165,8 @@ do_configure[nostamp] = "1"
 do_configure[depends] += " virtual/bootloader:do_deploy"
 do_configure[depends] += " tegra-binaries:do_preconfigure"
 do_configure[depends] += " virtual/kernel:do_deploy"
+do_configure[depends] += " cboot:do_deploy"
+do_configure[depends] += " tos-prebuilt:do_deploy"
 do_populate_lic[depends] += " tegra-binaries:do_unpack"
 
 addtask do_deploy before do_package after do_install

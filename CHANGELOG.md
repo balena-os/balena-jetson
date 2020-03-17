@@ -1,6 +1,16 @@
 Change log
 -----------
 
+# v2.47.1+rev3
+## (2020-03-05)
+
+* tegra210-flash: Update JN30B Nano dtb [Alexandru Costache]
+
+# v2.47.1+rev2
+## (2020-03-03)
+
+* u-boot: Adapt TX2 integration patch to 32.3.1 u-boot [Alexandru Costache]
+
 # v2.47.1+rev1
 ## (2020-03-02)
 

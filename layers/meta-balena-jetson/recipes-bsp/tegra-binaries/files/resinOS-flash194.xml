@@ -1,5 +1,5 @@
 <partition_layout version="01.00.0000">
-    <device type="sdmmc_boot" instance="3">
+    <device type="sdmmc_boot" instance="3" sector_size="512" num_sectors="16384">
         <partition name="BCT" type="boot_config_table">
             <allocation_policy> sequential </allocation_policy>
             <filesystem_type> basic </filesystem_type>
@@ -139,7 +139,7 @@
             <percent_reserved> 0 </percent_reserved>
         </partition>
     </device>
-    <device type="sdmmc_user" instance="3">
+    <device type="sdmmc_user" instance="3" sector_size="512" num_sectors="61071360">
         <partition name="master_boot_record" type="protective_master_boot_record">
             <allocation_policy> sequential </allocation_policy>
             <filesystem_type> basic </filesystem_type>
@@ -481,7 +481,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> resin-boot.img </filename>
         </partition>
         <partition name="resin-rootA" type="data">
             <allocation_policy> sequential </allocation_policy>
@@ -490,7 +489,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> resin-rootA.img </filename>
         </partition>
         <partition name="resin-rootB" type="data">
             <allocation_policy> sequential </allocation_policy>
@@ -499,7 +497,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> resin-rootB.img </filename>
         </partition>
         <partition name="resin-state" type="data">
             <allocation_policy> sequential </allocation_policy>
@@ -508,7 +505,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> resin-state.img </filename>
         </partition>
         <partition name="resin-data" type="data">
             <allocation_policy> sequential </allocation_policy>
@@ -517,7 +513,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x808 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename>resin-data.img</filename>
         </partition>
         <partition name="secondary_gpt" type="secondary_gpt">
             <allocation_policy> sequential </allocation_policy>

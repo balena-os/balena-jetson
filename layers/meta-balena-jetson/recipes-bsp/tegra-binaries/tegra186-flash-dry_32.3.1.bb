@@ -59,22 +59,12 @@ BOOTFILES=" \
     preboot_d15_prod_cr.bin \
     slot_metadata.bin \
     spe.bin \
-    tos-trusty.img \
     nvtboot.bin \
     warmboot.bin \
     minimal_scr.cfg \
     mobile_scr.cfg \
     emmc.cfg \
 "
-
-BINS="mb2_bootloader nvtboot_recovery.bin; \
-mts_preboot preboot_d15_prod_cr.bin; \
-mts_bootpack mce_mts_d15_prod_cr.bin; \
-bpmp_fw bpmp.bin; \
-bpmp_fw_dtb tegra186-a02-bpmp-quill-p3310-1000-c04-00-te770d-ucm2.dtb; \
-tlk tos-mon-only.img; \
-eks eks.img; \
-bootloader_dtb $DTBFILE;"
 
 do_configure() {
     local f
@@ -106,13 +96,13 @@ do_configure() {
         fdtput -t s ./${DTBFILE} /chosen bootargs "$bootargs ${KERNEL_ARGS}"
     fi
     ln -sf "${DEPLOY_DIR_IMAGE}/cboot-${MACHINE}.bin" ./cboot.bin
+    ln -sf "${DEPLOY_DIR_IMAGE}/tos-${MACHINE}.img" ./tos-trusty.img
     for f in ${BOOTFILES}; do
         ln -s "${STAGING_DATADIR}/tegraflash/$f" .
     done
     BOARDREV="c03"
     BPFDTBREV="c04"
     PMICREV="c04"
-
     cp ${STAGING_DATADIR}/tegraflash/flashvars .
     . ./flashvars
     for var in $FLASHVARS; do
@@ -196,12 +186,8 @@ do_configure() {
     # Patch resulting boot0.img to match partition table for this OS
     dd if=${WORKDIR}/boot0.bindiff bs=1 seek=557056 count=24 skip=0  of=boot0.img conv=notrunc
     dd if=${WORKDIR}/boot0.bindiff bs=1 seek=557444 count=6  skip=24 of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/boot0.bindiff bs=1 seek=558072 count=2  skip=30 of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/boot0.bindiff bs=1 seek=558088 count=2  skip=32 of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/boot0.bindiff bs=1 seek=622592 count=24 skip=34 of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/boot0.bindiff bs=1 seek=622980 count=6  skip=58 of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/boot0.bindiff bs=1 seek=623608 count=2  skip=64 of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/boot0.bindiff bs=1 seek=623624 count=2  skip=66 of=boot0.img conv=notrunc
+    dd if=${WORKDIR}/boot0.bindiff bs=1 seek=622592 count=24 skip=30 of=boot0.img conv=notrunc
+    dd if=${WORKDIR}/boot0.bindiff bs=1 seek=622980 count=6  skip=54 of=boot0.img conv=notrunc
     cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img
 }
 
@@ -237,6 +223,8 @@ do_compile[depends] += " \
 "
 
 do_install[depends] += "virtual/kernel:do_deploy"
+do_configure[depends] += " cboot:do_deploy"
+do_configure[depends] += " tos-prebuilt:do_deploy"
 do_populate_lic[depends] += "tegra-binaries:do_unpack"
 
 addtask do_deploy before do_package after do_install

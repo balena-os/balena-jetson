@@ -3,7 +3,7 @@
 <!-- Nvidia Tegra Partition Layout Version 1.0.0 -->
 
 <partition_layout version="01.00.0000">
-    <device type="sdmmc_boot" instance="3">
+    <device type="sdmmc_boot" instance="3" sector_size="512" num_sectors="16384">
         <partition name="BCT" type="boot_config_table">
             <allocation_policy> sequential </allocation_policy>
             <filesystem_type> basic </filesystem_type>
@@ -155,7 +155,7 @@
         </partition>
     </device>
 
-    <device type="sdmmc_user" instance="3">
+    <device type="sdmmc_user" instance="3" sector_size="512" num_sectors="61071351">
         <partition name="master_boot_record" type="protective_master_boot_record">
             <allocation_policy> sequential </allocation_policy>
             <filesystem_type> basic </filesystem_type>
