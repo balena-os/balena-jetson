@@ -6,11 +6,13 @@ set -o errexit
 # and updates the kernel, as well as
 # the rest of the bootloader binaries
 
+. /usr/libexec/os-helpers-fs
+
 new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
 echo "New partition is ${new_part}"
 
 blockdev=$(basename "$new_part")
-rootstr=$(ls -l /dev/disk/by-label/ |grep "${blockdev}")
+rootstr=$(get_dev_label "${blockdev}")
 rootl=""
 
 case "$rootstr" in
@@ -39,7 +41,7 @@ for n in ${partitions}; do
         continue
     fi
 
-    file_path=$(find /dev/disk/by-partlabel/ -name $part_name)
+    file_path=$(get_state_path_from_label $part_name)
 
     if [ "x$file_path" = "x" ]; then
         continue
@@ -52,15 +54,15 @@ for n in ${partitions}; do
 done
 
 echo "[INFO] Writing ${dtbfile} to specific partitions..."
-dd if=/resin-boot/bootfiles/${dtbfile} of=/dev/disk/by-partlabel/bootloader-dtb
-dd if=/resin-boot/bootfiles/${dtbfile} of=/dev/disk/by-partlabel/bootloader-dtb_b
-dd if=/resin-boot/bootfiles/${dtbfile} of=/dev/disk/by-partlabel/kernel-dtb
-dd if=/resin-boot/bootfiles/${dtbfile} of=/dev/disk/by-partlabel/kernel-dtb_b
+dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb")
+dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb_b")
+dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
+dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
 
 echo "[INFO] Writing kernel ${kernel} to specific partitions..."
 
-dd if=/resin-boot/bootfiles/${kernel}  of=/dev/disk/by-partlabel/kernel
-dd if=/resin-boot/bootfiles/${kernel}  of=/dev/disk/by-partlabel/kernel_b
+dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel")
+dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel_b")
 
 sync
 echo "Done."

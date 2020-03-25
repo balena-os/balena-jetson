@@ -2,12 +2,14 @@
 
 set -o errexit
 
+. /usr/libexec/os-helpers-fs
+
 bootfiles=$(ls /resin-boot/bootfiles/);
 
 for bootfile in ${bootfiles}
 do
-	dd if="/resin-boot/bootfiles/$bootfile" of="/dev/disk/by-partlabel/$bootfile" bs=512
-	echo "Updated $bootfile partition..."
+    dd if="/resin-boot/bootfiles/$bootfile" of=$(get_state_path_from_label "$bootfile") bs=512
+    echo "Updated $bootfile partition..."
 done
 
 sync
