@@ -1,9 +1,5 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-SRC_URI_append = " \
-    file://resindataexpander \
-"
-
 SRC_URI_append_jetson-xavier = " \
     file://blockdev \
 "
