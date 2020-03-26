@@ -15,7 +15,7 @@ module.exports =
 	aliases: [ 'n510-tx2' ]
 	name: 'Aetina N510 TX2'
 	arch: 'aarch64'
-	state: 'new'
+	state: 'released'
 	community: true
 
 	stateInstructions:
