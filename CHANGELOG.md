@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.48.0+rev2
+## (2020-03-25)
+
+* tegra186-flash-dry: Update for Aetina N510 and N310 boards [Alexandru Costache]
+
 # v2.48.0+rev1
 ## (2020-03-25)
 

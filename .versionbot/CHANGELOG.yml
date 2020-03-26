@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'tegra186-flash-dry: Update for Aetina N510 and N310 boards'
+      hash: d97056a2b9ddfceb13a1985724ce68f0f66d4790
+      body: ''
+      footer:
+        Author: Raphael Durscheid
+        author: Raphael Durscheid
+        Changelog-entry: 'tegra186-flash-dry: Update for Aetina N510 and N310 boards'
+        changelog-entry: 'tegra186-flash-dry: Update for Aetina N510 and N310 boards'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.48.0+rev2
+  date: 2020-03-25T20:24:55.801Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.5.6
       hash: 8c84cfc4ce71a6a4667b6eb0014348b90f7ffbc7
       body: ''
