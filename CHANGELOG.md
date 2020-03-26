@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.48.0+rev3
+## (2020-03-26)
+
+* Make the linux-firmware integration bbappend apply to all recipe versions [Florin Sarbu]
+
 # v2.48.0+rev2
 ## (2020-03-25)
 

@@ -1,4 +1,22 @@
 - commits:
+    - subject: >-
+        Make the linux-firmware integration bbappend apply to all recipe
+        versions
+      hash: bd30fd6d6ff5b083bae7a553cf7a8dd6907c7474
+      body: ''
+      footer:
+        Changelog-entry: >-
+          Make the linux-firmware integration bbappend apply to all recipe
+          versions
+        changelog-entry: >-
+          Make the linux-firmware integration bbappend apply to all recipe
+          versions
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.48.0+rev3
+  date: 2020-03-26T10:18:55.422Z
+- commits:
     - subject: 'tegra186-flash-dry: Update for Aetina N510 and N310 boards'
       hash: d97056a2b9ddfceb13a1985724ce68f0f66d4790
       body: ''
