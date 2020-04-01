@@ -73,8 +73,10 @@ RESIN_BOOT_PARTITION_FILES_jetson-tx1 = " \
 
 do_rootfs_resinos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy "
 
-# The space resinOS takes will amount to 1GiB
-IMAGE_ROOTFS_SIZE = "487424"
+# Although current space seems enough just for libcuda, it's still not enough for
+# testing first with all the files in tegra-libraries, to ensure the docker patches work fine.
+# So let's double the size just for now, while testing.
+IMAGE_ROOTFS_SIZE = "974848"
 
 # Need space for all the above signed update binaries
 RESIN_BOOT_SIZE_jetson-nano = "80960"
@@ -111,6 +113,7 @@ IMAGE_INSTALL_append_jetson-xavier-nx-devkit-emmc = " \
     tegra-configs-udev \
 "
 
+# Added cuda-driver, tegra-libraries with libcuda.so and container tools
 IMAGE_INSTALL_append_jetson-tx2 = " \
     tegra186-flash-dry \
     parted \
@@ -124,6 +127,9 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     linux-firmware-bcm4354 \
     tegra-firmware-xusb \
     bt-scripts \
+    cuda-driver \
+    tegra-libraries \
+    libnvidia-container-tools \
 "
 
 IMAGE_INSTALL_append_srd3-tx2 = " \
