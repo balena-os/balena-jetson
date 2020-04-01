@@ -1,0 +1,2 @@
+Copy cuda-repo-l4t-10-0-local-10.0.326_1.0-1_arm64.deb from the DEVNET mirror
+specified in meta-balena-jetson/layer.conf in this directory
