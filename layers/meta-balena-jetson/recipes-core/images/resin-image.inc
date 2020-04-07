@@ -130,6 +130,7 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     cuda-driver \
     tegra-libraries \
     libnvidia-container-tools \
+    nvidia-container-toolkit \
 "
 
 IMAGE_INSTALL_append_srd3-tx2 = " \
