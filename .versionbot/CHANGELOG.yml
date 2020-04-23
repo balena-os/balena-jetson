@@ -1,4 +1,16 @@
 - commits:
+    - subject: 'photon-nano: Add photon-nano device tree'
+      hash: c5a2f5e1f084d5949f02196750c536b09d721629
+      body: ''
+      footer:
+        Changelog-entry: 'photon-nano: Add photon-nano device tree'
+        changelog-entry: 'photon-nano: Add photon-nano device tree'
+        Signed-off-by: Willem Remie <w.remie@drebble.io>
+        signed-off-by: Willem Remie <w.remie@drebble.io>
+      author: Willem Remie
+  version: 2.48.0+rev4
+  date: 2020-04-23T11:14:09.654Z
+- commits:
     - subject: >-
         Make the linux-firmware integration bbappend apply to all recipe
         versions

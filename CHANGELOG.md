@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.48.0+rev4
+## (2020-04-23)
+
+* photon-nano: Add photon-nano device tree [Willem Remie]
+
 # v2.48.0+rev3
 ## (2020-03-26)
 
