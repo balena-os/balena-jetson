@@ -54,6 +54,10 @@ SRC_URI_append_jetson-nano = " \
     file://nano-mark-gpio-as-disabled-when-freed.patch \
 "
 
+SRC_URI_append_photon-nano = " \
+    file://tegra210-nano-cti-NGX003.dtb \
+"
+
 TEGRA_INITRAMFS_INITRD = "0"
 
 RESIN_CONFIGS_append = " tegra-wdt-t21x debug_kmemleak "
@@ -227,4 +231,8 @@ do_deploy_append_blackboard-tx2() {
 
 do_deploy_append_jn30b-nano() {
     cp ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.3.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_photon-nano() {
+    cp ${WORKDIR}/tegra210-nano-cti-NGX003.dtb "${DEPLOYDIR}"
 }
