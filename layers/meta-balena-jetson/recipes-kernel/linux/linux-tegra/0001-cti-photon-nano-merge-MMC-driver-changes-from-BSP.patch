@@ -1,0 +1,56 @@
+From c0750314e5355d0b1d85311872659177538c9f4b Mon Sep 17 00:00:00 2001
+From: Pelle van Gils <pelle@hwky.ai>
+Date: Fri, 1 May 2020 16:17:58 +0200
+Subject: [PATCH] cti photon nano: merge MMC driver changes from BSP
+
+Merge mmc driver changes from CTI BSP NANO-32.3.1 V001
+
+Upstream-status: Backport
+Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+---
+ drivers/mmc/core/host.c  | 2 ++
+ drivers/mmc/core/sd.c    | 2 +-
+ include/linux/mmc/host.h | 1 +
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
+index 8cb1de719269..99a26574e8ba 100644
+--- a/drivers/mmc/core/host.c
++++ b/drivers/mmc/core/host.c
+@@ -330,6 +330,8 @@ int mmc_of_parse(struct mmc_host *host)
+ 			host->dsr);
+ 		host->dsr_req = 0;
+ 	}
++	if (device_property_read_bool(dev, "no-vdd-regulator"))
++		host->cti_regulator_disabled = true;
+ 
+ 	return mmc_pwrseq_alloc(host);
+ }
+diff --git a/drivers/mmc/core/sd.c b/drivers/mmc/core/sd.c
+index 7bbc741e8396..e5692f7d8db2 100644
+--- a/drivers/mmc/core/sd.c
++++ b/drivers/mmc/core/sd.c
+@@ -790,7 +790,7 @@ int mmc_sd_get_cid(struct mmc_host *host, u32 ocr, u32 *cid, u32 *rocr)
+ 	 * In case CCS and S18A in the response is set, start Signal Voltage
+ 	 * Switch procedure. SPI mode doesn't support CMD11.
+ 	 */
+-	if (!mmc_host_is_spi(host) && rocr &&
++	if (!mmc_host_is_spi(host) && !host->cti_regulator_disabled && rocr &&
+ 	   ((*rocr & 0x41000000) == 0x41000000)) {
+ 		err = mmc_set_signal_voltage(host, MMC_SIGNAL_VOLTAGE_180,
+ 					pocr);
+diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+index cf7705f3640b..3555668c3958 100644
+--- a/include/linux/mmc/host.h
++++ b/include/linux/mmc/host.h
+@@ -520,6 +520,7 @@ struct mmc_host {
+ 	bool			en_periodic_cflush;
+ 	unsigned int		flush_timeout;
+ 	struct timer_list	flush_timer;
++	bool			cti_regulator_disabled; /* regulator state */
+ 	unsigned long		private[0] ____cacheline_aligned;
+ };
+ 
+-- 
+2.17.1
+
