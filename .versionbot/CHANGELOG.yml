@@ -1,4 +1,28 @@
 - commits:
+    - subject: enable RGB LED for cti photon nano
+      hash: 4bab31abc21f2dd706c41c55d99d0c13548b5132
+      body: |
+        Enable driver for the RGB LED controller on the photon nano
+      footer:
+        Changelog-entry: enable RGB LED for cti photon nano
+        changelog-entry: enable RGB LED for cti photon nano
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+    - subject: add mmc driver patch for cti photon nano
+      hash: c56d3a6b5a3b023a4dc2addceb5788ade7e78184
+      body: |
+        Add a patch for the changes made to the mmc driver in
+        CTI BSP NANO-32.3.1 V001
+      footer:
+        Changelog-entry: add mmc driver patch for cti photon nano
+        changelog-entry: add mmc driver patch for cti photon nano
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+  version: 2.48.0+rev5
+  date: 2020-05-05T07:46:14.788Z
+- commits:
     - subject: 'photon-nano: Add photon-nano device tree'
       hash: c5a2f5e1f084d5949f02196750c536b09d721629
       body: ''
