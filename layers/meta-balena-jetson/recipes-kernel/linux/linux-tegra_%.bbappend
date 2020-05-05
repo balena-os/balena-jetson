@@ -55,6 +55,7 @@ SRC_URI_append_jetson-nano = " \
 "
 
 SRC_URI_append_photon-nano = " \
+    file://0001-cti-photon-nano-merge-MMC-driver-changes-from-BSP.patch \
     file://tegra210-nano-cti-NGX003.dtb \
 "
 
@@ -156,6 +157,11 @@ RESIN_CONFIGS[gasket] = " \
 "
 
 RESIN_CONFIGS_append_srd3-tx2 = " tpg d3_hdr"
+
+RESIN_CONFIGS_append_photon-nano = " tlc591xx"
+RESIN_CONFIGS[tlc591xx] = " \
+                CONFIG_LEDS_TLC591XX=m \
+"
 
 KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
 KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"
