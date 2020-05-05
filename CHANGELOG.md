@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.48.0+rev5
+## (2020-05-05)
+
+* enable RGB LED for cti photon nano [Pelle van Gils]
+* add mmc driver patch for cti photon nano [Pelle van Gils]
+
 # v2.48.0+rev4
 ## (2020-04-23)
 
