@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add skx2 machine from the older balena-jetson-skx2 repository
+      hash: a2cc9d8e314de31470594d013dcf1406c3cea088
+      body: ''
+      footer:
+        Changelog-entry: Add skx2 machine from the older balena-jetson-skx2 repository
+        changelog-entry: Add skx2 machine from the older balena-jetson-skx2 repository
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.48.0+rev6
+  date: 2020-05-06T13:47:41.410Z
+- commits:
     - subject: enable RGB LED for cti photon nano
       hash: 4bab31abc21f2dd706c41c55d99d0c13548b5132
       body: |
