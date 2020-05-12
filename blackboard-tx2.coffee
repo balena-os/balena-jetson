@@ -18,6 +18,7 @@ module.exports =
 	arch: 'aarch64'
 	state: 'released'
 	community: true
+	private: false
 
 	stateInstructions:
 		postProvisioning: postProvisioningInstructions

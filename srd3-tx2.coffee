@@ -17,6 +17,7 @@ module.exports =
 	name: 'Nvidia D3 TX2'
 	arch: 'aarch64'
 	state: 'released'
+	private: false
 
 	stateInstructions:
 		postProvisioning: postProvisioningInstructions
