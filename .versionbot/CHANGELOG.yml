@@ -1,4 +1,16 @@
 - commits:
+    - subject: Set private to false in .coffee files for the public device types
+      hash: dc297bd399209cc08ac59176d2a759a822495948
+      body: ''
+      footer:
+        Changelog-entry: Set private to false in .coffee files for the public device types
+        changelog-entry: Set private to false in .coffee files for the public device types
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.49.0+rev2
+  date: 2020-05-12T08:45:25.783Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.6.0
       hash: 2e0d6e18d2a62bfed0a4bc269c12d2dafb41e9d2
       body: ''
