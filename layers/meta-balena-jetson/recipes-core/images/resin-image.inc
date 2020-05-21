@@ -58,6 +58,11 @@ RESIN_BOOT_PARTITION_FILES_jetson-tx2 = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
+RESIN_BOOT_PARTITION_FILES_jetson-xavier-nx-devkit-emmc = " \
+    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
+    boot/extlinux.conf:/extlinux/extlinux.conf \
+"
+
 # Keep these in boot also, for a plain u-boot
 # to boot a flasher image.
 RESIN_BOOT_PARTITION_FILES_jetson-tx1 = " \
@@ -65,12 +70,15 @@ RESIN_BOOT_PARTITION_FILES_jetson-tx1 = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
+do_rootfs_resinos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy "
+
 # The space resinOS takes will amount to 1GiB
 IMAGE_ROOTFS_SIZE = "487424"
 
 # Need space for all the above signed update binaries
 RESIN_BOOT_SIZE_jetson-nano = "80960"
 RESIN_BOOT_SIZE_jetson-xavier = "121440"
+RESIN_BOOT_SIZE_jetson-xavier-nx-devkit-emmc = "121440"
 RESIN_BOOT_SIZE_jetson-tx2="80960"
 RESIN_BOOT_SIZE_jetson-tx1="80960"
 
@@ -86,6 +94,15 @@ IMAGE_INSTALL_append_jetson-nano = " \
 IMAGE_INSTALL_append_jetson-xavier = " \
     tegra194-flash-dry \
     fan-startup \
+    parted \
+    gptfdisk \
+    tegra-nvpmodel \
+    tegra-configs-nvstartup \
+    tegra-configs-udev \
+"
+
+IMAGE_INSTALL_append_jetson-xavier-nx-devkit-emmc = " \
+    tegra194-nxde-flash-dry \
     parted \
     gptfdisk \
     tegra-nvpmodel \
