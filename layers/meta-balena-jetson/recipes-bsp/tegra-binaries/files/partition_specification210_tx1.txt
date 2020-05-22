@@ -1,10 +1,10 @@
 DTB:[DTBNAME].encrypt:1907
 TOS:tos-mon-only.img.encrypt:211
 EKS:eks.img:160
-LNX:u-boot-dtb.bin.encrypt:1936
+LNX:u-boot.bin.encrypt:1936
 DTB-1:[DTBNAME].encrypt:1907
 TOS-1:tos-mon-only.img.encrypt:211
 EKS-1:eks.img:160
-LNX-1:u-boot-dtb.bin.encrypt:1936
+LNX-1:u-boot.bin.encrypt:1936
 BMP:bmp.blob:160
 RP4:rp4.blob:512
