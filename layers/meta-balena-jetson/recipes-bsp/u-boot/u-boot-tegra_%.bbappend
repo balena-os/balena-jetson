@@ -7,13 +7,18 @@ inherit resin-u-boot
 RESIN_BOOT_PART_jetson-nano = "0xC"
 RESIN_DEFAULT_ROOT_PART_jetson-nano = "0xD"
 
-#SRCREV = "8e576d30001dc06552b017fab22e00fe7145b8da"
+# Latest L4T 32.4.2 known to work revision of u-boot v2020.04
+SRCREV = "914e902b5d68976de59ae0849f2ede20b1f2f50d"
+
+# meta-balena patch does not apply cleanly, so we refactor it
+SRC_URI_remove = " file://resin-specific-env-integration-kconfig.patch "
+SRC_URI_append = " file://local-resin-specific-env-integration-kconfig.patch "
 
 # These changes are necessary since balenaOS 2.39.0
 # for all boards that use u-boot
 SRC_URI_append = " \
-    file://0001-Increase-default-u-boot-environment-size.patch \
-    file://0001-menu-Use-default-menu-entry-from-extlinux.conf.patch \
+    file://Increase-default-u-boot-environment-size.patch \
+    file://menu-Use-default-menu-entry-from-extlinux.conf.patch \
 "
 
 SRC_URI_append_jetson-nano = " \
@@ -25,9 +30,8 @@ RESIN_BOOT_PART_jetson-tx2 = "0x18"
 RESIN_DEFAULT_ROOT_PART_jetson-tx2 = "0x19"
 
 SRC_URI_append_jetson-tx2 = " \
-    file://0001-Add-part-index-command.patch \
+    file://Add-part-index-command.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
-    file://tx2-Load-extlinux-from-rootfs-for-emmc.patch \
 "
 
 RESIN_BOOT_PART_jetson-tx1 = "0xB"
