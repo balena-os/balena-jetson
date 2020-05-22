@@ -38,7 +38,7 @@ RESIN_BOOT_PART_jetson-tx1 = "0xB"
 RESIN_DEFAULT_ROOT_PART_jetson-tx1 = "0xC"
 
 SRC_URI_append_jetson-tx1 = " \
-    file://0001-Add-part-index-command.patch \
+    file://Add-part-index-command.patch \
     file://tx1-Integrate-with-BalenaOS-environment.patch \
 "
 

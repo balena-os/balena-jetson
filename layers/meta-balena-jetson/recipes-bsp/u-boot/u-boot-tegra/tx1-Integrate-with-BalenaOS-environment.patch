@@ -1,106 +1,109 @@
-From 30580590e20fe2bd503c6fbc9de152ac18ab198a Mon Sep 17 00:00:00 2001
+From 2076df488ff9ac8bbc85d0b0588542ae9731fd2b Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Tue, 18 Feb 2020 15:03:35 +0100
+Date: Fri, 22 May 2020 16:28:33 +0200
 Subject: [PATCH] tx1: Integrate with BalenaOS environment
 
 Upstream-status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
- configs/p2371-2180_defconfig    |  7 ++++++-
- include/config_distro_bootcmd.h | 31 ++++++++++++++++++++++++++++---
- 2 files changed, 34 insertions(+), 4 deletions(-)
+ configs/p2371-2180_defconfig    |  8 +++++++-
+ include/config_distro_bootcmd.h | 33 ++++++++++++++++++++++++++++++---
+ 2 files changed, 37 insertions(+), 4 deletions(-)
 
 diff --git a/configs/p2371-2180_defconfig b/configs/p2371-2180_defconfig
-index f8fc847faa..105ea343cf 100644
+index c70217c82d..88e7b32e84 100644
 --- a/configs/p2371-2180_defconfig
 +++ b/configs/p2371-2180_defconfig
-@@ -18,7 +18,7 @@ CONFIG_CMD_DFU=y
+@@ -20,7 +20,7 @@ CONFIG_CMD_PCI=y
+ CONFIG_CMD_SPI=y
+ CONFIG_CMD_USB=y
  CONFIG_CMD_USB_MASS_STORAGE=y
- # CONFIG_CMD_FPGA is not set
- CONFIG_CMD_GPIO=y
 -# CONFIG_CMD_SETEXPR is not set
 +CONFIG_CMD_SETEXPR=y
- CONFIG_CMD_DHCP=y
  # CONFIG_CMD_NFS is not set
- CONFIG_CMD_MII=y
-@@ -43,3 +43,8 @@ CONFIG_G_DNL_MANUFACTURER="NVIDIA"
- CONFIG_G_DNL_VENDOR_NUM=0x0955
- CONFIG_G_DNL_PRODUCT_NUM=0x701a
+ CONFIG_CMD_EXT4_WRITE=y
+ CONFIG_OF_LIVE=y
+@@ -53,3 +53,9 @@ CONFIG_USB_GADGET_DOWNLOAD=y
+ CONFIG_USB_HOST_ETHER=y
+ CONFIG_USB_ETHER_ASIX=y
  CONFIG_BOOTP_PREFER_SERVERIP=y
 +CONFIG_CMD_PART=y
 +CONFIG_PARTITION_UUIDS=y
 +CONFIG_CMD_IMPORTENV=y
 +CONFIG_CMD_FAT=y
 +CONFIG_ENV_IS_NOWHERE=y
++CONFIG_CMD_EXPORTENV=y
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index d7182244cb..c6bd198394 100644
+index fc0935fa21..a35bc62d7a 100644
 --- a/include/config_distro_bootcmd.h
 +++ b/include/config_distro_bootcmd.h
-@@ -315,7 +315,7 @@
- 	"boot_targets=" BOOT_TARGET_DEVICES(BOOTENV_DEV_NAME) "\0"
+@@ -25,6 +25,8 @@
+  * message that includes some other pre-processor symbols in the text.
+  */
  
- #ifndef BOOT_TARGET_DEFAULTDEVPLIST
--#define BOOT_TARGET_DEFAULTDEVPLIST	"1"
-+#define BOOT_TARGET_DEFAULTDEVPLIST	"B"
- #endif
- #define BOOTENV_SET_DEFAULTDEVPLIST \
- 	"defaultdevplist=" BOOT_TARGET_DEFAULTDEVPLIST "\0"
-@@ -352,7 +352,7 @@
++#define BOOT_TARGET_DEFAULTDEVPLIST    "B"
++
+ #define BOOTENV_SHARED_BLKDEV_BODY(devtypel) \
+ 		"if " #devtypel " dev ${devnum}; then " \
+ 			"devtype=" #devtypel "; " \
+@@ -437,7 +439,7 @@
  		"fi\0"                                                    \
  	\
  	"boot_a_script="                                                  \
 -		"load ${devtype} ${devnum}:${distro_bootpart} "           \
-+		"load ${resin_dev_type} ${resin_dev_index}:${resin_boot_part} " \
++               "load ${resin_dev_type} ${resin_dev_index}:${resin_boot_part} " \
  			"${scriptaddr} ${prefix}${script}; "              \
  		"source ${scriptaddr}\0"                                  \
  	\
-@@ -368,6 +368,14 @@
+@@ -453,6 +455,14 @@
  			"fi; "                                            \
  		"done\0"                                                  \
  	\
-+        "resin_set_boot_part_tx1=part index mmc 0 resin-boot"             \
-+                                " resin_boot_part; echo New boot part:"   \
-+                                " $resin_boot_part;\0"                    \
-+        \
-+        "resin_update_boot_part_tx1=if test \"$target\" = \"mmc0\"; then" \
-+                                 " echo Old boot part: $resin_boot_part;" \
-+                                 " run resin_set_boot_part_tx1; fi\0"     \
-+        \
++	"resin_set_boot_part_tx1=part index mmc 0 resin-boot"             \
++				" resin_boot_part; echo New boot part:"   \
++				" $resin_boot_part;\0"                    \
++	\
++	"resin_update_boot_part_tx1=if test \"$target\" = \"mmc0\"; then" \
++				" echo Old boot part: $resin_boot_part;"  \
++				" run resin_set_boot_part_tx1; fi\0"      \
++	\
  	"scan_dev_for_boot="                                              \
  		"echo Scanning ${devtype} "                               \
  				"${devnum}:${distro_bootpart}...; "       \
-@@ -379,7 +387,18 @@
+@@ -464,8 +474,19 @@
  		"\0"                                                      \
  	\
  	"scan_dev_for_boot_part="                                         \
 -		"part list ${devtype} ${devnum} -bootable devplist; "     \
-+                "if test \"0\" =  \"${devnum}\"; "                        \
-+                "then "                                                   \
-+                "   if test -e ${devtype} ${devnum}:${resin_root_part} boot/extlinux/extlinux.conf; then " \
-+                "       echo Found extlinux.conf on root part: ${resin_root_part}; " \
-+                "       setenv devplist ${resin_root_part}; "             \
-+                "   else "                                                \
-+                "       echo Could not find extlinux.conf on root part, using boot part: ${resin_boot_part}; " \
-+                "       setenv devplist ${resin_boot_part}; "             \
-+                "   fi; "                                                 \
-+                "else "                                                   \
-+                "   part list ${devtype} ${devnum} -bootable devplist; "  \
-+                "fi; "                                                    \
- 		"env exists devplist || setenv devplist $defaultdevplist; " \
+-		"env exists devplist || setenv devplist 1; "              \
++		"if test \"0\" =  \"${devnum}\"; "                        \
++		"then "                                                   \
++		"   if test -e ${devtype} ${devnum}:${resin_root_part} boot/extlinux/extlinux.conf; then " \
++		"       echo Found extlinux.conf on root part: ${resin_root_part}; " \
++		"       setenv devplist ${resin_root_part}; "             \
++		"   else "                                                \
++		"       echo Could not find extlinux.conf on root part, using boot part: ${resin_boot_part}; " \
++		"       setenv devplist ${resin_boot_part}; "             \
++		"   fi; "                                                 \
++		"else "                                                   \
++		"   part list ${devtype} ${devnum} -bootable devplist; "  \
++		"fi; "                                                    \
++		"env exists devplist || setenv devplist B; "              \
  		"for distro_bootpart in ${devplist}; do "                 \
  			"if fstype ${devtype} "                           \
-@@ -392,8 +411,14 @@
- 	BOOT_TARGET_DEVICES(BOOTENV_DEV)                                  \
- 	\
- 	"distro_bootcmd=" BOOTENV_SET_SCSI_NEED_INIT                      \
-+         "setenv resin_kernel_load_addr ${loadaddr}; "                    \
+ 					"${devnum}:${distro_bootpart} "   \
+@@ -481,8 +502,14 @@
+ 		BOOTENV_SET_NVME_NEED_INIT                                \
+ 		BOOTENV_SET_IDE_NEED_INIT                                 \
+ 		BOOTENV_SET_VIRTIO_NEED_INIT                              \
++		"setenv resin_kernel_load_addr ${loadaddr}; "             \
  		"for target in ${boot_targets}; do "                      \
-+                    "if env exist resin_set_kernel_root; then "           \
-+                        "run resin_update_boot_part_tx1; "                \
-+                        "run resin_set_kernel_root; "                     \
-+                        "run set_os_cmdline; "                            \
++		"if env exist resin_set_kernel_root; then "               \
++			"run resin_update_boot_part_tx1; "                \
++			"run resin_set_kernel_root; "                     \
++			"run set_os_cmdline; "                            \
  			"run bootcmd_${target}; "                         \
-+		    "fi; "						  \
++		"fi; "                                                    \
  		"done\0"
  
  #ifndef CONFIG_BOOTCOMMAND
