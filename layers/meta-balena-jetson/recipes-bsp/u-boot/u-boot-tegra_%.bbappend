@@ -21,8 +21,18 @@ SRC_URI_append = " \
     file://menu-Use-default-menu-entry-from-extlinux.conf.patch \
 "
 
+# Uses sd-card defconfig
 SRC_URI_append_jetson-nano = " \
     file://nano-Integrate-with-Balena-and-load-kernel-from-root.patch \
+"
+
+# Uses emmc defconfig
+SRC_URI_append_photon-nano = " \
+    file://nano-emmc-defconfig-add-necessary-configs.patch \
+"
+
+SRC_URI_append_jn30b-nano = " \
+    file://nano-emmc-defconfig-add-necessary-configs.patch \
 "
 
 # In l4t 28.2 below partitions were 0xC and 0xD
