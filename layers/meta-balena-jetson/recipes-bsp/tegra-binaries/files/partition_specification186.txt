@@ -17,7 +17,7 @@ sce-fw:camera-rtcpu-sce_sigheader.img.encrypt:2048
 sce-fw_b:camera-rtcpu-sce_sigheader.img.encrypt:2048
 sc7:warmboot_wbheader.bin.encrypt:4096
 sc7_b:warmboot_wbheader.bin.encrypt:4096
-kernel:u-boot-dtb_sigheader.bin.encrypt:4096
-kernel_b:u-boot-dtb_sigheader.bin.encrypt:4096
+kernel:u-boot_sigheader.bin.encrypt:4096
+kernel_b:u-boot_sigheader.bin.encrypt:4096
 kernel-dtb:[DTB_NAME]_sigheader.dtb.encrypt:1024
 kernel-dtb_b:[DTB_NAME]_sigheader.dtb.encrypt:1024

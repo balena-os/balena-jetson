@@ -164,7 +164,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> u-boot-dtb.bin </filename>
+            <filename> u-boot.bin </filename>
         </partition>
 
         <partition name="EXS" id="19" type="data">

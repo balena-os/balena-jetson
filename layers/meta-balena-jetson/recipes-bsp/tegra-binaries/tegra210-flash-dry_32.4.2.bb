@@ -33,7 +33,7 @@ BL_IS_CBOOT = "${@'1' if d.getVar('PREFERRED_PROVIDER_virtual/bootloader').start
 LDK_DIR = "${TMPDIR}/work-shared/L4T-${SOC_FAMILY}-${PV}-${PR}/Linux_for_Tegra"
 B = "${WORKDIR}/build"
 S = "${WORKDIR}"
-LNXFILE="u-boot-dtb.bin"
+LNXFILE="u-boot.bin"
 BINARY_INSTALL_PATH = "/opt/tegra-binaries"
 
 tegraflash_roundup_size() {

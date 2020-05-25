@@ -1,6 +1,6 @@
-From 2ac12cbd652fd67cea7ec1a2ee9a5cd6342a3e0d Mon Sep 17 00:00:00 2001
+From d728eec1bcf0f360aea989a09eeb6fc47b4704d1 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Thu, 1 Aug 2019 10:26:43 +0200
+Date: Thu, 21 May 2020 16:46:37 +0200
 Subject: [PATCH] Increase default u-boot environment size
 
 After balenaOS 2.39.0 u-boot will not be able
@@ -15,18 +15,18 @@ Signed-off-by: Alexandru Costache <alexandru@balena.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/configs/tegra-common.h b/include/configs/tegra-common.h
-index 4c4a1ea1c6..05343a0aac 100644
+index f2cdd9c019..a27cfa28ed 100644
 --- a/include/configs/tegra-common.h
 +++ b/include/configs/tegra-common.h
-@@ -34,7 +34,7 @@
+@@ -25,7 +25,7 @@
+ #define CONFIG_CMDLINE_TAG		/* enable passing of ATAGs */
  
  /* Environment */
- #define CONFIG_ENV_VARS_UBOOT_CONFIG
--#define CONFIG_ENV_SIZE			0x2000	/* Total Size Environment */
-+#define CONFIG_ENV_SIZE			0x3000	/* Total Size Environment */
- 
+-
++#define CONFIG_ENV_SIZE                        0x3000  /* Total Size Environment */
  /*
   * NS16550 Configuration
+  */
 -- 
 2.17.1
 
