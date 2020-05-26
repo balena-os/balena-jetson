@@ -59,6 +59,10 @@ SRC_URI_append_photon-nano = " \
     file://tegra210-nano-cti-NGX003.dtb \
 "
 
+SRC_URI_append_jetson-tx2-6 = " \
+    file://tegra186-tx2-6.dtb \
+"
+
 TEGRA_INITRAMFS_INITRD = "0"
 
 RESIN_CONFIGS_append = " tegra-wdt-t21x debug_kmemleak "
@@ -241,4 +245,8 @@ do_deploy_append_jn30b-nano() {
 
 do_deploy_append_photon-nano() {
     cp ${WORKDIR}/tegra210-nano-cti-NGX003.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_jetson-tx2-6() {
+    cp ${WORKDIR}/tegra186-tx2-6.dtb "{DEPLOYDIR}"
 }
