@@ -173,6 +173,7 @@ RESIN_CONFIGS[gasket] = " \
 RESIN_CONFIGS_append_srd3-tx2 = " tpg d3_hdr"
 
 RESIN_CONFIGS_append_photon-nano = " tlc591xx"
+RESIN_CONFIGS_append_photon-xavier-nx = " tlc591xx"
 RESIN_CONFIGS[tlc591xx] = " \
                 CONFIG_LEDS_TLC591XX=m \
 "
