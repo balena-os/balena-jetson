@@ -68,6 +68,7 @@ SRC_URI_append_photon-nano = " \
 "
 
 SRC_URI_append_photon-xavier-nx = " \
+    file://0001-cti-photon-nano-merge-MMC-driver-changes-from-BSP.patch \
     file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
     file://tegra194-xavier-nx-cti-NGX003.dtb \
 "
