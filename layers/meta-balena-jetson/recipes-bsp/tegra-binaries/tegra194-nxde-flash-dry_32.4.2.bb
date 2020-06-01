@@ -22,7 +22,9 @@ SRC_URI = " \
     file://partition_specification194_nxde.txt \
     "
 
-KERNEL_DEVICETREE_jetson-xavier-nx-devkit-emmc = "${DEPLOY_DIR_IMAGE}/tegra194-p3668-all-p3509-0000.dtb"
+FLASHXML = "resinOS-flash194_nxde.xml"
+DTBNAME = "tegra194-p3668-all-p3509-0000"
+KERNEL_DEVICETREE = "${DEPLOY_DIR_IMAGE}/${DTBNAME}.dtb"
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 LNXSIZE ?= "67108864"
 
@@ -118,7 +120,7 @@ signfile() {
      --sdram_config tegra194-mb1-bct-memcfg-p3668-0001-a00.cfg,tegra194-memcfg-sw-override.cfg  \
      --odmdata 0xB8190000 \
      --applet mb1_t194_prod.bin \
-     --cmd "sign" \
+     --cmd "sign$1" \
      --soft_fuses tegra194-mb1-soft-fuses-l4t.cfg  \
      --cfg flash.xml \
      --chip 0x19 \
@@ -181,23 +183,20 @@ do_configure() {
     fi
     export boardcfg
 
+    sed -i -e "s/\[DTBNAME\]/${DTBNAME}/g" ${WORKDIR}/partition_specification194_nxde.txt
 
     ln -s ${STAGING_BINDIR_NATIVE}/tegra186-flash .
 
     cp "${DEPLOY_DIR_IMAGE}/${DTBFILE}" ./${DTBFILE}
 
-    # TODO: Do the A/B signed dtbs
-    #cp ./${DTBFILE} ./tegra194-p2888-0001-p2822-0000-rootA.dtb
-    #cp ./${DTBFILE} ./tegra194-p2888-0001-p2822-0000-rootB.dtb
+    cp ./${DTBFILE} ./${DTBNAME}-rootA.dtb
+    cp ./${DTBFILE} ./${DTBNAME}-rootB.dtb
 
     # Add rootA/rootB and save as separate dtbs to be used when
     # switching partitions
     bootargs="`fdtget ./${DTBFILE} /chosen bootargs 2>/dev/null`"
-    fdtput -t s ./${DTBFILE} /chosen bootargs "$bootargs ${ROOTA_ARGS} shell"
-
-    # TODO: Do the A/B signed dtbs. This implies changing the XML and partition template too.
-    #fdtput -t s ./tegra194-p2888-0001-p2822-0000-rootB.dtb /chosen bootargs "$bootargs ${ROOTB_ARGS}"
-    #fdtput -t s ./tegra194-p2888-0001-p2822-0000-rootB.dtb /chosen bootargs "$bootargs ${ROOTB_ARGS}"
+    fdtput -t s ./${DTBNAME}-rootA.dtb /chosen bootargs "$bootargs ${ROOTA_ARGS} "
+    fdtput -t s ./${DTBNAME}-rootB.dtb /chosen bootargs "$bootargs ${ROOTB_ARGS} "
 
     # Make bootable image from kernel and sign it
     cp ${DEPLOY_DIR_IMAGE}/${LNXFILE} ${LNXFILE}
@@ -208,7 +207,7 @@ do_configure() {
     ./mkbootimg --kernel ${LNXFILE} --ramdisk initrd --board mmcblk0p1 --output boot.img
 
     # prepare flash.xml.in to be used in signing
-    cp ${WORKDIR}/resinOS-flash194_nxde.xml flash.xml.in
+    cp ${WORKDIR}/${FLASHXML} flash.xml.in
 
     # prep env for tegraflash
     rm -f ./slot_metadata.bin
@@ -229,20 +228,16 @@ do_configure() {
     # Sign all tegra bins
     signfile
 
-    # TODO: Do the A/B dtbs
-    #signfile " tegra194-p2888-0001-p2822-0000-rootA.dtb"
-    #signfile " tegra194-p2888-0001-p2822-0000-rootB.dtb"
+    signfile " ${DTBNAME}-rootA.dtb"
+    signfile " ${DTBNAME}-rootB.dtb"
 
     # Needed to embedd plain initramfs kernel and dtb to main image
     cp $localbootfile ${DEPLOY_DIR_IMAGE}/bootfiles/Image
 
-    # TODO: Do the A/B dtbs
-    #cp -r tegra194-p2888-0001-p2822-0000-root*.dtb ${DEPLOY_DIR_IMAGE}/bootfiles/
-    cp ${WORKDIR}/resinOS-flash194_nxde.xml ${DEPLOY_DIR_IMAGE}/bootfiles/flash.xml
+    cp -r ${DTBNAME}-root*.dtb* ${DEPLOY_DIR_IMAGE}/bootfiles/
+    cp ${WORKDIR}/${FLASHXML} ${DEPLOY_DIR_IMAGE}/bootfiles/flash.xml
     cp -r signed/* ${DEPLOY_DIR_IMAGE}/bootfiles/
 
-    # TODO: Do the A/B dtbs
-    #cp -r tegra194-p2888-0001-p2822-0000-root*_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/
     dd if=/dev/zero of="${DEPLOY_DIR_IMAGE}/bootfiles/bmp.blob" bs=1K count=70
 }
 
@@ -250,15 +245,12 @@ do_configure() {
 do_install() {
     install -d ${D}/${BINARY_INSTALL_PATH}
     cp -r ${S}/tegraflash/signed/* ${D}/${BINARY_INSTALL_PATH}
-    # signed boot.img isn't needed in rootfs
-    rm ${D}/${BINARY_INSTALL_PATH}/boot*im* || true
 
-    # TODO: Do the A/B dtbs
-    #cp ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-rootA.dtb ${D}/${BINARY_INSTALL_PATH}/
+    cp ${S}/tegraflash/${DTBNAME}-rootA.dtb ${D}/${BINARY_INSTALL_PATH}/
     cp ${WORKDIR}/partition_specification194_nxde.txt ${D}/${BINARY_INSTALL_PATH}/
-    #cp -r ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-root*sigheader.dtb.encrypt ${D}/${BINARY_INSTALL_PATH}
+    cp -r ${S}/tegraflash/${DTBNAME}-root*sigheader.dtb.encrypt ${D}/${BINARY_INSTALL_PATH}
     # When generating image, this will be default dtb containing cmdline with root set to resin-rootA
-    #cp ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-rootA_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/tegra194-p2888-0001-p2822-0000_sigheader.dtb.encrypt
+    cp ${S}/tegraflash/${DTBNAME}-rootA_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/${DTBNAME}_sigheader.dtb.encrypt
 }
 
 do_deploy() {
