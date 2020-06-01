@@ -171,6 +171,7 @@ KERNEL_ROOTSPEC_jn30b-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-tx2 = " \${resin_kernel_root} ro rootwait gasket.dma_bit_mask=32 pcie_aspm=off"
 KERNEL_ROOTSPEC_jetson-tx1 = " \${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-xavier = ""
+KERNEL_ROOTSPEC_jetson-xavier-nx-devkit-emmc = ""
 
 # Since 32.1 on tx2, after kernel is loaded sd card becomes mmcblk2 opposed
 # to u-boot where it was 1. This is another cause of failure of
