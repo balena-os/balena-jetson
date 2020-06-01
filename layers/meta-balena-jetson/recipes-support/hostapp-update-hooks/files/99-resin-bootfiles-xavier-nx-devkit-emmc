@@ -1,0 +1,66 @@
+#!/bin/sh
+set -o errexit
+
+# Script which writes the appropriate
+# device tree with embedded cmdline
+# and updates the kernel, as well as
+# the rest of the bootloader binaries
+
+. /usr/libexec/os-helpers-fs
+
+new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
+echo "New partition is ${new_part}"
+
+blockdev=$(basename "$new_part")
+rootstr=$(get_dev_label "${blockdev}")
+rootl=""
+
+case "$rootstr" in
+    *resin-rootA*)
+        rootl="A"
+        ;;
+    *resin-rootB*)
+        rootl="B"
+        ;;
+    *)
+        rootl="Undefined"
+        ;;
+esac
+
+echo "New root is resin-root${rootl}"
+
+dtbfile="tegra194-p3668-all-p3509-0000-root${rootl}_sigheader.dtb.encrypt"
+kernel="boot_sigheader.img.encrypt"
+
+partitions=$(cat /resin-boot/bootfiles/partition_specification194_nxde.txt)
+for n in ${partitions}; do
+    part_name=$(echo $n | cut -d ':' -f 1)
+    file_name=$(echo $n | cut -d ':' -f 2)
+
+    if [ -z "${part_name##*kernel*}" ] || [ -z "${part_name##*bootloader-dtb*}" ] || [ $file_name = "none.bin" ]; then
+        continue
+    fi
+
+    file_path=$(get_state_path_from_label $part_name)
+
+    if [ "x$file_path" = "x" ]; then
+        continue
+    fi
+
+    echo "[INFO] Writing $file_name to $file_path"
+
+    dd if=/resin-boot/bootfiles/$file_name of=$file_path
+    dd if=/resin-boot/bootfiles/$file_name of=${file_path}_b
+done
+
+echo "[INFO] Writing ${dtbfile} to specific partitions..."
+dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
+dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
+
+echo "[INFO] Writing kernel ${kernel} to specific partitions..."
+
+dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel")
+dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel_b")
+
+sync
+echo "Done."
