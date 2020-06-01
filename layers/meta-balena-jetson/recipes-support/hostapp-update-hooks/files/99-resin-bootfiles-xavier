@@ -11,8 +11,7 @@ set -o errexit
 new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
 echo "New partition is ${new_part}"
 
-blockdev=$(basename "$new_part")
-rootstr=$(get_dev_label "${blockdev}")
+rootstr=$(get_dev_label "${new_part}")
 rootl=""
 
 case "$rootstr" in
