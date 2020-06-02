@@ -248,5 +248,5 @@ do_deploy_append_photon-nano() {
 }
 
 do_deploy_append_jetson-tx2-6() {
-    cp ${WORKDIR}/tegra186-tx2-6.dtb "{DEPLOYDIR}"
+    cp ${WORKDIR}/tegra186-tx2-6.dtb "${DEPLOYDIR}"
 }
