@@ -202,14 +202,52 @@ do_configure() {
     cp -r signed/* ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp -r tegra194-p2888-0001-p2822-0000-root*_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/
     dd if=/dev/zero of="${DEPLOY_DIR_IMAGE}/bootfiles/bmp.blob" bs=1K count=70
+
+    # This is the Xavier boot0, which wasn't necessary for HUP from L4T 31.x to 32.3.1,
+    # but is now, when moving to L4T 32.4.2.
+
+    dd if=/dev/zero of=boot0.img bs=8388608 count=1
+
+    # BCT (a)
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=3072 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=16384 bs=1 conv=notrunc
+
+    # mb1 (a + b)
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_t194_prod_sigheader.bin.encrypt of=boot0.img seek=32768 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_t194_prod_sigheader.bin.encrypt of=boot0.img seek=294912 bs=1 conv=notrunc #(32768 + 262144 which is mb1 size)
+
+    # MB1_BCT (a + b)
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_bct_MB1_sigheader.bct.encrypt of=boot0.img seek=557056 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_bct_MB1_sigheader.bct.encrypt of=boot0.img seek=638976 bs=1 conv=notrunc #(32768 + 262144 which is mb1 size)
+
+    # spe-fw (a + b)
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_t194_sigheader.bin.encrypt of=boot0.img seek=1130496 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_t194_sigheader.bin.encrypt of=boot0.img seek=1261568 bs=1 conv=notrunc
+
+    # mb2 (a + b)
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_t194_sigheader.bin.encrypt of=boot0.img seek=1392640 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_t194_sigheader.bin.encrypt of=boot0.img seek=1654784 bs=1 conv=notrunc
+
+    # mts-preboot (a + b)
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=1916928 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=2179072 bs=1 conv=notrunc
+
+    # SMD (a + b)
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=boot0.img seek=2441216 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=boot0.img seek=2445312 bs=1 conv=notrunc
+
+    # MEM_BCT (a + b)
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=720896 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=925696 bs=1 conv=notrunc
+
+    cp boot0.img ${S}/tegraflash/signed/boot0.img
 }
 
 
 do_install() {
     install -d ${D}/${BINARY_INSTALL_PATH}
     cp -r ${S}/tegraflash/signed/* ${D}/${BINARY_INSTALL_PATH}
-    # signed boot.img isn't needed in rootfs
-    rm ${D}/${BINARY_INSTALL_PATH}/boot*im*
     cp ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-rootA.dtb ${D}/${BINARY_INSTALL_PATH}/
     cp ${WORKDIR}/partition_specification194.txt ${D}/${BINARY_INSTALL_PATH}/
     cp -r ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-root*sigheader.dtb.encrypt ${D}/${BINARY_INSTALL_PATH}
