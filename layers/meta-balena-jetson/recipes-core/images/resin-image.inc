@@ -55,7 +55,6 @@ do_rootfs_resinos-img_jetson-tx2[depends] += " tegra186-flash-dry:do_deploy \
 "
 
 RESIN_BOOT_PARTITION_FILES_jetson-tx2 = " \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
