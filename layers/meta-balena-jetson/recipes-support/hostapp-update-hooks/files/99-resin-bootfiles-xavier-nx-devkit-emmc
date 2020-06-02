@@ -11,8 +11,7 @@ set -o errexit
 new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
 echo "New partition is ${new_part}"
 
-blockdev=$(basename "$new_part")
-rootstr=$(get_dev_label "${blockdev}")
+rootstr=$(get_dev_label "${new_part}")
 rootl=""
 
 case "$rootstr" in
@@ -32,7 +31,7 @@ echo "New root is resin-root${rootl}"
 dtbfile="tegra194-p3668-all-p3509-0000-root${rootl}_sigheader.dtb.encrypt"
 kernel="boot_sigheader.img.encrypt"
 
-partitions=$(cat /resin-boot/bootfiles/partition_specification194_nxde.txt)
+partitions=$(cat /opt/tegra-binaries/partition_specification194_nxde.txt)
 for n in ${partitions}; do
     part_name=$(echo $n | cut -d ':' -f 1)
     file_name=$(echo $n | cut -d ':' -f 2)
@@ -49,18 +48,18 @@ for n in ${partitions}; do
 
     echo "[INFO] Writing $file_name to $file_path"
 
-    dd if=/resin-boot/bootfiles/$file_name of=$file_path
-    dd if=/resin-boot/bootfiles/$file_name of=${file_path}_b
+    dd if=/opt/tegra-binaries/$file_name of=$file_path
+    dd if=/opt/tegra-binaries/$file_name of=${file_path}_b
 done
 
 echo "[INFO] Writing ${dtbfile} to specific partitions..."
-dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
-dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
+dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
+dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
 
 echo "[INFO] Writing kernel ${kernel} to specific partitions..."
 
-dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel")
-dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel_b")
+dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel")
+dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel_b")
 
 sync
 echo "Done."
