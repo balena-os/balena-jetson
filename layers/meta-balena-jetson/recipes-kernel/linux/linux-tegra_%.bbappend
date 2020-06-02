@@ -44,7 +44,10 @@ SRC_URI_append_jetson-tx2 = " \
     file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
-    file://tegra186-tx2-6.dtb \
+"
+
+SRC_URI_append_jetson-tx2-6 = " \
+   file://tegra186-tx2-6.dtb \
 "
 
 SRC_URI_append_jn30b-nano = " \
