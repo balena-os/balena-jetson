@@ -1,14 +1,14 @@
 deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
-BOARD_POWEROFF = 'Remove power from the board and insert freshly burnt SD-CARD.'
+BOARD_POWEROFF = 'Remove power from the Jetson Nano Devkit SD-CARD and insert freshly the burnt sd card.'
 BOARD_POWERON  = 'Power on the board.'
 
 module.exports =
 	version: 1
 	slug: 'jetson-nano'
 	aliases: [ 'jetson-nano' ]
-	name: 'Nvidia Jetson Nano'
+	name: 'Nvidia Jetson Nano SD-CARD'
 	arch: 'aarch64'
 	state: 'new'
 	private: false
