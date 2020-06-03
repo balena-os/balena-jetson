@@ -6,6 +6,8 @@ inherit resin-u-boot
 
 RESIN_BOOT_PART_jetson-nano = "0xC"
 RESIN_DEFAULT_ROOT_PART_jetson-nano = "0xD"
+RESIN_BOOT_PART_jetson-nano-emmc = "0xC"
+RESIN_DEFAULT_ROOT_PART_jetson-nano-emmc = "0xD"
 
 # Latest L4T 32.4.2 known to work revision of u-boot v2020.04
 SRCREV = "914e902b5d68976de59ae0849f2ede20b1f2f50d"
@@ -24,6 +26,13 @@ SRC_URI_append = " \
 # Uses sd-card defconfig
 SRC_URI_append_jetson-nano = " \
     file://nano-Integrate-with-Balena-and-load-kernel-from-root.patch \
+"
+
+# Uses emmc defconfig, does not inherit nano
+# as it comes from meta-tegra
+SRC_URI_append_jetson-nano-emmc = " \
+    file://nano-Integrate-with-Balena-and-load-kernel-from-root.patch \
+    file://nano-emmc-defconfig-add-necessary-configs.patch \
 "
 
 # Uses emmc defconfig
