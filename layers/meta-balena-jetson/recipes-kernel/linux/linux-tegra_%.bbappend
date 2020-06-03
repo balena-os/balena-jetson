@@ -54,6 +54,10 @@ SRC_URI_append_jetson-nano = " \
     file://nano-mark-gpio-as-disabled-when-freed.patch \
 "
 
+SRC_URI_append_jetson-nano-emmc = " \
+    file://nano-mark-gpio-as-disabled-when-freed.patch \
+"
+
 SRC_URI_append_photon-nano = " \
     file://0001-cti-photon-nano-merge-MMC-driver-changes-from-BSP.patch \
     file://tegra210-nano-cti-NGX003.dtb \
@@ -167,6 +171,7 @@ KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
 KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"
 
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
+KERNEL_ROOTSPEC_jetson-nano-emmc = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jn30b-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-tx2 = " \${resin_kernel_root} ro rootwait gasket.dma_bit_mask=32 pcie_aspm=off"
 KERNEL_ROOTSPEC_jetson-tx1 = " \${resin_kernel_root} ro rootwait"
