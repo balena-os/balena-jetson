@@ -6,6 +6,12 @@ HOSTAPP_HOOKS_append_jetson-nano    = " 99-resin-uboot \
 					99-resin-bootfiles-nano \
 "
 
+DEPENDS_${PN}_append_jetson-nano-emmc = " tegra210-flash"
+
+HOSTAPP_HOOKS_append_jetson-nano-emmc = " 99-resin-uboot \
+                                          99-resin-bootfiles-nano \
+"
+
 DEPENDS_${PN}_append_jetson-xavier  = " tegra194-flash-dry"
 
 DEPENDS_${PN}_append_jetson-xavier-nx-devkit-emmc  = " tegra194-nxde-flash-dry"

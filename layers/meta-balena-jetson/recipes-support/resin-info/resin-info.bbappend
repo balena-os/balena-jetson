@@ -1,4 +1,5 @@
 TTYS_jetson-nano=" ttyS0 tty1"
+TTYS_jetson-nano-emmc =" ttyS0 tty1"
 TTYS_jetson-xavier=" ttyTHS0 tty1"
 TTYS_jetson-xavier-nx-devkit-emmc=" ttyTHS0 tty1"
 TTYS_jetson-tx2=" ttyS0 tty1"
