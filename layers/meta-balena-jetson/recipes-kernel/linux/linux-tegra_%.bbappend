@@ -46,6 +46,10 @@ SRC_URI_append_jetson-tx2 = " \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
 "
 
+SRC_URI_append_astro-tx2 = " \
+    file://tegra186-tx2-cti-ASG001-revG+.dtb \
+"
+
 SRC_URI_append_jn30b-nano = " \
     file://tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.3.dtb \
 "
@@ -247,4 +251,8 @@ do_deploy_append_jn30b-nano() {
 
 do_deploy_append_photon-nano() {
     cp ${WORKDIR}/tegra210-nano-cti-NGX003.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_astro-tx2() {
+    cp ${WORKDIR}/tegra186-tx2-cti-ASG001-revG+.dtb "${DEPLOYDIR}"
 }
