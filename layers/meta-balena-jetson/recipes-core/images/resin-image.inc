@@ -83,6 +83,9 @@ do_rootfs_resinos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-f
 # The space resinOS takes will amount to 1GiB
 IMAGE_ROOTFS_SIZE = "487424"
 
+# Bootloader blob is 32MB on the NX
+IMAGE_ROOTFS_SIZE_jetson-xavier-nx-devkit-emmc = "733184"
+
 # Need space for all the above signed update binaries
 RESIN_BOOT_SIZE_jetson-nano = "80960"
 RESIN_BOOT_SIZE_jetson-nano-emmc = "80960"
@@ -124,6 +127,7 @@ IMAGE_INSTALL_append_jetson-xavier-nx-devkit-emmc = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
+    mtd-utils \
 "
 
 IMAGE_INSTALL_append_jetson-tx2 = " \
