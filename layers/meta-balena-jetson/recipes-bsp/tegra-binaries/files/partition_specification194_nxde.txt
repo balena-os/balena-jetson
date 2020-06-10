@@ -5,3 +5,4 @@ kernel-dtb_b:[DTBNAME]_sigheader.dtb.encrypt:524288
 recovery-dtb:[DTBNAME]_sigheader.dtb.encrypt:524288
 kernel-bootctrl:none.bin:262144
 kernel-bootctrl_b:none.bin:262144
+PADDING:none.bin:333426688

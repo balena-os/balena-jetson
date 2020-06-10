@@ -20,6 +20,7 @@ inherit deploy pythonnative perlnative
 SRC_URI = " \
     file://resinOS-flash194_nxde.xml \
     file://partition_specification194_nxde.txt \
+    file://boot0_t194_nx.bindiff \
     "
 
 FLASHXML = "resinOS-flash194_nxde.xml"
@@ -189,6 +190,12 @@ do_configure() {
 
     cp "${DEPLOY_DIR_IMAGE}/${DTBFILE}" ./${DTBFILE}
 
+    # This one is used to ensure carrier boards have
+    # the same bldtb, so that the generated boot0.img
+    # has valid signatures.
+    cp "${DEPLOY_DIR_IMAGE}/tegra194-p3668-all-p3509-0000.dtb" .
+
+    # These reside on the eMMC, can differ from bldtb
     cp ./${DTBFILE} ./${DTBNAME}-rootA.dtb
     cp ./${DTBFILE} ./${DTBNAME}-rootB.dtb
 
@@ -197,6 +204,15 @@ do_configure() {
     bootargs="`fdtget ./${DTBFILE} /chosen bootargs 2>/dev/null`"
     fdtput -t s ./${DTBNAME}-rootA.dtb /chosen bootargs "$bootargs ${ROOTA_ARGS} "
     fdtput -t s ./${DTBNAME}-rootB.dtb /chosen bootargs "$bootargs ${ROOTB_ARGS} "
+
+    # Need to switch back to default values from flashing, otherwise bootloader dtb offset inside boot0.img will
+    # change and will generate signature failure in MB2.
+    bldtbchosenargs="root=/dev/mmcblk0p12 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0"
+    bldtbdtsname="/dvs/git/dirty/git-master_linux/kernel/kernel-4.9/arch/arm64/boot/dts/../../../../../../hardware/nvidia/platform/t19x/jakku/kernel-dts/tegra194-p3668-all-p3509-0000.dts"
+
+    # Do not overide this hardcoded dtb for carrier boards, this is used for bldtb in boot0.img
+    fdtput -t s ./tegra194-p3668-all-p3509-0000.dtb / "nvidia,dtsfilename" $bldtbdtsname
+    fdtput -t s ./tegra194-p3668-all-p3509-0000.dtb /chosen bootargs $bldtbchosenargs
 
     # Make bootable image from kernel and sign it
     cp ${DEPLOY_DIR_IMAGE}/${LNXFILE} ${LNXFILE}
@@ -231,6 +247,9 @@ do_configure() {
     signfile " ${DTBNAME}-rootA.dtb"
     signfile " ${DTBNAME}-rootB.dtb"
 
+    # Used in boot0.img
+    signfile " tegra194-p3668-all-p3509-0000.dtb"
+
     # Needed to embedd plain initramfs kernel and dtb to main image
     cp $localbootfile ${DEPLOY_DIR_IMAGE}/bootfiles/Image
 
@@ -238,7 +257,113 @@ do_configure() {
     cp ${WORKDIR}/${FLASHXML} ${DEPLOY_DIR_IMAGE}/bootfiles/flash.xml
     cp -r signed/* ${DEPLOY_DIR_IMAGE}/bootfiles/
 
-    dd if=/dev/zero of="${DEPLOY_DIR_IMAGE}/bootfiles/bmp.blob" bs=1K count=70
+    dd if=/dev/zero count=1 bs=33554432 | tr "\000" "\377" > boot0.img
+    dd if=/dev/zero bs=2887 count=1 of=boot0.img conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=4096 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=32768 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=65536 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=98304 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_t194_prod_sigheader.bin.encrypt of=boot0.img seek=131072 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_t194_prod_sigheader.bin.encrypt of=boot0.img seek=393216 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt of=boot0.img seek=655360 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt of=boot0.img seek=720896 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=786432 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=1048576 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_t194_sigheader.bin.encrypt of=boot0.img seek=1310720 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_t194_sigheader.bin.encrypt of=boot0.img seek=1572864 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_t194_sigheader.bin.encrypt of=boot0.img seek=1835008 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_t194_sigheader.bin.encrypt of=boot0.img seek=2097152 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=2359296 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=2424832 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mce_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=2490368 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mce_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=2686976 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mts_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=2883584 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mts_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=7077888 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/warmboot_t194_prod_sigheader.bin.encrypt of=boot0.img seek=11272192 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/warmboot_t194_prod_sigheader.bin.encrypt of=boot0.img seek=11403264 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=boot0.img seek=11534336 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=boot0.img seek=11599872 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/xusb_sil_rel_fw of=boot0.img seek=11665408 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/xusb_sil_rel_fw of=boot0.img seek=11862016 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cboot_t194_sigheader.bin.encrypt of=boot0.img seek=12058624 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cboot_t194_sigheader.bin.encrypt of=boot0.img seek=13500416 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/tegra194-p3668-all-p3509-0000_sigheader.dtb.encrypt of=boot0.img seek=14942208 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/tegra194-p3668-all-p3509-0000_sigheader.dtb.encrypt of=boot0.img seek=15400960 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/bmp.blob of=boot0.img seek=15859712 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/bmp.blob of=boot0.img seek=16056320 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/tos-trusty_t194_sigheader.img.encrypt of=boot0.img seek=16252928 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/tos-trusty_t194_sigheader.img.encrypt of=boot0.img seek=18874368 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/eks_sigheader.img.encrypt of=boot0.img seek=21495808 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/eks_sigheader.img.encrypt of=boot0.img seek=21561344 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/adsp-fw_sigheader.bin.encrypt of=boot0.img seek=21626880 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/adsp-fw_sigheader.bin.encrypt of=boot0.img seek=22675456 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/camera-rtcpu-rce_sigheader.img.encrypt of=boot0.img seek=23724032 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/camera-rtcpu-rce_sigheader.img.encrypt of=boot0.img seek=24772608 bs=1 conv=notrunc
+
+    # sce-fw empty both a+b
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/bpmp_t194_sigheader.bin.encrypt of=boot0.img seek=27918336 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/bpmp_t194_sigheader.bin.encrypt of=boot0.img seek=29491200 bs=1 conv=notrunc
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/tegra194-a02-bpmp-p3668-a00_sigheader.dtb.encrypt of=boot0.img seek=31064064 bs=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/tegra194-a02-bpmp-p3668-a00_sigheader.dtb.encrypt of=boot0.img seek=32112640 bs=1 conv=notrunc
+
+    # boot option file is empty on a clean flashed board, will leave it here
+    # for the offset
+    #dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cbo.dtb seek=33161216 bs=1 conv=notrunc
+    #dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cbo.dtb seek=33226752 bs=1 conv=notrunc
+
+    # For this release, /opt/tegra-binaries/boot0.img MD5 should be 7cc64922796a9afc325a5cdf64413d10
+    # even for carrier boards. If it is not, then board will not boot after HUP.
+    cp ${WORKDIR}/boot0_t194_nx.bindiff .
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=14942224 bs=1 count=32 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=14945200 skip=32  bs=1 count=80 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15400976 skip=112  bs=1 count=32 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15400992 skip=144  bs=1 count=32 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15403952 skip=176  bs=1 count=80 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=16252944 skip=256  bs=1 count=32 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=16255920 skip=288  bs=1 count=4 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=18874384 skip=292  bs=1 count=64 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=18877360 skip=356  bs=1 count=4 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=21495824 skip=360  bs=1 count=64 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=21498800 skip=424  bs=1 count=4 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=21561360 skip=428  bs=1 count=64 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=21564336 skip=492  bs=1 count=4 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=27918352 skip=496  bs=1 count=64 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=27921328 skip=560  bs=1 count=4 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=29491216 skip=564  bs=1 count=64 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=29494192 skip=628  bs=1 count=4 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=31064080 skip=632  bs=1 count=64 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=31067056 skip=696  bs=1 count=4 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=32112656 skip=700  bs=1 count=64 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=32115632 skip=764  bs=1 count=4 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=33292288 skip=768  bs=1 count=256 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=33357824 skip=1024 bs=1 count=256 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=33537536 skip=1280 bs=1 count=16896 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=14946816 skip=18176 bs=1 count=48 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15101952 skip=18224 bs=1 count=128 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15405568 skip=18352 bs=1 count=48 conv=notrunc
+    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15560704 skip=18400 bs=1 count=128 conv=notrunc
 }
 
 
@@ -249,6 +374,7 @@ do_install() {
     cp ${S}/tegraflash/${DTBNAME}-rootA.dtb ${D}/${BINARY_INSTALL_PATH}/
     cp ${WORKDIR}/partition_specification194_nxde.txt ${D}/${BINARY_INSTALL_PATH}/
     cp -r ${S}/tegraflash/${DTBNAME}-root*sigheader.dtb.encrypt ${D}/${BINARY_INSTALL_PATH}
+    cp ${S}/tegraflash/boot0.img ${D}/${BINARY_INSTALL_PATH}
     # When generating image, this will be default dtb containing cmdline with root set to resin-rootA
     cp ${S}/tegraflash/${DTBNAME}-rootA_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/${DTBNAME}_sigheader.dtb.encrypt
 }
