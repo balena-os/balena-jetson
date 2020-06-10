@@ -8,6 +8,8 @@ set -o errexit
 
 . /usr/libexec/os-helpers-fs
 
+bootloader_device="/dev/mtdblock0"
+bootloader_blob="/opt/tegra-binaries/boot0.img"
 new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
 echo "New partition is ${new_part}"
 
@@ -61,5 +63,17 @@ echo "[INFO] Writing kernel ${kernel} to specific partitions..."
 dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel")
 dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel_b")
 
+existing_bootloader_md5sum=$(dd if=$bootloader_device bs=1M status=none | md5sum | awk '{print $1}')
+update_bootloader_md5sum=$(md5sum $bootloader_blob | awk '{print $1}')
+
+if [ ! "$existing_bootloader_md5sum" = "$update_bootloader_md5sum" ]; then
+    echo "[INFO] Will update bootloader device"
+    flash_erase /dev/mtd0 0 0
+    dd if=$bootloader_blob of=$bootloader_device bs=1M
+else
+    echo "[INFO] No need to update bootloader device"
+fi
+
 sync
+
 echo "Done."
