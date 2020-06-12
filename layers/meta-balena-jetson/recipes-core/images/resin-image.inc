@@ -4,8 +4,13 @@ do_rootfs_resinos-img_jetson-nano[depends] += " tegra210-flash:do_deploy \
                                                 virtual/kernel:do_deploy \
 "
 
+do_rootfs_resinos-img_jetson-nano-emmc[depends] += " tegra210-flash:do_deploy \
+                                                virtual/kernel:do_deploy \
+"
+
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 DTBFILE_jetson-nano = "tegra210-p3448-0000-p3449-0000-b00.dtb"
+DTBFILE_jetson-nano-emmc = "tegra210-p3448-0002-p3449-0000-b00.dtb"
 DTBFILE_jn30b-nano = "tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.3.dtb"
 DTBFILE_photon-nano = "tegra210-nano-cti-NGX003.dtb"
 
@@ -23,6 +28,9 @@ RESIN_BOOT_PARTITION_FILES_jetson-nano = " \
     bootfiles/rp4.blob:/bootfiles/RP4 \
     bootfiles/bmp.blob:/bootfiles/BMP \
 "
+
+RESIN_BOOT_PARTITION_FILES_jetson-nano-emmc = "${RESIN_BOOT_PARTITION_FILES_jetson-nano}"
+
 
 do_rootfs_resinos-img_jetson-xavier[depends] += " tegra194-flash-dry:do_deploy "
 
@@ -55,7 +63,6 @@ do_rootfs_resinos-img_jetson-tx2[depends] += " tegra186-flash-dry:do_deploy \
 "
 
 RESIN_BOOT_PARTITION_FILES_jetson-tx2 = " \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
@@ -76,8 +83,12 @@ do_rootfs_resinos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-f
 # The space resinOS takes will amount to 1GiB
 IMAGE_ROOTFS_SIZE = "487424"
 
+# Bootloader blob is 32MB on the NX
+IMAGE_ROOTFS_SIZE_jetson-xavier-nx-devkit-emmc = "733184"
+
 # Need space for all the above signed update binaries
 RESIN_BOOT_SIZE_jetson-nano = "80960"
+RESIN_BOOT_SIZE_jetson-nano-emmc = "80960"
 RESIN_BOOT_SIZE_jetson-xavier = "121440"
 RESIN_BOOT_SIZE_jetson-xavier-nx-devkit-emmc = "121440"
 RESIN_BOOT_SIZE_jetson-tx2="80960"
@@ -86,6 +97,13 @@ RESIN_BOOT_SIZE_jetson-tx1="80960"
 PARTITION_TABLE_TYPE = "gpt"
 
 IMAGE_INSTALL_append_jetson-nano = " \
+    tegra210-flash \
+    tegra-nvpmodel \
+    tegra-configs-nvstartup \
+    tegra-configs-udev \
+"
+
+IMAGE_INSTALL_append_jetson-nano-emmc = " \
     tegra210-flash \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
@@ -109,6 +127,7 @@ IMAGE_INSTALL_append_jetson-xavier-nx-devkit-emmc = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
+    mtd-utils \
 "
 
 IMAGE_INSTALL_append_jetson-tx2 = " \

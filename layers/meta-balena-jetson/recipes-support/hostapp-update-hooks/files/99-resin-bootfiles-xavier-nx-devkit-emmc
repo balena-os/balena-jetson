@@ -8,6 +8,8 @@ set -o errexit
 
 . /usr/libexec/os-helpers-fs
 
+bootloader_device="/dev/mtdblock0"
+bootloader_blob="/opt/tegra-binaries/boot0.img"
 new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
 echo "New partition is ${new_part}"
 
@@ -28,10 +30,10 @@ esac
 
 echo "New root is resin-root${rootl}"
 
-dtbfile="tegra194-p2888-0001-p2822-0000-root${rootl}_sigheader.dtb.encrypt"
+dtbfile="tegra194-p3668-all-p3509-0000-root${rootl}_sigheader.dtb.encrypt"
 kernel="boot_sigheader.img.encrypt"
 
-partitions=$(cat /resin-boot/bootfiles/partition_specification194.txt)
+partitions=$(cat /opt/tegra-binaries/partition_specification194_nxde.txt)
 for n in ${partitions}; do
     part_name=$(echo $n | cut -d ':' -f 1)
     file_name=$(echo $n | cut -d ':' -f 2)
@@ -48,26 +50,30 @@ for n in ${partitions}; do
 
     echo "[INFO] Writing $file_name to $file_path"
 
-    dd if=/resin-boot/bootfiles/$file_name of=$file_path
-    dd if=/resin-boot/bootfiles/$file_name of=${file_path}_b
+    dd if=/opt/tegra-binaries/$file_name of=$file_path
+    dd if=/opt/tegra-binaries/$file_name of=${file_path}_b
 done
 
 echo "[INFO] Writing ${dtbfile} to specific partitions..."
-dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb")
-dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb_b")
-dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
-dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
+dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
+dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
 
 echo "[INFO] Writing kernel ${kernel} to specific partitions..."
 
-dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel")
-dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel_b")
+dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel")
+dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel_b")
 
-echo "[INFO] Updating boot image on hw partition mmcblk0boot0..."
+existing_bootloader_md5sum=$(dd if=$bootloader_device bs=1M status=none | md5sum | awk '{print $1}')
+update_bootloader_md5sum=$(md5sum $bootloader_blob | awk '{print $1}')
 
-echo 0 > /sys/block/mmcblk0boot0/force_ro
-dd if=/opt/tegra-binaries/boot0.img of=/dev/mmcblk0boot0
+if [ ! "$existing_bootloader_md5sum" = "$update_bootloader_md5sum" ]; then
+    echo "[INFO] Will update bootloader device"
+    flash_erase /dev/mtd0 0 0
+    dd if=$bootloader_blob of=$bootloader_device bs=1M
+else
+    echo "[INFO] No need to update bootloader device"
+fi
+
 sync
-echo 1 > /sys/block/mmcblk0boot0/force_ro
 
 echo "Done."

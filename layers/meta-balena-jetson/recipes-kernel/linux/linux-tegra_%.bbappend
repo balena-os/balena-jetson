@@ -46,11 +46,19 @@ SRC_URI_append_jetson-tx2 = " \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
 "
 
+SRC_URI_append_astro-tx2 = " \
+    file://tegra186-tx2-cti-ASG001-revG+.dtb \
+"
+
 SRC_URI_append_jn30b-nano = " \
     file://tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.3.dtb \
 "
 
 SRC_URI_append_jetson-nano = " \
+    file://nano-mark-gpio-as-disabled-when-freed.patch \
+"
+
+SRC_URI_append_jetson-nano-emmc = " \
     file://nano-mark-gpio-as-disabled-when-freed.patch \
 "
 
@@ -167,10 +175,12 @@ KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
 KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"
 
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
+KERNEL_ROOTSPEC_jetson-nano-emmc = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jn30b-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-tx2 = " \${resin_kernel_root} ro rootwait gasket.dma_bit_mask=32 pcie_aspm=off"
 KERNEL_ROOTSPEC_jetson-tx1 = " \${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-xavier = ""
+KERNEL_ROOTSPEC_jetson-xavier-nx-devkit-emmc = ""
 
 # Since 32.1 on tx2, after kernel is loaded sd card becomes mmcblk2 opposed
 # to u-boot where it was 1. This is another cause of failure of
@@ -241,4 +251,8 @@ do_deploy_append_jn30b-nano() {
 
 do_deploy_append_photon-nano() {
     cp ${WORKDIR}/tegra210-nano-cti-NGX003.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_astro-tx2() {
+    cp ${WORKDIR}/tegra186-tx2-cti-ASG001-revG+.dtb "${DEPLOYDIR}"
 }
