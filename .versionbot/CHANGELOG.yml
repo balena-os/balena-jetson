@@ -1,4 +1,164 @@
 - commits:
+    - subject: 'linux-tegra: Update dtb for spacely-tx2 to 32.4.2'
+      hash: 06e30f02cbefdf4578c87547ed36efdadf43fa31
+      body: |
+        This dtb is taken directly from vendor's website,
+        for TX2 on L4T 32.4.2
+      footer:
+        Changelog-entry: 'linux-tegra: Update dtb for spacely-tx2 to 32.4.2'
+        changelog-entry: 'linux-tegra: Update dtb for spacely-tx2 to 32.4.2'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+    - subject: 'linux-tegra: Update orbitty tx2 dtb to 32.4.2'
+      hash: 99e24718d6a9459ac1be8f874cc19b584d8114c8
+      body: |
+        This dtb is taken directly from vendor's website,
+        for TX2 on L4T 32.4.2
+      footer:
+        Changelog-entry: 'linux-tegra: Update orbitty tx2 dtb to 32.4.2'
+        changelog-entry: 'linux-tegra: Update orbitty tx2 dtb to 32.4.2'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+    - subject: Update meta-balena from v2.50.1 to v2.51.1
+      hash: b6da63041e8f19ea7045afdbb862dfddbe117b25
+      body: |
+        Update meta-balena from 2.50.1 to 2.51.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.50.1 to v2.51.1
+        changelog-entry: Update meta-balena from v2.50.1 to v2.51.1
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'openvpn: Add runtime dependency on bash'
+              hash: f84dcfdd4493ee23c84940348dbbffff9ced48a2
+              body: >
+                The dependency is introduced by the upstream.sh and
+                downstream.sh scripts.
+
+                Bash is also a dependency not only for internal packages but for
+                external
+
+                scripts too.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Willem Remie
+          version: meta-balena-2.51.1
+          date: 2020-06-04T10:21:31.775Z
+        - commits:
+            - subject: 'balena-engine: Update to 19.03.13'
+              hash: 6c08852dfad1bd4d62b4e86ce90602d0610e75b0
+              body: |
+                We also strip the binary using go's built-in mechanism instead
+                of relying on yocto for it.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+          version: meta-balena-2.51.0
+          date: 2020-06-03T09:11:52.603Z
+        - commits:
+            - subject: Use correct SRC_URI for bindmount
+              hash: 38b1761db39bdd566396d0a2bbad1eda9273bf5d
+              body: |
+                The repo has changed and we need to accomodate for that change.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Use correct SRC_URI for bindmount
+                changelog-entry: Use correct SRC_URI for bindmount
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: meta-balena-2.50.4
+          date: 2020-06-02T12:50:09.159Z
+        - commits:
+            - subject: 'os-helpers-fs: Fix shellcheck warnings'
+              hash: 746cabdd234e9b94aeb6bd71289ac87d996301be
+              body: |
+                Fix all warnings from the shellcheck linter.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+            - subject: >-
+                Fallback to label root device matching to support devices with
+                closed source bootloaders
+              hash: f41735550c6e29ecd520e58f84c2281e4daf6c9f
+              body: >
+                Devices with closed source bootloaders that cannot be made to
+                pass the UUID
+
+                of the booting device (like smartphones, Jetson NX and Xabier),
+                need to
+
+                fallback to passing a label in the kernel command line.
+
+
+                Fixes #1905
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Fallback to label root device matching to support devices with
+                  closed source bootloaders
+                changelog-entry: >-
+                  Fallback to label root device matching to support devices with
+                  closed source bootloaders
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+            - subject: Fallback to labels and partlabels for devices with custom HUPs
+              hash: e267e1dd2fcd4a841b09ba204bee6a58403a316c
+              body: >
+                Devices with custom HUPs, like Jetson devices that run BSP
+                partition update
+
+                scripts, do not have state symlinks when updating from legacy
+                pre state
+
+                symlinks OS versions, so they need to fallback to legacy
+                label/partname
+
+                resolution.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fallback to labels and partlabels for devices with custom HUPs
+                changelog-entry: Fallback to labels and partlabels for devices with custom HUPs
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+          version: meta-balena-2.50.3
+          date: 2020-06-01T12:36:08.312Z
+        - commits:
+            - subject: Enable the Analog Devices AD5446 kernel driver
+              hash: 0231d9c4b33cd3fed9e4f552e3a9b916184e9b9f
+              body: |
+                At customer request we enable this driver.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Enable the Analog Devices AD5446 kernel driver
+                changelog-entry: Enable the Analog Devices AD5446 kernel driver
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: meta-balena-2.50.2
+          date: 2020-05-27T11:16:26.872Z
+  version: 2.51.1+rev1
+  date: 2020-06-12T08:53:37.666Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.7.2
       hash: 6cac23c010cb6bfd134d0488b400e814ed28ea71
       body: ''
