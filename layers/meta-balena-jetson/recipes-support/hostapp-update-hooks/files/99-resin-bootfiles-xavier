@@ -66,7 +66,7 @@ dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel_b"
 echo "[INFO] Updating boot image on hw partition mmcblk0boot0..."
 
 echo 0 > /sys/block/mmcblk0boot0/force_ro
-dd if=/opt/tegra-binaries/boot0.img of=/dev/mmcblk0boot0
+dd if=/resin-boot/bootfiles/boot0.img of=/dev/mmcblk0boot0
 sync
 echo 1 > /sys/block/mmcblk0boot0/force_ro
 

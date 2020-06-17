@@ -55,6 +55,7 @@ RESIN_BOOT_PARTITION_FILES_jetson-xavier = " \
     bootfiles/boot_sigheader.img.encrypt:/bootfiles/boot_sigheader.img.encrypt \
     bootfiles/tegra194-p2888-0001-p2822-0000-rootA_sigheader.dtb.encrypt:/bootfiles/tegra194-p2888-0001-p2822-0000-rootA_sigheader.dtb.encrypt \
     bootfiles/tegra194-p2888-0001-p2822-0000-rootB_sigheader.dtb.encrypt:/bootfiles/tegra194-p2888-0001-p2822-0000-rootB_sigheader.dtb.encrypt \
+    bootfiles/boot0.img:/bootfiles/boot0.img \
     tegra-binaries/partition_specification194.txt:/bootfiles/partition_specification194.txt \
 "
 
