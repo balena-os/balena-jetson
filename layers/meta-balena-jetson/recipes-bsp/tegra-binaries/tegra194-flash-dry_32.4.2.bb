@@ -241,13 +241,15 @@ do_configure() {
     dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=720896 bs=1 conv=notrunc
     dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=925696 bs=1 conv=notrunc
 
-    cp boot0.img ${S}/tegraflash/signed/boot0.img
+    cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/
 }
 
 
 do_install() {
     install -d ${D}/${BINARY_INSTALL_PATH}
     cp -r ${S}/tegraflash/signed/* ${D}/${BINARY_INSTALL_PATH}
+    # signed boot.img isn't needed in rootfs
+    rm ${D}/${BINARY_INSTALL_PATH}/boot*im*
     cp ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-rootA.dtb ${D}/${BINARY_INSTALL_PATH}/
     cp ${WORKDIR}/partition_specification194.txt ${D}/${BINARY_INSTALL_PATH}/
     cp -r ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-root*sigheader.dtb.encrypt ${D}/${BINARY_INSTALL_PATH}
