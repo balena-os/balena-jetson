@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'u-boot: Fix defconfig typo for tx2'
+      hash: bbaa67bc5aa632e4a8c6024b02f7e52cab64aa30
+      body: |
+        While rebasing patches for the 2020 u-boot
+        a typo has slipped in the tx2 defconfig, which
+        can affect rollbacks. Let's fix it.
+      footer:
+        Changelog-entry: 'u-boot: Fix defconfig typo for tx2'
+        changelog-entry: 'u-boot: Fix defconfig typo for tx2'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.51.1+rev2
+  date: 2020-06-17T08:08:00.962Z
+- commits:
     - subject: 'linux-tegra: Update dtb for spacely-tx2 to 32.4.2'
       hash: 06e30f02cbefdf4578c87547ed36efdadf43fa31
       body: |

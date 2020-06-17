@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.51.1+rev2
+## (2020-06-17)
+
+* u-boot: Fix defconfig typo for tx2 [Alexandru Costache]
+
 # v2.51.1+rev1
 ## (2020-06-12)
 
