@@ -21,6 +21,7 @@ SRC_URI_append = " file://local-resin-specific-env-integration-kconfig.patch "
 SRC_URI_append = " \
     file://Increase-default-u-boot-environment-size.patch \
     file://menu-Use-default-menu-entry-from-extlinux.conf.patch \
+    file://sysboot-read-custom-fdt-from-env.patch \
 "
 
 # Uses sd-card defconfig
