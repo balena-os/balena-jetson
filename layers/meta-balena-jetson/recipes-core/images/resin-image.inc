@@ -102,6 +102,7 @@ IMAGE_INSTALL_append_jetson-nano = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
+    lvm2 \
 "
 
 IMAGE_INSTALL_append_jetson-nano-emmc = " \

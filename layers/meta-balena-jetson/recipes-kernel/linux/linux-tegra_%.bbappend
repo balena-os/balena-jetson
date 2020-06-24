@@ -81,6 +81,10 @@ RESIN_CONFIGS[debug_kmemleak] = " \
     CONFIG_HAVE_DEBUG_KMEMLEAK=n \
     CONFIG_DEBUG_KMEMLEAK_DEFAULT_OFF=y \
     CONFIG_DEBUG_KMEMLEAK_SCAN_ON=n \
+    CONFIG_DM_MULTIPATH_QL=m \
+    CONFIG_DM_SNAPSHOT=m \
+    CONFIG_DM_MULTIPATH_ST=m \
+    CONFIG_BLK_DEV_DM=m \
 "
 
 # These should be for all boards that come from tx2
