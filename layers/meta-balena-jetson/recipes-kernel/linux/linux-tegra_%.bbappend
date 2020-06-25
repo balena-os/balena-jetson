@@ -198,6 +198,10 @@ RESIN_CONFIGS_DEPS[cdc-ncm] = " \
                 CONFIG_USB_USBNET=m \
 "
 
+RESIN_CONFIGS[mii] = " \
+                CONFIG_MII=m \
+"
+
 KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
 KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"
 
