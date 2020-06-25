@@ -178,6 +178,10 @@ RESIN_CONFIGS[tlc591xx] = " \
                 CONFIG_LEDS_TLC591XX=m \
 "
 
+RESIN_CONFIGS[cdc-wdm] = " \
+                CONFIG_USB_WDM=m \
+"
+
 KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
 KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"
 
