@@ -190,6 +190,14 @@ RESIN_CONFIGS_DEPS[sierra-net] = " \
                 CONFIG_USB_USBNET=m \
 "
 
+RESIN_CONFIGS[cdc-ncm] = " \
+                CONFIG_USB_NET_CDC_NCM=m \
+"
+
+RESIN_CONFIGS_DEPS[cdc-ncm] = " \
+                CONFIG_USB_USBNET=m \
+"
+
 KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
 KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"
 
