@@ -182,6 +182,14 @@ RESIN_CONFIGS[cdc-wdm] = " \
                 CONFIG_USB_WDM=m \
 "
 
+RESIN_CONFIGS[sierra-net] = " \
+                CONFIG_USB_SIERRA_NET=m \
+"
+
+RESIN_CONFIGS_DEPS[sierra-net] = " \
+                CONFIG_USB_USBNET=m \
+"
+
 KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
 KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"
 
