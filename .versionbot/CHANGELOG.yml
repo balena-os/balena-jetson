@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'linux-tegra: Update dtb for jn30b-nano to 32.4.2'
+      hash: bd8f24789ad3a15cfc5b006afc8d7703c003bf6b
+      body: |
+        This dtb is from vendor's JN30B BSP package for L4T 32.4.2
+      footer:
+        Changelog-entry: 'linux-tegra: Update dtb for jn30b-nano to 32.4.2'
+        changelog-entry: 'linux-tegra: Update dtb for jn30b-nano to 32.4.2'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+  version: 2.51.1+rev4
+  date: 2020-06-26T15:27:21.211Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.8.0
       hash: 4c6f5efd9aeb6fdae6a5fb557cfc4de4252b7060
       body: ''

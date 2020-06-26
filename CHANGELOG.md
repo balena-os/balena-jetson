@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.51.1+rev4
+## (2020-06-26)
+
+* linux-tegra: Update dtb for jn30b-nano to 32.4.2 [Pelle van Gils]
+
 # v2.51.1+rev3
 ## (2020-06-26)
 
