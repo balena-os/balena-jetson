@@ -11,7 +11,7 @@ do_rootfs_resinos-img_jetson-nano-emmc[depends] += " tegra210-flash:do_deploy \
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 DTBFILE_jetson-nano = "tegra210-p3448-0000-p3449-0000-b00.dtb"
 DTBFILE_jetson-nano-emmc = "tegra210-p3448-0002-p3449-0000-b00.dtb"
-DTBFILE_jn30b-nano = "tegra210-p3448-0002-p3449-0000-b00-jn30b-JP4.3.dtb"
+DTBFILE_jn30b-nano = "tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb"
 DTBFILE_photon-nano = "tegra210-nano-cti-NGX003.dtb"
 
 # Name update files as partition names for easier updating
