@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.8.0
+      hash: 4c6f5efd9aeb6fdae6a5fb557cfc4de4252b7060
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.8.0
+        changelog-entry: Update balena-yocto-scripts to v1.8.0
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.51.1+rev3
+  date: 2020-06-26T11:26:59.986Z
+- commits:
     - subject: 'u-boot: Fix defconfig typo for tx2'
       hash: bbaa67bc5aa632e4a8c6024b02f7e52cab64aa30
       body: |
