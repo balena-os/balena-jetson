@@ -1,0 +1,31 @@
+From f56daef1f4876a47cd676117101e1c223a0a009b Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Wed, 1 Jul 2020 10:46:32 +0200
+Subject: [PATCH] Use u-boot 2016 custom fdt address
+
+TX2 ubuntu image 32.4.2 comes with ubuntu 2016, which loads
+custom fdt at 0x88400000. meta-tegra on 32.4.2 comes
+with u-boot 2020.04, which loads it at 0x82400000,
+and the board won't boot. Let's increase the offset
+so the board can boot using the custom fdt.
+
+---
+ include/configs/p2771-0000.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/p2771-0000.h b/include/configs/p2771-0000.h
+index 7c6d68a4f1..e039e8919a 100644
+--- a/include/configs/p2771-0000.h
++++ b/include/configs/p2771-0000.h
+@@ -25,7 +25,7 @@
+ 	"kernel_addr_r_size=02000000\0" \
+ 	"kernel_addr_r_aliases=loadaddr\0" \
+ 	"fdt_addr_r_align=00200000\0" \
+-	"fdt_addr_r_offset=00000000\0" \
++	"fdt_addr_r_offset=06000000\0" \
+ 	"fdt_addr_r_size=00200000\0" \
+ 	"scriptaddr_align=00200000\0" \
+ 	"scriptaddr_offset=00000000\0" \
+-- 
+2.17.1
+
