@@ -10,7 +10,7 @@ RESIN_BOOT_PART_jetson-nano-emmc = "0xC"
 RESIN_DEFAULT_ROOT_PART_jetson-nano-emmc = "0xD"
 
 # Latest L4T 32.4.2 known to work revision of u-boot v2020.04
-SRCREV = "914e902b5d68976de59ae0849f2ede20b1f2f50d"
+SRCREV = "74a4f0bcbafa3b5a81821469cdec819bb2695df9"
 
 # meta-balena patch does not apply cleanly, so we refactor it
 SRC_URI_remove = " file://resin-specific-env-integration-kconfig.patch "
