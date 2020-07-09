@@ -25,6 +25,7 @@ SRC_URI = " \
 
 FLASHXML = "resinOS-flash194_nxde.xml"
 DTBNAME = "tegra194-p3668-all-p3509-0000"
+DTBNAME_photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003"
 KERNEL_DEVICETREE = "${DEPLOY_DIR_IMAGE}/${DTBNAME}.dtb"
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 LNXSIZE ?= "67108864"
@@ -256,6 +257,7 @@ do_configure() {
     cp -r ${DTBNAME}-root*.dtb* ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp ${WORKDIR}/${FLASHXML} ${DEPLOY_DIR_IMAGE}/bootfiles/flash.xml
     cp -r signed/* ${DEPLOY_DIR_IMAGE}/bootfiles/
+    cp tegra194-p3668-all-p3509-0000_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/
 
     dd if=/dev/zero count=1 bs=33554432 | tr "\000" "\377" > boot0.img
     dd if=/dev/zero bs=2887 count=1 of=boot0.img conv=notrunc

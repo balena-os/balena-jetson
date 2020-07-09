@@ -67,6 +67,12 @@ SRC_URI_append_photon-nano = " \
     file://tegra210-nano-cti-NGX003.dtb \
 "
 
+SRC_URI_append_photon-xavier-nx = " \
+    file://0001-cti-photon-nano-merge-MMC-driver-changes-from-BSP.patch \
+    file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
+    file://tegra194-xavier-nx-cti-NGX003.dtb \
+"
+
 TEGRA_INITRAMFS_INITRD = "0"
 
 RESIN_CONFIGS_append = " tegra-wdt-t21x debug_kmemleak "
@@ -167,8 +173,37 @@ RESIN_CONFIGS[gasket] = " \
 RESIN_CONFIGS_append_srd3-tx2 = " tpg d3_hdr"
 
 RESIN_CONFIGS_append_photon-nano = " tlc591xx"
+RESIN_CONFIGS_append_photon-xavier-nx = " tlc591xx"
 RESIN_CONFIGS[tlc591xx] = " \
                 CONFIG_LEDS_TLC591XX=m \
+"
+
+RESIN_CONFIGS_append_photon-xavier-nx = " cdc-wdm"
+RESIN_CONFIGS[cdc-wdm] = " \
+                CONFIG_USB_WDM=m \
+"
+
+RESIN_CONFIGS_append_photon-xavier-nx = " sierra-net"
+RESIN_CONFIGS[sierra-net] = " \
+                CONFIG_USB_SIERRA_NET=m \
+"
+
+RESIN_CONFIGS_DEPS[sierra-net] = " \
+                CONFIG_USB_USBNET=m \
+"
+
+RESIN_CONFIGS_append_photon-xavier-nx = " cdc-ncm"
+RESIN_CONFIGS[cdc-ncm] = " \
+                CONFIG_USB_NET_CDC_NCM=m \
+"
+
+RESIN_CONFIGS_DEPS[cdc-ncm] = " \
+                CONFIG_USB_USBNET=m \
+"
+
+RESIN_CONFIGS_append_photon-xavier-nx = " mii"
+RESIN_CONFIGS[mii] = " \
+                CONFIG_MII=m \
 "
 
 KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
@@ -251,6 +286,10 @@ do_deploy_append_jn30b-nano() {
 
 do_deploy_append_photon-nano() {
     cp ${WORKDIR}/tegra210-nano-cti-NGX003.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_photon-xavier-nx() {
+    cp ${WORKDIR}/tegra194-xavier-nx-cti-NGX003.dtb "${DEPLOYDIR}"
 }
 
 do_deploy_append_astro-tx2() {

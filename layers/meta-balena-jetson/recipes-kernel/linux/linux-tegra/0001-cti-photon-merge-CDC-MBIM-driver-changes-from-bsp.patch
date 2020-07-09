@@ -1,0 +1,32 @@
+From 8ff350a9dbc99bbb9af6c4e908f9a1fb67dddb59 Mon Sep 17 00:00:00 2001
+From: Pelle van Gils <pelle@hwky.ai>
+Date: Thu, 28 May 2020 18:19:25 +0000
+Subject: [PATCH 1/2] cti photon: merge CDC MBIM driver changes from bsp
+
+Merge CDC MBIM driver changes from CTI bsp xavier-nx-32.4.2 v001
+
+Upstream-status: Backport
+Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+---
+ drivers/net/usb/cdc_mbim.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/net/usb/cdc_mbim.c b/drivers/net/usb/cdc_mbim.c
+index 4c8baba72933..79904cecc725 100644
+--- a/drivers/net/usb/cdc_mbim.c
++++ b/drivers/net/usb/cdc_mbim.c
+@@ -633,6 +633,11 @@ static const struct usb_device_id mbim_devs[] = {
+ 	  .driver_info = (unsigned long)&cdc_mbim_info,
+ 	},
+ 
++	/* 0x03F0, 0x4e1d */
++	{ USB_DEVICE_AND_INTERFACE_INFO(0x03F0, 0x4e1d, USB_CLASS_COMM, USB_CDC_SUBCLASS_MBIM, USB_CDC_PROTO_NONE),
++	  .driver_info = (unsigned long)&cdc_mbim_info,
++	},
++
+ 	/* Some Huawei devices, ME906s-158 (12d1:15c1) and E3372
+ 	 * (12d1:157d), are known to fail unless the NDP is placed
+ 	 * after the IP packets.  Applying the quirk to all Huawei
+-- 
+2.17.1
+
