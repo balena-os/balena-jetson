@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add support for CTI photon NX
+      hash: c958a49eb22055bb7ebaefbf4a41953bffc17697
+      body: |
+        Add machine file for CTI Photon NX
+        carrier board for Jetson Xavier NX
+      footer:
+        Changelog-entry: Add support for CTI photon NX
+        changelog-entry: Add support for CTI photon NX
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+  version: 2.51.1+rev5
+  date: 2020-07-08T09:51:10.795Z
+- commits:
     - subject: 'linux-tegra: Update dtb for jn30b-nano to 32.4.2'
       hash: bd8f24789ad3a15cfc5b006afc8d7703c003bf6b
       body: |

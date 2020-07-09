@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.51.1+rev5
+## (2020-07-08)
+
+* Add support for CTI photon NX [Pelle van Gils]
+
 # v2.51.1+rev4
 ## (2020-06-26)
 
