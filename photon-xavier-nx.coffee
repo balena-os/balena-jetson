@@ -11,6 +11,7 @@ module.exports =
 	name: 'CTI Photon Xavier NX'
 	arch: 'aarch64'
 	state: 'new'
+	community: 'true'
 	private: false
 
 	instructions: [
