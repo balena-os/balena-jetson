@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.51.1+rev6
+## (2020-07-10)
+
+* linnux-tegra: Update photon-nano dtb to 32.4.2 [Pelle van Gils]
+
 # v2.51.1+rev5
 ## (2020-07-08)
 
