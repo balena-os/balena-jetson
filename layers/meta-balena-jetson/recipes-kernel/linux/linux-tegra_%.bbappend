@@ -64,6 +64,7 @@ SRC_URI_append_jetson-nano-emmc = " \
 
 SRC_URI_append_photon-nano = " \
     file://0001-cti-photon-nano-merge-MMC-driver-changes-from-BSP.patch \
+    file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
     file://tegra210-nano-cti-NGX003.dtb \
 "
 
@@ -178,11 +179,13 @@ RESIN_CONFIGS[tlc591xx] = " \
                 CONFIG_LEDS_TLC591XX=m \
 "
 
+RESIN_CONFIGS_append_photon-nano = " cdc-wdm"
 RESIN_CONFIGS_append_photon-xavier-nx = " cdc-wdm"
 RESIN_CONFIGS[cdc-wdm] = " \
                 CONFIG_USB_WDM=m \
 "
 
+RESIN_CONFIGS_append_photon-nano = " sierra-net"
 RESIN_CONFIGS_append_photon-xavier-nx = " sierra-net"
 RESIN_CONFIGS[sierra-net] = " \
                 CONFIG_USB_SIERRA_NET=m \
@@ -192,6 +195,7 @@ RESIN_CONFIGS_DEPS[sierra-net] = " \
                 CONFIG_USB_USBNET=m \
 "
 
+RESIN_CONFIGS_append_photon-nano = " cdc-ncm"
 RESIN_CONFIGS_append_photon-xavier-nx = " cdc-ncm"
 RESIN_CONFIGS[cdc-ncm] = " \
                 CONFIG_USB_NET_CDC_NCM=m \
@@ -201,6 +205,7 @@ RESIN_CONFIGS_DEPS[cdc-ncm] = " \
                 CONFIG_USB_USBNET=m \
 "
 
+RESIN_CONFIGS_append_photon-nano = " mii"
 RESIN_CONFIGS_append_photon-xavier-nx = " mii"
 RESIN_CONFIGS[mii] = " \
                 CONFIG_MII=m \
