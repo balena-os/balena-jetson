@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'linnux-tegra: Update photon-nano dtb to 32.4.2'
+      hash: cefd3c1ff1554af26ac6f08bc7655f8ef03525cf
+      body: |
+        This dtb is taken directly from vendor's website,
+        for nano on L4T 32.4.2 JP 4.4
+      footer:
+        Changelog-entry: 'linnux-tegra: Update photon-nano dtb to 32.4.2'
+        changelog-entry: 'linnux-tegra: Update photon-nano dtb to 32.4.2'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+  version: 2.51.1+rev6
+  date: 2020-07-10T15:25:22.230Z
+- commits:
     - subject: Add support for CTI photon NX
       hash: c958a49eb22055bb7ebaefbf4a41953bffc17697
       body: |
