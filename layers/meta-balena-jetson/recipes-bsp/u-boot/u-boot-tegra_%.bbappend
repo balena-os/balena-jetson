@@ -10,7 +10,7 @@ RESIN_BOOT_PART_jetson-nano-emmc = "0xC"
 RESIN_DEFAULT_ROOT_PART_jetson-nano-emmc = "0xD"
 
 # Latest L4T 32.4.2 known to work revision of u-boot v2020.04
-SRCREV = "914e902b5d68976de59ae0849f2ede20b1f2f50d"
+SRCREV = "74a4f0bcbafa3b5a81821469cdec819bb2695df9"
 
 # meta-balena patch does not apply cleanly, so we refactor it
 SRC_URI_remove = " file://resin-specific-env-integration-kconfig.patch "
@@ -21,6 +21,7 @@ SRC_URI_append = " file://local-resin-specific-env-integration-kconfig.patch "
 SRC_URI_append = " \
     file://Increase-default-u-boot-environment-size.patch \
     file://menu-Use-default-menu-entry-from-extlinux.conf.patch \
+    file://sysboot-read-custom-fdt-from-env.patch \
 "
 
 # Uses sd-card defconfig
@@ -51,6 +52,7 @@ RESIN_DEFAULT_ROOT_PART_jetson-tx2 = "0x19"
 SRC_URI_append_jetson-tx2 = " \
     file://Add-part-index-command.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
+    file://tx2-custom-fdt_addr_r.patch \
 "
 
 RESIN_BOOT_PART_jetson-tx1 = "0xB"
