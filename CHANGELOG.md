@@ -1,6 +1,60 @@
 Change log
 -----------
 
+# v2.52.0+rev1
+## (2020-07-14)
+
+
+<details>
+<summary> Update meta-balena from v2.51.1 to v2.52.0 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.52.0
+> ### (2020-06-30)
+> 
+> * Add compressed memory swap support [Alex Gonzalez]
+> * systemd-zram-swap: Add compressed memory swap support [Alex Gonzalez]
+> * kernel-resin: Built-in zram configuration [Alex Gonzalez]
+> 
+> ## meta-balena-2.51.8
+> ### (2020-06-30)
+> 
+> * resin-ntp-config: merge 'burst' command with 'add server' line [Mark Corbin]
+> 
+> ## meta-balena-2.51.7
+> ### (2020-06-25)
+> 
+> * resin-image: Install extra_uEnv.txt in boot partition [Alexandru Costache]
+> 
+> ## meta-balena-2.51.6
+> ### (2020-06-25)
+> 
+> * initrdscripts: rootfs: Fix comparison to account for empty variable [Alex Gonzalez]
+> * Use UUID rather than ID when communicating with API [Matthew McGinn]
+> 
+> ## meta-balena-2.51.5
+> ### (2020-06-18)
+> 
+> * Set chrony default servers as pools [Matthew McGinn]
+> 
+> ## meta-balena-2.51.4
+> ### (2020-06-15)
+> 
+> * Generate nested changelogs for balena-engine [Robert Günzler]
+> 
+> ## meta-balena-2.51.3
+> ### (2020-06-10)
+> 
+> * Revert allowing local resin-supervisor image updates [Alex Gonzalez]
+> 
+> ## meta-balena-2.51.2
+> ### (2020-06-08)
+> 
+> * Disable u-boot console, silence u-boot in production builds [Florin Sarbu]
+> 
+</details>
+
+* u-boot-tegra: Allow loading custom fdt specified in env [Alexandru Costache]
+
 # v2.51.1+rev6
 ## (2020-07-10)
 
