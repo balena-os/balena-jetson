@@ -52,7 +52,6 @@ RESIN_DEFAULT_ROOT_PART_jetson-tx2 = "0x19"
 SRC_URI_append_jetson-tx2 = " \
     file://Add-part-index-command.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
-    file://tx2-custom-fdt_addr_r.patch \
 "
 
 RESIN_BOOT_PART_jetson-tx1 = "0xB"
