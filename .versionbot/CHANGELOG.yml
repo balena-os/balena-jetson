@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'u-boot: Remove custom fdt_addr patch'
+      hash: 45efe0d71d887e741d4a83ba7d158fc9e9f8c25c
+      body: |
+        Recent patches in upstream meta-tegra
+        u-boot 2020.04 make this patch inapplicable,
+        it needs to be removed.
+      footer:
+        Changelog-entry: 'u-boot: Remove custom fdt_addr patch'
+        changelog-entry: 'u-boot: Remove custom fdt_addr patch'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.52.0+rev2
+  date: 2020-07-16T07:56:43.134Z
+- commits:
     - subject: Update meta-balena from v2.51.1 to v2.52.0
       hash: bf7ab932d24a0f68d3c920d2aedaa4b87fd6b6e9
       body: |

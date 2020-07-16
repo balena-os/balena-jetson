@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.52.0+rev2
+## (2020-07-16)
+
+* u-boot: Remove custom fdt_addr patch [Alexandru Costache]
+
 # v2.52.0+rev1
 ## (2020-07-14)
 
