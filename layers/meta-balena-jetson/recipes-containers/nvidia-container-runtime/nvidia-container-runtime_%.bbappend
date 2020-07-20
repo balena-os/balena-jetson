@@ -1,0 +1,3 @@
+FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
+
+RDEPENDS_${PN} = ""
