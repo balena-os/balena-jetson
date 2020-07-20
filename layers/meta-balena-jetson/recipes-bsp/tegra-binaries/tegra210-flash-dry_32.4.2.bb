@@ -20,6 +20,8 @@ inherit deploy pythonnative perlnative
 SRC_URI = " \
     file://resinOS-flash210-tx1.xml \
     file://partition_specification210_tx1.txt \
+    file://bldtb_t210_tx1.bindiff \
+    file://boot0_t210_tx1.bindiff \
     "
 
 KERNEL_DEVICETREE_jetson-tx1 = "${DEPLOY_DIR_IMAGE}/tegra210-jetson-tx1-p2597-2180-a01-devkit.dtb"
@@ -132,11 +134,27 @@ do_configure() {
     # Disable cboot logo
     dd if=/dev/zero of=./bmp.blob count=1 bs=70
 
+
+    # Need to switch back to default values from flashing, otherwise bootloader dtb offset inside boot0.img will
+    # change and will generate signature failure in MB2.
+    bldtbdtsname="/home/acostach/work/xavier_nx/balena-jetson/build_tx1/tmp/work-shared/jetson-tx1/kernel-source/arch/arm64/boot/dts/../../../../nvidia/platform/t210/jetson/kernel-dts/tegra210-jetson-tx1-p2597-2180-a01-devkit.dts"
+
+    # Do not overide this hardcoded dtb for carrier boards, this is used for bldtb in boot0.img
+    fdtput -t s ./${DTBFILE} / "nvidia,dtsfilename" $bldtbdtsname
+
+
     # Sign binaries
     python tegraflash.py --bl cboot.bin --bct ${MACHINE}.cfg --odmdata ${ODMDATA} --bldtb ${DTBFILE} --applet nvtboot_recovery.bin --boardconfig $boardcfg --cfg flash.xml --chip 0x21 --cmd "sign" ${BOOTFILES} --keep & \
     export _PID=$! ; wait ${_PID} || true
 
     rm -rf ${DEPLOY_DIR_IMAGE}/bootfiles/*
+
+    dd if=${WORKDIR}/bldtb_t210_tx1.bindiff of=${_PID}/u-boot.bin.encrypt seek=576 count=32 bs=1 conv=notrunc
+    dd if=${WORKDIR}/bldtb_t210_tx1.bindiff of=${_PID}/u-boot.bin.encrypt seek=1712 skip=32 count=32 bs=1 conv=notrunc
+    dd if=${WORKDIR}/bldtb_t210_tx1.bindiff of=${_PID}/u-boot.bin.encrypt seek=501520 skip=64 count=16 bs=1 conv=notrunc
+    dd if=${WORKDIR}/bldtb_t210_tx1.bindiff of=${_PID}/u-boot.bin.encrypt seek=530416 skip=80 count=32 bs=1 conv=notrunc
+    dd if=${WORKDIR}/bldtb_t210_tx1.bindiff of=${_PID}/tegra210-jetson-tx1-p2597-2180-a01-devkit.dtb.encrypt seek=272 skip=112 count=32 bs=1 conv=notrunc
+    dd if=${WORKDIR}/bldtb_t210_tx1.bindiff of=${_PID}/tegra210-jetson-tx1-p2597-2180-a01-devkit.dtb.encrypt seek=1232 skip=144 count=64 bs=1 conv=notrunc
 
     # These will be used for boot0.img and flashable image
     cp -r -L ${_PID}/*.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/
@@ -198,6 +216,13 @@ do_configure() {
     dd if=${DEPLOY_DIR_IMAGE}/bootfiles/warmboot.bin.encrypt of=boot0.img bs=1 seek=3801088 conv=notrunc
     dd if=${DEPLOY_DIR_IMAGE}/bootfiles/warmboot.bin.hash of=boot0.img bs=1 seek=3801360 conv=notrunc
     dd if=/dev/zero of=boot0.img bs=1 seek=4194303 count=1 conv=notrunc
+
+    dd if=${WORKDIR}/boot0_t210_tx1.bindiff of=boot0.img seek=1168 count=16 bs=1 conv=notrunc
+    dd if=${WORKDIR}/boot0_t210_tx1.bindiff of=boot0.img seek=1232 skip=16 count=16 bs=1 conv=notrunc
+    dd if=${WORKDIR}/boot0_t210_tx1.bindiff of=boot0.img skip=32 seek=1425408 count=1632 bs=1 conv=notrunc
+    dd if=${WORKDIR}/boot0_t210_tx1.bindiff of=boot0.img skip=1664 seek=1427503 count=1489 bs=1 conv=notrunc
+    dd if=${WORKDIR}/boot0_t210_tx1.bindiff of=boot0.img skip=3153 seek=1753360 count=32 bs=1 conv=notrunc
+    dd if=${WORKDIR}/boot0_t210_tx1.bindiff of=boot0.img skip=3185 seek=1754320 count=32 bs=1 conv=notrunc
 
     # This goes to mmcblk0boot0
     cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/

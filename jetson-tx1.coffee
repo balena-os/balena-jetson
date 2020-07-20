@@ -30,7 +30,7 @@ module.exports =
 
 	imageDownloadAlerts: [{
 		type: "warning",
-		message: "Please ensure the board was running L4T 32.3.1 before flashing BalenaOS. Flashing will not work if the board has the older L4T 28.X partitions"
+		message: "Please ensure the board was running L4T 32.4.2 before flashing BalenaOS. Flashing will not work if the board has the older L4T 28.X partitions"
 	}]
 
 	gettingStartedLink:
