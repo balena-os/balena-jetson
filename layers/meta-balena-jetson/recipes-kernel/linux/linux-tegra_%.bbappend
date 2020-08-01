@@ -47,6 +47,7 @@ SRC_URI_append_jetson-tx2 = " \
     file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
+    file://tegra186-tx2-6.dtb \
 "
 
 SRC_URI_append_astro-tx2 = " \
@@ -262,6 +263,10 @@ do_deploy_append(){
     mkdir -p "${DEPLOYDIR}/boot/"
     install -m 0600 "${D}/boot/extlinux/extlinux.conf" "${DEPLOYDIR}/boot/"
     install -m 0600 "${D}/boot/extlinux/extlinux.conf_flasher" "${DEPLOYDIR}/boot/"
+}
+
+do_deploy_append_jetson-tx2() {
+    install -m 0600 ${WORKDIR}/tegra186-tx2-6.dtb ${D}/${KERNEL_IMAGEDEST}/tegra186-tx2-6.dtb
 }
 
 FILES_${KERNEL_PACKAGE_NAME}-image_append = "/boot/extlinux/extlinux.conf /boot/extlinux/extlinux.conf_flasher"
