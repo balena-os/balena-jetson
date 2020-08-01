@@ -145,11 +145,12 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     linux-firmware-bcm4354 \
     tegra-firmware-xusb \
     bt-scripts \
+    libnvidia-container-tools \
+    nvidia-container-toolkit \
+    nvidia-container-runtime \
+    go-runtime \
 "
 
-IMAGE_INSTALL_append_srd3-tx2 = " \
-    machxo2 \
-"
 IMAGE_INSTALL_append_jetson-tx1 = " \
     tegra210-flash-dry \
     parted \

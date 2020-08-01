@@ -7,22 +7,6 @@ SRCREV = "e3c8d3e9030a4a9dbe6171355a062ebfad28dfde"
 
 SCMVERSION="n"
 
-SRC_URI_append_srd3-tx2 = " \
-    file://d3_defconfig \
-    file://0001-d3-BSP-2.0.0.patch \
-    file://0002-d3-Remove-symlinks.patch \
-    file://0003-d3-Backport-D3-drivers.patch \
-    file://0004-d3-nvidia-Backport-nvidia-subtree-from-D3.patch \
-    file://0005-d3-dts-Add-D3-dtbs.patch \
-"
-
-# Remove default meta-tegra defconfig
-SRC_URI_remove_srd3-tx2 = " file://defconfig"
-
-do_configure_prepend_srd3-tx2(){
-   cat ${WORKDIR}/d3_defconfig > ${WORKDIR}/defconfig
-}
-
 # Prevent delayed booting
 # and support using partition label to load rootfs
 # in the case of jetson-xavier and tx2 flasher
@@ -47,6 +31,7 @@ SRC_URI_append_jetson-tx2 = " \
     file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
+    file://tegra186-tx2-6.dtb \
 "
 
 SRC_URI_append_astro-tx2 = " \
@@ -174,8 +159,6 @@ RESIN_CONFIGS[gasket] = " \
         CONFIG_STAGING_APEX_DRIVER=m \
 "
 
-RESIN_CONFIGS_append_srd3-tx2 = " tpg d3_hdr"
-
 RESIN_CONFIGS_append_photon-nano = " tlc591xx"
 RESIN_CONFIGS_append_photon-xavier-nx = " tlc591xx"
 RESIN_CONFIGS[tlc591xx] = " \
@@ -213,9 +196,6 @@ RESIN_CONFIGS_append_photon-xavier-nx = " mii"
 RESIN_CONFIGS[mii] = " \
                 CONFIG_MII=m \
 "
-
-KERNEL_MODULE_AUTOLOAD_srd3-tx2 += " nvhost-vi-tpg "
-KERNEL_MODULE_PROBECONF_srd3-tx2 += " nvhost-vi-tpg tegra-udrm"
 
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-nano-emmc = "\${resin_kernel_root} ro rootwait"
@@ -264,6 +244,10 @@ do_deploy_append(){
     install -m 0600 "${D}/boot/extlinux/extlinux.conf_flasher" "${DEPLOYDIR}/boot/"
 }
 
+do_deploy_append_jetson-tx2() {
+    install -m 0600 ${WORKDIR}/tegra186-tx2-6.dtb ${D}/${KERNEL_IMAGEDEST}/tegra186-tx2-6.dtb
+}
+
 FILES_${KERNEL_PACKAGE_NAME}-image_append = "/boot/extlinux/extlinux.conf /boot/extlinux/extlinux.conf_flasher"
 
 do_deploy_append_spacely-tx2() {
@@ -279,10 +263,6 @@ do_deploy_append_n510-tx2() {
 }
 do_deploy_append_n310-tx2() {
     cp ${WORKDIR}/tegra186-tx2-aetina-n310-p3489-0888-a00-00-base.dtb "${DEPLOYDIR}"
-}
-
-do_deploy_append_srd3-tx2() {
-    cp ${WORKDIR}/d3-tx2-rsp-fpdlink.dtb "${DEPLOYDIR}"
 }
 
 do_deploy_append_blackboard-tx2() {
