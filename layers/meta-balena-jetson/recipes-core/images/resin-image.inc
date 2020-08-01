@@ -151,9 +151,6 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     go-runtime \
 "
 
-IMAGE_INSTALL_append_srd3-tx2 = " \
-    machxo2 \
-"
 IMAGE_INSTALL_append_jetson-tx1 = " \
     tegra210-flash-dry \
     parted \
