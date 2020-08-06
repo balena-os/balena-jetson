@@ -1,4 +1,78 @@
 - commits:
+    - subject: Update meta-balena from v2.53.9 to v2.53.12
+      hash: 5150ea77b55662a55647bb579956983fc17bda36
+      body: |
+        Update meta-balena from 2.53.9 to 2.53.12
+      footer:
+        Changelog-entry: Update meta-balena from v2.53.9 to v2.53.12
+        changelog-entry: Update meta-balena from v2.53.9 to v2.53.12
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'systemd: Set net.ipv4.conf.all.rp_filter in balena-os-sysctl'
+              hash: a0573b7df13292aff6c7670246ed780342593376
+              body: >
+                The warrior branch does not backport this configuration
+
+                like the older branches do. Let's move this setting in the
+
+                balena-os-sysctl file to avoid issues where some device
+                integration
+
+                layers set the rp_filter mode to strict and break connectivity.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.53.12
+          date: 2020-08-04T14:01:14.955Z
+        - commits:
+            - subject: Use a named key when querying for device by uuid
+              hash: e2c6614d28fe498853297891eb0feeb4b1577a7b
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Pagan Gazzard
+              nested: []
+          version: meta-balena-2.53.11
+          date: 2020-07-30T15:32:30.333Z
+        - commits:
+            - subject: >-
+                supervisor: allow supervisor updates without controlling the
+                supervisor state
+              hash: 6208f065e59d9c15e10e872bff788c0b80020983
+              body: >
+                Recently the supervisor added a codepath that assumes no files
+                underneath it will change during runtime.
+
+                OS update hooks can trigger a condition whereby the supervisor
+                reboots the device during a HUP,
+
+                which in turn bricks the device.
+
+
+                Additionally, since unknown args cause this update to
+                fail-closed,
+
+                remove that barrier to future-proof more flag expansion.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Matthew McGinn <matthew@balena.io>
+                signed-off-by: Matthew McGinn <matthew@balena.io>
+              author: Matthew McGinn
+              nested: []
+          version: meta-balena-2.53.10
+          date: 2020-07-29T12:42:50.816Z
+  version: 2.53.12+rev1
+  date: 2020-08-06T13:11:55.184Z
+- commits:
     - subject: Update meta-balena from v2.52.7 to v2.53.9
       hash: bd34b033bb2a6f4dbdc729c89b7d724956d5a73f
       body: |
