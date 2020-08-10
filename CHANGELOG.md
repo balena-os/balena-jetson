@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.53.12+rev2
+## (2020-08-10)
+
+* u-boot-tegra: Switch back to previous rev for t210 [Alexandru Costache]
+
 # v2.53.12+rev1
 ## (2020-08-06)
 

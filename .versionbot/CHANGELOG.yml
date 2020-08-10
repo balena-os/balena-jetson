@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'u-boot-tegra: Switch back to previous rev for t210'
+      hash: 1ef56bf6105ff6aed1f988c39145b4393f6fdbdd
+      body: |
+        Do so to preserve flashing nonces offsets in case
+        they were affected by u-boot update.
+      footer:
+        Changelog-entry: 'u-boot-tegra: Switch back to previous rev for t210'
+        changelog-entry: 'u-boot-tegra: Switch back to previous rev for t210'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.53.12+rev2
+  date: 2020-08-10T12:33:04.067Z
+- commits:
     - subject: Update meta-balena from v2.53.9 to v2.53.12
       hash: 5150ea77b55662a55647bb579956983fc17bda36
       body: |
