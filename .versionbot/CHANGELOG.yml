@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'linux-tegra: Update dtb for jn30b-nano to bsp v3.1 for 32.4.2'
+      hash: 07fdc481961655fd7be4493657ec39c16c5c3f4a
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Update dtb for jn30b-nano to bsp v3.1 for 32.4.2'
+        changelog-entry: 'linux-tegra: Update dtb for jn30b-nano to bsp v3.1 for 32.4.2'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+  version: 2.53.12+rev2
+  date: 2020-08-12T08:51:43.143Z
+- commits:
     - subject: Update meta-balena from v2.53.9 to v2.53.12
       hash: 5150ea77b55662a55647bb579956983fc17bda36
       body: |
