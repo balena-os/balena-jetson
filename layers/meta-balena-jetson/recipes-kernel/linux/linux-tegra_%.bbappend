@@ -85,9 +85,15 @@ RESIN_CONFIGS[debug_kmemleak] = " \
 "
 
 # These should be for all boards that come from tx2
-RESIN_CONFIGS_append_jetson-tx2 = " tpg"
+RESIN_CONFIGS_append_jetson-tx2 = " tpg eqos_disable_eee"
 RESIN_CONFIGS[tpg] = " \
                 CONFIG_VIDEO_TEGRA_VI_TPG=m \
+"
+
+# Fixes reported ethernet issues
+# See: elinux.org/Jetson/FAQ/BSP
+RESIN_CONFIGS[eqos_disable_eee] = " \
+                CONFIG_EQOS_DISABLE_EEE=y \
 "
 
 RESIN_CONFIGS_append_jetson-tx1 = " compat"
