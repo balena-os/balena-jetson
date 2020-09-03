@@ -1,4 +1,27 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.8.1
+      hash: fc85f448a4fa938058e5ea8ab84d092b9f4674f7
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.8.1
+        changelog-entry: Update balena-yocto-scripts to v1.8.1
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: 'linux-tegra: Update Aetina N510 to L4T 32.4.2'
+      hash: 3d6571817c3239f7eb41c79a1d9796ca067b8b68
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Update Aetina N510 to L4T 32.4.2'
+        changelog-entry: 'linux-tegra: Update Aetina N510 to L4T 32.4.2'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Raphael Dürscheid
+      nested: []
+  version: 2.54.3+rev2
+  date: 2020-09-03T08:18:25.078Z
+- commits:
     - subject: Update meta-balena from v2.53.12 to v2.54.3
       hash: b3fee7396b3e2511a1ef1ec43147462d0b056a7c
       body: |

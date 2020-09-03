@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.54.3+rev2
+## (2020-09-03)
+
+* Update balena-yocto-scripts to v1.8.1 [Alexandru Costache]
+* linux-tegra: Update Aetina N510 to L4T 32.4.2 [Raphael Dürscheid]
+
 # v2.54.3+rev1
 ## (2020-08-27)
 
