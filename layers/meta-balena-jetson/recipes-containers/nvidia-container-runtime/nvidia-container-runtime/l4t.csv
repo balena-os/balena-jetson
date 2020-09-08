@@ -22,6 +22,8 @@ dev, /dev/nvhost-msenc
 dev, /dev/nvhost-nvenc1
 dev, /dev/nvhost-nvjpg
 lib, /usr/lib/libv4l2.so.0
+dir, /lib/firmware/tegra19x
+dir, /lib/firmware/tegra18x
 dir, /lib/firmware/tegra21x
 lib, /usr/lib/weston/desktop-shell.so
 lib, /usr/lib/weston/drm-backend.so
@@ -195,3 +197,5 @@ sym, /usr/lib/libnvbuf_utils.so
 sym, /usr/lib/libnvid_mapper.so
 lib, /etc/glvnd/egl_vendor.d/10-nvidia.json
 lib, /lib/firmware/tegra21x/nvhost_nvdec020_ns.fw
+lib, /lib/firmware/tegra18x/nvhost_nvdec030_ns.fw
+lib, /lib/firmware/tegra19x/nvhost_nvdec040_ns.fw
