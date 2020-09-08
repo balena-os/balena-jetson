@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.56.0+rev2
+## (2020-09-08)
+
+* nvidia-container-runtime: update library list to r32.4.2 [Pelle van Gils]
+
 # v2.56.0+rev1
 ## (2020-09-05)
 
