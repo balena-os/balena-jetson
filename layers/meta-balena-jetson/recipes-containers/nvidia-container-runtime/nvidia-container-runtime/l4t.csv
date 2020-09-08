@@ -111,10 +111,13 @@ lib, /usr/lib/libnvcamerautils.so
 lib, /usr/lib/libnvcam_imageencoder.so
 lib, /usr/lib/libnvcamlog.so
 lib, /usr/lib/libnvcamv4l2.so
+lib, /usr/lib/libnvcapture.so
 lib, /usr/lib/libnvcolorutil.so
 lib, /usr/lib/libnvdc.so
 lib, /usr/lib/libnvddk_2d_v2.so
 lib, /usr/lib/libnvddk_vic.so
+lib, /usr/lib/libnvdla_compiler.so
+lib, /usr/lib/libnvdla_runtime.so
 lib, /usr/lib/libnvdsbufferpool.so.1.0.0
 lib, /usr/lib/libnveglstream_camconsumer.so
 lib, /usr/lib/libnveglstreamproducer.so
@@ -145,6 +148,7 @@ lib, /usr/lib/libnvidia-rmapi-tegra.so.32.3.1
 lib, /usr/lib/libnvidia-tls.so.32.3.1
 lib, /usr/lib/libnvid_mapper.so.1.0.0
 lib, /usr/lib/libnvimp.so
+lib, /usr/lib/libnvisp_utils.so
 lib, /usr/lib/libnvjpeg.so
 lib, /usr/lib/libnvll.so
 lib, /usr/lib/libnvmedia.so
@@ -165,6 +169,7 @@ lib, /usr/lib/libnvos.so
 lib, /usr/lib/libnvparser.so
 lib, /usr/lib/libnvphsd.so
 lib, /usr/lib/libnvphs.so
+lib, /usr/lib/libnvpva.so
 lib, /usr/lib/libnvrm_gpu.so
 lib, /usr/lib/libnvrm_graphics.so
 lib, /usr/lib/libnvrm.so
