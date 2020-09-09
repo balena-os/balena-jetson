@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'linux-tegra: Switch input drivers to modules'
+      hash: b5bdd09f6e26aed027e69bd33537391556e22d61
+      body: |
+        Switched some built-in input drivers to modules
+        to save some space in the boot part for flasher images.
+      footer:
+        Changelog-entry: 'linux-tegra: Switch input drivers to modules'
+        changelog-entry: 'linux-tegra: Switch input drivers to modules'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.56.0+rev3
+  date: 2020-09-09T13:40:24.618Z
+- commits:
     - subject: 'nvidia-container-runtime: update library list to r32.4.2'
       hash: 95a27dee550340734cd87e2d880cc8924bccfe2c
       body: ''

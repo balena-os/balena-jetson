@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.56.0+rev3
+## (2020-09-09)
+
+* linux-tegra: Switch input drivers to modules [Alexandru Costache]
+
 # v2.56.0+rev2
 ## (2020-09-08)
 
