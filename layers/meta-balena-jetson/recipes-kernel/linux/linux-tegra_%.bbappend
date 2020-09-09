@@ -197,6 +197,15 @@ RESIN_CONFIGS[mii] = " \
                 CONFIG_MII=m \
 "
 
+RESIN_CONFIGS_append = " cfginput"
+RESIN_CONFIGS[cfginput] = " \
+		CONFIG_INPUT_LEDS=m \
+		CONFIG_FF_MEMLESS=m \
+		CONFIG_INPUT_MOUSEDEV=m \
+		CONFIG_INPUT_JOYDEV=m \
+		CONFIG_JOYSTICK_XPAD=m \
+"
+
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-nano-emmc = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jn30b-nano = "\${resin_kernel_root} ro rootwait"
