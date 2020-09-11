@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'linux-variscite: Add package for custom dtbs'
+      hash: b1989bee39f390b09e37b55d3dc02ba7a83bc028
+      body: |
+        We do so because the kernel-devicetree
+        class deploys only the dtbs that were
+        built along the kernel.
+      footer:
+        Changelog-entry: 'linux-variscite: Add package for custom dtbs'
+        changelog-entry: 'linux-variscite: Add package for custom dtbs'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.56.0+rev4
+  date: 2020-09-11T11:42:03.645Z
+- commits:
     - subject: 'linux-tegra: Switch input drivers to modules'
       hash: b5bdd09f6e26aed027e69bd33537391556e22d61
       body: |

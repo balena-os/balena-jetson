@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.56.0+rev4
+## (2020-09-11)
+
+* linux-variscite: Add package for custom dtbs [Alexandru Costache]
+
 # v2.56.0+rev3
 ## (2020-09-09)
 
