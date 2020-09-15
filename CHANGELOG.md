@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2020.07.2
+## (2020-09-15)
+
+* Update meta-balena from v2.50.8 to v2.50.10 [Florin Sarbu]
+* Update balena-yocto-scripts to v1.8.1 [Florin Sarbu]
+
 # v2020.07.1
 ## (2020-08-10)
 
