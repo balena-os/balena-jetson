@@ -41,6 +41,8 @@ LDK_DIR = "${TMPDIR}/work-shared/L4T-${SOC_FAMILY}-${PV}-${PR}/Linux_for_Tegra"
 B = "${WORKDIR}/build"
 S = "${WORKDIR}"
 
+ODMDATA = "0x6090000"
+
 BINARY_INSTALL_PATH = "/opt/tegra-binaries"
 
 BOOTFILES=" \
