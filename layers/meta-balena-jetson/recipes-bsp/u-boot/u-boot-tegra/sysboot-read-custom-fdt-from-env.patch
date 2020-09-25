@@ -1,4 +1,4 @@
-From 0ac1ebea387ebeab00556cff9116cea7f93c1f49 Mon Sep 17 00:00:00 2001
+From d50f47f05d7e38b7bd6f3158765150eb7e5949ca Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
 Date: Thu, 18 Jun 2020 01:50:12 +0200
 Subject: [PATCH] sysboot: Implement using custom dtb from env
@@ -10,16 +10,17 @@ by the supervisor, then the specified file will be
 attempted to be used.
 
 If the specified dtb does not exist or cannot be loaded,
-default one from raw partition dtb will be used
+default one from root partition will be used. If that one
+can't be loaded either, the one from raw partition is loaded.
 
 Upstream-status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
- cmd/pxe_utils.c | 40 +++++++++++++++++++++++++++++++++++++---
- 1 file changed, 37 insertions(+), 3 deletions(-)
+ cmd/pxe_utils.c | 46 +++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 43 insertions(+), 3 deletions(-)
 
 diff --git a/cmd/pxe_utils.c b/cmd/pxe_utils.c
-index ccade24151..e9567c1210 100644
+index ccade24..d5be338 100644
 --- a/cmd/pxe_utils.c
 +++ b/cmd/pxe_utils.c
 @@ -27,6 +27,7 @@
@@ -45,11 +46,11 @@ index ccade24151..e9567c1210 100644
  	struct token t;
  	int len;
 -	char *s = *c;
-+	char *s = *c, *custom_env_fdt_file;
++	char *s = *c, *env_fdt_file;
  	struct pxe_label *label;
  	int err;
  
-@@ -1067,8 +1069,40 @@ static int parse_label(char **c, struct pxe_menu *cfg)
+@@ -1067,8 +1069,46 @@ static int parse_label(char **c, struct pxe_menu *cfg)
  			break;
  
  		case T_FDT:
@@ -60,10 +61,16 @@ index ccade24151..e9567c1210 100644
 +					printf("info: found default FDT entry, look for custom_fdt_file environment variable\n");
 +					err = 0;
 +
-+					custom_env_fdt_file = env_get("custom_fdt_file");
++					env_fdt_file = env_get("custom_fdt_file");
 +
-+					if (custom_env_fdt_file) {
-+						int fdtlen = strlen(custom_env_fdt_file);
++					if (!env_fdt_file) {
++						// If no custom device tree set from dashboard, try load the default dtb from rootfs
++						printf("info: Custom fdt file not defined. Look for default board fdt file\n");
++						env_fdt_file = env_get("board_fdt_file");
++					}
++
++					if (env_fdt_file) {
++						int fdtlen = strlen(env_fdt_file);
 +
 +						if (fdtlen + 7 > MAX_FDT_PATH_LEN) {
 +							printf("warning: fdt name too long, trimming");
@@ -79,8 +86,8 @@ index ccade24151..e9567c1210 100644
 +							memset(label->fdt, '\0', sizeof(char) * MAX_FDT_PATH_LEN);
 +
 +							// dtbs are located in the same folder as the kernel
-+							snprintf(label->fdt, fdtlen + 7, "/boot/%s", custom_env_fdt_file);
-+							printf("info: Custom fdt file now is %s - %d\n", label->fdt, strlen(label->fdt));
++							snprintf(label->fdt, fdtlen + 7, "/boot/%s", env_fdt_file);
++							printf("info: fdt file now is %s - %d\n", label->fdt, strlen(label->fdt));
 +						}
 +					} else {
 +						printf("info: custom_fdt_file variable not defined, use default partition DTB\n");
@@ -92,5 +99,5 @@ index ccade24151..e9567c1210 100644
  
  		case T_FDTDIR:
 -- 
-2.17.1
+2.7.4
 
