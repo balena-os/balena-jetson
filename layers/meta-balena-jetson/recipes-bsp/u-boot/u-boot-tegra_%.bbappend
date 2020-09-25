@@ -8,6 +8,21 @@ RESIN_BOOT_PART_jetson-nano = "0xC"
 RESIN_DEFAULT_ROOT_PART_jetson-nano = "0xD"
 RESIN_BOOT_PART_jetson-nano-emmc = "0xC"
 RESIN_DEFAULT_ROOT_PART_jetson-nano-emmc = "0xD"
+TEGRA_BOARD_FDT_FILE_jetson-nano-emmc="tegra210-p3448-0002-p3449-0000-b00.dtb"
+TEGRA_BOARD_FDT_FILE_jetson-nano="tegra210-p3448-0000-p3449-0000-b00.dtb"
+TEGRA_BOARD_FDT_FILE_jn30b-nano="tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb"
+TEGRA_BOARD_FDT_FILE_photon-nano="tegra210-nano-cti-NGX003.dtb"
+TEGRA_BOARD_FDT_FILE_spacely-tx2="tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb"
+TEGRA_BOARD_FDT_FILE_orbitty-tx2="tegra186-tx2-cti-ASG001-USB3.dtb"
+TEGRA_BOARD_FDT_FILE_n510-tx2="tegra186-tx2-aetina-n510-p3489-0888-a00-00-base.dtb"
+TEGRA_BOARD_FDT_FILE_n310-tx2="tegra186-tx2-aetina-n310-p3489-0888-a00-00-base.dtb"
+TEGRA_BOARD_FDT_FILE_blackboard-tx2="tegra186-tx2-blackboard.dtb"
+TEGRA_BOARD_FDT_FILE_jetson-tx2="tegra186-quill-p3310-1000-c03-00-base.dtb"
+TEGRA_BOARD_FDT_FILE_astro-tx2="tegra186-tx2-cti-ASG001-revG+.dtb"
+
+UBOOT_VARS_append = "\
+    TEGRA_BOARD_FDT_FILE \
+"
 
 # Latest L4T 32.4.2 known to work revision of u-boot v2020.04
 SRCREV = "74a4f0bcbafa3b5a81821469cdec819bb2695df9"
