@@ -4,8 +4,8 @@ mts-proper:mts_c10_prod_cr_sigheader.bin.encrypt:4194304
 mts-proper_b:mts_c10_prod_cr_sigheader.bin.encrypt:4194304
 cpu-bootloader:cboot_t194_sigheader.bin.encrypt:524288
 cpu-bootloader_b:cboot_t194_sigheader.bin.encrypt:524288
-bootloader-dtb:tegra194-p2888-0001-p2822-0000_sigheader.dtb.encrypt:393216
-bootloader-dtb_b:tegra194-p2888-0001-p2822-0000_sigheader.dtb.encrypt:393216
+bootloader-dtb:[DTB_NAME]_sigheader.dtb.encrypt:393216
+bootloader-dtb_b:[DTB_NAME]_sigheader.dtb.encrypt:393216
 secure-os:tos-trusty_t194_sigheader.img.encrypt:2097152
 secure-os_b:tos-trusty_t194_sigheader.img.encrypt:2097152
 eks:eks_sigheader.img.encrypt:131072
@@ -28,8 +28,8 @@ BMP:bmp.blob:134217728
 BMP_b:bmp.blob:134217728
 kernel:boot_sigheader.img.encrypt:67108864
 kernel_b:boot_sigheader.img.encrypt:67108864
-kernel-dtb:tegra194-p2888-0001-p2822-0000_sigheader.dtb.encrypt:524288
-kernel-dtb_b:tegra194-p2888-0001-p2822-0000_sigheader.dtb.encrypt:524288
+kernel-dtb:[DTB_NAME]_sigheader.dtb.encrypt:524288
+kernel-dtb_b:[DTB_NAME]_sigheader.dtb.encrypt:524288
 CPUBL-CFG:none.bin:1048576
 RP1:none.bin:8388608
 RP2:none.bin:8388608
