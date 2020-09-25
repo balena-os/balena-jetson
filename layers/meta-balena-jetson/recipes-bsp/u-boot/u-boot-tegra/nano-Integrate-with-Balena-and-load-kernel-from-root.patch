@@ -1,4 +1,4 @@
-From dc6ae822fa2c091833f8ffde7bfa4e0503543d2f Mon Sep 17 00:00:00 2001
+From d398d31b259d61639b98c19bbbd0d361fb0adeb4 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
 Date: Fri, 22 May 2020 14:40:39 +0200
 Subject: [PATCH] nano: Integrate with Balena and load kernel from rootfs
@@ -12,12 +12,12 @@ Upstream-status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  configs/p3450-0000_defconfig    |  7 ++++++-
- include/config_distro_bootcmd.h | 14 ++++++++++----
+ include/config_distro_bootcmd.h | 15 +++++++++++----
  include/configs/p3450-0000.h    |  2 ++
- 3 files changed, 18 insertions(+), 5 deletions(-)
+ 3 files changed, 19 insertions(+), 5 deletions(-)
 
 diff --git a/configs/p3450-0000_defconfig b/configs/p3450-0000_defconfig
-index f78e1d3867..179de7890d 100644
+index 1e9a77f..c6077f6 100644
 --- a/configs/p3450-0000_defconfig
 +++ b/configs/p3450-0000_defconfig
 @@ -20,7 +20,7 @@ CONFIG_CMD_SF=y
@@ -39,7 +39,7 @@ index f78e1d3867..179de7890d 100644
 +CONFIG_BOOTDELAY=0
 +CONFIG_CMD_EXPORTENV=y
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index fc0935fa21..98728e3537 100644
+index fc0935f..3d1926d 100644
 --- a/include/config_distro_bootcmd.h
 +++ b/include/config_distro_bootcmd.h
 @@ -25,6 +25,8 @@
@@ -51,7 +51,15 @@ index fc0935fa21..98728e3537 100644
  #define BOOTENV_SHARED_BLKDEV_BODY(devtypel) \
  		"if " #devtypel " dev ${devnum}; then " \
  			"devtype=" #devtypel "; " \
-@@ -437,7 +439,7 @@
+@@ -422,6 +424,7 @@
+ 	"boot_script_dhcp=boot.scr.uimg\0" \
+ 	BOOTENV_BOOT_TARGETS \
+ 	\
++	"board_fdt_file=" __stringify(TEGRA_BOARD_FDT_FILE) "\0" \
+ 	"boot_syslinux_conf=extlinux/extlinux.conf\0" \
+ 	"boot_extlinux="                                                  \
+ 		"sysboot ${devtype} ${devnum}:${distro_bootpart} any "    \
+@@ -437,7 +440,7 @@
  		"fi\0"                                                    \
  	\
  	"boot_a_script="                                                  \
@@ -60,7 +68,7 @@ index fc0935fa21..98728e3537 100644
  			"${scriptaddr} ${prefix}${script}; "              \
  		"source ${scriptaddr}\0"                                  \
  	\
-@@ -464,7 +466,8 @@
+@@ -464,7 +467,8 @@
  		"\0"                                                      \
  	\
  	"scan_dev_for_boot_part="                                         \
@@ -70,7 +78,7 @@ index fc0935fa21..98728e3537 100644
  		"env exists devplist || setenv devplist 1; "              \
  		"for distro_bootpart in ${devplist}; do "                 \
  			"if fstype ${devtype} "                           \
-@@ -481,10 +484,13 @@
+@@ -481,10 +485,13 @@
  		BOOTENV_SET_NVME_NEED_INIT                                \
  		BOOTENV_SET_IDE_NEED_INIT                                 \
  		BOOTENV_SET_VIRTIO_NEED_INIT                              \
@@ -87,7 +95,7 @@ index fc0935fa21..98728e3537 100644
  #define CONFIG_BOOTCOMMAND "run distro_bootcmd"
  #endif
 diff --git a/include/configs/p3450-0000.h b/include/configs/p3450-0000.h
-index eff463eecb..d490e76a92 100644
+index eff463e..d490e76 100644
 --- a/include/configs/p3450-0000.h
 +++ b/include/configs/p3450-0000.h
 @@ -17,6 +17,7 @@
@@ -107,5 +115,5 @@ index eff463eecb..d490e76a92 100644
  	func(PXE, pxe, na) \
  	func(DHCP, dhcp, na)
 -- 
-2.17.1
+2.7.4
 
