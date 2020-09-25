@@ -103,7 +103,7 @@ IMAGE_INSTALL_append_jetson-nano = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
-    jetson-custom-dtbs \
+    jetson-dtbs \
 "
 
 IMAGE_INSTALL_append_jetson-nano-emmc = " \
@@ -111,7 +111,7 @@ IMAGE_INSTALL_append_jetson-nano-emmc = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
-    jetson-custom-dtbs \
+    jetson-dtbs \
 "
 
 IMAGE_INSTALL_append_jetson-xavier = " \
@@ -147,7 +147,7 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     linux-firmware-bcm4354 \
     tegra-firmware-xusb \
     bt-scripts \
-    jetson-custom-dtbs \
+    jetson-dtbs \
 "
 
 IMAGE_INSTALL_append_jetson-tx1 = " \
