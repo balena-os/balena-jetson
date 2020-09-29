@@ -4,6 +4,9 @@ FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 
 SCMVERSION="n"
 
+# Dunfell 32.4.3 branch - 28 Sep 2020
+SRCREV = "a58470bb0f05f9189781448eb64599cc4aac49af"
+
 # Prevent delayed booting
 # and support using partition label to load rootfs
 # in the case of jetson-xavier and tx2 flasher
