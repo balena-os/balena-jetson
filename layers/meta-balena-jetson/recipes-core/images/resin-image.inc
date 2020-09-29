@@ -16,6 +16,7 @@ DTBFILE_photon-nano = "tegra210-nano-cti-NGX003.dtb"
 DTBFILE_photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003.dtb"
 DTBNAME_cti-rogue-xavier="tegra194-agx-cti-AGX101"
 DTBNAME_jetson-xavier="tegra194-p2888-0001-p2822-0000"
+DTBNAME_nru120s-xavier="NRU120-32-4-3"
 
 # Name update files as partition names for easier updating
 RESIN_BOOT_PARTITION_FILES_jetson-nano = " \
