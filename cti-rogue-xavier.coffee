@@ -1,7 +1,7 @@
 deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
-BOARD_PREPARE  = 'Put the NVidia Jetson Xavier board in recovery mode'
+BOARD_PREPARE  = 'Put the CTI Rogue Xavier AGX board in recovery mode'
 FLASH_TOOL = 'Unzip BalenaOS image and use the Jetson Flash tool to flash the board. Jetson Flash tool can be found at https://github.com/balena-os/jetson-flash'
 DONE_FLASHING  = 'After flashing is completed, please wait until the board is rebooted'
 module.exports =
