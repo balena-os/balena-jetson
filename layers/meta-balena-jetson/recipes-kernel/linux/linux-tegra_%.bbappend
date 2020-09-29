@@ -38,6 +38,10 @@ SRC_URI_append_cti-rogue-xavier = " \
     file://tegra194-agx-cti-AGX101.dtb \
 "
 
+SRC_URI_append_nru120s-xavier = " \
+    file://NRU120-32-4-3.dtb \
+"
+
 SRC_URI_append_astro-tx2 = " \
     file://tegra186-tx2-cti-ASG001-revG+.dtb \
 "
@@ -297,4 +301,8 @@ do_deploy_append_astro-tx2() {
 
 do_deploy_append_cti-rogue-xavier() {
     cp ${WORKDIR}/tegra194-agx-cti-AGX101.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_nru120s-xavier() {
+    cp ${WORKDIR}/NRU120-32-4-3.dtb "${DEPLOYDIR}"
 }
