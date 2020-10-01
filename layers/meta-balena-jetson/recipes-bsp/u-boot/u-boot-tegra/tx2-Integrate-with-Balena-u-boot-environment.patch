@@ -1,4 +1,4 @@
-From 0947291f94163c43ae35ad3a84066f2d29ec0b26 Mon Sep 17 00:00:00 2001
+From 8694e9863fb09eca1c57d8bfc68c86a365f4fb66 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
 Date: Thu, 21 May 2020 17:01:18 +0200
 Subject: [PATCH] Integrate with Balena u-boot environment
@@ -9,11 +9,11 @@ Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  configs/p2771-0000-500_defconfig |  9 ++++++++-
- include/config_distro_bootcmd.h  | 31 ++++++++++++++++++++++++++++---
- 2 files changed, 35 insertions(+), 4 deletions(-)
+ include/config_distro_bootcmd.h  | 32 +++++++++++++++++++++++++++++---
+ 2 files changed, 37 insertions(+), 4 deletions(-)
 
 diff --git a/configs/p2771-0000-500_defconfig b/configs/p2771-0000-500_defconfig
-index 1f40333b0e..619541c033 100644
+index 1f40333..1f49777 100644
 --- a/configs/p2771-0000-500_defconfig
 +++ b/configs/p2771-0000-500_defconfig
 @@ -17,7 +17,7 @@ CONFIG_CMD_MMC=y
@@ -37,7 +37,7 @@ index 1f40333b0e..619541c033 100644
 +CONFIG_CMD_EXPORTENV=y
 +CONFIG_CMD_EDITENV=y
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index fc0935fa21..b18833aaf8 100644
+index fc0935f..71842c1 100644
 --- a/include/config_distro_bootcmd.h
 +++ b/include/config_distro_bootcmd.h
 @@ -24,7 +24,7 @@
@@ -49,7 +49,15 @@ index fc0935fa21..b18833aaf8 100644
  #define BOOTENV_SHARED_BLKDEV_BODY(devtypel) \
  		"if " #devtypel " dev ${devnum}; then " \
  			"devtype=" #devtypel "; " \
-@@ -437,7 +437,7 @@
+@@ -417,6 +417,7 @@
+ 	BOOTENV_SHARED_UBIFS \
+ 	BOOTENV_SHARED_EFI \
+ 	BOOTENV_SHARED_VIRTIO \
++	"board_fdt_file=" __stringify(TEGRA_BOARD_FDT_FILE) "\0" \
+ 	"boot_prefixes=/ /boot/\0" \
+ 	"boot_scripts=boot.scr.uimg boot.scr\0" \
+ 	"boot_script_dhcp=boot.scr.uimg\0" \
+@@ -437,7 +438,7 @@
  		"fi\0"                                                    \
  	\
  	"boot_a_script="                                                  \
@@ -58,7 +66,7 @@ index fc0935fa21..b18833aaf8 100644
  			"${scriptaddr} ${prefix}${script}; "              \
  		"source ${scriptaddr}\0"                                  \
  	\
-@@ -453,6 +453,14 @@
+@@ -453,6 +454,14 @@
  			"fi; "                                            \
  		"done\0"                                                  \
  	\
@@ -73,7 +81,7 @@ index fc0935fa21..b18833aaf8 100644
  	"scan_dev_for_boot="                                              \
  		"echo Scanning ${devtype} "                               \
  				"${devnum}:${distro_bootpart}...; "       \
-@@ -464,7 +472,18 @@
+@@ -464,7 +473,18 @@
  		"\0"                                                      \
  	\
  	"scan_dev_for_boot_part="                                         \
@@ -93,7 +101,7 @@ index fc0935fa21..b18833aaf8 100644
  		"env exists devplist || setenv devplist 1; "              \
  		"for distro_bootpart in ${devplist}; do "                 \
  			"if fstype ${devtype} "                           \
-@@ -481,8 +500,14 @@
+@@ -481,8 +501,14 @@
  		BOOTENV_SET_NVME_NEED_INIT                                \
  		BOOTENV_SET_IDE_NEED_INIT                                 \
  		BOOTENV_SET_VIRTIO_NEED_INIT                              \
@@ -109,5 +117,5 @@ index fc0935fa21..b18833aaf8 100644
  
  #ifndef CONFIG_BOOTCOMMAND
 -- 
-2.17.1
+2.7.4
 

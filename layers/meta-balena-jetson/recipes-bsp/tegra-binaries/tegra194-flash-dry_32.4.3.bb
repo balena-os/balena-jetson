@@ -20,11 +20,18 @@ inherit deploy pythonnative perlnative
 SRC_URI = " \
     file://resinOS-flash194.xml \
     file://partition_specification194.txt \
-    "
+    file://cti-rogue-32-4-3-pinmux.cfg \
+"
 
-KERNEL_DEVICETREE_jetson-xavier = "${DEPLOY_DIR_IMAGE}/tegra194-p2888-0001-p2822-0000.dtb"
-DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
+PINMUXCFG = "tegra19x-mb1-pinmux-p2888-0000-a04-p2822-0000-b01.cfg"
+PINMUXCFG_cti-rogue-xavier = "cti-rogue-32-4-3-pinmux.cfg"
 LNXSIZE ?= "67108864"
+DTBNAME = "tegra194-p2888-0001-p2822-0000"
+DTBNAME_cti-rogue-xavier = "tegra194-agx-cti-AGX101"
+DTBNAME_nru120s-xavier = "NRU120-32-4-3"
+KERNEL_DEVICETREE = "${DEPLOY_DIR_IMAGE}/${DTBNAME}.dtb"
+DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
+
 
 IMAGE_TEGRAFLASH_FS_TYPE ??= "ext4"
 IMAGE_TEGRAFLASH_ROOTFS ?= "${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE}"
@@ -96,7 +103,7 @@ signfile() {
     python $tegraflashpy --chip 0x19 \
     --bl nvtboot_recovery_cpu_t194.bin \
     --sdram_config ${sdramcfg} \
-    --odmdata 0x9190000 \
+    --odmdata ${ODMDATA} \
     --applet mb1_t194_prod.bin \
     --soft_fuses tegra194-mb1-soft-fuses-l4t.cfg \
     --cmd "sign$1" \
@@ -105,7 +112,7 @@ signfile() {
     --device_config tegra19x-mb1-bct-device-sdmmc.cfg \
     --misc_config tegra194-mb1-bct-misc-flash.cfg \
     --misc_cold_boot_config tegra194-mb1-bct-misc-l4t.cfg \
-    --pinmux_config tegra19x-mb1-pinmux-p2888-0000-a04-p2822-0000-b01.cfg \
+    --pinmux_config ${PINMUXCFG} \
     --gpioint_config tegra194-mb1-bct-gpioint-p2888-0000-p2822-0000.cfg \
     --pmic_config tegra194-mb1-bct-pmic-p2888-0001-a04-p2822-0000.cfg \
     --pmc_config tegra19x-mb1-padvoltage-p2888-0000-a00-p2822-0000-a00.cfg \
@@ -151,14 +158,14 @@ do_configure() {
     ln -s ${STAGING_BINDIR_NATIVE}/tegra186-flash .
 
     cp "${DEPLOY_DIR_IMAGE}/${DTBFILE}" ./${DTBFILE}
-    cp ./${DTBFILE} ./tegra194-p2888-0001-p2822-0000-rootA.dtb
-    cp ./${DTBFILE} ./tegra194-p2888-0001-p2822-0000-rootB.dtb
+    cp ./${DTBFILE} ./${DTBNAME}-rootA.dtb
+    cp ./${DTBFILE} ./${DTBNAME}-rootB.dtb
 
     # Add rootA/rootB and save as separate dtbs to be used when
     # switching partitions
     bootargs="`fdtget ./${DTBFILE} /chosen bootargs 2>/dev/null`"
-    fdtput -t s ./tegra194-p2888-0001-p2822-0000-rootA.dtb /chosen bootargs "$bootargs ${ROOTA_ARGS}"
-    fdtput -t s ./tegra194-p2888-0001-p2822-0000-rootB.dtb /chosen bootargs "$bootargs ${ROOTB_ARGS}"
+    fdtput -t s ./${DTBNAME}-rootA.dtb /chosen bootargs "$bootargs ${ROOTA_ARGS}"
+    fdtput -t s ./${DTBNAME}-rootB.dtb /chosen bootargs "$bootargs ${ROOTB_ARGS}"
 
     # Make bootable image from kernel and sign it
     cp ${DEPLOY_DIR_IMAGE}/${LNXFILE} ${LNXFILE}
@@ -170,6 +177,9 @@ do_configure() {
 
     # prepare flash.xml.in to be used in signing
     cp ${WORKDIR}/resinOS-flash194.xml flash.xml.in
+    sed -i "s, DTB_NAME, ${DTBFILE},g" flash.xml.in
+
+    sed -i -e "s/\[DTB_NAME\]/$(echo ${DTBFILE} | cut -d '.' -f 1)/g" ${WORKDIR}/partition_specification194.txt
 
     # prep env for tegraflash
     rm -f ./slot_metadata.bin
@@ -182,6 +192,7 @@ do_configure() {
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra186-flash/${SOC_FAMILY}-flash-helper.sh ./
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra186-flash/tegraflash.py ./
 
+    cp ${WORKDIR}/cti-rogue-32-4-3-pinmux.cfg .
     # bup is based on the rootfs, which is not built at this point
     # not using it for the moment
     # sed -e 's,^function ,,' ${STAGING_BINDIR_NATIVE}/tegra186-flash/l4t_bup_gen.func > ./l4t_bup_gen.func
@@ -192,19 +203,19 @@ do_configure() {
 
     # any binary written to a partition that
     # has signing mandatory needs to be signed
-    signfile " tegra194-p2888-0001-p2822-0000-rootA.dtb"
-    signfile " tegra194-p2888-0001-p2822-0000-rootB.dtb"
+    signfile " ${DTBNAME}-rootA.dtb"
+    signfile " ${DTBNAME}-rootB.dtb"
 
     # Needed to embedd plain initramfs kernel and dtb to main image
     cp ${LNXFILE} ${DEPLOY_DIR_IMAGE}/bootfiles/Image
-    cp -r tegra194-p2888-0001-p2822-0000-root*.dtb ${DEPLOY_DIR_IMAGE}/bootfiles/
+    cp -r ${DTBNAME}-root*.dtb ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp ${WORKDIR}/resinOS-flash194.xml ${DEPLOY_DIR_IMAGE}/bootfiles/flash.xml
     cp -r signed/* ${DEPLOY_DIR_IMAGE}/bootfiles/
-    cp -r tegra194-p2888-0001-p2822-0000-root*_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/
+    cp -r ${DTBNAME}-root*_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/
     dd if=/dev/zero of="${DEPLOY_DIR_IMAGE}/bootfiles/bmp.blob" bs=1K count=70
 
     # This is the Xavier boot0, which wasn't necessary for HUP from L4T 31.x to 32.3.1,
-    # but is now, when moving to L4T 32.4.2.
+    # but becomes when moving to L4T 32.4.2.
 
     dd if=/dev/zero of=boot0.img bs=8388608 count=1
 
@@ -250,11 +261,11 @@ do_install() {
     cp -r ${S}/tegraflash/signed/* ${D}/${BINARY_INSTALL_PATH}
     # signed boot.img isn't needed in rootfs
     rm ${D}/${BINARY_INSTALL_PATH}/boot*im*
-    cp ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-rootA.dtb ${D}/${BINARY_INSTALL_PATH}/
+    cp ${S}/tegraflash/${DTBNAME}-rootA.dtb ${D}/${BINARY_INSTALL_PATH}/
     cp ${WORKDIR}/partition_specification194.txt ${D}/${BINARY_INSTALL_PATH}/
-    cp -r ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-root*sigheader.dtb.encrypt ${D}/${BINARY_INSTALL_PATH}
+    cp -r ${S}/tegraflash/${DTBNAME}-root*sigheader.dtb.encrypt ${D}/${BINARY_INSTALL_PATH}
     # When generating image, this will be default dtb containing cmdline with root set to resin-rootA
-    cp ${S}/tegraflash/tegra194-p2888-0001-p2822-0000-rootA_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/tegra194-p2888-0001-p2822-0000_sigheader.dtb.encrypt
+    cp ${S}/tegraflash/${DTBNAME}-rootA_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/${DTBNAME}_sigheader.dtb.encrypt
 }
 
 do_deploy() {

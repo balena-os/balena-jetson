@@ -14,6 +14,9 @@ DTBFILE_jetson-nano-emmc = "tegra210-p3448-0002-p3449-0000-b00.dtb"
 DTBFILE_jn30b-nano = "tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb"
 DTBFILE_photon-nano = "tegra210-nano-cti-NGX003.dtb"
 DTBFILE_photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003.dtb"
+DTBNAME_cti-rogue-xavier="tegra194-agx-cti-AGX101"
+DTBNAME_jetson-xavier="tegra194-p2888-0001-p2822-0000"
+DTBNAME_nru120s-xavier="NRU120-32-4-3"
 
 # Name update files as partition names for easier updating
 RESIN_BOOT_PARTITION_FILES_jetson-nano = " \
@@ -54,8 +57,8 @@ RESIN_BOOT_PARTITION_FILES_jetson-xavier = " \
     bootfiles/adsp-fw_sigheader.bin.encrypt:/bootfiles/adsp-fw_sigheader.bin.encrypt \
     bootfiles/warmboot_t194_prod_sigheader.bin.encrypt:/bootfiles/warmboot_t194_prod_sigheader.bin.encrypt \
     bootfiles/boot_sigheader.img.encrypt:/bootfiles/boot_sigheader.img.encrypt \
-    bootfiles/tegra194-p2888-0001-p2822-0000-rootA_sigheader.dtb.encrypt:/bootfiles/tegra194-p2888-0001-p2822-0000-rootA_sigheader.dtb.encrypt \
-    bootfiles/tegra194-p2888-0001-p2822-0000-rootB_sigheader.dtb.encrypt:/bootfiles/tegra194-p2888-0001-p2822-0000-rootB_sigheader.dtb.encrypt \
+    bootfiles/${DTBNAME}-rootA_sigheader.dtb.encrypt:/bootfiles/${DTBNAME}-rootA_sigheader.dtb.encrypt \
+    bootfiles/${DTBNAME}-rootB_sigheader.dtb.encrypt:/bootfiles/${DTBNAME}-rootB_sigheader.dtb.encrypt \
     bootfiles/boot0.img:/bootfiles/boot0.img \
     tegra-binaries/partition_specification194.txt:/bootfiles/partition_specification194.txt \
 "
@@ -103,7 +106,7 @@ IMAGE_INSTALL_append_jetson-nano = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
-    jetson-custom-dtbs \
+    jetson-dtbs \
 "
 
 IMAGE_INSTALL_append_jetson-nano-emmc = " \
@@ -111,7 +114,7 @@ IMAGE_INSTALL_append_jetson-nano-emmc = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
-    jetson-custom-dtbs \
+    jetson-dtbs \
 "
 
 IMAGE_INSTALL_append_jetson-xavier = " \
@@ -147,7 +150,7 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     linux-firmware-bcm4354 \
     tegra-firmware-xusb \
     bt-scripts \
-    jetson-custom-dtbs \
+    jetson-dtbs \
 "
 
 IMAGE_INSTALL_append_jetson-tx1 = " \

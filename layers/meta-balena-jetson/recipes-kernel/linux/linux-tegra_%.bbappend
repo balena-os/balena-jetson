@@ -2,10 +2,10 @@ inherit kernel-resin deploy
 
 FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 
-# As set by meta-tegra on July 7
-SRCREV = "e3c8d3e9030a4a9dbe6171355a062ebfad28dfde"
-
 SCMVERSION="n"
+
+# Dunfell 32.4.3 branch - 28 Sep 2020
+SRCREV = "a58470bb0f05f9189781448eb64599cc4aac49af"
 
 # Prevent delayed booting
 # and support using partition label to load rootfs
@@ -13,6 +13,7 @@ SCMVERSION="n"
 SRC_URI_append = " \
     file://0001-revert-random-fix-crng_ready-test.patch \
     file://0001-Support-referencing-the-root-partition-label-from-GP.patch \
+    file://xhci-ring-Don-t-show-incorrect-WARN-message-about.patch \
 "
 SRC_URI_append_jetson-tx2 = " \
     file://0001-Expose-spidev-to-the-userspace.patch \
@@ -31,6 +32,14 @@ SRC_URI_append_jetson-tx2 = " \
     file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
+"
+
+SRC_URI_append_cti-rogue-xavier = " \
+    file://tegra194-agx-cti-AGX101.dtb \
+"
+
+SRC_URI_append_nru120s-xavier = " \
+    file://NRU120-32-4-3.dtb \
 "
 
 SRC_URI_append_astro-tx2 = " \
@@ -288,4 +297,12 @@ do_deploy_append_photon-xavier-nx() {
 
 do_deploy_append_astro-tx2() {
     cp ${WORKDIR}/tegra186-tx2-cti-ASG001-revG+.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_cti-rogue-xavier() {
+    cp ${WORKDIR}/tegra194-agx-cti-AGX101.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_nru120s-xavier() {
+    cp ${WORKDIR}/NRU120-32-4-3.dtb "${DEPLOYDIR}"
 }

@@ -10,6 +10,7 @@ set -o errexit
 
 bootloader_device="/dev/mtdblock0"
 bootloader_blob="/opt/tegra-binaries/boot0.img"
+partspec="/opt/tegra-binaries/partition_specification194_nxde.txt"
 new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
 echo "New partition is ${new_part}"
 
@@ -30,10 +31,12 @@ esac
 
 echo "New root is resin-root${rootl}"
 
-dtbfile="tegra194-p3668-all-p3509-0000-root${rootl}_sigheader.dtb.encrypt"
+
+dtbname=$(cat "$partspec" | grep "kernel-dtb_b" | cut -d ':' -f 2 | awk -F'_sigheader' '{print $1}')
+dtbfile="${dtbname}-root${rootl}_sigheader.dtb.encrypt"
 kernel="boot_sigheader.img.encrypt"
 
-partitions=$(cat /opt/tegra-binaries/partition_specification194_nxde.txt)
+partitions=$(cat ${partspec})
 for n in ${partitions}; do
     part_name=$(echo $n | cut -d ':' -f 1)
     file_name=$(echo $n | cut -d ':' -f 2)

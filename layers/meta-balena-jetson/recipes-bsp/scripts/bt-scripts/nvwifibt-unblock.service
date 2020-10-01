@@ -9,6 +9,4 @@ WantedBy=multi-user.target
 [Service]
 Type=simple
 # Soft unblock "3: hci0: bluetooth" after brcm-patchram starts running
-# and raise hci0 interface. BlueZ should not interfere with
-# the device while it is being brought up
-ExecStart=/bin/sh -c 'rfkill unblock bluetooth && hciconfig hci0 up'
+ExecStart=/bin/sh -c 'rfkill unblock bluetooth'
