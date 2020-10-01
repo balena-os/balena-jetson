@@ -1,6 +1,46 @@
 Change log
 -----------
 
+# v2.58.3+rev1
+## (2020-10-01)
+
+* tegra194-flash-dry: Allow signing other carrier boards [Alexandru Costache]
+
+<details>
+<summary> Update meta-balena from v2.56.0 to v2.58.3 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.58.3
+> ### (2020-09-18)
+> 
+> * Blacklist supervisor configuration backend files during HUP [Alex Gonzalez]
+> 
+> ## meta-balena-2.58.2
+> ### (2020-09-17)
+> 
+> * hooks: fix up improperly named variable [Matthew McGinn]
+> 
+> ## meta-balena-2.58.1
+> ### (2020-09-15)
+> 
+> * Wait for the root device to come up when necessary [Michal Toman]
+> 
+> ## meta-balena-2.58.0
+> ### (2020-09-05)
+> 
+> * Respect balenaRootCA system-wide [Michal Toman]
+> 
+> ## meta-balena-2.57.1
+> ### (2020-09-04)
+> 
+> * os-helpers-logging: Log to stderr rather than stdout [Michal Toman]
+> 
+> ## meta-balena-2.57.0
+> ### (2020-09-04)
+> 
+> * Update libmbim to 1.24.2, libqmi to 1.26.0, modemmanager to 1.14.2 [Vicentiu Galanopulo]
+> 
+</details>
+
 # v2.56.0+rev4
 ## (2020-09-11)
 

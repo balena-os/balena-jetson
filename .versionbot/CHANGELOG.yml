@@ -1,4 +1,164 @@
 - commits:
+    - subject: 'tegra194-flash-dry: Allow signing other carrier boards'
+      hash: 422d7c652babfc09ccdff879975d68a816159f21
+      body: ''
+      footer:
+        Changelog-entry: 'tegra194-flash-dry: Allow signing other carrier boards'
+        changelog-entry: 'tegra194-flash-dry: Allow signing other carrier boards'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: Update meta-balena from v2.56.0 to v2.58.3
+      hash: 2fefb2b6dbebd248f14ddaf63a1d74c746001f5d
+      body: |
+        Update meta-balena from 2.56.0 to 2.58.3
+      footer:
+        Changelog-entry: Update meta-balena from v2.56.0 to v2.58.3
+        changelog-entry: Update meta-balena from v2.56.0 to v2.58.3
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: Blacklist supervisor configuration backend files during HUP
+              hash: 43a14fef9875f0d0afc23a833cc8e9dc4ae80536
+              body: >
+                The hostapp update process should not overwrite the supervisor
+                configuration
+
+                backend files to avoid the supervisor being forced to set the
+                target state
+
+                after HUP and reboot the device during the rollback period.
+
+
+                This only applies to the host configuration files which are the
+                only ones
+
+                that force a reboot.
+              footer:
+                Connects-to: 'https://github.com/balena-io/balena-supervisor/issues/1464'
+                connects-to: 'https://github.com/balena-io/balena-supervisor/issues/1464'
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Blacklist supervisor configuration backend files during HUP
+                changelog-entry: Blacklist supervisor configuration backend files during HUP
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.58.3
+          date: 2020-09-18T10:34:55.646Z
+        - commits:
+            - subject: 'hooks: fix up improperly named variable'
+              hash: 2b42bc65dfc32817015d532c0a05d28670956bb7
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Matthew McGinn <matthew@balena.io>
+                signed-off-by: Matthew McGinn <matthew@balena.io>
+              author: Matthew McGinn
+              nested: []
+          version: meta-balena-2.58.2
+          date: 2020-09-17T22:33:04.792Z
+        - commits:
+            - subject: Wait for the root device to come up when necessary
+              hash: 494eeb4a699b4dd5e48547d6e5e45cffb7bf0720
+              body: >
+                If the rootfs is on a slow-to-bring-up device (e.g. RPi4 + USB)
+
+                the fsuuidsinit_enabled() function may return before the balena
+                symlinks
+
+                are created. This gets wrongly interpreted as missing UUIDs
+                leading to
+
+                a chain of failures in the subsequent scripts.
+
+                This patch moves the symlink waiting loop from fsuuidsinit_run()
+
+                to fsuuids_enabled() before the first usage of the symlink.
+              footer:
+                Changelog-Entry: Wait for the root device to come up when necessary
+                changelog-entry: Wait for the root device to come up when necessary
+                Change-Type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.58.1
+          date: 2020-09-15T18:24:58.280Z
+        - commits:
+            - subject: Respect balenaRootCA system-wide
+              hash: 2218cb21d1fc813ac59c08b77046c5d014ad9a42
+              body: >
+                We allow the user to specify a custom CA in the .balenaRootCA
+                key
+
+                of config.json but at this moment each tool has to implement
+                support
+
+                if it wants to use it. This commit adds it to the system-wide CA
+                bundle
+
+                so that the CA is respected everywhere.
+
+
+                Fixes #1398
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.58.0
+          date: 2020-09-05T06:47:40.132Z
+        - commits:
+            - subject: 'os-helpers-logging: Log to stderr rather than stdout'
+              hash: 94c60a30c6147838f4a91449f3960025625ce709
+              body: |
+                This is where the logs and error messages should go by default
+                as they are not part of the tool's output.
+              footer:
+                Change-Type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.57.1
+          date: 2020-09-04T17:13:50.058Z
+        - commits:
+            - subject: >-
+                Update libmbim to 1.24.2, libqmi to 1.26.0, modemmanager to
+                1.14.2
+              hash: 1c80d6cc69d687fab6f2385efca5d6564c28370d
+              body: |
+                Update libmbim from 1.22.0 to 1.24.2
+                Update libqmi from 1.24.10 to 1.26.0
+                Update modemmanager from 1.12.8 to 1.14.2
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: >-
+                  Update libmbim to 1.24.2, libqmi to 1.26.0, modemmanager to
+                  1.14.2
+                changelog-entry: >-
+                  Update libmbim to 1.24.2, libqmi to 1.26.0, modemmanager to
+                  1.14.2
+                Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+                signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+              author: Vicentiu Galanopulo
+              nested: []
+          version: meta-balena-2.57.0
+          date: 2020-09-04T13:54:00.370Z
+  version: 2.58.3+rev1
+  date: 2020-10-01T14:55:33.198Z
+- commits:
     - subject: 'linux-variscite: Add package for custom dtbs'
       hash: b1989bee39f390b09e37b55d3dc02ba7a83bc028
       body: |
