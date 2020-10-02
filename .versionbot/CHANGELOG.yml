@@ -1,4 +1,27 @@
 - commits:
+    - subject: 'linux-tegra: Update photon-nx dtb to 32.4.3'
+      hash: 95d2ffe2eee4d74fd50a55775db9fac9a7344f85
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Update photon-nx dtb to 32.4.3'
+        changelog-entry: 'linux-tegra: Update photon-nx dtb to 32.4.3'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+    - subject: 'linux-tegra: Update photon-nano dtb to 32.4.3'
+      hash: b07ffc9c5a5aba07c9978bbb885a33e6eb0e19e5
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Update photon-nano dtb to 32.4.3'
+        changelog-entry: 'linux-tegra: Update photon-nano dtb to 32.4.3'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+  version: 2.58.3+rev2
+  date: 2020-10-01T21:13:14.166Z
+- commits:
     - subject: 'tegra194-flash-dry: Allow signing other carrier boards'
       hash: 422d7c652babfc09ccdff879975d68a816159f21
       body: ''

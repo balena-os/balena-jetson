@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.58.3+rev2
+## (2020-10-01)
+
+* linux-tegra: Update photon-nx dtb to 32.4.3 [Pelle van Gils]
+* linux-tegra: Update photon-nano dtb to 32.4.3 [Pelle van Gils]
+
 # v2.58.3+rev1
 ## (2020-10-01)
 
