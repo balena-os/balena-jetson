@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'tegra194-nxde-flash-dry: Update boot0 signing for Xavier NX 32.4.3'
+      hash: 12957c6e6edd4ae39b4e29948fb53a21e231c494
+      body: ''
+      footer:
+        Changelog-entry: 'tegra194-nxde-flash-dry: Update boot0 signing for Xavier NX 32.4.3'
+        changelog-entry: 'tegra194-nxde-flash-dry: Update boot0 signing for Xavier NX 32.4.3'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.3+rev3
+  date: 2020-10-05T11:33:31.553Z
+- commits:
     - subject: 'linux-tegra: Update photon-nx dtb to 32.4.3'
       hash: 95d2ffe2eee4d74fd50a55775db9fac9a7344f85
       body: ''
