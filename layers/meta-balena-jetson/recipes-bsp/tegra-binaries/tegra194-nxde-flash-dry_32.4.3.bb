@@ -208,7 +208,7 @@ do_configure() {
 
     # Need to switch back to default values from flashing, otherwise bootloader dtb offset inside boot0.img will
     # change and will generate signature failure in MB2.
-    bldtbchosenargs="root=/dev/mmcblk0p12 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0"
+    bldtbchosenargs="console=ttyTCU0,115200"
     bldtbdtsname="/dvs/git/dirty/git-master_linux/kernel/kernel-4.9/arch/arm64/boot/dts/../../../../../../hardware/nvidia/platform/t19x/jakku/kernel-dts/tegra194-p3668-all-p3509-0000.dts"
 
     # Do not overide this hardcoded dtb for carrier boards, this is used for bldtb in boot0.img
@@ -331,7 +331,7 @@ do_configure() {
     dd if=${DEPLOY_DIR_IMAGE}/bootfiles/tegra194-a02-bpmp-p3668-a00_sigheader.dtb.encrypt of=boot0.img seek=32112640 bs=1 conv=notrunc
 
     # boot option file is empty on a clean flashed board, will leave it here
-    # for the offset
+    # for offset refference
     #dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cbo.dtb seek=33161216 bs=1 conv=notrunc
     #dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cbo.dtb seek=33226752 bs=1 conv=notrunc
 
