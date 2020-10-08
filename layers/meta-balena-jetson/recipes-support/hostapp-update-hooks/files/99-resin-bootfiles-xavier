@@ -15,6 +15,20 @@ echo "New partition is ${new_part}"
 rootstr=$(get_dev_label "${new_part}")
 rootl=""
 
+update_needed() {
+    current_update_file=${1}
+    device=${2}
+    update_size=$(ls -al $current_update_file | awk '{print $5}')
+    update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
+    existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+
+    if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
 case "$rootstr" in
     *resin-rootA*)
         rootl="A"
@@ -48,12 +62,19 @@ for n in ${partitions}; do
         continue
     fi
 
-    echo "[INFO] Writing $file_name to $file_path"
+    src="/resin-boot/bootfiles/$file_name"
+    dst="$file_path"
 
-    dd if=/resin-boot/bootfiles/$file_name of=$file_path
-    dd if=/resin-boot/bootfiles/$file_name of=${file_path}_b
+    if [ $(update_needed $src $dst) -eq 1 ]; then
+        info_log "Will update ${dst} / ${dst}_b ..."
+        dd if=${src} of=${dst}
+        dd if=${src} of="${dst}_b"
+    else
+        info_log "No need to update ${dst} / ${dst}_b"
+    fi
 done
 
+# root is contained in the dtb cmdline, needs to be updated to switch rootfs
 echo "[INFO] Writing ${dtbfile} to specific partitions..."
 dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb")
 dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb_b")
