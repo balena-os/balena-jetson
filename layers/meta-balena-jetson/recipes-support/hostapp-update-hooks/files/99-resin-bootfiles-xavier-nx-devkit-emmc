@@ -17,6 +17,20 @@ echo "New partition is ${new_part}"
 rootstr=$(get_dev_label "${new_part}")
 rootl=""
 
+update_needed() {
+    current_update_file=${1}
+    device=${2}
+    update_size=$(ls -al $current_update_file | awk '{print $5}')
+    update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
+    existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+
+    if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
 case "$rootstr" in
     *resin-rootA*)
         rootl="A"
@@ -35,8 +49,8 @@ echo "New root is resin-root${rootl}"
 dtbname=$(cat "$partspec" | grep "kernel-dtb_b" | cut -d ':' -f 2 | awk -F'_sigheader' '{print $1}')
 dtbfile="${dtbname}-root${rootl}_sigheader.dtb.encrypt"
 kernel="boot_sigheader.img.encrypt"
-
 partitions=$(cat ${partspec})
+
 for n in ${partitions}; do
     part_name=$(echo $n | cut -d ':' -f 1)
     file_name=$(echo $n | cut -d ':' -f 2)
@@ -51,18 +65,24 @@ for n in ${partitions}; do
         continue
     fi
 
-    echo "[INFO] Writing $file_name to $file_path"
+    src="/opt/tegra-binaries/${file_name}"
+    dst="$file_path"
 
-    dd if=/opt/tegra-binaries/$file_name of=$file_path
-    dd if=/opt/tegra-binaries/$file_name of=${file_path}_b
+    if [ $(update_needed $src $dst) -eq 1 ]; then
+        info_log "Will update ${dst} / ${dst}_b ..."
+        dd if=${src} of=${dst}
+        dd if=${src} of="${dst}_b"
+    else
+        info_log "No need to update ${dst} / ${dst}_b"
+    fi
 done
 
+# DTB contains root partition, update is mandatory
 echo "[INFO] Writing ${dtbfile} to specific partitions..."
 dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
 dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
 
 echo "[INFO] Writing kernel ${kernel} to specific partitions..."
-
 dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel")
 dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel_b")
 
