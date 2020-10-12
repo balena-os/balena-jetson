@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'hostapp-update-hooks: Preserve odm value during HUP for TX2'
+      hash: c80e2a67489eee1e4fe35eb9f00e443c42ba5cef
+      body: |
+        Also, check if an update is necessary before writing
+        to any raw partition.
+      footer:
+        Changelog-entry: 'hostapp-update-hooks: Preserve odm value during HUP for TX2'
+        changelog-entry: 'hostapp-update-hooks: Preserve odm value during HUP for TX2'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.3+rev5
+  date: 2020-10-12T09:22:14.322Z
+- commits:
     - subject: fix machine overrides for photon-xavier-nx
       hash: 9d21df6899e595b4aeab4cc9a939ae6c564c669a
       body: |

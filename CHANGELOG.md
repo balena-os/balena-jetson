@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.3+rev5
+## (2020-10-12)
+
+* hostapp-update-hooks: Preserve odm value during HUP for TX2 [Alexandru Costache]
+
 # v2.58.3+rev4
 ## (2020-10-08)
 
