@@ -6,10 +6,36 @@ set -o errexit
 
 bootfiles=$(ls /resin-boot/bootfiles/);
 
+info_log()
+{
+    echo "[INFO] $@"
+}
+
+update_needed() {
+    current_update_file=${1}
+    device=${2}
+    update_size=$(ls -al $current_update_file | awk '{print $5}')
+    update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
+    existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+
+    if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
 for bootfile in ${bootfiles}
 do
-    dd if="/resin-boot/bootfiles/$bootfile" of=$(get_state_path_from_label "$bootfile") bs=512
-    echo "Updated $bootfile partition..."
+    src="/resin-boot/bootfiles/$bootfile"
+    dst=$(get_state_path_from_label "$bootfile")
+
+    if [ $(update_needed $src $dst) -eq 1 ]; then
+        info_log "Will update ${dst}..."
+        dd oflag=dsync if=${src} of=${dst} bs=512
+    else
+        info_log "No need to update ${dst}"
+    fi
 done
 
 sync

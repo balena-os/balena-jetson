@@ -3,13 +3,51 @@
 . /usr/libexec/os-helpers-fs
 
 NVIDIA_PART_OFFSET="4097"
-DEV_PATH=/dev/mmcblk0
+DEV_PATH="/dev/mmcblk0"
+BOOT_PART="${DEV_PATH}boot0"
 UPGRADE_PARTITIONS=0
 BIN_INSTALL_PATH="/opt/tegra-binaries"
+OFFS=(1659 5243 18043)
+BOOT_BLOB="${BIN_INSTALL_PATH}/boot0.img"
+
+update_needed() {
+    current_update_file=${1}
+    device=${2}
+    update_size=$(ls -al $current_update_file | awk '{print $5}')
+    update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
+
+    existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+
+    if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
+        echo 1
+    else
+	echo 0
+    fi
+}
 
 info_log()
 {
     echo "[INFO] $@"
+}
+
+get_odm_value() {
+    odm_off1=$(dd if=${1} skip=${OFFS[0]} bs=1 count=1 status=none | xxd -p)
+    odm_off2=$(dd if=${1} skip=${OFFS[1]} bs=1 count=1 status=none | xxd -p)
+    odm_off3=$(dd if=${1} skip=${OFFS[2]} bs=1 count=1 status=none | xxd -p)
+
+    if [[ "${odm_off1}" == "${odm_off2}" ]] && [[ "${odm_off2}" == "${odm_off3}" ]]; then
+        echo "${odm_off1}";
+    else
+        echo "unmatched";
+    fi;
+}
+
+set_odm_value() {
+    for offset in ${OFFS[@]}
+    do
+        info_log "Writing ODM byte ${1} to ${2} at offset ${offset}"
+        echo -n -e "\\x${1}" | dd of=${2} seek=${offset} bs=1 count=1 conv=notrunc
+    done
 }
 
 update_partition_binaries()
@@ -17,7 +55,14 @@ update_partition_binaries()
     for line in $(cat $1); do
         part_name=$(echo $line | cut -d ':' -f 1)
         file_name=$(echo $line | cut -d ':' -f 2)
-        dd oflag=dsync if="${BIN_INSTALL_PATH}/${file_name}" of=$(get_state_path_from_label  "$part_name")
+	src="${BIN_INSTALL_PATH}/${file_name}"
+	dst=$(get_state_path_from_label  "$part_name")
+	if [ $(update_needed $src $dst) -eq 1 ]; then
+            info_log "Will update ${dst}"
+            dd oflag=dsync if=${src} of=${dst}
+        else
+            info_log "No need to update ${dst}"
+        fi
     done
 }
 
@@ -70,8 +115,31 @@ elif [ ${UPGRADE_PARTITIONS} -eq 0 ]; then
     update_partition_binaries "${BIN_INSTALL_PATH}/partition_specification186.txt"
 fi
 
-# Regardless of whether the GPT has been altered, update boot part
-echo 0 > /sys/block/mmcblk0boot0/force_ro
-dd if="${BIN_INSTALL_PATH}/boot0.img" of=/dev/mmcblk0boot0
+bootpart_odm=$(get_odm_value ${BOOT_PART});
+bootblob_odm=$(get_odm_value ${BOOT_BLOB});
+
+if [[ ${bootpart_odm} != "unmatched"} ]] && [[ ${bootblob_odm} != "unmatched" ]] ; then
+    info_log "Valid ODMDATA values found in both ${BOOT_PART} and ${BOOT_BLOB}"
+    if [[ ${bootpart_odm} == ${bootblob_odm} ]]; then
+        info_log "No need to transfer existing ODMDATA"
+    else
+        info_log "Existing ODMDATA ${bootpart_odm} does not match HUP ODMDATA ${bootblob_odm}"
+        set_odm_value ${bootpart_odm} ${BOOT_BLOB}
+    fi;
+else
+    echo "[WARNING] Unmatched ODMDATA, will not update HUP blob: ${bootpart_odm} - ${bootblob_odm}"
+fi
+
+src=${BOOT_BLOB}
+dst=${BOOT_PART}
+
+if [ $(update_needed $src $dst) -eq 1 ]; then
+    info_log "Will update $dst"
+    echo 0 > /sys/block/mmcblk0boot0/force_ro
+    dd oflag=dsync if=${src} of=${dst}
+    echo 1 > /sys/block/mmcblk0boot0/force_ro
+else
+    info_log "No need to update ${dst}"
+fi
+
 sync
-echo 1 > /sys/block/mmcblk0boot0/force_ro

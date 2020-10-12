@@ -10,10 +10,30 @@ set -o errexit
 
 partspec="/resin-boot/bootfiles/partition_specification194.txt"
 new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
-echo "New partition is ${new_part}"
+
+info_log()
+{
+    echo "[INFO] $@"
+}
+
+info_log "New partition is ${new_part}"
 
 rootstr=$(get_dev_label "${new_part}")
 rootl=""
+
+update_needed() {
+    current_update_file=${1}
+    device=${2}
+    update_size=$(ls -al $current_update_file | awk '{print $5}')
+    update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
+    existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+
+    if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
+        echo 1
+    else
+        echo 0
+    fi
+}
 
 case "$rootstr" in
     *resin-rootA*)
@@ -27,7 +47,7 @@ case "$rootstr" in
         ;;
 esac
 
-echo "New root is resin-root${rootl}"
+info_log "New root is resin-root${rootl}"
 
 dtbname=$(cat "$partspec" | grep "kernel-dtb_b" | cut -d ':' -f 2 | awk -F'_sigheader' '{print $1}')
 dtbfile="${dtbname}-root${rootl}_sigheader.dtb.encrypt"
@@ -48,28 +68,35 @@ for n in ${partitions}; do
         continue
     fi
 
-    echo "[INFO] Writing $file_name to $file_path"
+    src="/resin-boot/bootfiles/$file_name"
+    dst="$file_path"
 
-    dd if=/resin-boot/bootfiles/$file_name of=$file_path
-    dd if=/resin-boot/bootfiles/$file_name of=${file_path}_b
+    if [ $(update_needed $src $dst) -eq 1 ]; then
+        info_log "Will update ${dst}..."
+        dd if=${src} of=${dst}
+        dd if=${src} of="${dst}_b"
+    else
+        info_log "No need to update ${dst}"
+    fi
 done
 
-echo "[INFO] Writing ${dtbfile} to specific partitions..."
+# root is contained in the dtb cmdline, needs to be updated to switch rootfs
+info_log "Writing ${dtbfile} to specific partitions..."
 dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb")
 dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb_b")
 dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
 dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
 
-echo "[INFO] Writing kernel ${kernel} to specific partitions..."
+info_log "Writing kernel ${kernel} to specific partitions..."
 
 dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel")
 dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel_b")
 
-echo "[INFO] Updating boot image on hw partition mmcblk0boot0..."
+info_log "Updating boot image on hw partition mmcblk0boot0..."
 
 echo 0 > /sys/block/mmcblk0boot0/force_ro
 dd if=/resin-boot/bootfiles/boot0.img of=/dev/mmcblk0boot0
 sync
 echo 1 > /sys/block/mmcblk0boot0/force_ro
 
-echo "Done."
+info_log "Done."
