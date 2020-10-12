@@ -1,4 +1,23 @@
 - commits:
+    - subject: fix machine overrides for photon-xavier-nx
+      hash: 9d21df6899e595b4aeab4cc9a939ae6c564c669a
+      body: |
+        With the new include hierarchy in meta-tegra's machine configs:
+        OE4T/meta-tegra@5f70dc8
+        'jetson-xavier-nx-devkit-emmc' is not appended to MACHINEOVERRIDES when
+        including jetson-xavier-nx-devkit-emmc.conf.
+        Append it here to assure statements for 'jetson-xavier-nx-devkit-emmc'
+        are applied for this machine.
+      footer:
+        Changelog-entry: fix machine overrides for photon-xavier-nx
+        changelog-entry: fix machine overrides for photon-xavier-nx
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+  version: 2.58.3+rev4
+  date: 2020-10-08T19:07:49.897Z
+- commits:
     - subject: 'tegra194-nxde-flash-dry: Update boot0 signing for Xavier NX 32.4.3'
       hash: 12957c6e6edd4ae39b4e29948fb53a21e231c494
       body: ''

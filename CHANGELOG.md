@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.3+rev4
+## (2020-10-08)
+
+* fix machine overrides for photon-xavier-nx [Pelle van Gils]
+
 # v2.58.3+rev3
 ## (2020-10-05)
 
