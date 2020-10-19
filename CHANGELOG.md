@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.3+rev6
+## (2020-10-19)
+
+* linux-tegra: Add gasket driver for Jetson Nano [Alexandru Costache]
+
 # v2.58.3+rev5
 ## (2020-10-12)
 

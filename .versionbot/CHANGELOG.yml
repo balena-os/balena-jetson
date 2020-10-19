@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'linux-tegra: Add gasket driver for Jetson Nano'
+      hash: 137d4557e5b233b6c926147cd9a7621281390b26
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Add gasket driver for Jetson Nano'
+        changelog-entry: 'linux-tegra: Add gasket driver for Jetson Nano'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.3+rev6
+  date: 2020-10-19T09:06:26.281Z
+- commits:
     - subject: 'hostapp-update-hooks: Preserve odm value during HUP for TX2'
       hash: c80e2a67489eee1e4fe35eb9f00e443c42ba5cef
       body: |
