@@ -52,10 +52,12 @@ SRC_URI_append_jn30b-nano = " \
 
 SRC_URI_append_jetson-nano = " \
     file://nano-mark-gpio-as-disabled-when-freed.patch \
+    file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
 "
 
 SRC_URI_append_jetson-nano-emmc = " \
     file://nano-mark-gpio-as-disabled-when-freed.patch \
+    file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
 "
 
 SRC_URI_append_photon-nano = " \
@@ -164,6 +166,9 @@ RESIN_CONFIGS[gasket] = " \
         CONFIG_STAGING_GASKET_FRAMEWORK=m \
         CONFIG_STAGING_APEX_DRIVER=m \
 "
+
+RESIN_CONFIGS_append_jetson-nano = " gasket"
+RESIN_CONFIGS_append_jetson-nano-emmc = " gasket"
 
 RESIN_CONFIGS_append_photon-nano = " tlc591xx"
 RESIN_CONFIGS_append_photon-xavier-nx = " tlc591xx"
