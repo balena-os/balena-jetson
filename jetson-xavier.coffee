@@ -8,7 +8,7 @@ module.exports =
 	version: 1
 	slug: 'jetson-xavier'
 	aliases: [ 'jetson-xavier' ]
-	name: 'Nvidia Jetson Xavier'
+	name: 'Nvidia Jetson Xavier AGX'
 	arch: 'aarch64'
 	state: 'new'
 	private: false
