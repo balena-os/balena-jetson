@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.3+rev7
+## (2020-10-21)
+
+* jetson-xavier: Add AGX to the device name [Alexandru Costache]
+
 # v2.58.3+rev6
 ## (2020-10-19)
 

@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'jetson-xavier: Add AGX to the device name'
+      hash: 697f2d3dfeced0c6eb5feeff323719bbb4d6ffc8
+      body: |
+        Do so to avoid any confusion about the device
+        type.
+      footer:
+        Changelog-entry: 'jetson-xavier: Add AGX to the device name'
+        changelog-entry: 'jetson-xavier: Add AGX to the device name'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.3+rev7
+  date: 2020-10-21T12:34:04.849Z
+- commits:
     - subject: 'linux-tegra: Add gasket driver for Jetson Nano'
       hash: 137d4557e5b233b6c926147cd9a7621281390b26
       body: ''
