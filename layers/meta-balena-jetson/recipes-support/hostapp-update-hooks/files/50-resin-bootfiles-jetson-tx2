@@ -59,7 +59,8 @@ update_partition_binaries()
 	dst=$(get_state_path_from_label  "$part_name")
 	if [ $(update_needed $src $dst) -eq 1 ]; then
             info_log "Will update ${dst}"
-            dd oflag=dsync if=${src} of=${dst}
+            dd if=${src} of=${dst} bs=1K
+            info_log "Updated ${dst}"
         else
             info_log "No need to update ${dst}"
         fi
@@ -94,7 +95,7 @@ if [ ${UPGRADE_PARTITIONS} -eq 1 ]; then
         part_size=$(echo $n | cut -d ':' -f 3)
         end=$(expr ${start} \+ ${part_size} \- 1)
         parted -s ${DEV_PATH} unit s mkpart $part_name ${start} ${end}
-        dd if="${BIN_INSTALL_PATH}/${file_name}" of=${DEV_PATH} conv=notrunc seek=${start} bs=512
+        dd if="${BIN_INSTALL_PATH}/${file_name}" of=${DEV_PATH} conv=notrunc seek=${start}
         start=$(expr ${end} \+ 1)
     done
 
@@ -136,8 +137,9 @@ dst=${BOOT_PART}
 if [ $(update_needed $src $dst) -eq 1 ]; then
     info_log "Will update $dst"
     echo 0 > /sys/block/mmcblk0boot0/force_ro
-    dd oflag=dsync if=${src} of=${dst}
+    dd if=${src} of=${dst} bs=1K
     echo 1 > /sys/block/mmcblk0boot0/force_ro
+    info_log "Updated $dst"
 else
     info_log "No need to update ${dst}"
 fi
