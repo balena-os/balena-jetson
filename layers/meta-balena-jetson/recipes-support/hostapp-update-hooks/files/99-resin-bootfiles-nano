@@ -32,7 +32,8 @@ do
 
     if [ $(update_needed $src $dst) -eq 1 ]; then
         info_log "Will update ${dst}..."
-        dd oflag=dsync if=${src} of=${dst} bs=512
+        dd if=${src} of=${dst} bs=1K
+        info_log "Updated ${dst}"
     else
         info_log "No need to update ${dst}"
     fi

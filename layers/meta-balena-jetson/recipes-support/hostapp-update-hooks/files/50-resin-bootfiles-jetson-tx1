@@ -16,7 +16,7 @@ update_partition_binaries()
     for line in $(cat $1); do
         part_name=$(echo $line | cut -d ':' -f 1)
         file_name=$(echo $line | cut -d ':' -f 2)
-        dd oflag=dsync if="${BIN_INSTALL_PATH}/${file_name}" of=$(get_state_path_from_label "${part_name}")
+        dd if="${BIN_INSTALL_PATH}/${file_name}" of=$(get_state_path_from_label "${part_name}") bs=1K
     done
 }
 
@@ -25,6 +25,6 @@ update_partition_binaries "${BIN_INSTALL_PATH}/partition_specification210_tx1.tx
 # Regardless of whether the GPT has been altered or not, update boot part
 # so that nonces from bct here match the ones in the partitions above
 echo 0 > /sys/block/mmcblk0boot0/force_ro
-dd if="${BIN_INSTALL_PATH}/boot0.img" of=/dev/mmcblk0boot0
+dd if="${BIN_INSTALL_PATH}/boot0.img" of=/dev/mmcblk0boot0 bs=1K
 sync
 echo 1 > /sys/block/mmcblk0boot0/force_ro
