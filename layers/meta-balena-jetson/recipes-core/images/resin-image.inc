@@ -164,10 +164,3 @@ IMAGE_INSTALL_append_jetson-tx1 = " \
     linux-firmware-bcm4354 \
     bt-scripts \
 "
-
-IMAGE_INSTALL_append = " \
-    libnvidia-container-tools \
-    nvidia-container-toolkit \
-    nvidia-container-runtime \
-    go-runtime \
-"
