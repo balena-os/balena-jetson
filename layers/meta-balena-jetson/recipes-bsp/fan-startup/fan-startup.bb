@@ -19,4 +19,4 @@ do_install () {
 
 SYSTEMD_SERVICE_${PN} = "fan-startup.service"
 
-COMPATIBLE_MACHINE = "(jetson-xavier|jetson-tx2)"
+COMPATIBLE_MACHINE = "(jetson-xavier|jetson-tx2|jetson-xavier-nx-devkit)"
