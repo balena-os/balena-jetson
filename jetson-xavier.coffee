@@ -11,7 +11,6 @@ module.exports =
 	name: 'Nvidia Jetson Xavier AGX'
 	arch: 'aarch64'
 	state: 'new'
-	private: false
 
 	instructions: [
 		BOARD_PREPARE

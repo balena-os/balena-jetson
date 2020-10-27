@@ -11,7 +11,6 @@ module.exports =
 	name: 'Nvidia Jetson Nano SD-CARD'
 	arch: 'aarch64'
 	state: 'new'
-	private: false
 
 	instructions: [
 		instructions.ETCHER_SD

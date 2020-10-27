@@ -17,7 +17,6 @@ module.exports =
 	name: 'Nvidia Jetson TX2'
 	arch: 'aarch64'
 	state: 'released'
-	private: false
 
 	stateInstructions:
 		postProvisioning: postProvisioningInstructions
