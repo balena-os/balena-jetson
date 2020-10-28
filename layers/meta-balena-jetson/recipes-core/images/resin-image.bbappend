@@ -133,21 +133,13 @@ device_specific_configuration_jetson-tx1() {
 
 }
 
-
-# We leave this space way larger than currently
-# needed because other larger partitions can be
-# added from one Jetpack release to another
-DEVICE_SPECIFIC_SPACE_jetson-xavier-nx-devkit-emmc = "458752"
-
 # Binaries are signed and packed into
 # a partition and the flaser script
 # gets them from there. Can't store them
 # raw due to partition alignments which
 # trigger checksum mismatches during flash
-
-do_image_resinos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy"
-device_specific_configuration_jetson-xavier-nx-devkit-emmc() {
-    partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification194_nxde.txt)
+write_jetson_nx_partitions() {
+    partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/${1})
     NVIDIA_PART_OFFSET=20480
     START=${NVIDIA_PART_OFFSET}
     for n in ${partitions}; do
@@ -167,3 +159,17 @@ device_specific_configuration_jetson-xavier-nx-devkit-emmc() {
     done
 }
 
+# We leave this space way larger than currently
+# needed because other larger partitions can be
+# added from one Jetpack release to another
+DEVICE_SPECIFIC_SPACE_jetson-xavier-nx-devkit-emmc = "458752"
+do_image_resinos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy"
+device_specific_configuration_jetson-xavier-nx-devkit-emmc() {
+    write_jetson_nx_partitions "partition_specification194_nxde.txt"
+}
+
+DEVICE_SPECIFIC_SPACE_jetson-xavier-nx-devkit = "458752"
+do_image_resinos-img_jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard-flash:do_deploy"
+device_specific_configuration_jetson-xavier-nx-devkit() {
+    write_jetson_nx_partitions "partition_specification194_nxde_sdcard.txt"
+}
