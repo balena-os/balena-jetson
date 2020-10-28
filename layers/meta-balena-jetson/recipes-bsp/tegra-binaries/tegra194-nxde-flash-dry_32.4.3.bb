@@ -1,4 +1,4 @@
-SUMMARY = "Create flash artifacts without flashing the Jetson NX"
+SUMMARY = "Create flash artifacts without flashing the Jetson NX Devkit eMMC"
 
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${RESIN_COREBASE}/COPYING.Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
@@ -17,11 +17,13 @@ DEPENDS = " \
 
 inherit deploy pythonnative perlnative
 
+BOOT_BINDIFF="boot0_t194_nx_emmc.bindiff"
+
 SRC_URI = " \
     file://resinOS-flash194_nxde.xml \
     file://partition_specification194_nxde.txt \
-    file://boot0_t194_nx.bindiff \
-    "
+    file://${BOOT_BINDIFF} \
+"
 
 FLASHXML = "resinOS-flash194_nxde.xml"
 DTBNAME = "tegra194-p3668-all-p3509-0000"
@@ -337,37 +339,36 @@ do_configure() {
 
     # For this release, /opt/tegra-binaries/boot0.img MD5 should be 7cc64922796a9afc325a5cdf64413d10
     # even for carrier boards. If it is not, then board will not boot after HUP.
-    cp ${WORKDIR}/boot0_t194_nx.bindiff .
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=14942224 bs=1 count=32 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=14945200 skip=32  bs=1 count=80 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15400976 skip=112  bs=1 count=32 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15400992 skip=144  bs=1 count=32 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15403952 skip=176  bs=1 count=80 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=16252944 skip=256  bs=1 count=32 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=16255920 skip=288  bs=1 count=4 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=18874384 skip=292  bs=1 count=64 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=18877360 skip=356  bs=1 count=4 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=21495824 skip=360  bs=1 count=64 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=21498800 skip=424  bs=1 count=4 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=21561360 skip=428  bs=1 count=64 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=21564336 skip=492  bs=1 count=4 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=27918352 skip=496  bs=1 count=64 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=27921328 skip=560  bs=1 count=4 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=29491216 skip=564  bs=1 count=64 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=29494192 skip=628  bs=1 count=4 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=31064080 skip=632  bs=1 count=64 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=31067056 skip=696  bs=1 count=4 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=32112656 skip=700  bs=1 count=64 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=32115632 skip=764  bs=1 count=4 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=33292288 skip=768  bs=1 count=256 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=33357824 skip=1024 bs=1 count=256 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=33537536 skip=1280 bs=1 count=16896 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=14946816 skip=18176 bs=1 count=48 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15101952 skip=18224 bs=1 count=128 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15405568 skip=18352 bs=1 count=48 conv=notrunc
-    dd if=boot0_t194_nx.bindiff of=boot0.img seek=15560704 skip=18400 bs=1 count=128 conv=notrunc
+    cp ${WORKDIR}/${BOOT_BINDIFF} .
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=14942224 bs=1 count=32 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=14945200 skip=32  bs=1 count=80 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=15400976 skip=112  bs=1 count=32 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=15400992 skip=144  bs=1 count=32 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=15403952 skip=176  bs=1 count=80 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=16252944 skip=256  bs=1 count=32 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=16255920 skip=288  bs=1 count=4 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=18874384 skip=292  bs=1 count=64 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=18877360 skip=356  bs=1 count=4 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=21495824 skip=360  bs=1 count=64 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=21498800 skip=424  bs=1 count=4 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=21561360 skip=428  bs=1 count=64 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=21564336 skip=492  bs=1 count=4 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=27918352 skip=496  bs=1 count=64 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=27921328 skip=560  bs=1 count=4 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=29491216 skip=564  bs=1 count=64 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=29494192 skip=628  bs=1 count=4 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=31064080 skip=632  bs=1 count=64 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=31067056 skip=696  bs=1 count=4 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=32112656 skip=700  bs=1 count=64 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=32115632 skip=764  bs=1 count=4 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=33292288 skip=768  bs=1 count=256 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=33357824 skip=1024 bs=1 count=256 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=33537536 skip=1280 bs=1 count=16896 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=14946816 skip=18176 bs=1 count=48 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=15101952 skip=18224 bs=1 count=128 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=15405568 skip=18352 bs=1 count=48 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=15560704 skip=18400 bs=1 count=128 conv=notrunc
 }
-
 
 do_install() {
     install -d ${D}/${BINARY_INSTALL_PATH}
