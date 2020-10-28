@@ -217,6 +217,12 @@ RESIN_CONFIGS[cfginput] = " \
 		CONFIG_JOYSTICK_XPAD=m \
 "
 
+RESIN_CONFIGS_append_jetson-xavier-nx-devkit = " rtl8822ce "
+RESIN_CONFIGS[rtl8822ce] = " \
+		CONFIG_RTL8822CE=m \
+		CONFIG_RTK_BTUSB=m \
+"
+
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-nano-emmc = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jn30b-nano = "\${resin_kernel_root} ro rootwait"
