@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'linux-tegra: Add BT and WiFi for NX SDCARD'
+      hash: 78abb8a362107f5f98d6334e16817ff865c0b793
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Add BT and WiFi for NX SDCARD'
+        changelog-entry: 'linux-tegra: Add BT and WiFi for NX SDCARD'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.6+rev2
+  date: 2020-10-29T07:44:39.155Z
+- commits:
     - subject: Update meta-balena from v2.58.3 to v2.58.6
       hash: 0b128a797ed53b72abb46827a17339f1ef8b556d
       body: |

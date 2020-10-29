@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.6+rev2
+## (2020-10-29)
+
+* linux-tegra: Add BT and WiFi for NX SDCARD [Alexandru Costache]
+
 # v2.58.6+rev1
 ## (2020-10-23)
 
