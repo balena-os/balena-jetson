@@ -72,7 +72,10 @@ RESIN_BOOT_PARTITION_FILES_jetson-tx2 = " \
 "
 
 RESIN_BOOT_PARTITION_FILES_jetson-xavier-nx-devkit-emmc = " \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
+    boot/extlinux.conf:/extlinux/extlinux.conf \
+"
+
+RESIN_BOOT_PARTITION_FILES_jetson-xavier-nx-devkit = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
@@ -84,18 +87,21 @@ RESIN_BOOT_PARTITION_FILES_jetson-tx1 = " \
 "
 
 do_rootfs_resinos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy "
+do_rootfs_resinos-img_jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard-flash:do_deploy "
 
 # The space resinOS takes will amount to 1GiB
 IMAGE_ROOTFS_SIZE = "487424"
 
 # Bootloader blob is 32MB on the NX
 IMAGE_ROOTFS_SIZE_jetson-xavier-nx-devkit-emmc = "733184"
+IMAGE_ROOTFS_SIZE_jetson-xavier-nx-devkit = "733184"
 
 # Need space for all the above signed update binaries
 RESIN_BOOT_SIZE_jetson-nano = "80960"
 RESIN_BOOT_SIZE_jetson-nano-emmc = "80960"
 RESIN_BOOT_SIZE_jetson-xavier = "121440"
 RESIN_BOOT_SIZE_jetson-xavier-nx-devkit-emmc = "121440"
+RESIN_BOOT_SIZE_jetson-xavier-nx-devkit = "121440"
 RESIN_BOOT_SIZE_jetson-tx2="80960"
 RESIN_BOOT_SIZE_jetson-tx1="80960"
 
@@ -137,6 +143,20 @@ IMAGE_INSTALL_append_jetson-xavier-nx-devkit-emmc = " \
     mtd-utils \
 "
 
+IMAGE_INSTALL_append_jetson-xavier-nx-devkit = " \
+    tegra194-nxde-sdcard-flash \
+    fan-startup \
+    parted \
+    gptfdisk \
+    tegra-nvpmodel \
+    tegra-configs-nvstartup \
+    tegra-configs-udev \
+    mtd-utils \
+    tegra-bluetooth \
+    tegra-wifi \
+    tegra-firmware-rtl8822 \
+"
+
 IMAGE_INSTALL_append_jetson-tx2 = " \
     tegra186-flash-dry \
     parted \
@@ -163,11 +183,4 @@ IMAGE_INSTALL_append_jetson-tx1 = " \
     tegra-brcm-patchram \
     linux-firmware-bcm4354 \
     bt-scripts \
-"
-
-IMAGE_INSTALL_append = " \
-    libnvidia-container-tools \
-    nvidia-container-toolkit \
-    nvidia-container-runtime \
-    go-runtime \
 "

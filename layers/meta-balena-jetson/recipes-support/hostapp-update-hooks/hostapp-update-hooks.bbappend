@@ -13,22 +13,23 @@ HOSTAPP_HOOKS_append_jetson-nano-emmc = " 99-resin-uboot \
 "
 
 DEPENDS_${PN}_append_jetson-xavier  = " tegra194-flash-dry"
-
 DEPENDS_${PN}_append_jetson-xavier-nx-devkit-emmc  = " tegra194-nxde-flash-dry"
+DEPENDS_${PN}_append_jetson-xavier-nx-devkit  = " tegra194-nxde-sdcard-flash"
 
-# Xavier does not use u-boot, but for rollbacks to work
+# Xaviers do not use u-boot, but for rollbacks to work
 # we need to update the resinOS_uEnv.txt file
 HOSTAPP_HOOKS_append_jetson-xavier  = " \
     99-resin-uboot \
     99-resin-bootfiles-xavier \
 "
 
-# Xavier does not use u-boot, but for rollbacks to work
-# we need to update the resinOS_uEnv.txt file
-HOSTAPP_HOOKS_append_jetson-xavier-nx-devkit-emmc  = " \
+XAVIER_NX_HOOKS = " \
     99-resin-uboot \
-    99-resin-bootfiles-xavier-nx-devkit-emmc \
+    99-resin-bootfiles-xavier-nx-devkit \
 "
+
+HOSTAPP_HOOKS_append_jetson-xavier-nx-devkit-emmc  = " ${XAVIER_NX_HOOKS}"
+HOSTAPP_HOOKS_append_jetson-xavier-nx-devkit  = " ${XAVIER_NX_HOOKS}"
 
 DEPENDS_${PM}_append_jetson-tx2 = " tegra186-flash-dry"
 

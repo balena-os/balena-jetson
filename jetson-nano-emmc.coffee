@@ -12,7 +12,6 @@ module.exports =
 	name: 'Nvidia Jetson Nano eMMC'
 	arch: 'aarch64'
 	state: 'new'
-	private: false
 
 	instructions: [
 		BOARD_PREPARE

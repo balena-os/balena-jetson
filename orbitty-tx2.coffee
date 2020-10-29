@@ -17,7 +17,6 @@ module.exports =
 	name: 'CTI Orbitty TX2'
 	arch: 'aarch64'
 	state: 'released'
-	private: false
 
 	stateInstructions:
 		postProvisioning: postProvisioningInstructions

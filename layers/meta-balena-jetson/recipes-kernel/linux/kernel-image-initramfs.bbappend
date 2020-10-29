@@ -10,3 +10,7 @@ do_install_append_jetson-xavier() {
 do_install_append_jetson-xavier-nx-devkit-emmc() {
     echo "" > ${D}/boot/${type}
 }
+
+do_install_append_jetson-xavier-nx-devkit() {
+    echo "" > ${D}/boot/${type}
+}

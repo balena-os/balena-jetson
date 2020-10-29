@@ -12,7 +12,6 @@ module.exports =
 	arch: 'aarch64'
 	state: 'new'
 	community: true
-	private: false
 
 	instructions: [
 		BOARD_PREPARE
