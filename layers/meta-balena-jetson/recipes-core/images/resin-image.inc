@@ -155,6 +155,7 @@ IMAGE_INSTALL_append_jetson-xavier-nx-devkit = " \
     tegra-bluetooth \
     tegra-wifi \
     tegra-firmware-rtl8822 \
+    tegra-udrm-probeconf \
 "
 
 IMAGE_INSTALL_append_jetson-tx2 = " \
