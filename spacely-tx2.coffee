@@ -29,9 +29,9 @@ module.exports =
 	].concat(postProvisioningInstructions)
 
 	gettingStartedLink:
-		windows: 'https://docs.resin.io/jetson-tx2/nodejs/getting-started/#adding-your-first-device'
-		osx: 'https://docs.resin.io/jetson-tx2/nodejs/getting-started/#adding-your-first-device'
-		linux: 'https://docs.resin.io/jetson-tx2/nodejs/getting-started/#adding-your-first-device'
+		windows: 'https://docs.balena.io/jetson-tx2/nodejs/getting-started/#adding-your-first-device'
+		osx: 'https://docs.balena.io/jetson-tx2/nodejs/getting-started/#adding-your-first-device'
+		linux: 'https://docs.balena.io/jetson-tx2/nodejs/getting-started/#adding-your-first-device'
 
 	supportsBlink: false
 
