@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'coffee files: Rename resin occurrences in docs links'
+      hash: 843a17314e33c3cd5b09d6ee519774d1fb132eca
+      body: ''
+      footer:
+        Changelog-entry: 'coffee files: Rename resin occurrences in docs links'
+        changelog-entry: 'coffee files: Rename resin occurrences in docs links'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.6+rev3
+  date: 2020-11-04T16:01:41.072Z
+- commits:
     - subject: 'linux-tegra: Add BT and WiFi for NX SDCARD'
       hash: 78abb8a362107f5f98d6334e16817ff865c0b793
       body: ''

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.6+rev3
+## (2020-11-04)
+
+* coffee files: Rename resin occurrences in docs links [Alexandru Costache]
+
 # v2.58.6+rev2
 ## (2020-10-29)
 
