@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.6+rev4
+## (2020-11-04)
+
+* Allow to build some graphics meta-tegra recipes [Alex Gonzalez]
+
 # v2.58.6+rev3
 ## (2020-11-04)
 

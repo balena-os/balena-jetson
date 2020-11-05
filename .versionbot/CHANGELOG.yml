@@ -1,4 +1,21 @@
 - commits:
+    - subject: Allow to build some graphics meta-tegra recipes
+      hash: b1a644c543f53a980c9b3a772b2a0c25e9af0e60
+      body: |
+        We are still masking individual recipes in recipes-graphics, but we now
+        need to use some to build tegra libraries.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Allow to build some graphics meta-tegra recipes
+        changelog-entry: Allow to build some graphics meta-tegra recipes
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.58.6+rev4
+  date: 2020-11-04T21:04:05.819Z
+- commits:
     - subject: 'coffee files: Rename resin occurrences in docs links'
       hash: 843a17314e33c3cd5b09d6ee519774d1fb132eca
       body: ''
