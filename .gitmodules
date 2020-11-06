@@ -16,3 +16,6 @@
 [submodule "layers/meta-tegra"]
 	path = layers/meta-tegra
 	url = https://github.com/madisongh/meta-tegra.git
+[submodule "balenaos-extensions"]
+	path = balenaos-extensions
+	url = https://github.com/balena-os/balenaos-extensions.git
