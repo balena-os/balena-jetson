@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.9.0
+      hash: 2d8f8b678fa8db4ded89501b362a11c5209ee58e
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.9.0
+        changelog-entry: Update balena-yocto-scripts to v1.9.0
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.6+rev5
+  date: 2020-11-09T08:27:20.399Z
+- commits:
     - subject: Allow to build some graphics meta-tegra recipes
       hash: b1a644c543f53a980c9b3a772b2a0c25e9af0e60
       body: |
