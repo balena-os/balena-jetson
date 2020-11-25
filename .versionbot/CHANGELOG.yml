@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'resin-image: Install tegra-udrm probeconf file for NX Devkit'
+      hash: 9de340594c468f32710b24eb6659d837b1f17a2c
+      body: |
+        This is present in the official image for the NX Devkit,
+        let's add it here too.
+      footer:
+        Changelog-entry: 'resin-image: Install tegra-udrm probeconf file for NX Devkit'
+        changelog-entry: 'resin-image: Install tegra-udrm probeconf file for NX Devkit'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.60.1+rev2
+  date: 2020-11-24T15:33:22.753Z
+- commits:
     - subject: Update meta-balena from v2.58.6 to 2.60.1
       hash: 9301cdd1f9835ad213a1f6e147dcce003628f8e5
       body: |
