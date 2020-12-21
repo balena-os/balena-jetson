@@ -15,7 +15,7 @@ DEPENDS = " \
     dtc-native \
     "
 
-inherit deploy pythonnative perlnative
+inherit deploy python3native perlnative
 
 SRC_URI = " \
     file://resinOS-flash210.xml \
@@ -131,7 +131,7 @@ do_configure() {
         -e"s,PPTFILE,ppt.img," -e"s,GPTFILE,gpt.img," \
         > ./flash.xml
 
-    python tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${MACHINE}.cfg" --cfg flash.xml --cmd "sign" --keep --odmdata "${ODMDATA}"
+    python3 tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${MACHINE}.cfg" --cfg flash.xml --cmd "sign" --keep --odmdata "${ODMDATA}"
 
     # Disable cboot displayed vendor logo
     dd if=/dev/zero of=./bmp.blob count=1 bs=70900
