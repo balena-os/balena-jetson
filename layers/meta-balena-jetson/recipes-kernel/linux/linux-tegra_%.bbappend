@@ -215,12 +215,29 @@ RESIN_CONFIGS[cfginput] = " \
 		CONFIG_INPUT_MOUSEDEV=m \
 		CONFIG_INPUT_JOYDEV=m \
 		CONFIG_JOYSTICK_XPAD=m \
+		CONFIG_INPUT_KEYCHORD=m \
 "
 
 RESIN_CONFIGS_append_jetson-xavier-nx-devkit = " rtl8822ce "
 RESIN_CONFIGS[rtl8822ce] = " \
 		CONFIG_RTL8822CE=m \
 		CONFIG_RTK_BTUSB=m \
+"
+
+# Switch nfs and backlight drivers as modules
+# to shrink down the kernel image size starting
+# with BalenaOS 2.65.0
+RESIN_CONFIGS_append = " nfsfs backlight "
+RESIN_CONFIGS[nfsfs] = " \
+    CONFIG_NFS_FS=m \
+    CONFIG_NFS_V2=m \
+    CONFIG_NFS_V3=m \
+"
+
+RESIN_CONFIGS[backlight] = " \
+    CONFIG_BACKLIGHT_PWM=m \
+    CONFIG_BACKLIGHT_LP855X=m \
+    CONFIG_BACKLIGHT_CLASS_DEVICE=m \
 "
 
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
