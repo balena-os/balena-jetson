@@ -13,7 +13,7 @@ DEPENDS = " \
     dtc-native \
 "
 
-inherit deploy pythonnative perlnative
+inherit deploy perlnative python3native
 
 SRC_URI = " \
     file://resinOS-flash186.xml \
@@ -127,7 +127,7 @@ do_configure() {
     cp ${WORKDIR}/resinOS-flash186.xml ./flash.xml.in
 
     flashapp=$(which tegraflash.py)
-    python $flashapp \
+    python3 ${flashapp} \
     --bl nvtboot_recovery_cpu.bin \
     --sdram_config ${MACHINE}.cfg \
     --odmdata ${ODMDATA} \
