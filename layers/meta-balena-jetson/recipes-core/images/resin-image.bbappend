@@ -5,6 +5,16 @@ IMAGE_FSTYPES_append = " hostapp-ext4"
 DEVICE_SPECIFIC_SPACE_jetson-nano = "49152"
 DEVICE_SPECIFIC_SPACE_jetson-nano-emmc = "49152"
 
+check_size() {
+    file_path=${1}
+    file_size=$(ls -l ${file_path} | awk '{print $5}')
+    part_size=${2}
+
+    if [ "$file_size" -ge "$part_size" ]; then
+        bbfatal "File ${file_path} too big for raw partition!"
+    fi;
+}
+
 do_image_resinos-img_jetson-nano[depends] += " tegra210-flash:do_deploy"
 device_specific_configuration_jetson-nano() {
     partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification210.txt)
@@ -17,6 +27,7 @@ device_specific_configuration_jetson-nano() {
       file_path=$(find ${DEPLOY_DIR_IMAGE}/bootfiles -name $file_name)
       END=$(expr ${START} \+ ${part_size} \- 1)
       parted -s ${RESIN_RAW_IMG} unit s mkpart $part_name ${START} ${END}
+      check_size ${file_path} $(expr ${part_size} \* 512)
       dd if=$file_path of=${RESIN_RAW_IMG} conv=notrunc seek=${START} bs=512
       START=$(expr ${START} \+ ${NVIDIA_PART_OFFSET})
     done
@@ -34,6 +45,7 @@ device_specific_configuration_jetson-nano-emmc() {
       file_path=$(find ${DEPLOY_DIR_IMAGE}/bootfiles -name $file_name)
       END=$(expr ${START} \+ ${part_size} \- 1)
       parted -s ${RESIN_RAW_IMG} unit s mkpart $part_name ${START} ${END}
+      check_size ${file_path} $(expr ${part_size} \* 512)
       dd if=$file_path of=${RESIN_RAW_IMG} conv=notrunc seek=${START} bs=512
       START=$(expr ${START} \+ ${NVIDIA_PART_OFFSET})
     done
@@ -63,6 +75,7 @@ device_specific_configuration_jetson-xavier() {
       END=$(expr ${START} \+ ${part_size} \- 1)
       echo "Will write $part_name from ${START} to ${END} part size: $part_size"
       parted -s ${RESIN_RAW_IMG} unit B mkpart $part_name ${START} ${END}
+      check_size ${file_path} ${part_size}
       # The padding partition exists to allow for the device specific space to
       # be a multiple of 4096. We don't write anything to it for the moment.
       if [ ! "$file_name" = "none.bin" ]; then
@@ -88,6 +101,7 @@ device_specific_configuration_jetson-tx2() {
         file_path=$(find ${DEPLOY_DIR_IMAGE}/bootfiles -name $file_name)
         end=$(expr ${start} \+ ${part_size} \- 1)
         parted -s ${RESIN_RAW_IMG} unit s mkpart $part_name ${start} ${end}
+        check_size ${file_path} $(expr ${part_size} \* 512)
         dd if=$file_path of=${RESIN_RAW_IMG} conv=notrunc seek=${start} bs=512
         start=$(expr ${end} \+ 1)
     done
@@ -127,6 +141,7 @@ device_specific_configuration_jetson-tx1() {
       file_path=$(find ${DEPLOY_DIR_IMAGE}/bootfiles -name $file_name)
       END=$(expr ${START} \+ ${part_size} \- 1)
       parted -s ${RESIN_RAW_IMG} unit s mkpart $part_name ${START} ${END}
+      check_size ${file_path} $(expr ${part_size} \* 512)
       dd if=$file_path of=${RESIN_RAW_IMG} conv=notrunc seek=${START} bs=512
       START=$(expr ${END} \+ 1)
     done
@@ -153,6 +168,7 @@ write_jetson_nx_partitions() {
       # The padding partition exists to allow for the device specific space to
       # be a multiple of 4096. We don't write anything to it for the moment.
       if [ ! "$file_name" = "none.bin" ]; then
+        check_size ${file_path} ${part_size}
         dd if=$file_path of=${RESIN_RAW_IMG} conv=notrunc seek=$(expr ${START} \/ 512) bs=512
       fi
       START=$(expr ${END} \+ 1)
