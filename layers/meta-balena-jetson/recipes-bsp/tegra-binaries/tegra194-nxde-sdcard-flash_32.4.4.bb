@@ -15,7 +15,7 @@ DEPENDS = " \
     dtc-native \
     "
 
-inherit deploy pythonnative perlnative
+inherit deploy python3native perlnative
 
 BOOT_BINDIFF="boot0_t194_nx_sd.bindiff"
 
@@ -121,7 +121,7 @@ signfile() {
 
      tegraflashpy=$(which tegraflash.py)
 
-     python $tegraflashpy --bl nvtboot_recovery_cpu_t194.bin \
+     python3 $tegraflashpy --bl nvtboot_recovery_cpu_t194.bin \
         --sdram_config tegra194-mb1-bct-memcfg-p3668-0001-a00.cfg,tegra194-memcfg-sw-override.cfg  \
         --odmdata 0xB8190000 \
         --applet mb1_t194_prod.bin \

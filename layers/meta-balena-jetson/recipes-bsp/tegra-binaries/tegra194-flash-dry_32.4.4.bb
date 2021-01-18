@@ -15,7 +15,7 @@ DEPENDS = " \
     dtc-native \
     "
 
-inherit deploy pythonnative perlnative
+inherit deploy python3native perlnative
 
 SRC_URI = " \
     file://resinOS-flash194.xml \
@@ -100,7 +100,7 @@ signfile() {
         bootloader_dtb ${DTBFILE}"
 
     tegraflashpy=$(which tegraflash.py)
-    python $tegraflashpy --chip 0x19 \
+    python3 $tegraflashpy --chip 0x19 \
     --bl nvtboot_recovery_cpu_t194.bin \
     --sdram_config ${sdramcfg} \
     --odmdata ${ODMDATA} \

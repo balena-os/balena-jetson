@@ -15,7 +15,7 @@ DEPENDS = " \
     dtc-native \
     "
 
-inherit deploy pythonnative perlnative
+inherit deploy python3native perlnative
 
 SRC_URI = " \
     file://resinOS-flash210-tx1.xml \
@@ -144,7 +144,7 @@ do_configure() {
 
 
     # Sign binaries
-    python tegraflash.py --bl cboot.bin --bct ${MACHINE}.cfg --odmdata ${ODMDATA} --bldtb ${DTBFILE} --applet nvtboot_recovery.bin --boardconfig $boardcfg --cfg flash.xml --chip 0x21 --cmd "sign" ${BOOTFILES} --keep & \
+    python3 tegraflash.py --bl cboot.bin --bct ${MACHINE}.cfg --odmdata ${ODMDATA} --bldtb ${DTBFILE} --applet nvtboot_recovery.bin --boardconfig $boardcfg --cfg flash.xml --chip 0x21 --cmd "sign" ${BOOTFILES} --keep & \
     export _PID=$! ; wait ${_PID} || true
 
     rm -rf ${DEPLOY_DIR_IMAGE}/bootfiles/*

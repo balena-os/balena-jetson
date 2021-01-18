@@ -1,6 +1,6 @@
-From 8694e9863fb09eca1c57d8bfc68c86a365f4fb66 Mon Sep 17 00:00:00 2001
+From fcf8be5305683ae11cf063b44f0b26b8255c78d3 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Thu, 21 May 2020 17:01:18 +0200
+Date: Mon, 11 Jan 2021 10:57:06 +0100
 Subject: [PATCH] Integrate with Balena u-boot environment
 
 Integrate tx2 on L4T 32.4.2 with Balena u-boot env
@@ -8,48 +8,49 @@ Integrate tx2 on L4T 32.4.2 with Balena u-boot env
 Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
- configs/p2771-0000-500_defconfig |  9 ++++++++-
- include/config_distro_bootcmd.h  | 32 +++++++++++++++++++++++++++++---
- 2 files changed, 37 insertions(+), 4 deletions(-)
+ configs/p2771-0000-500_defconfig | 11 ++++++++++-
+ include/config_distro_bootcmd.h  | 31 +++++++++++++++++++++++++++++--
+ 2 files changed, 39 insertions(+), 3 deletions(-)
 
 diff --git a/configs/p2771-0000-500_defconfig b/configs/p2771-0000-500_defconfig
-index 1f40333..1f49777 100644
+index 7c64d810d6..b3379ff768 100644
 --- a/configs/p2771-0000-500_defconfig
 +++ b/configs/p2771-0000-500_defconfig
-@@ -17,7 +17,7 @@ CONFIG_CMD_MMC=y
+@@ -18,7 +18,7 @@ CONFIG_CMD_MMC=y
  CONFIG_CMD_PCI=y
  CONFIG_CMD_SPI=y
  CONFIG_CMD_USB=y
 -# CONFIG_CMD_SETEXPR is not set
 +CONFIG_CMD_SETEXPR=y
+ CONFIG_BOOTP_PREFER_SERVERIP=y
  # CONFIG_CMD_NFS is not set
  CONFIG_CMD_EXT4_WRITE=y
- CONFIG_DEFAULT_DEVICE_TREE="tegra186-p2771-0000-500"
-@@ -38,3 +38,10 @@ CONFIG_USB=y
+@@ -39,3 +39,12 @@ CONFIG_TEGRA186_POWER_DOMAIN=y
+ CONFIG_SYS_NS16550=y
+ CONFIG_USB=y
  CONFIG_DM_USB=y
- CONFIG_POSITION_INDEPENDENT=y
- CONFIG_BOOTP_PREFER_SERVERIP=y
 +CONFIG_CMD_PART=y
 +CONFIG_PARTITION_UUIDS=y
 +CONFIG_CMD_IMPORTENV=y
 +CONFIG_CMD_FAT=y
 +CONFIG_ENV_IS_NOWHERE=y
++CONFIG_CMD_FS_UUID=y
 +CONFIG_CMD_EXPORTENV=y
 +CONFIG_CMD_EDITENV=y
++
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index fc0935f..71842c1 100644
+index fc0935fa21..8609661e0e 100644
 --- a/include/config_distro_bootcmd.h
 +++ b/include/config_distro_bootcmd.h
-@@ -24,7 +24,7 @@
-  * hence seems like it should be all capitals, but it's really an error
+@@ -25,6 +25,7 @@
   * message that includes some other pre-processor symbols in the text.
   */
--
+ 
 +#define BOOT_TARGET_DEFAULTDEVPLIST    "18"
  #define BOOTENV_SHARED_BLKDEV_BODY(devtypel) \
  		"if " #devtypel " dev ${devnum}; then " \
  			"devtype=" #devtypel "; " \
-@@ -417,6 +417,7 @@
+@@ -417,6 +418,7 @@
  	BOOTENV_SHARED_UBIFS \
  	BOOTENV_SHARED_EFI \
  	BOOTENV_SHARED_VIRTIO \
@@ -57,7 +58,7 @@ index fc0935f..71842c1 100644
  	"boot_prefixes=/ /boot/\0" \
  	"boot_scripts=boot.scr.uimg boot.scr\0" \
  	"boot_script_dhcp=boot.scr.uimg\0" \
-@@ -437,7 +438,7 @@
+@@ -437,7 +439,7 @@
  		"fi\0"                                                    \
  	\
  	"boot_a_script="                                                  \
@@ -66,7 +67,7 @@ index fc0935f..71842c1 100644
  			"${scriptaddr} ${prefix}${script}; "              \
  		"source ${scriptaddr}\0"                                  \
  	\
-@@ -453,6 +454,14 @@
+@@ -453,6 +455,14 @@
  			"fi; "                                            \
  		"done\0"                                                  \
  	\
@@ -81,7 +82,7 @@ index fc0935f..71842c1 100644
  	"scan_dev_for_boot="                                              \
  		"echo Scanning ${devtype} "                               \
  				"${devnum}:${distro_bootpart}...; "       \
-@@ -464,7 +473,18 @@
+@@ -464,7 +474,18 @@
  		"\0"                                                      \
  	\
  	"scan_dev_for_boot_part="                                         \
@@ -97,25 +98,25 @@ index fc0935f..71842c1 100644
 +		"   fi; "                                                 \
 +		"else "                                                   \
 +		"   part list ${devtype} ${devnum} -bootable devplist; "  \
-+		"fi; "                                                    \
++		"fi; "							  \
  		"env exists devplist || setenv devplist 1; "              \
  		"for distro_bootpart in ${devplist}; do "                 \
  			"if fstype ${devtype} "                           \
-@@ -481,8 +501,14 @@
+@@ -481,8 +502,14 @@
  		BOOTENV_SET_NVME_NEED_INIT                                \
  		BOOTENV_SET_IDE_NEED_INIT                                 \
  		BOOTENV_SET_VIRTIO_NEED_INIT                              \
-+         "setenv resin_kernel_load_addr ${loadaddr}; "                    \
++		"setenv resin_kernel_load_addr ${loadaddr}; "                    \
  		"for target in ${boot_targets}; do "                      \
 +                    "if env exist resin_set_kernel_root; then "           \
 +                        "run resin_update_boot_part_tx2; "                \
 +                        "run resin_set_kernel_root; "                     \
 +                        "run set_os_cmdline; "                            \
  			"run bootcmd_${target}; "                         \
-+                     "fi; "                     \
++                    "fi; "                     \
  		"done\0"
  
  #ifndef CONFIG_BOOTCOMMAND
 -- 
-2.7.4
+2.17.1
 

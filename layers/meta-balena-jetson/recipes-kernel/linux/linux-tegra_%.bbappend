@@ -4,8 +4,10 @@ FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 
 SCMVERSION="n"
 
-# Dunfell 32.4.3 branch - 28 Sep 2020
-SRCREV = "a58470bb0f05f9189781448eb64599cc4aac49af"
+# We pin to the 32.4.4 revision as of 12 Jan 2021
+# to ensure the upstream BSP layer doesn't bring in a newer
+# version that might fail to build or boot without notice.
+SRCREV = "87e09c14b15ad302b451f40f4237bb14f553c1e0"
 
 # Prevent delayed booting
 # and support using partition label to load rootfs
@@ -15,6 +17,7 @@ SRC_URI_append = " \
     file://0001-Support-referencing-the-root-partition-label-from-GP.patch \
     file://xhci-ring-Don-t-show-incorrect-WARN-message-about.patch \
 "
+
 SRC_URI_append_jetson-tx2 = " \
     file://0001-Expose-spidev-to-the-userspace.patch \
     file://0002-mttcan-ivc-enable.patch \
@@ -22,13 +25,8 @@ SRC_URI_append_jetson-tx2 = " \
     file://tegra186-tx2-aetina-n510-p3489-0888-a00-00-base.dtb \
     file://tegra186-tx2-aetina-n310-p3489-0888-a00-00-base.dtb \
     file://tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb \
-    file://d3-tx2-rsp-fpdlink.dtb \
     file://tegra186-tx2-blackboard.dtb \
-    file://realsense_hid_linux-yocto_4.4.patch \
-    file://realsense_metadata_linux-yocto_4.4.patch \
     file://realsense_powerlinefrequency_control_fix_linux-yocto_4.4.patch \
-    file://realsense_camera_formats_linux-yocto_4.4.patch \
-    file://realsense_format_desc_4.4.patch \
     file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
@@ -215,12 +213,29 @@ RESIN_CONFIGS[cfginput] = " \
 		CONFIG_INPUT_MOUSEDEV=m \
 		CONFIG_INPUT_JOYDEV=m \
 		CONFIG_JOYSTICK_XPAD=m \
+		CONFIG_INPUT_KEYCHORD=m \
 "
 
 RESIN_CONFIGS_append_jetson-xavier-nx-devkit = " rtl8822ce "
 RESIN_CONFIGS[rtl8822ce] = " \
 		CONFIG_RTL8822CE=m \
 		CONFIG_RTK_BTUSB=m \
+"
+
+# Switch nfs and backlight drivers as modules
+# to shrink down the kernel image size starting
+# with BalenaOS 2.65.0
+RESIN_CONFIGS_append = " nfsfs backlight "
+RESIN_CONFIGS[nfsfs] = " \
+    CONFIG_NFS_FS=m \
+    CONFIG_NFS_V2=m \
+    CONFIG_NFS_V3=m \
+"
+
+RESIN_CONFIGS[backlight] = " \
+    CONFIG_BACKLIGHT_PWM=m \
+    CONFIG_BACKLIGHT_LP855X=m \
+    CONFIG_BACKLIGHT_CLASS_DEVICE=m \
 "
 
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"

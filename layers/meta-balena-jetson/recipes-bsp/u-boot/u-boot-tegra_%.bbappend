@@ -4,8 +4,14 @@ UBOOT_KCONFIG_SUPPORT = "1"
 
 inherit resin-u-boot
 
-# Dunfell 32.4.3 branch - 28 Sep 2020
-SRCREV = "5e1f83dc9886345e79a074c2aefa33e06f0cec33"
+# We pin to the release in 32.4.4 branch - as of 12 Jan 20201
+# to ensure we don't get updates that might break the build
+# or booting in general.
+SRCREV = "24abfbe6dbdb758be8d0ab0da457aa2af07ba55a"
+
+LIC_FILES_CHKSUM = "\
+    file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025 \
+"
 
 RESIN_BOOT_PART_jetson-nano = "0xC"
 RESIN_DEFAULT_ROOT_PART_jetson-nano = "0xD"
@@ -34,9 +40,9 @@ SRC_URI_append = " file://local-resin-specific-env-integration-kconfig.patch "
 # These changes are necessary since balenaOS 2.39.0
 # for all boards that use u-boot
 SRC_URI_append = " \
-    file://Increase-default-u-boot-environment-size.patch \
     file://menu-Use-default-menu-entry-from-extlinux.conf.patch \
     file://sysboot-read-custom-fdt-from-env.patch \
+    file://0001-add-back-config-defaults.patch \
 "
 
 # Uses sd-card defconfig
@@ -48,16 +54,6 @@ SRC_URI_append_jetson-nano = " \
 # as it comes from meta-tegra
 SRC_URI_append_jetson-nano-emmc = " \
     file://nano-Integrate-with-Balena-and-load-kernel-from-root.patch \
-    file://nano-emmc-defconfig-add-necessary-configs.patch \
-"
-
-# Uses emmc defconfig
-SRC_URI_append_photon-nano = " \
-    file://nano-emmc-defconfig-add-necessary-configs.patch \
-"
-
-SRC_URI_append_jn30b-nano = " \
-    file://nano-emmc-defconfig-add-necessary-configs.patch \
 "
 
 # In l4t 28.2 below partitions were 0xC and 0xD
@@ -72,10 +68,12 @@ SRC_URI_append_jetson-tx2 = " \
 RESIN_BOOT_PART_jetson-tx1 = "0xB"
 RESIN_DEFAULT_ROOT_PART_jetson-tx1 = "0xC"
 
-SRC_URI_append_jetson-tx1 = " \
-    file://Add-part-index-command.patch \
-    file://tx1-Integrate-with-BalenaOS-environment.patch \
-"
+# Needs further investigation as per
+# https://github.com/balena-os/balena-jetson/issues/90
+#SRC_URI_append_jetson-tx1 = " 
+#    file://Add-part-index-command.patch 
+#    file://tx1-Integrate-with-BalenaOS-environment.patch 
+#"
 
 # extlinux will now be installed in the rootfs,
 # near the kernel, initrd is not used
