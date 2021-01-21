@@ -1,4 +1,4 @@
-From 20a00946dd64dab9618fdeb8a85c827dfaf02c5a Mon Sep 17 00:00:00 2001
+From 58f366f360e6ed6cc1c334aa48e5a3225917a83c Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
 Date: Mon, 11 Jan 2021 14:28:11 +0100
 Subject: [PATCH] nano: Integrate with Balena and load kernel from rootfs
@@ -12,10 +12,10 @@ Upstream-status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  configs/p3450-0000_defconfig    | 55 +++++++++++++++++++--------------
- configs/p3450-0002_defconfig    |  7 ++++-
+ configs/p3450-0002_defconfig    |  8 ++++-
  include/config_distro_bootcmd.h | 14 +++++++--
  include/configs/p3450-0000.h    |  2 ++
- 4 files changed, 50 insertions(+), 28 deletions(-)
+ 4 files changed, 51 insertions(+), 28 deletions(-)
 
 diff --git a/configs/p3450-0000_defconfig b/configs/p3450-0000_defconfig
 index 31892ad22d..5d784fb00a 100644
@@ -97,7 +97,7 @@ index 31892ad22d..5d784fb00a 100644
 +CONFIG_CMD_FS_UUID=y
 +CONFIG_AUTOBOOT=y
 diff --git a/configs/p3450-0002_defconfig b/configs/p3450-0002_defconfig
-index 088ac3200f..c318f7786b 100644
+index 088ac3200f..3fd702cb7e 100644
 --- a/configs/p3450-0002_defconfig
 +++ b/configs/p3450-0002_defconfig
 @@ -22,7 +22,7 @@ CONFIG_CMD_PCI=y
@@ -109,7 +109,7 @@ index 088ac3200f..c318f7786b 100644
  # CONFIG_CMD_NFS is not set
  CONFIG_CMD_EXT4_WRITE=y
  CONFIG_OF_LIVE=y
-@@ -54,3 +54,8 @@ CONFIG_USB_ETHER_ASIX=y
+@@ -54,3 +54,9 @@ CONFIG_USB_ETHER_ASIX=y
  CONFIG_ENV_IS_IN_MMC=y
  CONFIG_ENV_SECT_SIZE=0x1000
  CONFIG_BOOTP_PREFER_SERVERIP=y
@@ -118,6 +118,7 @@ index 088ac3200f..c318f7786b 100644
 +CONFIG_CMD_IMPORTENV=y
 +CONFIG_BOOTDELAY=0
 +CONFIG_CMD_EXPORTENV=y
++CONFIG_CMD_FS_UUID=y
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
 index fc0935fa21..276f8769e9 100644
 --- a/include/config_distro_bootcmd.h
