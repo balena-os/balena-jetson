@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.67.2+rev2
+## (2021-01-21)
+
+* fix boot for Jetson Nano (eMMC) [Pelle van Gils]
+
 # v2.67.2+rev1
 ## (2021-01-15)
 

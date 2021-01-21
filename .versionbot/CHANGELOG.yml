@@ -1,4 +1,20 @@
 - commits:
+    - subject: fix boot for Jetson Nano (eMMC)
+      hash: 8d434a086c915d997c7aea11ec0020d7773d4611
+      body: |
+        The `fsuuid` command is required for setting the `root` kernel
+        parameter.
+        As specified in balena-os/meta-balena@401345c
+      footer:
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        Changelog-entry: fix boot for Jetson Nano (eMMC)
+        changelog-entry: fix boot for Jetson Nano (eMMC)
+      author: Pelle van Gils
+      nested: []
+  version: 2.67.2+rev2
+  date: 2021-01-21T19:56:15.750Z
+- commits:
     - subject: Update meta-balena from v2.60.1 to v2.67.2
       hash: 74cba584e99e2463551b410e9034f1827bb3c234
       body: |
