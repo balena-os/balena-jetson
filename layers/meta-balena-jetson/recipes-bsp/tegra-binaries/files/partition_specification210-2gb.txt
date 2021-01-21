@@ -1,0 +1,13 @@
+TBC:nvtboot_cpu.bin.encrypt:256
+RP1:[DTBNAME].encrypt:1792
+EBT:cboot.bin.encrypt:1792
+WB0:warmboot.bin.encrypt:256
+BPF:sc7entry-firmware.bin.encrypt:384
+BPF-DTB:eks.img:768
+FX:eks.img:128
+TOS:tos-mon-only.img.encrypt:896
+EKS:eks.img:128
+LNX:u-boot.bin.encrypt:1792
+DTB:[DTBNAME].encrypt:1792
+RP4:rp4.blob:256
+BMP:bmp.blob:160
