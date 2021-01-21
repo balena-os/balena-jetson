@@ -8,9 +8,14 @@ do_rootfs_resinos-img_jetson-nano-emmc[depends] += " tegra210-flash:do_deploy \
                                                 virtual/kernel:do_deploy \
 "
 
+do_rootfs_resinos-img_jetson-nano-2gb-devkit[depends] += " tegra210-flash:do_deploy \
+                                                virtual/kernel:do_deploy \
+"
+
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 DTBFILE_jetson-nano = "tegra210-p3448-0000-p3449-0000-b00.dtb"
 DTBFILE_jetson-nano-emmc = "tegra210-p3448-0002-p3449-0000-b00.dtb"
+DTBFILE_jetson-nano-2gb-devkit = "tegra210-p3448-0003-p3542-0000.dtb"
 DTBFILE_jn30b-nano = "tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb"
 DTBFILE_photon-nano = "tegra210-nano-cti-NGX003.dtb"
 DTBFILE_photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003.dtb"
@@ -34,6 +39,7 @@ RESIN_BOOT_PARTITION_FILES_jetson-nano = " \
 "
 
 RESIN_BOOT_PARTITION_FILES_jetson-nano-emmc = "${RESIN_BOOT_PARTITION_FILES_jetson-nano}"
+RESIN_BOOT_PARTITION_FILES_jetson-nano-2gb-devkit = "${RESIN_BOOT_PARTITION_FILES_jetson-nano}"
 
 
 do_rootfs_resinos-img_jetson-xavier[depends] += " tegra194-flash-dry:do_deploy "
@@ -98,6 +104,7 @@ IMAGE_ROOTFS_SIZE_jetson-xavier-nx-devkit = "733184"
 
 # Need space for all the above signed update binaries
 RESIN_BOOT_SIZE_jetson-nano = "80960"
+RESIN_BOOT_SIZE_jetson-nano-2gb-devkit = "80960"
 RESIN_BOOT_SIZE_jetson-nano-emmc = "80960"
 RESIN_BOOT_SIZE_jetson-xavier = "121440"
 RESIN_BOOT_SIZE_jetson-xavier-nx-devkit-emmc = "121440"
@@ -107,7 +114,7 @@ RESIN_BOOT_SIZE_jetson-tx1="80960"
 
 PARTITION_TABLE_TYPE = "gpt"
 
-IMAGE_INSTALL_append_jetson-nano = " \
+IMAGE_PACKAGES_NANO = " \
     tegra210-flash \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
@@ -115,13 +122,9 @@ IMAGE_INSTALL_append_jetson-nano = " \
     jetson-dtbs \
 "
 
-IMAGE_INSTALL_append_jetson-nano-emmc = " \
-    tegra210-flash \
-    tegra-nvpmodel \
-    tegra-configs-nvstartup \
-    tegra-configs-udev \
-    jetson-dtbs \
-"
+IMAGE_INSTALL_append_jetson-nano = "${IMAGE_PACKAGES_NANO}"
+IMAGE_INSTALL_append_jetson-nano-emmc = "${IMAGE_PACKAGES_NANO}"
+IMAGE_INSTALL_append_jetson-nano-2gb-devkit = "${IMAGE_PACKAGES_NANO}"
 
 IMAGE_INSTALL_append_jetson-xavier = " \
     tegra194-flash-dry \
