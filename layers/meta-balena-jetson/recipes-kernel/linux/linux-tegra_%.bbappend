@@ -240,6 +240,7 @@ RESIN_CONFIGS[backlight] = " \
 
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-nano-emmc = "\${resin_kernel_root} ro rootwait"
+KERNEL_ROOTSPEC_jetson-nano-2gb-devkit = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jn30b-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-tx2 = " \${resin_kernel_root} ro rootwait gasket.dma_bit_mask=32 pcie_aspm=off"
 KERNEL_ROOTSPEC_jetson-tx1 = " \${resin_kernel_root} ro rootwait"
