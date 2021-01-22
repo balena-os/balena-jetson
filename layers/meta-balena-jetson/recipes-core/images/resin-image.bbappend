@@ -95,10 +95,10 @@ device_specific_configuration_jetson-xavier() {
       END=$(expr ${START} \+ ${part_size} \- 1)
       echo "Will write $part_name from ${START} to ${END} part size: $part_size"
       parted -s ${RESIN_RAW_IMG} unit B mkpart $part_name ${START} ${END}
-      check_size ${file_path} ${part_size}
       # The padding partition exists to allow for the device specific space to
       # be a multiple of 4096. We don't write anything to it for the moment.
       if [ ! "$file_name" = "none.bin" ]; then
+        check_size ${file_path} ${part_size}
         dd if=$file_path of=${RESIN_RAW_IMG} conv=notrunc seek=$(expr ${START} \/ 512) bs=512
       fi
       START=$(expr ${END} \+ 1)
