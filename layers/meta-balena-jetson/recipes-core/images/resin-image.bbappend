@@ -4,9 +4,11 @@ IMAGE_FSTYPES_append = " hostapp-ext4"
 
 DEVICE_SPECIFIC_SPACE_jetson-nano = "49152"
 DEVICE_SPECIFIC_SPACE_jetson-nano-emmc = "49152"
+DEVICE_SPECIFIC_SPACE_jetson-nano-2gb-devkit = "49152"
 
 check_size() {
     file_path=${1}
+    [ -f "${file_path}" ] || bbfatal "Specified path does not exist: ${file_path}"
     file_size=$(ls -l ${file_path} | awk '{print $5}')
     part_size=${2}
 
@@ -51,6 +53,24 @@ device_specific_configuration_jetson-nano-emmc() {
     done
 }
 
+do_image_resinos-img_jetson-nano-2gb-devkit[depends] += " tegra210-flash:do_deploy"
+device_specific_configuration_jetson-nano-2gb-devkit() {
+    partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification210-2gb.txt)
+    NVIDIA_PART_OFFSET=2048
+    START=${NVIDIA_PART_OFFSET}
+    for n in ${partitions}; do
+      part_name=$(echo $n | cut -d ':' -f 1)
+      file_name=$(echo $n | cut -d ':' -f 2)
+      part_size=$(echo $n | cut -d ':' -f 3)
+      file_path=$(find ${DEPLOY_DIR_IMAGE}/bootfiles -name $file_name)
+      END=$(expr ${START} \+ ${part_size} \- 1)
+      parted -s ${RESIN_RAW_IMG} unit s mkpart $part_name ${START} ${END}
+      check_size ${file_path} $(expr ${part_size} \* 512)
+      dd if=$file_path of=${RESIN_RAW_IMG} conv=notrunc seek=${START} bs=512
+      START=$(expr ${START} \+ ${NVIDIA_PART_OFFSET})
+    done
+}
+
 # We leave this space way larger than currently
 # needed because other larger partitions are
 # added from one Jetpack release to another
@@ -75,10 +95,10 @@ device_specific_configuration_jetson-xavier() {
       END=$(expr ${START} \+ ${part_size} \- 1)
       echo "Will write $part_name from ${START} to ${END} part size: $part_size"
       parted -s ${RESIN_RAW_IMG} unit B mkpart $part_name ${START} ${END}
-      check_size ${file_path} ${part_size}
       # The padding partition exists to allow for the device specific space to
       # be a multiple of 4096. We don't write anything to it for the moment.
       if [ ! "$file_name" = "none.bin" ]; then
+        check_size ${file_path} ${part_size}
         dd if=$file_path of=${RESIN_RAW_IMG} conv=notrunc seek=$(expr ${START} \/ 512) bs=512
       fi
       START=$(expr ${END} \+ 1)

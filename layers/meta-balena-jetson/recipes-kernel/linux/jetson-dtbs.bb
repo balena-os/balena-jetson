@@ -53,6 +53,10 @@ do_install_jetson-nano-emmc() {
 	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX003.dtb ${D}/boot/tegra210-nano-cti-NGX003.dtb
 }
 
+do_install_jetson-nano-2gb-devkit() {
+	install -d ${D}/boot/
+	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0003-p3542-0000.dtb  ${D}/boot/tegra210-p3448-0003-p3542-0000.dtb
+}
 
 FILES_${PN}_jetson-tx2 += " \
 	/boot/tegra186-tx2-6.dtb \
@@ -77,4 +81,8 @@ FILES_${PN}_jetson-nano-emmc += " \
 	/boot/tegra210-p3448-0002-p3449-0000-a02.dtb \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb \
 	/boot/tegra210-nano-cti-NGX003.dtb \
+"
+
+FILES_${PN}_jetson-nano-2gb-devkit += " \
+        /boot/tegra210-p3448-0003-p3542-0000.dtb \
 "
