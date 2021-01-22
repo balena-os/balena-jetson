@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.67.3+rev1
+## (2021-01-22)
+
+
+<details>
+<summary> Update meta-balena from v2.67.2 to v2.67.3 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.67.3
+> ### (2021-01-15)
+> 
+> * kernel-headers-test: Install python dependency [Alexandru Costache]
+> 
+</details>
+
 # v2.67.2+rev1
 ## (2021-01-15)
 

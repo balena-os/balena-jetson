@@ -1,4 +1,35 @@
 - commits:
+    - subject: Update meta-balena from v2.67.2 to v2.67.3
+      hash: bed1a694659c1b34f7438b8bdf1cd94e8a3a66b0
+      body: |
+        Update meta-balena from 2.67.2 to 2.67.3
+      footer:
+        Changelog-entry: Update meta-balena from v2.67.2 to v2.67.3
+        changelog-entry: Update meta-balena from v2.67.2 to v2.67.3
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'kernel-headers-test: Install python dependency'
+              hash: 6b648fa36bb8f7b2f90799a9c331210e34d3c438
+              body: |
+                Some makefiles for the kernel modules build, like for
+                instance the one in the kernel for the lec-px30 machine,
+                want python to be available in the environment. Let's add
+                it to the build dependencies.
+              footer:
+                Change-type: Patch
+                change-type: Patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.67.3
+          date: 2021-01-15T11:10:16.824Z
+  version: 2.67.3+rev1
+  date: 2021-01-22T10:52:25.367Z
+- commits:
     - subject: Update meta-balena from v2.60.1 to v2.67.2
       hash: 74cba584e99e2463551b410e9034f1827bb3c234
       body: |
