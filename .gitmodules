@@ -15,4 +15,4 @@
 	url = https://github.com/meta-rust/meta-rust.git
 [submodule "layers/meta-tegra"]
 	path = layers/meta-tegra
-	url = https://github.com/madisongh/meta-tegra.git
+	url = https://github.com/OE4T/meta-tegra.git
