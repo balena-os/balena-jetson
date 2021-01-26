@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.67.3+rev2
+## (2021-01-24)
+
+* nvidia-container-runtime: update library list to r32.4.4 [Pelle van Gils]
+* linux-tegra: Update dtb files for photon-* to 32.4.4 [Pelle van Gils]
+
 # v2.67.3+rev1
 ## (2021-01-22)
 

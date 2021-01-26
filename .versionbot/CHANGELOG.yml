@@ -1,4 +1,27 @@
 - commits:
+    - subject: 'nvidia-container-runtime: update library list to r32.4.4'
+      hash: 9beb3a1a0fd6ee5352013412c9004233a66a0452
+      body: ''
+      footer:
+        Changelog-entry: 'nvidia-container-runtime: update library list to r32.4.4'
+        changelog-entry: 'nvidia-container-runtime: update library list to r32.4.4'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+    - subject: 'linux-tegra: Update dtb files for photon-* to 32.4.4'
+      hash: 4736e9448fc015a9568e0604fc784ac67e585ea4
+      body: ''
+      footer:
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        Changelog-entry: 'linux-tegra: Update dtb files for photon-* to 32.4.4'
+        changelog-entry: 'linux-tegra: Update dtb files for photon-* to 32.4.4'
+      author: Pelle van Gils
+      nested: []
+  version: 2.67.3+rev2
+  date: 2021-01-24T16:08:22.106Z
+- commits:
     - subject: Update meta-balena from v2.67.2 to v2.67.3
       hash: bed1a694659c1b34f7438b8bdf1cd94e8a3a66b0
       body: |
