@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'hostapp-update-hooks: Add hooks for Nano 2GB'
+      hash: 75c23dc6ed17fde3b73750eff17a20f0c8f08477
+      body: ''
+      footer:
+        Changelog-entry: 'hostapp-update-hooks: Add hooks for Nano 2GB'
+        changelog-entry: 'hostapp-update-hooks: Add hooks for Nano 2GB'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.67.3+rev3
+  date: 2021-01-28T19:49:07.775Z
+- commits:
     - subject: 'nvidia-container-runtime: update library list to r32.4.4'
       hash: 9beb3a1a0fd6ee5352013412c9004233a66a0452
       body: ''

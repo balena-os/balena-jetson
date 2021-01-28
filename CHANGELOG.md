@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.67.3+rev3
+## (2021-01-28)
+
+* hostapp-update-hooks: Add hooks for Nano 2GB [Alexandru Costache]
+
 # v2.67.3+rev2
 ## (2021-01-24)
 
