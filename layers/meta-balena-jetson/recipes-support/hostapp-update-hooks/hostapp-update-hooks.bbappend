@@ -16,6 +16,7 @@ DEPENDS_append_jetson-nano-2gb-devkit    = " tegra210-flash"
 
 HOSTAPP_HOOKS_append_jetson-nano-2gb-devkit = " 99-resin-uboot \
                                                 99-resin-bootfiles-nano \
+"
 
 DEPENDS_append_jetson-xavier  = " tegra194-flash-dry"
 DEPENDS_append_jetson-xavier-nx-devkit-emmc  = " tegra194-nxde-flash-dry"
