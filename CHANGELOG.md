@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.67.3+rev4
+## (2021-01-29)
+
+* linux-tegra: Update Spacely and Orbitty dtbs to 32.4.4 [Alexandru Costache]
+
 # v2.67.3+rev3
 ## (2021-01-28)
 
