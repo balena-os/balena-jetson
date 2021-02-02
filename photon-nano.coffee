@@ -31,7 +31,7 @@ module.exports =
 		machine: 'photon-nano'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-warrior'
+		version: 'yocto-dunfell'
 		deployArtifact: 'resin-image-photon-nano.resinos-img'
 		compressed: true
 

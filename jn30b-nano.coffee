@@ -30,7 +30,7 @@ module.exports =
 		machine: 'jn30b-nano'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-warrior'
+		version: 'yocto-dunfell'
 		deployArtifact: 'resin-image-jn30b-nano.resinos-img'
 		compressed: true
 

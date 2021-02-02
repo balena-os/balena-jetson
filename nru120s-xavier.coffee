@@ -30,7 +30,7 @@ module.exports =
 		machine: 'nru120s-xavier'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-warrior'
+		version: 'yocto-dunfell'
 		deployArtifact: 'resin-image-nru120s-xavier.resinos-img'
 		compressed: true
 

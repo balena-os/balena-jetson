@@ -29,7 +29,7 @@ module.exports =
 		machine: 'jetson-xavier-nx-devkit'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-warrior'
+		version: 'yocto-dunfell'
 		deployArtifact: 'resin-image-jetson-xavier-nx-devkit.resinos-img'
 		compressed: true
 

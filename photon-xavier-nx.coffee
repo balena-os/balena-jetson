@@ -31,7 +31,7 @@ module.exports =
 		machine: 'photon-xavier-nx'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-warrior'
+		version: 'yocto-dunfell'
 		deployArtifact: 'resin-image-photon-xavier-nx.resinos-img'
 		compressed: true
 
