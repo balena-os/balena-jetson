@@ -335,7 +335,7 @@ do_configure() {
     #dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cbo.dtb seek=33161216 bs=1 conv=notrunc
     #dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cbo.dtb seek=33226752 bs=1 conv=notrunc
 
-    # For this release, /opt/tegra-binaries/boot0.img MD5 should be cd518f7b8030abf23b1015c36a96b696
+    # For the 32.4.4 release, /opt/tegra-binaries/boot0.img MD5 should be 53a472b624645c570ed14635b4c6a8f2
     # even for carrier boards. If it is not, then board will not boot after HUP.
     cp ${WORKDIR}/${BOOT_BINDIFF} .
     dd if=${BOOT_BINDIFF} of=boot0.img seek=14942224 bs=1 count=32 conv=notrunc

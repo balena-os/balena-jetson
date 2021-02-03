@@ -43,7 +43,7 @@ module.exports =
 		machine: 'jetson-tx1'
 		image: 'resin-image-flasher'
 		fstype: 'resinos-img'
-		version: 'yocto-warrior'
+		version: 'yocto-dunfell'
 		deployArtifact: 'resin-image-flasher-jetson-tx1.resinos-img'
 		compressed: true
 

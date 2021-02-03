@@ -30,7 +30,7 @@ module.exports =
 		machine: 'cti-rogue-xavier'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-warrior'
+		version: 'yocto-dunfell'
 		deployArtifact: 'resin-image-cti-rogue-xavier.resinos-img'
 		compressed: true
 
