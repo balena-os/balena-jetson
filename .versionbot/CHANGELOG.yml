@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'tegra194-nxde-sdcard-flash: Update signed patch for 32.4.4'
+      hash: 3ecb79973700123f169f926d544f1d66b4d62a2c
+      body: |
+        cboot from 32.4.4 now includes a few extra patches from
+        the meta-tegra layer, and this breaks boot after HUP on the
+        Xavier NX SD-CARD because the patched offsets no longer match.
+        Update bindiff for signed boot blob to address this.
+      footer:
+        Changelog-entry: 'tegra194-nxde-sdcard-flash: Update signed patch for 32.4.4'
+        changelog-entry: 'tegra194-nxde-sdcard-flash: Update signed patch for 32.4.4'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.67.3+rev5
+  date: 2021-02-02T17:20:06.373Z
+- commits:
     - subject: 'linux-tegra: Update Spacely and Orbitty dtbs to 32.4.4'
       hash: fb5fd19d615dc13c8fa90eb9c6511865e27b8665
       body: ''
