@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'jetson-dtbs: Add imx477 dtb for CTI Photon Nano'
+      hash: c0cd185a89e99ddd6e9bd54a76ce5c7789cb8c5d
+      body: ''
+      footer:
+        Changelog-entry: 'jetson-dtbs: Add imx477 dtb for CTI Photon Nano'
+        changelog-entry: 'jetson-dtbs: Add imx477 dtb for CTI Photon Nano'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.67.3+rev6
+  date: 2021-02-04T09:03:04.862Z
+- commits:
     - subject: 'tegra194-nxde-sdcard-flash: Update signed patch for 32.4.4'
       hash: 3ecb79973700123f169f926d544f1d66b4d62a2c
       body: |

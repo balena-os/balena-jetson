@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.67.3+rev6
+## (2021-02-04)
+
+* jetson-dtbs: Add imx477 dtb for CTI Photon Nano [Alexandru Costache]
+
 # v2.67.3+rev5
 ## (2021-02-02)
 
