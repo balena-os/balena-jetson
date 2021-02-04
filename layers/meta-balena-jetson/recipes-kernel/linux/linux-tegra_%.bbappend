@@ -59,6 +59,7 @@ SRC_URI_append_jetson-nano-emmc = " \
 "
 
 SRC_URI_append_photon-nano = " \
+    file://photon-nano-imx477-Port-patch-for-photon-nano.patch \
     file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
     file://tegra210-nano-cti-NGX003.dtb \
 "
