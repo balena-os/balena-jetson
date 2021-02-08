@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.67.3+rev7
+## (2021-02-08)
+
+* linux-tegra: revert: Port imx477 sensor driver changes" [Alexandru Costache]
+
 # v2.67.3+rev6
 ## (2021-02-04)
 

@@ -1,4 +1,22 @@
 - commits:
+    - subject: 'linux-tegra: revert: Port imx477 sensor driver changes"'
+      hash: 0b26a7075e155691c060e424249b8c92b9a71d73
+      body: |
+        This reverts commit 37093b58463f1f2bdae0c800ef27bc64ecef4f70,
+        testing with the hardware attached has been reported to work
+        with this change, only the right dtb was necessary.
+
+        See comments in: https://github.com/balena-os/balena-jetson/pull/132
+      footer:
+        Changelog-entry: 'linux-tegra: revert: Port imx477 sensor driver changes"'
+        changelog-entry: 'linux-tegra: revert: Port imx477 sensor driver changes"'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.67.3+rev7
+  date: 2021-02-08T08:16:09.028Z
+- commits:
     - subject: 'jetson-dtbs: Add imx477 dtb for CTI Photon Nano'
       hash: c0cd185a89e99ddd6e9bd54a76ce5c7789cb8c5d
       body: ''
