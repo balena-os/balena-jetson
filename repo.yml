@@ -1,6 +1,7 @@
----
-type: 'yocto-based OS image'
+esr:
+  version: '2021.01'
 reviewers: 1
+type: yocto-based OS image
 upstream:
-  repo: 'meta-balena'
-  url: 'http://github.com/balena-os/meta-balena'
+  repo: meta-balena
+  url: http://github.com/balena-os/meta-balena
