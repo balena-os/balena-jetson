@@ -1,4 +1,45 @@
 - commits:
+    - subject: Fix nvidia-container-toolkit to build with Go v1.12
+      hash: a10e34862c098f0c733b901ae6693d2b43634898
+      body: >
+        Poky Dunfell is using Go v1.14 while meta-balena is still in v1.12. The
+
+        -trimpath flag is introduced in v1.13 so we need to remove it from the
+
+        build flags for the time being.
+
+
+        Poky defaulted to using -trimpath in commit
+        2d0c2242136e8c823d58218844c6e082122d0bce
+      footer:
+        Changelog-entry: Fix nvidia-container-toolkit to build with Go v1.12
+        changelog-entry: Fix nvidia-container-toolkit to build with Go v1.12
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Fix nvidia-container-runtime to build with Go v1.12
+      hash: 9b9941df002a986bc29600ff8fd602c207e6f1d1
+      body: >
+        Poky Dunfell is using Go v1.14 while meta-balena is still in v1.12. The
+
+        -trimpath flag is introduced in v1.13 so we need to remove it from the
+
+        build flags for the time being.
+
+
+        Poky defaulted to using -trimpath in commit
+        2d0c2242136e8c823d58218844c6e082122d0bce
+      footer:
+        Changelog-entry: Fix nvidia-container-runtime to build with Go v1.12
+        changelog-entry: Fix nvidia-container-runtime to build with Go v1.12
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.68.1+rev2
+  date: 2021-02-11T17:52:17.597Z
+- commits:
     - subject: Update meta-balena from v2.67.3 to v2.68.1
       hash: 78d83d315be01ec7a8c200286e4e09d86587975e
       body: |

@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.68.1+rev2
+## (2021-02-11)
+
+* Fix nvidia-container-toolkit to build with Go v1.12 [Alex Gonzalez]
+* Fix nvidia-container-runtime to build with Go v1.12 [Alex Gonzalez]
+
 # v2.68.1+rev1
 ## (2021-02-09)
 
