@@ -49,8 +49,8 @@ SRC_URI_append_jn30b-nano = " \
 "
 
 SRC_URI_append_jetson-nano = " \
-    file://nano-mark-gpio-as-disabled-when-freed.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
+    file://0001-Enable-SPI1.patch \
 "
 
 SRC_URI_append_jetson-nano-emmc = " \
