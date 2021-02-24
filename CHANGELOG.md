@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.69.1+rev2
+## (2021-02-23)
+
+* linux-tegra: Remove patches for device SRD3 that has been moved [Alexandru Costache]
+
 # v2.69.1+rev1
 ## (2021-02-15)
 

@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'linux-tegra: Remove patches for device SRD3 that has been moved'
+      hash: fbb9dc3a2fdfd8af30f174bf8680eb572b653937
+      body: |
+        SRD3 is no longer part of this repository, so we can
+        cleanup all its patches
+      footer:
+        Changelog-entry: 'linux-tegra: Remove patches for device SRD3 that has been moved'
+        changelog-entry: 'linux-tegra: Remove patches for device SRD3 that has been moved'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.69.1+rev2
+  date: 2021-02-23T16:24:11.300Z
+- commits:
     - subject: Update meta-balena from v2.68.1 to v2.69.1
       hash: ddda8f1cd746c98e158080dab0abbd2af471636d
       body: |
