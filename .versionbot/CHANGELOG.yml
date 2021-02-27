@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.10.1
+      hash: afba88eadc5b0d11d4bf356a59c63da9b1b3f67b
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.10.1
+        changelog-entry: Update balena-yocto-scripts to v1.10.1
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.69.1+rev4
+  date: 2021-02-27T09:25:57.224Z
+- commits:
     - subject: Set default ASPM policy for photon-nano
       hash: 50db202be5a34f76c14d31a9a10f83089860346b
       body: ''
