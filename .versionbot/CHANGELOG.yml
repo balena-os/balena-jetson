@@ -1,4 +1,19 @@
 - commits:
+    - subject: Set default ASPM policy for photon-nano
+      hash: 50db202be5a34f76c14d31a9a10f83089860346b
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Set default ASPM policy for photon-nano
+        changelog-entry: Set default ASPM policy for photon-nano
+        Signed-off-by: Pelle van Gils <pelle@vangils.xyz>
+        signed-off-by: Pelle van Gils <pelle@vangils.xyz>
+      author: Pelle van Gils
+      nested: []
+  version: 2.69.1+rev3
+  date: 2021-02-26T09:00:40.193Z
+- commits:
     - subject: 'linux-tegra: Remove patches for device SRD3 that has been moved'
       hash: fbb9dc3a2fdfd8af30f174bf8680eb572b653937
       body: |

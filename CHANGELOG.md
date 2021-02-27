@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.69.1+rev3
+## (2021-02-26)
+
+* Set default ASPM policy for photon-nano [Pelle van Gils]
+
 # v2.69.1+rev2
 ## (2021-02-23)
 
