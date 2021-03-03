@@ -1,0 +1,9 @@
+{
+  "slug": "service",
+  "version": "1.0.0",
+  "type": "sw.image",
+  "data": {
+    "reboot-required": "0",
+    "store": "data"
+  }
+}
