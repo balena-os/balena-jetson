@@ -1,0 +1,17 @@
+{
+  "slug": "tegra-gpu",
+  "type": "sw.image.overlay",
+  "name": "Overlay to provide Tegra GPU support",
+  "version": "1.0.0",
+  "requires": [
+    {
+      "anyOf": [
+        { "type": "hw.device-type", "slug": "jetson-tx2" },
+        { "type": "hw.device-type", "slug": "jetson-nano" }
+      ],
+      "allOf": [
+        { "type": "sw.package", "slug": "tegra-libraries" }
+      ]
+    }
+  ]
+}
