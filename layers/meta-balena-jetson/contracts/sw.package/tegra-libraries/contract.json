@@ -1,0 +1,29 @@
+{
+  "slug": "tegra-libraries",
+  "type": "sw.package",
+  "name": "Package list that provides Tegra GPU support",
+  "version": "1.0.0",
+  "requires": {
+	  "allOf" : [
+		  { "type": "sw.os", "slug": "yocto", "externalVersion": "dunfell"},
+		  { "type": "sw.os", "slug": "balenaos", "externalVersion": "2.x"}
+	  ]
+  },
+  "composedOf": [
+	  { "type": "sw.package.yocto.ipk", "slug": "tegra-libraries"},
+	  { "type": "sw.package.yocto.ipk", "slug": "libglvnd"},
+	  { "type": "sw.package.yocto.ipk", "slug": "libtirpc"},
+	  { "type": "sw.package.yocto.ipk", "slug": "libcap"},
+	  { "type": "sw.package.yocto.ipk", "slug": "elfutils"},
+	  { "type": "sw.package.yocto.ipk", "slug": "libelf"},
+	  { "type": "sw.package.yocto.ipk", "slug": "tegra-libraries-argus"},
+	  { "type": "sw.package.yocto.ipk", "slug": "tegra-libraries-argus-daemon-base"},
+	  { "type": "sw.package.yocto.ipk", "slug": "tegra-libraries-container-csv"},
+	  { "type": "sw.package.yocto.ipk", "slug": "tegra-libraries-libnvosd"},
+	  { "type": "sw.package.yocto.ipk", "slug": "tegra-libraries-libv4l-plugins"},
+	  { "type": "sw.package.yocto.ipk", "slug": "libnvidia-container-tools"},
+	  { "type": "sw.package.yocto.ipk", "slug": "nvidia-container-toolkit"},
+	  { "type": "sw.package.yocto.ipk", "slug": "nvidia-container-runtime"},
+	  { "type": "sw.package.yocto.ipk", "slug": "go-runtime"}
+  ]
+}
