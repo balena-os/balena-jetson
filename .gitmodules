@@ -16,3 +16,6 @@
 [submodule "layers/meta-tegra"]
 	path = layers/meta-tegra
 	url = https://github.com/OE4T/meta-tegra.git
+[submodule "contracts"]
+	path = contracts
+	url = https://github.com/balena-os/balenaos-contracts.git
