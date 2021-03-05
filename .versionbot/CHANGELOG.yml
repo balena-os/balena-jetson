@@ -1,4 +1,30 @@
 - commits:
+    - subject: Introduce block images
+      hash: 1784b0ed06540eee22b3adb619382fcccb7d6980
+      body: >
+        A block is an app component that serves no function by itself. A block
+        is
+
+        formed of one or more images, which can be classified with:
+
+
+        * Store, its target storage.
+
+        * Class, the image type
+
+        * Reboot-required, whether it requires a reboot to be activated
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Introduce block images
+        changelog-entry: Introduce block images
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.69.1+rev5
+  date: 2021-03-05T12:00:53.102Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.10.1
       hash: afba88eadc5b0d11d4bf356a59c63da9b1b3f67b
       body: ''

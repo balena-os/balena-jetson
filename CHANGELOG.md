@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.69.1+rev5
+## (2021-03-05)
+
+* Introduce block images [Alex Gonzalez]
+
 # v2.69.1+rev4
 ## (2021-02-27)
 
