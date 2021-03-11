@@ -1,14 +1,14 @@
-IMAGE_FSTYPES_append = " resinos-img"
+IMAGE_FSTYPES_append = " balenaos-img"
 
-do_rootfs_resinos-img_jetson-nano[depends] += " tegra210-flash:do_deploy \
+do_rootfs_balenaos-img_jetson-nano[depends] += " tegra210-flash:do_deploy \
                                                 virtual/kernel:do_deploy \
 "
 
-do_rootfs_resinos-img_jetson-nano-emmc[depends] += " tegra210-flash:do_deploy \
+do_rootfs_balenaos-img_jetson-nano-emmc[depends] += " tegra210-flash:do_deploy \
                                                 virtual/kernel:do_deploy \
 "
 
-do_rootfs_resinos-img_jetson-nano-2gb-devkit[depends] += " tegra210-flash:do_deploy \
+do_rootfs_balenaos-img_jetson-nano-2gb-devkit[depends] += " tegra210-flash:do_deploy \
                                                 virtual/kernel:do_deploy \
 "
 
@@ -24,7 +24,7 @@ DTBNAME_jetson-xavier="tegra194-p2888-0001-p2822-0000"
 DTBNAME_nru120s-xavier="NRU120-32-4-3"
 
 # Name update files as partition names for easier updating
-RESIN_BOOT_PARTITION_FILES_jetson-nano = " \
+BALENA_BOOT_PARTITION_FILES_jetson-nano = " \
     bootfiles/nvtboot_cpu.bin.encrypt:/bootfiles/TBC \
     bootfiles/${DTBFILE}.encrypt:/bootfiles/RP1 \
     bootfiles/cboot.bin.encrypt:/bootfiles/EBT \
@@ -38,13 +38,13 @@ RESIN_BOOT_PARTITION_FILES_jetson-nano = " \
     bootfiles/bmp.blob:/bootfiles/BMP \
 "
 
-RESIN_BOOT_PARTITION_FILES_jetson-nano-emmc = "${RESIN_BOOT_PARTITION_FILES_jetson-nano}"
-RESIN_BOOT_PARTITION_FILES_jetson-nano-2gb-devkit = "${RESIN_BOOT_PARTITION_FILES_jetson-nano}"
+BALENA_BOOT_PARTITION_FILES_jetson-nano-emmc = "${BALENA_BOOT_PARTITION_FILES_jetson-nano}"
+BALENA_BOOT_PARTITION_FILES_jetson-nano-2gb-devkit = "${BALENA_BOOT_PARTITION_FILES_jetson-nano}"
 
 
-do_rootfs_resinos-img_jetson-xavier[depends] += " tegra194-flash-dry:do_deploy "
+do_rootfs_balenaos-img_jetson-xavier[depends] += " tegra194-flash-dry:do_deploy "
 
-RESIN_BOOT_PARTITION_FILES_jetson-xavier = " \
+BALENA_BOOT_PARTITION_FILES_jetson-xavier = " \
     bootfiles/mb1_t194_prod_sigheader.bin.encrypt:/bootfiles/mb1_t194_prod_sigheader.bin.encrypt \
     bootfiles/spe_t194_sigheader.bin.encrypt:/bootfiles/spe_t194_sigheader.bin.encrypt \
     bootfiles/nvtboot_t194_sigheader.bin.encrypt:/bootfiles/nvtboot_t194_sigheader.bin.encrypt \
@@ -69,31 +69,31 @@ RESIN_BOOT_PARTITION_FILES_jetson-xavier = " \
     tegra-binaries/partition_specification194.txt:/bootfiles/partition_specification194.txt \
 "
 
-do_rootfs_resinos-img_jetson-tx2[depends] += " tegra186-flash-dry:do_deploy \
+do_rootfs_balenaos-img_jetson-tx2[depends] += " tegra186-flash-dry:do_deploy \
                                                virtual/kernel:do_deploy \
 "
 
-RESIN_BOOT_PARTITION_FILES_jetson-tx2 = " \
+BALENA_BOOT_PARTITION_FILES_jetson-tx2 = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
-RESIN_BOOT_PARTITION_FILES_jetson-xavier-nx-devkit-emmc = " \
+BALENA_BOOT_PARTITION_FILES_jetson-xavier-nx-devkit-emmc = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
-RESIN_BOOT_PARTITION_FILES_jetson-xavier-nx-devkit = " \
+BALENA_BOOT_PARTITION_FILES_jetson-xavier-nx-devkit = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
 # Keep these in boot also, for a plain u-boot
 # to boot a flasher image.
-RESIN_BOOT_PARTITION_FILES_jetson-tx1 = " \
+BALENA_BOOT_PARTITION_FILES_jetson-tx1 = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
-do_rootfs_resinos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy "
-do_rootfs_resinos-img_jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard-flash:do_deploy "
+do_rootfs_balenaos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy "
+do_rootfs_balenaos-img_jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard-flash:do_deploy "
 
 # The space resinOS takes will amount to 1GiB
 IMAGE_ROOTFS_SIZE = "487424"
@@ -103,14 +103,14 @@ IMAGE_ROOTFS_SIZE_jetson-xavier-nx-devkit-emmc = "733184"
 IMAGE_ROOTFS_SIZE_jetson-xavier-nx-devkit = "733184"
 
 # Need space for all the above signed update binaries
-RESIN_BOOT_SIZE_jetson-nano = "80960"
-RESIN_BOOT_SIZE_jetson-nano-2gb-devkit = "80960"
-RESIN_BOOT_SIZE_jetson-nano-emmc = "80960"
-RESIN_BOOT_SIZE_jetson-xavier = "121440"
-RESIN_BOOT_SIZE_jetson-xavier-nx-devkit-emmc = "121440"
-RESIN_BOOT_SIZE_jetson-xavier-nx-devkit = "121440"
-RESIN_BOOT_SIZE_jetson-tx2="80960"
-RESIN_BOOT_SIZE_jetson-tx1="80960"
+BALENA_BOOT_SIZE_jetson-nano = "80960"
+BALENA_BOOT_SIZE_jetson-nano-2gb-devkit = "80960"
+BALENA_BOOT_SIZE_jetson-nano-emmc = "80960"
+BALENA_BOOT_SIZE_jetson-xavier = "121440"
+BALENA_BOOT_SIZE_jetson-xavier-nx-devkit-emmc = "121440"
+BALENA_BOOT_SIZE_jetson-xavier-nx-devkit = "121440"
+BALENA_BOOT_SIZE_jetson-tx2="80960"
+BALENA_BOOT_SIZE_jetson-tx1="80960"
 
 PARTITION_TABLE_TYPE = "gpt"
 

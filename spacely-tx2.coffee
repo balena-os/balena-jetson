@@ -37,10 +37,10 @@ module.exports =
 
 	yocto:
 		machine: 'spacely-tx2'
-		image: 'resin-image-flasher'
-		fstype: 'resinos-img'
+		image: 'balena-image-flasher'
+		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'resin-image-flasher-spacely-tx2.resinos-img'
+		deployArtifact: 'balena-image-flasher-spacely-tx2.balenaos-img'
 		compressed: true
 
 	options: [ networkOptions.group ]

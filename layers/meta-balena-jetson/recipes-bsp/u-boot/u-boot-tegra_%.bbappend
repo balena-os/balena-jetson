@@ -13,12 +13,12 @@ LIC_FILES_CHKSUM = "\
     file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025 \
 "
 
-RESIN_BOOT_PART_jetson-nano = "0xC"
-RESIN_DEFAULT_ROOT_PART_jetson-nano = "0xD"
-RESIN_BOOT_PART_jetson-nano-emmc = "0xC"
-RESIN_DEFAULT_ROOT_PART_jetson-nano-emmc = "0xD"
-RESIN_BOOT_PART_jetson-nano-2gb-devkit = "0xE"
-RESIN_DEFAULT_ROOT_PART_jetson-nano-2gb-devkit = "0xF"
+BALENA_BOOT_PART_jetson-nano = "0xC"
+BALENA_DEFAULT_ROOT_PART_jetson-nano = "0xD"
+BALENA_BOOT_PART_jetson-nano-emmc = "0xC"
+BALENA_DEFAULT_ROOT_PART_jetson-nano-emmc = "0xD"
+BALENA_BOOT_PART_jetson-nano-2gb-devkit = "0xE"
+BALENA_DEFAULT_ROOT_PART_jetson-nano-2gb-devkit = "0xF"
 TEGRA_BOARD_FDT_FILE_jetson-nano-emmc="tegra210-p3448-0002-p3449-0000-b00.dtb"
 TEGRA_BOARD_FDT_FILE_jetson-nano="tegra210-p3448-0000-p3449-0000-b00.dtb"
 TEGRA_BOARD_FDT_FILE_jetson-nano-2gb-devkit = "tegra210-p3448-0003-p3542-0000.dtb"
@@ -66,16 +66,16 @@ SRC_URI_append_jetson-nano-2gb-devkit = " \
 "
 
 # In l4t 28.2 below partitions were 0xC and 0xD
-RESIN_BOOT_PART_jetson-tx2 = "0x18"
-RESIN_DEFAULT_ROOT_PART_jetson-tx2 = "0x19"
+BALENA_BOOT_PART_jetson-tx2 = "0x18"
+BALENA_DEFAULT_ROOT_PART_jetson-tx2 = "0x19"
 
 SRC_URI_append_jetson-tx2 = " \
     file://Add-part-index-command.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
 "
 
-RESIN_BOOT_PART_jetson-tx1 = "0xB"
-RESIN_DEFAULT_ROOT_PART_jetson-tx1 = "0xC"
+BALENA_BOOT_PART_jetson-tx1 = "0xB"
+BALENA_DEFAULT_ROOT_PART_jetson-tx1 = "0xC"
 
 # Needs further investigation as per
 # https://github.com/balena-os/balena-jetson/issues/90
