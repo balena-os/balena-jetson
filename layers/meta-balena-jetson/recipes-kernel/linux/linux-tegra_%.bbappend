@@ -70,13 +70,13 @@ SRC_URI_append_photon-xavier-nx = " \
 
 TEGRA_INITRAMFS_INITRD = "0"
 
-RESIN_CONFIGS_append = " tegra-wdt-t21x debug_kmemleak "
+BALENA_CONFIGS_append = " tegra-wdt-t21x debug_kmemleak "
 
-RESIN_CONFIGS[tegra-wdt-t21x] = " \
+BALENA_CONFIGS[tegra-wdt-t21x] = " \
     CONFIG_TEGRA21X_WATCHDOG=m \
 "
 
-RESIN_CONFIGS[debug_kmemleak] = " \
+BALENA_CONFIGS[debug_kmemleak] = " \
     CONFIG_HAVE_DEBUG_KMEMLEAK=n \
     CONFIG_DEBUG_KMEMLEAK=n \
     CONFIG_HAVE_DEBUG_KMEMLEAK=n \
@@ -85,31 +85,31 @@ RESIN_CONFIGS[debug_kmemleak] = " \
 "
 
 # These should be for all boards that come from tx2
-RESIN_CONFIGS_append_jetson-tx2 = " tpg eqos_disable_eee"
-RESIN_CONFIGS[tpg] = " \
+BALENA_CONFIGS_append_jetson-tx2 = " tpg eqos_disable_eee"
+BALENA_CONFIGS[tpg] = " \
                 CONFIG_VIDEO_TEGRA_VI_TPG=m \
 "
 
 # Fixes reported ethernet issues
 # See: elinux.org/Jetson/FAQ/BSP
-RESIN_CONFIGS[eqos_disable_eee] = " \
+BALENA_CONFIGS[eqos_disable_eee] = " \
                 CONFIG_EQOS_DISABLE_EEE=y \
 "
 
-RESIN_CONFIGS_append_jetson-tx1 = " compat"
-RESIN_CONFIGS_append_jetson-tx2 = " compat"
-RESIN_CONFIGS[compat] = " \
+BALENA_CONFIGS_append_jetson-tx1 = " compat"
+BALENA_CONFIGS_append_jetson-tx2 = " compat"
+BALENA_CONFIGS[compat] = " \
                 CONFIG_COMPAT=y \
 "
 
-RESIN_CONFIGS_remove_jetson-tx1 = " brcmfmac"
-RESIN_CONFIGS_append_jetson-tx2 = " uvc"
-RESIN_CONFIGS[uvc] = " \
+BALENA_CONFIGS_remove_jetson-tx1 = " brcmfmac"
+BALENA_CONFIGS_append_jetson-tx2 = " uvc"
+BALENA_CONFIGS[uvc] = " \
                 CONFIG_USB_VIDEO_CLASS=m \
                 CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV=y \
 "
 
-RESIN_CONFIGS_DEPS[uvc] = " \
+BALENA_CONFIGS_DEPS[uvc] = " \
                 CONFIG_MEDIA_CAMERA_SUPPORT=y \
                 CONFIG_VIDEO_V4L2_SUBDEV_API=y \
                 CONFIG_VIDEO_V4L2=m \
@@ -122,38 +122,38 @@ RESIN_CONFIGS_DEPS[uvc] = " \
                 CONFIG_SND_USB_AUDIO=m \
 "
 
-RESIN_CONFIGS_append_jetson-tx2 = " egalax"
-RESIN_CONFIGS[egalax] = " \
+BALENA_CONFIGS_append_jetson-tx2 = " egalax"
+BALENA_CONFIGS[egalax] = " \
                 CONFIG_TOUCHSCREEN_EGALAX=m \
 "
 
-RESIN_CONFIGS_append_jetson-tx2 = " serial"
-RESIN_CONFIGS[serial] = " \
+BALENA_CONFIGS_append_jetson-tx2 = " serial"
+BALENA_CONFIGS[serial] = " \
                 CONFIG_USB_SERIAL_GENERIC=y \
 "
 
-RESIN_CONFIGS_append_jetson-tx2 = " spi"
-RESIN_CONFIGS[spi] = " \
+BALENA_CONFIGS_append_jetson-tx2 = " spi"
+BALENA_CONFIGS[spi] = " \
                 CONFIG_SPI=y \
                 CONFIG_SPI_MASTER=y \
                 CONFIG_SPI_SPIDEV=m \
 "
-RESIN_CONFIGS_DEPS[spi] = " \
+BALENA_CONFIGS_DEPS[spi] = " \
                 CONFIG_QSPI_TEGRA186=y \
                 CONFIG_SPI_TEGRA144=y \
 "
 
-RESIN_CONFIGS_append_jetson-tx2 = " gamepad"
-RESIN_CONFIGS[gamepad] = " \
+BALENA_CONFIGS_append_jetson-tx2 = " gamepad"
+BALENA_CONFIGS[gamepad] = " \
                 CONFIG_JOYSTICK_XPAD=m \
 "
-RESIN_CONFIGS_DEPS[gamepad] = " \
+BALENA_CONFIGS_DEPS[gamepad] = " \
                 CONFIG_INPUT_JOYSTICK=y \
                 CONFIG_USB_ARCH_HAS_HCD=y \
 "
 
-RESIN_CONFIGS_append_jetson-tx2 = " can"
-RESIN_CONFIGS[can] = " \
+BALENA_CONFIGS_append_jetson-tx2 = " can"
+BALENA_CONFIGS[can] = " \
                 CONFIG_CAN=m \
                 CONFIG_CAN_RAW=m \
                 CONFIG_CAN_DEV=m \
@@ -161,59 +161,59 @@ RESIN_CONFIGS[can] = " \
                 CONFIG_MTTCAN_IVC=m \
 "
 
-RESIN_CONFIGS[d3_hdr] = " \
+BALENA_CONFIGS[d3_hdr] = " \
 	CONFIG_D3_IMX390_HDR_ENABLE=y \
 "
 
-RESIN_CONFIGS_append_jetson-tx2 = " gasket"
-RESIN_CONFIGS[gasket] = " \
+BALENA_CONFIGS_append_jetson-tx2 = " gasket"
+BALENA_CONFIGS[gasket] = " \
         CONFIG_STAGING_GASKET_FRAMEWORK=m \
         CONFIG_STAGING_APEX_DRIVER=m \
 "
 
-RESIN_CONFIGS_append_jetson-nano = " gasket"
-RESIN_CONFIGS_append_jetson-nano-emmc = " gasket"
+BALENA_CONFIGS_append_jetson-nano = " gasket"
+BALENA_CONFIGS_append_jetson-nano-emmc = " gasket"
 
-RESIN_CONFIGS_append_photon-nano = " tlc591xx"
-RESIN_CONFIGS_append_photon-xavier-nx = " tlc591xx"
-RESIN_CONFIGS[tlc591xx] = " \
+BALENA_CONFIGS_append_photon-nano = " tlc591xx"
+BALENA_CONFIGS_append_photon-xavier-nx = " tlc591xx"
+BALENA_CONFIGS[tlc591xx] = " \
                 CONFIG_LEDS_TLC591XX=m \
 "
 
-RESIN_CONFIGS_append_photon-nano = " cdc-wdm"
-RESIN_CONFIGS_append_photon-xavier-nx = " cdc-wdm"
-RESIN_CONFIGS[cdc-wdm] = " \
+BALENA_CONFIGS_append_photon-nano = " cdc-wdm"
+BALENA_CONFIGS_append_photon-xavier-nx = " cdc-wdm"
+BALENA_CONFIGS[cdc-wdm] = " \
                 CONFIG_USB_WDM=m \
 "
 
-RESIN_CONFIGS_append_photon-nano = " sierra-net"
-RESIN_CONFIGS_append_photon-xavier-nx = " sierra-net"
-RESIN_CONFIGS[sierra-net] = " \
+BALENA_CONFIGS_append_photon-nano = " sierra-net"
+BALENA_CONFIGS_append_photon-xavier-nx = " sierra-net"
+BALENA_CONFIGS[sierra-net] = " \
                 CONFIG_USB_SIERRA_NET=m \
 "
 
-RESIN_CONFIGS_DEPS[sierra-net] = " \
+BALENA_CONFIGS_DEPS[sierra-net] = " \
                 CONFIG_USB_USBNET=m \
 "
 
-RESIN_CONFIGS_append_photon-nano = " cdc-ncm"
-RESIN_CONFIGS_append_photon-xavier-nx = " cdc-ncm"
-RESIN_CONFIGS[cdc-ncm] = " \
+BALENA_CONFIGS_append_photon-nano = " cdc-ncm"
+BALENA_CONFIGS_append_photon-xavier-nx = " cdc-ncm"
+BALENA_CONFIGS[cdc-ncm] = " \
                 CONFIG_USB_NET_CDC_NCM=m \
 "
 
-RESIN_CONFIGS_DEPS[cdc-ncm] = " \
+BALENA_CONFIGS_DEPS[cdc-ncm] = " \
                 CONFIG_USB_USBNET=m \
 "
 
-RESIN_CONFIGS_append_photon-nano = " mii"
-RESIN_CONFIGS_append_photon-xavier-nx = " mii"
-RESIN_CONFIGS[mii] = " \
+BALENA_CONFIGS_append_photon-nano = " mii"
+BALENA_CONFIGS_append_photon-xavier-nx = " mii"
+BALENA_CONFIGS[mii] = " \
                 CONFIG_MII=m \
 "
 
-RESIN_CONFIGS_append = " cfginput"
-RESIN_CONFIGS[cfginput] = " \
+BALENA_CONFIGS_append = " cfginput"
+BALENA_CONFIGS[cfginput] = " \
 		CONFIG_INPUT_LEDS=m \
 		CONFIG_FF_MEMLESS=m \
 		CONFIG_INPUT_MOUSEDEV=m \
@@ -222,8 +222,8 @@ RESIN_CONFIGS[cfginput] = " \
 		CONFIG_INPUT_KEYCHORD=m \
 "
 
-RESIN_CONFIGS_append_jetson-xavier-nx-devkit = " rtl8822ce "
-RESIN_CONFIGS[rtl8822ce] = " \
+BALENA_CONFIGS_append_jetson-xavier-nx-devkit = " rtl8822ce "
+BALENA_CONFIGS[rtl8822ce] = " \
 		CONFIG_RTL8822CE=m \
 		CONFIG_RTK_BTUSB=m \
 "
@@ -231,14 +231,14 @@ RESIN_CONFIGS[rtl8822ce] = " \
 # Switch nfs and backlight drivers as modules
 # to shrink down the kernel image size starting
 # with BalenaOS 2.65.0
-RESIN_CONFIGS_append = " nfsfs backlight "
-RESIN_CONFIGS[nfsfs] = " \
+BALENA_CONFIGS_append = " nfsfs backlight "
+BALENA_CONFIGS[nfsfs] = " \
     CONFIG_NFS_FS=m \
     CONFIG_NFS_V2=m \
     CONFIG_NFS_V3=m \
 "
 
-RESIN_CONFIGS[backlight] = " \
+BALENA_CONFIGS[backlight] = " \
     CONFIG_BACKLIGHT_PWM=m \
     CONFIG_BACKLIGHT_LP855X=m \
     CONFIG_BACKLIGHT_CLASS_DEVICE=m \

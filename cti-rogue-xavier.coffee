@@ -28,10 +28,10 @@ module.exports =
 
 	yocto:
 		machine: 'cti-rogue-xavier'
-		image: 'resin-image'
-		fstype: 'resinos-img'
+		image: 'balena-image'
+		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'resin-image-cti-rogue-xavier.resinos-img'
+		deployArtifact: 'balena-image-cti-rogue-xavier.balenaos-img'
 		compressed: true
 
 	options: [ networkOptions.group ]

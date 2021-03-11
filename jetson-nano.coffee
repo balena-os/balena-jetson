@@ -27,10 +27,10 @@ module.exports =
 
 	yocto:
 		machine: 'jetson-nano'
-		image: 'resin-image'
-		fstype: 'resinos-img'
+		image: 'balena-image'
+		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'resin-image-jetson-nano.resinos-img'
+		deployArtifact: 'balena-image-jetson-nano.balenaos-img'
 		compressed: true
 
 	options: [ networkOptions.group ]
