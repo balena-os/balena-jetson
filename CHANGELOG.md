@@ -1,6 +1,91 @@
 Change log
 -----------
 
+# v2.72.0+rev1
+## (2021-03-11)
+
+* Rename resin image types to balena [Kyle Harding]
+
+<details>
+<summary> Update meta-balena from v2.69.1 to v2.72.0 [Kyle Harding] </summary>
+
+> ## meta-balena-2.72.0
+> ### (2021-03-10)
+> 
+> 
+> <details>
+> <summary> os-config: Update os-config from v1.1.4 to v1.2.0 [Kyle Harding] </summary>
+> 
+>> ### os-config-1.2.0
+>> #### (2021-02-23)
+>> 
+>> * os-config: rename flasher flag path [Kyle Harding]
+>> 
+> </details>
+> 
+> * Rename resin image types to balena [Kyle Harding]
+> 
+> ## meta-balena-2.71.7
+> ### (2021-03-08)
+> 
+> * Apply aufs patches if aufs is present in kernel config [Kyle Harding]
+> 
+> ## meta-balena-2.71.6
+> ### (2021-03-05)
+> 
+> * grub-efi: build required modules into grub image [Joseph Kogut]
+> 
+> ## meta-balena-2.71.5
+> ### (2021-03-03)
+> 
+> * initrdscripts: always use by-uuid symlink looking for flasher rootfs [Michal Toman]
+> 
+> ## meta-balena-2.71.4
+> ### (2021-03-01)
+> 
+> * Update OS test suite [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.71.3
+> ### (2021-02-26)
+> 
+> * balena: Make the healthcheck loading service part of balena.service [Robert Günzler]
+> 
+> ## meta-balena-2.71.2
+> ### (2021-02-23)
+> 
+> * dnsmasq: enable dbus support [Kyle Harding]
+> * dnsmasq: update to 2.84 with dnspooq fix [Kyle Harding]
+> 
+> ## meta-balena-2.71.1
+> ### (2021-02-23)
+> 
+> * recipes-bsp: grub: install only release modules [Joseph Kogut]
+> 
+> ## meta-balena-2.71.0
+> ### (2021-02-15)
+> 
+> * meta-balena-common: add grub-efi support [Joseph Kogut]
+> 
+> ## meta-balena-2.70.2
+> ### (2021-02-12)
+> 
+> * Update PR template to specify test coverage in more detail [Alex Gonzalez]
+> * Update codeowners [Alex Gonzalez]
+> 
+> ## meta-balena-2.70.1
+> ### (2021-02-11)
+> 
+> * Add leviathan automated OS test suite [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.70.0
+> ### (2021-02-11)
+> 
+> * systemd/timeinit: use systemd mount unit for /etc/fake-hwclock [Mark Corbin]
+> 
+</details>
+
+* Update balena-yocto-scripts from v1.10.1 to v1.11.0 [Kyle Harding]
+
 # v2.69.1+rev4
 ## (2021-02-27)
 

@@ -1,4 +1,383 @@
 - commits:
+    - subject: Rename resin image types to balena
+      hash: 6484e83cf7ed7fc52dea659854107859f95cab7e
+      body: |
+        Rename resin image types to balena and replace RESIN_ env vars
+      footer:
+        Changelog-entry: Rename resin image types to balena
+        changelog-entry: Rename resin image types to balena
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Update meta-balena from v2.69.1 to v2.72.0
+      hash: 0c1791dce4b2be421e8bb0394b2b4cddbed51779
+      body: |
+        Update meta-balena from 2.69.1 to 2.72.0
+      footer:
+        Changelog-entry: Update meta-balena from v2.69.1 to v2.72.0
+        changelog-entry: Update meta-balena from v2.69.1 to v2.72.0
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested:
+        - commits:
+            - subject: 'os-config: Update os-config from v1.1.4 to v1.2.0'
+              hash: 76bae0c1e32d82b0371d99094965538a05fa3387
+              body: |
+                Update os-config from 1.1.4 to 1.2.0
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested:
+                - commits:
+                    - subject: 'os-config: rename flasher flag path'
+                      hash: 3622cc8cdf38f42c1f38fb6d5c67dde16631d6f0
+                      body: >
+                        As part of a full rename away from legacy resin
+                        namespaces the
+
+                        following os-config compatibility changes are required
+                        to align
+
+                        with meta-balena changes.
+
+
+                        - rename resin-image-flasher to balena-image-flasher
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Connects-to: 'https://github.com/balena-os/meta-balena/pull/2118'
+                        connects-to: 'https://github.com/balena-os/meta-balena/pull/2118'
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                  version: os-config-1.2.0
+                  date: 2021-02-23T20:19:36.114Z
+            - subject: Rename resin image types to balena
+              hash: 057621ad646f1958328c688994ef7f6fb48b9012
+              body: |
+                As part of a full rename away from legacy resin namespaces the
+                following components have been renamed:
+
+                - resinos-img -> balenaos-img
+                - image_types_resin -> image_types_balena
+                - image-resin -> image-balena
+                - resin-image -> balena-image
+                - resin-image-flasher -> balena-image-flasher
+                - resin-image-initramfs -> balena-image-initramfs
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Rename resin image types to balena
+                changelog-entry: Rename resin image types to balena
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.72.0
+          date: 2021-03-10T20:00:01.558Z
+        - commits:
+            - subject: Apply aufs patches if aufs is present in kernel config
+              hash: 8094dc7a3a36cfc4f1c0da5be66dc666e29b7dbe
+              body: >
+                Allow installing and patching aufs even if BALENA_STORAGE is
+                overlay2
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Apply aufs patches if aufs is present in kernel config
+                changelog-entry: Apply aufs patches if aufs is present in kernel config
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.71.7
+          date: 2021-03-08T13:49:52.854Z
+        - commits:
+            - subject: 'grub-efi: build required modules into grub image'
+              hash: 5e1004d6753025166c40b11af117e008feb875f1
+              body: >
+                grub-efi requires modules to be installed in the boot partition,
+                and
+
+                resin-image installs them from ${DEPLOYDIR}.
+
+
+                A normal grub installation installs those modules to
+                ${PREFIX}/${libdir}
+
+                to allow grub tooling to install them at runtime, but we're
+                building the
+
+                image with GRUB baked in, so we don't need those in the sysroot.
+
+
+                The first iteration of this bbappend attempted to solve these
+
+                constraints by copying the modules from ${D}/${libdir}/grub/ to
+
+                ${DEPLOYDIR} in do_deploy(), then removing ${D}${prefix}. This
+                had the
+
+                unfortunate side effect of breaking the build in certain cases,
+                such as
+
+                clean builds or reexecuting do_deploy() without the other steps
+                of the
+
+                build.
+
+
+                Instead, remove the unwanted files in do_install(), and append
+                the
+
+                required modules to GRUB_BUILDIN to create a standalone grub
+                image
+
+                without any external modules at all.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.71.6
+          date: 2021-03-05T22:03:28.222Z
+        - commits:
+            - subject: >-
+                initrdscripts: always use by-uuid symlink looking for flasher
+                rootfs
+              hash: d16ad58f6efe76c9313226735de88648e54d2420
+              body: >
+                If the device with flasher rootfs is slow to bring up and rootfs
+                is defined
+
+                as UUID=xxx the waiting loop in rootfs initrd script would
+                assume UUIDs have
+
+                just been regenerated and wait for a by-state symlink instead.
+                This only works
+
+                for the OS - flasher does not use the dynamically generated
+                UUIDs
+
+                therefore we always want to use the by-uuid link for it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.71.5
+          date: 2021-03-03T19:17:32.016Z
+        - commits:
+            - subject: Update OS test suite
+              hash: 6c82ffb23c05e334ae2157c8e6c0f3e197467d2f
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.71.4
+          date: 2021-03-01T11:03:02.277Z
+        - commits:
+            - subject: >-
+                balena: Make the healthcheck loading service part of
+                balena.service
+              hash: c26f2d203a87d1578d9d52d5bbd8b0b18869916e
+              body: >
+                This prevents issues with the health check when the image is
+                manually
+
+                removed.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Connects-to: 'https://github.com/balena-os/meta-balena/issues/2010'
+                connects-to: 'https://github.com/balena-os/meta-balena/issues/2010'
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.71.3
+          date: 2021-02-26T12:34:11.073Z
+        - commits:
+            - subject: 'dnsmasq: enable dbus support'
+              hash: 372980ca6aa6bd2793ac856c303c3b3ac4eeffdb
+              body: >
+                This config option is disabled by default in the upstream
+                package
+
+                so I'm including the change here as a separate commit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'dnsmasq: update to 2.84 with dnspooq fix'
+              hash: 3afbe8dfbbaf9f73a09048e0350622535befa0a8
+              body: >
+                https://github.com/balena-os/meta-balena/issues/2099
+
+
+                Copy dnsmasq 2.84 recipe and files from this upstream patch:
+
+
+                http://cgit.openembedded.org/meta-openembedded/commit/meta-networking/recipes-support/dnsmasq?id=3e28a31bb479f292b9a052a3d2eee84c49319ee3
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.71.2
+          date: 2021-02-23T19:57:37.313Z
+        - commits:
+            - subject: 'recipes-bsp: grub: install only release modules'
+              hash: 78a8049218d8ce3a9172b7fca6fe00270544e7f1
+              body: >
+                GRUB builds modules with both debug and release variants, with
+                *.module
+
+                and *.mod extensions respectively.
+
+
+                Install only the release modules in do_deploy() to avoid
+                balooning the
+
+                size of the boot partition.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.71.1
+          date: 2021-02-23T17:59:51.133Z
+        - commits:
+            - subject: 'meta-balena-common: add grub-efi support'
+              hash: 3bfbd05d81d59c82fb131117700325416fb152cb
+              body: >
+                Use upstream grub and grub-efi recipes with a new grub-conf
+                recipe
+
+                employing a config template.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.71.0
+          date: 2021-02-15T17:58:51.450Z
+        - commits:
+            - subject: Update PR template to specify test coverage in more detail
+              hash: ce0bb95e1d045ef32c377d4fc9de959c6ebbfd88
+              body: >
+                All PRs should include details about test coverage, including
+                whether the
+
+                tests are automated on manually recorded.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Update codeowners
+              hash: a00b54679aa6804f6a5c9fa75826764cf21c5c2e
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.70.2
+          date: 2021-02-12T09:31:46.288Z
+        - commits:
+            - subject: Add leviathan automated OS test suite
+              hash: 3f6d7588874721c506a70f66603d2b153f9a6fcf
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.70.1
+          date: 2021-02-11T16:18:58.778Z
+        - commits:
+            - subject: 'systemd/timeinit: use systemd mount unit for /etc/fake-hwclock'
+              hash: 7d6ec3d411af78b9b1f979b90461e9efb059e4e7
+              body: >
+                Replace the 'bind-etc-fake-hwclock.service' with a systemd mount
+
+                unit (etc-fake\x2dhwclock.mount).
+
+
+                Using a systemd service to bind mount the /etc/fake-hwclock
+                directory
+
+                results in systemd generating an internal mount unit for the
+                same
+
+                directory. This causes problems at shutdown when both methods
+                try to
+
+                unmount the directory. This frequently leads to the directory
+                being
+
+                unmounted before the fake-hwclock service has managed to save
+                the
+
+                system time. This results in an inaccurate fake-hwclock time
+
+                at next boot and corruption of the journal log.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Connects-to: '#1919 #2107'
+                connects-to: '#1919 #2107'
+                Changelog-entry: 'systemd/timeinit: use systemd mount unit for /etc/fake-hwclock'
+                changelog-entry: 'systemd/timeinit: use systemd mount unit for /etc/fake-hwclock'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.70.0
+          date: 2021-02-11T10:02:08.246Z
+    - subject: Update balena-yocto-scripts from v1.10.1 to v1.11.0
+      hash: bb156a5b577c937b671e90f4aa217f9cff306e35
+      body: |
+        Update balena-yocto-scripts from 1.10.1 to 1.11.0
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.10.1 to v1.11.0
+        changelog-entry: Update balena-yocto-scripts from v1.10.1 to v1.11.0
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.72.0+rev1
+  date: 2021-03-11T20:15:47.083Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.10.1
       hash: afba88eadc5b0d11d4bf356a59c63da9b1b3f67b
       body: ''
