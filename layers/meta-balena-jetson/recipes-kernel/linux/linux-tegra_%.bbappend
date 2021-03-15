@@ -26,6 +26,7 @@ SRC_URI_append_jetson-tx2 = " \
     file://tegra186-tx2-aetina-n310-p3489-0888-a00-00-base.dtb \
     file://tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb \
     file://tegra186-tx2-blackboard.dtb \
+    file://tegra186-tx2-6.dtb \
     file://realsense_powerlinefrequency_control_fix_linux-yocto_4.4.patch \
     file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
@@ -297,6 +298,10 @@ FILES_${KERNEL_PACKAGE_NAME}-image_append = "/boot/extlinux/extlinux.conf /boot/
 
 do_deploy_append_spacely-tx2() {
    cp ${WORKDIR}/tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_jetson-tx2() {
+   cp ${WORKDIR}/tegra186-tx2-6.dtb "${DEPLOYDIR}"
 }
 
 do_deploy_append_orbitty-tx2() {
