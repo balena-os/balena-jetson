@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.1+rev2
+## (2021-04-02)
+
+* packagegroups: Add Ath10k and qca firmwares for TX2 [Alexandru Costache]
+
 # v2.73.1+rev1
 ## (2021-03-23)
 

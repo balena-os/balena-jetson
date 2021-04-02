@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'packagegroups: Add Ath10k and qca firmwares for TX2'
+      hash: 832bccaf0c7831776ce9a548b0f06e665889504f
+      body: |
+        We add these in the device repository since
+        these are needed for the TX2 only and we don't
+        want to take up space on devices where these
+        aren't necessary.
+      footer:
+        Changelog-entry: 'packagegroups: Add Ath10k and qca firmwares for TX2'
+        changelog-entry: 'packagegroups: Add Ath10k and qca firmwares for TX2'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.73.1+rev2
+  date: 2021-04-02T07:36:22.079Z
+- commits:
     - subject: Update meta-balena from v2.72.0 to 2.73.1
       hash: fa536e610ca65b003f06847107711452e106d0b1
       body: |
