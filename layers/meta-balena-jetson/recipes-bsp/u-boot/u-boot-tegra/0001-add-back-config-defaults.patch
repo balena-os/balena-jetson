@@ -3,6 +3,8 @@ From: Alexandru Costache <alexandru@balena.io>
 Date: Fri, 8 Jan 2021 15:02:31 +0100
 Subject: [PATCH] add back config defaults
 
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  include/config_defaults.h | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
