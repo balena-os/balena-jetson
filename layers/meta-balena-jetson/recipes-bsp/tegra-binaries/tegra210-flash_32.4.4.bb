@@ -33,7 +33,7 @@ FLASH_XML = "resinOS-flash210${VARIANT}.xml"
 # kernel build, this is why we need to specify
 # them here instead of machine.conf.
 KERNEL_DEVICETREE_jetson-nano = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0000-p3449-0000-b00.dtb"
-KERNEL_DEVICETREE_jetson-nano-emmc = "${DEPLOY_DIR_IMAGE}//tegra210-p3448-0002-p3449-0000-b00.dtb"
+KERNEL_DEVICETREE_jetson-nano-emmc = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00.dtb"
 KERNEL_DEVICETREE_jn30b-nano = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb"
 KERNEL_DEVICETREE_photon-nano = "${DEPLOY_DIR_IMAGE}/tegra210-nano-cti-NGX003.dtb"
 KERNEL_DEVICETREE_jetson-nano-2gb-devkit = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0003-p3542-0000.dtb"
