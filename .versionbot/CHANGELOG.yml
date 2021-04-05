@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'u-boot: Specify Floyd Nano dtb'
+      hash: e5e018be07d178234c0e46a33584dd3cbb1fc37d
+      body: ''
+      footer:
+        Changelog-entry: 'u-boot: Specify Floyd Nano dtb'
+        changelog-entry: 'u-boot: Specify Floyd Nano dtb'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.73.1+rev4
+  date: 2021-04-05T15:46:55.232Z
+- commits:
     - subject: 'floyd-nano: Add coffee file'
       hash: cccae8d894bde81f479860fa723072daacad31bd
       body: ''

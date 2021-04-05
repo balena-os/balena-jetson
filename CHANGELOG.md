@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.1+rev4
+## (2021-04-05)
+
+* u-boot: Specify Floyd Nano dtb [Alexandru Costache]
+
 # v2.73.1+rev3
 ## (2021-04-05)
 
