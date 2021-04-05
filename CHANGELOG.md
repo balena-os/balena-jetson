@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.1+rev5
+## (2021-04-05)
+
+* floyd-nano: Add icon for this DT [Alexandru Costache]
+
 # v2.73.1+rev4
 ## (2021-04-05)
 
