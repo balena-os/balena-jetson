@@ -1,0 +1,432 @@
+From 6956b49dc87885a73f0aeeb3eb16965e93e5262e Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Thu, 1 Apr 2021 15:34:35 +0200
+Subject: [PATCH 4/4] floyd-nano: Port patches from L4T 32.3.1 for this DT
+
+Author: Diamond Systems
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ drivers/mmc/core/sd.c                         | 32 +++++++++++
+ drivers/mmc/host/sdhci-tegra.c                |  3 +
+ drivers/tty/serial/serial-tegra.c             | 57 ++++++++++++++-----
+ include/linux/mmc/host.h                      |  1 +
+ .../tegra210-p2530-common.dtsi                |  2 +-
+ ...jetson-cv-power-fixed-p2180-p2597-a00.dtsi |  2 +-
+ ...0-jetson-e-power-fixed-p2530-0930-e03.dtsi |  2 +-
+ .../tegra210-porg-extcon-p3448-0000-a00.dtsi  |  7 ++-
+ .../tegra210-porg-pinmux-p3448-0000-b00.dtsi  |  6 +-
+ .../tegra210-porg-pinmux-p3448-0002-b00.dtsi  |  6 +-
+ ...gra210-porg-power-tree-p3448-0000-a00.dtsi |  2 +-
+ .../tegra210-porg-plugin-manager.dtsi         |  1 +
+ .../tegra210-porg-p3448-common.dtsi           | 24 ++++++--
+ .../tegra210-soc/tegra210-sdhci.dtsi          |  1 +
+ 14 files changed, 116 insertions(+), 30 deletions(-)
+
+diff --git a/drivers/mmc/core/sd.c b/drivers/mmc/core/sd.c
+index 7bbc741e8396..a187fcf21e2e 100644
+--- a/drivers/mmc/core/sd.c
++++ b/drivers/mmc/core/sd.c
+@@ -738,6 +738,7 @@ int mmc_sd_get_cid(struct mmc_host *host, u32 ocr, u32 *cid, u32 *rocr)
+ 	int err;
+ 	u32 max_current;
+ 	int retries = 10;
++	int fallback = 0;
+ 	u32 pocr = ocr;
+ 	if (host->ops->voltage_switch_req)
+ 		host->ops->voltage_switch_req(host, false);
+@@ -801,13 +802,44 @@ int mmc_sd_get_cid(struct mmc_host *host, u32 ocr, u32 *cid, u32 *rocr)
+ 			retries = 0;
+ 			goto try_again;
+ 		}
++	} else if (!fallback && (host->caps2 & MMC_CAP2_SLOT_REG_ALWAYS_ON)) {
++		/*
++		 * With slot regulator always-on, SW reset does not power cycle
++		 * the card. As a result, the card continues to stay in 1.8V
++		 * mode from previous init cycle and sends S18A=0 in response to
++		 * CMD8 even though it supports 1.8V signalling.
++		 * Skip CMD11, set rocr to support 1.8V for S18A=0 response from
++		 * the card if slot is fed from always-on supply and
++		 * continue with UHS mode init.
++		 * If S18A=0 response is due to an HS card plugin, all subsequent
++		 * commands at 1.8V will fail and the host controller enumerates
++		 * the card in HS mode in the next retry.
++		 */
++		err = __mmc_set_signal_voltage(host, MMC_SIGNAL_VOLTAGE_180);
++		if (!err) {
++			*rocr |= SD_ROCR_S18A;
++		}
++		fallback = 1;
++		retries = 5;
+ 	}
+ 
++
+ 	if (mmc_host_is_spi(host))
+ 		err = mmc_send_cid(host, cid);
+ 	else
+ 		err = mmc_all_send_cid(host, cid);
+ 
++	/* If immediate command after mandatory voltage switch fails with -ETIMEOUT,
++	 * it is most likely due to an HS card connected. Switch the voltage back to
++	 * 3.3V and re-try
++	 */
++	if (err == -ETIMEDOUT && fallback && retries) {
++		__mmc_set_signal_voltage(host, MMC_SIGNAL_VOLTAGE_330);
++		pr_warn("%s: fallback to HS enumeration.\n", mmc_hostname(host));
++		retries--;
++		goto try_again;
++	}
++
+ 	if (host->ops->voltage_switch_req)
+ 		host->ops->voltage_switch_req(host, true);
+ 
+diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegra.c
+index f2e6ed38dc07..c7a6f85c22b1 100644
+--- a/drivers/mmc/host/sdhci-tegra.c
++++ b/drivers/mmc/host/sdhci-tegra.c
+@@ -2390,6 +2390,9 @@ static int sdhci_tegra_probe(struct platform_device *pdev)
+ 	if (tegra_host->en_periodic_cflush)
+ 		host->mmc->caps2 |= MMC_CAP2_PERIODIC_CACHE_FLUSH;
+ 
++	if (tegra_host->vmmc_always_on)
++		host->mmc->caps2 |= MMC_CAP2_SLOT_REG_ALWAYS_ON;
++
+ 	host->mmc->caps2 |= MMC_CAP2_EN_CLK_TO_ACCESS_REG;
+ 	host->mmc->caps |= MMC_CAP_WAIT_WHILE_BUSY;
+ 
+diff --git a/drivers/tty/serial/serial-tegra.c b/drivers/tty/serial/serial-tegra.c
+index 60b0a7e1547d..52384563a490 100644
+--- a/drivers/tty/serial/serial-tegra.c
++++ b/drivers/tty/serial/serial-tegra.c
+@@ -168,6 +168,7 @@ struct tegra_uart_port {
+ 	int					error_tolerance_low_range;
+ 	int					error_tolerance_high_range;
+ 	bool					disable_pio_mode;
++	bool					rs485_enabled;
+ };
+ 
+ static void tegra_uart_start_next_tx(struct tegra_uart_port *tup);
+@@ -214,6 +215,8 @@ static void set_rts(struct tegra_uart_port *tup, bool active)
+ {
+ 	unsigned long mcr;
+ 
++	if(tup->rs485_enabled == true) return;
++
+ 	mcr = tup->mcr_shadow;
+ 	if (active)
+ 		mcr |= TEGRA_UART_MCR_RTS_EN;
+@@ -1545,22 +1548,23 @@ static void tegra_uart_set_termios(struct uart_port *u,
+ 		tty_termios_encode_baud_rate(termios, baud, baud);
+ 	spin_lock_irqsave(&u->lock, flags);
+ 
+-	/* Flow control */
+-	if (termios->c_cflag & CRTSCTS)	{
+-		tup->mcr_shadow |= TEGRA_UART_MCR_CTS_EN;
+-		tup->mcr_shadow &= ~TEGRA_UART_MCR_RTS_EN;
+-		tegra_uart_write(tup, tup->mcr_shadow, UART_MCR);
+-		tup->is_hw_flow_enabled = true;
+-		/* if top layer has asked to set rts active then do so here */
+-		if (tup->rts_active && tup->is_hw_flow_enabled)
+-			set_rts(tup, true);
+-	} else {
+-		tup->mcr_shadow &= ~TEGRA_UART_MCR_CTS_EN;
+-		tup->mcr_shadow &= ~TEGRA_UART_MCR_RTS_EN;
+-		tegra_uart_write(tup, tup->mcr_shadow, UART_MCR);
+-		tup->is_hw_flow_enabled = false;
++	if(tup->rs485_enabled == false) {
++		/* Flow control */
++		if (termios->c_cflag & CRTSCTS)	{
++			tup->mcr_shadow |= TEGRA_UART_MCR_CTS_EN;
++			tup->mcr_shadow &= ~TEGRA_UART_MCR_RTS_EN;
++			tegra_uart_write(tup, tup->mcr_shadow, UART_MCR);
++			tup->is_hw_flow_enabled = true;
++			/* if top layer has asked to set rts active then do so here */
++			if (tup->rts_active && tup->is_hw_flow_enabled)
++				set_rts(tup, true);
++		} else {
++			tup->mcr_shadow &= ~TEGRA_UART_MCR_CTS_EN;
++			tup->mcr_shadow &= ~TEGRA_UART_MCR_RTS_EN;
++			tegra_uart_write(tup, tup->mcr_shadow, UART_MCR);
++			tup->is_hw_flow_enabled = false;
++		}
+ 	}
+-
+ 	/* update the port timeout based on new settings */
+ 	uart_update_timeout(u, termios->c_cflag, baud);
+ 
+@@ -1692,6 +1696,27 @@ static int tegra_uart_parse_dt(struct platform_device *pdev,
+ 	return 0;
+ }
+ 
++static int tegra_uart_rs485_config(struct uart_port *port, struct serial_rs485 *rs485) {
++	struct tegra_uart_port *tup = to_tegra_uport(port);
++	unsigned long mcr;
++	mcr = tup->mcr_shadow;
++
++	if(rs485->flags & SER_RS485_ENABLED) {
++		printk(KERN_INFO "enabling rs485 on %s\n", dev_name(port->dev));
++		tup->rs485_enabled = true;
++		mcr &= ~TEGRA_UART_MCR_RTS_EN;
++	} else {
++		printk(KERN_INFO "disabling rs485 on %s\n", dev_name(port->dev));
++		tup->rs485_enabled = false;
++		mcr |= TEGRA_UART_MCR_RTS_EN;
++	}
++	if(mcr != tup->mcr_shadow) {
++		tegra_uart_write(tup, mcr, UART_MCR);
++		tup->mcr_shadow = mcr;
++	}
++	return 0;
++}
++
+ #ifdef CONFIG_DEBUG_FS
+ static int tegra_uart_debug_show(struct seq_file *s, void *unused)
+ {
+@@ -1840,6 +1865,8 @@ static int tegra_uart_probe(struct platform_device *pdev)
+ 	u->fifosize = 32;
+ 	tup->cdata = cdata;
+ 
++	u->rs485_config = tegra_uart_rs485_config;
++
+ 	platform_set_drvdata(pdev, tup);
+ 	resource = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	if (!resource) {
+diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+index cf7705f3640b..577cae474de6 100644
+--- a/include/linux/mmc/host.h
++++ b/include/linux/mmc/host.h
+@@ -369,6 +369,7 @@ struct mmc_host {
+ 	u32			caps2;		/* More host capabilities */
+ 
+ #define MMC_CAP2_BOOTPART_NOACC	(1 << 0)	/* Boot partition no access */
++#define MMC_CAP2_SLOT_REG_ALWAYS_ON (1 << 1)    /* Card slot regulator always on */
+ #define MMC_CAP2_FULL_PWR_CYCLE	(1 << 2)	/* Can do full power cycle */
+ #define MMC_CAP2_HS200_1_8V_SDR	(1 << 5)        /* can support */
+ #define MMC_CAP2_HS200_1_2V_SDR	(1 << 6)        /* can support */
+diff --git a/nvidia/platform/t210/common/kernel-dts/t210-common-platforms/tegra210-p2530-common.dtsi b/nvidia/platform/t210/common/kernel-dts/t210-common-platforms/tegra210-p2530-common.dtsi
+index f8c06ec8b190..118abf920aa7 100644
+--- a/nvidia/platform/t210/common/kernel-dts/t210-common-platforms/tegra210-p2530-common.dtsi
++++ b/nvidia/platform/t210/common/kernel-dts/t210-common-platforms/tegra210-p2530-common.dtsi
+@@ -133,7 +133,7 @@
+ 		uhs-mask = <0x1c>;
+ 		power-off-rail;
+ 		nvidia,update-pinctrl-settings;
+-		status = "disabled";
++		status = "okay";
+ 	};
+ 
+ 	sdhci@700b0200 {
+diff --git a/nvidia/platform/t210/jetson/kernel-dts/jetson-platforms/tegra210-jetson-cv-power-fixed-p2180-p2597-a00.dtsi b/nvidia/platform/t210/jetson/kernel-dts/jetson-platforms/tegra210-jetson-cv-power-fixed-p2180-p2597-a00.dtsi
+index e114efdcdc3a..df27e9fc1dd9 100644
+--- a/nvidia/platform/t210/jetson/kernel-dts/jetson-platforms/tegra210-jetson-cv-power-fixed-p2180-p2597-a00.dtsi
++++ b/nvidia/platform/t210/jetson/kernel-dts/jetson-platforms/tegra210-jetson-cv-power-fixed-p2180-p2597-a00.dtsi
+@@ -182,7 +182,7 @@
+ 			regulator-name = "usb-vbus1";
+ 			regulator-min-microvolt = <5000000>;
+ 			regulator-max-microvolt = <5000000>;
+-			gpio = <&gpio TEGRA_GPIO(CC, 4) 0>;
++			/* gpio = <&gpio TEGRA_GPIO(CC, 4) 0>; */
+ 			enable-active-high;
+ 			gpio-open-drain;
+ 			vin-supply = <&vdd_3v3>;
+diff --git a/nvidia/platform/t210/jetson/kernel-dts/jetson-platforms/tegra210-jetson-e-power-fixed-p2530-0930-e03.dtsi b/nvidia/platform/t210/jetson/kernel-dts/jetson-platforms/tegra210-jetson-e-power-fixed-p2530-0930-e03.dtsi
+index 28b7a1ed4605..f80bf4805552 100644
+--- a/nvidia/platform/t210/jetson/kernel-dts/jetson-platforms/tegra210-jetson-e-power-fixed-p2530-0930-e03.dtsi
++++ b/nvidia/platform/t210/jetson/kernel-dts/jetson-platforms/tegra210-jetson-e-power-fixed-p2530-0930-e03.dtsi
+@@ -187,7 +187,7 @@
+ 			regulator-name = "usb-vbus1";
+ 			regulator-min-microvolt = <5000000>;
+ 			regulator-max-microvolt = <5000000>;
+-			gpio = <&gpio TEGRA_GPIO(CC, 4) 0>;
++			/* gpio = <&gpio TEGRA_GPIO(CC, 4) 0>; */
+ 			enable-active-high;
+ 			gpio-open-drain;
+ 			vin-supply = <&vdd_3v3>;
+diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-extcon-p3448-0000-a00.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-extcon-p3448-0000-a00.dtsi
+index 3f29b58dc5cf..243e9cb33ef7 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-extcon-p3448-0000-a00.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-extcon-p3448-0000-a00.dtsi
+@@ -22,7 +22,7 @@
+ 			extcon-gpio,cable-states = <
+ 						0x0 0x1
+ 						0x1 0x0>;
+-			gpios = <&gpio TEGRA_GPIO(CC, 4) 0>;
++			/* gpios = <&gpio TEGRA_GPIO(CC, 4) 0>; */
+ 			extcon-gpio,out-cable-names = <EXTCON_USB EXTCON_USB_HOST EXTCON_NONE>;
+ 			wakeup-source;
+ 			#extcon-cells = <1>;
+@@ -34,11 +34,16 @@
+ 	xusb@70090000 {
+ 		extcon-cables = <&vbus_id_gpio_extcon 1>;
+ 		extcon-cable-names = "id";
++		phy-names = "usb2-0";
++		nvidia,xusb-padctl = <&xusb_padctl>;
++		status = "okay";
+ 	};
+ 
+ 	xudc@700d0000 {
+ 		extcon-cables = <&vbus_id_gpio_extcon 0>;
+ 		extcon-cable-names = "vbus";
++		#extcon-cells = <1>;
++		status = "okay";
+ 	};
+ 
+ };
+diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-b00.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-b00.dtsi
+index 77bf31057028..545adf1fef50 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-b00.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-b00.dtsi
+@@ -446,7 +446,7 @@
+ 
+ 			uart3_rts_pd3 {
+ 				nvidia,pins = "uart3_rts_pd3";
+-				nvidia,function = "uartc";
++				nvidia,function = "rsvd2";
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+@@ -454,7 +454,7 @@
+ 
+ 			uart3_cts_pd4 {
+ 				nvidia,pins = "uart3_cts_pd4";
+-				nvidia,function = "uartc";
++				nvidia,function = "rsvd2";
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -1128,7 +1128,7 @@
+ 				nvidia,function = "rsvd2";
+ 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
+ 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
+-				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
++				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+ 			};
+ 
+ 			uart1_rts_pu2 {
+diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-b00.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-b00.dtsi
+index 60e5bb40a826..11351d4a6f08 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-b00.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-b00.dtsi
+@@ -390,7 +390,7 @@
+ 
+ 			uart3_rts_pd3 {
+ 				nvidia,pins = "uart3_rts_pd3";
+-				nvidia,function = "uartc";
++				nvidia,function = "rsvd2";
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+@@ -398,7 +398,7 @@
+ 
+ 			uart3_cts_pd4 {
+ 				nvidia,pins = "uart3_cts_pd4";
+-				nvidia,function = "uartc";
++				nvidia,function = "rsvd2";
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -708,7 +708,7 @@
+ 				nvidia,function = "rsvd2";
+ 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+-				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
++				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+ 			};
+ 
+ 			uart2_cts_pg3 {
+diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-power-tree-p3448-0000-a00.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-power-tree-p3448-0000-a00.dtsi
+index 70b7d9e0870d..b7dc2d82f44c 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-power-tree-p3448-0000-a00.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-power-tree-p3448-0000-a00.dtsi
+@@ -280,7 +280,7 @@
+ 
+ 		ports {
+ 			usb2-0 {
+-				vbus-supply = <&p3449_vdd_usb_vbus>;
++				vbus-supply = <&battery_reg>;
+ 			};
+ 			usb2-1 {
+ 				vbus-supply = <&battery_reg>;
+diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-plugin-manager/tegra210-porg-plugin-manager.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-plugin-manager/tegra210-porg-plugin-manager.dtsi
+index 93ec6e3876f4..8a0051d62efc 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/porg-plugin-manager/tegra210-porg-plugin-manager.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/porg-plugin-manager/tegra210-porg-plugin-manager.dtsi
+@@ -545,6 +545,7 @@
+ 				target = <&sdhci2>;
+ 				_overlay_ {
+ 					vqmmc-supply = <&max77620_ldo6>;
++					status = "okay";
+ 					no-sdio;
+ 					no-mmc;
+ 					sd-uhs-sdr104;
+diff --git a/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi b/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi
+index 57cb90cb7ab1..667c6bb7f803 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi
+@@ -291,14 +291,14 @@
+ 	};
+ 
+ 	sdhci@700b0400 {
+-		status = "disabled";
++		status = "okay";
+ 		/delete-property/ keep-power-in-suspend;
+ 		/delete-property/ non-removable;
+ 		mmc-ddr-1_8v;
+ 		mmc-ocr-mask = <3>;
+ 		uhs-mask = <0x0>;
+-		max-clk-limit = <400000>;
+ 		tap-delay = <3>;
++		nvidia,vmmc-always-on;
+ 	};
+ 
+ 	sdhci@700b0200 { /* SDMMC2 for Wifi */
+@@ -548,8 +548,7 @@
+ 		ports {
+ 			usb2-0 {
+ 				status = "okay";
+-				mode = "otg";
+-				nvidia,usb3-port-fake = <3>;
++				mode = "host";
+ 			};
+ 			usb2-1 {
+ 				status = "okay";
+@@ -837,6 +836,23 @@
+ 				TEGRA_GPIO(A, 6) 0
+ 				>;
+ 		};
++	        uart1_rts: uart1_rts {
++        	        status = "okay";
++                	gpio-hog;
++	                output-high;
++        	        gpios = <
++                	        TEGRA_GPIO(D, 3) 0
++	                >;
++        	};
++
++	        uart2_rts: uart2_rts {
++        	        status = "okay";
++	                gpio-hog;
++        	        output-high;
++	                gpios = <
++                	        TEGRA_GPIO(G, 2) 0
++        	        >;
++	        };
+ 	};
+ 
+ 	leds {
+diff --git a/nvidia/soc/t210/kernel-dts/tegra210-soc/tegra210-sdhci.dtsi b/nvidia/soc/t210/kernel-dts/tegra210-soc/tegra210-sdhci.dtsi
+index c65c30e301b2..01a78eac88bf 100644
+--- a/nvidia/soc/t210/kernel-dts/tegra210-soc/tegra210-sdhci.dtsi
++++ b/nvidia/soc/t210/kernel-dts/tegra210-soc/tegra210-sdhci.dtsi
+@@ -76,6 +76,7 @@
+ 		compad-vref-3v3 = <0x7>;
+ 		compad-vref-1v8 = <0x7>;
+ 		pll_source = "pll_p", "pll_c4_out2";
++		cd-gpios = <&gpio TEGRA_GPIO(CC, 4) 0>; /* originally added as (Z, 2) 0> by sd.diff, then added as (CC,4) by fan+.diff */
+ 		resets = <&tegra_car TEGRA210_CLK_SDMMC3>;
+ 		reset-names = "sdhci";
+ 		clocks = <&tegra_car TEGRA210_CLK_SDMMC3>,
+-- 
+2.17.1
+

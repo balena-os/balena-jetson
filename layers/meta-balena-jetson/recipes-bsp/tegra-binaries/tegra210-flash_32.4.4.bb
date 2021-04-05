@@ -37,7 +37,8 @@ KERNEL_DEVICETREE_jetson-nano-emmc = "${DEPLOY_DIR_IMAGE}//tegra210-p3448-0002-p
 KERNEL_DEVICETREE_jn30b-nano = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb"
 KERNEL_DEVICETREE_photon-nano = "${DEPLOY_DIR_IMAGE}/tegra210-nano-cti-NGX003.dtb"
 KERNEL_DEVICETREE_jetson-nano-2gb-devkit = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0003-p3542-0000.dtb"
-DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
+KERNEL_DEVICETREE_floyd-nano = "${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00-floyd-nano.dtb"
+DTBFILE = "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 LNXSIZE ?= "67108864"
 
 IMAGE_TEGRAFLASH_FS_TYPE ??= "ext4"
