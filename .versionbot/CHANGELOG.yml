@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'floyd-nano: Add coffee file'
+      hash: cccae8d894bde81f479860fa723072daacad31bd
+      body: ''
+      footer:
+        Changelog-entry: 'floyd-nano: Add coffee file'
+        changelog-entry: 'floyd-nano: Add coffee file'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.73.1+rev3
+  date: 2021-04-05T12:58:53.727Z
+- commits:
     - subject: 'packagegroups: Add Ath10k and qca firmwares for TX2'
       hash: 832bccaf0c7831776ce9a548b0f06e665889504f
       body: |

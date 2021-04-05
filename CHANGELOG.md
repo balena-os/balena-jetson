@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.1+rev3
+## (2021-04-05)
+
+* floyd-nano: Add coffee file [Alexandru Costache]
+
 # v2.73.1+rev2
 ## (2021-04-02)
 
