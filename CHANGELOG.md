@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.1+rev6
+## (2021-04-06)
+
+* floyd-nano: Mark board as community device [Alexandru Costache]
+
 # v2.73.1+rev5
 ## (2021-04-05)
 

@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'floyd-nano: Mark board as community device'
+      hash: 6e4d6c09c481ecf82bb49c40011f653ce1832293
+      body: ''
+      footer:
+        Changelog-entry: 'floyd-nano: Mark board as community device'
+        changelog-entry: 'floyd-nano: Mark board as community device'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.73.1+rev6
+  date: 2021-04-06T07:39:14.883Z
+- commits:
     - subject: 'floyd-nano: Add icon for this DT'
       hash: 1cf90eacc4f9ac5c222348cbac63faa94bf8f77e
       body: ''
