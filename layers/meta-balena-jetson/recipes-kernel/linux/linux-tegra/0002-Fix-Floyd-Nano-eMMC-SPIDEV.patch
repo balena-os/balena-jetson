@@ -1,0 +1,131 @@
+From e4cbbcd19a100aa6722120696b36476b6b0455a8 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Wed, 7 Apr 2021 18:28:57 +0200
+Subject: [PATCH] Fix Floyd Nano eMMC SPIDEV
+
+Spidev doesn't seem to work the same way
+on the Jetson Nano eMMC, so we brought in
+some more device tree changes as described in this
+forum post:
+https://forums.developer.nvidia.com/t/spidev-of-jetson-nano-emmc-core-board-cannot-be-used/157946/24
+and this old a02 mode here, adapted to the eMMC B02 model:
+https://github.com/gtjoseph/jetson-nano-support/blob/master/spi/l4t-sources-kernel-hardware-nvidia-platform-t210-porg-spidev0-0.patch
+
+This patch applies on top of the Floyd Nano changes
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ .../tegra210-porg-gpio-p3448-0002-b00.dtsi    |  4 ---
+ .../tegra210-porg-pinmux-p3448-0002-b00.dtsi  | 10 +++----
+ .../tegra210-porg-p3448-common.dtsi           | 30 +++++++++----------
+ 3 files changed, 19 insertions(+), 25 deletions(-)
+
+diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-gpio-p3448-0002-b00.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-gpio-p3448-0002-b00.dtsi
+index ac8bda8b57fc..eb97415caa8f 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-gpio-p3448-0002-b00.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-gpio-p3448-0002-b00.dtsi
+@@ -50,10 +50,6 @@
+ 				TEGRA_GPIO(J, 7)
+ 				TEGRA_GPIO(G, 2)
+ 				TEGRA_GPIO(G, 3)
+-				TEGRA_GPIO(C, 0)
+-				TEGRA_GPIO(C, 1)
+-				TEGRA_GPIO(C, 2)
+-				TEGRA_GPIO(C, 3)
+ 				TEGRA_GPIO(C, 4)
+ 				TEGRA_GPIO(H, 2)
+ 				TEGRA_GPIO(H, 5)
+diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-b00.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-b00.dtsi
+index 11351d4a6f08..4891da228932 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-b00.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-b00.dtsi
+@@ -721,7 +721,7 @@
+ 
+ 			spi1_mosi_pc0 {
+ 				nvidia,pins = "spi1_mosi_pc0";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "spi1";
+ 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -729,7 +729,7 @@
+ 
+ 			spi1_miso_pc1 {
+ 				nvidia,pins = "spi1_miso_pc1";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "spi1";
+ 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -737,7 +737,7 @@
+ 
+ 			spi1_sck_pc2 {
+ 				nvidia,pins = "spi1_sck_pc2";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "spi1";
+ 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -745,7 +745,7 @@
+ 
+ 			spi1_cs0_pc3 {
+ 				nvidia,pins = "spi1_cs0_pc3";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "spi1";
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -753,7 +753,7 @@
+ 
+ 			spi1_cs1_pc4 {
+ 				nvidia,pins = "spi1_cs1_pc4";
+-				nvidia,function = "rsvd1";
++				nvidia,function = "spi1";
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+diff --git a/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi b/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi
+index 667c6bb7f803..8dd43cd049dc 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi
+@@ -207,22 +207,20 @@
+ 
+ 	spi@7000d400 { /* SPI 1 to 40 pin header */
+ 		status = "okay";
+-		spi@0 {
+-			compatible = "spidev";
+-			reg = <0x0>;
+-			spi-max-frequency = <33000000>;
+-			controller-data {
+-				nvidia,enable-hw-based-cs;
+-				nvidia,rx-clk-tap-delay = <7>;
+-			};
+-		};
+-		spi@1 {
+-			compatible = "spidev";
+-			reg = <0x1>;
+-			spi-max-frequency = <33000000>;
+-			controller-data {
+-				nvidia,enable-hw-based-cs;
+-				nvidia,rx-clk-tap-delay = <7>;
++                num-cs = <1>;
++                cs-gpios = <&gpio TEGRA_GPIO(C, 3) GPIO_ACTIVE_LOW>;
++                spi0_0 {
++                       #address-cells = <0x1>;
++                       #size-cells = <0x0>;
++                       compatible = "spidev";
++                       status = "okay";
++                       reg = <0>;
++                       spi-max-frequency = <65000000>;
++                       controller-data {
++                               nvidia,cs-setup-clk-count = <0x1e>;
++                               nvidia,cs-hold-clk-count = <0x1e>;
++                               nvidia,rx-clk-tap-delay = <0x1f>;
++                               nvidia,tx-clk-tap-delay = <0x0>;
+ 			};
+ 		};
+ 	};
+-- 
+2.17.1
+
