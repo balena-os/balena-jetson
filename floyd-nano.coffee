@@ -11,7 +11,7 @@ module.exports =
 	name: 'Floyd Nano BB02A eMMC'
 	arch: 'aarch64'
 	state: 'new'
-	community: 'true'
+	community: true
 
 	instructions: [
 		BOARD_PREPARE
