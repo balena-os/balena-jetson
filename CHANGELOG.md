@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.1+rev7
+## (2021-04-07)
+
+* linux-tegra: Fix spidev not working on Floyd Nano eMMC [Alexandru Costache]
+
 # v2.73.1+rev6
 ## (2021-04-06)
 

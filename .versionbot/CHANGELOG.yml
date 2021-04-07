@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'linux-tegra: Fix spidev not working on Floyd Nano eMMC'
+      hash: 11d63e6c478725f0098b3c4613fb568a738a2282
+      body: |
+        This applies to the Floyd Nano eMMC module on L4T 32.4.4
+      footer:
+        Changelog-entry: 'linux-tegra: Fix spidev not working on Floyd Nano eMMC'
+        changelog-entry: 'linux-tegra: Fix spidev not working on Floyd Nano eMMC'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.73.1+rev7
+  date: 2021-04-07T16:41:45.169Z
+- commits:
     - subject: 'floyd-nano: Mark board as community device'
       hash: 6e4d6c09c481ecf82bb49c40011f653ce1832293
       body: ''
