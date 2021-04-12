@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.1+rev8
+## (2021-04-12)
+
+* linux-tegra: Don't include spidev patch for Floyd Nano [Alexandru Costache]
+
 # v2.73.1+rev7
 ## (2021-04-07)
 

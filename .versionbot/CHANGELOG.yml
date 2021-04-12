@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'linux-tegra: Don''t include spidev patch for Floyd Nano'
+      hash: 48f25d9a2638a743815c02ad3fcd5d24cf6dce2f
+      body: |
+        This reverts commit 11d63e6c478725f0098b3c4613fb568a738a2282
+        because it affects the sd-card functionality.
+      footer:
+        Changelog-entry: 'linux-tegra: Don''t include spidev patch for Floyd Nano'
+        changelog-entry: 'linux-tegra: Don''t include spidev patch for Floyd Nano'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.73.1+rev8
+  date: 2021-04-12T07:19:08.380Z
+- commits:
     - subject: 'linux-tegra: Fix spidev not working on Floyd Nano eMMC'
       hash: 11d63e6c478725f0098b3c4613fb568a738a2282
       body: |
