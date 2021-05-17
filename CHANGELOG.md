@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.15+rev2
+## (2021-05-17)
+
+* Update host tools to replace docker with balena-engine in build process [Alex Gonzalez]
+
 # v2.73.15+rev1
 ## (2021-04-26)
 
