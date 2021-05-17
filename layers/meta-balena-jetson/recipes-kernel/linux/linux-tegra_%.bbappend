@@ -79,6 +79,14 @@ BALENA_CONFIGS[tegra-wdt-t21x] = " \
     CONFIG_TEGRA21X_WATCHDOG=m \
 "
 
+# The kernel can detect tasks with high iowait as hung, when they're just
+# waiting for a slow disk, causing a panic/reboot with nvidia's defconfig.
+BALENA_CONFIGS_append = " disable_hung_panic"
+
+BALENA_CONFIGS[disable_hung_panic] = " \
+    CONFIG_BOOTPARAM_HUNG_TASK_PANIC=n \
+    "
+
 BALENA_CONFIGS[debug_kmemleak] = " \
     CONFIG_HAVE_DEBUG_KMEMLEAK=n \
     CONFIG_DEBUG_KMEMLEAK=n \
