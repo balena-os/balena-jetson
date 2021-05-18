@@ -3,11 +3,13 @@ inherit kernel-resin deploy
 FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 
 SCMVERSION="n"
-
+KERNEL_VERSION_SANITY_SKIP="1"
 # We pin to the 32.4.4 revision as of 12 Jan 2021
 # to ensure the upstream BSP layer doesn't bring in a newer
 # version that might fail to build or boot without notice.
-SRCREV = "87e09c14b15ad302b451f40f4237bb14f553c1e0"
+SRCBRANCH="oe4t-patches-l4t-r32.5"
+SRCREV = "a3633e2e1cf4c7309a88303f06ee4eb20188c716"
+LINUX_VERSION = "4.9.201"
 
 # Prevent delayed booting
 # and support using partition label to load rootfs
