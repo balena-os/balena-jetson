@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.15+rev2
+## (2021-05-18)
+
+* test build: Latest upstream yocto kernel [Alexandru Costache]
+
 # v2.73.15+rev1
 ## (2021-04-26)
 
