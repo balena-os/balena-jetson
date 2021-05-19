@@ -121,6 +121,7 @@ IMAGE_PACKAGES_NANO = " \
     tegra-configs-nvstartup \
     tegra-configs-udev \
     jetson-dtbs \
+    mtd-utils \
 "
 
 IMAGE_INSTALL_append_jetson-nano = "${IMAGE_PACKAGES_NANO}"
