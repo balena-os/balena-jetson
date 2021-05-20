@@ -21,7 +21,7 @@ fi
 
 BIN_INSTALL_PATH="/opt/tegra-binaries"
 BOOT_BLOB="${BIN_INSTALL_PATH}/boot0.img"
-PART_SPEC="${BIN_INSTALL_PATH}/partition_specification210.txt"
+PART_SPEC=$(find "${BIN_INSTALL_PATH}" | grep partition_specification210 | grep txt | head -n 1)
 
 update_needed() {
     current_update_file=${1}
