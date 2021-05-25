@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'hostapp-update-hooks: Rework Nano SD and Nano eMMC hook'
+      hash: 544d0bc11355897b776a35af242074799976bb3a
+      body: |
+        ... to update the qspi/emmc boot blob for 32.4.4, since starting with
+        L4T 32.5 this is no longer compatible. The existing blob has
+        been the same for about eight l4t releases.
+      footer:
+        Changelog-entry: 'hostapp-update-hooks: Rework Nano SD and Nano eMMC hook'
+        changelog-entry: 'hostapp-update-hooks: Rework Nano SD and Nano eMMC hook'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.73.15+rev2
+  date: 2021-05-20T16:45:30.928Z
+- commits:
     - subject: Update meta-balena from v2.73.1 to v2.73.15
       hash: d8cc87d0bc6b92c312f16ebbc592692305ec95c2
       body: |
