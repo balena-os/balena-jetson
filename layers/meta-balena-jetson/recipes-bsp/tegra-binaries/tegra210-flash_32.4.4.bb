@@ -43,7 +43,7 @@ LNXSIZE ?= "67108864"
 
 IMAGE_TEGRAFLASH_FS_TYPE ??= "ext4"
 IMAGE_TEGRAFLASH_ROOTFS ?= "${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE}"
-
+BOOT0="boot0.img"
 BL_IS_CBOOT = "${@'1' if d.getVar('PREFERRED_PROVIDER_virtual/bootloader').startswith('cboot') else '0'}"
 
 LDK_DIR = "${TMPDIR}/work-shared/L4T-${SOC_FAMILY}-${PV}-${PR}/Linux_for_Tegra"
@@ -103,6 +103,7 @@ do_configure() {
     # tegraflash.py script will sign all binaries
     # mentioned for signing in flash.xml.in
     cp ${WORKDIR}/${FLASH_XML} flash.210.in
+
     sed -i -e "s/\[DTBNAME\]/${DTBFILE}/g" ${WORKDIR}/${PART_SPEC}
     # prep env for tegraflash
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra210-flash/${SOC_FAMILY}-flash-helper.sh ./
@@ -140,7 +141,18 @@ do_configure() {
         -e"s,PPTFILE,ppt.img," -e"s,GPTFILE,gpt.img," \
         > ./flash.xml
 
-    python3 tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${MACHINE}.cfg" --cfg flash.xml --cmd "sign" --keep --odmdata "${ODMDATA}"
+    # The Nano eMMC module does not have a qspi-nor memory to store the boot blob
+    if ${@bb.utils.contains('UBOOT_MACHINE', 'p3450-0002_defconfig','true','false',d)}; then
+        sed -i 's/device type="spi" instance="0"/device type="sdmmc" instance="3"/g' flash.xml
+        sed -i 's/device type="sdcard" instance="0"/device type="sdmmc" instance="3"/g' flash.xml
+        dd if=/dev/zero bs=4194304 count=1 > ${BOOT0}
+    else
+        dd if=/dev/zero bs=4194304 count=1 | tr "\000" "\377" > ${BOOT0}
+        dd if=/dev/zero bs=20480 count=1 of=${BOOT0} conv=notrunc
+    fi
+
+    python3 tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${MACHINE}.cfg" --cfg flash.xml --cmd "sign" --keep --odmdata "${ODMDATA}" & \
+    export _PID=$! ; wait ${_PID} || true
 
     # Disable cboot displayed vendor logo
     dd if=/dev/zero of=./bmp.blob count=1 bs=70900
@@ -150,11 +162,23 @@ do_configure() {
     cp -r *.bin    ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp -r *.blob   ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp ${DEPLOY_DIR_IMAGE}/${DTBFILE} ${DEPLOY_DIR_IMAGE}/bootfiles/
+    rm -rf ${_PID}
+
+    for off in 0 10240 32768 65536 98304 131072 163840 196608 229376; do
+        dd if=${DEPLOY_DIR_IMAGE}/bootfiles/${MACHINE}.bct of=${BOOT0} bs=1 seek=${off} conv=notrunc
+    done
+
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot.bin.encrypt of=${BOOT0} bs=1 seek=262144 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/flash.xml.bin of=${BOOT0} bs=1 seek=458752 conv=notrunc
+
+    cp ${S}/tegraflash/${BOOT0} ${DEPLOY_DIR_IMAGE}/bootfiles/
 }
 
 do_install() {
     install -d ${D}/${BINARY_INSTALL_PATH}
     cp -r ${S}/tegraflash/signed/* ${D}/${BINARY_INSTALL_PATH}
+    cp -rL ${DEPLOY_DIR_IMAGE}/bootfiles/* ${D}/${BINARY_INSTALL_PATH}
+    rm ${D}/${BINARY_INSTALL_PATH}/Image-initramfs* ${D}/${BINARY_INSTALL_PATH}/*.dtb ${D}/${BINARY_INSTALL_PATH}/*.xml
     cp ${WORKDIR}/${PART_SPEC} ${D}/${BINARY_INSTALL_PATH}/
 }
 

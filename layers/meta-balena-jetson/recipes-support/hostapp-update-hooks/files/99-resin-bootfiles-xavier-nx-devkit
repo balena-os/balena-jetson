@@ -96,7 +96,7 @@ update_bootloader_md5sum=$(md5sum $bootloader_blob | awk '{print $1}')
 
 if [ ! "$existing_bootloader_md5sum" = "$update_bootloader_md5sum" ]; then
     info_log "Will update bootloader device"
-    flash_erase /dev/mtd0 0 0
+    flash_erase /dev/mtd0 0 0 || true
     dd if=$bootloader_blob of=$bootloader_device bs=1M
 else
     info_log "No need to update bootloader device"

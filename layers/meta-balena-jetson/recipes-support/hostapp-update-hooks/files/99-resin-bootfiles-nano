@@ -4,19 +4,31 @@ set -o errexit
 
 . /usr/libexec/os-helpers-fs
 
-bootfiles=$(ls /resin-boot/bootfiles/);
+QSPI="/dev/mtd0"
+BOOTLOADER_DEVICE="/dev/mtdblock0"
 
 info_log()
 {
     echo "[INFO] $@"
 }
 
+# Jetson Nano SD has a qspi-nor,
+# Jetson Nano eMMC doesn't.
+if [ ! -e "${BOOTLOADER_DEVICE}" ]; then
+    info_log "This Nano module does not have a QSPI NOR, using hardware partition for boot blob"
+    BOOTLOADER_DEVICE="/dev/mmcblk0boot0"
+fi
+
+BIN_INSTALL_PATH="/opt/tegra-binaries"
+BOOT_BLOB="${BIN_INSTALL_PATH}/boot0.img"
+PART_SPEC=$(find "${BIN_INSTALL_PATH}" | grep partition_specification210 | grep txt | head -n 1)
+
 update_needed() {
     current_update_file=${1}
     device=${2}
     update_size=$(ls -al $current_update_file | awk '{print $5}')
     update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
-    existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+    existing_md5sum=$(dd if=$device bs=$update_size count=1 status=none | md5sum | awk '{print $1}')
 
     if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
         echo 1
@@ -25,18 +37,41 @@ update_needed() {
     fi
 }
 
-for bootfile in ${bootfiles}
-do
-    src="/resin-boot/bootfiles/$bootfile"
-    dst=$(get_state_path_from_label "$bootfile")
+partitions=$(cat "${PART_SPEC}")
+for n in ${partitions}; do
+    part_name=$(echo $n | cut -d ':' -f 1)
+    file_name=$(echo $n | cut -d ':' -f 2)
+
+    file_path=$(get_state_path_from_label $part_name)
+
+    if [ "x$file_path" = "x" ]; then
+        continue
+    fi
+
+    src="${BIN_INSTALL_PATH}/$file_name"
+    dst="$file_path"
 
     if [ $(update_needed $src $dst) -eq 1 ]; then
         info_log "Will update ${dst}..."
-        dd if=${src} of=${dst} bs=1K
-        info_log "Updated ${dst}"
+        dd if=${src} of=${dst}
     else
         info_log "No need to update ${dst}"
     fi
 done
+
+existing_bootloader_md5sum=$(dd if=${BOOTLOADER_DEVICE} bs=1M status=none | md5sum | awk '{print $1}')
+update_bootloader_md5sum=$(md5sum ${BOOT_BLOB} | awk '{print $1}')
+
+if [ ! "$existing_bootloader_md5sum" = "$update_bootloader_md5sum" ]; then
+    info_log "Will update bootloader device ${BOOTLOADER_DEVICE}"
+    if [ -e "${QSPI}" ]; then
+        flash_erase ${QSPI} 0 0 || true
+    else
+        echo 0 > /sys/block/mmcblk0boot0/force_ro
+    fi
+    dd if=${BOOT_BLOB} of=${BOOTLOADER_DEVICE} bs=1M || true
+else
+    info_log "No need to update bootloader device"
+fi
 
 sync
