@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.75.0+rev2
+## (2021-05-27)
+
+* Fix the upstream branch for nvidia-modprobe [Alex Gonzalez]
+
 # v2.75.0+rev1
 ## (2021-05-25)
 

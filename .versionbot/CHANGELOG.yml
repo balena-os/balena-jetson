@@ -1,4 +1,33 @@
 - commits:
+    - subject: Fix the upstream branch for nvidia-modprobe
+      hash: c9d4c410c571f51eb21d587ec883ec0f07fd533c
+      body: >
+        The upstream recipe has removed the master branch and replaced it with
+
+        main. When specifying the SRC_URI with a sha1, the OE fetcher will
+        assume
+
+        the master branch and fail with:
+
+
+        libnvidia-container-tools-0.9.0-r1 do_fetch: Fetcher failure: Unable to
+        find revision d97c08af5061f1516fb2e3a26508936f69d6d71d in branch master
+        even from upstream
+
+
+        This commit specifies the upstream branch as main.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Fix the upstream branch for nvidia-modprobe
+        changelog-entry: Fix the upstream branch for nvidia-modprobe
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.75.0+rev2
+  date: 2021-05-27T11:19:57.667Z
+- commits:
     - subject: Update meta-balena from v2.73.15 to v2.75.0
       hash: 25c783ff84a846342e8c76c1b52244db368d0bed
       body: |
