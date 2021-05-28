@@ -15,3 +15,8 @@ CONNECTIVITY_FIRMWARES_append_jetson-tx2 = " \
     linux-firmware-qca \
     linux-firmware-ath10k \
 "
+CONNECTIVITY_FIRMWARES_append_jetson-tx2-4gb = " \
+    linux-firmware-ath10k-qca6174 \
+    linux-firmware-qca \
+    linux-firmware-ath10k \
+"
