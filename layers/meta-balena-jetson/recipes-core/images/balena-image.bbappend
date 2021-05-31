@@ -106,15 +106,12 @@ device_specific_configuration_jetson-xavier() {
 
 }
 
-NVIDIA_PART_OFFSET_jetson-tx2="4097"
-DEVICE_SPECIFIC_SPACE_jetson-tx2="49152"
-NVIDIA_PART_OFFSET_jetson-tx2-4gb="4097"
-DEVICE_SPECIFIC_SPACE_jetson-tx2-4gb="49152"
+NVIDIA_PART_OFFSET_tegra186="4097"
+DEVICE_SPECIFIC_SPACE_tegra186="49152"
 
-do_image_balenaos-img_jetson-tx2[depends] += " tegra186-flash-dry:do_deploy"
-do_image_balenaos-img_jetson-tx2-4gb[depends] += " tegra186-flash-dry:do_deploy"
+do_image_balenaos-img_tegra186[depends] += " tegra186-flash-dry:do_deploy"
 
-device_specific_configuration_jetson-tx2() {
+device_specific_configuration_tegra186() {
     partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification186.txt)
     start=${NVIDIA_PART_OFFSET}
     for n in ${partitions}; do

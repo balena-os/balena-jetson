@@ -68,16 +68,10 @@ SRC_URI_append_jetson-nano-2gb-devkit = " \
 "
 
 # In l4t 28.2 below partitions were 0xC and 0xD
-BALENA_BOOT_PART_jetson-tx2 = "0x18"
-BALENA_DEFAULT_ROOT_PART_jetson-tx2 = "0x19"
-BALENA_BOOT_PART_jetson-tx2-4gb = "0x18"
-BALENA_DEFAULT_ROOT_PART_jetson-tx2-4gb = "0x19"
+BALENA_BOOT_PART_tegra186 = "0x18"
+BALENA_DEFAULT_ROOT_PART_tegra186 = "0x19"
 
-SRC_URI_append_jetson-tx2 = " \
-    file://Add-part-index-command.patch \
-    file://tx2-Integrate-with-Balena-u-boot-environment.patch \
-"
-SRC_URI_append_jetson-tx2-4gb = " \
+SRC_URI_append_tegra186 = " \
     file://Add-part-index-command.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
 "
