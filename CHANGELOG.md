@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.75.0+rev3
+## (2021-06-01)
+
+* linux: enable crashdump support for arm64 [Joseph Kogut]
+
 # v2.75.0+rev2
 ## (2021-05-27)
 
