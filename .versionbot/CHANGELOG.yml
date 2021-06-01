@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'linux: enable crashdump support for arm64'
+      hash: 1cdfa3264578ebfc634c751c2b9aaf07d421297f
+      body: |
+        Backport patches from linux v4.12 for enabling memory reservation for
+        crash kernel on arm64, and enable configs necessary for loading a crash
+        kernel.
+      footer:
+        Changelog-entry: 'linux: enable crashdump support for arm64'
+        changelog-entry: 'linux: enable crashdump support for arm64'
+        Signed-off-by: Joseph Kogut <joseph@balena.io>
+        signed-off-by: Joseph Kogut <joseph@balena.io>
+      author: Joseph Kogut
+      nested: []
+  version: 2.75.0+rev3
+  date: 2021-06-01T20:32:34.332Z
+- commits:
     - subject: Fix the upstream branch for nvidia-modprobe
       hash: c9d4c410c571f51eb21d587ec883ec0f07fd533c
       body: >
