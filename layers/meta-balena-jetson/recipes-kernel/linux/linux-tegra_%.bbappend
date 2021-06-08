@@ -31,7 +31,7 @@ SRC_URI_append_jetson-tx2 = " \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
 "
 
-SRC_URI_append_jetson-xavier-seeed-hat = " \
+SRC_URI_append_jetson-xavier-nx-devkit-seeed-hat = " \
     file://tegra194-p3668-all-p3509-0000-seeed-hat.dtb \
 "
 
@@ -316,7 +316,7 @@ do_deploy_append_n310-tx2() {
     cp ${WORKDIR}/tegra186-tx2-aetina-n310-p3489-0888-a00-00-base.dtb "${DEPLOYDIR}"
 }
 
-do_deploy_append_jetson-xavier-seeed-hat() {
+do_deploy_append_jetson-xavier-nx-devkit-seeed-hat() {
     cp ${WORKDIR}/tegra194-p3668-all-p3509-0000-seeed-hat.dtb "${DEPLOYDIR}"
 }
 
