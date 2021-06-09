@@ -6,9 +6,9 @@ BOARD_POWERON  = 'Power on the board.'
 
 module.exports =
 	version: 1
-	slug: 'jetson-xavier-nx-devkit-seeed-hat'
-	aliases: [ 'jetson-xavier-nx-devkit-seeed-hat' ]
-	name: 'Nvidia Jetson Xavier NX Devkit SDCard with seeed HAT'
+	slug: 'jetson-xavier-nx-devkit-seeed-2mic-hat'
+	aliases: [ 'jetson-xavier-nx-devkit-seeed-2mic-hat' ]
+	name: 'Nvidia Jetson Xavier NX Devkit SDCard with seeed Respeaker-2-Mic HAT'
 	arch: 'aarch64'
 	state: 'new'
 	community: 'true'
@@ -27,11 +27,11 @@ module.exports =
 	supportsBlink: false
 
 	yocto:
-		machine: 'jetson-xavier-nx-devkit-seeed-hat'
+		machine: 'jetson-xavier-nx-devkit-seeed-2mic-hat'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'balena-image-jetson-xavier-nx-devkit-seeed-hat.balenaos-img'
+		deployArtifact: 'balena-image-jetson-xavier-nx-devkit-seeed-2mic-hat.balenaos-img'
 		compressed: true
 
 	options: [ networkOptions.group ]
