@@ -1,17 +1,17 @@
 deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
-BOARD_POWEROFF = 'Remove power from the Jetson Xavier NX Devkit SD-CARD and insert the freshly burnt sd-card.'
+BOARD_POWEROFF = 'Remove power from the Jetson Xavier NX Devkit SD-CARD with Seed Respeaker 2MIC HAT and insert the freshly burnt sd-card.'
 BOARD_POWERON  = 'Power on the board.'
 
 module.exports =
 	version: 1
 	slug: 'jetson-xavier-nx-devkit-seeed-2mic-hat'
 	aliases: [ 'jetson-xavier-nx-devkit-seeed-2mic-hat' ]
-	name: 'Nvidia Jetson Xavier NX Devkit SDCard with seeed Respeaker-2-Mic HAT'
+	name: 'Nvidia Jetson Xavier NX Devkit SD Seeed ReSpeaker-2Mic'
 	arch: 'aarch64'
-	state: 'new'
-	community: 'true'
+	state: 'released'
+	community: true
 
 	instructions: [
 		instructions.ETCHER_SD
@@ -20,9 +20,9 @@ module.exports =
 	]
 
 	gettingStartedLink:
-		windows: 'https://docs.balena.io/jetson-xavier-nx-devkit-sd-card/nodejs/getting-started/#adding-your-first-device'
-		osx: 'https://docs.balena.io/jetson-xavier-nx-devkit-sd-card/nodejs/getting-started/#adding-your-first-device'
-		linux: 'https://docs.balena.io/jetson-xavier-nx-devkit-sd-card/nodejs/getting-started/#adding-your-first-device'
+		windows: 'https://docs.balena.io/jetson-xavier-nx-devkit/nodejs/getting-started/#adding-your-first-device'
+		osx: 'https://docs.balena.io/jetson-xavier-nx-devkit/nodejs/getting-started/#adding-your-first-device'
+		linux: 'https://docs.balena.io/jetson-xavier-nx-devkit/nodejs/getting-started/#adding-your-first-device'
 
 	supportsBlink: false
 

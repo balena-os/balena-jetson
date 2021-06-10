@@ -10,7 +10,7 @@ module.exports =
 	aliases: [ 'jetson-xavier-nx-devkit-emmc' ]
 	name: 'Nvidia Jetson Xavier NX Devkit eMMC'
 	arch: 'aarch64'
-	state: 'new'
+	state: 'released'
 
 	instructions: [
 		BOARD_PREPARE

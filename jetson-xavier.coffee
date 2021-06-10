@@ -10,7 +10,7 @@ module.exports =
 	aliases: [ 'jetson-xavier' ]
 	name: 'Nvidia Jetson Xavier AGX'
 	arch: 'aarch64'
-	state: 'new'
+	state: 'released'
 
 	instructions: [
 		BOARD_PREPARE

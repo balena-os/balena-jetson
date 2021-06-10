@@ -9,7 +9,7 @@ module.exports =
 	slug: 'jetson-nano-2gb-devkit'
 	name: 'Nvidia Jetson Nano 2GB Devkit SD'
 	arch: 'aarch64'
-	state: 'new'
+	state: 'released'
 
 	instructions: [
 		instructions.ETCHER_SD
