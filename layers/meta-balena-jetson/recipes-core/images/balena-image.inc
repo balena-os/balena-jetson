@@ -22,6 +22,7 @@ DTBFILE_floyd-nano="tegra210-p3448-0002-p3449-0000-b00-floyd-nano.dtb"
 DTBFILE_photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003.dtb"
 DTBNAME_cti-rogue-xavier="tegra194-agx-cti-AGX101"
 DTBNAME_jetson-xavier="tegra194-p2888-0001-p2822-0000"
+DTBNAME_jetson-xavier-nx-devkit-seeed-2mic-hat="tegra194-p3668-all-p3509-0000-seeed-2mic-hat"
 DTBNAME_nru120s-xavier="NRU120-32-4-3"
 
 # Name update files as partition names for easier updating
