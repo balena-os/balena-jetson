@@ -1,4 +1,19 @@
 - commits:
+    - subject: change board name to jetson-xavier-nx-devkit-seeed-2mic-hat
+      hash: 671ed41c8d302c526ea9ffb4be14afa0bfe7c041
+      body: |
+        Changed names/references from seeed-mic to seeed-2mic-hat in
+        order to make product identification easier
+      footer:
+        Changelog-entry: change board name to jetson-xavier-nx-devkit-seeed-2mic-hat
+        changelog-entry: change board name to jetson-xavier-nx-devkit-seeed-2mic-hat
+        Signed-off-by: Kunal Singh <kunal.singh@aivero.com>
+        signed-off-by: Kunal Singh <kunal.singh@aivero.com>
+      author: Kunal Singh
+      nested: []
+  version: 2.79.7+rev2
+  date: 2021-06-09T18:16:49.524Z
+- commits:
     - subject: Update meta-balena from v2.75.0 to v2.79.7
       hash: 186b7a341f9b48eb1584c59812a5e0ecc0891851
       body: |

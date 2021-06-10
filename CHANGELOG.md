@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.79.7+rev2
+## (2021-06-09)
+
+* change board name to jetson-xavier-nx-devkit-seeed-2mic-hat [Kunal Singh]
+
 # v2.79.7+rev1
 ## (2021-06-02)
 
