@@ -16,7 +16,6 @@ module.exports =
 	name: 'CTI Spacely TX2'
 	arch: 'aarch64'
 	state: 'released'
-	private: false
 
 	stateInstructions:
 		postProvisioning: postProvisioningInstructions

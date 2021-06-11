@@ -15,7 +15,7 @@ module.exports =
 	aliases: [ 'astro-tx2' ]
 	name: 'CTI Astro TX2 G+'
 	arch: 'aarch64'
-	state: 'new'
+	state: 'released'
 	community: true
 
 	stateInstructions:

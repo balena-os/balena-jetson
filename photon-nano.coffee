@@ -12,7 +12,7 @@ module.exports =
 	name: 'CTI Photon Nano'
 	arch: 'aarch64'
 	state: 'released'
-	community: 'true'
+	community: true
 
 	instructions: [
 		BOARD_FLASH

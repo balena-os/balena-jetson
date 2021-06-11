@@ -10,7 +10,7 @@ module.exports =
 	aliases: [ 'jetson-xavier-nx-devkit' ]
 	name: 'Nvidia Jetson Xavier NX Devkit SD-CARD'
 	arch: 'aarch64'
-	state: 'new'
+	state: 'released'
 
 	instructions: [
 		instructions.ETCHER_SD

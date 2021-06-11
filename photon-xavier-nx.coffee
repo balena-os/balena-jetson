@@ -10,9 +10,8 @@ module.exports =
 	aliases: [ 'photon-xavier-nx' ]
 	name: 'CTI Photon Xavier NX'
 	arch: 'aarch64'
-	state: 'new'
-	community: 'true'
-	private: false
+	state: 'released'
+	community: true
 
 	instructions: [
 		BOARD_PREPARE
