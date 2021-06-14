@@ -92,11 +92,18 @@ BOARDREV_jetson-tx2-4-gb="a00"
 BPFDTBREV_jetson-tx2-4-gb="a00"
 PMICREV_jetson-tx2-4-gb="a00"
 
+BPMP_DTB="tegra186-a02-bpmp-quill-p3310-1000-c04-00-te770d-ucm2.dtb"
+BPMP_DTB_jetson-tx2-4-gb="tegra186-a02-bpmp-lightning-p3489-a00-00-te770m.dtb"
+
 do_configure() {
     local f
 
     sed -i -e "s/\[DTB_NAME\]/$(echo ${DTBFILE} | cut -d '.' -f 1)/g" ${WORKDIR}/partition_specification186.txt
     sed -i -e "s/DTB_NAME/${DTBFILE}/g" ${WORKDIR}/resinOS-flash186.xml
+
+    sed -i -e "s/\[BPMP_DTB\]/$(echo ${BPMP_DTB} | cut -d '.' -f 1)/g" ${WORKDIR}/partition_specification186.txt
+    sed -i -e "s/BPMP_DTB/${BPMP_DTB}/g" ${WORKDIR}/resinOS-flash186.xml
+
     if [ -d ${DEPLOY_DIR_IMAGE}/bootfiles ]; then
          rm -rf ${DEPLOY_DIR_IMAGE}/bootfiles
     fi;
@@ -116,6 +123,7 @@ do_configure() {
     ln -s ${STAGING_DATADIR}/tegraflash/*.cfg .
     ln -s "${IMAGE_TEGRAFLASH_KERNEL}" ./${LNXFILE}
     cp "${DEPLOY_DIR_IMAGE}/${DTBFILE}" ./${DTBFILE}
+    cp ${STAGING_DATADIR}/tegraflash/${BPMP_DTB} .
 
     if [ "${BL_IS_CBOOT}" = "1" -a -n "${KERNEL_ARGS}" ]; then
         cp "${DEPLOY_DIR_IMAGE}/${DTBFILE}" ./${DTBFILE}

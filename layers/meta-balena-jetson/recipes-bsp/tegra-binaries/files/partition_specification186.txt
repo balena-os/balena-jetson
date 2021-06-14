@@ -11,8 +11,8 @@ adsp-fw:adsp-fw_sigheader.bin.encrypt:2048
 adsp-fw_b:adsp-fw_sigheader.bin.encrypt:2048
 bpmp-fw:bpmp_sigheader.bin.encrypt:1208
 bpmp-fw_b:bpmp_sigheader.bin.encrypt:1208
-bpmp-fw-dtb:tegra186-a02-bpmp-quill-p3310-1000-c04-00-te770d-ucm2_sigheader.dtb.encrypt:2000
-bpmp-fw-dtb_b:tegra186-a02-bpmp-quill-p3310-1000-c04-00-te770d-ucm2_sigheader.dtb.encrypt:2000
+bpmp-fw-dtb:[BPMP_DTB]_sigheader.dtb.encrypt:2000
+bpmp-fw-dtb_b:[BPMP_DTB]_sigheader.dtb.encrypt:2000
 sce-fw:camera-rtcpu-sce_sigheader.img.encrypt:2048
 sce-fw_b:camera-rtcpu-sce_sigheader.img.encrypt:2048
 sc7:warmboot_wbheader.bin.encrypt:4096
