@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'tegra186-flash-dry: Add support for TX2 4GB'
+      hash: d5cb6c1cf7365e0b35e7f1d76c6c49d354d0bde4
+      body: |
+        This is a community deivce type maintained by Andrew Smith
+      footer:
+        Changelog-entry: 'tegra186-flash-dry: Add support for TX2 4GB'
+        changelog-entry: 'tegra186-flash-dry: Add support for TX2 4GB'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.80.3+rev2
+  date: 2021-06-14T13:03:50.768Z
+- commits:
     - subject: Update meta-balena from v2.79.7 to v2.80.3
       hash: 4478253f0f143ef043d54b5691a11d715684ef72
       body: |

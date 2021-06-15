@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.80.3+rev2
+## (2021-06-14)
+
+* tegra186-flash-dry: Add support for TX2 4GB [Alexandru Costache]
+
 # v2.80.3+rev1
 ## (2021-06-11)
 
