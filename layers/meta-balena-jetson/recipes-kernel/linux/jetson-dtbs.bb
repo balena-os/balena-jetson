@@ -24,6 +24,7 @@ RDEPENDS_${PN} = " bash "
 do_install[depends] += " virtual/kernel:do_deploy "
 
 S = "${WORKDIR}"
+DTBNAME = "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 
 do_install_jetson-tx2() {
 	install -d ${D}/boot/
@@ -33,7 +34,7 @@ do_install_jetson-tx2() {
 	install -m 0644 ${WORKDIR}/tegra186-tx2-aetina-n510-p3489-0888-a00-00-base.dtb ${D}/boot/tegra186-tx2-aetina-n510-p3489-0888-a00-00-base.dtb
 	install -m 0644 ${WORKDIR}/tegra186-tx2-aetina-n310-p3489-0888-a00-00-base.dtb ${D}/boot/tegra186-tx2-aetina-n310-p3489-0888-a00-00-base.dtb
 	install -m 0644 ${WORKDIR}/tegra186-tx2-blackboard.dtb ${D}/boot/tegra186-tx2-blackboard.dtb
-	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra186-quill-p3310-1000-c03-00-base.dtb ${D}/boot/tegra186-quill-p3310-1000-c03-00-base.dtb
+	install -m 0644 "${DEPLOY_DIR_IMAGE}/${DTBNAME}" "${D}/boot/${DTBNAME}"
 	install -m 0644 ${WORKDIR}/tegra186-tx2-cti-ASG001-revG+.dtb ${D}/boot/tegra186-tx2-cti-ASG001-revG+.dtb
 }
 
@@ -69,7 +70,9 @@ FILES_${PN}_jetson-tx2 += " \
 	/boot/tegra186-tx2-blackboard.dtb \
 	/boot/tegra186-quill-p3310-1000-c03-00-base.dtb \
 	/boot/tegra186-tx2-cti-ASG001-revG+.dtb \
+	/boot/${DTBNAME} \
 "
+
 
 FILES_${PN}_jetson-nano += " \
 	/boot/tegra210-p3448-0000-p3449-0000-a02.dtb \
