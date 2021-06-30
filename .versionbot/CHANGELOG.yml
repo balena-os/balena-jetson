@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update balena-yocto-scripts from v1.14.6 to v1.14.7
+      hash: d5558088dd839d47283635f3969aab4270c5269b
+      body: |
+        Update balena-yocto-scripts from 1.14.6 to 1.14.7
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.14.6 to v1.14.7
+        changelog-entry: Update balena-yocto-scripts from v1.14.6 to v1.14.7
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.80.5+rev3
+  date: 2021-06-30T12:55:47.024Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.14.4 to v1.14.6
       hash: af9bf8ed2744732203616bbd399ff86df7dc25e4
       body: |
