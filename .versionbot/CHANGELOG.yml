@@ -1,4 +1,23 @@
 - commits:
+    - subject: 'linux-firmware: drop temporary fw update changes'
+      hash: 15dd5ac2b571fa8b6c019e4a30fb947db80ad3fc
+      body: |
+        These were needed to deliver an urgent OS image,
+        now meta-balena updates the firmware recipe so
+        we can drop these changes.
+
+        This reverts commit e96dc8e because it is no longer
+        necessary.
+      footer:
+        Changelog-entry: 'linux-firmware: drop temporary fw update changes'
+        changelog-entry: 'linux-firmware: drop temporary fw update changes'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.80.5+rev4
+  date: 2021-07-08T11:15:11.677Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.14.6 to v1.14.7
       hash: d5558088dd839d47283635f3969aab4270c5269b
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.80.5+rev4
+## (2021-07-08)
+
+* linux-firmware: drop temporary fw update changes [Alexandru Costache]
+
 # v2.80.5+rev3
 ## (2021-06-30)
 
