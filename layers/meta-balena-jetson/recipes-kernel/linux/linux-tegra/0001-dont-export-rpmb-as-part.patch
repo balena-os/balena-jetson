@@ -1,0 +1,39 @@
+From 26485ed0fe8a488eb0793a7417cc878eb837dac0 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Sun, 4 Jul 2021 16:49:04 +0200
+Subject: [PATCH] dont export rpmb as partition
+
+We get a few warnings when udev tries to open
+mmcblk0rpmb, let's not expose this as a partition
+since it's not necessary for our configuration and
+it might speed up boot by a few hundred ms.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ drivers/mmc/core/mmc.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+index 75cdd8528e5d..facb096323f2 100644
+--- a/drivers/mmc/core/mmc.c
++++ b/drivers/mmc/core/mmc.c
+@@ -566,6 +566,7 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
+ 		card->ext_csd.rel_param = ext_csd[EXT_CSD_WR_REL_PARAM];
+ 		card->ext_csd.rst_n_function = ext_csd[EXT_CSD_RST_N_FUNCTION];
+ 
++#if 0
+ 		/*
+ 		 * RPMB regions are defined in multiples of 128K.
+ 		 */
+@@ -576,6 +577,7 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
+ 				"rpmb", 0, false,
+ 				MMC_BLK_DATA_AREA_RPMB);
+ 		}
++#endif		
+ 	}
+ 
+ 	card->ext_csd.raw_erased_mem_count = ext_csd[EXT_CSD_ERASED_MEM_CONT];
+-- 
+2.17.1
+

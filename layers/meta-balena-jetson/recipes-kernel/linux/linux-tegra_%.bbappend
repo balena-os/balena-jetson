@@ -16,6 +16,7 @@ SRC_URI_append = " \
     file://0001-revert-random-fix-crng_ready-test.patch \
     file://0001-Support-referencing-the-root-partition-label-from-GP.patch \
     file://xhci-ring-Don-t-show-incorrect-WARN-message-about.patch \
+    file://0001-dont-export-rpmb-as-part.patch \
 "
 SRC_URI_append_jetson-tx2 = " \
     file://0001-Expose-spidev-to-the-userspace.patch \
