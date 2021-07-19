@@ -1,0 +1,12 @@
+#!/bin/sh
+
+governor_enabled() {
+    return 0
+}
+
+governor_run() {
+    # See: https://forums.developer.nvidia.com/t/cannot-enable-denver-cores-for-tx2-jetpack-4-4-dp/124708/44
+    echo 0 > /sys/devices/system/cpu/cpu1/online || true
+    echo 0 > /sys/devices/system/cpu/cpu2/online || true
+    echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor || true
+}
