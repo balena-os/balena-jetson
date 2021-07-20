@@ -1,6 +1,61 @@
 Change log
 -----------
 
+# v2.81.1+rev1
+## (2021-07-19)
+
+
+<details>
+<summary> Update meta-balena from v2.80.5 to v2.81.1 [Alex Gonzalez] </summary>
+
+> ## meta-balena-2.81.1
+> ### (2021-07-09)
+> 
+> * balena-engine: Restore previous systemd service settings [Kyle Harding]
+> 
+> ## meta-balena-2.81.0
+> ### (2021-07-06)
+> 
+> * recipes-core: add a 'network connectivity wait' service [Mark Corbin]
+> 
+> ## meta-balena-2.80.12
+> ### (2021-07-05)
+> 
+> * Remove CODEOWNERS [Michal Toman]
+> 
+> ## meta-balena-2.80.11
+> ### (2021-07-01)
+> 
+> * get journal logs at the end of the suite [rcooke-warwick]
+> 
+> ## meta-balena-2.80.10
+> ### (2021-06-24)
+> 
+> * hostapp-update-hooks: Migrate supervisor database [Kyle Harding]
+> * hostapp-update-hooks: Revert sv database path used by previous hooks [Kyle Harding]
+> 
+> ## meta-balena-2.80.9
+> ### (2021-06-21)
+> 
+> * balena-engine: refactor systemd service [Robert Günzler]
+> 
+> ## meta-balena-2.80.8
+> ### (2021-06-21)
+> 
+> * Update balena-supervisor from v12.8.7 to v12.8.8 [Florin Sarbu]
+> 
+> ## meta-balena-2.80.7
+> ### (2021-06-18)
+> 
+> * prevent failed teardown from making test hang [rcooke-warwick]
+> 
+> ## meta-balena-2.80.6
+> ### (2021-06-17)
+> 
+> * catch error if image path is corrupted [rcooke-warwick]
+> 
+</details>
+
 # v2.80.5+rev5
 ## (2021-07-13)
 
