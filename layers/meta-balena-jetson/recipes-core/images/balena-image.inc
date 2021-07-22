@@ -178,6 +178,7 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     tegra-firmware-xusb \
     bt-scripts \
     jetson-dtbs \
+    kernel-module-bcmdhd \
 "
 
 IMAGE_INSTALL_append_jetson-tx1 = " \

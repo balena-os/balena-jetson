@@ -16,6 +16,8 @@ SRC_URI_append = " \
     file://0001-revert-random-fix-crng_ready-test.patch \
     file://0001-Support-referencing-the-root-partition-label-from-GP.patch \
     file://xhci-ring-Don-t-show-incorrect-WARN-message-about.patch \
+    file://0001-dont-export-rpmb-as-part.patch \
+    file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
 "
 SRC_URI_append_jetson-tx2 = " \
     file://0001-Expose-spidev-to-the-userspace.patch \
@@ -26,7 +28,6 @@ SRC_URI_append_jetson-tx2 = " \
     file://tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb \
     file://tegra186-tx2-blackboard.dtb \
     file://realsense_powerlinefrequency_control_fix_linux-yocto_4.4.patch \
-    file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
 "
