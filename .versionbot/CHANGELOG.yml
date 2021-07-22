@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'linux-firmware: Revert update to latest upstream head revision'
+      hash: 01886ab1495346a0caaea3bce2192a3adceafd13
+      body: |
+        We only needed this for one release, until the firmware update
+        in meta-balena is merged.
+      footer:
+        Changelog-entry: 'linux-firmware: Revert update to latest upstream head revision'
+        changelog-entry: 'linux-firmware: Revert update to latest upstream head revision'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.82.8+rev2
+  date: 2021-07-22T16:17:08.161Z
+- commits:
     - subject: Update meta-balena from v2.81.1 to v2.82.8
       hash: 823ef8b4c13c43760e6997c7b4a75bcee3fa3180
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.8+rev2
+## (2021-07-22)
+
+* linux-firmware: Revert update to latest upstream head revision [Alexandru Costache]
+
 # v2.82.8+rev1
 ## (2021-07-21)
 
