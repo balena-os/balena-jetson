@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.82.10+rev1
+## (2021-07-24)
+
+
+<details>
+<summary> Update meta-balena from v2.82.8 to v2.82.10 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.82.10
+> ### (2021-07-20)
+> 
+> * tests: Remove reboot requirement from dnsmasq tests [Kyle Harding]
+> 
+> ## meta-balena-2.82.9
+> ### (2021-07-16)
+> 
+> * patch: Make OS test suite compatible with current helpers [Vipul Gupta (@vipulgupta2048)]
+> 
+</details>
+
 # v2.82.8+rev2
 ## (2021-07-22)
 

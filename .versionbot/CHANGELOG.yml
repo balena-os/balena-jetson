@@ -1,4 +1,46 @@
 - commits:
+    - subject: Update meta-balena from v2.82.8 to v2.82.10
+      hash: 70702624b4046c4e3dfe1cdedcddbc8d9dabb01d
+      body: |
+        Update meta-balena from 2.82.8 to 2.82.10
+      footer:
+        Changelog-entry: Update meta-balena from v2.82.8 to v2.82.10
+        changelog-entry: Update meta-balena from v2.82.8 to v2.82.10
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'tests: Remove reboot requirement from dnsmasq tests'
+              hash: 1ea1985f7ebc56908d018c98211fd52f6fd6701c
+              body: >
+                We no longer require reboots when changing dnsServers in
+                config.json
+
+                and the service should restart on it's own.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.82.10
+          date: 2021-07-20T20:09:41.348Z
+        - commits:
+            - subject: 'patch: Make OS test suite compatible with current helpers'
+              hash: 5a7dd196686836bd35a95f3f2c5dadf138b2590f
+              body: ''
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.82.9
+          date: 2021-07-16T22:29:01.729Z
+  version: 2.82.10+rev1
+  date: 2021-07-24T15:14:28.646Z
+- commits:
     - subject: 'linux-firmware: Revert update to latest upstream head revision'
       hash: 01886ab1495346a0caaea3bce2192a3adceafd13
       body: |
