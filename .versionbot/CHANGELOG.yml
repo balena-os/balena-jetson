@@ -1,4 +1,90 @@
 - commits:
+    - subject: Update meta-balena from v2.82.10 to v2.82.11
+      hash: e9d4f8a2ca8607ce2ffa82f5cc52e57ae5e785eb
+      body: |
+        Update meta-balena from 2.82.10 to 2.82.11
+      footer:
+        Changelog-entry: Update meta-balena from v2.82.10 to v2.82.11
+        changelog-entry: Update meta-balena from v2.82.10 to v2.82.11
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'tests: Remove journalctl line limit from hup suite'
+              hash: 5ce248f0d1b37c6500cdd93c639a89027f1fc7f4
+              body: |
+                Having the lines limited to 500 meant we were missing
+                a lot of logs.
+
+                We also don't need to list boots and can use the 'all'
+                arguement to see all logs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'tests: Enable rollback tests in hup suite'
+              hash: 9d1e892324718f2533cae1cf5e09018526d13b20
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'tests: Update smoke test conditions'
+              hash: 64df0c010841b0f00d8025b79ae0f23a6fccdf29
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'tests: Add rollback tests to HUP suite'
+              hash: 87e89fcf7b07180f3221602afc7a5b4dd8cd9e48
+              body: >
+                Adding rollback-health check & rollback-altboot check to the HUP
+                suite
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'rollback-altboot: Fix minor typo in log message'
+              hash: 1b3405ebf116420de032ccbdac39638a420c4a88
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.82.11
+          date: 2021-07-21T20:25:31.196Z
+    - subject: 'linux-firmware: Revert update to latest upstream head revision'
+      hash: 4f57690150eec0138b58de4cd45313ff6afc229d
+      body: |
+        We only needed this for one release, until the firmware update
+        in meta-balena is merged.
+      footer:
+        Changelog-entry: 'linux-firmware: Revert update to latest upstream head revision'
+        changelog-entry: 'linux-firmware: Revert update to latest upstream head revision'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.82.11+rev1
+  date: 2021-07-24T15:50:04.770Z
+- commits:
     - subject: Update meta-balena from v2.82.8 to v2.82.10
       hash: 70702624b4046c4e3dfe1cdedcddbc8d9dabb01d
       body: |

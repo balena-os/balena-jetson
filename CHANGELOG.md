@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2.82.11+rev1
+## (2021-07-24)
+
+
+<details>
+<summary> Update meta-balena from v2.82.10 to v2.82.11 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.82.11
+> ### (2021-07-21)
+> 
+> * tests: Remove journalctl line limit from hup suite [Kyle Harding]
+> * tests: Enable rollback tests in hup suite [Kyle Harding]
+> * tests: Update smoke test conditions [Kyle Harding]
+> * tests: Add rollback tests to HUP suite [Kyle Harding]
+> * rollback-altboot: Fix minor typo in log message [Kyle Harding]
+> 
+</details>
+
+* linux-firmware: Revert update to latest upstream head revision [Alexandru Costache]
+
 # v2.82.10+rev1
 ## (2021-07-24)
 
