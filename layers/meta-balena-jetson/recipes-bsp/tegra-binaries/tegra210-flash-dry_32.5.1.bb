@@ -45,7 +45,6 @@ tegraflash_roundup_size() {
 }
 
 BOOTFILES=" \
-    bmp.blob \
     eks.img \
     nvtboot_recovery.bin \
     nvtboot.bin \
