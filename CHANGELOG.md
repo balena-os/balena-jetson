@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.82.11+rev2
+## (2021-08-03)
+
+* linux-tegra: Update dtb file for jn30b-nano to 32.5.1 [Pelle van Gils]
+* linux-tegra: Update dtb files for photon-* to 32.5.1 [Pelle van Gils]
+
 # v2.82.11+rev1
 ## (2021-07-24)
 

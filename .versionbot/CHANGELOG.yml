@@ -1,4 +1,27 @@
 - commits:
+    - subject: 'linux-tegra: Update dtb file for jn30b-nano to 32.5.1'
+      hash: 8deca2a28658e8e12f56b71549734ac1cdae7d30
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Update dtb file for jn30b-nano to 32.5.1'
+        changelog-entry: 'linux-tegra: Update dtb file for jn30b-nano to 32.5.1'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+    - subject: 'linux-tegra: Update dtb files for photon-* to 32.5.1'
+      hash: 7eb8421c321caccb14f75fdb160051a0e54e9bf5
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Update dtb files for photon-* to 32.5.1'
+        changelog-entry: 'linux-tegra: Update dtb files for photon-* to 32.5.1'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+  version: 2.82.11+rev2
+  date: 2021-08-03T13:03:14.476Z
+- commits:
     - subject: Update meta-balena from v2.82.10 to v2.82.11
       hash: e9d4f8a2ca8607ce2ffa82f5cc52e57ae5e785eb
       body: |
