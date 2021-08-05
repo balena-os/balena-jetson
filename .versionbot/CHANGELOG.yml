@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'jetson-tx2-nx-devkit: Add icon for this device type'
+      hash: a8149b7b2132f0ef220326b8cf227c4f40e47164
+      body: ''
+      footer:
+        Changelog-entry: 'jetson-tx2-nx-devkit: Add icon for this device type'
+        changelog-entry: 'jetson-tx2-nx-devkit: Add icon for this device type'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.82.11+rev4
+  date: 2021-08-05T13:16:17.464Z
+- commits:
     - subject: Add balena-yocto-scripts upstream source
       hash: 1f1e3ede00c6dc4bb93b1bae793e2829b9f798d1
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.11+rev4
+## (2021-08-05)
+
+* jetson-tx2-nx-devkit: Add icon for this device type [Alexandru Costache]
+
 # v2.82.11+rev3
 ## (2021-08-05)
 
