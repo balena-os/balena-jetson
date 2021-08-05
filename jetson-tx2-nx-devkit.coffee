@@ -8,7 +8,7 @@ DONE_FLASHING  = 'After flashing is completed, please wait until the board is re
 module.exports =
 	version: 1
 	slug: 'jetson-tx2-nx-devkit'
-	name: 'Nvidia Jetson TX2 NX using Xavier NX Devkit'
+	name: 'Nvidia Jetson TX2 NX (with Xavier NX Devkit)'
 	arch: 'aarch64'
 	state: 'released'
 
