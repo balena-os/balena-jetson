@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.82.11+rev3
+## (2021-08-05)
+
+* Add balena-yocto-scripts upstream source [Alex Gonzalez]
+* linux-tegra: Update CTI dtbs to 32.5.1 [Alexandru Costache]
+
 # v2.82.11+rev2
 ## (2021-08-03)
 

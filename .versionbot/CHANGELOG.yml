@@ -1,4 +1,34 @@
 - commits:
+    - subject: Add balena-yocto-scripts upstream source
+      hash: 1f1e3ede00c6dc4bb93b1bae793e2829b9f798d1
+      body: |
+        This allows to add nested changelogs from the balena-yocto-scripts
+        repository from versions greater than 1.14.1.
+      footer:
+        Changelog-entry: Add balena-yocto-scripts upstream source
+        changelog-entry: Add balena-yocto-scripts upstream source
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'linux-tegra: Update CTI dtbs to 32.5.1'
+      hash: 9a7f31d3d760c774eea6debba02bcf3d39f2251f
+      body: |
+        This applies to the AXG Rogue, Astro G+,
+        Spacely and Oribitty carrier boards.
+
+        The photon boards were already updated
+        in the previous commit.
+      footer:
+        Changelog-entry: 'linux-tegra: Update CTI dtbs to 32.5.1'
+        changelog-entry: 'linux-tegra: Update CTI dtbs to 32.5.1'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.82.11+rev3
+  date: 2021-08-05T09:04:49.462Z
+- commits:
     - subject: 'linux-tegra: Update dtb file for jn30b-nano to 32.5.1'
       hash: 8deca2a28658e8e12f56b71549734ac1cdae7d30
       body: ''
