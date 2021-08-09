@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'jetson-tx2-nx-devkit: Set correct bootpart index'
+      hash: 46aa36f6f8b31b0234c0d7bedf5b35ab939dc379
+      body: |
+        Unlike the TX2, the TX2 NX does not have a flasher image,
+        which means the boot partition is not the first one in the
+        table. Set the index to 24 so that the image-maker knows
+        where to place the configuration files.
+      footer:
+        Changelog-entry: 'jetson-tx2-nx-devkit: Set correct bootpart index'
+        changelog-entry: 'jetson-tx2-nx-devkit: Set correct bootpart index'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.82.11+rev6
+  date: 2021-08-09T08:58:17.614Z
+- commits:
     - subject: Added device tree for JN30B with cam1 pixel format flipped
       hash: b427267d371ddec77c785dc127ca632202cf568d
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.11+rev6
+## (2021-08-09)
+
+* jetson-tx2-nx-devkit: Set correct bootpart index [Alexandru Costache]
+
 # v2.82.11+rev5
 ## (2021-08-05)
 
