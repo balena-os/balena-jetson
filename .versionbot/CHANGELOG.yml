@@ -1,4 +1,19 @@
 - commits:
+    - subject: Updated dtb jn30b-cam1-flip to JP4.5.1
+      hash: 96fd6c951bbd61285ca6f3effa5946ecfcf8b37d
+      body: |
+        Fixed JP version mismatch and applied pixel format change to all camera
+        modes of cam1 (this is the second camera, cam0 is the first).
+      footer:
+        Changelog-entry: Updated dtb jn30b-cam1-flip to JP4.5.1
+        changelog-entry: Updated dtb jn30b-cam1-flip to JP4.5.1
+        Signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+        signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+      author: Clint Haerinck
+      nested: []
+  version: 2.82.11+rev7
+  date: 2021-08-09T13:13:56.722Z
+- commits:
     - subject: 'jetson-tx2-nx-devkit: Set correct bootpart index'
       hash: 46aa36f6f8b31b0234c0d7bedf5b35ab939dc379
       body: |

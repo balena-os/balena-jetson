@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.11+rev7
+## (2021-08-09)
+
+* Updated dtb jn30b-cam1-flip to JP4.5.1 [Clint Haerinck]
+
 # v2.82.11+rev6
 ## (2021-08-09)
 
