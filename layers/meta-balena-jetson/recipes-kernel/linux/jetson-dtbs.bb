@@ -15,6 +15,7 @@ SRC_URI = " \
 	file://tegra186-tx2-blackboard.dtb \
 	file://tegra186-tx2-cti-ASG001-revG+.dtb \
 	file://tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb \
+	file://tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb \
 	file://tegra210-nano-cti-NGX003.dtb \
 	file://tegra210-nano-cti-NGX003-IMX477-2CAM.dtb \
 "
@@ -43,6 +44,7 @@ do_install_jetson-nano() {
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0000-p3449-0000-a02.dtb ${D}/boot/tegra210-p3448-0000-p3449-0000-a02.dtb
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0000-p3449-0000-b00.dtb ${D}/boot/tegra210-p3448-0000-p3449-0000-b00.dtb
 	install -m 0644 ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb
+	install -m 0644 ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb
 	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX003.dtb ${D}/boot/tegra210-nano-cti-NGX003.dtb
 }
 
@@ -52,6 +54,7 @@ do_install_jetson-nano-emmc() {
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00.dtb
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-a02.dtb  ${D}/boot/tegra210-p3448-0002-p3449-0000-a02.dtb
 	install -m 0644 ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb
+	install -m 0644 ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb
 	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX003.dtb ${D}/boot/tegra210-nano-cti-NGX003.dtb
 	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX003-IMX477-2CAM.dtb ${D}/boot/tegra210-nano-cti-NGX003-IMX477-2CAM.dtb
 }
@@ -78,6 +81,7 @@ FILES_${PN}_jetson-nano += " \
 	/boot/tegra210-p3448-0000-p3449-0000-a02.dtb \
 	/boot/tegra210-p3448-0000-p3449-0000-b00.dtb \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb \
+	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb \
 	/boot/tegra210-nano-cti-NGX003.dtb \
 "
 
@@ -85,6 +89,7 @@ FILES_${PN}_jetson-nano-emmc += " \
 	/boot/tegra210-p3448-0002-p3449-0000-b00.dtb \
 	/boot/tegra210-p3448-0002-p3449-0000-a02.dtb \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb \
+	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb \
 	/boot/tegra210-nano-cti-NGX003.dtb \
 	/boot/tegra210-nano-cti-NGX003-IMX477-2CAM.dtb \
 "
