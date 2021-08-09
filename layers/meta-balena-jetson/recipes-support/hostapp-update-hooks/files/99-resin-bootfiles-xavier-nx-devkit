@@ -102,6 +102,7 @@ else
     info_log "No need to update bootloader device"
 fi
 
-sync
+# Sync internal memory
+sync /dev/mmcblk0
 
 info_log "Done."
