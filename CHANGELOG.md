@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.11+rev5
+## (2021-08-05)
+
+* Added device tree for JN30B with cam1 pixel format flipped [Clint Haerinck]
+
 # v2.82.11+rev4
 ## (2021-08-05)
 

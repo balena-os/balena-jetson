@@ -1,4 +1,20 @@
 - commits:
+    - subject: Added device tree for JN30B with cam1 pixel format flipped
+      hash: b427267d371ddec77c785dc127ca632202cf568d
+      body: |
+        Device tree added for Auvidea JN30B board with
+        the pixel format of cam 1 flipped. The pixel bayer
+        pattern is changed from RGGB to BGGR.
+      footer:
+        Changelog-entry: Added device tree for JN30B with cam1 pixel format flipped
+        changelog-entry: Added device tree for JN30B with cam1 pixel format flipped
+        Signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+        signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+      author: Clint Haerinck
+      nested: []
+  version: 2.82.11+rev5
+  date: 2021-08-05T17:26:30.336Z
+- commits:
     - subject: 'jetson-tx2-nx-devkit: Add icon for this device type'
       hash: a8149b7b2132f0ef220326b8cf227c4f40e47164
       body: ''
