@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.82.11+rev8
+## (2021-08-09)
+
+
+<details>
+<summary> Update balena-yocto-scripts from v1.14.7 to v1.14.8 [Alexandru Costache] </summary>
+
+> ## balena-yocto-scripts-1.14.8
+> ### (2021-07-22)
+> 
+> * Use slug when setting deviceType for leviathan [Kyle Harding]
+> 
+</details>
+
 # v2.82.11+rev7
 ## (2021-08-09)
 

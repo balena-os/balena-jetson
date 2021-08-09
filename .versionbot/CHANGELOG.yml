@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update balena-yocto-scripts from v1.14.7 to v1.14.8
+      hash: e341289f834f55db8af587aaf895b53553cf6760
+      body: |
+        Update balena-yocto-scripts from 1.14.7 to 1.14.8
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.14.7 to v1.14.8
+        changelog-entry: Update balena-yocto-scripts from v1.14.7 to v1.14.8
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: Use slug when setting deviceType for leviathan
+              hash: bc628771aa0014e86e649e3312b48e1c7ae4968c
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.14.8
+          date: 2021-07-22T14:51:50.560Z
+  version: 2.82.11+rev8
+  date: 2021-08-09T13:43:24.974Z
+- commits:
     - subject: Updated dtb jn30b-cam1-flip to JP4.5.1
       hash: 96fd6c951bbd61285ca6f3effa5946ecfcf8b37d
       body: |
