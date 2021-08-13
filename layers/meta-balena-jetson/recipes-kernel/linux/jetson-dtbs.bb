@@ -18,6 +18,7 @@ SRC_URI = " \
 	file://tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb \
 	file://tegra210-nano-cti-NGX003.dtb \
 	file://tegra210-nano-cti-NGX003-IMX477-2CAM.dtb \
+	file://tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb \
 "
 
 RDEPENDS_${PN} = " bash "
@@ -46,6 +47,7 @@ do_install_jetson-nano() {
 	install -m 0644 ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb
 	install -m 0644 ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb
 	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX003.dtb ${D}/boot/tegra210-nano-cti-NGX003.dtb
+	install -m 0644 ${WORKDIR}/tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb ${D}/boot/tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb
 }
 
 
@@ -83,6 +85,8 @@ FILES_${PN}_jetson-nano += " \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb \
 	/boot/tegra210-nano-cti-NGX003.dtb \
+	/boot/tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb \
+	
 "
 
 FILES_${PN}_jetson-nano-emmc += " \
