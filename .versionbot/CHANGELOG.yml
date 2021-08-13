@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'linux-tegra: Update Xavier ReSpeaker to 32.5.1'
+      hash: 55971faaddf772ebddadbe05d0d688fdf3b5846f
+      body: |
+        Updated the DTB files for custom board
+        jetson-xavier-nx-devkit-seeed-2mic-hat
+        based on L4T 32.5.1.
+      footer:
+        Changelog-entry: 'linux-tegra: Update Xavier ReSpeaker to 32.5.1'
+        changelog-entry: 'linux-tegra: Update Xavier ReSpeaker to 32.5.1'
+        Signed-off-by: Kunal Singh <kunal.singh@aivero.com>
+        signed-off-by: Kunal Singh <kunal.singh@aivero.com>
+      author: Kunal Singh
+      nested: []
+  version: 2.82.11+rev9
+  date: 2021-08-13T08:10:08.091Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.14.7 to v1.14.8
       hash: e341289f834f55db8af587aaf895b53553cf6760
       body: |

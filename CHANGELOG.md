@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.11+rev9
+## (2021-08-13)
+
+* linux-tegra: Update Xavier ReSpeaker to 32.5.1 [Kunal Singh]
+
 # v2.82.11+rev8
 ## (2021-08-09)
 
