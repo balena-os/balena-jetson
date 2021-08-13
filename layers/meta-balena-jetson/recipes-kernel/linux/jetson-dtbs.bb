@@ -86,7 +86,6 @@ FILES_${PN}_jetson-nano += " \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb \
 	/boot/tegra210-nano-cti-NGX003.dtb \
 	/boot/tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb \
-	
 "
 
 FILES_${PN}_jetson-nano-emmc += " \
