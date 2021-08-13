@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'jetson-dtbs: fix empty line typo'
+      hash: 0050beae45f1f77f52254f5f6cdb8ad343a25c85
+      body: ''
+      footer:
+        Changelog-entry: 'jetson-dtbs: fix empty line typo'
+        changelog-entry: 'jetson-dtbs: fix empty line typo'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.82.11+rev11
+  date: 2021-08-13T11:35:27.490Z
+- commits:
     - subject: add mipi basler-camera dtb for jetson nano P3450 to jetson-dtbs
       hash: 9d72e7a5a2cdef9ad499ac647302c8b4d58f6904
       body: |

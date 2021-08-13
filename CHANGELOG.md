@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.11+rev11
+## (2021-08-13)
+
+* jetson-dtbs: fix empty line typo [Alexandru Costache]
+
 # v2.82.11+rev10
 ## (2021-08-13)
 
