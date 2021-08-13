@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.11+rev10
+## (2021-08-13)
+
+* add mipi basler-camera dtb for jetson nano P3450 to jetson-dtbs [Abed Rayyan]
+
 # v2.82.11+rev9
 ## (2021-08-13)
 

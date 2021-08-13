@@ -1,4 +1,18 @@
 - commits:
+    - subject: add mipi basler-camera dtb for jetson nano P3450 to jetson-dtbs
+      hash: 9d72e7a5a2cdef9ad499ac647302c8b4d58f6904
+      body: |
+        Adding dtb for basler camera
+      footer:
+        Changelog-entry: add mipi basler-camera dtb for jetson nano P3450 to jetson-dtbs
+        changelog-entry: add mipi basler-camera dtb for jetson nano P3450 to jetson-dtbs
+        Signed-off-by: Abed <abed@satis.ai>
+        signed-off-by: Abed <abed@satis.ai>
+      author: Abed Rayyan
+      nested: []
+  version: 2.82.11+rev10
+  date: 2021-08-13T09:22:07.182Z
+- commits:
     - subject: 'linux-tegra: Update Xavier ReSpeaker to 32.5.1'
       hash: 55971faaddf772ebddadbe05d0d688fdf3b5846f
       body: |
