@@ -19,6 +19,8 @@ SRC_URI = " \
 	file://tegra210-nano-cti-NGX003.dtb \
 	file://tegra210-nano-cti-NGX003-IMX477-2CAM.dtb \
 	file://tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb \
+	file://tegra186-tx2-nx-cti-NGX003.dtb \
+	file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
 "
 
 RDEPENDS_${PN} = " bash "
@@ -66,6 +68,12 @@ do_install_jetson-nano-2gb-devkit() {
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0003-p3542-0000.dtb  ${D}/boot/tegra210-p3448-0003-p3542-0000.dtb
 }
 
+do_install_jetson-tx2-nx-devkit() {
+	install -d ${D}/boot/
+	install -m 0644 ${WORKDIR}/tegra186-tx2-nx-cti-NGX003.dtb  ${D}/boot/tegra186-tx2-nx-cti-NGX003.dtb
+	install -m 0644 ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb  ${D}/boot/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb
+}
+
 FILES_${PN}_jetson-tx2 += " \
 	/boot/tegra186-tx2-6.dtb \
 	/boot/tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb \
@@ -99,4 +107,9 @@ FILES_${PN}_jetson-nano-emmc += " \
 
 FILES_${PN}_jetson-nano-2gb-devkit += " \
         /boot/tegra210-p3448-0003-p3542-0000.dtb \
+"
+
+FILES_${PN}_jetson-tx2-nx-devkit += " \
+	/boot/tegra186-tx2-nx-cti-NGX003.dtb \
+	/boot/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
 "
