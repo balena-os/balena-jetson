@@ -1,0 +1,88 @@
+From 0d51d59ac122cbd4bbdaed8d9287eb17fc30e1cb Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 23 Aug 2021 18:21:33 +0200
+Subject: [PATCH] switch retry count to 1
+
+---
+ smd.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/smd.c b/smd.c
+index 60c1e76..af83ce6 100644
+--- a/smd.c
++++ b/smd.c
+@@ -15,6 +15,8 @@
+ #include <zlib.h>
+ #include "smd.h"
+ 
++#define BALENA_BOOT_RETRY_COUNT 1
++
+ /*
+  * Structures used in the SMD storage
+  */
+@@ -203,7 +205,7 @@ smd_new (smd_redundancy_level_t level)
+ 	ctx->smd_ods.smd.slot_info[0].priority = 15;
+ 	ctx->smd_ods.smd.slot_info[0].suffix[0] = ctx->suffixes[0][0];
+ 	ctx->smd_ods.smd.slot_info[0].suffix[1] = ctx->suffixes[0][1];
+-	ctx->smd_ods.smd.slot_info[0].retry_count = 7;
++	ctx->smd_ods.smd.slot_info[0].retry_count = BALENA_BOOT_RETRY_COUNT;
+ 	ctx->smd_ods.smd.slot_info[0].successful = 1;
+ 	if (smd_set_redundancy_level(ctx, level) != 0) {
+ 		free(ctx);
+@@ -287,7 +289,7 @@ smd_set_redundancy_level (smd_context_t *ctx, smd_redundancy_level_t level)
+ 		ctx->smd_ods.smd.flags &= ~3U;
+ 		ctx->smd_ods.smd.maxslots = 1;
+ 		ctx->smd_ods.smd.slot_info[0].priority = 15;
+-		ctx->smd_ods.smd.slot_info[0].retry_count = 7;
++		ctx->smd_ods.smd.slot_info[0].retry_count = BALENA_BOOT_RETRY_COUNT;
+ 		ctx->smd_ods.smd.slot_info[0].successful = 1;
+ 		memset(&ctx->smd_ods.smd.slot_info[1], 0, sizeof(ctx->smd_ods.smd.slot_info[1]));
+ 		break;
+@@ -315,7 +317,7 @@ smd_set_redundancy_level (smd_context_t *ctx, smd_redundancy_level_t level)
+ 				s->priority = 15 - i;
+ 				s->suffix[0] = ctx->suffixes[i][0];
+ 				s->suffix[1] = ctx->suffixes[i][1];
+-				s->retry_count = 7;
++				s->retry_count = BALENA_BOOT_RETRY_COUNT;
+ 				s->successful = 1;
+ 			}
+ 		}
+@@ -429,11 +431,11 @@ smd_slot_mark_successful (smd_context_t *ctx, unsigned int which)
+ 
+ 	s = &ctx->smd_ods.smd.slot_info[which];
+ 	other = &ctx->smd_ods.smd.slot_info[1-which];
+-	ctx->needs_update = (s->successful != 1 || s->retry_count != 7 ||
++	ctx->needs_update = (s->successful != 1 || s->retry_count != BALENA_BOOT_RETRY_COUNT ||
+ 			     ((unsigned int) curslot == which &&
+ 			      (s->priority != 15 || other->priority >= s->priority)));
+ 	s->successful = 1;
+-	s->retry_count = 7;
++	s->retry_count = BALENA_BOOT_RETRY_COUNT;
+ 	if ((unsigned int) curslot == which) {
+ 		s->priority = 15;
+ 		if (other->priority >= s->priority)
+@@ -449,7 +451,7 @@ smd_slot_mark_successful (smd_context_t *ctx, unsigned int which)
+  *
+  * Marks a boot slot as active by setting its priority
+  * to 15 and setting the other slot's priority to 14,
+- * resetting its retry count to 7, and marking
++ * resetting its retry count to 1, and marking
+  * it as unsuccessful (so success can be tested after
+  * reboot).
+  *
+@@ -468,10 +470,10 @@ smd_slot_mark_active (smd_context_t *ctx, unsigned int which)
+ 	s = &ctx->smd_ods.smd.slot_info[which];
+ 	ctx->needs_update = (s->priority != 15 ||
+ 			     ctx->smd_ods.smd.slot_info[1-which].priority != 14 ||
+-			     s->retry_count != 7 || s->successful != 0);
++			     s->retry_count != BALENA_BOOT_RETRY_COUNT || s->successful != 0);
+ 	s->priority = 15;
+ 	ctx->smd_ods.smd.slot_info[1-which].priority = 14;
+-	s->retry_count = 7;
++	s->retry_count = BALENA_BOOT_RETRY_COUNT;
+ 	s->successful = 0;
+ 
+ 	return 0;
+-- 
+2.17.1
+

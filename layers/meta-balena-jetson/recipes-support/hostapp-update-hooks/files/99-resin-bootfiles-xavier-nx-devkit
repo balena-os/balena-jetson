@@ -20,6 +20,41 @@ info_log()
 
 info_log "New partition is ${new_part}"
 
+#####################
+
+get_label_suffix_by_slot()
+{
+    if [ $1 -eq 0 ]; then
+        echo ''
+    else
+        echo '_b'
+    fi
+}
+
+if ! command -v tegra-boot-control &> /dev/null
+then
+    echo "Could not find tegra-boot-control!"
+    exit 1
+fi
+
+redundancy_state=$(tegra-boot-control -s | awk -F 'Redundancy:' '{print $2}' | awk '{print $1}' | tr -d '\n')
+
+info_log "Redundancy is currently ${redundancy_state}"
+
+tegra-boot-control -e
+
+curr_slot=$(/usr/bin/tegra-boot-control -c)
+
+info_log "Current active slot is ${curr_slot}"
+
+echo "New active slot is $((new_slot = ! curr_slot))"
+
+new_label_suffix=$(get_label_suffix_by_slot ${new_slot})
+
+
+#####################
+
+
 rootstr=$(get_dev_label "${new_part}")
 rootl=""
 
@@ -74,22 +109,19 @@ for n in ${partitions}; do
     dst="$file_path"
 
     if [ $(update_needed $src $dst) -eq 1 ]; then
-        info_log "Will update ${dst} ..."
-        dd if=${src} of=${dst}
-        dd if=${src} of="${dst}_b"
+        info_log "Will update ${dst}${new_label_suffix} ..."
+        dd if=${src} of="${dst}${new_label_suffix}"
     else
-        info_log "No need to update ${dst}"
+        info_log "No need to update ${dst}${new_label_suffix}"
     fi
 done
 
 # DTB contains root partition, update is mandatory
 info_log "Writing ${dtbfile} to specific partitions..."
-dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
-dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
+dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb${new_label_suffix}")
 
 info_log "Writing kernel ${kernel} to specific partitions..."
-dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel")
-dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel_b")
+dd if=/opt/tegra-binaries/${kernel} of=$(get_state_path_from_label "kernel${new_label_suffix}")
 
 existing_bootloader_md5sum=$(dd if=$bootloader_device bs=1M status=none | md5sum | awk '{print $1}')
 update_bootloader_md5sum=$(md5sum $bootloader_blob | awk '{print $1}')
@@ -104,5 +136,12 @@ fi
 
 # Sync internal memory
 sync /dev/mmcblk0
+
+# Update slot selection after the qspi was updated, otherwise
+# scratch register contents will be lost
+
+info_log "Setting active slot to ${new_slot}"
+/usr/bin/tegra-boot-control -e
+/usr/bin/tegra-boot-control -a ${new_slot}
 
 info_log "Done."

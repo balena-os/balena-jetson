@@ -137,6 +137,7 @@ IMAGE_INSTALL_append_jetson-xavier = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
+    tegra-boot-tools \
 "
 
 IMAGE_INSTALL_append_jetson-xavier-nx-devkit-emmc = " \
@@ -162,6 +163,7 @@ IMAGE_INSTALL_append_jetson-xavier-nx-devkit = " \
     tegra-wifi \
     tegra-firmware-rtl8822 \
     tegra-udrm-probeconf \
+    tegra-boot-tools \
 "
 
 IMAGE_INSTALL_append_jetson-tx2 = " \
@@ -179,7 +181,9 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     bt-scripts \
     jetson-dtbs \
     kernel-module-bcmdhd \
+    tegra-boot-tools \
 "
+
 IMAGE_INSTALL_append_jetson-tx2-nx-devkit = " \
     tegra-firmware-rtl8822 \
     kernel-module-rtk-btusb \
