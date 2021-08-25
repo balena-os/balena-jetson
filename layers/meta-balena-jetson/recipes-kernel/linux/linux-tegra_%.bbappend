@@ -66,6 +66,12 @@ SRC_URI_append_photon-nano = " \
     file://tegra210-nano-cti-NGX003.dtb \
 "
 
+SRC_URI_append_photon-tx2-nx = " \
+    file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
+    file://tegra186-tx2-nx-cti-NGX003.dtb \
+    file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
+"
+
 SRC_URI_append_photon-xavier-nx = " \
     file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
     file://tegra194-xavier-nx-cti-NGX003.dtb \
@@ -187,18 +193,21 @@ BALENA_CONFIGS_append_jetson-nano = " gasket"
 BALENA_CONFIGS_append_jetson-nano-emmc = " gasket"
 
 BALENA_CONFIGS_append_photon-nano = " tlc591xx"
+BALENA_CONFIGS_append_photon-tx2-nx = " tlc591xx"
 BALENA_CONFIGS_append_photon-xavier-nx = " tlc591xx"
 BALENA_CONFIGS[tlc591xx] = " \
                 CONFIG_LEDS_TLC591XX=m \
 "
 
 BALENA_CONFIGS_append_photon-nano = " cdc-wdm"
+BALENA_CONFIGS_append_photon-tx2-nx = " cdc-wdm"
 BALENA_CONFIGS_append_photon-xavier-nx = " cdc-wdm"
 BALENA_CONFIGS[cdc-wdm] = " \
                 CONFIG_USB_WDM=m \
 "
 
 BALENA_CONFIGS_append_photon-nano = " sierra-net"
+BALENA_CONFIGS_append_photon-tx2-nx = " sierra-net"
 BALENA_CONFIGS_append_photon-xavier-nx = " sierra-net"
 BALENA_CONFIGS[sierra-net] = " \
                 CONFIG_USB_SIERRA_NET=m \
@@ -209,6 +218,7 @@ BALENA_CONFIGS_DEPS[sierra-net] = " \
 "
 
 BALENA_CONFIGS_append_photon-nano = " cdc-ncm"
+BALENA_CONFIGS_append_photon-tx2-nx = " cdc-ncm"
 BALENA_CONFIGS_append_photon-xavier-nx = " cdc-ncm"
 BALENA_CONFIGS[cdc-ncm] = " \
                 CONFIG_USB_NET_CDC_NCM=m \
@@ -219,6 +229,7 @@ BALENA_CONFIGS_DEPS[cdc-ncm] = " \
 "
 
 BALENA_CONFIGS_append_photon-nano = " mii"
+BALENA_CONFIGS_append_photon-tx2-nx = " mii"
 BALENA_CONFIGS_append_photon-xavier-nx = " mii"
 BALENA_CONFIGS[mii] = " \
                 CONFIG_MII=m \
@@ -345,6 +356,11 @@ do_deploy_append_jn30b-nano() {
 
 do_deploy_append_photon-nano() {
     cp ${WORKDIR}/tegra210-nano-cti-NGX003.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_photon-tx2-nx() {
+    cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003.dtb "${DEPLOYDIR}"
+    cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb "${DEPLOYDIR}"
 }
 
 do_deploy_append_photon-xavier-nx() {
