@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.11+rev12
+## (2021-08-24)
+
+* Added CTI Photon TX2 NX device type [ClintHaerinck]
+
 # v2.82.11+rev11
 ## (2021-08-13)
 

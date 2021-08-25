@@ -1,4 +1,18 @@
 - commits:
+    - subject: Added CTI Photon TX2 NX device type
+      hash: 79da766924ffd4d6afe83c61d65421305f7b23d9
+      body: |
+        Added CTI Photon TX2 NX device type
+      footer:
+        Changelog-entry: Added CTI Photon TX2 NX device type
+        changelog-entry: Added CTI Photon TX2 NX device type
+        Signed-off-by: ClintHaerinck <clint.haerinck@gmail.com>
+        signed-off-by: ClintHaerinck <clint.haerinck@gmail.com>
+      author: ClintHaerinck
+      nested: []
+  version: 2.82.11+rev12
+  date: 2021-08-24T13:57:44.765Z
+- commits:
     - subject: 'jetson-dtbs: fix empty line typo'
       hash: 0050beae45f1f77f52254f5f6cdb8ad343a25c85
       body: ''
