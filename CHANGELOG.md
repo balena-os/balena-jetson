@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.11+rev13
+## (2021-09-06)
+
+* linux-tegra: Update Nano SD basler camera dtb [Alexandru Costache]
+
 # v2.82.11+rev12
 ## (2021-08-24)
 

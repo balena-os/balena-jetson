@@ -1,4 +1,22 @@
 - commits:
+    - subject: 'linux-tegra: Update Nano SD basler camera dtb'
+      hash: 56f2e9d04eb72176f5e3078ccef323a17501d28a
+      body: |
+        The current existing community basler.dtb file is actually
+        a compiled overlay and not a compiled device tree. Let's
+        apply the overlay dts from JF item
+        63f90f88-9bfa-44a4-8590-f78ba49bef6e on top of the sd-card
+        dtb and generate an the actual dtb.
+      footer:
+        Changelog-entry: 'linux-tegra: Update Nano SD basler camera dtb'
+        changelog-entry: 'linux-tegra: Update Nano SD basler camera dtb'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.82.11+rev13
+  date: 2021-09-06T08:57:57.777Z
+- commits:
     - subject: Added CTI Photon TX2 NX device type
       hash: 79da766924ffd4d6afe83c61d65421305f7b23d9
       body: |
