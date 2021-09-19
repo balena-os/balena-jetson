@@ -21,3 +21,8 @@ do_install_append_jetson-tx1(){
     # Same as for the jetson nano, since both are tegra210
     echo "" > ${D}/${sysconfdir}/systemd/system.conf.d/watchdog.conf
 }
+
+do_install_append_jetson-tx2(){
+    # Disable systemd watchdog for HUP testing
+    echo "" > ${D}/${sysconfdir}/systemd/system.conf.d/watchdog.conf
+}
