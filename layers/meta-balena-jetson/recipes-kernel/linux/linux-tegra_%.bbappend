@@ -247,6 +247,11 @@ BALENA_CONFIGS[backlight] = " \
     CONFIG_BACKLIGHT_CLASS_DEVICE=m \
 "
 
+BALENA_CONFIGS_append = " disable_hung_panic"
+BALENA_CONFIGS[disable_hung_panic] = " \
+    CONFIG_BOOTPARAM_HUNG_TASK_PANIC=n \
+    "
+
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-nano-emmc = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC_jetson-nano-2gb-devkit = "\${resin_kernel_root} ro rootwait"
