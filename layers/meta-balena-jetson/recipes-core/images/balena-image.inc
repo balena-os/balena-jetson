@@ -166,14 +166,7 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     parted \
     gptfdisk \
     fan-startup \
-    tegra-nvpmodel \
-    tegra-configs-nvstartup \
-    tegra-configs-udev \
-    tegra-firmware-brcm \
-    tegra-brcm-patchram \
-    linux-firmware-bcm4354 \
     tegra-firmware-xusb \
-    bt-scripts \
     jetson-dtbs \
 "
 
