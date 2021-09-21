@@ -63,11 +63,11 @@ index ccade24..d5be338 100644
 +
 +					env_fdt_file = env_get("custom_fdt_file");
 +
-+					if (!env_fdt_file) {
++					//if (!env_fdt_file) {
 +						// If no custom device tree set from dashboard, try load the default dtb from rootfs
-+						printf("info: Custom fdt file not defined. Look for default board fdt file\n");
-+						env_fdt_file = env_get("board_fdt_file");
-+					}
++					//	printf("info: Custom fdt file not defined. Look for default board fdt file\n");
++					//	env_fdt_file = env_get("board_fdt_file");
++					//}
 +
 +					if (env_fdt_file) {
 +						int fdtlen = strlen(env_fdt_file);
