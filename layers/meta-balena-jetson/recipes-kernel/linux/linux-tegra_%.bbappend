@@ -1,13 +1,14 @@
 inherit kernel-resin deploy
 
 FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
+FILESEXTRAPATHS_append := ":${THISDIR}/ext4fixes"
 
 SCMVERSION="n"
 
-# We pin to the 32.4.4 revision as of 12 Jan 2021
+# We pin to the 32.4.4 revision as of 22 Sep 2021
 # to ensure the upstream BSP layer doesn't bring in a newer
 # version that might fail to build or boot without notice.
-SRCREV = "87e09c14b15ad302b451f40f4237bb14f553c1e0"
+SRCREV = "28146183e949d8ccca5e6e7d54e336fdeaf24c55"
 
 # Prevent delayed booting
 # and support using partition label to load rootfs
@@ -16,6 +17,21 @@ SRC_URI_append = " \
     file://0001-revert-random-fix-crng_ready-test.patch \
     file://0001-Support-referencing-the-root-partition-label-from-GP.patch \
     file://xhci-ring-Don-t-show-incorrect-WARN-message-about.patch \
+    file://0001-ext4-fix-possible-use-after-free-in-ext4_quota_enabl.patch \
+    file://0002-ext4-missing-unlock-put_page-in-ext4_try_to_write_in.patch \
+    file://0003-ext4-fix-EXT4_IOC_GROUP_ADD-ioctl.patch \
+    file://0004-ext4-include-terminating-u32-in-size-of-xattr-entrie.patch \
+    file://0005-ext4-force-inode-writes-when-nfsd-calls-commit_metad.patch \
+    file://0006-ext4-make-sure-enough-credits-are-reserved-for-diore.patch \
+    file://0007-ext4-fix-a-potential-fiemap-page-fault-deadlock-w-in.patch \
+    file://0008-ext4-avoid-kernel-warning-when-writing-the-superbloc.patch \
+    file://0009-ext4-zero-out-the-unused-memory-region-in-the-extent.patch \
+    file://0010-ext4-avoid-unnecessary-stalls-in-ext4_evict_inode.patch \
+    file://0011-mmc-atmel-mci-do-not-assume-idle-after-atmci_request.patch \
+    file://0012-mmc-sdhci-iproc-handle-mmc_of_parse-errors-during-pr.patch \
+    file://0013-mmc-cmdq-handle-all-pending-cq-interrupts.patch \
+    file://0014-mmc-core-Skip-CMD11-for-always-on-slot-regulator.patch \
+    file://0015-mmc-core-Bypass-voltage-calls-for-fixed-regulator.patch \
 "
 
 SRC_URI_append_jetson-tx2 = " \

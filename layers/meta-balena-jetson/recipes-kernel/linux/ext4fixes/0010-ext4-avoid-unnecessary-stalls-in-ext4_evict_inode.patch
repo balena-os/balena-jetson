@@ -1,0 +1,49 @@
+From 8eb838284bcda0f997037f84f3e67667a392582e Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.cz>
+Date: Thu, 22 Jun 2017 23:49:46 -0400
+Subject: [PATCH 10/10] ext4: avoid unnecessary stalls in ext4_evict_inode()
+
+These days inode reclaim calls evict_inode() only when it has no pages
+in the mapping.  In that case it is not necessary to wait for transaction
+commit in ext4_evict_inode() as there can be no pages waiting to be
+committed.  So avoid unnecessary transaction waiting in that case.
+
+We still have to keep the check for the case where ext4_evict_inode()
+gets called from other paths (e.g. umount) where inode still can have
+some page cache pages.
+
+Bug 200644211
+
+Change-Id: I6a285d8898b8823297cceef1bfcb4ca225590b6f
+Reported-by: Johannes Weiner <hannes@cmpxchg.org>
+Signed-off-by: Jan Kara <jack@suse.cz>
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+Signed-off-by: Sumit Gupta <sumitg@nvidia.com>
+Reviewed-on: https://git-master.nvidia.com/r/c/linux-4.9/+/2395709
+Reviewed-by: automaticguardword <automaticguardword@nvidia.com>
+Reviewed-by: Bibek Basu <bbasu@nvidia.com>
+Reviewed-by: mobile promotions <svcmobile_promotions@nvidia.com>
+GVS: Gerrit_Virtual_Submit
+Tested-by: Bibek Basu <bbasu@nvidia.com>
+Tested-by: mobile promotions <svcmobile_promotions@nvidia.com>
+---
+ fs/ext4/inode.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/fs/ext4/inode.c b/fs/ext4/inode.c
+index 5d53bd74f123..27f8845e127e 100644
+--- a/fs/ext4/inode.c
++++ b/fs/ext4/inode.c
+@@ -214,7 +214,8 @@ void ext4_evict_inode(struct inode *inode)
+ 		 */
+ 		if (inode->i_ino != EXT4_JOURNAL_INO &&
+ 		    ext4_should_journal_data(inode) &&
+-		    (S_ISLNK(inode->i_mode) || S_ISREG(inode->i_mode))) {
++		    (S_ISLNK(inode->i_mode) || S_ISREG(inode->i_mode)) &&
++		    inode->i_data.nrpages) {
+ 			journal_t *journal = EXT4_SB(inode->i_sb)->s_journal;
+ 			tid_t commit_tid = EXT4_I(inode)->i_datasync_tid;
+ 
+-- 
+2.17.1
+

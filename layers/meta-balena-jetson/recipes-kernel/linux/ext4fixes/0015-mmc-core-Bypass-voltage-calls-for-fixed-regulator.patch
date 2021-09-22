@@ -1,0 +1,50 @@
+From a4f85e6ebe84438290a14fd51584e0634d077f04 Mon Sep 17 00:00:00 2001
+From: Aniruddha Rao <anrao@nvidia.com>
+Date: Fri, 24 Jul 2020 17:57:34 +0530
+Subject: [PATCH 5/5] mmc: core: Bypass voltage calls for fixed regulator
+
+When regulator voltage is restricted by the client and cannot be changed,
+bypass "set voltage" calls to avoid reporting false errors on some boards,
+which use MMC hosts with fixed regulators
+
+Bug 3042260
+
+Change-Id: Iaf8e99b37ca9ef86812c3acf3acbfcbccde399d5
+Signed-off-by: Aniruddha Rao <anrao@nvidia.com>
+Reviewed-on: https://git-master.nvidia.com/r/c/linux-4.9/+/2385266
+Reviewed-by: Laxman Dewangan <ldewangan@nvidia.com>
+Reviewed-by: mobile promotions <svcmobile_promotions@nvidia.com>
+Tested-by: Ahung Cheng <ahcheng@nvidia.com>
+Tested-by: mobile promotions <svcmobile_promotions@nvidia.com>
+GVS: Gerrit_Virtual_Submit
+---
+ drivers/mmc/core/core.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+index 0494fffb36a4..bbf150559389 100644
+--- a/drivers/mmc/core/core.c
++++ b/drivers/mmc/core/core.c
+@@ -1711,13 +1711,18 @@ int mmc_regulator_set_ocr(struct mmc_host *mmc,
+ {
+ 	int			result = 0;
+ 	int			min_uV, max_uV;
++	int			reg_min_uV, reg_max_uV;
+ 
+ 	if (vdd_bit) {
+ 		mmc_ocrbitnum_to_vdd(vdd_bit, &min_uV, &max_uV);
+ 
+ 		if (mmc->ops->pre_regulator_config)
+ 			mmc->ops->pre_regulator_config(mmc, vdd_bit, true);
+-		result = regulator_set_voltage(supply, min_uV, max_uV);
++
++		result = regulator_get_constraint_voltages(supply, &reg_min_uV,
++                                                           &reg_max_uV);
++		if ((result == 0) && (reg_min_uV != reg_max_uV))
++			result = regulator_set_voltage(supply, min_uV, max_uV);
+ 		if (result == 0 && !mmc->regulator_enabled) {
+ 			result = regulator_enable(supply);
+ 			if (!result)
+-- 
+2.17.1
+

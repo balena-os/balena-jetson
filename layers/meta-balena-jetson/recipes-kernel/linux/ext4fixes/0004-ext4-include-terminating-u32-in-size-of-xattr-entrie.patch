@@ -1,0 +1,40 @@
+From 09d3e09cc778fd23bbf5d76a604072ee52af0c7e Mon Sep 17 00:00:00 2001
+From: Theodore Ts'o <tytso@mit.edu>
+Date: Wed, 19 Dec 2018 12:28:13 -0500
+Subject: [PATCH 04/10] ext4: include terminating u32 in size of xattr entries
+ when expanding inodes
+
+commit a805622a757b6d7f65def4141d29317d8e37b8a1 upstream.
+
+In ext4_expand_extra_isize_ea(), we calculate the total size of the
+xattr header, plus the xattr entries so we know how much of the
+beginning part of the xattrs to move when expanding the inode extra
+size.  We need to include the terminating u32 at the end of the xattr
+entries, or else if there is uninitialized, non-zero bytes after the
+xattr entries and before the xattr values, the list of xattr entries
+won't be properly terminated.
+
+Reported-by: Steve Graham <stgraham2000@gmail.com>
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+Cc: stable@kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ fs/ext4/xattr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/ext4/xattr.c b/fs/ext4/xattr.c
+index 116ec67edbea..6830b192b011 100644
+--- a/fs/ext4/xattr.c
++++ b/fs/ext4/xattr.c
+@@ -1499,7 +1499,7 @@ int ext4_expand_extra_isize_ea(struct inode *inode, int new_extra_isize,
+ 	base = IFIRST(header);
+ 	end = (void *)raw_inode + EXT4_SB(inode->i_sb)->s_inode_size;
+ 	min_offs = end - base;
+-	total_ino = sizeof(struct ext4_xattr_ibody_header);
++	total_ino = sizeof(struct ext4_xattr_ibody_header) + sizeof(u32);
+ 
+ 	error = xattr_check_inode(inode, header, end);
+ 	if (error)
+-- 
+2.17.1
+

@@ -1,0 +1,65 @@
+From aeac59b0880b047877523924cb88f8a235c62baf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ole=20Bj=C3=B8rn=20Midtb=C3=B8?= <omidtbo@cisco.com>
+Date: Fri, 10 May 2019 12:08:56 +0200
+Subject: [PATCH 3/5] mmc: cmdq: handle all pending cq interrupts
+
+Only one interrupt were handled in the interrupt routing even tough multiple
+interrupts were pending. In paritcular the task completed interrupt (TCC)
+was not handled in the presence on the halt complete interrupt (HAC)
+
+Bug 2596078
+Bug 2665027
+
+Change-Id: I572412d4f08c29beee842eca98abc6a369f83c5c
+Signed-off-by: Ken Chang <kenc@nvidia.com>
+(cherry picked from commit 8967dfbdee1130729b88e18178ae05b043d2e79a)
+Reviewed-on: https://git-master.nvidia.com/r/c/linux-4.9/+/2129198
+Reviewed-on: https://git-master.nvidia.com/r/c/linux-4.9/+/2307669
+Reviewed-by: automaticguardword <automaticguardword@nvidia.com>
+Reviewed-by: Aniruddha Tvs Rao <anrao@nvidia.com>
+Reviewed-by: Bibek Basu <bbasu@nvidia.com>
+Reviewed-by: mobile promotions <svcmobile_promotions@nvidia.com>
+GVS: Gerrit_Virtual_Submit
+Tested-by: Aniruddha Tvs Rao <anrao@nvidia.com>
+Tested-by: mobile promotions <svcmobile_promotions@nvidia.com>
+---
+ drivers/mmc/host/cmdq_hci.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mmc/host/cmdq_hci.c b/drivers/mmc/host/cmdq_hci.c
+index af156648023b..49262ead0aa8 100644
+--- a/drivers/mmc/host/cmdq_hci.c
++++ b/drivers/mmc/host/cmdq_hci.c
+@@ -662,7 +662,9 @@ irqreturn_t cmdq_irq(struct mmc_host *mmc, u32 intmask)
+ 	if (status & CQIS_HAC) {
+ 		/* halt is completed, wakeup waiting thread */
+ 		complete(&cq_host->halt_comp);
+-	} else if (status & CQIS_TCC) {
++	}
++
++	if (status & CQIS_TCC) {
+ 		/* read QCTCN and complete the request */
+ 		comp_status = cqtcn & ~cqtdbr;
+ 		if (!comp_status)
+@@ -674,12 +676,16 @@ irqreturn_t cmdq_irq(struct mmc_host *mmc, u32 intmask)
+ 			/* complete DCMD on tag 31 */
+ 		}
+ 		cmdq_reg_writel(cq_host, comp_status, CQTCN);
+-	} else if (status & CQIS_RED) {
++	}
++
++	if (status & CQIS_RED) {
+ 		/* task response has an error */
+ 		pr_err("%s: RED error %d !!!\n", mmc_hostname(mmc), status);
+ 		cmdq_dumpregs(cq_host);
+ 		BUG_ON(1);
+-	} else if (status & CQIS_TCL) {
++	}
++
++	if (status & CQIS_TCL) {
+ 		/* task is cleared, wakeup waiting thread */
+ 		;
+ 	}
+-- 
+2.17.1
+

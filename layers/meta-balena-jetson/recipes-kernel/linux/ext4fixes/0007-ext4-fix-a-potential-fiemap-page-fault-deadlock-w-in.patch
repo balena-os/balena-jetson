@@ -1,0 +1,49 @@
+From bd9babf169564d97f5e55342878b490e95d788a3 Mon Sep 17 00:00:00 2001
+From: Theodore Ts'o <tytso@mit.edu>
+Date: Tue, 25 Dec 2018 00:56:33 -0500
+Subject: [PATCH 07/10] ext4: fix a potential fiemap/page fault deadlock w/
+ inline_data
+
+commit 2b08b1f12cd664dc7d5c84ead9ff25ae97ad5491 upstream.
+
+The ext4_inline_data_fiemap() function calls fiemap_fill_next_extent()
+while still holding the xattr semaphore.  This is not necessary and it
+triggers a circular lockdep warning.  This is because
+fiemap_fill_next_extent() could trigger a page fault when it writes
+into page which triggers a page fault.  If that page is mmaped from
+the inline file in question, this could very well result in a
+deadlock.
+
+This problem can be reproduced using generic/519 with a file system
+configuration which has the inline_data feature enabled.
+
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+Cc: stable@kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ fs/ext4/inline.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/fs/ext4/inline.c b/fs/ext4/inline.c
+index f4eb7e8c3c15..ddb3dcf65d08 100644
+--- a/fs/ext4/inline.c
++++ b/fs/ext4/inline.c
+@@ -1873,12 +1873,12 @@ int ext4_inline_data_fiemap(struct inode *inode,
+ 	physical += (char *)ext4_raw_inode(&iloc) - iloc.bh->b_data;
+ 	physical += offsetof(struct ext4_inode, i_block);
+ 
+-	if (physical)
+-		error = fiemap_fill_next_extent(fieinfo, start, physical,
+-						inline_len, flags);
+ 	brelse(iloc.bh);
+ out:
+ 	up_read(&EXT4_I(inode)->xattr_sem);
++	if (physical)
++		error = fiemap_fill_next_extent(fieinfo, start, physical,
++						inline_len, flags);
+ 	return (error < 0 ? error : 0);
+ }
+ 
+-- 
+2.17.1
+

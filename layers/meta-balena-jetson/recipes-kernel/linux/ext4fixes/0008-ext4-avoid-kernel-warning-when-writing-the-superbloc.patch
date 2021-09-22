@@ -1,0 +1,45 @@
+From 1befc329da349aea686ce10c1d48d13dd53669f0 Mon Sep 17 00:00:00 2001
+From: Theodore Ts'o <tytso@mit.edu>
+Date: Sun, 30 Dec 2018 23:20:39 -0500
+Subject: [PATCH 08/10] ext4: avoid kernel warning when writing the superblock
+ to a dead device
+
+commit e86807862e6880809f191c4cea7f88a489f0ed34 upstream.
+
+The xfstests generic/475 test switches the underlying device with
+dm-error while running a stress test.  This results in a large number
+of file system errors, and since we can't lock the buffer head when
+marking the superblock dirty in the ext4_grp_locked_error() case, it's
+possible the superblock to be !buffer_uptodate() without
+buffer_write_io_error() being true.
+
+We need to set buffer_uptodate() before we call mark_buffer_dirty() or
+this will trigger a WARN_ON.  It's safe to do this since the
+superblock must have been properly read into memory or the mount would
+have been successful.  So if buffer_uptodate() is not set, we can
+safely assume that this happened due to a failed attempt to write the
+superblock.
+
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+Cc: stable@vger.kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ fs/ext4/super.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/ext4/super.c b/fs/ext4/super.c
+index 3544cf601a96..61eea04e977c 100644
+--- a/fs/ext4/super.c
++++ b/fs/ext4/super.c
+@@ -4689,7 +4689,7 @@ static int ext4_commit_super(struct super_block *sb, int sync)
+ 	ext4_superblock_csum_set(sb);
+ 	if (sync)
+ 		lock_buffer(sbh);
+-	if (buffer_write_io_error(sbh)) {
++	if (buffer_write_io_error(sbh) || !buffer_uptodate(sbh)) {
+ 		/*
+ 		 * Oh, dear.  A previous attempt to write the
+ 		 * superblock failed.  This could happen because the
+-- 
+2.17.1
+
