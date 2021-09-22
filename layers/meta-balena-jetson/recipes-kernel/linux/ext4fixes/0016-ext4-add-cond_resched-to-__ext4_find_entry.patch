@@ -1,0 +1,29 @@
+From f38a7aa46d25d17bd099da61d5b390135c26f7d6 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Wed, 22 Sep 2021 15:30:04 +0200
+Subject: [PATCH] ext4: add cond_resched() to __ext4_find_entry()
+
+To avoid soft-lockup.
+
+Backported from http://lkml.iu.edu/hypermail/linux/kernel/2002.3/05148.html
+
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ fs/ext4/namei.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/fs/ext4/namei.c b/fs/ext4/namei.c
+index 1c6275363daa..0841644eadec 100644
+--- a/fs/ext4/namei.c
++++ b/fs/ext4/namei.c
+@@ -1402,6 +1402,7 @@ static struct buffer_head * ext4_find_entry (struct inode *dir,
+ 		/*
+ 		 * We deal with the read-ahead logic here.
+ 		 */
++		cond_resched();
+ 		if (ra_ptr >= ra_max) {
+ 			/* Refill the readahead buffer */
+ 			ra_ptr = 0;
+-- 
+2.17.1
+

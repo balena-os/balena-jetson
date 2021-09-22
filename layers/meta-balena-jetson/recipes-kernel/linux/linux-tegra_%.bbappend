@@ -32,6 +32,7 @@ SRC_URI_append = " \
     file://0013-mmc-cmdq-handle-all-pending-cq-interrupts.patch \
     file://0014-mmc-core-Skip-CMD11-for-always-on-slot-regulator.patch \
     file://0015-mmc-core-Bypass-voltage-calls-for-fixed-regulator.patch \
+    file://0016-ext4-add-cond_resched-to-__ext4_find_entry.patch \
 "
 
 SRC_URI_append_jetson-tx2 = " \
