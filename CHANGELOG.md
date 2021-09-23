@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.85.0+rev2
+## (2021-09-23)
+
+* disable user namespacing for Jetson TX1 [Joseph Kogut]
+
 # v2.85.0+rev1
 ## (2021-09-15)
 

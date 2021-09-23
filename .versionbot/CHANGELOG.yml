@@ -1,4 +1,18 @@
 - commits:
+    - subject: disable user namespacing for Jetson TX1
+      hash: a52a370ba5a672cc8aa5b84a314737c1302d38c6
+      body: |
+        Disable user namespacing for Jetson TX1 to match upstream behavior.
+      footer:
+        Changelog-entry: disable user namespacing for Jetson TX1
+        changelog-entry: disable user namespacing for Jetson TX1
+        Signed-off-by: Joseph Kogut <joseph@balena.io>
+        signed-off-by: Joseph Kogut <joseph@balena.io>
+      author: Joseph Kogut
+      nested: []
+  version: 2.85.0+rev2
+  date: 2021-09-23T00:23:34.265Z
+- commits:
     - subject: Rename resin-info to balena-info
       hash: b7db0ec89bf486a8728f161d8dd0127968d9f324
       body: |
