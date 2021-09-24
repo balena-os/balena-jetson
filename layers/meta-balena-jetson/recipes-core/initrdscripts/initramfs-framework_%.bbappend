@@ -5,7 +5,7 @@ SRC_URI_append = " \
 "
 
 do_install_append() {
-    install -m 0755 ${WORKDIR}/sysctlvm ${D}/init.d/80-sysctlvm
+    install -m 0755 ${WORKDIR}/sysctlvm ${D}/init.d/89-sysctlvm
 }
 
 PACKAGES_append = " \
@@ -13,7 +13,7 @@ PACKAGES_append = " \
 "
 
 SUMMARY_initramfs-module-sysctlvm = "Change cache flush"
-FILES_initramfs-module-sysctlvm = "/init.d/80-sysctlvm"
+FILES_initramfs-module-sysctlvm = "/init.d/89-sysctlvm"
 
 SRC_URI_append_jetson-xavier = " \
     file://blockdev \
