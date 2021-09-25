@@ -34,6 +34,12 @@ SRC_URI_append = " \
     file://0015-mmc-core-Bypass-voltage-calls-for-fixed-regulator.patch \
     file://0016-ext4-add-cond_resched-to-__ext4_find_entry.patch \
 "
+#    file://0017-fs-Backport-kernel-5.10-ext4-and-jbd.patch 
+#    file://0018-add-fsverity.patch 
+#    file://0019-add-fs-verity.patch 
+#    file://0020-fs-Makefile.patch 
+#    file://0021-iversion.patch 
+#    file://0022-fs-mmtypes.patch 
 
 SRC_URI_append_jetson-tx2 = " \
     file://0001-Expose-spidev-to-the-userspace.patch \
@@ -264,6 +270,7 @@ BALENA_CONFIGS[backlight] = " \
 BALENA_CONFIGS_append = " disable_hung_panic"
 BALENA_CONFIGS[disable_hung_panic] = " \
     CONFIG_BOOTPARAM_HUNG_TASK_PANIC=n \
+    CONFIG_FS_VERITY=y \
     "
 
 KERNEL_ROOTSPEC_jetson-nano = "\${resin_kernel_root} ro rootwait"
