@@ -17,29 +17,7 @@ SRC_URI_append = " \
     file://0001-revert-random-fix-crng_ready-test.patch \
     file://0001-Support-referencing-the-root-partition-label-from-GP.patch \
     file://xhci-ring-Don-t-show-incorrect-WARN-message-about.patch \
-    file://0001-ext4-fix-possible-use-after-free-in-ext4_quota_enabl.patch \
-    file://0002-ext4-missing-unlock-put_page-in-ext4_try_to_write_in.patch \
-    file://0003-ext4-fix-EXT4_IOC_GROUP_ADD-ioctl.patch \
-    file://0004-ext4-include-terminating-u32-in-size-of-xattr-entrie.patch \
-    file://0005-ext4-force-inode-writes-when-nfsd-calls-commit_metad.patch \
-    file://0006-ext4-make-sure-enough-credits-are-reserved-for-diore.patch \
-    file://0007-ext4-fix-a-potential-fiemap-page-fault-deadlock-w-in.patch \
-    file://0008-ext4-avoid-kernel-warning-when-writing-the-superbloc.patch \
-    file://0009-ext4-zero-out-the-unused-memory-region-in-the-extent.patch \
-    file://0010-ext4-avoid-unnecessary-stalls-in-ext4_evict_inode.patch \
-    file://0011-mmc-atmel-mci-do-not-assume-idle-after-atmci_request.patch \
-    file://0012-mmc-sdhci-iproc-handle-mmc_of_parse-errors-during-pr.patch \
-    file://0013-mmc-cmdq-handle-all-pending-cq-interrupts.patch \
-    file://0014-mmc-core-Skip-CMD11-for-always-on-slot-regulator.patch \
-    file://0015-mmc-core-Bypass-voltage-calls-for-fixed-regulator.patch \
-    file://0016-ext4-add-cond_resched-to-__ext4_find_entry.patch \
 "
-#    file://0017-fs-Backport-kernel-5.10-ext4-and-jbd.patch 
-#    file://0018-add-fsverity.patch 
-#    file://0019-add-fs-verity.patch 
-#    file://0020-fs-Makefile.patch 
-#    file://0021-iversion.patch 
-#    file://0022-fs-mmtypes.patch 
 
 SRC_URI_append_jetson-tx2 = " \
     file://0001-Expose-spidev-to-the-userspace.patch \

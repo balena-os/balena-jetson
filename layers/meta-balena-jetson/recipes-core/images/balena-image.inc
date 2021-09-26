@@ -171,6 +171,7 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     tegra-configs-udev \
     tegra-firmware-brcm \
     tegra-brcm-patchram \
+    kernel-module-bcmdhd \
     linux-firmware-bcm4354 \
     tegra-firmware-xusb \
     bt-scripts \

@@ -1,20 +1,5 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-SRC_URI_append = " \
-    file://sysctlvm \
-"
-
-do_install_append() {
-    install -m 0755 ${WORKDIR}/sysctlvm ${D}/init.d/89-sysctlvm
-}
-
-PACKAGES_append = " \
-    initramfs-module-sysctlvm \
-"
-
-SUMMARY_initramfs-module-sysctlvm = "Change cache flush"
-FILES_initramfs-module-sysctlvm = "/init.d/89-sysctlvm"
-
 SRC_URI_append_jetson-xavier = " \
     file://blockdev \
 "

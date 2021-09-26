@@ -1,5 +1,4 @@
 PACKAGE_INSTALL_append = " tegra-firmware-xusb"
-PACKAGE_INSTALL_append_jetson-tx2 = " kernel-module-bcmdhd initramfs-module-sysctlvm"
 
 # Because of https://github.com/balena-os/balena-jetson/issues/90
 # the TX1 does not have a 32.X release currently. Let's decrease
