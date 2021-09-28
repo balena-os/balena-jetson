@@ -211,6 +211,6 @@ device_specific_configuration_jetson-xavier-nx-devkit() {
 }
 
 generate_hostos_version () {
-    echo "${HOSTOS_VERSION}r10" > ${DEPLOY_DIR_IMAGE}/VERSION_HOSTOS
+    echo "${HOSTOS_VERSION}r11" > ${DEPLOY_DIR_IMAGE}/VERSION_HOSTOS
 }
 
