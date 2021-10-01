@@ -209,3 +209,7 @@ do_image_balenaos-img_jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard
 device_specific_configuration_jetson-xavier-nx-devkit() {
     write_jetson_nx_partitions "partition_specification194_nxde_sdcard.txt"
 }
+
+generate_hostos_version () {
+    echo "${HOSTOS_VERSION}lt1" > ${DEPLOY_DIR_IMAGE}/VERSION_HOSTOS
+}
