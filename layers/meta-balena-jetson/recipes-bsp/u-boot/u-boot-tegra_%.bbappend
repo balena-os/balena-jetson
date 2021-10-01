@@ -4,6 +4,7 @@ UBOOT_KCONFIG_SUPPORT = "1"
 
 inherit resin-u-boot
 
+OS_BOOTCOUNT_LIMIT = "3"
 # We pin to the release in 32.4.4 branch - as of 12 Jan 2021
 # to ensure we don't get updates that might break the build
 # or booting in general.
