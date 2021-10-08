@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.85.0+rev2
+## (2021-09-30)
+
+* Added Auvidea CNX100 Xavier NX device type [ClintHaerinck]
+
 # v2.85.0+rev1
 ## (2021-09-15)
 

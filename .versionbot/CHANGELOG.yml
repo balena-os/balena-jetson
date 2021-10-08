@@ -1,4 +1,18 @@
 - commits:
+    - subject: Added Auvidea CNX100 Xavier NX device type
+      hash: bc2bc1bdee1c5badff108c389d8d0957e35b2e74
+      body: |
+        Added Auvidea CNX100 Xavier NX device type
+      footer:
+        Changelog-entry: Added Auvidea CNX100 Xavier NX device type
+        changelog-entry: Added Auvidea CNX100 Xavier NX device type
+        Signed-off-by: ClintHaerinck <clint.haerinck@gmail.com>
+        signed-off-by: ClintHaerinck <clint.haerinck@gmail.com>
+      author: ClintHaerinck
+      nested: []
+  version: 2.85.0+rev2
+  date: 2021-09-30T18:24:57.314Z
+- commits:
     - subject: Rename resin-info to balena-info
       hash: b7db0ec89bf486a8728f161d8dd0127968d9f324
       body: |
