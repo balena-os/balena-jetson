@@ -77,6 +77,10 @@ SRC_URI_append_photon-xavier-nx = " \
     file://tegra194-xavier-nx-cti-NGX003.dtb \
 "
 
+SRC_URI_append_cnx100-xavier-nx = " \
+    file://tegra194-xavier-nx-cnx100.dtb \
+"
+
 TEGRA_INITRAMFS_INITRD = "0"
 
 BALENA_CONFIGS_remove_astro-tx2 = " mdraid"
@@ -195,6 +199,7 @@ BALENA_CONFIGS_append_jetson-nano-emmc = " gasket"
 BALENA_CONFIGS_append_photon-nano = " tlc591xx"
 BALENA_CONFIGS_append_photon-tx2-nx = " tlc591xx"
 BALENA_CONFIGS_append_photon-xavier-nx = " tlc591xx"
+BALENA_CONFIGS_append_cnx100-xavier-nx = " tlc591xx"
 BALENA_CONFIGS[tlc591xx] = " \
                 CONFIG_LEDS_TLC591XX=m \
 "
@@ -202,6 +207,7 @@ BALENA_CONFIGS[tlc591xx] = " \
 BALENA_CONFIGS_append_photon-nano = " cdc-wdm"
 BALENA_CONFIGS_append_photon-tx2-nx = " cdc-wdm"
 BALENA_CONFIGS_append_photon-xavier-nx = " cdc-wdm"
+BALENA_CONFIGS_append_cnx100-xavier-nx = " cdc-wdm"
 BALENA_CONFIGS[cdc-wdm] = " \
                 CONFIG_USB_WDM=m \
 "
@@ -209,6 +215,7 @@ BALENA_CONFIGS[cdc-wdm] = " \
 BALENA_CONFIGS_append_photon-nano = " sierra-net"
 BALENA_CONFIGS_append_photon-tx2-nx = " sierra-net"
 BALENA_CONFIGS_append_photon-xavier-nx = " sierra-net"
+BALENA_CONFIGS_append_cnx100-xavier-nx = " sierra-net"
 BALENA_CONFIGS[sierra-net] = " \
                 CONFIG_USB_SIERRA_NET=m \
 "
@@ -220,6 +227,7 @@ BALENA_CONFIGS_DEPS[sierra-net] = " \
 BALENA_CONFIGS_append_photon-nano = " cdc-ncm"
 BALENA_CONFIGS_append_photon-tx2-nx = " cdc-ncm"
 BALENA_CONFIGS_append_photon-xavier-nx = " cdc-ncm"
+BALENA_CONFIGS_append_cnx100-xavier-nx = " cdc-ncm"
 BALENA_CONFIGS[cdc-ncm] = " \
                 CONFIG_USB_NET_CDC_NCM=m \
 "
@@ -231,6 +239,7 @@ BALENA_CONFIGS_DEPS[cdc-ncm] = " \
 BALENA_CONFIGS_append_photon-nano = " mii"
 BALENA_CONFIGS_append_photon-tx2-nx = " mii"
 BALENA_CONFIGS_append_photon-xavier-nx = " mii"
+BALENA_CONFIGS_append_cnx100-xavier-nx = " mii"
 BALENA_CONFIGS[mii] = " \
                 CONFIG_MII=m \
 "
@@ -365,6 +374,10 @@ do_deploy_append_photon-tx2-nx() {
 
 do_deploy_append_photon-xavier-nx() {
     cp ${WORKDIR}/tegra194-xavier-nx-cti-NGX003.dtb "${DEPLOYDIR}"
+}
+
+do_deploy_append_cnx100-xavier-nx() {
+    cp ${WORKDIR}/tegra194-xavier-nx-cnx100.dtb "${DEPLOYDIR}"
 }
 
 do_deploy_append_astro-tx2() {
