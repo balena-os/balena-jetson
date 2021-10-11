@@ -1,4 +1,18 @@
 - commits:
+    - subject: Auvidea CNX100 Xavier NX fix dtb cam2 detect
+      hash: a3a693df682b60d5870687c9467022f0a83e6761
+      body: |
+        Updated Auvidea CNX100 Xavier NX dtb to detect second cam
+      footer:
+        Changelog-entry: Auvidea CNX100 Xavier NX fix dtb cam2 detect
+        changelog-entry: Auvidea CNX100 Xavier NX fix dtb cam2 detect
+        Signed-off-by: ClintHaerinck clint.haerinck@gmail.com
+        signed-off-by: ClintHaerinck clint.haerinck@gmail.com
+      author: ClintHaerinck
+      nested: []
+  version: 2.85.0+rev3
+  date: 2021-10-11T10:23:51.348Z
+- commits:
     - subject: Added Auvidea CNX100 Xavier NX device type
       hash: bc2bc1bdee1c5badff108c389d8d0957e35b2e74
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.85.0+rev3
+## (2021-10-11)
+
+* Auvidea CNX100 Xavier NX fix dtb cam2 detect [ClintHaerinck]
+
 # v2.85.0+rev2
 ## (2021-09-30)
 
