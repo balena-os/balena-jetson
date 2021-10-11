@@ -1,6 +1,46 @@
 Change log
 -----------
 
+# v2.85.2+rev1
+## (2021-10-11)
+
+
+<details>
+<summary> Update meta-balena from v2.85.0 to v2.85.2 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.85.2
+> ### (2021-09-17)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v19.03.29 [Robert Günzler] </summary>
+> 
+>> ### balena-engine-19.03.29
+>> #### (2021-09-14)
+>> 
+>> * pkg/storagemigration: use graphdriver/copy.DirCopy [Robert Günzler]
+>> 
+>> ### balena-engine-19.03.28
+>> #### (2021-09-14)
+>> 
+>> * Prune Jenkinsfile [Robert Günzler]
+>> 
+>> ### balena-engine-19.03.27
+>> #### (2021-09-01)
+>> 
+>> * Backport platform-detection fixes from containerd [Robert Günzler]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.85.1
+> ### (2021-09-17)
+> 
+> * Fix typo in OS_DEVELOPMENT distro feature [Kyle Harding]
+> * tests: Remove OS variants [Alex Gonzalez]
+> 
+</details>
+
 # v2.85.0+rev3
 ## (2021-10-11)
 
