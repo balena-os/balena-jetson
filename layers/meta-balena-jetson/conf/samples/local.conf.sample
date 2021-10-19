@@ -8,8 +8,8 @@ BALENA_STORAGE = "overlay2"
 #TARGET_REPOSITORY ?= ""
 #TARGET_TAG ?= ""
 
-# Set this to 1 if development image is desired
-#DEVELOPMENT_IMAGE = "1"
+# Set this to 1 to disable quiet boot and allow bootloader shell access
+#OS_DEVELOPMENT = "1"
 
 # Set this to make build system generate resinhup bundles
 #RESINHUP ?= "yes"
