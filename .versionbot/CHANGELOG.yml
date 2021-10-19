@@ -1,4 +1,23 @@
 - commits:
+    - subject: 'jetson-nano: Update flashing instructions to use Jetson Flash'
+      hash: c4fd5527563da0144f7ba9eda52fc46cec6bec44
+      body: |
+        It has been reported that newer units come with the qspi memory
+        pre-flashed with bootloaders that cannot run BalenaOS cloud image.
+
+        Update the flashing instructions to recommend Jetson Flash,
+        which updates the qspi flash to match and boot the BalenaOS
+        SD-CARD image.
+      footer:
+        Changelog-entry: 'jetson-nano: Update flashing instructions to use Jetson Flash'
+        changelog-entry: 'jetson-nano: Update flashing instructions to use Jetson Flash'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.85.2+rev3
+  date: 2021-10-19T14:36:51.028Z
+- commits:
     - subject: 'meta-balena-jetson: update local.conf.sample'
       hash: 25a265d92b0441bb59f9b5bc209e127f0fda4508
       body: |

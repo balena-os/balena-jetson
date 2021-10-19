@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.85.2+rev3
+## (2021-10-19)
+
+* jetson-nano: Update flashing instructions to use Jetson Flash [Alexandru Costache]
+
 # v2.85.2+rev2
 ## (2021-10-18)
 
