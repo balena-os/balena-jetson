@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'meta-balena-jetson: update local.conf.sample'
+      hash: 25a265d92b0441bb59f9b5bc209e127f0fda4508
+      body: |
+        Update the sample configuration file to use OS_DEVELOPMENT instead of
+        DEVELOPMENT_IMAGE.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: 'meta-balena-jetson: update local.conf.sample'
+        changelog-entry: 'meta-balena-jetson: update local.conf.sample'
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested: []
+  version: 2.85.2+rev2
+  date: 2021-10-18T13:43:16.273Z
+- commits:
     - subject: Update meta-balena from v2.85.0 to v2.85.2
       hash: 7ad2f3e90be70c5bfc8436f9e24daa47b574af5c
       body: |

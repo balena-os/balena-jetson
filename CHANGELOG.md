@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.85.2+rev2
+## (2021-10-18)
+
+* meta-balena-jetson: update local.conf.sample [Mark Corbin]
+
 # v2.85.2+rev1
 ## (2021-10-11)
 
