@@ -1,6 +1,66 @@
 Change log
 -----------
 
+# v2.85.2+rev4
+## (2021-10-21)
+
+
+<details>
+<summary> Update balena-yocto-scripts from v1.14.8 to v1.15.5 [Alexandru Costache] </summary>
+
+> ## balena-yocto-scripts-1.15.5
+> ### (2021-10-21)
+> 
+> * jenkins_generate_ami.sh: Use a shared directory for preloaded image [Michal Toman]
+> 
+> ## balena-yocto-scripts-1.15.4
+> ### (2021-10-20)
+> 
+> * barys: update development image variables [Mark Corbin]
+> 
+> ## balena-yocto-scripts-1.15.3
+> ### (2021-10-20)
+> 
+> * jenkins_generate_ami.sh: Preload outside of yocto cache [Michal Toman]
+> 
+> ## balena-yocto-scripts-1.15.2
+> ### (2021-10-01)
+> 
+> * balena-generate-ami.sh: correctly mount boot partition when injecting SSH key [Michal Toman]
+> 
+> ## balena-yocto-scripts-1.15.1
+> ### (2021-10-01)
+> 
+> * Update balena-cli to 12.50.1 [Michal Toman]
+> 
+> ## balena-yocto-scripts-1.15.0
+> ### (2021-10-01)
+> 
+> * jenkins_generate_ami.sh: Use lib function to get arch from config.json [Michal Toman]
+> * balena-generate-ami.sh: Look for boot partition by label rather than hardcoding p1 [Michal Toman]
+> * balena-generate-ami.sh: Fail if AMI already exists [Michal Toman]
+> * balena-generate-ami.sh: sync after writing config.json [Michal Toman]
+> * balena-generate-ami.sh: Stick to POSIX-compliant [ instead of [[ [Michal Toman]
+> * balena-generate-ami.sh: Remove useless statements [Michal Toman]
+> * jenkins_generate_ami.sh: Use architecture as suffix instead of machine name [Michal Toman]
+> * jenkins_build.sh: pass MACHINE to jenkins_generate_ami.sh [Michal Toman]
+> * AMI automation: Adjust AMI names to be compatible with AWS API [ab77]
+> * AMI automation: Correct S3 bucket name and key [ab77]
+> * AMI automation: Add a separate container for generaing AMI [Michal Toman]
+> * AMI automation: shellcheck and resolve violations [ab77]
+> * AMI automation: Use staging env by default [Tomás Tormo]
+> * AMI automation: Simplify public ssh addition. Do not use sudo [Tomás Tormo]
+> * automation: Generate and publish AMI from the raw balenaOS image [Tomás Tormo]
+> 
+> ## balena-yocto-scripts-1.14.9
+> ### (2021-08-20)
+> 
+> * balena-deploy: When deploying hostapp default to using slug as name [Alex Gonzalez]
+> * balena-api: Do not use balena_lib_resolve_aliases [Alex Gonzalez]
+> * balena_lib: Make resolve_aliases local so it is not globally used [Alex Gonzalez]
+> 
+</details>
+
 # v2.85.2+rev3
 ## (2021-10-19)
 
