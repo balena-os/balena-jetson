@@ -8,15 +8,15 @@ MACHINEOVERRIDES .= "${@bb.utils.contains('TUNE_FEATURES', 'aarch64', ':aarch64'
 
 # Little Endian base configs
 AVAILTUNES += "aarch64 aarch64_be"
-ARMPKGARCH_tune-aarch64 ?= "aarch64"
-ARMPKGARCH_tune-aarch64_be ?= "aarch64_be"
-TUNE_FEATURES_tune-aarch64 = "aarch64"
-TUNE_FEATURES_tune-aarch64_be = "${TUNE_FEATURES_tune-aarch64} bigendian"
-BASE_LIB_tune-aarch64 = "lib64"
-BASE_LIB_tune-aarch64_be = "lib64"
+ARMPKGARCH:tune-aarch64 ?= "aarch64"
+ARMPKGARCH:tune-aarch64_be ?= "aarch64_be"
+TUNE_FEATURES:tune-aarch64 = "aarch64"
+TUNE_FEATURES:tune-aarch64_be = "${TUNE_FEATURES:tune-aarch64} bigendian"
+BASE_LIB:tune-aarch64 = "lib64"
+BASE_LIB:tune-aarch64_be = "lib64"
 
-PACKAGE_EXTRA_ARCHS_tune-aarch64 = "aarch64"
-PACKAGE_EXTRA_ARCHS_tune-aarch64_be = "aarch64_be"
+PACKAGE_EXTRA_ARCHS:tune-aarch64 = "aarch64"
+PACKAGE_EXTRA_ARCHS:tune-aarch64_be = "aarch64_be"
 
 ARMPKGSFX_ENDIAN_64 = "${@bb.utils.contains('TUNE_FEATURES', 'bigendian', '_be', '', d)}"
 TUNE_ARCH_64 = "aarch64${ARMPKGSFX_ENDIAN_64}"
