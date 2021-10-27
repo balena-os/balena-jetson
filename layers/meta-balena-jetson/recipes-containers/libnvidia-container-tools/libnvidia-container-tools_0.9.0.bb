@@ -55,14 +55,14 @@ PACKAGECONFIG[seccomp] = " WITH_SECCOMP=yes , WITH_SECCOMP=no ,libseccomp"
 
 # We need to link with libelf, otherwise we need to
 # include bmake-native which does not exist at the moment.
-EXTRA_OEMAKE_append = " WITH_LIBELF=yes JETSON=TRUE ${PACKAGECONFIG_CONFARGS}"
+EXTRA_OEMAKE:append = " WITH_LIBELF=yes JETSON=TRUE ${PACKAGECONFIG_CONFARGS}"
 
-CFLAGS_prepend = " -I=/usr/include/tirpc "
+CFLAGS:prepend = " -I=/usr/include/tirpc "
 
 export OBJCPY="${OBJCOPY}"
 
 # Fix me: Create an independent recipe for nvidia-modprobe
-do_configure_append() {
+do_configure:append() {
     # Mark Nvidia modprobe as downloaded
     touch ${S}/deps/src/nvidia-modprobe-${NVIDIA_MODPROBE_VERSION}/.download_stamp
 }
@@ -71,4 +71,4 @@ do_install () {
     oe_runmake install DESTDIR=${D}
 }
 
-INSANE_SKIP_${PN} = "already-stripped"
+INSANE_SKIP:${PN} = "already-stripped"
