@@ -30,6 +30,15 @@ info_log()
     echo "[INFO] $@"
 }
 
+get_label_suffix_by_slot()
+{
+    if [ $1 -eq 0 ]; then
+        echo ''
+    else
+        echo '_b'
+    fi
+}
+
 get_odm_value() {
     odm_off1=$(dd if=${1} skip=${OFFS[0]} bs=1 count=1 status=none | xxd -p)
     odm_off2=$(dd if=${1} skip=${OFFS[1]} bs=1 count=1 status=none | xxd -p)
@@ -52,17 +61,33 @@ set_odm_value() {
 
 update_partition_binaries()
 {
+
+    if ! command -v tegra-boot-control &> /dev/null
+    then
+        info_log "Could not find tegra-boot-control!"
+        exit 1
+    fi
+
+    redundancy_state=$(/usr/bin/tegra-boot-control -s | awk -F 'Redundancy:' '{print $2}' | awk '{print $1}' | tr -d '\n')
+    info_log "Redundancy is currently ${redundancy_state}"
+
+    # Enable boot slot redundancy
+    tegra-boot-control -e
+    curr_slot=$(/usr/bin/tegra-boot-control -c)
+    info_log "New active slot is $((new_slot = ! curr_slot))"
+    new_label_suffix=$(get_label_suffix_by_slot ${new_slot})
+
     for line in $(cat $1); do
         part_name=$(echo $line | cut -d ':' -f 1)
         file_name=$(echo $line | cut -d ':' -f 2)
 	src="${BIN_INSTALL_PATH}/${file_name}"
 	dst=$(get_state_path_from_label  "$part_name")
 	if [ $(update_needed $src $dst) -eq 1 ]; then
-            info_log "Will update ${dst}"
-            dd if=${src} of=${dst} bs=1K
-            info_log "Updated ${dst}"
+            info_log "Will update ${dst}${new_label_suffix} ..."
+            dd if=${src} of="${dst}${new_label_suffix}"
+            info_log "Updated ${dst}${new_label_suffix}"
         else
-            info_log "No need to update ${dst}"
+            info_log "No need to update ${dst}${new_label_suffix}"
         fi
     done
 }
@@ -142,6 +167,14 @@ if [ $(update_needed $src $dst) -eq 1 ]; then
     info_log "Updated $dst"
 else
     info_log "No need to update ${dst}"
+fi
+
+if [ ${UPGRADE_PARTITIONS} -eq 0 ]; then
+   # Update slot selection after the boot memory was updated, otherwise
+   # scratch register contents will be lost.
+   info_log "Setting active slot to ${new_slot}"
+   /usr/bin/tegra-boot-control -e
+   /usr/bin/tegra-boot-control -a "${new_slot}"
 fi
 
 sync
