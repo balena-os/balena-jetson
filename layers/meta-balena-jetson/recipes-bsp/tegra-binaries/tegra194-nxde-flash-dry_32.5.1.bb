@@ -28,7 +28,7 @@ SRC_URI = " \
 
 FLASHXML = "resinOS-flash194_nxde.xml"
 DTBNAME = "tegra194-p3668-all-p3509-0000"
-DTBNAME_photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003"
+DTBNAME:photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003"
 DTBNAME_cnx100-xavier-nx = "tegra194-xavier-nx-cnx100"
 KERNEL_DEVICETREE = "${DEPLOY_DIR_IMAGE}/${DTBNAME}.dtb"
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
@@ -392,7 +392,7 @@ do_deploy() {
     cp -r ${D}/${BINARY_INSTALL_PATH}/* ${DEPLOYDIR}/$(basename ${BINARY_INSTALL_PATH})
 }
 
-FILES_${PN} += "${BINARY_INSTALL_PATH}"
+FILES:${PN} += "${BINARY_INSTALL_PATH}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
