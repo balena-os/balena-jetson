@@ -1,34 +1,34 @@
-IMAGE_FSTYPES_append = " balenaos-img"
+IMAGE_FSTYPES:append = " balenaos-img"
 
-do_rootfs_balenaos-img_jetson-nano[depends] += " tegra210-flash:do_deploy \
+do_rootfs:balenaos-img:jetson-nano[depends] += " tegra210-flash:do_deploy \
                                                 virtual/kernel:do_deploy \
 "
 
-do_rootfs_balenaos-img_jetson-nano-emmc[depends] += " tegra210-flash:do_deploy \
+do_rootfs:balenaos-img:jetson-nano-emmc[depends] += " tegra210-flash:do_deploy \
                                                 virtual/kernel:do_deploy \
 "
 
-do_rootfs_balenaos-img_jetson-nano-2gb-devkit[depends] += " tegra210-flash:do_deploy \
+do_rootfs:balenaos-img:jetson-nano-2gb-devkit[depends] += " tegra210-flash:do_deploy \
                                                 virtual/kernel:do_deploy \
 "
 
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
-DTBFILE_jetson-nano = "tegra210-p3448-0000-p3449-0000-b00.dtb"
-DTBFILE_jetson-nano-emmc = "tegra210-p3448-0002-p3449-0000-b00.dtb"
-DTBFILE_jetson-nano-2gb-devkit = "tegra210-p3448-0003-p3542-0000.dtb"
-DTBFILE_jn30b-nano = "tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb"
-DTBFILE_photon-nano = "tegra210-nano-cti-NGX003.dtb"
-DTBFILE_photon-tx2-nx = "tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb"
-DTBFILE_floyd-nano="tegra210-p3448-0002-p3449-0000-b00-floyd-nano.dtb"
-DTBFILE_photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003.dtb"
-DTBFILE_cnx100-xavier-nx = "tegra194-xavier-nx-cnx100.dtb"
-DTBNAME_cti-rogue-xavier="tegra194-agx-cti-AGX101"
-DTBNAME_jetson-xavier="tegra194-p2888-0001-p2822-0000"
-DTBNAME_jetson-xavier-nx-devkit-seeed-2mic-hat="tegra194-p3668-all-p3509-0000-seeed-2mic-hat"
-DTBNAME_nru120s-xavier="NRU120-32-4-3"
+DTBFILE:jetson-nano = "tegra210-p3448-0000-p3449-0000-b00.dtb"
+DTBFILE:jetson-nano-emmc = "tegra210-p3448-0002-p3449-0000-b00.dtb"
+DTBFILE:jetson-nano-2gb-devkit = "tegra210-p3448-0003-p3542-0000.dtb"
+DTBFILE:jn30b-nano = "tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb"
+DTBFILE:photon-nano = "tegra210-nano-cti-NGX003.dtb"
+DTBFILE:photon-tx2-nx = "tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb"
+DTBFILE:floyd-nano="tegra210-p3448-0002-p3449-0000-b00-floyd-nano.dtb"
+DTBFILE:photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003.dtb"
+DTBFILE:cnx100-xavier-nx = "tegra194-xavier-nx-cnx100.dtb"
+DTBNAME:cti-rogue-xavier="tegra194-agx-cti-AGX101"
+DTBNAME:jetson-xavier="tegra194-p2888-0001-p2822-0000"
+DTBNAME:jetson-xavier-nx-devkit-seeed-2mic-hat="tegra194-p3668-all-p3509-0000-seeed-2mic-hat"
+DTBNAME:nru120s-xavier="NRU120-32-4-3"
 
 # Name update files as partition names for easier updating
-BALENA_BOOT_PARTITION_FILES_jetson-nano = " \
+BALENA_BOOT_PARTITION_FILES:jetson-nano = " \
     bootfiles/nvtboot_cpu.bin.encrypt:/bootfiles/TBC \
     bootfiles/${DTBFILE}.encrypt:/bootfiles/RP1 \
     bootfiles/cboot.bin.encrypt:/bootfiles/EBT \
@@ -42,13 +42,13 @@ BALENA_BOOT_PARTITION_FILES_jetson-nano = " \
     bootfiles/bmp.blob:/bootfiles/BMP \
 "
 
-BALENA_BOOT_PARTITION_FILES_jetson-nano-emmc = "${BALENA_BOOT_PARTITION_FILES_jetson-nano}"
-BALENA_BOOT_PARTITION_FILES_jetson-nano-2gb-devkit = "${BALENA_BOOT_PARTITION_FILES_jetson-nano}"
+BALENA_BOOT_PARTITION_FILES:jetson-nano-emmc = "${BALENA_BOOT_PARTITION_FILES:jetson-nano}"
+BALENA_BOOT_PARTITION_FILES:jetson-nano-2gb-devkit = "${BALENA_BOOT_PARTITION_FILES:jetson-nano}"
 
 
-do_rootfs_balenaos-img_jetson-xavier[depends] += " tegra194-flash-dry:do_deploy "
+do_rootfs:balenaos-img:jetson-xavier[depends] += " tegra194-flash-dry:do_deploy "
 
-BALENA_BOOT_PARTITION_FILES_jetson-xavier = " \
+BALENA_BOOT_PARTITION_FILES:jetson-xavier = " \
     bootfiles/mb1_t194_prod_sigheader.bin.encrypt:/bootfiles/mb1_t194_prod_sigheader.bin.encrypt \
     bootfiles/spe_t194_sigheader.bin.encrypt:/bootfiles/spe_t194_sigheader.bin.encrypt \
     bootfiles/nvtboot_t194_sigheader.bin.encrypt:/bootfiles/nvtboot_t194_sigheader.bin.encrypt \
@@ -73,48 +73,48 @@ BALENA_BOOT_PARTITION_FILES_jetson-xavier = " \
     tegra-binaries/partition_specification194.txt:/bootfiles/partition_specification194.txt \
 "
 
-do_rootfs_balenaos-img_jetson-tx2[depends] += " tegra186-flash-dry:do_deploy \
+do_rootfs:balenaos-img:jetson-tx2[depends] += " tegra186-flash-dry:do_deploy \
                                                virtual/kernel:do_deploy \
 "
 
-BALENA_BOOT_PARTITION_FILES_jetson-tx2 = " \
+BALENA_BOOT_PARTITION_FILES:jetson-tx2 = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
-BALENA_BOOT_PARTITION_FILES_jetson-xavier-nx-devkit-emmc = " \
+BALENA_BOOT_PARTITION_FILES:jetson-xavier-nx-devkit-emmc = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
-BALENA_BOOT_PARTITION_FILES_jetson-xavier-nx-devkit = " \
+BALENA_BOOT_PARTITION_FILES:jetson-xavier-nx-devkit = " \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
 # Keep these in boot also, for a plain u-boot
 # to boot a flasher image.
-BALENA_BOOT_PARTITION_FILES_jetson-tx1 = " \
+BALENA_BOOT_PARTITION_FILES:jetson-tx1 = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     boot/extlinux.conf:/extlinux/extlinux.conf \
 "
 
-do_rootfs_balenaos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy "
-do_rootfs_balenaos-img_jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard-flash:do_deploy "
+do_rootfs:balenaos-img:jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy "
+do_rootfs:balenaos-img:jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard-flash:do_deploy "
 
 # The space resinOS takes will amount to 1GiB
 IMAGE_ROOTFS_SIZE = "487424"
 
 # Bootloader blob is 32MB on the NX
-IMAGE_ROOTFS_SIZE_jetson-xavier-nx-devkit-emmc = "733184"
-IMAGE_ROOTFS_SIZE_jetson-xavier-nx-devkit = "733184"
+IMAGE_ROOTFS_SIZE:jetson-xavier-nx-devkit-emmc = "733184"
+IMAGE_ROOTFS_SIZE:jetson-xavier-nx-devkit = "733184"
 
 # Need space for all the above signed update binaries
-BALENA_BOOT_SIZE_jetson-nano = "80960"
-BALENA_BOOT_SIZE_jetson-nano-2gb-devkit = "80960"
-BALENA_BOOT_SIZE_jetson-nano-emmc = "80960"
-BALENA_BOOT_SIZE_jetson-xavier = "121440"
-BALENA_BOOT_SIZE_jetson-xavier-nx-devkit-emmc = "121440"
-BALENA_BOOT_SIZE_jetson-xavier-nx-devkit = "121440"
-BALENA_BOOT_SIZE_jetson-tx2="80960"
-BALENA_BOOT_SIZE_jetson-tx1="80960"
+BALENA_BOOT_SIZE:jetson-nano = "80960"
+BALENA_BOOT_SIZE:jetson-nano-2gb-devkit = "80960"
+BALENA_BOOT_SIZE:jetson-nano-emmc = "80960"
+BALENA_BOOT_SIZE:jetson-xavier = "121440"
+BALENA_BOOT_SIZE:jetson-xavier-nx-devkit-emmc = "121440"
+BALENA_BOOT_SIZE:jetson-xavier-nx-devkit = "121440"
+BALENA_BOOT_SIZE:jetson-tx2="80960"
+BALENA_BOOT_SIZE:jetson-tx1="80960"
 
 PARTITION_TABLE_TYPE = "gpt"
 
@@ -127,11 +127,11 @@ IMAGE_PACKAGES_NANO = " \
     mtd-utils \
 "
 
-IMAGE_INSTALL_append_jetson-nano = "${IMAGE_PACKAGES_NANO}"
-IMAGE_INSTALL_append_jetson-nano-emmc = "${IMAGE_PACKAGES_NANO}"
-IMAGE_INSTALL_append_jetson-nano-2gb-devkit = "${IMAGE_PACKAGES_NANO}"
+IMAGE_INSTALL:append:jetson-nano = "${IMAGE_PACKAGES_NANO}"
+IMAGE_INSTALL:append:jetson-nano-emmc = "${IMAGE_PACKAGES_NANO}"
+IMAGE_INSTALL:append:jetson-nano-2gb-devkit = "${IMAGE_PACKAGES_NANO}"
 
-IMAGE_INSTALL_append_jetson-xavier = " \
+IMAGE_INSTALL:append:jetson-xavier = " \
     tegra194-flash-dry \
     fan-startup \
     parted \
@@ -141,7 +141,7 @@ IMAGE_INSTALL_append_jetson-xavier = " \
     tegra-configs-udev \
 "
 
-IMAGE_INSTALL_append_jetson-xavier-nx-devkit-emmc = " \
+IMAGE_INSTALL:append:jetson-xavier-nx-devkit-emmc = " \
     tegra194-nxde-flash-dry \
     parted \
     gptfdisk \
@@ -151,7 +151,7 @@ IMAGE_INSTALL_append_jetson-xavier-nx-devkit-emmc = " \
     mtd-utils \
 "
 
-IMAGE_INSTALL_append_jetson-xavier-nx-devkit = " \
+IMAGE_INSTALL:append:jetson-xavier-nx-devkit = " \
     tegra194-nxde-sdcard-flash \
     fan-startup \
     parted \
@@ -166,7 +166,7 @@ IMAGE_INSTALL_append_jetson-xavier-nx-devkit = " \
     tegra-udrm-probeconf \
 "
 
-IMAGE_INSTALL_append_jetson-tx2 = " \
+IMAGE_INSTALL:append:jetson-tx2 = " \
     tegra186-flash-dry \
     parted \
     gptfdisk \
@@ -182,13 +182,14 @@ IMAGE_INSTALL_append_jetson-tx2 = " \
     jetson-dtbs \
     kernel-module-bcmdhd \
 "
-IMAGE_INSTALL_append_jetson-tx2-nx-devkit = " \
+
+IMAGE_INSTALL:append:jetson-tx2-nx-devkit = " \
     tegra-firmware-rtl8822 \
     kernel-module-rtk-btusb \
     kernel-module-rtl8822ce \
 "
 
-IMAGE_INSTALL_append_jetson-tx1 = " \
+IMAGE_INSTALL:append:jetson-tx1 = " \
     tegra210-flash-dry \
     parted \
     tegra-nvpmodel \
