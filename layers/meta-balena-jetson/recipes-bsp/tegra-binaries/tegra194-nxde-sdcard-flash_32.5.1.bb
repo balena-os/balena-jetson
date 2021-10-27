@@ -28,7 +28,7 @@ SRC_URI = " \
 
 FLASHXML = "resinOS-flash194_nxde_sdcard.xml"
 DTBNAME = "tegra194-p3668-all-p3509-0000"
-DTBNAME_jetson-xavier-nx-devkit-seeed-2mic-hat = "tegra194-p3668-all-p3509-0000-seeed-2mic-hat"
+DTBNAME:jetson-xavier-nx-devkit-seeed-2mic-hat = "tegra194-p3668-all-p3509-0000-seeed-2mic-hat"
 KERNEL_DEVICETREE = "${DEPLOY_DIR_IMAGE}/${DTBNAME}.dtb"
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 LNXSIZE ?= "67108864"
@@ -389,7 +389,7 @@ do_deploy() {
     cp -r ${D}/${BINARY_INSTALL_PATH}/* ${DEPLOYDIR}/$(basename ${BINARY_INSTALL_PATH})
 }
 
-FILES_${PN} += "${BINARY_INSTALL_PATH}"
+FILES:${PN} += "${BINARY_INSTALL_PATH}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
