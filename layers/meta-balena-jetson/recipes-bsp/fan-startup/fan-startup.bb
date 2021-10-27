@@ -1,4 +1,4 @@
-EXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+EXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 inherit allarch systemd
 
@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = " file://fan-startup.service "
 
-RDEPENDS_${PN} = " bash systemd"
+RDEPENDS:${PN} = " bash systemd"
 
 S = "${WORKDIR}"
 
@@ -17,6 +17,6 @@ do_install () {
     install -m 0644 ${WORKDIR}/fan-startup.service ${D}/${systemd_unitdir}/system/fan-startup.service
 }
 
-SYSTEMD_SERVICE_${PN} = "fan-startup.service"
+SYSTEMD_SERVICE:${PN} = "fan-startup.service"
 
 COMPATIBLE_MACHINE = "(jetson-xavier|jetson-tx2|jetson-xavier-nx-devkit)"

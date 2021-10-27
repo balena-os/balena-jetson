@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
+FILESEXTRAPATHS:append := ":${THISDIR}/${PN}"
 
 inherit allarch systemd
 
@@ -13,17 +13,17 @@ SRC_URI += " \
     file://nvwifibt-unblock.service \
 "
 
-FILES_${PN} = " \
+FILES:${PN} = " \
     /lib/udev/rules.d/99-nv-wifibt.rules \
     /lib/systemd/nvwifibt.sh \
     /lib/systemd/nvwifibt-pre.sh \
 "
 
-SYSTEMD_SERVICE_${PN} = "nvwifibt.service nvwifibt-unblock.service"
+SYSTEMD_SERVICE:${PN} = "nvwifibt.service nvwifibt-unblock.service"
 
-RDEPENDS_${PN} = " bash systemd"
+RDEPENDS:${PN} = " bash systemd"
 
-do_install_append() {
+do_install:append() {
     install -d ${D}/${systemd_unitdir}/system
     install -d ${D}/${base_libdir}/udev/rules.d
     install -m 644 ${WORKDIR}/99-nv-wifibt.rules ${D}/${base_libdir}/udev/rules.d
