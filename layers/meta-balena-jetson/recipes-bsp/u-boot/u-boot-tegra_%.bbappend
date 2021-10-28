@@ -20,8 +20,6 @@ SRCREV="46e4604c78d3804ccd4cf9624460a86ea5318a61"
 
 LIC_FILES_CHKSUM="file://Licenses/README;md5=30503fd321432fc713238f582193b78e"
 
-FILES:${PN}-extlinux = "/boot/initrd"
-
 BALENA_BOOT_PART:jetson-nano = "0xC"
 BALENA_DEFAULT_ROOT_PART:jetson-nano = "0xD"
 BALENA_BOOT_PART:jetson-nano-emmc = "0xC"
@@ -106,7 +104,7 @@ do_install:append() {
     rm -rf "${D}/boot/initrd" \
 
     install -d ${D}/boot/extlinux
-    install -m 0644 ${DEPLOY_DIR_IMAGE}/boot/extlinux.conf ${D}/boot/extlinux/extlinux.conf
+    install -m 0644 ${DEPLOY_DIR_IMAGE}/extlinux/extlinux.conf ${D}/boot/extlinux/extlinux.conf
     sed -i 's/Image/boot\/Image/g' ${D}/boot/extlinux/extlinux.conf
 }
 
@@ -114,6 +112,8 @@ do_install:append() {
 FILES:u-boot-tegra:remove = " \
     /boot/initrd \
 "
+
+FILES:${PN} += " /boot/extlinux/extlinux.conf \"
 
 # Our extlinux is provided by the kernel
 do_install[depends] += " virtual/kernel:do_deploy"
