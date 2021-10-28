@@ -230,9 +230,12 @@ do_configure() {
 
     # Patch resulting boot0.img to match partition table for L4T 32.5.1
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557056 count=24 skip=0  of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557444 count=6  skip=24 of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=622592 count=24 skip=30 of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=622980 count=6  skip=54 of=boot0.img conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=622592 count=24 skip=24  of=boot0.img conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=743424 count=24 skip=48  of=boot0.img conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=743808 count=16 skip=72  of=boot0.img conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=748032 count=24 skip=88  of=boot0.img conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=748416 count=16 skip=112  of=boot0.img conv=notrunc
+
     cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img
 }
 
