@@ -5,8 +5,8 @@ BALENA_BOOT_PARTITION_FILES:append:jetson-tx2 = " \
 "
 
 BALENA_BOOT_PARTITION_FILES:append:jetson-tx2 = " \
-    boot/extlinux.conf_flasher:/extlinux/extlinux.conf \
+    extlinux/extlinux.conf_flasher:/extlinux/extlinux.conf \
 "
 BALENA_BOOT_PARTITION_FILES:append:jetson-tx1 = " \
-    boot/extlinux.conf_flasher:/extlinux/extlinux.conf \
+    extlinux/extlinux.conf_flasher:/extlinux/extlinux.conf \
 "

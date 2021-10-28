@@ -1,15 +1,15 @@
 IMAGE_FSTYPES:append = " balenaos-img"
 
 do_rootfs:balenaos-img:jetson-nano[depends] += " tegra210-flash:do_deploy \
-                                                virtual/kernel:do_deploy \
+                                                linux-tegra:do_deploy \
 "
 
 do_rootfs:balenaos-img:jetson-nano-emmc[depends] += " tegra210-flash:do_deploy \
-                                                virtual/kernel:do_deploy \
+                                                linux-tegra:do_deploy \
 "
 
 do_rootfs:balenaos-img:jetson-nano-2gb-devkit[depends] += " tegra210-flash:do_deploy \
-                                                virtual/kernel:do_deploy \
+                                                linux-tegra:do_deploy \
 "
 
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
@@ -74,26 +74,7 @@ BALENA_BOOT_PARTITION_FILES:jetson-xavier = " \
 "
 
 do_rootfs:balenaos-img:jetson-tx2[depends] += " tegra186-flash-dry:do_deploy \
-                                               virtual/kernel:do_deploy \
-"
-
-BALENA_BOOT_PARTITION_FILES:jetson-tx2 = " \
-    boot/extlinux.conf:/extlinux/extlinux.conf \
-"
-
-BALENA_BOOT_PARTITION_FILES:jetson-xavier-nx-devkit-emmc = " \
-    boot/extlinux.conf:/extlinux/extlinux.conf \
-"
-
-BALENA_BOOT_PARTITION_FILES:jetson-xavier-nx-devkit = " \
-    boot/extlinux.conf:/extlinux/extlinux.conf \
-"
-
-# Keep these in boot also, for a plain u-boot
-# to boot a flasher image.
-BALENA_BOOT_PARTITION_FILES:jetson-tx1 = " \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
-    boot/extlinux.conf:/extlinux/extlinux.conf \
+                                               linux-tegra:do_deploy \
 "
 
 do_rootfs:balenaos-img:jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy "
