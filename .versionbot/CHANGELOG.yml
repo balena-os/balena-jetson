@@ -1,4 +1,32 @@
 - commits:
+    - subject: >-
+        tegra-boot-tools: Switch to 3 boot attempts before falling back to the
+        old boot slots on Xaviers
+      hash: 5f74c9706355aba1360ffc4b47e062c9e3c9d48a
+      body: |
+        The old boot slots contain the kernel dtb (which in turn
+        contains the kernel cmdline with the current rootfs label),
+        the old kernel, old cboot, etc.
+
+        We add a patch which modifies thegra-boot-tools
+        to lower the boot attempts to 3 and also add
+        a drop-in for the rollback-altboot service to
+        mark the current slot as OK to boot from,
+        since there was no kernel crash so far.
+      footer:
+        Changelog-entry: >-
+          tegra-boot-tools: Switch to 3 boot attempts before falling back to the
+          old boot slots on Xaviers
+        changelog-entry: >-
+          tegra-boot-tools: Switch to 3 boot attempts before falling back to the
+          old boot slots on Xaviers
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.85.2+rev5
+  date: 2021-10-28T09:15:16.456Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.14.8 to v1.15.5
       hash: f7640d416d1e876a1a8d2f88dbd0ceb1575a6716
       body: |
