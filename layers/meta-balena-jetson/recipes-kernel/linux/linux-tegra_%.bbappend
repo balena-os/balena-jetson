@@ -300,9 +300,8 @@ EXTLINUX_FDT="FDT default"
 EXTLINUX_FDT:jetson-tx2-nx-devkit=""
 
 generate_extlinux_conf() {
-    install -d ${D}/${KERNEL_IMAGEDEST}/extlinux
-    rm -f ${D}/${KERNEL_IMAGEDEST}/extlinux/extlinux.conf
-    kernelRootspec="${KERNEL_ROOTSPEC}" ; cat >${D}/${KERNEL_IMAGEDEST}/extlinux/extlinux.conf << EOF
+    mkdir -p ${DEPLOY_DIR_IMAGE}/extlinux || true
+    kernelRootspec="${KERNEL_ROOTSPEC}" ; cat >${DEPLOY_DIR_IMAGE}/extlinux/extlinux.conf << EOF
 DEFAULT primary
 TIMEOUT 10
 MENU TITLE Boot Options
@@ -312,7 +311,7 @@ LABEL primary
       ${EXTLINUX_FDT}
       APPEND \${cbootargs} ${kernelRootspec} \${os_cmdline} sdhci_tegra.en_boot_part_access=1
 EOF
-    kernelRootspec="${KERNEL_ROOTSPEC_FLASHER}" ; cat >${D}/${KERNEL_IMAGEDEST}/extlinux/extlinux.conf_flasher << EOF
+    kernelRootspec="${KERNEL_ROOTSPEC_FLASHER}" ; cat >${DEPLOY_DIR_IMAGE}/extlinux/extlinux.conf_flasher << EOF
 DEFAULT primary
 TIMEOUT 10
 MENU TITLE Boot Options
@@ -323,17 +322,8 @@ LABEL primary
 EOF
 }
 
-do_install[postfuncs] += "generate_extlinux_conf"
+do_deploy[postfuncs] += "generate_extlinux_conf"
 do_install[depends] += "${@['', '${INITRAMFS_IMAGE}:do_image_complete'][(d.getVar('INITRAMFS_IMAGE', True) or '') != '' and (d.getVar('TEGRA_INITRAMFS_INITRD', True) or '') == "1"]}"
-
-do_deploy:append(){
-    mkdir -p "${DEPLOYDIR}/boot/"
-    install -m 0600 "${D}/boot/extlinux/extlinux.conf" "${DEPLOYDIR}/boot/"
-    install -m 0600 "${D}/boot/extlinux/extlinux.conf_flasher" "${DEPLOYDIR}/boot/"
-}
-
-
-FILES:${KERNEL_PACKAGE_NAME}-image:append = "/boot/extlinux/extlinux.conf /boot/extlinux/extlinux.conf_flasher"
 
 do_deploy:append:spacely-tx2() {
    cp ${WORKDIR}/tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb "${DEPLOYDIR}"
