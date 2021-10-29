@@ -1,0 +1,27 @@
+From 9e7b73ad799b444a689494675d2b85d90a9f6b4f Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Fri, 29 Oct 2021 15:52:30 +0200
+Subject: [PATCH] tx2nx: Remove unused boot targets
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ include/configs/p3636-0001.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/include/configs/p3636-0001.h b/include/configs/p3636-0001.h
+index 1a8051bc42..51c7af6a8b 100644
+--- a/include/configs/p3636-0001.h
++++ b/include/configs/p3636-0001.h
+@@ -21,8 +21,6 @@
+ #define BOOT_TARGET_DEVICES(func) \
+ 	func(MMC, mmc, 1) \
+ 	func(MMC, mmc, 0) \
+-	func(USB, usb, 0) \
+-	func(NVME, nvme, 0) \
+ 	func(PXE, pxe, na) \
+ 	func(DHCP, dhcp, na)
+ 
+-- 
+2.17.1
+
