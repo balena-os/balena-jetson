@@ -66,7 +66,6 @@ BOOTFILES=" \
     spe_t194.bin \
     warmboot_t194_prod.bin \
     xusb_sil_rel_fw \
-    cbo.dtb \
     adsp-fw.bin \
 "
 
