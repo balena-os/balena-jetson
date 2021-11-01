@@ -452,7 +452,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> CBOOTOPTION_FILE </filename>
             <description> **Optional.** Contains boot device selection priority list. </description>
         </partition>
         <partition name="CPUBL-CFG_b" type="data">
@@ -462,7 +461,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 0x8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> CBOOTOPTION_FILE </filename>
             <description> **Optional.** Contains boot device selection priority list. </description>
         </partition>
         <partition name="VER" type="data">
