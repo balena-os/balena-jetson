@@ -1,6 +1,32 @@
 Change log
 -----------
 
+# v2.85.2+rev5
+## (2021-11-04)
+
+
+<details>
+<summary> Update balena-yocto-scripts from v1.15.5 to v1.15.8 [Alexandru Costache] </summary>
+
+> ## balena-yocto-scripts-1.15.8
+> ### (2021-11-03)
+> 
+> * Dockerfile_yocto-build-env: Install Honister host deps [Alexandru Costache]
+> 
+> ## balena-yocto-scripts-1.15.7
+> ### (2021-10-25)
+> 
+> * jenkins_build.sh: Fix deployment for discontinued device types [Alex Gonzalez]
+> * jenkins_build.sh: Remove PRIVATE_DT as it is unused [Alex Gonzalez]
+> * jenkins_build.sh: Fix lint warnings [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.15.6
+> ### (2021-10-21)
+> 
+> * balena-generate-ami.sh: wait for boot partition when preloading AMI [Michal Toman]
+> 
+</details>
+
 # v2.85.2+rev4
 ## (2021-10-21)
 
