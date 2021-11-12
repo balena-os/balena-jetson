@@ -1,6 +1,136 @@
 Change log
 -----------
 
+# v2.87.1+rev1
+## (2021-11-12)
+
+
+<details>
+<summary> Update meta-balena from v2.85.2 to v2.87.1 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.87.1
+> ### (2021-11-10)
+> 
+> * recipes-devtools/dosfstools: Fix build with Poky Honister [Alexandru Costache]
+> 
+> ## meta-balena-2.87.0
+> ### (2021-11-09)
+> 
+> * meta-balena-common/conf: Switch layer to Honister compatibility [Alexandru Costache]
+> 
+> ## meta-balena-2.86.3
+> ### (2021-11-09)
+> 
+> * patch: Fix URL to yocto project dependencies [Kyle Harding]
+> 
+> ## meta-balena-2.86.2
+> ### (2021-11-08)
+> 
+> * dosfstools: selectively apply upstreamed patch [Joseph Kogut]
+> * tests: wait for the chronyd service become active [Mark Corbin]
+> 
+> ## meta-balena-2.86.1
+> ### (2021-11-02)
+> 
+> * tests/issue: Add test to check issues files [Alex Gonzalez]
+> * base files: Use HOSTOS_VERSION in issue and issue.net [Alex Gonzalez]
+> 
+> ## meta-balena-2.86.0
+> ### (2021-10-29)
+> 
+> * Create new data partition reset service [Kyle Harding]
+> 
+> ## meta-balena-2.85.17
+> ### (2021-10-28)
+> 
+> * restrict dtoverlay test to rpi devices [rcooke-warwick]
+> 
+> ## meta-balena-2.85.16
+> ### (2021-10-27)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v19.03.30 [Robert Günzler] </summary>
+> 
+>> ### balena-engine-19.03.30
+>> #### (2021-10-26)
+>> 
+>> * storagemigration: keep going if migration fails [Robert Günzler]
+>> * graphdriver/copy: fix handling of sockets [Robert Günzler]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.85.15
+> ### (2021-10-26)
+> 
+> * linux-firmware: Include RTL8723BU firmware files [Zahari Petkov]
+> 
+> ## meta-balena-2.85.14
+> ### (2021-10-25)
+> 
+> * balena-supervisor: Update balena-supervisor to v12.11.0 [Felipe Lalanne]
+> 
+> ## meta-balena-2.85.13
+> ### (2021-10-21)
+> 
+> * balena-engine: Remove deprecated development drop-in service file [Kyle Harding]
+> 
+> ## meta-balena-2.85.12
+> ### (2021-10-21)
+> 
+> * make led test work with beaglebone [rcooke-warwick]
+> 
+> ## meta-balena-2.85.11
+> ### (2021-10-06)
+> 
+> * patch: Add dtoverlay practical test [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.85.10
+> ### (2021-10-04)
+> 
+> * image-balena: Decouple boot directory generation from rootfs task [Alex Gonzalez]
+> 
+> ## meta-balena-2.85.9
+> ### (2021-10-01)
+> 
+> * classes/resin-u-boot: Increase OS_BOOTCOUNT_LIMIT to 3 [Alexandru Costache]
+> 
+> ## meta-balena-2.85.8
+> ### (2021-09-29)
+> 
+> * hostapp-update-hooks: Blacklist Rock Pi configuration file [Alexandru Costache]
+> 
+> ## meta-balena-2.85.7
+> ### (2021-09-28)
+> 
+> * balena-healthcheck: Remove redundant steps and rely on hello-world [Kyle Harding]
+> 
+> ## meta-balena-2.85.6
+> ### (2021-09-27)
+> 
+> * kernel-balena: Fix kernel config warning for UPROBE_EVENTS [Alex Gonzalez]
+> * kernel-balena: Configure DEBUG_FS [Alex Gonzalez]
+> 
+> ## meta-balena-2.85.5
+> ### (2021-09-23)
+> 
+> * Run iwlwifi firmware cleanup in fakeroot [Kyle Harding]
+> 
+> ## meta-balena-2.85.4
+> ### (2021-09-21)
+> 
+> * common: conf: create disable-user-ns distro feature [Joseph Kogut]
+> 
+> ## meta-balena-2.85.3
+> ### (2021-09-21)
+> 
+> * balena-os-sysctl: Reduce the console default loglevel [Alex Gonzalez]
+> * balena-config-vars: Re-run os-sshkeys if config.json is modified [Alex Gonzalez]
+> * systemd: Use drop-in to modify unit files instead of sed [Alex Gonzalez]
+> 
+</details>
+
 # v2.85.2+rev5
 ## (2021-11-04)
 
