@@ -1,10 +1,12 @@
 include balena-image.inc
 
-IMAGE_FSTYPES_append = " hostapp-ext4"
+DEVICE_SPECIFIC_SPACE:jetson-nano = "49152"
+DEVICE_SPECIFIC_SPACE:jetson-nano-emmc = "49152"
+DEVICE_SPECIFIC_SPACE:jetson-nano-2gb-devkit = "49152"
 
-DEVICE_SPECIFIC_SPACE_jetson-nano = "49152"
-DEVICE_SPECIFIC_SPACE_jetson-nano-emmc = "49152"
-DEVICE_SPECIFIC_SPACE_jetson-nano-2gb-devkit = "49152"
+BALENA_BOOT_PARTITION_FILES:jetson-tx2 = " \
+    extlinux/extlinux.conf:/extlinux/extlinux.conf \
+"
 
 check_size() {
     file_path=${1}
@@ -17,8 +19,8 @@ check_size() {
     fi;
 }
 
-do_image_balenaos-img_jetson-nano[depends] += " tegra210-flash:do_deploy"
-device_specific_configuration_jetson-nano() {
+do_image:balenaos-img:jetson-nano[depends] += " tegra210-flash:do_deploy"
+device_specific_configuration:jetson-nano() {
     partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification210.txt)
     NVIDIA_PART_OFFSET=2048
     START=${NVIDIA_PART_OFFSET}
@@ -35,8 +37,8 @@ device_specific_configuration_jetson-nano() {
     done
 }
 
-do_image_balenaos-img_jetson-nano-emmc[depends] += " tegra210-flash:do_deploy"
-device_specific_configuration_jetson-nano-emmc() {
+do_image:balenaos-img:jetson-nano-emmc[depends] += " tegra210-flash:do_deploy"
+device_specific_configuration:jetson-nano-emmc() {
     partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification210.txt)
     NVIDIA_PART_OFFSET=2048
     START=${NVIDIA_PART_OFFSET}
@@ -53,8 +55,8 @@ device_specific_configuration_jetson-nano-emmc() {
     done
 }
 
-do_image_balenaos-img_jetson-nano-2gb-devkit[depends] += " tegra210-flash:do_deploy"
-device_specific_configuration_jetson-nano-2gb-devkit() {
+do_image:balenaos-img:jetson-nano-2gb-devkit[depends] += " tegra210-flash:do_deploy"
+device_specific_configuration:jetson-nano-2gb-devkit() {
     partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification210-2gb.txt)
     NVIDIA_PART_OFFSET=2048
     START=${NVIDIA_PART_OFFSET}
@@ -74,7 +76,7 @@ device_specific_configuration_jetson-nano-2gb-devkit() {
 # We leave this space way larger than currently
 # needed because other larger partitions are
 # added from one Jetpack release to another
-DEVICE_SPECIFIC_SPACE_jetson-xavier = "458752"
+DEVICE_SPECIFIC_SPACE:jetson-xavier = "458752"
 
 # Binaries are signed and packed into
 # a partition and the flaser script
@@ -82,8 +84,8 @@ DEVICE_SPECIFIC_SPACE_jetson-xavier = "458752"
 # raw due to partition alignments which
 # trigger checksum mismatches during flash
 
-do_image_balenaos-img_jetson-xavier[depends] += " tegra194-flash-dry:do_deploy"
-device_specific_configuration_jetson-xavier() {
+do_image:balenaos-img:jetson-xavier[depends] += " tegra194-flash-dry:do_deploy"
+device_specific_configuration:jetson-xavier() {
     partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification194.txt)
     NVIDIA_PART_OFFSET=20480
     START=${NVIDIA_PART_OFFSET}
@@ -106,12 +108,12 @@ device_specific_configuration_jetson-xavier() {
 
 }
 
-NVIDIA_PART_OFFSET_jetson-tx2="4097"
-DEVICE_SPECIFIC_SPACE_jetson-tx2="49152"
+NVIDIA_PART_OFFSET:jetson-tx2="4097"
+DEVICE_SPECIFIC_SPACE:jetson-tx2="49152"
 
-do_image_balenaos-img_jetson-tx2[depends] += " tegra186-flash-dry:do_deploy"
+do_image:balenaos-img:jetson-tx2[depends] += " tegra186-flash-dry:do_deploy"
 
-device_specific_configuration_jetson-tx2() {
+device_specific_configuration:jetson-tx2() {
     partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification186.txt)
     start=${NVIDIA_PART_OFFSET}
     for n in ${partitions}; do
@@ -149,9 +151,9 @@ EOF
 }
 
 
-DEVICE_SPECIFIC_SPACE_jetson-tx1 = "40960"
-do_image_balenaos-img_jetson-tx1[depends] += " tegra210-flash-dry:do_deploy"
-device_specific_configuration_jetson-tx1() {
+DEVICE_SPECIFIC_SPACE:jetson-tx1 = "40960"
+do_image:balenaos-img:jetson-tx1[depends] += " tegra210-flash-dry:do_deploy"
+device_specific_configuration:jetson-tx1() {
     partitions=$(cat ${DEPLOY_DIR_IMAGE}/tegra-binaries/partition_specification210_tx1.txt)
     START=34
     for n in ${partitions}; do
@@ -198,14 +200,14 @@ write_jetson_nx_partitions() {
 # We leave this space way larger than currently
 # needed because other larger partitions can be
 # added from one Jetpack release to another
-DEVICE_SPECIFIC_SPACE_jetson-xavier-nx-devkit-emmc = "458752"
-do_image_balenaos-img_jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy"
-device_specific_configuration_jetson-xavier-nx-devkit-emmc() {
+DEVICE_SPECIFIC_SPACE:jetson-xavier-nx-devkit-emmc = "458752"
+do_image:balenaos-img:jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy"
+device_specific_configuration:jetson-xavier-nx-devkit-emmc() {
     write_jetson_nx_partitions "partition_specification194_nxde.txt"
 }
 
-DEVICE_SPECIFIC_SPACE_jetson-xavier-nx-devkit = "458752"
-do_image_balenaos-img_jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard-flash:do_deploy"
-device_specific_configuration_jetson-xavier-nx-devkit() {
+DEVICE_SPECIFIC_SPACE:jetson-xavier-nx-devkit = "458752"
+do_image:balenaos-img:jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard-flash:do_deploy"
+device_specific_configuration:jetson-xavier-nx-devkit() {
     write_jetson_nx_partitions "partition_specification194_nxde_sdcard.txt"
 }

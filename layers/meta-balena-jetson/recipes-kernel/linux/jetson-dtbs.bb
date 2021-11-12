@@ -1,6 +1,4 @@
-FILESEXTRAPATHS_append := ":${THISDIR}/linux-tegra"
-
-inherit allarch systemd
+FILESEXTRAPATHS:append := ":${THISDIR}/linux-tegra"
 
 DESCRIPTION = "Package for deploying custom dtbs to rootfs"
 LICENSE = "MIT"
@@ -23,14 +21,12 @@ SRC_URI = " \
 	file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
 "
 
-RDEPENDS_${PN} = " bash "
-
 do_install[depends] += " virtual/kernel:do_deploy "
 
 S = "${WORKDIR}"
 DTBNAME = "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 
-do_install_jetson-tx2() {
+do_install:jetson-tx2() {
 	install -d ${D}/boot/
 	install -m 0644 ${WORKDIR}/tegra186-tx2-6.dtb ${D}/boot/tegra186-tx2-6.dtb
 	install -m 0644 ${WORKDIR}/tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb ${D}/boot/tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb
@@ -42,7 +38,7 @@ do_install_jetson-tx2() {
 	install -m 0644 ${WORKDIR}/tegra186-tx2-cti-ASG001-revG+.dtb ${D}/boot/tegra186-tx2-cti-ASG001-revG+.dtb
 }
 
-do_install_jetson-nano() {
+do_install:jetson-nano() {
 	install -d ${D}/boot/
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0000-p3449-0000-a02.dtb ${D}/boot/tegra210-p3448-0000-p3449-0000-a02.dtb
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0000-p3449-0000-b00.dtb ${D}/boot/tegra210-p3448-0000-p3449-0000-b00.dtb
@@ -53,7 +49,7 @@ do_install_jetson-nano() {
 }
 
 
-do_install_jetson-nano-emmc() {
+do_install:jetson-nano-emmc() {
 	install -d ${D}/boot/
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-b00.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00.dtb
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0002-p3449-0000-a02.dtb  ${D}/boot/tegra210-p3448-0002-p3449-0000-a02.dtb
@@ -63,18 +59,18 @@ do_install_jetson-nano-emmc() {
 	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX003-IMX477-2CAM.dtb ${D}/boot/tegra210-nano-cti-NGX003-IMX477-2CAM.dtb
 }
 
-do_install_jetson-nano-2gb-devkit() {
+do_install:jetson-nano-2gb-devkit() {
 	install -d ${D}/boot/
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0003-p3542-0000.dtb  ${D}/boot/tegra210-p3448-0003-p3542-0000.dtb
 }
 
-do_install_jetson-tx2-nx-devkit() {
+do_install:jetson-tx2-nx-devkit() {
 	install -d ${D}/boot/
 	install -m 0644 ${WORKDIR}/tegra186-tx2-nx-cti-NGX003.dtb  ${D}/boot/tegra186-tx2-nx-cti-NGX003.dtb
 	install -m 0644 ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb  ${D}/boot/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb
 }
 
-FILES_${PN}_jetson-tx2 += " \
+FILES:${PN}:jetson-tx2 += " \
 	/boot/tegra186-tx2-6.dtb \
 	/boot/tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb \
 	/boot/tegra186-tx2-cti-ASG001-USB3.dtb \
@@ -87,7 +83,7 @@ FILES_${PN}_jetson-tx2 += " \
 "
 
 
-FILES_${PN}_jetson-nano += " \
+FILES:${PN}:jetson-nano += " \
 	/boot/tegra210-p3448-0000-p3449-0000-a02.dtb \
 	/boot/tegra210-p3448-0000-p3449-0000-b00.dtb \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb \
@@ -96,7 +92,7 @@ FILES_${PN}_jetson-nano += " \
 	/boot/tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb \
 "
 
-FILES_${PN}_jetson-nano-emmc += " \
+FILES:${PN}:jetson-nano-emmc += " \
 	/boot/tegra210-p3448-0002-p3449-0000-b00.dtb \
 	/boot/tegra210-p3448-0002-p3449-0000-a02.dtb \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb \
@@ -105,11 +101,11 @@ FILES_${PN}_jetson-nano-emmc += " \
 	/boot/tegra210-nano-cti-NGX003-IMX477-2CAM.dtb \
 "
 
-FILES_${PN}_jetson-nano-2gb-devkit += " \
+FILES:${PN}:jetson-nano-2gb-devkit += " \
         /boot/tegra210-p3448-0003-p3542-0000.dtb \
 "
 
-FILES_${PN}_jetson-tx2-nx-devkit += " \
+FILES:${PN}:jetson-tx2-nx-devkit += " \
 	/boot/tegra186-tx2-nx-cti-NGX003.dtb \
 	/boot/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
 "

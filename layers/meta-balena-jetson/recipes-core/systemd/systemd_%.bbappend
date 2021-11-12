@@ -1,4 +1,4 @@
-do_install_append_jetson-nano(){
+do_install:append:jetson-nano(){
     # On jetson nano, tegra_wdt_t21x module pings
     # the watchdog internally unless a userspace
     # daemon like systemd opens /dev/watchdog.
@@ -11,13 +11,13 @@ do_install_append_jetson-nano(){
     echo "" > ${D}/${sysconfdir}/systemd/system.conf.d/watchdog.conf
 }
 
-do_install_append_jetson-nano-emmc(){
+do_install:append:jetson-nano-emmc(){
     echo "" > ${D}/${sysconfdir}/systemd/system.conf.d/watchdog.conf
 }
 
 
 
-do_install_append_jetson-tx1(){
+do_install:append:jetson-tx1(){
     # Same as for the jetson nano, since both are tegra210
     echo "" > ${D}/${sysconfdir}/systemd/system.conf.d/watchdog.conf
 }

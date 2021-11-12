@@ -24,7 +24,7 @@ SRC_URI = " \
     file://boot0_t210_tx1.bindiff \
     "
 
-KERNEL_DEVICETREE_jetson-tx1 = "${DEPLOY_DIR_IMAGE}/tegra210-jetson-tx1-p2597-2180-a01-devkit.dtb"
+KERNEL_DEVICETREE:jetson-tx1 = "${DEPLOY_DIR_IMAGE}/tegra210-jetson-tx1-p2597-2180-a01-devkit.dtb"
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 
 IMAGE_TEGRAFLASH_FS_TYPE ??= "ext4"
@@ -240,7 +240,7 @@ do_deploy() {
     cp -r ${D}/${BINARY_INSTALL_PATH}/* ${DEPLOYDIR}/$(basename ${BINARY_INSTALL_PATH})
 }
 
-FILES_${PN} += "${BINARY_INSTALL_PATH}"
+FILES:${PN} += "${BINARY_INSTALL_PATH}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"

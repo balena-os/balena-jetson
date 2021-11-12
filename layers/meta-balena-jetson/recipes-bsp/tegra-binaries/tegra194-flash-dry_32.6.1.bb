@@ -66,7 +66,6 @@ BOOTFILES=" \
     spe_t194.bin \
     warmboot_t194_prod.bin \
     xusb_sil_rel_fw \
-    cbo.dtb \
     adsp-fw.bin \
 "
 
@@ -276,7 +275,7 @@ do_deploy() {
     cp -r ${D}/${BINARY_INSTALL_PATH}/* ${DEPLOYDIR}/$(basename ${BINARY_INSTALL_PATH})
 }
 
-FILES_${PN} += "${BINARY_INSTALL_PATH}"
+FILES:${PN} += "${BINARY_INSTALL_PATH}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
