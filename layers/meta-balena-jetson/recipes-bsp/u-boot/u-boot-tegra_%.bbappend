@@ -57,6 +57,7 @@ SRC_URI:append = " \
     file://menu-Use-default-menu-entry-from-extlinux.conf.patch \
     file://0001-add-back-config-defaults.patch \
     file://sysboot-read-custom-fdt-from-env.patch \
+    file://nano-disable-env-mmc.patch \
 "
 
 # Uses sd-card defconfig

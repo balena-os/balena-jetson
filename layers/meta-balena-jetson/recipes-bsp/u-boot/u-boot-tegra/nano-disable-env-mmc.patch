@@ -1,0 +1,36 @@
+From bbae3c8ca79d895e8d69502cdc604b71510982ae Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 13 Dec 2021 13:07:30 +0100
+Subject: [PATCH] Nano: disable loading environment from eMMC, QSPI
+
+The commit 46e4604c in u-boot 32.6.1:
+    env: enable saveenv for Nano eMMC board
+enforces loading the environment from the eMMC
+or QSPI flash. However, we need the environment
+to be loaded from the u-boot binary.
+
+Switch to using the default environment and
+avoid abort in u-boot.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ arch/arm/mach-tegra/board2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/mach-tegra/board2.c b/arch/arm/mach-tegra/board2.c
+index 87710ef835..e71e3c84b9 100644
+--- a/arch/arm/mach-tegra/board2.c
++++ b/arch/arm/mach-tegra/board2.c
+@@ -180,7 +180,7 @@ int board_init(void)
+ #endif
+ 
+ #if defined(CONFIG_TEGRA210)
+-	tegra210_env_drv_config();
++	//tegra210_env_drv_config();
+ #endif
+ 	return nvidia_board_init();
+ }
+-- 
+2.17.1
+

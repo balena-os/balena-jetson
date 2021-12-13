@@ -49,7 +49,7 @@ index 922ca28657..0f82bd38f3 100644
 +			printf("vpr_carveout not found in replace carveout list");
 +		    }
 +		} else {
-+		    printf("Booting l4t 32.5.1, no need to replace elements in carveout list\n");
++		    printf("Booting l4t 32.5.1 or newer, no need to replace elements in carveout list\n");
 +		}
 +
  	}
