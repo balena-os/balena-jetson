@@ -2,7 +2,7 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
 BOARD_FLASH    = 'Place carrier board in force recovery and flash the OS file with <a href=\"https://github.com/balena-os/jetson-flash/\">jetson-flash</a>.'
-BOARD_POWEROFF = 'Remove power from the board.'
+BOARD_POWEROFF = 'After the Nano eMMC module is flashed, remove power from the board.'
 BOARD_POWERON  = 'Power on the board.'
 
 module.exports =

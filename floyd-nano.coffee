@@ -2,7 +2,7 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
 BOARD_PREPARE  = 'Put the Floyd Nano BB02 Rev.A (eMMC) board in recovery mode, ensure USB2.0 port 1 is in Device mode and connect it it your PC with USB cable.'
-FLASH_TOOL = 'Unzip BalenaOS image and use the Jetson Flash tool to flash the board. The eMMC machine should be provided to the Jetson Flash tool, which can be found at https://github.com/balena-os/jetson-flash'
+FLASH_TOOL = 'Unzip BalenaOS image and use <a href=\"https://github.com/balena-os/jetson-flash\">Jetson Flash</a> to provision the device.'
 DONE_FLASHING  = 'After flashing is completed, please wait until the board is rebooted'
 
 module.exports =
