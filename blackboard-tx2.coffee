@@ -41,7 +41,7 @@ module.exports =
 		machine: 'blackboard-tx2'
 		image: 'balena-image-flasher'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-flasher-blackboard-tx2.balenaos-img'
 		compressed: true
 

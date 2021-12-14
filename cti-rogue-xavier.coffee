@@ -30,7 +30,7 @@ module.exports =
 		machine: 'cti-rogue-xavier'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-cti-rogue-xavier.balenaos-img'
 		compressed: true
 

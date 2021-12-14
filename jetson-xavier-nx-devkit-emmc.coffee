@@ -29,7 +29,7 @@ module.exports =
 		machine: 'jetson-xavier-nx-devkit-emmc'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-jetson-xavier-nx-devkit-emmc.balenaos-img'
 		compressed: true
 

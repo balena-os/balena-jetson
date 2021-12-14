@@ -2,8 +2,8 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
 BOARD_PREPARE  = 'Put the NVidia Jetson Nano 2GB Devkit in recovery mode'
-FLASH_TOOL = 'Unzip BalenaOS image and use the Jetson Flash tool to flash the board. Jetson Flash tool can be found at https://github.com/balena-os/jetson-flash'
-DONE_FLASHING  = 'After flashing is completed, please wait until the board is rebooted'
+FLASH_TOOL = 'Unzip BalenaOS image and use <a href=\"https://github.com/balena-os/jetson-flash\">Jetson Flash</a> to provision the device.'
+DONE_FLASHING  = 'After flashing of the Nano SD-CARD module is completed, please wait until the board is rebooted'
 
 module.exports =
 	version: 1
@@ -29,7 +29,7 @@ module.exports =
 		machine: 'jetson-nano-2gb-devkit'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-jetson-nano-2gb-devkit.balenaos-img'
 		compressed: true
 

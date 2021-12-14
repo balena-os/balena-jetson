@@ -39,7 +39,7 @@ module.exports =
 		machine: 'n310-tx2'
 		image: 'balena-image-flasher'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-flasher-n310-tx2.balenaos-img'
 		compressed: true
 

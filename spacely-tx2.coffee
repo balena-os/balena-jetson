@@ -38,7 +38,7 @@ module.exports =
 		machine: 'spacely-tx2'
 		image: 'balena-image-flasher'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-flasher-spacely-tx2.balenaos-img'
 		compressed: true
 

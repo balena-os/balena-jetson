@@ -40,7 +40,7 @@ module.exports =
 		machine: 'jetson-tx2'
 		image: 'balena-image-flasher'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-flasher-jetson-tx2.balenaos-img'
 		compressed: true
 

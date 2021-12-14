@@ -1,8 +1,9 @@
 deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
-BOARD_POWEROFF = 'Remove power from the board and insert freshly burnt SD-CARD.'
-BOARD_POWERON  = 'Power on the board.'
+BOARD_PREPARE  = 'Put the Auvidea JN30B Nano board in recovery mode'
+FLASH_TOOL = 'Unzip BalenaOS image and use <a href=\"https://github.com/balena-os/jetson-flash\">Jetson Flash</a> to provision the device.'
+DONE_FLASHING  = 'After flashing of the Nano eMMC module is completed, please wait until the board is rebooted'
 
 module.exports =
 	version: 1
@@ -14,9 +15,9 @@ module.exports =
 	community: 'true'
 
 	instructions: [
-		instructions.ETCHER_SD
-		BOARD_POWEROFF
-		BOARD_POWERON
+		BOARD_PREPARE
+		FLASH_TOOL
+		DONE_FLASHING
 	]
 
 	gettingStartedLink:
@@ -30,7 +31,7 @@ module.exports =
 		machine: 'jn30b-nano'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-jn30b-nano.balenaos-img'
 		compressed: true
 

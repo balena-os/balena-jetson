@@ -30,7 +30,7 @@ module.exports =
 		machine: 'nru120s-xavier'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-nru120s-xavier.balenaos-img'
 		compressed: true
 
