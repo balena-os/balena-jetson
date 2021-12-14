@@ -86,6 +86,7 @@ SRC_URI:append:jetson-tx2 = " \
     file://tx2-remove-vpr-carveout-on-rollback.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
     file://tx2nx-Remove-unused-boot-targets.patch \
+    file://tx2-nx-p3636-0001-Increase-kernel-size-on-TX2-NX.patch \
 "
 
 BALENA_BOOT_PART:jetson-tx1 = "0xB"
