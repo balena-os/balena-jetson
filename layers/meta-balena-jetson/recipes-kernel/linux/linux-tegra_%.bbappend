@@ -107,6 +107,7 @@ BALENA_CONFIGS[debug_kmemleak] = " \
     CONFIG_DEBUG_KMEMLEAK_SCAN_ON=n \
     CONFIG_FUNCTION_TRACER=n \
     CONFIG_HAVE_FUNCTION_TRACER=n \
+    CONFIG_PSTORE=n \
 "
 
 # These should be for all boards that come from tx2
@@ -293,11 +294,7 @@ KERNEL_ROOTSPEC_FLASHER:jetson-tx1 = " root=LABEL=flash-rootA ro rootwait flashe
 KERNEL_ROOTSPEC:append="${L4TVER}"
 KERNEL_ROOTSPEC_FLASHER:append="${L4TVER}"
 
-# The TX2 NX doesn't boot if FDT specifies a DTB,
-# even if it's the unmodified dtb of this device type, see:
-# https://forums.developer.nvidia.com/t/jetpack-4-5-1-silent-panic-when-booting-with-kernel-patch/180200/12
 EXTLINUX_FDT="FDT default"
-EXTLINUX_FDT:jetson-tx2-nx-devkit=""
 
 generate_extlinux_conf() {
     mkdir -p ${DEPLOY_DIR_IMAGE}/extlinux || true

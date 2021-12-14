@@ -21,7 +21,7 @@ SRC_URI = " \
 	file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
 "
 
-do_install[depends] += " virtual/kernel:do_deploy "
+do_install[depends] += " linux-tegra:do_deploy "
 
 S = "${WORKDIR}"
 DTBNAME = "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
@@ -66,6 +66,7 @@ do_install:jetson-nano-2gb-devkit() {
 
 do_install:jetson-tx2-nx-devkit() {
 	install -d ${D}/boot/
+	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra186-p3636-0001-p3509-0000-a01.dtb ${D}/boot/tegra186-p3636-0001-p3509-0000-a01.dtb
 	install -m 0644 ${WORKDIR}/tegra186-tx2-nx-cti-NGX003.dtb  ${D}/boot/tegra186-tx2-nx-cti-NGX003.dtb
 	install -m 0644 ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb  ${D}/boot/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb
 }
@@ -106,6 +107,7 @@ FILES:${PN}:jetson-nano-2gb-devkit += " \
 "
 
 FILES:${PN}:jetson-tx2-nx-devkit += " \
+	/boot/tegra186-p3636-0001-p3509-0000-a01.dtb \
 	/boot/tegra186-tx2-nx-cti-NGX003.dtb \
 	/boot/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
 "

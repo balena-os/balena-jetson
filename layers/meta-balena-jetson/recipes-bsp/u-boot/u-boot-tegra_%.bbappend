@@ -57,6 +57,7 @@ SRC_URI:append = " \
     file://menu-Use-default-menu-entry-from-extlinux.conf.patch \
     file://0001-add-back-config-defaults.patch \
     file://sysboot-read-custom-fdt-from-env.patch \
+    file://nano-disable-env-mmc.patch \
 "
 
 # Uses sd-card defconfig
@@ -85,6 +86,7 @@ SRC_URI:append:jetson-tx2 = " \
     file://tx2-remove-vpr-carveout-on-rollback.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
     file://tx2nx-Remove-unused-boot-targets.patch \
+    file://tx2-nx-p3636-0001-Increase-kernel-size-on-TX2-NX.patch \
 "
 
 BALENA_BOOT_PART:jetson-tx1 = "0xB"
