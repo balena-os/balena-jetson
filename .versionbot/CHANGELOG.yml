@@ -1,4 +1,1064 @@
 - commits:
+    - subject: Update meta-balena from v2.87.1 to v2.88.4
+      hash: dd2b6a7b294ff628e8deeedea22d32700130719f
+      body: |
+        Update meta-balena from 2.87.1 to 2.88.4
+      footer:
+        Changelog-entry: Update meta-balena from v2.87.1 to v2.88.4
+        changelog-entry: Update meta-balena from v2.87.1 to v2.88.4
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'tests: Add basic checks for data loss during HUP'
+              hash: 160fba09251de9fc05b3b3ab7a45e6e4e6ca5586
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: >-
+                hostapp-update-hooks: Ensure data breadcrumb is present before
+                HUP
+              hash: 62b25ec26111003ef12bc16fe4890b5c327e6aba
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.88.4
+          date: 2021-12-03T18:33:53.449Z
+        - commits:
+            - subject: 'grub-conf: Delay grub boot in os development mode'
+              hash: 08b54c04b109341542ff1f2b82d00699369a8280
+              body: >
+                When using the compile time OS_DEVELOPMENT switch, delay the
+                boot so
+
+                the grub menu is displayed and it can be interacted with.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'grub-efi: Allow input/output in OS development mode'
+              hash: 7d450dddf397dc045779fa815b5003bd1b1ca7fa
+              body: |
+                When building with the compile-time OS_DEVELOPMENT switch allow
+                grub shell to work.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.88.3
+          date: 2021-12-02T17:44:27.982Z
+        - commits:
+            - subject: 'sign-efi.bbclass: Do not deploy the unused .signed symlink'
+              hash: 33c3e61eac60dff18a1bfe8e7a69cc31a8b16070
+              body: >
+                do_deploy:append replaces the original file with its signed
+                counterpart,
+
+                the signature just gets ignored for non secure boot setups. The
+                .signed
+
+                symlink was in place for backwards compatibility but nothing is
+                using it
+
+                anymore therefore we can safely remove it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'sign-gpg.bbclass: Only deploy the detached signature'
+              hash: 40ead6aefea6d4ab56c76ec0a968da9b23acc887
+              body: >
+                The original file should already be deployed, we only need to
+                add
+
+                the signature in do_deploy:append. Re-deploying actually causes
+
+                harm when chaining signatures, replacing a signed file with its
+
+                unsigned counterpart.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'kernel-image-initramfs.bb: Ship kernel and matching signature'
+              hash: 73c254a9396dcf40ba421d70119400af7d4ef21f
+              body: >
+                This patch replaces the kernel being shipped with the one that
+                we eventually
+
+                sign for EFI - without signing the original file used would be
+                identical
+
+                but after applying signature, the signed version is the one we
+                want to ship.
+
+
+                It also fixes the file name for the detached signature, which
+                must match
+
+                the name of the associated file.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: Make kexec work under kernel lockdown
+              hash: 3f7ab2a82b29cdb5ddbf2be6ae8b384a76be999e
+              body: |
+                - EFI sign bzImage first
+                - GPG sign the result
+                - Enable kexec signature check in the kernel
+                - Load EFI keys to the kernel keyring
+                - Use -s with kexec load command
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.88.2
+          date: 2021-12-02T12:47:16.559Z
+        - commits:
+            - subject: 'bluez5: Update to bluez 5.61 from poky honister'
+              hash: 1ce83ba3726b77d679818cc8f10e7092cd094328
+              body: |
+                This commit brings the bluez5 recipe from poky honnister.
+
+                The code originated from poky's honnister branch
+                @ 5f87fbf13bd35169a488ca564875974681aafd4f
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.88.1
+          date: 2021-12-02T10:41:20.034Z
+        - commits:
+            - subject: 'systemd/timeinit: add HTTPS time synchronisation service'
+              hash: 2bb18707557979ed6466f45602de4ecf5b386c57
+              body: >
+                Add a new timesync-https systemd service to synchronise the
+                system
+
+                time at boot using an HTTPS header. The service uses curl to
+                request
+
+                an HTTPS header from either $API_ENDPOINT/connectivity-check
+                (default)
+
+                or the URL defined by the os.network.connectivity.uri field in
+
+                config.json. The URL used *must* return HTTP code 204 (No
+                Content)
+
+                in response to a request so that we can determine that we have
+                full
+
+                network connectivity and are not operating behind a captive
+                portal.
+
+
+                The date field returned by a valid header is used to set the
+                current
+
+                system time. The date/time derived from the header is assumed to
+                be a
+
+                reasonable source of 'truth' such that it can be used to adjust
+                the
+
+                system time both backwards and forwards. This will compensate
+                for any
+
+                erroneous timestamps saved via fake-hwclock or any invalid data
+
+                read from an RTC.
+
+
+                The service will exit when a valid response has been received.
+                Poll
+
+                attempts will be made at an increasing interval starting at 2s
+                and
+
+                doubling up to a maximum of 64s. Polling will continue at the
+                maximum
+
+                interval until a valid response has been received.
+
+
+                This service will provide initial time synchronisation for
+                devices
+
+                where NTP ports have been blocked. For devices where NTP access
+                is
+
+                available it should ensure that any system 'time jump' is only a
+                few
+
+                seconds when NTP synchronisation is eventually achieved. It also
+
+                allows other services to start with a reasonably accurate time
+
+                without having to wait for the NTP synchronisation process to
+
+                complete.
+
+
+                Services that are ordered after the new time-sync-https-wait
+                target
+
+                can be sure that full network connectivity has been achieved and
+                that
+
+                time has been synchronised with an accuracy of a few seconds.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Connects-to: '#1337 #1776 #2044 #2139'
+                connects-to: '#1337 #1776 #2044 #2139'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.88.0
+          date: 2021-12-01T15:06:07.577Z
+        - commits:
+            - subject: 'tests: Add BeagleBone Black u-boot overlay test'
+              hash: d52a1754ba1620773e1f7f124fe382aa73e869eb
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.87.32
+          date: 2021-12-01T08:51:25.213Z
+        - commits:
+            - subject: 'resin-update-state.rules: do not run for unnamed partitions'
+              hash: bc45916b90e60aa849a2b99903825bce98e36752
+              body: >
+                When udev runs resin_update_state_probe for a non-balena
+                partition
+
+                and ENV{ID_PART_ENTRY_NAME} is undefined it still gets expanded
+                to random
+
+                garbage accidentally lying at the eventual memory address. This
+                can create
+
+                a mess in /dev/disk/by-state e.g. when external devices are
+                connected.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'resin_update_state_probe: do not skip device mapper devices'
+              hash: 4a8da59e5cbe2243518ed0591dc376e935a3175d
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.31
+          date: 2021-11-30T17:23:29.588Z
+        - commits:
+            - subject: 'tests: Add device specific RevPi Core 3 DIO module test'
+              hash: ffd31de2edf0358ede441aa001f5d32069ec8999
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.87.30
+          date: 2021-11-30T15:30:47.078Z
+        - commits:
+            - subject: >-
+                common: image-balena: enable developmentMode when
+                OS_DEVELOPMENT=1
+              hash: 14b96077eb1899ebedce64610344989eaf4471cd
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.87.29
+          date: 2021-11-29T14:22:50.702Z
+        - commits:
+            - subject: Add secure boot keys to the flasher boot partition
+              hash: e5e1c4446f26d028d1e5b6fbdaeb974d84d0a03f
+              body: |
+                Having the keys available in the flasher image allows to use the
+                flasher image as source to program the keys in the EFI.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add secure boot keys to the flasher boot partition
+                changelog-entry: Add secure boot keys to the flasher boot partition
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.87.28
+          date: 2021-11-26T18:00:13.452Z
+        - commits:
+            - subject: 'balena-os: make sure PAM support is not configured'
+              hash: abb515f6a0bf5d274af873852ddd4e60cf4ee89e
+              body: >
+                BalenaOS does not use PAM but some vendor BSPs enable it and
+                misconfigure
+
+                the hostOS authentication.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.87.27
+          date: 2021-11-25T14:36:15.066Z
+        - commits:
+            - subject: 'tests: add test for filesystem checks'
+              hash: a58b4a8d89830d739b8a676b1f8669ead6c03e0e
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'common: initrdscript: fsck resin-data on boot'
+              hash: a035f37b4ae3003b41cd450ab24fffbe178ecdb2
+              body: |
+                Check resin-data on boot to automatically repair any errors
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.87.26
+          date: 2021-11-25T07:36:45.881Z
+        - commits:
+            - subject: 'connectivity: reduce ping interval to minimum'
+              hash: b513920cd7d683f6511aee2d190d2e9df924fe87
+              body: >
+                The interface test uses a simple ping to ensure a specific
+                interface
+
+                works. It sends ten packets, and expects ten packets back.
+                However, the
+
+                default interval is one second, which increases the time taken
+                for the
+
+                test while not adding anything of value.
+
+
+                Reduce the timeout to the minimum non-privileged interval of
+                2ms.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.87.25
+          date: 2021-11-25T02:05:13.102Z
+        - commits:
+            - subject: >-
+                tests: Fix dnsmasq tests in cases where 8.8.8.8 is assigned via
+                DHCP
+              hash: 970704092a2f73e120029464edca5b152296f486
+              body: >
+                One of the test was making sure we were NOT using the default
+                8.8.8.8
+
+                server even though that may be a valid upstream server provided
+                by DHCP/PPP.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.87.24
+          date: 2021-11-24T21:35:13.779Z
+        - commits:
+            - subject: '0-signed-update HUP hook: mount efivarfs if necessary'
+              hash: 1a6c772c9266d5fc219939e9304813356f85d34c
+              body: >
+                The hook tries to read EFI variables from efivarfs but this is
+                not always
+
+                mounted within the container. We have already validated that we
+                are running
+
+                in EFI mode therefore we can just check whether it is already
+                mounted
+
+                and eventually mount with no further checks.
+
+
+                This also adds graceful handling of nonexistent variables since
+                not all
+
+                UEFI implementations come with secure boot support.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.23
+          date: 2021-11-24T19:42:32.718Z
+        - commits:
+            - subject: >-
+                grub-efi: Accept no input and output nothing when in secure boot
+                mode
+              hash: ffe2f48ed1e770068eb98affc5b29ae39c244869
+              body: >
+                At this moment GRUB drops to rescue shell if config is invalid
+
+                or if signatures are missing/wrong. This lets the user disable
+                the signature
+
+                checks altogether.
+
+
+                With this patch GRUB outputs nothing and accepts no user input
+                if signing
+
+                is configured.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.22
+          date: 2021-11-24T16:39:29.277Z
+        - commits:
+            - subject: 'linux-firmware: Include MT7601U firmware'
+              hash: 33980c8b9ba464c91f016f9cade4140c278e7037
+              body: >
+                The MT7601U WiFi driver fails to find its firmware, so it is
+                included now.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Backport-to: next
+                backport-to: next
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.87.21
+          date: 2021-11-24T12:49:04.437Z
+        - commits:
+            - subject: 'balena-image: Add balena keys to boot partition if required'
+              hash: 14624e33c3a48baf71ac7314fc116e7cb21016c9
+              body: >
+                When using secure boot, add the balena keys to the boot
+                partition.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: >-
+                grub-conf: Enforce module signing and integrity lockdown on luks
+                config
+              hash: 1ba23869473faace427782d2aea07a0b46bfbc0c
+              body: >
+                When booting in secure mode, enforce signed modules loading and
+                integrity
+
+                lockdown.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'distro: balena-os: Add empty SIGN_API'
+              hash: b1cce6ee3d921dd8def909d959a48bd0d6805c30
+              body: |
+                By default do not produce signed images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'classes: image-balena: Copy signed files if present'
+              hash: cad39d9f0bf1630da4084cd9b6650cd612943f7d
+              body: >
+                Grub requires that the signed files carry the .sig suffix, so
+                copy then
+
+                if present.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'classes/sign-gpg: Rename class to sign_gpg'
+              hash: b1e37430c2f83c045156057198140ba951ea5c5d
+              body: |
+                Use a less generic name.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'classes: Rename sign to sign-gpg'
+              hash: 07012bebb4e0c309a5f148f1ab70cf6bf4f15053
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'classes: sign: Drop suffix from deployed files'
+              hash: d3f05f3f36c1b9d2576e497ca5573dbd2b050efd
+              body: |
+                This way device repositories do not need to be customized.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'resin-init-flasher: Set fde grub.cfg if secure boot is enabled'
+              hash: 5d25ccbec30eacc449783b0b6f9c342befa10924
+              body: |
+                When secure boot is enabled a special grub.cfg is required.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-image-initramfs: Add secure boot dependencies'
+              hash: 68d68cfb4523e4e012f174e91495949461782b9d
+              body: >
+                When buildinf an initramfs for secure boot add the needed
+                dependencies.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: >-
+                kernel-image-initramfs: Install signed kernel images if
+                available
+              hash: 0af48f7555726e969b19bfe29321babb93f265b5
+              body: |
+                Signed images are needed for secure boot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'kernel-balena: Configure for secure boot'
+              hash: 52259791b2cc2bfd121255e009808bc5677fde0d
+              body: |
+                On secure boot builds, configure the kernel accordingly.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.87.20
+          date: 2021-11-23T16:12:35.703Z
+        - commits:
+            - subject: 'common: enable multi-label mDNS resolution and IPv6'
+              hash: 7d50c2b78a2c97172c9bdc558e835c8caf7a80ab
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.87.19
+          date: 2021-11-22T22:45:22.434Z
+        - commits:
+            - subject: unwrap flasher images in os suite if needed
+              hash: e377cdf05d8d3baf456391889978a7a7bd49e9f0
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: bluetooth and hup test with qemu
+              hash: 2bf53fbce9bd2173b60253347a2e0c33d4c06e46
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.87.18
+          date: 2021-11-22T17:26:50.431Z
+        - commits:
+            - subject: 'efitools: Add recipe'
+              hash: 64daca47ee173b94ffc40ed042a19c114a4e371d
+              body: |
+                From
+
+                https://github.com/jiazhang0/meta-secure-core at:
+                3fa3fc6dcb41fb6392de84154445502d0668153c
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'sbsigntool: Add recipe'
+              hash: 32a22fa740bd06cbb399998f7d8fd12c2088de7c
+              body: |
+                Required by efitools.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.87.17
+          date: 2021-11-21T17:23:50.379Z
+        - commits:
+            - subject: 'peak: Modify kernel driver to use signing class'
+              hash: 12cbccc2a880bf3f9782b61c4afe4bd393a9414b
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.87.16
+          date: 2021-11-21T10:54:01.163Z
+        - commits:
+            - subject: >-
+                kernel-balena.class: Add support for FDE and sign for secure
+                boot
+              hash: fa67eb58b88155bf4808181ff6429fd94704cad3
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.15
+          date: 2021-11-21T08:53:19.604Z
+        - commits:
+            - subject: 'sign-efi.bbclass: do not mix old and new bitbake syntax'
+              hash: fb8d7ed997f3cdc08d3a7d3b65e1ebd4aba6d90e
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: >-
+                Revert "sign-efi.class, sign-kmod.class: Replace original files
+                with signed ones"
+              hash: fe553becac56b973e0adc9adeb71655fa7d9883d
+              body: >
+                This reverts commit 853656e6bcfed0b0206d031c32cd1cde811b8146.
+
+
+                The change overwrites build files, though that is what we need,
+                it is a hacky
+
+                approach and we will look for a clean solution.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.14
+          date: 2021-11-21T07:00:01.356Z
+        - commits:
+            - subject: 'meta-resin-sumo/pyro: Fix initramfs-framework kexec dependencies'
+              hash: 9d2d1df166a80f693cfee8a34ffd6e1f5b7ff581
+              body: >
+                On recent Yocto versions the findmnt package is split into its
+                own
+
+                package, but sumo needs to include the whole util-linux package.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: >-
+                initrdscripts: Use a 2nd stage bootloader to unlock LUKS
+                partitions
+              hash: acbc384d527436e5d7382504dcf62f799b9490d5
+              body: >
+                GRUB can not use the TPM easily to unlock the volumes and find
+                the kernel
+
+                on an encrypted partition. Instead, we choose to store a linux
+                kernel
+
+                and use it as 2nd stage bootloader to unlock the partition, load
+                the actual
+
+                kernel and kexec into it. This should eventually be replaced by
+                a proper
+
+                2nd stage bootloader that is being worked on.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: >-
+                grub-efi: add support for signature verification in secure boot
+                mode
+              hash: ac22f29ffa370f48704fcfb6c7cdb8eec200ba18
+              body: |
+                This incorporates multiple changes:
+                - Patch grub to propagate secure boot mode to the kernel
+                - Enable GPG signature verification in GRUB
+                - Sign GRUB config files
+                - Sign the grub EFI binary for secure boot
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.13
+          date: 2021-11-20T22:06:37.895Z
+        - commits:
+            - subject: 'initramfs-module-cryptsetup: add TPM dependencies'
+              hash: dfff22ad0315c9893d9def6829708b50153d691d
+              body: >
+                The TPM2 utilities were always pulled into the image during
+                development
+
+                but for the final version they are not and this should pull them
+
+                as dependencies.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.12
+          date: 2021-11-20T15:38:45.684Z
+        - commits:
+            - subject: 'balena-keys: Add recipe'
+              hash: 1436ac7e3cac2bd244fd387c80a8e52de7f68b5a
+              body: >
+                Add a recipe to deploy the signing keys to the deploy directory.
+
+                Device types that use them should copy them into the boot
+                partition.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.87.11
+          date: 2021-11-20T12:30:28.072Z
+        - commits:
+            - subject: >-
+                sign-efi.class, sign-kmod.class: Replace original files with
+                signed ones
+              hash: 853656e6bcfed0b0206d031c32cd1cde811b8146
+              body: >
+                Currently the two classes would keep the original files
+                untouched and store
+
+                the signed versions as .signed. This patch reverses the logic -
+                the signed
+
+                files replace the original ones and the unsigned version is
+                stored as .unsigned.
+
+                This is because there is no real use-case for the unsigned
+                files, we always
+
+                want to ship the signed version, even if the particular DT does
+                not require it,
+
+                this causes no harm.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: Add signing classes
+              hash: 5c128e6b234d75ba684212a322ababa7b5bd13d2
+              body: >
+                Add classes for GPG, KMOD and EFI artifact signing. Inheriting
+                these classes
+
+                won't run the signing tasks, they have to be manually added to
+                recipes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.87.10
+          date: 2021-11-20T07:33:31.830Z
+        - commits:
+            - subject: >-
+                hostapp-update-hooks: Add a hook that aborts HUP to unsigned OS
+                under secure boot
+              hash: 9db5d09428bdba067974ff5c5c62a8d35eab7a67
+              body: >
+                When a device is running in secure boot mode, it must not be
+                possible to HUP
+
+                to an unsigned version of the OS because UEFI would refuse to
+                boot it before
+
+                any of our self-recovering rollback mechanisms can be triggered.
+                This would
+
+                effectively brick the device, needing physical access to
+                recover.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.9
+          date: 2021-11-17T03:10:29.925Z
+        - commits:
+            - subject: 'resin-mounts: mount EFI partition if it is split from boot'
+              hash: 1cf47718063093369e26ac8831dc83db904de214
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.8
+          date: 2021-11-17T03:04:09.427Z
+        - commits:
+            - subject: 'initrdscripts: add a script for unlocking LUKS volumes'
+              hash: 7b095c49d49a2ed08c827a872813db270830a503
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.7
+          date: 2021-11-16T12:31:32.268Z
+        - commits:
+            - subject: 'connectivity: proxy: move nadoo/glider to container'
+              hash: 07dbe414a1dfa556427d4fc94ce7fdec688cf0e2
+              body: >
+                Previously, the core service exposed a /proxy endpoint that
+                would start
+
+                up a proxy remotely, which would be used by a test in the
+                connectivity
+
+                module. However, the endpoint returned the address for the
+                testbot to be
+
+                used as the proxy in the response, and this required manual
+
+                configuration of the interface. Additionally, it requires the
+                worker
+
+                service to install and provide glider for forward proxying.
+
+
+                Move the proxy (glider) to a container on the device being
+                tested,
+
+                which simplifies configuration, and reduces the complexity and
+                size of
+
+                the interface of Leviathan.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.87.6
+          date: 2021-11-15T13:04:05.810Z
+        - commits:
+            - subject: 'tests: os: Add exposed engine socket test'
+              hash: 612b7853a23441d0192de5580d37d0f89f7f3103
+              body: >
+                This tests the engine socket being exposed in development mode
+                but not
+
+                in production mode.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.87.5
+          date: 2021-11-11T17:56:18.921Z
+        - commits:
+            - subject: 'resindataexpander: also resize LUKS volume if necessary'
+              hash: aff55ab61db7842202d7aec2e16b3bab505daf60
+              body: |
+                The behaviour for non-LUKS system should be the same as before,
+                an extra step is performed when LUKS resize is necessary.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.4
+          date: 2021-11-11T14:56:27.092Z
+        - commits:
+            - subject: Add out-of-tree peak CAN driver
+              hash: 983c233bbc243f83c53706639867485655cafbfb
+              body: |
+                Only add the recipe, let DTs pull it as necessary
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.3
+          date: 2021-11-11T12:59:58.982Z
+        - commits:
+            - subject: Add recipes for TPM2 tools
+              hash: baddbd39fd17d364ebfd69bf139980ca82abc8ba
+              body: >
+                Taken from
+                http://git.yoctoproject.org/cgit/cgit.cgi/meta-security/tree/meta-tpm/recipes-tpm2
+
+                Only add the recipes, let DTs pull it as necessary.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.2
+          date: 2021-11-11T08:07:31.669Z
+  version: 2.88.4
+  date: 2021-12-14T16:23:42.106Z
+- commits:
     - subject: 'linux-tegra: Update dtb files for photon-nano,nx to 32.6.1'
       hash: 284c14585446b574d11dca9fb102a6aaeefb5c8c
       body: ''
