@@ -29,7 +29,7 @@ module.exports =
 		machine: 'jetson-nano-2gb-devkit'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-jetson-nano-2gb-devkit.balenaos-img'
 		compressed: true
 

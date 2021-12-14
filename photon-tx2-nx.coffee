@@ -31,7 +31,7 @@ module.exports =
 		machine: 'photon-tx2-nx'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-photon-tx2-nx.balenaos-img'
 		compressed: true
 

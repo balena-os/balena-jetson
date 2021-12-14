@@ -31,7 +31,7 @@ module.exports =
 		machine: 'jn30b-nano'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-jn30b-nano.balenaos-img'
 		compressed: true
 

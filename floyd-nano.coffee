@@ -30,7 +30,7 @@ module.exports =
 		machine: 'floyd-nano'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-floyd-nano.balenaos-img'
 		compressed: true
 

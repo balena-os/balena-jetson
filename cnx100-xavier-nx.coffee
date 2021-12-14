@@ -30,7 +30,7 @@ module.exports =
 		machine: 'cnx100-xavier-nx'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-cnx100-xavier-nx.balenaos-img'
 		compressed: true
 

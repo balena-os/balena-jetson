@@ -30,7 +30,7 @@ module.exports =
 		machine: 'jetson-xavier-nx-devkit-seeed-2mic-hat'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-jetson-xavier-nx-devkit-seeed-2mic-hat.balenaos-img'
 		compressed: true
 

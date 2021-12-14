@@ -30,7 +30,7 @@ module.exports =
 		machine: 'jetson-nano-emmc'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-jetson-nano-emmc.balenaos-img'
 		compressed: true
 
