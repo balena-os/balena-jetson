@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev1
+## (2021-12-14)
+
+* Re-word flashing instructions for community boards [Alexandru Costache]
+
 # v2.88.4
 ## (2021-12-14)
 
