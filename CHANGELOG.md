@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.87.1+rev3
+## (2021-12-14)
+
+* linux-tegra: Update dtb files for photon-nano,nx to 32.6.1 [Pelle van Gils]
+
 # v2.87.1+rev2
 ## (2021-12-14)
 

@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'linux-tegra: Update dtb files for photon-nano,nx to 32.6.1'
+      hash: 284c14585446b574d11dca9fb102a6aaeefb5c8c
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Update dtb files for photon-nano,nx to 32.6.1'
+        changelog-entry: 'linux-tegra: Update dtb files for photon-nano,nx to 32.6.1'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+  version: 2.87.1+rev3
+  date: 2021-12-14T15:28:36.082Z
+- commits:
     - subject: 'u-boot-tegra: Fix Nano SD-CARD abort in 32.6.1'
       hash: cc38474e71735e002857e02e7085aa655e731441
       body: ''
