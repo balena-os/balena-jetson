@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.87.1+rev2
+## (2021-12-14)
+
+* u-boot-tegra: Fix Nano SD-CARD abort in 32.6.1 [Alexandru Costache]
+
 # v2.87.1+rev1
 ## (2021-11-12)
 

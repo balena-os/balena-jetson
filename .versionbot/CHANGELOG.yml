@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'u-boot-tegra: Fix Nano SD-CARD abort in 32.6.1'
+      hash: cc38474e71735e002857e02e7085aa655e731441
+      body: ''
+      footer:
+        Changelog-entry: 'u-boot-tegra: Fix Nano SD-CARD abort in 32.6.1'
+        changelog-entry: 'u-boot-tegra: Fix Nano SD-CARD abort in 32.6.1'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.87.1+rev2
+  date: 2021-12-14T13:40:40.789Z
+- commits:
     - subject: Update meta-balena from v2.85.2 to v2.87.1
       hash: dbdb173d47d3e7b6305361f7369c0664d22d81c7
       body: |
