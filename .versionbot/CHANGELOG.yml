@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'linux-tegra: Update dtb file for jn30b-nano to 32.6.1'
+      hash: decda299e079558e110f870effd5e0fa60db3b14
+      body: ''
+      footer:
+        Changelog-entry: 'linux-tegra: Update dtb file for jn30b-nano to 32.6.1'
+        changelog-entry: 'linux-tegra: Update dtb file for jn30b-nano to 32.6.1'
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+  version: 2.88.4+rev2
+  date: 2021-12-15T20:47:26.203Z
+- commits:
     - subject: Re-word flashing instructions for community boards
       hash: cdf70bb25798cb48f4806431caa123b20e03c95d
       body: ''

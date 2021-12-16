@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev2
+## (2021-12-15)
+
+* linux-tegra: Update dtb file for jn30b-nano to 32.6.1 [Pelle van Gils]
+
 # v2.88.4+rev1
 ## (2021-12-14)
 
