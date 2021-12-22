@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev3
+## (2021-12-22)
+
+* linux-tegra: Update dtb's and IMX477 support photon-tx2-nx L4T R32.6.1 [Clint Haerinck]
+
 # v2.88.4+rev2
 ## (2021-12-15)
 

@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'linux-tegra: Update dtb''s and IMX477 support photon-tx2-nx L4T R32.6.1'
+      hash: 3dbf9c96e5986c2138f318d1ee9f0d5c1a2fc3c8
+      body: |
+        Added dtb's for CTI Photon TX2 NX with 2 IMX477 cams
+      footer:
+        Changelog-entry: 'linux-tegra: Update dtb''s and IMX477 support photon-tx2-nx L4T R32.6.1'
+        changelog-entry: 'linux-tegra: Update dtb''s and IMX477 support photon-tx2-nx L4T R32.6.1'
+        Signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+        signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+      author: Clint Haerinck
+      nested: []
+  version: 2.88.4+rev3
+  date: 2021-12-22T09:58:05.137Z
+- commits:
     - subject: 'linux-tegra: Update dtb file for jn30b-nano to 32.6.1'
       hash: decda299e079558e110f870effd5e0fa60db3b14
       body: ''
