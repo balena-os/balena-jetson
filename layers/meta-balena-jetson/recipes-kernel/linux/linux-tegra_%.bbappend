@@ -67,6 +67,11 @@ SRC_URI:append:photon-nano = " \
     file://tegra210-nano-cti-NGX003.dtb \
 "
 
+SRC_URI:append:quark-nano = " \
+    file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
+    file://tegra210-nano-cti-NGX004.dtb \
+"
+
 SRC_URI:append:photon-tx2-nx = " \
     file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
     file://tegra186-tx2-nx-cti-NGX003.dtb \
@@ -198,6 +203,7 @@ BALENA_CONFIGS:append:jetson-nano = " gasket"
 BALENA_CONFIGS:append:jetson-nano-emmc = " gasket"
 
 BALENA_CONFIGS:append:photon-nano = " tlc591xx"
+BALENA_CONFIGS:append:quark-nano = " tlc591xx"
 BALENA_CONFIGS:append:photon-tx2-nx = " tlc591xx"
 BALENA_CONFIGS:append:photon-xavier-nx = " tlc591xx"
 BALENA_CONFIGS:append:cnx100-xavier-nx = " tlc591xx"
@@ -206,6 +212,7 @@ BALENA_CONFIGS[tlc591xx] = " \
 "
 
 BALENA_CONFIGS:append:photon-nano = " cdc-wdm"
+BALENA_CONFIGS:append:quark-nano = " cdc-wdm"
 BALENA_CONFIGS:append:photon-tx2-nx = " cdc-wdm"
 BALENA_CONFIGS:append:photon-xavier-nx = " cdc-wdm"
 BALENA_CONFIGS:append:cnx100-xavier-nx = " cdc-wdm"
@@ -214,6 +221,7 @@ BALENA_CONFIGS[cdc-wdm] = " \
 "
 
 BALENA_CONFIGS:append:photon-nano = " sierra-net"
+BALENA_CONFIGS:append:quark-nano = " sierra-net"
 BALENA_CONFIGS:append:photon-tx2-nx = " sierra-net"
 BALENA_CONFIGS:append:photon-xavier-nx = " sierra-net"
 BALENA_CONFIGS:append:cnx100-xavier-nx = " sierra-net"
@@ -238,6 +246,7 @@ BALENA_CONFIGS_DEPS[cdc-ncm] = " \
 "
 
 BALENA_CONFIGS:append:photon-nano = " mii"
+BALENA_CONFIGS:append:quark-nano = " mii"
 BALENA_CONFIGS:append:photon-tx2-nx = " mii"
 BALENA_CONFIGS:append:photon-xavier-nx = " mii"
 BALENA_CONFIGS:append:cnx100-xavier-nx = " mii"
@@ -276,6 +285,8 @@ BALENA_CONFIGS[backlight] = " \
     CONFIG_BACKLIGHT_LP855X=m \
     CONFIG_BACKLIGHT_CLASS_DEVICE=m \
 "
+
+BALENA_CONFIGS:append:quark-nano = " mbim qmi usb-serial"
 
 L4TVER=" l4tver=${L4T_VERSION}"
 KERNEL_ROOTSPEC:jetson-nano = "\${resin_kernel_root} ro rootwait"
@@ -353,6 +364,10 @@ do_deploy:append:jn30b-nano() {
 
 do_deploy:append:photon-nano() {
     cp ${WORKDIR}/tegra210-nano-cti-NGX003.dtb "${DEPLOYDIR}"
+}
+
+do_deploy:append:quark-nano() {
+    cp ${WORKDIR}/tegra210-nano-cti-NGX004.dtb "${DEPLOYDIR}"
 }
 
 do_deploy:append:photon-tx2-nx() {

@@ -16,6 +16,7 @@ SRC_URI = " \
 	file://tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb \
 	file://tegra210-nano-cti-NGX003.dtb \
 	file://tegra210-nano-cti-NGX003-IMX477-2CAM.dtb \
+	file://tegra210-nano-cti-NGX004.dtb \
 	file://tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb \
 	file://tegra186-tx2-nx-cti-NGX003.dtb \
 	file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
@@ -46,6 +47,7 @@ do_install:jetson-nano() {
 	install -m 0644 ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb
 	install -m 0644 ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb
 	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX003.dtb ${D}/boot/tegra210-nano-cti-NGX003.dtb
+	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX004.dtb ${D}/boot/tegra210-nano-cti-NGX004.dtb
 	install -m 0644 ${WORKDIR}/tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb ${D}/boot/tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb
 }
 
@@ -58,6 +60,7 @@ do_install:jetson-nano-emmc() {
 	install -m 0644 ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb ${D}/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb
 	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX003.dtb ${D}/boot/tegra210-nano-cti-NGX003.dtb
 	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX003-IMX477-2CAM.dtb ${D}/boot/tegra210-nano-cti-NGX003-IMX477-2CAM.dtb
+	install -m 0644 ${WORKDIR}/tegra210-nano-cti-NGX004.dtb ${D}/boot/tegra210-nano-cti-NGX004.dtb
 }
 
 do_install:jetson-nano-2gb-devkit() {
@@ -92,6 +95,7 @@ FILES:${PN}:jetson-nano += " \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb \
 	/boot/tegra210-nano-cti-NGX003.dtb \
+	/boot/tegra210-nano-cti-NGX004.dtb \
 	/boot/tegra210-p3448-0000-p3449-0000-b00-basler-camera.dtb \
 "
 
@@ -102,6 +106,7 @@ FILES:${PN}:jetson-nano-emmc += " \
 	/boot/tegra210-p3448-0002-p3449-0000-b00-jn30b-cam1-flip.dtb \
 	/boot/tegra210-nano-cti-NGX003.dtb \
 	/boot/tegra210-nano-cti-NGX003-IMX477-2CAM.dtb \
+	/boot/tegra210-nano-cti-NGX004.dtb \
 "
 
 FILES:${PN}:jetson-nano-2gb-devkit += " \
