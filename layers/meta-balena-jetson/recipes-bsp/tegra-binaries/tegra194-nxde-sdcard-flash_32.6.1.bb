@@ -140,6 +140,7 @@ signfile() {
         --scr_cold_boot_config tegra194-mb1-bct-scr-cbb-mini-p3668.cfg \
         --br_cmd_config tegra194-mb1-bct-reset-p3668-0001-a00.cfg \
         --dev_params tegra194-br-bct-qspi.cfg \
+        --trim_bpmp_dtb \
         --bin "${bins}"
 }
 
@@ -176,7 +177,7 @@ do_configure() {
     done
 
     for f in ${STAGING_DATADIR}/tegraflash/tegra194-*-bpmp-*.dtb; do
-        ln -s $f .
+        cp $f .
         cp $f ${DEPLOY_DIR_IMAGE}/bootfiles/
     done
 
@@ -221,7 +222,6 @@ do_configure() {
     # Make bootable image from kernel and sign it
     cp ${DEPLOY_DIR_IMAGE}/${LNXFILE} ${LNXFILE}
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra186-flash/mkbootimg ./
-
     # mkbootimg really needs initrd, even if empty
     touch initrd
     ./mkbootimg --kernel ${LNXFILE} --ramdisk initrd --board mmcblk0p1 --output boot.img
@@ -335,7 +335,7 @@ do_configure() {
     #dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cbo.dtb seek=33161216 bs=1 conv=notrunc
     #dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cbo.dtb seek=33226752 bs=1 conv=notrunc
 
-    # For 32.5.1 /opt/tegra-binaries/boot0.img MD5 should have the same MD5
+    # For 32.6.1 /opt/tegra-binaries/boot0.img MD5 should have the same MD5
     # even if building images for compatible carrier boards. If it isn't identical,
     # then board won't boot after HUP.
     cp ${WORKDIR}/${BOOT_BINDIFF} .
@@ -367,6 +367,11 @@ do_configure() {
     dd if=${BOOT_BINDIFF} of=boot0.img seek=15101952 skip=18224 bs=1 count=128 conv=notrunc
     dd if=${BOOT_BINDIFF} of=boot0.img seek=15405568 skip=18352 bs=1 count=48 conv=notrunc
     dd if=${BOOT_BINDIFF} of=boot0.img seek=15560704 skip=18400 bs=1 count=128 conv=notrunc
+
+    # Needed on 32.6.1
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=31067056 skip=18528 bs=1 count=16 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=31067104 skip=18544 bs=1 count=32 conv=notrunc
+    dd if=${BOOT_BINDIFF} of=boot0.img seek=31068160 skip=18576 bs=1 count=64 conv=notrunc
 }
 
 do_install() {
