@@ -83,6 +83,10 @@ SRC_URI:append:cnx100-xavier-nx = " \
     file://tegra194-xavier-nx-cnx100.dtb \
 "
 
+SRC_URI:append:boxer-nano = " \
+    file://0001-nvidia-t210-enable-sdmmc3.patch \
+"
+
 TEGRA_INITRAMFS_INITRD = "0"
 
 BALENA_CONFIGS:remove:astro-tx2 = " mdraid"

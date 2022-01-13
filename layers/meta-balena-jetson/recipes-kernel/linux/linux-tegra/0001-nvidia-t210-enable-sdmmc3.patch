@@ -1,0 +1,28 @@
+From d61db0277c2667954a9a525535b94d5118aea47d Mon Sep 17 00:00:00 2001
+From: Pelle van Gils <pelle@hwky.ai>
+Date: Thu, 13 Jan 2022 20:32:54 +0000
+Subject: [PATCH] nvidia/t210: enable sdmmc3
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+---
+ .../t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi       | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi b/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi
+index bf4875be6fd9..3f2259933323 100644
+--- a/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi
++++ b/nvidia/platform/t210/porg/kernel-dts/tegra210-porg-p3448-common.dtsi
+@@ -279,7 +279,8 @@
+ 	};
+ 
+ 	sdhci@700b0400 {
+-		status = "disabled";
++		status = "okay";
++		nvidia,vmmc-always-on;
+ 		/delete-property/ keep-power-in-suspend;
+ 		/delete-property/ non-removable;
+ 		mmc-ddr-1_8v;
+-- 
+2.25.1
+
