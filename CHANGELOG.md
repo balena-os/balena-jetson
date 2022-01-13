@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.88.4+rev5
+## (2022-01-13)
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.16.1 [Alex Gonzalez] </summary>
+
+> ## balena-yocto-scripts-1.16.1
+> ### (2022-01-11)
+> 
+> * revert_overrides: Add intel-quark to architecture overrides [Alex Gonzalez]
+> 
+</details>
+
 # v2.88.4+rev4
 ## (2022-01-03)
 
