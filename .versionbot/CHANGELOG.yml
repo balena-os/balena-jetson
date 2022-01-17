@@ -1,4 +1,78 @@
 - commits:
+    - subject: Add support for AAEON BOXER 8221
+      hash: 414ae5088f41e06f0c82272c1465358a8b72382f
+      body: ''
+      footer:
+        Changelog-entry: Add support for AAEON BOXER 8221
+        changelog-entry: Add support for AAEON BOXER 8221
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+      author: Pelle van Gils
+      nested: []
+    - subject: Update balena-yocto-scripts to v1.16.2
+      hash: 1954cefed81527c27aa5e480c19c123c1164485a
+      body: |
+        Update balena-yocto-scripts from v1.16.1 to v1.16.2
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update balena-yocto-scripts to v1.16.2
+        changelog-entry: Update balena-yocto-scripts to v1.16.2
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: >-
+                balena-api: Propagate balena API environment, token and OS
+                organization
+              hash: 64c2854c85aafebf80e6a13b725ff610ae25a467
+              body: >
+                This is required to allow building against cloud instances with
+
+                different names for the balenaOS organization and private device
+                types.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-build.sh: Propagate balena API environment and token'
+              hash: 35d39c4a400df0552bfb3d875c8a9d1289ad8d4e
+              body: |
+                This is required to use the API for private slugs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'prepare-and-start: Propagate balena API environment and token'
+              hash: bb7b903e00fc153afea182a330da08a49b72cced
+              body: >
+                The balena-build.sh script accepts a token in the command line.
+                This
+
+                commit modifies the prepare-and-start.sh script to use it if
+
+                available, and also modifies it to take into account the balena
+
+                environment too.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.16.2
+          date: 2022-01-15T16:04:34.389Z
+  version: 2.88.4+rev6
+  date: 2022-01-17T09:36:19.785Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.16.1
       hash: 8c2d9771c91366b239f03422d8ec57d87f4b7d15
       body: |
