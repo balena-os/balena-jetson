@@ -120,6 +120,7 @@ IMAGE_INSTALL:append:jetson-xavier = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
+    tegra-boot-tools \
 "
 
 IMAGE_INSTALL:append:jetson-xavier-nx-devkit-emmc = " \
@@ -130,6 +131,7 @@ IMAGE_INSTALL:append:jetson-xavier-nx-devkit-emmc = " \
     tegra-configs-nvstartup \
     tegra-configs-udev \
     mtd-utils \
+    tegra-boot-tools \
 "
 
 IMAGE_INSTALL:append:jetson-xavier-nx-devkit = " \
@@ -145,6 +147,7 @@ IMAGE_INSTALL:append:jetson-xavier-nx-devkit = " \
     tegra-wifi \
     tegra-firmware-rtl8822 \
     tegra-udrm-probeconf \
+    tegra-boot-tools \
 "
 
 IMAGE_INSTALL:append:jetson-tx2 = " \

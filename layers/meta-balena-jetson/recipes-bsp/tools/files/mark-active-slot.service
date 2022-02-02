@@ -1,0 +1,9 @@
+[Unit]
+Description=Mark boot slot as successful once the system is up
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c /usr/bin/mark_active_tegra_boot_slot.sh
+
+[Install]
+WantedBy=multi-user.target
