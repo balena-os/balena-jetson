@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev8
+## (2022-01-31)
+
+* tegra-binaries/tegra194-nxde-sdcard-flash: Adapt boot blob generation for NX SD 32.6.1 [Alexandru Costache]
+
 # v2.88.4+rev7
 ## (2022-01-21)
 
