@@ -1,4 +1,18 @@
 - commits:
+    - subject: "tegra-boot-tools: Fix typo in comment"
+      hash: eeeabf080ee5540ec6309667f37cbd052d244e3f
+      body: ""
+      footer:
+        Changelog-entry: "tegra-boot-tools: Fix typo in comment"
+        changelog-entry: "tegra-boot-tools: Fix typo in comment"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.4+rev9
+  title: Enable PMIC WDT on Xavier NX SD
+  date: 2022-02-02T16:22:18.024Z
+- commits:
     - subject: "tegra-binaries/tegra194-nxde-sdcard-flash: Adapt boot blob generation
         for NX SD 32.6.1"
       hash: 4d9145d10014d5cb43c5e03c3079b06de62751c1

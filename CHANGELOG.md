@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev9
+## (2022-02-02)
+
+* tegra-boot-tools: Fix typo in comment [Alexandru Costache]
+
 # v2.88.4+rev8
 ## (2022-01-31)
 
