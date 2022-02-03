@@ -22,7 +22,7 @@ SYSTEMD_SERVICE:${PN} += " mark-active-slot.service"
 
 # Upon rollback to a release that does not have
 # this feature implemented, the _a slots will
-# be used by default, without chaning behavior.
+# be used by default, without changing behavior.
 do_install:append() {
     install -m 0755 ${WORKDIR}/mark_active_tegra_boot_slot.sh ${D}${bindir}/
     install -m 0644 ${WORKDIR}/mark-active-slot.service ${D}${systemd_unitdir}/system/

@@ -122,7 +122,7 @@ signfile() {
 
      python3 $tegraflashpy --bl nvtboot_recovery_cpu_t194.bin \
         --sdram_config tegra194-mb1-bct-memcfg-p3668-0001-a00.cfg,tegra194-memcfg-sw-override.cfg  \
-        --odmdata 0xB8190000 \
+        --odmdata ${ODMDATA} \
         --applet mb1_t194_prod.bin \
         --cmd "sign$1" \
         --soft_fuses tegra194-mb1-soft-fuses-l4t.cfg  \
