@@ -1,8 +1,9 @@
 deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
-BOARD_POWEROFF = 'Remove power from the Jetson Xavier NX Devkit SD-CARD and insert the freshly burnt sd-card.'
-BOARD_POWERON  = 'Power on the board.'
+BOARD_PREPARE  = 'Put the NVidia Jetson Xavier NX Devkit SD-CARD board in recovery mode'
+FLASH_TOOL = 'Unzip BalenaOS image and use <a href=\"https://github.com/balena-os/jetson-flash\">Jetson Flash</a> to provision the device.'
+DONE_FLASHING  = 'After flashing is completed, please wait until the board is rebooted'
 
 module.exports =
 	version: 1
@@ -13,9 +14,9 @@ module.exports =
 	state: 'released'
 
 	instructions: [
-		instructions.ETCHER_SD
-		BOARD_POWEROFF
-		BOARD_POWERON
+		BOARD_PREPARE
+		FLASH_TOOL
+		DONE_FLASHING
 	]
 
 	gettingStartedLink:
