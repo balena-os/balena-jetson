@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev10
+## (2022-02-04)
+
+* coffee-files: Reword coffee file instructions [Alexandru Costache]
+
 # v2.88.4+rev9
 ## (2022-02-02)
 

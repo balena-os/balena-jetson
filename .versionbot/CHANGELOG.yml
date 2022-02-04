@@ -1,4 +1,18 @@
 - commits:
+    - subject: "coffee-files: Reword coffee file instructions"
+      hash: 2e9d5bda732339864588a0682bd8f9c83608c4d1
+      body: ""
+      footer:
+        Changelog-entry: "coffee-files: Reword coffee file instructions"
+        changelog-entry: "coffee-files: Reword coffee file instructions"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.4+rev10
+  title: "'coffee-files: Reword coffee file instructions'"
+  date: 2022-02-04T11:25:23.226Z
+- commits:
     - subject: "tegra-boot-tools: Fix typo in comment"
       hash: eeeabf080ee5540ec6309667f37cbd052d244e3f
       body: ""
