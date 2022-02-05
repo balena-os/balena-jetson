@@ -1,4 +1,22 @@
 - commits:
+    - subject: Revert to using tegra wdt on the NX SD
+      hash: be1dc4b3385b66987ee3f1b6babb79a7f71336ee
+      body: |
+        This reverts commit ec8834081ba04b004f40cc770444024ff573d3da
+        because the PMIC is disabled in cboot and this approach did
+        not help in the cases where cboot had trouble loading
+        the kernel or dtb from the raw partitions.
+      footer:
+        Changelog-entry: Revert to using tegra wdt on the NX SD
+        changelog-entry: Revert to using tegra wdt on the NX SD
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.4+rev11
+  title: "'cboot: reset instead of halting on panic - 32.6.1 NX SD'"
+  date: 2022-02-05T20:30:40.756Z
+- commits:
     - subject: "coffee-files: Reword coffee file instructions"
       hash: 2e9d5bda732339864588a0682bd8f9c83608c4d1
       body: ""

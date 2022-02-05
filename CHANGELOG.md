@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev11
+## (2022-02-05)
+
+* Revert to using tegra wdt on the NX SD [Alexandru Costache]
+
 # v2.88.4+rev10
 ## (2022-02-04)
 
