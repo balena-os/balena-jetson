@@ -32,14 +32,6 @@ SRC_URI:append:jetson-xavier-nx-devkit-seeed-2mic-hat = " \
     file://tegra194-p3668-all-p3509-0000-seeed-2mic-hat.dtb \
 "
 
-# On the NX Devkit SD-CARD only the PMIC WDT
-# is enabled, the other watchdog modules
-# need to be disabled so that they don't
-# interfere.
-SRC_URI:append:jetson-xavier-nx-devkit = " \
-    file://0001-tegra-defconfig-Use-PMIC-WDT.patch \
-"
-
 SRC_URI:append:cti-rogue-xavier = " \
     file://tegra194-agx-cti-AGX101.dtb \
 "
