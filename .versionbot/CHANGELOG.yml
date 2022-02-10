@@ -1,4 +1,31 @@
 - commits:
+    - subject: Avoid MB1 bootloader debug mode
+      hash: 8ddf7969dccda8746e880285be5b2d807b5808d0
+      body: |
+        In the current form, rollback-altboot from
+        32.6.1 to 32.6.1 works on the AGX, however,
+        if performed from 32.5.1 to the newer one,
+        MB1 puts the device in debug mode instead
+        of loading bootloaders from the old slot.
+
+        The solution to this problem is to write
+        both slots with 32.6.1 and just leave the
+        kernel and kernel-dtb partitions on 32.5.1.
+
+        This makes MB1 successfully load the inactive
+        slots. For details see github link in this
+        commit.
+      footer:
+        Changelog-entry: Avoid MB1 bootloader debug mode
+        changelog-entry: Avoid MB1 bootloader debug mode
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.4+rev12
+  title: "'hostapp-update-hooks: Avoid MB1 debug mode'"
+  date: 2022-02-10T16:30:41.939Z
+- commits:
     - subject: Revert to using tegra wdt on the NX SD
       hash: be1dc4b3385b66987ee3f1b6babb79a7f71336ee
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev12
+## (2022-02-10)
+
+* Avoid MB1 bootloader debug mode [Alexandru Costache]
+
 # v2.88.4+rev11
 ## (2022-02-05)
 
