@@ -9,7 +9,6 @@ set -o errexit
 . /usr/libexec/os-helpers-fs
 
 DURING_UPDATE=${DURING_UPDATE:-0}
-declare -a UPDATED_PARTITIONS=()
 bootloader_device="/dev/mmcblk0boot0"
 partspec="/resin-boot/bootfiles/partition_specification194.txt"
 bootloader_blob="/resin-boot/bootfiles/boot0.img"
@@ -77,9 +76,6 @@ rootl=""
 update_needed() {
     current_update_file=${1}
     device=${2}
-    if [[ " ${UPDATED_PARTITIONS[*]} " =~ " ${device} " ]]; then
-        echo 0
-    else
         update_size=$(ls -al $current_update_file | awk '{print $5}')
         update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
         existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
@@ -89,7 +85,6 @@ update_needed() {
         else
             echo 0
         fi
-    fi
 }
 
 case "$rootstr" in
@@ -112,7 +107,7 @@ kernel="boot_sigheader.img.encrypt"
 partitions=$(cat "${partspec}")
 
 for n in ${partitions}; do
-    part_name=$(echo $n | cut -d ':' -f 1 | cut -d '_' -f 1)
+    part_name=$(echo $n | cut -d ':' -f 1)
     file_name=$(echo $n | cut -d ':' -f 2)
 
     if [ -z "${part_name##*kernel*}" ] || [ -z "${part_name##*bootloader-dtb*}" ] || [ $file_name = "none.bin" ]; then
@@ -125,25 +120,35 @@ for n in ${partitions}; do
         continue
     fi
 
-    dst="${file_path}${target_label_suffix}"
+    # On the Xavier AGX, MB1 on 32.6.1 wants both slots _a and _b to have
+    # 32.6.1 binaries, otherwise it enters debug mode as soon as the retry
+    # count goes down to 0. We have tried updating only _b slots inside boot0 blob,
+    # marking old slot as successfull too before switching to the new one, but without
+    # success. The only solution is to update everything to 32.6.1 and just leave
+    # the old kernel and kernel dtb in place, for the fallback to take place.
+    # See: https://github.com/OE4T/meta-tegra/issues/879#issuecomment-1034908517
+    dst="${file_path}"
     src="/resin-boot/bootfiles/$file_name"
     if [ -e ${dst} ]; then
         if [ $(update_needed $src $dst) -eq 1 ]; then
             info_log "Will update ${dst} ..."
-            UPDATED_PARTITIONS+=(${dst})
             dd if=${src} of="${dst}"
             info_log "Updated ${dst}"
         else
             info_log "No need to update ${dst}"
         fi
     else
-        info_log "Duplicate slot for target partition ${dst} not available, ignoring."
+        info_log "Partition ${dst} not found"
     fi
 done
 
 # DTB contains root partition label, update is mandatory on the new boot slot, before switching it to active
-info_log "Writing ${dtbfile} to specific partitions - suffix is ${target_label_suffix}."
-dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb${target_label_suffix}")
+info_log "Writing ${dtbfile} to specific to bootloader-dtb partition."
+dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb")
+
+info_log "Writing ${dtbfile} to specific to bootloader-dtb_b partition."
+dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb_b")
+
 dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb${target_label_suffix}")
 
 info_log "Writing kernel ${kernel} to specific partitions..."
