@@ -9,6 +9,41 @@ UPGRADE_PARTITIONS=0
 BIN_INSTALL_PATH="/opt/tegra-binaries"
 OFFS=(1659 5243 18043)
 BOOT_BLOB="${BIN_INSTALL_PATH}/boot0.img"
+DURING_UPDATE=${DURING_UPDATE:-0}
+
+info_log()
+{
+    echo "[INFO] $@"
+}
+
+# Old 28.x based images are not able to re-write the
+# 28.x L4T partition layout with the offsets expected
+# by the tegra firmware at that revision. We therefore
+# patch the old hook so that it's able to boot after
+# a failed rollback-health.
+backport_rollback_health_fix()
+{
+    inactive_hook=$(find /mnt/sysroot/active/ -name "50-tx2-update")
+    # On 32.x releases this file was renamed, there's no need to update it
+    if [ -e ${inactive_hook} ]; then
+        if grep -q "DURING_UPDATE" "${inactive_hook}"; then
+            info_log "No need to backport rollback-health fix to old hook"
+        else
+            # Extra check, new 32.X systems use a different name for the partition spec file
+            old_part_spec=$(find /mnt/sysroot/active/ -name "partition_specification.txt")
+            if [ -e ${old_part_spec} ]; then
+                info_log "Will backport rollback-health fix to old hostapp-update hook"
+                cp "${BIN_INSTALL_PATH}/tx2_28_x_hook_fix.sh" ${inactive_hook}
+                info_log "Applied rollback-health fix to old hostapp-update hook"
+            else
+                info_log "Old partition specification file not found in current sysroot: ${old_part_spec}, hook will not be replaced!"
+            fi
+        fi
+    else
+        info_log "Upgrading from an L4T 32.X system, rollback-health fix is not needed"
+    fi
+}
+
 
 update_needed() {
     current_update_file=${1}
@@ -23,11 +58,6 @@ update_needed() {
     else
 	echo 0
     fi
-}
-
-info_log()
-{
-    echo "[INFO] $@"
 }
 
 get_odm_value() {
@@ -48,6 +78,19 @@ set_odm_value() {
         info_log "Writing ODM byte ${1} to ${2} at offset ${offset}"
         echo -n -e "\\x${1}" | dd of=${2} seek=${offset} bs=1 count=1 conv=notrunc
     done
+}
+
+fix_gpt_header()
+{
+    sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${DEV_PATH}
+    x
+    l
+    28
+    r
+    w
+EOF
+
+    partprobe /dev/mmcblk0 || true
 }
 
 update_partition_binaries()
@@ -77,17 +120,27 @@ else
 fi
 
 if [ ${UPGRADE_PARTITIONS} -eq 1 ]; then
+    backport_rollback_health_fix
     info_log "Removing old L4T 28.X partitions"
-    idx=1
-    while [ $idx -le 11 ]; do
-        parted -s ${DEV_PATH} rm ${idx}
-        idx=$(expr ${idx} \+ 1)
-    done
+
+    num_parts=$(sfdisk -l /dev/mmcblk0 | grep mmcblk0p | wc -l)
+    for (( idx=1; idx <= ${num_parts}; ++idx ))
+        do
+            if sfdisk --part-label /dev/mmcblk0 ${idx} | grep -q "resin"; then
+               echo "Ignore resin part ${idx}"
+            else
+               sfdisk --delete /dev/mmcblk0 ${idx} || true
+            fi
+        done
 
     info_log "Proceeding to create new L4T partitions"
 
-    partitions=$(cat "${BIN_INSTALL_PATH}/partition_specification186.txt")
+    # If the partition table was rolled-back to 28.X due to rollback-health,
+    # we first need to set the new (32.X) number of partitions in the MBR
+    # so that parted can add more partitions (were 16 originally)
+    fix_gpt_header
 
+    partitions=$(cat "${BIN_INSTALL_PATH}/partition_specification186.txt")
     start=${NVIDIA_PART_OFFSET}
     for n in ${partitions}; do
         part_name=$(echo $n | cut -d ':' -f 1)
@@ -100,17 +153,6 @@ if [ ${UPGRADE_PARTITIONS} -eq 1 ]; then
     done
 
     info_log "Created L4T 32.X partitions"
-
-    # Another issue with parted is incorrect number of partition entries
-    # in gpt header at position 0x250. Fix gpt header so it can be interpreted
-    # by the first bootloaders.
-    sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${DEV_PATH}
-    x
-    l
-    28
-    r
-    w
-EOF
 
 elif [ ${UPGRADE_PARTITIONS} -eq 0 ]; then
     update_partition_binaries "${BIN_INSTALL_PATH}/partition_specification186.txt"
