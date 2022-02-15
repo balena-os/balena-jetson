@@ -22,6 +22,7 @@ BOOT_BINDIFF:jetson-tx2-nx-devkit="boot0_t186_nx_devkit.bindiff"
 SRC_URI = " \
     file://resinOS-flash186.xml \
     file://partition_specification186.txt \
+    file://tx2_28_x_hook_fix.sh \
     file://${BOOT_BINDIFF} \
 "
 
@@ -248,6 +249,13 @@ do_install() {
     cp -r ${S}/tegraflash/signed/* ${D}/${BINARY_INSTALL_PATH}
     cp ${WORKDIR}/partition_specification186.txt ${D}/${BINARY_INSTALL_PATH}/
     cp ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img ${D}/${BINARY_INSTALL_PATH}/
+    # This file contains an updated hook for older L4T 28.X based images,
+    # which allows an older image to re-create the 28.X partition layout
+    # in case the rollback-health checks fail. The hostapp-update hook
+    # from the new L4T 32.X rootfs replaces the old 28.X hook with this
+    # improved one, if it has not been updated already. This is part of the
+    # ongoing improvement for L4T transitioning.
+    install -m 0755 ${WORKDIR}/tx2_28_x_hook_fix.sh ${D}/${BINARY_INSTALL_PATH}/
     rm -rf ${DEPLOY_DIR_IMAGE}/tegra-binaries
 }
 
