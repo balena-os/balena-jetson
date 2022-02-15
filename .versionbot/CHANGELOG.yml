@@ -1,4 +1,43 @@
 - commits:
+    - subject: "hostapp-update-hooks: improve rollback-health on older tx2 images"
+      hash: 6fbea8db185ed2791aea87df8e04e84c27341598
+      body: >
+        In this commit we improve the old update hook that exists in L4T 28.X
+
+        based systems to allow reverting to the old 28.x partition layout.
+
+
+        Images that were releases on L4T 28.1, 28.2 etc did not support re-creating
+
+        the partition layout in case of a rollback, because the new 32.X layout
+
+        was not known at that point, and we were not aware that there could
+
+        be situations in which connectivity problems could cause the system
+
+        to roll back to an inconsistent state.
+
+
+        We therefore fix this, so in case the new L4T 32.6 based OS encounters
+
+        connectivity or engine related issues and rolls back, the updated hook
+
+        in the old OS re-writes the partition layout in the corresponding 28.x format,
+
+        with the offsets expected by the old tegra-bootloaders, thus allowing the
+
+        system to fully revert to the old OS.
+      footer:
+        Changelog-entry: "hostapp-update-hooks: improve rollback-health on older tx2 images"
+        changelog-entry: "hostapp-update-hooks: improve rollback-health on older tx2 images"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.4+rev13
+  title: "'hostapp-update-hooks: improve health rollbacks to older images'"
+  date: 2022-02-15T10:52:18.027Z
+- commits:
     - subject: Avoid MB1 bootloader debug mode
       hash: 8ddf7969dccda8746e880285be5b2d807b5808d0
       body: |

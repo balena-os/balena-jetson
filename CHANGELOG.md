@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev13
+## (2022-02-15)
+
+* hostapp-update-hooks: improve rollback-health on older tx2 images [Alexandru Costache]
+
 # v2.88.4+rev12
 ## (2022-02-10)
 
