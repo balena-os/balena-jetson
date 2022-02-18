@@ -23,16 +23,12 @@ inherit deploy python3native perlnative l4t_bsp
 SRC_URI = " \
     file://resinOS-flash194.xml \
     file://partition_specification194.txt \
-    file://cti-rogue-32-4-3-pinmux.cfg \
     file://${BOOT_BINDIFF} \
 "
 
 PINMUXCFG = "tegra19x-mb1-pinmux-p2888-0000-a04-p2822-0000-b01.cfg"
-PINMUXCFG_cti-rogue-xavier = "cti-rogue-32-4-3-pinmux.cfg"
 LNXSIZE ?= "67108864"
 DTBNAME = "tegra194-p2888-0001-p2822-0000"
-DTBNAME_cti-rogue-xavier = "tegra194-agx-cti-AGX101"
-DTBNAME_nru120s-xavier = "NRU120-32-4-3"
 KERNEL_DEVICETREE = "${DEPLOY_DIR_IMAGE}/${DTBNAME}.dtb"
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
 
@@ -195,7 +191,6 @@ do_configure() {
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra186-flash/${SOC_FAMILY}-flash-helper.sh ./
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra186-flash/tegraflash.py ./
 
-    cp ${WORKDIR}/cti-rogue-32-4-3-pinmux.cfg .
     # bup is based on the rootfs, which is not built at this point
     # not using it for the moment
     # sed -e 's,^function ,,' ${STAGING_BINDIR_NATIVE}/tegra186-flash/l4t_bup_gen.func > ./l4t_bup_gen.func

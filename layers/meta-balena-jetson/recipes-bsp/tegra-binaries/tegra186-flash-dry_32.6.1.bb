@@ -16,7 +16,6 @@ DEPENDS = " \
 inherit deploy perlnative python3native
 
 BOOT_BINDIFF="boot0_t186.bindiff"
-BOOT_BINDIFF:jetson-tx2-4gb="boot0_t186_4gb.bindiff"
 BOOT_BINDIFF:jetson-tx2-nx-devkit="boot0_t186_nx_devkit.bindiff"
 
 SRC_URI = " \
@@ -36,11 +35,6 @@ PROD_CFG="tegra186-mb1-bct-prod-quill-p3310-1000-c03.cfg"
 BR_CMD_CONFIG="tegra186-mb1-bct-bootrom-quill-p3310-1000-c03.cfg"
 
 # Jetson TX2 4GB overrides
-PINMUX_CFG:jetson-tx2-4gb="tegra186-mb1-bct-pinmux-quill-p3489-1000-a00.cfg"
-PMIC_CFG:jetson-tx2-4gb="tegra186-mb1-bct-pmic-lightning-p3489-1000-a00.cfg"
-PMC_CFG:jetson-tx2-4gb="tegra186-mb1-bct-pad-quill-p3489-1000-a00.cfg"
-PROD_CFG:jetson-tx2-4gb="tegra186-mb1-bct-prod-storm-p3489-1000-a00.cfg"
-BR_CMD_CONFIG:jetson-tx2-4gb="tegra186-mb1-bct-bootrom-quill-p3489-1000-a00.cfg"
 SDRAM_CFG="${MACHINE}.cfg"
 
 # Jetson TX2 NX in Xavier NX Devkit overrides
@@ -101,12 +95,7 @@ BOARDREV="c03"
 BPFDTBREV="c04"
 PMICREV="c04"
 
-BOARDREV:jetson-tx2-4gb="a00"
-BPFDTBREV:jetson-tx2-4gb="a00"
-PMICREV:jetson-tx2-4gb="a00"
-
 BPMP_DTB="tegra186-a02-bpmp-quill-p3310-1000-c04-00-te770d-ucm2.dtb"
-BPMP_DTB:jetson-tx2-4gb="tegra186-a02-bpmp-lightning-p3489-a00-00-te770m.dtb"
 BPMP_DTB:jetson-tx2-nx-devkit="tegra186-bpmp-p3636-0001-a00-00.dtb"
 
 do_configure() {
