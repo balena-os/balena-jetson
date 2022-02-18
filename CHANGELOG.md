@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev14
+## (2022-02-18)
+
+* Cleanup community supported devices that are currently not maintained [Alexandru Costache]
+
 # v2.88.4+rev13
 ## (2022-02-15)
 

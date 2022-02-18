@@ -1,4 +1,28 @@
 - commits:
+    - subject: Cleanup community supported devices that are currently not maintained
+      hash: dab4625365b63b74b6010fec35770254884a4ed3
+      body: |
+        We temporarily remove the following community device types
+        that have not been released in the dashboard because updates
+        have not been submitted by community maintainers in order
+        to keep up with newer L4T releases.
+
+        We cannot release images for these devices types without updated
+        L4T device-trees or configuration files that are specific to them.
+
+        These can be added back an released to the dashboard when updates
+        for L4T 32.6.1 or newer are submitted.
+      footer:
+        Changelog-entry: Cleanup community supported devices that are currently not maintained
+        changelog-entry: Cleanup community supported devices that are currently not maintained
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.4+rev14
+  title: "'Cleanup carrier boards'"
+  date: 2022-02-18T10:15:29.924Z
+- commits:
     - subject: "hostapp-update-hooks: improve rollback-health on older tx2 images"
       hash: 6fbea8db185ed2791aea87df8e04e84c27341598
       body: >
