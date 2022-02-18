@@ -1,4 +1,19 @@
 - commits:
+    - subject: "linux-tegra: Update device-trees to 32.6.1 for CTI Boards"
+      hash: 44e44a6fc809b4afcf42aade845f5742b2cc38be
+      body: |
+        Including the CTI Astro G+ which is a community DT.
+      footer:
+        Changelog-entry: "linux-tegra: Update device-trees to 32.6.1 for CTI Boards"
+        changelog-entry: "linux-tegra: Update device-trees to 32.6.1 for CTI Boards"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.4+rev15
+  title: "'linux-tegra: Update device-trees to 32.6.1 for CTI Boards'"
+  date: 2022-02-18T16:00:35.968Z
+- commits:
     - subject: Cleanup community supported devices that are currently not maintained
       hash: dab4625365b63b74b6010fec35770254884a4ed3
       body: |

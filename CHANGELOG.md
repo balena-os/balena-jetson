@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev15
+## (2022-02-18)
+
+* linux-tegra: Update device-trees to 32.6.1 for CTI Boards [Alexandru Costache]
+
 # v2.88.4+rev14
 ## (2022-02-18)
 
