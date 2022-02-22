@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev16
+## (2022-02-19)
+
+* linux-tegra: Rebase qmi_wwan backport patch for Spacely [Alexandru Costache]
+
 # v2.88.4+rev15
 ## (2022-02-18)
 

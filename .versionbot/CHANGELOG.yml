@@ -1,4 +1,20 @@
 - commits:
+    - subject: "linux-tegra: Rebase qmi_wwan backport patch for Spacely"
+      hash: cda9d5463bf10ca34a5c8c32723ec8b7e2e8e82d
+      body: |
+        Previous patch that has been rebased for 32.5.1 did not
+        apply on 32.6.1.
+      footer:
+        Changelog-entry: "linux-tegra: Rebase qmi_wwan backport patch for Spacely"
+        changelog-entry: "linux-tegra: Rebase qmi_wwan backport patch for Spacely"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.4+rev16
+  title: "'linux-tegra: Rebase qmi_wwan backport patch for Spacely'"
+  date: 2022-02-19T19:56:07.385Z
+- commits:
     - subject: "linux-tegra: Update device-trees to 32.6.1 for CTI Boards"
       hash: 44e44a6fc809b4afcf42aade845f5742b2cc38be
       body: |
