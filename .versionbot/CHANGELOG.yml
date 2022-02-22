@@ -1,4 +1,21 @@
 - commits:
+    - subject: Update Seeed 2Mic to 32.6.1
+      hash: 43b776d81647ab5c8bcce799a9167af4c8ace09f
+      body: |
+        Updated the DTB files for custom board
+        jetson-xavier-nx-devkit-seeed-2mic-hat
+        based on L4T 32.6.1
+      footer:
+        Changelog-entry: Update Seeed 2Mic to 32.6.1
+        changelog-entry: Update Seeed 2Mic to 32.6.1
+        Signed-off-by: Kunal Singh <kunal.singh@aivero.com>
+        signed-off-by: Kunal Singh <kunal.singh@aivero.com>
+      author: Kunal Singh
+      nested: []
+  version: 2.88.4+rev17
+  title: "'Update jetson-nx-devkit-seeed-2mic-hat dtb for L4T 32.6.1'"
+  date: 2022-02-22T09:28:39.851Z
+- commits:
     - subject: "linux-tegra: Rebase qmi_wwan backport patch for Spacely"
       hash: cda9d5463bf10ca34a5c8c32723ec8b7e2e8e82d
       body: |

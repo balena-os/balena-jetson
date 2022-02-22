@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev17
+## (2022-02-22)
+
+* Update Seeed 2Mic to 32.6.1 [Kunal Singh]
+
 # v2.88.4+rev16
 ## (2022-02-19)
 
