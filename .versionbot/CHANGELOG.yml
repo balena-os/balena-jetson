@@ -1,4 +1,1242 @@
 - commits:
+    - subject: Update meta-balena from v2.88.4 to v2.91.1
+      hash: f5e4d4b5db8bd712b89ac6756b5203108d842ada
+      body: |
+        Update meta-balena from 2.88.4 to 2.91.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.88.4 to v2.91.1
+        changelog-entry: Update meta-balena from v2.88.4 to v2.91.1
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: "tests/cloud: wait for update lock message in logs"
+              hash: c50dd793f7409cb4b899e859478730ebe3c576e0
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests/cloud: register teardown before  online"
+              hash: 2b6f8cc7b91472ebb612c60d56044cbc03af3ca8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.91.1
+          title: "'fix journal log retrieval in cloud suite, and try to make override lock
+            test consistant'"
+          date: 2022-02-21T10:48:39.255Z
+        - commits:
+            - subject: "openssh: Add a dependency on os-sshkeys"
+              hash: 0abc9213ba004325b77d96541e856aaf93cfdde2
+              body: >
+                This is required so that changes in the public keys are picked
+                up
+
+                by the SSH server.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-supervisor: Add dependency on root CA"
+              hash: 64cb45211a909b25170227079a400c2dfc9afae9
+              body: >
+                This is required so that the supervisor picks up a change in the
+                root CA
+
+                certificate.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena: Add dependency on balena-hostname"
+              hash: b4d9569261de3a6640394ff416264f9e64c5367b
+              body: >
+                This is needed so that the hostname change is picked up by the
+                container
+
+                applications.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Make services configurable
+              hash: eb2028e5ed477ac4626bc55180cd872cd93f67b7
+              body: >
+                Changes to the system configuration will now restart several
+                services.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: Add balena-configurable"
+              hash: 5b26f9200e8051859906016e84c03ab3d72a11d1
+              body: >
+                This class adds support to apply configuration changes to a
+                systemd
+
+                unit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: Split config.json configuration on write"
+              hash: cd7dcc30dc58255d5c84c6e64142f4073797d557
+              body: >
+                When config.json is written, use the config.json unit
+                configuration to create
+
+                per-unit configuration files extracts.
+
+
+                These will then be monitored by the respective service units to trigger
+
+                restarts, so that service units will only be restarted when there are
+
+                configuration changes that apply to them.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Remove config-json.target
+              hash: 5e5de909b648d97ca949e7f6fed08ebbd6471893
+              body: >
+                Unit files that are configured via config.json and want to be
+                restarted
+
+                on config.json changes are part of this target.
+
+
+                This causes a burst of service restarts each time config.json changes,
+
+                independently of whether the configuration changes applies to the unit
+
+                or not.
+
+
+                This commit removes all config-json.target instances in preparation for
+
+                the introduction of a better, more fine grained mechanism.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.91.0
+          title: "'Per-unit configuration files'"
+          date: 2022-02-14T09:30:35.337Z
+        - commits:
+            - subject: "resin-init-flasher: check for UEFI mode and set config variables"
+              hash: 102a710fbbcbbd347d801263a9b96e432ec5e7b9
+              body: |
+                Check to see whether we are running in UEFI mode and set secure
+                boot configuration variables as appropriate.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+            - subject: "resin-init-flasher: Fix flashing progress reporting for LUKS"
+              hash: 5c44a257073a993c81692e09eabba842f2aaca1a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "resin-init-flasher: Use flasher kernel to emulate stage2 bootloader
+                with LUKS"
+              hash: ebd9c9b775cb82247c1cd9b5ed4fe44864aa2343
+              body: >
+                In order to avoid the need to unlock encrypted partitions in
+                GRUB we want
+
+                to use a custom stage2 bootloader. Since that is not ready yet, emulate that
+
+                by copying flasher kernel to the EFI partition, start it from GRUB, have it
+
+                unlock all the partitions, find the real kernel and kexec into it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "resin-init-flasher: Add support for opt-in full disk encryption"
+              hash: 857f44dc37ed28d2bfe285e0243a9894d7315ffe
+              body: >
+                If resin-init-flasher.conf has LUKS=1 flasher will:
+
+                - Add extra 2MB to each partition for the LUKS header
+
+                - Split resin-boot into EFI and linux boot
+
+                - LUKS-format the partitions, copy image contents after unlocking
+
+                - Propagate signatures for secure boot
+
+
+                The default behavior (LUKS undefined) is unchanged
+              footer:
+                Change-Type: minor
+                change-type: minor
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.90.0
+          title: "'Update flasher for LUKS encryption'"
+          date: 2022-02-13T18:21:21.805Z
+        - commits:
+            - subject: "README: Update versioning information"
+              hash: 3ac5a5aaac1be6364a5ec8519b313b1da979b6a3
+              body: >
+                The `balena-<board>` repositories now use the same versioning
+                scheme as
+
+                application containers. This commit reflects this change in the
+
+                documentation.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.89.19
+          title: "'README: Update versioning information'"
+          date: 2022-02-13T12:49:17.731Z
+        - commits:
+            - subject: fix cloud suite teardown
+              hash: 6fd7cb7ac9b7612db859afe931c0c34f693d3521
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.89.18
+          title: "'fix cloud suite teardown'"
+          date: 2022-02-11T20:46:38.043Z
+        - commits:
+            - subject: "suites/hup: Add under-voltage test before and after HUP"
+              hash: e12de74e6cdcec2af488a8e5f8e0e14613ac1658
+              body: |
+                We add this this check since we discovered
+                that with newer boot firmware the Pi4 will
+                not reboot when under-voltage is reported.
+
+                We don't mark the test as failed in
+                this case, since there may be devices that
+                continue to work even if under-powered and we
+                don't want to block or delay development if the
+                DUT is remote and cannot be checked or replaced
+                easily.
+
+                This check provides an indication for further
+                debugging of failed test cases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.89.17
+          title: "'[tests]: Add under-voltage check for OS and HUP suites'"
+          date: 2022-02-09T16:48:41.543Z
+        - commits:
+            - subject: "balena-supervisor: Update balena-supervisor to v12.11.32"
+              hash: d222a1f6c84ff98f7698efd671063a0eeebb3ae3
+              body: >
+                Includes improvements when writing to `config.json` to reduce
+                the chances of corruption.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Felipe Lalanne <felipe@balena.io>
+                signed-off-by: Felipe Lalanne <felipe@balena.io>
+              author: Felipe Lalanne
+              nested: []
+          version: meta-balena-2.89.16
+          title: "'balena-supervisor: Update balena-supervisor to v12.11.32'"
+          date: 2022-02-07T15:27:34.945Z
+        - commits:
+            - subject: "resindataexpander: do not return after resizing the partition only"
+              hash: dfb9a2e0b30ac5bbfef24332487ef537b6a830b1
+              body: >
+                After moving the partition resizing code to execute on each
+                boot,
+
+                we made it unreachable on first boot. We must not exit the script
+
+                after resizing the partition only because that way the resizing
+
+                is only finished on 2nd boot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.89.15
+          title: "'resindataexpander: do not return after resizing the partition only'"
+          date: 2022-02-07T10:54:58.341Z
+        - commits:
+            - subject: "resin-u-boot.bbclass: Do not error if no config_defaults.h"
+              hash: 74b297cd03bd6f6f8af9d4a9e60514770420a218
+              body: |
+                The header has been removed in upstream commit
+                5c6a4d5a2779d7c2611319076d9aa4a23981855f
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.89.14
+          title: "'resin-u-boot.bbclass: Do not error if no config_defaults.h'"
+          date: 2022-02-03T17:15:47.568Z
+        - commits:
+            - subject: "docker-disk: Tag the supervisor digest with the repo name"
+              hash: 52c2b0843bc19865fbe2298e508a9196c7143a2f
+              body: >
+                This will allow us to refer to the supervisor image by the repo
+                name
+
+                in docker commands, like docker inspect, and prevent re-downloading the
+
+                image even though it already exists as an untagged digest.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.89.13
+          title: "docker-disk: Tag the supervisor digest with the repo name"
+          date: 2022-02-01T21:39:09.997Z
+        - commits:
+            - subject: "resindataexpander: expand fs independent of partition"
+              hash: 2889cb431e02f1f3e030f6c05a42be7374457eeb
+              body: >
+                When resizing the filesystem fails, such as when resize2fs won't
+                touch
+
+                it because it's dirty, the partition gets resized, but not the
+
+                filesystem. The script will not attempt to resize the filesystem again,
+
+                as it detects the partition has already been resized.
+
+
+                Split these actions apart, so that the filesystem resize is always
+
+                attempted. If resize2fs detects that the filesystem is already filling
+
+                available space, it will exit with no action taken.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.89.12
+          title: "resindataexpander: expand fs independent of partition"
+          date: 2022-01-31T10:24:09.275Z
+        - commits:
+            - subject: "image_types_balena: Augment dependency on u-boot do_deploy task"
+              hash: e1782d968caa20e407386ba58bff3b1842006e9a
+              body: >
+                Some BSPs might only make use of UBOOT_MACHINE so let's consider
+
+                this case in addition to UBOOT_CONFIG when setting dependency for
+
+                u-boot's do_deploy task.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.89.11
+          title: "image_types_balena: Augment dependency on u-boot do_deploy task"
+          date: 2022-01-29T08:06:09.408Z
+        - commits:
+            - subject: "tests: relax boot splash screen check"
+              hash: 114b0f752f3b6c25e959ea193a501b5cd669fa7c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.89.10
+          title: Ryan/boot splash improvement
+          date: 2022-01-28T10:11:36.644Z
+        - commits:
+            - subject: archive logs using local ssh
+              hash: 763fd146f042f60b4df5498d41e4dfe06dc931fe
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: put archiver in the right place
+              hash: 69234e0dff6dc1bd08bf70bd07d06d4c2b7d4edb
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: Enable UART serial console for supported devices
+              hash: 57733d47160d019452d8f9316a7728ac65bb9581
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: archive image on teardown
+              hash: 68cf636207c04a0a8f81e727edafda3bb53bfa31
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: put device in dev mode
+              hash: f1cd979692cd16dd93d8354230f5317bb78e76f8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: add extra logging to cloud suite"
+              hash: 0f39876b55475b654cfed4b20dfda6243d21908f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.89.9
+          title: "tests: add extra logging to cloud suite"
+          date: 2022-01-27T14:55:54.155Z
+        - commits:
+            - subject: "u-boot: Move config fragments merging code out of common layer"
+              hash: 0396efaf0964dc46e0a72792c7dfc0ce17955231
+              body: |
+                Let's only apply this code to pre-warrior as intended. Starting
+                with warrior this code is in poky so we can rely on it from
+                there instead of keeping a duplicate in meta-balena-common.
+                This helps with BSPs that may define their own tasks (configure,
+                compile and so on) for u-boot (keeping this fragments merging
+                code in meta-balena-common would have the effect of overwriting
+                these tasks from here and thus breaking the build).
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.89.8
+          title: ""
+          date: 2022-01-27T09:45:12.608Z
+        - commits:
+            - subject: explain balenaRootCA better
+              hash: 3c5dccfbb0ad9f40f893274dc25748f0d35905c8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Martin Rauscher
+              nested: []
+          version: meta-balena-2.89.7
+          date: 2022-01-26T14:54:38.251Z
+        - commits:
+            - subject: "classes/kernel-balena: Update aufs patches for kernel 5.10.82"
+              hash: 83a1ae95bef32ccfb54a742649165f0311c7ae7e
+              body: |
+                The aufs patches are used by the devices
+                that transition from aufs to overlay2.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.89.6
+          date: 2022-01-26T10:10:09.799Z
+        - commits:
+            - subject: "os: tests: optimize fingerprint tests"
+              hash: 64afc5f3ca862cd23c639f702b00a55a4527f296
+              body: >
+                Run fingerprint tests in parallel with Promise.any(). This
+                significantly
+
+                reduces the amount of time taken in these tests.
+
+
+                - ok 1 - OS corruption tests # time=92739.718ms
+
+                + ok 1 - OS corruption tests # time=2062.513ms
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.89.5
+          date: 2022-01-24T15:41:27.529Z
+        - commits:
+            - subject: "tests: add cloud test suite"
+              hash: 4955539b5cd0b9ab5c56ce76f92847fa637ce90b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.89.4
+          date: 2022-01-21T15:30:16.116Z
+        - commits:
+            - subject: "initramfs-framework: Make cleaning udev database the last step"
+              hash: 333162a83daf742612a2e97353c9d3766eaad058
+              body: >
+                To avoid issues, move the udev database cleanup just before
+                switching
+
+                roots.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.89.3
+          date: 2022-01-20T17:24:54.139Z
+        - commits:
+            - subject: "recipes-core/jq: Use 64bit time symbols"
+              hash: 010b8f2f655aecb39ef62f9cfac288f5042ebb80
+              body: |
+                jq is used in the bootfiles hostapp-update
+                hook for accessing config.json, which may have
+                one of the modification dates invalid,
+                as we've seen during testing. We thus need to
+                avoid performing a touch on config.json
+                to avoid reloading of containers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.89.2
+          date: 2022-01-20T15:16:05.188Z
+        - commits:
+            - subject: "tests: Enable UART serial console where supported"
+              hash: c2847e272e271cbc06dead5c798ee47e8ec8ba8c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.89.1
+          date: 2022-01-19T14:28:24.489Z
+        - commits:
+            - subject: "docker-disk: Pull images from Balena's registry"
+              hash: 324a091d14e64928feb1635957930eda4e809f8d
+              body: |
+                Stop using dockerhub to pull container images from.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-supervisor: Use image location path instead of repository:tag"
+              hash: 10cf86186bef846123d5431f810fedc219f7e2ee
+              body: >
+                Balena's registry does not use repository:tag to identify images
+                but
+
+                the image location path.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "distro: balena-os: Add default cloud environment distro setting"
+              hash: 6175fd72188766fc0fa05989f55d79f36434face
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.89.0
+          date: 2022-01-19T09:42:10.888Z
+        - commits:
+            - subject: "intel-quark: Fix to honister syntax"
+              hash: c32e3f0c5421e46fbac991c5e5cb6240994422b2
+              body: >
+                The converter script did not consider the intel-quark an
+                override, so
+
+                fix manually.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "recipes-core/bash: Use 64bit time symbols"
+              hash: d26b1a09a6ac8a0def6ab2ec4d0249884aacb738
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: "recipes-core/busybox: Use 64bit time symbols"
+              hash: 989c0a3584b99bf637f2a727f8a6bda11fb05441
+              body: |
+                So that commands like find can work with
+                files that have incorrect timestamps on 32bit systems.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.88.22
+          date: 2022-01-18T17:55:03.016Z
+        - commits:
+            - subject: "tests: os: config-json: cleanup persistentLogging test"
+              hash: 1625e14c13da802e0bbd39467b106155861441be
+              body: >
+                Minor cleanup of persistentLogging configuration test.
+                Additionally,
+
+                reduce the reboot count to one to save time.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: config-json: return promise from sshKeys test"
+              hash: caf3dfe4b43643ac5cfa219cb892f431992e0aaa
+              body: >
+                Return the promise from the sshKeys test instead of awaiting
+                inside the
+
+                async function, a minor style improvement.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: config-json: cleanup dnsServers config test"
+              hash: 7a4872aa41435a3e386ad9051dc9dbfc64957762
+              body: |
+                Simplify dnsServers config test, including using
+                worker.waitForServiceState().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: config-json: cleanup ntpServer config test"
+              hash: 85372adacd450186ba40e7d1e2bd9751e470a7d6
+              body: |
+                Simplify ntpServer config test, including using
+                worker.waitForServiceState().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: config-json: cleanup hostname config test"
+              hash: 28983f940d9fe6dd342df9a367e2768501d1d408
+              body: |
+                Simplify hostname configuration test, including using
+                worker.waitForServiceState().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: create waitForServiceState helper"
+              hash: 080ead9e17a20d47843ccec0bc2355ee0b9200f3
+              body: |
+                Create helper to wait for a service to be active or inactive.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: config-json: remove reboot from randomMacAddressScan test"
+              hash: b832ef095532e54a8508c41441575ef9f5661557
+              body: >
+                Restructure randomMacAddressScan test to remove unnecessary
+                reboot
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: config-json: remove reboot from connectivity test"
+              hash: c3988214cfb0fea2f92b3a8ad096cafd2d271417
+              body: |
+                Restructure connectivity test to remove unnecessary reboot
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: config-json: remove reboot from udevRules test"
+              hash: 6f7ebbc7a0f201248b731acc188033a3ddc9a12f
+              body: |
+                Restructure udevRules test to remove unnecessary reboot
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.88.21
+          date: 2022-01-17T18:42:06.387Z
+        - commits:
+            - subject: "chrony: fix mount service dependency for driftfile"
+              hash: 4823b0299002192820d36c90e5d2dfd9ff122ff5
+              body: >
+                The chrony driftfile is not being updated at shutdown due to an
+
+                incorrect mount service dependency in the systemd chronyd.service
+
+                file. The current dependency on 'var-volatile-lib' does not cover the
+
+                subsequent bind mounting of the '/var/lib/chrony' sub-directory, so
+
+                the chrony directory gets unmounted at shutdown before the drift file
+
+                has been updated.
+
+
+                This issue is solved by changing the mount service dependency from
+
+                'var-volatile-lib' to 'bind-var-lib-chrony' (which is similar to the
+
+                way bind mount dependencies are already handled for the NetworkManager
+
+                and bluetooth services).
+              footer:
+                Change-type: patch
+                change-type: patch
+                Connects-to: "#1995"
+                connects-to: "#1995"
+                Changelog-entry: "chrony: fix mount service dependency for driftfile"
+                changelog-entry: "chrony: fix mount service dependency for driftfile"
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.88.20
+          date: 2022-01-17T10:54:19.982Z
+        - commits:
+            - subject: "os: tests: optimize fsck tests"
+              hash: 15100419eb9e1fb8c0e99d0a9e07a09b8c8d415f
+              body: >
+                Chain operations using Promise.then(), and run commands in
+                parallel
+
+                using Promise.map(). This reduces the time taken for fsck tests to about
+
+                half.
+
+
+                - ok 1 - fsck.ext4 tests # time=152304.735ms
+
+                + ok 1 - fsck.ext4 tests # time=75104.016ms
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.88.19
+          date: 2022-01-12T19:19:10.768Z
+        - commits:
+            - subject: "conf/distro: Prefer rust v1.36 for releases older than Honister"
+              hash: f4025980e13f291b9e9778a4e545cfea490f9fe5
+              body: |
+                Poky releases older than Honister should stick to rust v1.36
+                which has been used in balenaOS builds so far.
+
+                Newer ones should prefer v1.54, which is the latest rust
+                version to use the Honister syntax.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.88.18
+          date: 2022-01-11T14:59:20.607Z
+        - commits:
+            - subject: "recipes-core/coreutils: Use 64bit time symbols"
+              hash: 1c86b30cbad9eecb74185610d146a71f81f70857
+              body: >
+                We do this to avoid initial HUP failure that may
+
+                occur when updating a freshly provisioned device,
+
+                which has unitialized timestamps for files in the boot partition,
+
+                to a newer release based on Honister with glibc-2.34.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: "classes/image_types_balena: Preserve file modification times with
+                mcopy"
+              hash: 7b5e1475838b2ba72ca31b82cfa41b32d47cfd02
+              body: |
+                We should preserve the file modification times when
+                copying them to the boot filesystem, otherwise these
+                timestamps will be incorrect, as they will be set to
+                random values, like for instance:
+
+                  Access: 1961-11-25 17:31:44.000000000 +0000
+                  Modify: 1961-11-25 17:31:44.000000000 +0000
+                  Change: 1961-11-25 17:31:44.000000000 +0000
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.88.17
+          date: 2022-01-10T10:46:43.314Z
+        - commits:
+            - subject: "balena-os.inc: Switch balena backend storage to overlay2"
+              hash: 90b2630937ecc3171fd925a9c679ab1b20c20a4c
+              body: >
+                Now that we have the aufs to overlay2 migrator in place, let's
+                switch
+
+                all our boards to overlay2.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.88.16
+          date: 2022-01-05T09:44:10.265Z
+        - commits:
+            - subject: "initrdscripts: fsuuidinit: Generate resin-rootA last"
+              hash: 00d6ca48d32b2b1a111d400457b73be5cc36d6bf
+              body: >
+                As resin-rootA is used to decide whether to re-run the
+                generation, leave it
+
+                last. As it stands, if resin-rootA is regenerated by any other fail, the
+
+                UUID generation is not retried.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "lvm2: Add rule to persist dm devices in udev database"
+              hash: de2ff622473f2f0bc03c05dbd15f1df8c88f734e
+              body: >
+                On transitioning from the initramfs to the rootfs, the udev
+                database is
+
+                cleanedup as the rules between initramfs and rootfs might defer.
+
+
+                However, dm devices are flagged not to be re-processed, so we need to
+
+                set a sticky bit on them so they persist the cleanup.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscript: Cleanup udev database before transitioning to rootfs"
+              hash: a72061cfe9ba48809ba87b0bc03e01a6bc53cff4
+              body: >
+                This is needed because the rules in the final rootfs might be
+
+                different than the one in the initramfs.
+
+
+                Devices that need to persist, like dm devices, need to be flagged with
+
+                the `db_persist` option.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: Use /run as bootparam_root storage"
+              hash: 449dee77f54d4185f98854bca9148a6f42620bc8
+              body: >
+                From v2.49, the hostapp-update utility creates the /run
+                directory in the
+
+                root filesystem, however when huping from previous versions /run is not
+
+                there.
+
+
+                Commit bab3cd7f50022127bfef50fde9cd445b6b55a7b2 switches to use /tmp
+
+                to store the new UUID for the root partition on first boot after
+
+                generating new UUIDs as this is backwards compatible.
+
+
+                However, this means that the udev database in the initramfs is recreated
+
+                on the final system instead of reused. This becomes a problems for DM
+
+                devices (used in luks based disk encryption), as they are not re-processed
+
+                by udevd.
+
+
+                This change will use /run if available, so new releases that may implement
+
+                disk encryption work, or /tmp if not so it still remains backwards
+
+                compatible for HUP from older releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "lvm: Add lvm rules when secure boot is configured"
+              hash: d41eacad52fde90340c5f7eb4f9fb862aba364ef
+              body: |
+                This add udev rules to detect mapper devices.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-keys: Fetch DER keys and decode from base64"
+              hash: 2538a1c621979f83385729be57b53faa640326d1
+              body: >
+                Some BIOS configuration, like TianoCore used in QEMU, needs DER
+                keys for
+
+                secure boot setup. Also, der, auth and esl keys are served base64 encoded
+
+                and need to be decoded before they can be used.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.88.15
+          date: 2022-01-04T14:24:39.301Z
+        - commits:
+            - subject: Sync cached writes to disk when updating supervisor.conf
+              hash: cf51428b9daaf8325cafc850fb47e27a6a6bcb5d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Miguel Casqueira <miguel@balena.io>
+                signed-off-by: Miguel Casqueira <miguel@balena.io>
+              author: Miguel Casqueira
+              nested: []
+          version: meta-balena-2.88.14
+          date: 2022-01-04T11:19:00.838Z
+        - commits:
+            - subject: "hostapp-update-hooks: Handle developmentMode updates"
+              hash: adc76c0588a67705ae20a8c61517f549f2e8549e
+              body: >
+                When updating from a legacy development image which has no
+                developmentMode
+
+                set in config.json to an image configured with development mode, the hooks
+
+                need to set developmentMode accordingly in config.json.
+
+
+                Updating to a development mode image from a production image will not
+
+                set developmentMode.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.88.13
+          date: 2022-01-04T09:48:57.491Z
+        - commits:
+            - subject: "systemd/timeinit: handle missing date field in HTTPS header"
+              hash: e11a421c24a9c4003e0d606ef681447e48b2823b
+              body: >
+                Update the timesync-https.sh script to handle the case where the
+                date
+
+                field is missing from the returned HTTPS header.
+
+
+                When the date field is not present the script will now exit with a
+
+                warning rather than blocking indefinitely.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: "systemd/timeinit: handle missing date field in HTTPS header"
+                changelog-entry: "systemd/timeinit: handle missing date field in HTTPS header"
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.88.12
+          date: 2022-01-03T14:25:50.684Z
+        - commits:
+            - subject: "balena-supervisor: Update balena-supervisor to v12.11.16 Update
+                balena-supervisor from 12.11.0 to 12.11.16"
+              hash: 00397eb39bde3aa313373ffa884ca24098781917
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Miguel Casqueira <miguel@balena.io>
+                signed-off-by: Miguel Casqueira <miguel@balena.io>
+              author: Miguel Casqueira
+              nested: []
+          version: meta-balena-2.88.11
+          date: 2021-12-22T04:08:44.540Z
+        - commits:
+            - subject: Update NetworkManager to 1.32.12
+              hash: a6313f12e2efe0a6aae8741e7e95ad437a247b3c
+              body: |
+                Closes #2437
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update NetworkManager to 1.32.12
+                changelog-entry: Update NetworkManager to 1.32.12
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.88.10
+          date: 2021-12-16T10:45:16.375Z
+        - commits:
+            - subject: "u-boot: Move u-boot configs inclusion into resin-u-boot.bbclass"
+              hash: 27e67bb1021f1f2c4c1cdcbb657f09c19908eed4
+              body: |
+                Some BSPs name the u-boot such as u-boot-imx_2020 for example.
+                Because of that, our existing bbappend called u-boot_%.bbappend
+                will not match it and will fail to be applied.
+                This PR is a first pass at solving this by moving at least the
+                SRC_URI appending part from this bbappend and into the
+                resin-u-boot.bbclass instead. Further investigation is needed
+                to see if we can remove this bbappend altogether since we may
+                have all boards using Poky Warrior or newer, making this
+                u-boot bbappend obsolete.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.88.9
+          date: 2021-12-15T14:45:29.240Z
+        - commits:
+            - subject: "patch: Add archiveLogs Teardown for HUP suite"
+              hash: 27abdfaab8ab0790020ebfce0fc64710c8efd609
+              body: ""
+              footer: {}
+              author: Vipul Gupta
+              nested: []
+          version: meta-balena-2.88.8
+          date: 2021-12-09T19:58:29.923Z
+        - commits:
+            - subject: "tests: Ensure BDADDR is initialized"
+              hash: 7824025cb4722483a15cd95f7ee93207af2d8f8c
+              body: |
+                The CM4 IO-Board was the first device
+                which exhibited an issue in which
+                the MAC address was set to an
+                unprogrammed value AA:AA:AA...:AA.
+
+                We've addressed this in the device repo,
+                meanwhile it has been fixed in upstream
+                too, so let's check and catch this should
+                it happen again.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.88.7
+          date: 2021-12-06T15:07:42.139Z
+        - commits:
+            - subject: "docs: Fix links in Rollback documentation"
+              hash: 14399cfd115198b0913fb379760b9710c0710258
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.88.6
+          date: 2021-12-04T17:29:48.922Z
+        - commits:
+            - subject: "tests: os: fix unhandled exception when unwrapping non-flasher image"
+              hash: ce2d33ad875e83b1ed01a16225a9ca19563836dc
+              body: >
+                Handle ENOENT ErrnoException when attempting to unwrap
+                non-flasher image
+
+                in os/suite.js.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.88.5
+          date: 2021-12-04T12:25:35.702Z
+  version: 2.91.1
+  title: "'layers/meta-balena: Update to v2.91.1'"
+  date: 2022-02-25T14:28:41.548Z
+- commits:
     - subject: Update Seeed 2Mic to 32.6.1
       hash: 43b776d81647ab5c8bcce799a9167af4c8ace09f
       body: |
