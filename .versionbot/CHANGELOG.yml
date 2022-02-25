@@ -1,4 +1,53 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.17.2
+      hash: bd7f6f1f77bdb9d2c1b92215bcfbd055442216ab
+      body: |
+        Update balena-yocto-scripts from v1.17.0 to v1.17.2
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update balena-yocto-scripts to v1.17.2
+        changelog-entry: Update balena-yocto-scripts to v1.17.2
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: "prepare-and-start: Remove balena login"
+              hash: 67568d3a5eceb45ee65c245baae18fa299366f9e
+              body: |
+                The login will happen as needed.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.17.2
+          title: "'prepare-and-start: Remove balena login'"
+          date: 2022-02-25T09:19:00.323Z
+        - commits:
+            - subject: "balena-deploy.inc: Do no deploy device logo to deprecated endpoint"
+              hash: 54ad619b8b9c00d7c52cfc90593b22c70233d973
+              body: |
+                As per https://jel.ly.fish/a533a6bd-1c98-412c-ae60-8427e3f7b005,
+                the /device-types/v1 endpoint is deprecated and we can remove
+                the logo from the device repos so we can also stop handling it
+                from here. Instead, the logo will be used from the hw contracts.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.17.1
+          date: 2022-01-27T07:38:18.417Z
+  version: 2.91.1+rev1
+  title: "'balena-yocto-scripts: Update to v1.17.2'"
+  date: 2022-02-25T16:25:17.654Z
+- commits:
     - subject: Update meta-balena from v2.88.4 to v2.91.1
       hash: f5e4d4b5db8bd712b89ac6756b5203108d842ada
       body: |
