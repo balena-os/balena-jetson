@@ -160,13 +160,10 @@ IMAGE_INSTALL:append:jetson-tx2 = " \
     tegra-brcm-patchram \
     linux-firmware-bcm4354 \
     tegra-firmware-xusb \
+    tegra-firmware-rtl8822 \
     bt-scripts \
     jetson-dtbs \
     kernel-module-bcmdhd \
-"
-
-IMAGE_INSTALL:append:jetson-tx2-nx-devkit = " \
-    tegra-firmware-rtl8822 \
     kernel-module-rtk-btusb \
     kernel-module-rtl8822ce \
 "
