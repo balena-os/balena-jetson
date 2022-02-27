@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.91.1+rev2
+## (2022-02-25)
+
+* Ship rtl8822 module and firmware on TX2 [Michal Toman]
+
 # v2.91.1+rev1
 ## (2022-02-25)
 

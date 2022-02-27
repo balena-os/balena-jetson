@@ -1,4 +1,22 @@
 - commits:
+    - subject: Ship rtl8822 module and firmware on TX2
+      hash: c45765f47e7baca9f497a601e51108744434395f
+      body: |
+        At this moment this is only shipped for the NX devkit but the M.2 module
+        can be plugged to any TX2 board that exposes the slot.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Ship rtl8822 module and firmware on TX2
+        changelog-entry: Ship rtl8822 module and firmware on TX2
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 2.91.1+rev2
+  title: "'balena-image.inc: move rtl8822 module and firmware to TX2'"
+  date: 2022-02-25T17:35:22.322Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.17.2
       hash: bd7f6f1f77bdb9d2c1b92215bcfbd055442216ab
       body: |
