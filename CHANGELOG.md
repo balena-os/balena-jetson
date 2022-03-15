@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2021.7.1
+## (2022-03-15)
+
+* Update balena-yocto-scripts from v1.14.7 to v1.14.9 [Alexandru Costache]
+* Ship rtl8822 module and firmware on TX2 [Michal Toman]
+
 # 2021.07.0
 ## (2021-07-20)
 
