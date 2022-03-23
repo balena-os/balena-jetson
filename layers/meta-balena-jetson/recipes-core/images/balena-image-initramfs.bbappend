@@ -1,4 +1,4 @@
-PACKAGE_INSTALL:append = " tegra-firmware-xusb"
+PACKAGE_INSTALL:append = " tegra-firmware-xusb gptfdisk initramfs-module-gptcheck"
 
 # Because of https://github.com/balena-os/balena-jetson/issues/90
 # the TX1 does not have a 32.X release currently. Let's decrease
