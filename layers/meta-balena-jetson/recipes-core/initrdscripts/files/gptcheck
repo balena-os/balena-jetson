@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# shellcheck disable=SC1091
+. /usr/libexec/os-helpers-fs
+. /usr/libexec/os-helpers-logging
+
+datapartition=$(get_state_path_from_label "resin-data")
+datapartitiondevice=$(basename $(readlink -f "${datapartition}"))
+datadevice=$(lsblk "/dev/${datapartitiondevice}" -d -n -o PKNAME)
+
+gptcheck_enabled() {
+    # On flasher avoid expanding partition
+    # shellcheck disable=SC2154
+    if [ "$bootparam_flasher" = "true" ]; then
+        info "Flasher detected. Will not perform GPT checks."
+        return 1
+    fi
+
+    return 0
+}
+
+gptcheck_run() {
+    # If the end GPT gets corrupted for whatever reason, restore it from the main GPT
+    # using sgdisk. parted is not able to fix this issue, and the jetson devices
+    # are the only ones that use GPT and need this tool.
+    if sgdisk -v /dev/${datadevice} 2>&1 | grep -q "invalid backup GPT header"; then
+        # /run is tmpfs
+        sgdisk --backup=/run/gpt.bkp /dev/${datadevice}
+        sgdisk --load-backup=/run/gpt.bkp /dev/${datadevice}
+    fi
+}

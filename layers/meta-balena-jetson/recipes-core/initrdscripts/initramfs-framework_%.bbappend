@@ -1,5 +1,21 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
+SRC_URI:append = " \
+    file://gptcheck \
+"
+
+do_install:append() {
+    install -m 0755 ${WORKDIR}/gptcheck ${D}/init.d/86-gptcheck
+}
+
+PACKAGES:append = " \
+    initramfs-module-gptcheck \
+"
+
+SUMMARY:initramfs-module-gptcheck = "Check and fix alternate GPT"
+RDEPENDS:initramfs-module-prepare = "${PN}-base os-helpers-logging os-helpers-fs"
+FILES:initramfs-module-gptcheck = "/init.d/86-gptcheck"
+
 SRC_URI:append:jetson-xavier = " \
     file://blockdev \
 "
