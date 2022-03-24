@@ -1,4 +1,19 @@
 - commits:
+    - subject: "README: Fix incorrect mention and cleanup icons"
+      hash: 42fa7c9c918933be3f39841e082fa76865129887
+      body: |
+        All icons are now pulled from the contracts repository.
+      footer:
+        Changelog-entry: "README: Fix incorrect mention and cleanup icons"
+        changelog-entry: "README: Fix incorrect mention and cleanup icons"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.94.4+rev1
+  title: "'Check and fix invalid alternate gpt if necessary'"
+  date: 2022-03-24T08:00:08.992Z
+- commits:
     - subject: Update meta-balena from v2.91.1 to v2.94.4
       hash: 084519d442991ddf90671669c81f1eb72f975e07
       body: ""

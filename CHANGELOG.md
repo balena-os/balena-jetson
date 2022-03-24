@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.94.4+rev1
+## (2022-03-24)
+
+* README: Fix incorrect mention and cleanup icons [Alexandru Costache]
+
 # v2.94.4
 ## (2022-03-08)
 
