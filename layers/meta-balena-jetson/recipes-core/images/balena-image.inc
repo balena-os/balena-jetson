@@ -95,8 +95,6 @@ BALENA_BOOT_SIZE:jetson-xavier-nx-devkit = "121440"
 BALENA_BOOT_SIZE:jetson-tx2="80960"
 BALENA_BOOT_SIZE:jetson-tx1="80960"
 
-PARTITION_TABLE_TYPE = "gpt"
-
 IMAGE_PACKAGES_NANO = " \
     tegra210-flash \
     tegra-nvpmodel \
