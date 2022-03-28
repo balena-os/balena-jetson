@@ -1,4 +1,4 @@
-#  balena-jetson-nano repository
+#  balena-jetson repository
 
 ## Clone/Initialize the repository
 
