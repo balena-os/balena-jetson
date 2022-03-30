@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.95.9
+## (2022-03-30)
+
+
+<details>
+<summary> Update layers/meta-balena to 0639c82c402b22d3397beb22b88bb97f15597ceb [Renovate Bot] </summary>
+
+> ## meta-balena-2.95.9
+> ### (2022-03-28)
+> 
+> * tests: update leviathan to 2.0.4 [rcooke-warwick]
+> * tests: update config for new leviathan version [rcooke-warwick]
+> 
+</details>
+
 # v2.95.8+rev1
 ## (2022-03-29)
 

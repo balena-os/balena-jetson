@@ -1,4 +1,40 @@
 - commits:
+    - subject: Update layers/meta-balena to 0639c82c402b22d3397beb22b88bb97f15597ceb
+      hash: 6bc833d82ade0ac36e68f2ea206dd0e2c0d8608e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 0639c82c402b22d3397beb22b88bb97f15597ceb
+        changelog-entry: Update layers/meta-balena to 0639c82c402b22d3397beb22b88bb97f15597ceb
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: update leviathan to 2.0.4"
+              hash: b90c280d8f08497fcf2ca7b5329bdb7e7dc7c22a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: update config for new leviathan version"
+              hash: 788cacc8daadf487698e28e2ad308cc54f1d96b4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.95.9
+          title: "'tests: update config for new leviathan version'"
+          date: 2022-03-28T12:52:25.738Z
+  version: 2.95.9
+  title: "'Update layers/meta-balena digest to 0639c82'"
+  date: 2022-03-30T14:26:02.427Z
+- commits:
     - subject: Specify full path in repo.yml upstreams
       hash: 4639c74253a508b8d35d2d405ca6d4ede98b5c0e
       body: |
