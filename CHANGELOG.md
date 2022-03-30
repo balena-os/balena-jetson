@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.95.10
+## (2022-03-30)
+
+
+<details>
+<summary> Update layers/meta-balena to f03d6846ff98a70c9367f63041367db9a95efee9 [Renovate Bot] </summary>
+
+> ## meta-balena-2.95.10
+> ### (Invalid date)
+> 
+> * tests/os: check supervisor is pulled  after purge [rcooke-warwick]
+> 
+</details>
+
 # v2.95.9+rev1
 ## (2022-03-30)
 

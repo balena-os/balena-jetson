@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to f03d6846ff98a70c9367f63041367db9a95efee9
+      hash: b39005ba5f39197d80f3234866332135f5ac8f39
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f03d6846ff98a70c9367f63041367db9a95efee9
+        changelog-entry: Update layers/meta-balena to f03d6846ff98a70c9367f63041367db9a95efee9
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests/os: check supervisor is pulled  after purge"
+              hash: 58a645684921797383602311821522604064fd62
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.95.10
+          title: "'tests/os: check supervisor is pulled  after purge'"
+          date: 2022-03-30T11:28:54.776Z
+  version: 2.95.10
+  title: "'Update layers/meta-balena digest to f03d684'"
+  date: 2022-03-30T17:40:21.575Z
+- commits:
     - subject: Update balena-yocto-scripts to 190305d322be4db65c03640eacf5ed21928dcbf9
       hash: f236fa96e662a2254491a2b3eb2689e045b2c93f
       body: Update balena-yocto-scripts
