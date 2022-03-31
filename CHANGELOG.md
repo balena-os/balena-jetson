@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.95.11
+## (2022-03-31)
+
+
+<details>
+<summary> Update layers/meta-balena to fd040a08031ae9f52a520209cb660474058c3688 [Renovate Bot] </summary>
+
+> ## meta-balena-2.95.11
+> ### (Invalid date)
+> 
+> * hostapp-update: Mount data partition on target balena/tmp [Kyle Harding]
+> 
+</details>
+
 # v2.95.10
 ## (2022-03-30)
 

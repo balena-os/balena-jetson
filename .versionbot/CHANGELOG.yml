@@ -1,4 +1,40 @@
 - commits:
+    - subject: Update layers/meta-balena to fd040a08031ae9f52a520209cb660474058c3688
+      hash: 22e100e498ef5e711517997235102dfcf60acdd9
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to fd040a08031ae9f52a520209cb660474058c3688
+        changelog-entry: Update layers/meta-balena to fd040a08031ae9f52a520209cb660474058c3688
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "hostapp-update: Mount data partition on target balena/tmp"
+              hash: 548c6c08f041f69786f0092eb2397f2fbf8e7e86
+              body: >
+                In most cases there is not enough space on rootfs to extract
+
+                and load a local hostapp image when the balena-host tmpdir
+
+                is on the same partition.
+
+
+                This uses a data mount to ensure temporary extracted files of the
+
+                compressed image will not fill the target sysroot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.95.11
+          title: "'hostapp-update: Mount data partition on target balena/tmp'"
+          date: 2022-03-30T17:20:46.022Z
+  version: 2.95.11
+  title: "'Update layers/meta-balena digest to fd040a0'"
+  date: 2022-03-31T18:10:41.231Z
+- commits:
     - subject: Update layers/meta-balena to f03d6846ff98a70c9367f63041367db9a95efee9
       hash: b39005ba5f39197d80f3234866332135f5ac8f39
       body: Update layers/meta-balena
