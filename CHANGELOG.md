@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.95.12
+## (2022-04-01)
+
+
+<details>
+<summary> Update layers/meta-balena to 8797487542bebf28f89bcb5251437f12c117dec7 [Renovate Bot] </summary>
+
+> ## meta-balena-2.95.12
+> ### (2022-04-01)
+> 
+> * grub-efi: Remove patch passing secure boot status to the kernel [Michal Toman]
+> 
+</details>
+
 # v2.95.11
 ## (2022-03-31)
 

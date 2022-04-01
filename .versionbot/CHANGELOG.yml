@@ -1,4 +1,49 @@
 - commits:
+    - subject: Update layers/meta-balena to 8797487542bebf28f89bcb5251437f12c117dec7
+      hash: e50882c74ae774968c50ce735f0e400b9bd75fe2
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 8797487542bebf28f89bcb5251437f12c117dec7
+        changelog-entry: Update layers/meta-balena to 8797487542bebf28f89bcb5251437f12c117dec7
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "grub-efi: Remove patch passing secure boot status to the kernel"
+              hash: fb171dc507348e11ab2c6ed894289f51689fc874
+              body: >
+                This was originally introduced in combination with a kernel
+                patch backported
+
+                from Red Hat kernel that would enable kernel lockdown when secure boot
+
+                is enabled. We have since changed the approach, dropped the kernel patch
+
+                and when in secure boot mode use a different GRUB config file that enables
+
+                lockdown on kernel command line unconditionally.
+
+
+                That said, while the patch works fine, we do not really need it and it adds
+
+                extra overhead porting it to newer yocto versions so there is no point keeping
+
+                it at this moment. If in the future there is need for the kernel to know
+
+                whether it is in secure boot mode or not, we can roll this back and rebase.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.95.12
+          title: "'grub-efi: Remove patch passing secure boot status to the kernel'"
+          date: 2022-03-31T14:45:57.845Z
+  version: 2.95.12
+  title: "'Update layers/meta-balena digest to 8797487'"
+  date: 2022-04-01T00:20:47.948Z
+- commits:
     - subject: Update layers/meta-balena to fd040a08031ae9f52a520209cb660474058c3688
       hash: 22e100e498ef5e711517997235102dfcf60acdd9
       body: Update layers/meta-balena
