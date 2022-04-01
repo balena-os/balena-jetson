@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update balena-yocto-scripts to a5b7cacc6dd4e3a3e03c77513760b6d3a89a68d0
+      hash: 99c3e0883e4c2f3970477d5cace099fb376a9bb3
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to a5b7cacc6dd4e3a3e03c77513760b6d3a89a68d0
+        changelog-entry: Update balena-yocto-scripts to a5b7cacc6dd4e3a3e03c77513760b6d3a89a68d0
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Bump balena-cli to v.Latest
+              hash: 6aec14bf20674e62822ba41f56ef2763c4036b6d
+              body: |
+                * remove SSH key injection
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: ab77
+              nested: []
+          version: balena-yocto-scripts-1.18.0
+          title: "'Bump balena-cli to v.Latest'"
+          date: 2022-03-31T20:52:47.275Z
+  version: 2.95.12+rev1
+  title: "'Update balena-yocto-scripts digest to a5b7cac'"
+  date: 2022-04-01T03:43:14.155Z
+- commits:
     - subject: Update layers/meta-balena to 8797487542bebf28f89bcb5251437f12c117dec7
       hash: e50882c74ae774968c50ce735f0e400b9bd75fe2
       body: Update layers/meta-balena

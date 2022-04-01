@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.95.12+rev1
+## (2022-04-01)
+
+
+<details>
+<summary> Update balena-yocto-scripts to a5b7cacc6dd4e3a3e03c77513760b6d3a89a68d0 [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.18.0
+> ### (2022-04-01)
+> 
+> * Bump balena-cli to v.Latest [ab77]
+> 
+</details>
+
 # v2.95.12
 ## (2022-04-01)
 
