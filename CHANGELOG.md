@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.95.14
+## (2022-04-06)
+
+
+<details>
+<summary> Update layers/meta-balena to e13a2dbf4bee982f03b709d25b172d670fb7f4f1 [Renovate Bot] </summary>
+
+> ## meta-balena-2.95.14
+> ### (2022-04-06)
+> 
+> * Updates SIM info for soracom and provides docs. [Alex]
+> 
+</details>
+
 # v2.95.13
 ## (2022-04-06)
 
