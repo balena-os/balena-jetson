@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.95.15
+## (2022-04-06)
+
+
+<details>
+<summary> Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf [Renovate Bot] </summary>
+
+> ## meta-balena-2.95.15
+> ### (2022-04-06)
+> 
+> * kernel-headers-test: clean tools like fixdep [Alexandru Costache]
+> 
+</details>
+
 # v2.95.14
 ## (2022-04-06)
 

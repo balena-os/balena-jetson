@@ -1,4 +1,41 @@
 - commits:
+    - subject: Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf
+      hash: 29d8dc7b983e0d6bc5eab22181a79ae20213062d
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf
+        changelog-entry: Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "kernel-headers-test: clean tools like fixdep"
+              hash: bdc217b2da79349989f32b65454a4e5e2509fa1a
+              body: |
+                Let's ensure tools like fixdep are built in container
+                and not reused from the yocto build, otherwise they
+                may not run if they were linked against a different
+                version of libc that may not be available in the kernel
+                modules build container.
+
+                This fixes the following error encountered when doing
+                a Poky Honister build for the balena-intel repository:
+
+                  scripts/basic/fixdep: /lib64/libc.so.6: version `GLIBC_2.34'
+                  not found (required by scripts/basic/fixdep)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.95.15
+          title: "'kernel-headers-test: clean tools like fixdep'"
+          date: 2022-04-06T12:39:17.305Z
+  version: 2.95.15
+  title: "'Update layers/meta-balena digest to 831819b'"
+  date: 2022-04-06T17:40:45.123Z
+- commits:
     - subject: Update layers/meta-balena to e13a2dbf4bee982f03b709d25b172d670fb7f4f1
       hash: 5055de4492d9d0cad66d454ad178292e8c288ec1
       body: Update layers/meta-balena
