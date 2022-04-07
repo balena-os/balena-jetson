@@ -230,6 +230,10 @@ do_configure() {
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557444 count=6 skip=128  of=boot0.img conv=notrunc
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=622980 count=6 skip=134  of=boot0.img conv=notrunc
 
+    # Added as of L4T 32.7.1 for TX2
+    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=623472 count=32 skip=140  of=boot0.img conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557936 count=32 skip=172  of=boot0.img conv=notrunc
+
     cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img
 }
 
