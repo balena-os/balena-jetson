@@ -139,7 +139,6 @@ signfile() {
      --scr_cold_boot_config tegra194-mb1-bct-scr-cbb-mini-p3668.cfg \
      --br_cmd_config tegra194-mb1-bct-reset-p3668-0001-a00.cfg \
      --dev_params tegra194-br-bct-qspi.cfg \
-     --trim_bpmp_dtb \
      --bin "${bins}"
 }
 
@@ -177,8 +176,7 @@ do_configure() {
     done
 
     for f in ${STAGING_DATADIR}/tegraflash/tegra194-*-bpmp-*.dtb; do
-        ln -s $f .
-        cp $f ${DEPLOY_DIR_IMAGE}/bootfiles/
+        cp $f .
     done
 
     if [ -n "${NVIDIA_BOARD_CFG}" ]; then
