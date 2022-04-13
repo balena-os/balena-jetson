@@ -268,6 +268,12 @@ do_configure() {
     dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=645456 skip=1184  bs=1 count=320 conv=notrunc
     dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=669072 skip=1504  bs=1 count=32 conv=notrunc
 
+    # Needed in L4T 32.7.1
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=587312 skip=1536  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=669232 skip=1568  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=2441216 skip=1600  bs=1 count=320 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=2445312 skip=1920  bs=1 count=320 conv=notrunc
+
     cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/
 }
 

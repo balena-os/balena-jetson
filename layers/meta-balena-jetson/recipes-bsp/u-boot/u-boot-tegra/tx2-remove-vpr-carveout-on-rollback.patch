@@ -37,8 +37,8 @@ index 922ca28657..0f82bd38f3 100644
  		env_set("bootargs", finalbootargs);
  		printf("append: %s\n", finalbootargs);
 +
-+		// Avoid kernel panic if booting the L4T 32.4.4 kernel with the 32.5.1 u-boot
-+		if (!strstr(finalbootargs, "l4tver=32.5.1") && !strstr(finalbootargs, "l4tver=32.6.1" )) {
++		// Avoid kernel panic if booting the L4T 32.4.4 kernel with newer u-boot versions
++		if (!strstr(finalbootargs, "l4tver=32.5.1") && !strstr(finalbootargs, "l4tver=32.6.1") && !strstr(finalbootargs, "l4tver=32.7.1")) {
 +		    printf("Booting an L4T older than 32.5.1 in altboot mode, remove vpr-carveout\n");
 +		    fdt_del_copy=env_get("fdt_del_copy_node_paths");
 +		    pos = strstr(fdt_del_copy, delete);

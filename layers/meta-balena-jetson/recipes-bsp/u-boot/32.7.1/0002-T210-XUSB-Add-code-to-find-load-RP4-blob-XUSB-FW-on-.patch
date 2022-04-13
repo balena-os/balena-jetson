@@ -1,0 +1,354 @@
+From e5966ea9d1c425b16348e6f2015701ba95c5d47d Mon Sep 17 00:00:00 2001
+From: Tom Warren <twarren@nvidia.com>
+Date: Mon, 23 Aug 2021 16:02:51 -0700
+Subject: [PATCH 2/4] T210: XUSB: Add code to find/load RP4 blob (XUSB FW) on
+ Nano and TX1
+
+Previously, CBoot was responsible for finding & loading the RP4 blob.
+But CBoot does nothing w/XUSB/XHCI on L4T T210 boards, and U-Boot now is
+doing the XHCI driver init, so I moved the RP4 blob load to U-Boot.
+Tested working on both Nano SKU0/SKU2/SKU3 (QSPI and eMMC) and TX1.
+Removed dependence on CBoot XUSB FW address. Removal of CBoot's RP4 load
+will happen in another patch.
+
+Bug 3392169
+
+Change-Id: I3327f82f0a992362e83e42418032552a826ab879
+Signed-off-by: Tom Warren <twarren@nvidia.com>
+Reviewed-on: https://git-master.nvidia.com/r/c/3rdparty/u-boot/+/2604083
+Tested-by: mobile promotions <svcmobile_promotions@nvidia.com>
+GVS: Gerrit_Virtual_Submit
+Reviewed-by: Jonathan Hunter <jonathanh@nvidia.com>
+Reviewed-by: mobile promotions <svcmobile_promotions@nvidia.com>
+---
+ arch/arm/mach-tegra/cboot.c                |   6 +-
+ arch/arm/mach-tegra/tegra210/Makefile      |   3 +-
+ arch/arm/mach-tegra/tegra210/rp4_support.c | 115 +++++++++++++++++++++
+ arch/arm/mach-tegra/tegra210/rp4_support.h |  14 +++
+ cmd/mmc.c                                  |   2 +-
+ disk/part_efi.c                            |  10 +-
+ drivers/usb/host/xhci-tegra.c              |  35 ++++++-
+ 7 files changed, 173 insertions(+), 12 deletions(-)
+ create mode 100644 arch/arm/mach-tegra/tegra210/rp4_support.c
+ create mode 100644 arch/arm/mach-tegra/tegra210/rp4_support.h
+
+diff --git a/arch/arm/mach-tegra/cboot.c b/arch/arm/mach-tegra/cboot.c
+index 24066d019c..9675452ee9 100644
+--- a/arch/arm/mach-tegra/cboot.c
++++ b/arch/arm/mach-tegra/cboot.c
+@@ -695,6 +695,7 @@ out:
+ 		drv->load = NULL;
+ }
+ 
++#if defined(CBOOT_RP4_LOAD)
+ int cboot_get_xusb_fw_addr(void)
+ {
+ 	int node, len, err;
+@@ -725,6 +726,7 @@ int cboot_get_xusb_fw_addr(void)
+ out:
+ 	return err;
+ }
++#endif	/* CBOOT_RP4_LOAD */
+ #endif	/* T210 */
+ 
+ int cboot_late_init(void)
+@@ -757,8 +759,8 @@ int cboot_late_init(void)
+ 		free(bootargs);
+ 	}
+ 
+-#if defined(CONFIG_TEGRA210)
+-	/* T210 XUSB ONLY: get XUSB FW load address */
++#if defined(CBOOT_RP4_LOAD)
++	/* T210 XUSB ONLY: get XUSB FW load address from CBoot */
+ 	if (cboot_get_xusb_fw_addr())
+ 		printf("%s: Failed to get XUSB FW address! err: %d\n",
+ 		       __func__, err);
+diff --git a/arch/arm/mach-tegra/tegra210/Makefile b/arch/arm/mach-tegra/tegra210/Makefile
+index cfcba5b68f..e6d2bd4db5 100644
+--- a/arch/arm/mach-tegra/tegra210/Makefile
++++ b/arch/arm/mach-tegra/tegra210/Makefile
+@@ -1,5 +1,5 @@
+ #
+-# (C) Copyright 2013-2020
++# (C) Copyright 2013-2021
+ # NVIDIA Corporation <www.nvidia.com>
+ #
+ # SPDX-License-Identifier:     GPL-2.0+
+@@ -7,5 +7,6 @@
+ 
+ obj-y	+= clock.o
+ obj-y	+= funcmux.o
++obj-y	+= rp4_support.o
+ obj-y	+= xusb-padctl.o
+ obj-y	+= ../xusb-padctl-common.o
+diff --git a/arch/arm/mach-tegra/tegra210/rp4_support.c b/arch/arm/mach-tegra/tegra210/rp4_support.c
+new file mode 100644
+index 0000000000..618c3fd049
+--- /dev/null
++++ b/arch/arm/mach-tegra/tegra210/rp4_support.c
+@@ -0,0 +1,115 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021, NVIDIA CORPORATION.  All rights reserved.
++ */
++
++#include <common.h>
++#include <dm.h>
++#include <spi_flash.h>
++#include <mmc.h>
++#include <malloc.h>
++#include <memalign.h>
++#include <part_efi.h>
++#include "rp4_support.h"
++
++int find_rp4_data(char *buf, long size)
++{
++	struct udevice *dev;
++	struct mmc *mmc;
++	u32 cnt, n;
++	int i, curr_device = 0;
++	int ret = 0;
++	gpt_entry *gpt_pte = NULL;
++	bool use_spi_flash = true;	/* Assume QSPI (Nano SKU0/SKU3) */
++	long offset = 0x3F8000;		/* 4MB QSPI, which has no GPT to parse */
++
++	ALLOC_CACHE_ALIGN_BUFFER_PAD(gpt_header, gpt_head, 1, 512 /*dev_desc->blksz*/);
++
++	printf("Loading XUSB FW blob from RP4 partition ...\n");
++
++	/* Find out if QSPI is present, if not use eMMC (TX1, Nano-SKU2) */
++	ret = uclass_first_device_err(UCLASS_SPI_FLASH, &dev);
++	if (ret) {
++		debug("Can't find SPI flash device, using eMMC ..\n");
++		use_spi_flash = false;
++	}
++
++	if (use_spi_flash) {
++		debug("%s: Reading QSPI, offset 0x%08lX ...\n", __func__,
++			offset);
++		ret = spi_flash_read_dm(dev, offset, size, buf);
++		if (ret)
++			return log_msg_ret("Cannot read SPI flash", ret);
++	} else {
++		debug("%s: Reading mmc %d, parsing GPT ...\n", __func__,
++			curr_device);
++
++		mmc = init_mmc_device(curr_device, false);
++		if (!mmc)
++			return -ENODEV;
++
++		if (find_valid_gpt(mmc_get_blk_desc(mmc), gpt_head, &gpt_pte) != 1) {
++			printf("ERROR reading eMMC GPT!\n");
++			return -EINVAL;
++		}
++
++		for (i = 0; i < le32_to_cpu(gpt_head->num_partition_entries); i++) {
++			/* Stop at the first non valid PTE */
++			if (!is_pte_valid(&gpt_pte[i]))
++				break;
++
++			debug("%3d 0x%08llx 0x%08llx %s\n", (i + 1),
++				le64_to_cpu(gpt_pte[i].starting_lba),
++				le64_to_cpu(gpt_pte[i].ending_lba),
++				print_efiname(&gpt_pte[i]));
++
++			if (strcmp("RP4", print_efiname(&gpt_pte[i])) == 0) {
++				offset = le64_to_cpu(gpt_pte[i].starting_lba);
++				debug("Found RP4 partition @ 0x%8lX\n", offset);
++				break;
++			}
++		}
++
++		/* Remember to free pte */
++		free(gpt_pte);
++
++		cnt = size / mmc_get_blk_desc(mmc)->blksz;
++		debug("\neMMC read: dev # %d, block # %ld, count %d ... ",
++			curr_device, offset, cnt);
++		n = blk_dread(mmc_get_blk_desc(mmc), offset, cnt, buf);
++		debug("%d blocks read: %s\n", n, (n == cnt) ? "OK" : "ERROR");
++	}
++again:
++	/* Good read, check for NVBLOB sig */
++	debug("%s: checking offset %lX\n", __func__, offset);
++	if (strcmp(buf, "NVIDIA__BLOB__V2") == 0) {
++		debug("%s: Found an NV BLOB! ...\n", __func__);
++		if (strcmp(buf+0x58, "XUSB") == 0) {
++			debug("%s: Found XUSB sig!\n", __func__);
++			if (use_spi_flash) {
++				debug("%ld bytes read: %s\n", size, "QSPI");
++			} else {
++				debug("%d blocks read: %s\n", cnt, "eMMC");
++			}
++
++			debug(" XUSB FW @ %p\n", buf);
++			goto done;
++		}
++	}
++
++	if (use_spi_flash) {
++		/* read next block, work back thru QSPI (RP4 is near the end) */
++		offset -= PROBE_BUF_SIZE;
++		if (offset <= 0)
++			goto done;
++
++		ret = spi_flash_read_dm(dev, offset, size, buf);
++		if (ret)
++			return log_msg_ret("Cannot read SPI flash", ret);
++
++		goto again;
++	}
++
++done:
++	return 0;
++}
+diff --git a/arch/arm/mach-tegra/tegra210/rp4_support.h b/arch/arm/mach-tegra/tegra210/rp4_support.h
+new file mode 100644
+index 0000000000..d2c6d50c24
+--- /dev/null
++++ b/arch/arm/mach-tegra/tegra210/rp4_support.h
+@@ -0,0 +1,14 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021, NVIDIA CORPORATION.  All rights reserved.
++ */
++
++struct mmc *init_mmc_device(int dev, bool force_init);
++char *print_efiname(gpt_entry *pte);
++int is_pte_valid(gpt_entry * pte);
++int find_valid_gpt(struct blk_desc *dev_desc, gpt_header *gpt_head, gpt_entry **pgpt_pte);
++int find_rp4_data(char *buf, long size);
++
++/* The amount of the rp4 header to probe to obtain what we need */
++#define PROBE_BUF_SIZE 32768
++
+diff --git a/cmd/mmc.c b/cmd/mmc.c
+index 1860a3f2e5..455a27d51c 100644
+--- a/cmd/mmc.c
++++ b/cmd/mmc.c
+@@ -92,7 +92,7 @@ static void print_mmcinfo(struct mmc *mmc)
+ 		}
+ 	}
+ }
+-static struct mmc *init_mmc_device(int dev, bool force_init)
++struct mmc *init_mmc_device(int dev, bool force_init)
+ {
+ 	struct mmc *mmc;
+ 	mmc = find_mmc_device(dev);
+diff --git a/disk/part_efi.c b/disk/part_efi.c
+index b2e157d9c1..85455f6a67 100644
+--- a/disk/part_efi.c
++++ b/disk/part_efi.c
+@@ -51,11 +51,11 @@ static int is_gpt_valid(struct blk_desc *dev_desc, u64 lba,
+ 				gpt_header *pgpt_head, gpt_entry **pgpt_pte);
+ static gpt_entry *alloc_read_gpt_entries(struct blk_desc *dev_desc,
+ 					 gpt_header *pgpt_head);
+-static int is_pte_valid(gpt_entry * pte);
+-static int find_valid_gpt(struct blk_desc *dev_desc, gpt_header *gpt_head,
++int is_pte_valid(gpt_entry * pte);
++int find_valid_gpt(struct blk_desc *dev_desc, gpt_header *gpt_head,
+ 			  gpt_entry **pgpt_pte);
+ 
+-static char *print_efiname(gpt_entry *pte)
++char *print_efiname(gpt_entry *pte)
+ {
+ 	static char name[PARTNAME_SZ + 1];
+ 	int i;
+@@ -981,7 +981,7 @@ static int is_gpt_valid(struct blk_desc *dev_desc, u64 lba,
+  * Description: returns 1 if found a valid gpt,  0 on error.
+  * If valid, returns pointers to PTEs.
+  */
+-static int find_valid_gpt(struct blk_desc *dev_desc, gpt_header *gpt_head,
++int find_valid_gpt(struct blk_desc *dev_desc, gpt_header *gpt_head,
+ 			  gpt_entry **pgpt_pte)
+ {
+ 	int r;
+@@ -1064,7 +1064,7 @@ static gpt_entry *alloc_read_gpt_entries(struct blk_desc *dev_desc,
+  *
+  * Description: returns 1 if valid,  0 on error.
+  */
+-static int is_pte_valid(gpt_entry * pte)
++int is_pte_valid(gpt_entry * pte)
+ {
+ 	efi_guid_t unused_guid;
+ 
+diff --git a/drivers/usb/host/xhci-tegra.c b/drivers/usb/host/xhci-tegra.c
+index 555eb558d8..0505ce60b9 100644
+--- a/drivers/usb/host/xhci-tegra.c
++++ b/drivers/usb/host/xhci-tegra.c
+@@ -1,5 +1,5 @@
+ // SPDX-License-Identifier: GPL-2.0+
+-/* Copyright (c) 2020 NVIDIA Corporation */
++/* Copyright (c) 2020-2021 NVIDIA Corporation */
+ 
+ #include <common.h>
+ #include <dm.h>
+@@ -12,6 +12,7 @@
+ #include <asm/arch/powergate.h>
+ #include <usb.h>
+ #include <linux/libfdt.h>
++#include <linux/sizes.h>
+ #include <fdtdec.h>
+ #include <malloc.h>
+ #include <watchdog.h>
+@@ -40,10 +41,14 @@ struct tegra_xhci {
+ 	struct xhci_hccr *hcd;
+ };
+ 
++int find_rp4_data(char *fwbuffer, long size);
++
+ static int tegra_xhci_usb_ofdata_to_platdata(struct udevice *dev)
+ {
+ 	struct tegra_xhci_platdata *plat = dev_get_platdata(dev);
+ 	int ret = 0;
++	long size = SZ_128K;		/* size of RP4 blob */
++	char *fwbuf;
+ 
+ 	debug("%s: entry\n", __func__);
+ 
+@@ -60,7 +65,7 @@ static int tegra_xhci_usb_ofdata_to_platdata(struct udevice *dev)
+ 	/* Vbus gpio */
+ 	gpio_request_by_name(dev, "nvidia,vbus-gpio", 0, &plat->vbus_gpio,
+ 			     GPIOD_IS_OUT);
+-
++#ifdef CBOOT_RP4_LOAD
+ 	/* Get the XUSB firmware address that CBoot saved to DTB, now in env */
+ 	plat->fw_addr = env_get_hex("xusb_fw_addr", 0);
+ 
+@@ -71,8 +76,32 @@ static int tegra_xhci_usb_ofdata_to_platdata(struct udevice *dev)
+ 		pr_err("Can't get the XUSB firmware load address!\n");
+ 		ret = -ENXIO;
+ 	}
+-errout:
+ 
++#else	/* !CBOOT_RP4_LOAD */
++
++	/* allocate 128KB for RP4 FW, pass to find_rp4_data */
++	fwbuf = malloc(size);
++	if (!fwbuf) {
++		pr_err("Could not allocate %ld byte RP4 buffer!\n", size);
++		ret = -ENOMEM;
++	}
++
++	/* Search QSPI (or eMMC) for RP4 blob, load it to fwbuf */
++	ret = find_rp4_data(fwbuf, size);
++	if (!ret) {
++		debug("%s: Got some RP4 data!\n", __func__ );
++		debug("[U-Boot] found XUSB FW @ 0x%p\n", fwbuf);
++		plat->fw_addr = (u64)fwbuf;
++		plat->fw_addr += 0x28C;
++		debug(" plat->fw_addr is now 0x%lld!\n", plat->fw_addr);
++	} else {
++		pr_err("Cannot read the RP4 data!\n");
++		free(fwbuf);
++		ret = -ENXIO;
++	}
++#endif	/* CBOOT_RP4_LOAD */
++
++errout:
+ 	return ret;
+ }
+ 
+-- 
+2.17.1
+
