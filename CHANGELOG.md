@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.95.15+rev2
+## (2022-04-13)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 7bd3088484fa06c297e8f6c8abf5d0a1916654f5 [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.0
+> ### (2022-04-13)
+> 
+> * deploy: push image variant artifacts [Joseph Kogut]
+> 
+</details>
+
 # v2.95.15+rev1
 ## (2022-04-12)
 

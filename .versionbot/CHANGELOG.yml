@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 7bd3088484fa06c297e8f6c8abf5d0a1916654f5
+      hash: edfee7f7710cd1fa6ac472422492efc540c38662
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 7bd3088484fa06c297e8f6c8abf5d0a1916654f5
+        changelog-entry: Update balena-yocto-scripts to 7bd3088484fa06c297e8f6c8abf5d0a1916654f5
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "deploy: push image variant artifacts"
+              hash: f5b7ae35f2f2996d93ba572919e26e1487a79f79
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.19.0
+          title: "'deploy: push image variant artifacts'"
+          date: 2022-04-13T14:36:11.268Z
+  version: 2.95.15+rev2
+  title: "'Update balena-yocto-scripts digest to 7bd3088'"
+  date: 2022-04-13T15:26:01.293Z
+- commits:
     - subject: "layers/meta-tegra: Switch to master branch for L4T 32.7.1"
       hash: bffdf58e6d4e9a41f4e08c9fd3fdb5845a9c2c71
       body: |
