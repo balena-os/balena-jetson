@@ -1,4 +1,22 @@
 - commits:
+    - subject: "layers/meta-tegra: Switch to master branch for L4T 32.7.1"
+      hash: bffdf58e6d4e9a41f4e08c9fd3fdb5845a9c2c71
+      body: |
+        meta-balena does not support Kirkstone yet but this is
+        not necessary because this layer is compatible with
+        Honister, and we override compatiblity in our jetson
+        layer
+      footer:
+        Changelog-entry: "layers/meta-tegra: Switch to master branch for L4T 32.7.1"
+        changelog-entry: "layers/meta-tegra: Switch to master branch for L4T 32.7.1"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.95.15+rev1
+  title: "'WIP: upgrade all device types to L4T 32.7.1'"
+  date: 2022-04-12T08:30:25.511Z
+- commits:
     - subject: Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf
       hash: 29d8dc7b983e0d6bc5eab22181a79ae20213062d
       body: Update layers/meta-balena

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.95.15+rev1
+## (2022-04-12)
+
+* layers/meta-tegra: Switch to master branch for L4T 32.7.1 [Alexandru Costache]
+
 # v2.95.15
 ## (2022-04-06)
 
