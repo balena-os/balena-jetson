@@ -1,0 +1,71 @@
+From 3bd720a6fd8836c75c46b9df170567fecce26afb Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Thu, 14 Apr 2022 12:36:12 +0200
+Subject: [PATCH] realtek/rtl8822ce: Enable extra config options
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ .../net/wireless/realtek/rtl8822ce/Makefile   | 26 +++++++++++++++++++
+ .../realtek/rtl8822ce/include/autoconf.h      |  1 -
+ 2 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/Makefile b/nvidia/drivers/net/wireless/realtek/rtl8822ce/Makefile
+index ac9d40b77985..3466d04a66bb 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/Makefile
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/Makefile
+@@ -85,6 +85,11 @@ CONFIG_ICMP_VOQ = n
+ CONFIG_IP_R_MONITOR = n #arp VOQ and high rate
+ CONFIG_RTW_DISABLE_HW_PDN = n
+ CONFIG_RTW_IOT_CCK_PD_INIT = n
++CONFIG_RTW_80211K = y
++CONFIG_RTW_80211R = y
++CONFIG_LAYER2_ROAMING = y
++CONFIG_RTW_WNM = y
++CONFIG_RTW_BTM_ROAM = y
+ ########################## Debug ###########################
+ CONFIG_RTW_DEBUG = y
+ # default log level is _DRV_INFO_ = 4,
+@@ -1216,6 +1221,27 @@ ifeq ($(CONFIG_RTW_IOT_CCK_PD_INIT), y)
+ EXTRA_CFLAGS += -DCONFIG_RTW_IOT_CCK_PD_INIT
+ endif
+ 
++ifeq ($(CONFIG_RTW_80211K), y)
++EXTRA_CFLAGS += -DCONFIG_RTW_80211K
++endif
++
++ifeq ($( CONFIG_RTW_80211R), y)
++EXTRA_CFLAGS += -DCONFIG_RTW_80211R
++endif
++
++ifeq ($(CONFIG_LAYER2_ROAMING), y)
++EXTRA_CFLAGS += -DCONFIG_LAYER2_ROAMING
++endif
++
++ifeq ($(CONFIG_RTW_WNM), y)
++EXTRA_CFLAGS += -DCONFIG_RTW_WNM
++endif
++
++ifeq ($(CONFIG_RTW_BTM_ROAM), y)
++EXTRA_CFLAGS += -DCONFIG_RTW_BTM_ROAM
++endif
++
++
+ ifeq ($(CONFIG_RTW_WIFI_HAL), y)
+ #EXTRA_CFLAGS += -DCONFIG_RTW_WIFI_HAL_DEBUG
+ EXTRA_CFLAGS += -DCONFIG_RTW_WIFI_HAL
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/include/autoconf.h b/nvidia/drivers/net/wireless/realtek/rtl8822ce/include/autoconf.h
+index 9f722cae09f7..5d513f66c43d 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/include/autoconf.h
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/include/autoconf.h
+@@ -184,7 +184,6 @@
+ /* #define CONFIG_RTW_WNM */
+ /* #define CONFIG_RTW_BTM_ROAM */
+ 
+-#define CONFIG_LAYER2_ROAMING
+ #define CONFIG_LAYER2_ROAMING_RESUME
+ /*#define CONFIG_ADAPTOR_INFO_CACHING_FILE*/ /* now just applied on 8192cu only, should make it general...*/
+ /*#define CONFIG_RESUME_IN_WORKQUEUE*/
+-- 
+2.17.1
+

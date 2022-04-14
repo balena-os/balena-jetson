@@ -30,6 +30,7 @@ SRC_URI_append_jetson-tx2 = " \
     file://0002-qmi_wwan-Update-from-4.14-kernel.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
+    file://0001-realtek-rtl8822ce-Enable-extra-config-options.patch \
 "
 
 SRC_URI_append_cti-rogue-xavier = " \
