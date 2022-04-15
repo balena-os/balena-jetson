@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.95.15+rev3
+## (2022-04-15)
+
+
+<details>
+<summary> Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.1
+> ### (2022-04-14)
+> 
+> * deploy: ensure deployRawArtifact is empty instead of null [Joseph Kogut]
+> 
+</details>
+
 # v2.95.15+rev2
 ## (2022-04-13)
 

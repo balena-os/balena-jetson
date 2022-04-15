@@ -1,4 +1,38 @@
 - commits:
+    - subject: Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c
+      hash: 36f06a4ce28a1f82329f6c52f72e39fc5a654af4
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c
+        changelog-entry: Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "deploy: ensure deployRawArtifact is empty instead of null"
+              hash: 56edfe62d6ecede3e07b0b51653ca605a2e4ba83
+              body: >
+                jq returns null by default when a given key isn't found, ensure
+                that
+
+                when getting the value of deployRawArtifact, we get an empty variable
+
+                instead, which is checked later on to determine if that file should be
+
+                deployed
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.19.1
+          title: "'deploy: ensure deployRawArtifact is empty instead of null'"
+          date: 2022-04-14T16:02:35.647Z
+  version: 2.95.15+rev3
+  title: "'Update balena-yocto-scripts digest to ff9465a'"
+  date: 2022-04-15T09:42:04.672Z
+- commits:
     - subject: Update balena-yocto-scripts to 7bd3088484fa06c297e8f6c8abf5d0a1916654f5
       hash: edfee7f7710cd1fa6ac472422492efc540c38662
       body: Update balena-yocto-scripts
