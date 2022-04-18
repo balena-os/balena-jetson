@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.95.15+rev4
+## (2022-04-15)
+
+* linux-tegra: Update dtb's photon-tx2-nx L4T R32.7.1 [ClintHaerinck]
+
 # v2.95.15+rev3
 ## (2022-04-15)
 

@@ -1,4 +1,20 @@
 - commits:
+    - subject: "linux-tegra: Update dtb's photon-tx2-nx L4T R32.7.1"
+      hash: d96cccebfa7fb9e38c8ca873e38d19d000e88bc5
+      body: |
+        Update CTI Photon TX2 NX dtb's to L4T R32.7.1
+        Official dtb with IMX477 will be released soon
+      footer:
+        Changelog-entry: "linux-tegra: Update dtb's photon-tx2-nx L4T R32.7.1"
+        changelog-entry: "linux-tegra: Update dtb's photon-tx2-nx L4T R32.7.1"
+        Signed-off-by: Clint Haerinck clint.haerinck@citymesh.com
+        signed-off-by: Clint Haerinck clint.haerinck@citymesh.com
+      author: ClintHaerinck
+      nested: []
+  version: 2.95.15+rev4
+  title: "'linux-tegra: update CTI Photon TX2 NX dtbs R32.7.1'"
+  date: 2022-04-15T18:53:05.397Z
+- commits:
     - subject: Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c
       hash: 36f06a4ce28a1f82329f6c52f72e39fc5a654af4
       body: Update balena-yocto-scripts
