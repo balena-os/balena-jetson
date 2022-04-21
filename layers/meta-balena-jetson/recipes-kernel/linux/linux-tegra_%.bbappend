@@ -63,7 +63,7 @@ SRC_URI:append:photon-tx2-nx = " \
     file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
     file://tegra186-tx2-nx-cti-NGX003.dtb \
     file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
-    file://tegra186-tx2-nx-cti-NGX003-IMX477-2CAM.dtb \
+    file://tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb \
 "
 
 SRC_URI:append:photon-xavier-nx = " \
@@ -350,7 +350,7 @@ do_deploy:append:photon-nano() {
 do_deploy:append:photon-tx2-nx() {
     cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003.dtb "${DEPLOYDIR}"
     cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb "${DEPLOYDIR}"
-    cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX477-2CAM.dtb "${DEPLOYDIR}"
+    cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb "${DEPLOYDIR}"
 }
 
 do_deploy:append:photon-xavier-nx() {
