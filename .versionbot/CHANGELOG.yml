@@ -1,4 +1,20 @@
 - commits:
+    - subject: "linux-tegra: Update IMX477 dtb photon-tx2-nx L4T R32.7.1"
+      hash: fb200d7057501a31eac1eb7199f134af7314b9f7
+      body: |
+        The dtb file is renamed by CTI. Also added dtb with old name to boot
+        partition for backward compatibility.
+      footer:
+        Changelog-entry: "linux-tegra: Update IMX477 dtb photon-tx2-nx L4T R32.7.1"
+        changelog-entry: "linux-tegra: Update IMX477 dtb photon-tx2-nx L4T R32.7.1"
+        Signed-off-by: Clint Haerinck clint.haerinck@citymesh.com
+        signed-off-by: Clint Haerinck clint.haerinck@citymesh.com
+      author: ClintHaerinck
+      nested: []
+  version: 2.95.15+rev5
+  title: "'linux-tegra: update CTI Photon TX2 NX IMX477 dtb R32.7.1'"
+  date: 2022-04-20T18:05:19.237Z
+- commits:
     - subject: "linux-tegra: Update dtb's photon-tx2-nx L4T R32.7.1"
       hash: d96cccebfa7fb9e38c8ca873e38d19d000e88bc5
       body: |
