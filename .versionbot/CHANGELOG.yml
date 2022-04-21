@@ -1,4 +1,34 @@
 - commits:
+    - subject: Update layers/meta-balena to 29b972bc69f5ab1778b9b255c0c0554c3407db32
+      hash: b7574ae80c1813dcf013b301c69e44b690d6ddb8
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 29b972bc69f5ab1778b9b255c0c0554c3407db32
+        changelog-entry: Update layers/meta-balena to 29b972bc69f5ab1778b9b255c0c0554c3407db32
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Package iwlwifi-QuZ-a0-hr-b0 firmware separately
+              hash: 261534942e5fe5b60680f51b129f33f00363a88e
+              body: |
+                We add this fw on its own package so that boards can add it to
+                rootfs (for Intel NUC 11th generation more specifically)
+              footer:
+                Changelog-entry: Package iwlwifi-QuZ-a0-hr-b0 firmware separately
+                changelog-entry: Package iwlwifi-QuZ-a0-hr-b0 firmware separately
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.95.16
+          title: "'linux-firmware: Package iwlwifi-QuZ-a0-hr-b0 firmware'"
+          date: 2022-04-19T13:00:33.214Z
+  version: 2.95.16
+  title: "'Update layers/meta-balena digest to 29b972b'"
+  date: 2022-04-21T23:31:48.187Z
+- commits:
     - subject: "linux-tegra: Update IMX477 dtb photon-tx2-nx L4T R32.7.1"
       hash: fb200d7057501a31eac1eb7199f134af7314b9f7
       body: |
