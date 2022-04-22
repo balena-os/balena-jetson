@@ -1,4 +1,32 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 63e2b61fa462be4f68a2b7d8ca5084fd2d7d09b2
+      hash: 9736b02ac38f459f0db35569872cda52f9781950
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 63e2b61fa462be4f68a2b7d8ca5084fd2d7d09b2
+        changelog-entry: Update balena-yocto-scripts to 63e2b61fa462be4f68a2b7d8ca5084fd2d7d09b2
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-lib: fix 'fatal: unsafe repository'"
+              hash: 445d6d1fcfce97f85ffcfedc0083eb658a734321
+              body: |
+                Git 2.35.2 was released to fix a security issue with multi-user
+                machines. Add `device_dir` to the whitelist to avoid this error.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.19.2
+          title: "'balena-lib: fix 'fatal: unsafe repository''"
+          date: 2022-04-21T23:56:18.934Z
+  version: 2.95.17+rev1
+  title: "'Update balena-yocto-scripts digest to 63e2b61'"
+  date: 2022-04-22T13:35:42.322Z
+- commits:
     - subject: Update layers/meta-balena to 7730a5a3808f7d154b47831f930adedecde1cbba
       hash: b3e4a54d1a5de2e57f2439c5b1c0a7591579aed2
       body: Update layers/meta-balena
