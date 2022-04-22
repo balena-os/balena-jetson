@@ -1,4 +1,38 @@
 - commits:
+    - subject: Update layers/meta-balena to 7730a5a3808f7d154b47831f930adedecde1cbba
+      hash: b3e4a54d1a5de2e57f2439c5b1c0a7591579aed2
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 7730a5a3808f7d154b47831f930adedecde1cbba
+        changelog-entry: Update layers/meta-balena to 7730a5a3808f7d154b47831f930adedecde1cbba
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "resin-device-register: avoid blocking the flasher when not connected"
+              hash: b5c521404c14df8a5d14e2789c97eebe79eb7d96
+              body: >
+                Starting with v2.91.6 device provisioning will not start if the
+                device
+
+                was unable to register in the cloud due to lack of internet connectivity.
+
+                To avoid this, we switch to retrying 3 times with the usual 2 second delay
+
+                between attempts, after which the flashing process will start.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.95.17
+          title: "'resin-device-register: improve provisioning'"
+          date: 2022-04-22T08:33:14.274Z
+  version: 2.95.17
+  title: "'Update layers/meta-balena digest to 7730a5a'"
+  date: 2022-04-22T13:20:40.084Z
+- commits:
     - subject: Update layers/meta-balena to 29b972bc69f5ab1778b9b255c0c0554c3407db32
       hash: b7574ae80c1813dcf013b301c69e44b690d6ddb8
       body: Update layers/meta-balena
