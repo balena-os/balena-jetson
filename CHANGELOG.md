@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.96.1
+## (2022-04-22)
+
+
+<details>
+<summary> Update layers/meta-balena to 0a58c6cdfc324e3fca540c48a119084669f99558 [Renovate Bot] </summary>
+
+> ## meta-balena-2.96.1
+> ### (2022-04-22)
+> 
+> * kernel-balena: Mention https protocol for github repository [Alexandru Costache]
+> 
+</details>
+
 # v2.96.0
 ## (2022-04-22)
 

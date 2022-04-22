@@ -1,4 +1,32 @@
 - commits:
+    - subject: Update layers/meta-balena to 0a58c6cdfc324e3fca540c48a119084669f99558
+      hash: 729e4496da60207c65b3a48c08ce53c36a275fef
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 0a58c6cdfc324e3fca540c48a119084669f99558
+        changelog-entry: Update layers/meta-balena to 0a58c6cdfc324e3fca540c48a119084669f99558
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "kernel-balena: Mention https protocol for github repository"
+              hash: e3ee5b0b70827fa5ae1f70b0721d9125885affe5
+              body: |
+                Github now requires for the https protocol to be used
+                when cloning repositories.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.96.1
+          title: "'kernel-balena: Mention https protocol for github repository'"
+          date: 2022-04-22T17:25:18.183Z
+  version: 2.96.1
+  title: "'Update layers/meta-balena digest to 0a58c6c'"
+  date: 2022-04-22T22:37:42.316Z
+- commits:
     - subject: Update layers/meta-balena to b7490ca45f22591b1e6f7fddc1bf5853f373c125
       hash: a6ab444c6d64f99e5bf2c5cb890f19b2e8bea06e
       body: Update layers/meta-balena
