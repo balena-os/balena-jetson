@@ -1,4 +1,34 @@
 - commits:
+    - subject: Update layers/meta-balena to 5498ce099c7316a58d21c35d970292f1e2443d97
+      hash: 9c7a0fca95121ca45317ba12fecacfe86fcadb93
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 5498ce099c7316a58d21c35d970292f1e2443d97
+        changelog-entry: Update layers/meta-balena to 5498ce099c7316a58d21c35d970292f1e2443d97
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Refresh PKI assets from config endpoint
+              hash: 081fca887b36108bc192ee98da6ba088f9e909b9
+              body: >
+                * Fixes #2569
+
+                * ensure OpenVPN client always starts with the latest CA certificate
+                  from API config endpoint as this certificate may have changed and
+                  we don't want VPN to be down for ~24 hours until os-config is triggered
+                  by systemd timer
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: ab77
+              nested: []
+          version: meta-balena-2.98.0
+          title: "'Refresh PKI assets from config endpoint'"
+          date: 2022-04-23T10:43:47.657Z
+  version: 2.98.0
+  title: "'Update layers/meta-balena digest to 5498ce0'"
+  date: 2022-04-23T14:48:43.394Z
+- commits:
     - subject: Update layers/meta-balena to a06697e55f26a36c296e51a8eddb81c3dbc1ae51
       hash: b2222935d96c2020575a3f8a46e6389e65739241
       body: Update layers/meta-balena
