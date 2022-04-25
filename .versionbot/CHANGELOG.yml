@@ -1,4 +1,28 @@
 - commits:
+    - subject: "linux-tegra: Update dtb files for photon-xavier-nx to 32.7.1"
+      hash: 3efb22296005a6f164dfeec915788735f2a25582
+      body: ""
+      footer:
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        Changelog-entry: "linux-tegra: Update dtb files for photon-xavier-nx to 32.7.1"
+        changelog-entry: "linux-tegra: Update dtb files for photon-xavier-nx to 32.7.1"
+      author: Pelle van Gils
+      nested: []
+    - subject: "linux-tegra: Update dtb files for photon-nano to 32.7.1"
+      hash: 8f6980c91d9d8f999320832c1df06e767e18d544
+      body: ""
+      footer:
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        Changelog-entry: "linux-tegra: Update dtb files for photon-nano to 32.7.1"
+        changelog-entry: "linux-tegra: Update dtb files for photon-nano to 32.7.1"
+      author: Pelle van Gils
+      nested: []
+  version: 2.98.2+rev1
+  title: "'Update DTB for photon-nano, photon-xavier-nx to 32.7.1'"
+  date: 2022-04-25T15:13:57.751Z
+- commits:
     - subject: Update layers/meta-balena to b6b6fc6c137e42a4184d46432c23cd20a35edd6c
       hash: a6fe0824aa77054002661109cca5a297f49b31cd
       body: Update layers/meta-balena
