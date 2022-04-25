@@ -1,6 +1,30 @@
 Change log
 -----------
 
+# v2.98.2
+## (2022-04-25)
+
+
+<details>
+<summary> Update layers/meta-balena to b6b6fc6c137e42a4184d46432c23cd20a35edd6c [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.2
+> ### (2022-04-25)
+> 
+> * balena-config-vars: unit-conf: Correct description [Alex Gonzalez]
+> * tests: os: Remove sshKeys test [Alex Gonzalez]
+> * tests: cloud: Add SSH authentication tests [Alex Gonzalez]
+> * os-sshkeys: When ssh keys change, regenerate development configuration [Alex Gonzalez]
+> * development-features: use os-helpers-devmode include file [Alex Gonzalez]
+> * os-helpers: Add os-helpers-devmode [Alex Gonzalez]
+> 
+> ## meta-balena-2.98.1
+> ### (2022-04-23)
+> 
+> * tests/leviathan: Update leviathan to v2.2.4 [Kyle Harding]
+> 
+</details>
+
 # v2.98.0
 ## (2022-04-23)
 
