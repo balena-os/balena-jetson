@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.98.4+rev1
+## (2022-04-26)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 13da1d2fd4483ba9a2cf9d3d7146985bbd720c6b [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.3
+> ### (2022-04-26)
+> 
+> * balena-lib: fix 445d6d1fcfce97f85ffcfedc0083eb658a734321 [Florin Sarbu]
+> 
+</details>
+
 # v2.98.4
 ## (2022-04-26)
 

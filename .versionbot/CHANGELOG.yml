@@ -1,4 +1,33 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 13da1d2fd4483ba9a2cf9d3d7146985bbd720c6b
+      hash: ee2cae1b8a9434890007fd0cb63d9d1349cb0be9
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 13da1d2fd4483ba9a2cf9d3d7146985bbd720c6b
+        changelog-entry: Update balena-yocto-scripts to 13da1d2fd4483ba9a2cf9d3d7146985bbd720c6b
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-lib: fix 445d6d1fcfce97f85ffcfedc0083eb658a734321"
+              hash: d8a3a47e87dc65b81451e5dd07213577cc9fe82b
+              body: |
+                Commit 445d6d1fcfce97f85ffcfedc0083eb658a734321 does not fix
+                the issue because it is missing the --global arg without which
+                the git config command fails.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.19.3
+          title: "'balena-lib: fix 445d6d1fcfce97f85ffcfedc0083eb658a734321'"
+          date: 2022-04-26T08:40:52.078Z
+  version: 2.98.4+rev1
+  title: "'Update balena-yocto-scripts digest to 13da1d2'"
+  date: 2022-04-26T10:22:12.175Z
+- commits:
     - subject: Update layers/meta-balena to 0d70942b143215aa0c350705d74a71a87d42870a
       hash: f1d6dfef940c27d37d5ab06486ce6114a0c94863
       body: Update layers/meta-balena
