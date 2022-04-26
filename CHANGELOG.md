@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.98.4
+## (2022-04-26)
+
+
+<details>
+<summary> Update layers/meta-balena to 0d70942b143215aa0c350705d74a71a87d42870a [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.4
+> ### (2022-04-25)
+> 
+> * Disable Engine startup timeouts [Leandro Motta Barros]
+> 
+</details>
+
+
+<details>
+<summary> Update layers/meta-balena to c71a9ac922091069e6fa736a07213685555ff21c [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.4
+> ### (2022-04-25)
+> 
+> * Disable Engine startup timeouts [Leandro Motta Barros]
+> 
+</details>
+
 # v2.98.2
 ## (2022-04-25)
 
