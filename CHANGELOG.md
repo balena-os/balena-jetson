@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.98.7
+## (2022-04-27)
+
+
+<details>
+<summary> Update layers/meta-balena to 9431a0dcafd13d0218b875f40e7e642d042ae4aa [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.7
+> ### (2022-04-27)
+> 
+> * linux-firmware: package QuZ-a0-jf-b0 separately [Michal Toman]
+> 
+</details>
+
 # v2.98.6
 ## (2022-04-27)
 
