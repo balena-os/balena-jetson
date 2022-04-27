@@ -1,4 +1,28 @@
 - commits:
+    - subject: "linux-tegra: Update dtb files for photon-xavier-nx to 32.7.1"
+      hash: 93a310599fabe30f684ccb31b55db55b2e475cfc
+      body: ""
+      footer:
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        Changelog-entry: "linux-tegra: Update dtb files for photon-xavier-nx to 32.7.1"
+        changelog-entry: "linux-tegra: Update dtb files for photon-xavier-nx to 32.7.1"
+      author: Pelle van Gils
+      nested: []
+    - subject: "linux-tegra: Update dtb files for photon-nano to 32.7.1"
+      hash: b0ba738d88dce2a752fb9054361810373877cd11
+      body: ""
+      footer:
+        Signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        signed-off-by: Pelle van Gils <pelle@hwky.ai>
+        Changelog-entry: "linux-tegra: Update dtb files for photon-nano to 32.7.1"
+        changelog-entry: "linux-tegra: Update dtb files for photon-nano to 32.7.1"
+      author: Pelle van Gils
+      nested: []
+  version: 2.98.4+rev2
+  title: "'Update DTBs for photon-nano, photon-xavier-nx to 32.7.1'"
+  date: 2022-04-26T13:45:45.216Z
+- commits:
     - subject: Update balena-yocto-scripts to 13da1d2fd4483ba9a2cf9d3d7146985bbd720c6b
       hash: ee2cae1b8a9434890007fd0cb63d9d1349cb0be9
       body: Update balena-yocto-scripts

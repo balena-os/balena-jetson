@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.98.4+rev2
+## (2022-04-26)
+
+* linux-tegra: Update dtb files for photon-xavier-nx to 32.7.1 [Pelle van Gils]
+* linux-tegra: Update dtb files for photon-nano to 32.7.1 [Pelle van Gils]
+
 # v2.98.4+rev1
 ## (2022-04-26)
 
