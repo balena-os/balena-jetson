@@ -1,4 +1,75 @@
 - commits:
+    - subject: Update layers/meta-balena to 798e236d25380d70e7be09d8d5dbb0349c05f413
+      hash: d59dace74940fc67b6e3a1a91723bb99e544226e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 798e236d25380d70e7be09d8d5dbb0349c05f413
+        changelog-entry: Update layers/meta-balena to 798e236d25380d70e7be09d8d5dbb0349c05f413
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "timeinit/timesync-https: Update rtc after setting system time"
+              hash: f16451b49b77bd7d3f5f82d20e0605a9797832eb
+              body: >
+                This solves a problem seen on a device on which, although
+
+                timeinit-rtc finishes running before timesync-https, chronyd
+
+                sets the system time to the incorrect rtc time
+
+                as soon as timesync-https finished running and setting the correct date
+
+                from the servers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.98.6
+          title: "'timeinit/timesync-https: Update rtc after setting system time'"
+          date: 2022-04-26T19:32:46.066Z
+        - commits:
+            - subject: "networkmanager: Use default DHCP timeout"
+              hash: 6175420731baa349c8d197151189462a23b2f460
+              body: >
+                This reverts 5047757 where we set the global DHCP timeout for
+                ipv4 to
+
+                infinity to mitigate problems with routers that do not respond to DHCP
+
+                requests in time.
+
+
+                This however causes issues on some routers, which after power cycle fail to
+
+                renew leases after they are expired.
+
+
+                The same ipv4.dhcp-timeout can be specified on per connection basis. Since
+
+                the case with lease renewal due to router power cycle is a more common case,
+
+                it is better to keep the global dhcp-timeout default unmodified. If the
+
+                setting needs adjustment then it can be overwritten in the particular
+
+                connection profile.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.98.5
+          title: "'networkmanager: Use default DHCP timeout'"
+          date: 2022-04-26T11:36:14.839Z
+  version: 2.98.6
+  title: "'Update layers/meta-balena digest to 798e236'"
+  date: 2022-04-27T09:52:01.913Z
+- commits:
     - subject: "linux-tegra: Update dtb files for photon-xavier-nx to 32.7.1"
       hash: 93a310599fabe30f684ccb31b55db55b2e475cfc
       body: ""
