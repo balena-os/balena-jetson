@@ -1,4 +1,44 @@
 - commits:
+    - subject: Update layers/meta-balena to fc45fb36cc79e5b7eab1017f4e5713773aba7ed1
+      hash: ddd9caf4e806d79d6b599cd61bad90e2ada60833
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to fc45fb36cc79e5b7eab1017f4e5713773aba7ed1
+        changelog-entry: Update layers/meta-balena to fc45fb36cc79e5b7eab1017f4e5713773aba7ed1
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: bump leviathan to 2.2.11"
+              hash: 617ab26578364b95525c225b3f2066e792b3cf2f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.98.9
+          title: "'tests: bump leviathan to 2.2.11'"
+          date: 2022-04-28T10:27:03.026Z
+        - commits:
+            - subject: "tests/cloud: fix ssh test for testbot workers"
+              hash: 4d44bb297e015bfaef140d8c92d14de0e412be47
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.98.8
+          title: "'tests/cloud: fix ssh test for testbot workers'"
+          date: 2022-04-28T09:09:48.983Z
+  version: 2.98.9
+  title: "'Update layers/meta-balena digest to fc45fb3'"
+  date: 2022-04-28T13:51:49.857Z
+- commits:
     - subject: Update layers/meta-balena to 9431a0dcafd13d0218b875f40e7e642d042ae4aa
       hash: cae605f9b9f6902d59acc04bea5aeff42c4dc4c1
       body: Update layers/meta-balena
