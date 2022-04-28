@@ -1,4 +1,35 @@
 - commits:
+    - subject: Update balena-yocto-scripts to fe688d2bfbb121401830ec804fa423619048a224
+      hash: 0491546dc3cd1045d76758d45bbf504a0a778437
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to fe688d2bfbb121401830ec804fa423619048a224
+        changelog-entry: Update balena-yocto-scripts to fe688d2bfbb121401830ec804fa423619048a224
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-api.inc: fix 'fatal: unsafe repository'"
+              hash: b467ef7d676d77e1057b1b9a1180075b9b82012e
+              body: |
+                Git 2.35.2 was released to fix a security issue with multi-user
+                machines. Add `device_dir` to the whitelist to avoid this error.
+
+                Also, let's make sure an error is thrown when the hostapp cannot
+                be made public.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.19.4
+          title: "'Add dir exceptions for newer git'"
+          date: 2022-04-28T11:28:28.873Z
+  version: 2.98.9+rev1
+  title: "'Update balena-yocto-scripts digest to fe688d2'"
+  date: 2022-04-28T14:07:01.584Z
+- commits:
     - subject: Update layers/meta-balena to fc45fb36cc79e5b7eab1017f4e5713773aba7ed1
       hash: ddd9caf4e806d79d6b599cd61bad90e2ada60833
       body: Update layers/meta-balena

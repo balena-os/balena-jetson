@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.98.9+rev1
+## (2022-04-28)
+
+
+<details>
+<summary> Update balena-yocto-scripts to fe688d2bfbb121401830ec804fa423619048a224 [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.4
+> ### (2022-04-28)
+> 
+> * balena-api.inc: fix 'fatal: unsafe repository' [Florin Sarbu]
+> 
+</details>
+
 # v2.98.9
 ## (2022-04-28)
 
