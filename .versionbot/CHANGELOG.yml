@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to 45726c6e1009bd1988071131762c483193a5ef59
+      hash: 508ea13cf9369dc86b7ce93651dc0d99e6372847
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 45726c6e1009bd1988071131762c483193a5ef59
+        changelog-entry: Update layers/meta-balena to 45726c6e1009bd1988071131762c483193a5ef59
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: bump leviathan to 2.13"
+              hash: 5dcf43cfcae4a8628c9aca0834205fbe4476edf1
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.98.10
+          title: "'tests: bump leviathan to 2.13'"
+          date: 2022-04-28T16:57:41.215Z
+  version: 2.98.10
+  title: "'Update layers/meta-balena digest to 45726c6'"
+  date: 2022-04-29T12:20:58.650Z
+- commits:
     - subject: Update balena-yocto-scripts to fe688d2bfbb121401830ec804fa423619048a224
       hash: 0491546dc3cd1045d76758d45bbf504a0a778437
       body: Update balena-yocto-scripts
