@@ -1,0 +1,78 @@
+From 47cbf8ebeaf0961eaff051e52ec1eb7640957a60 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 2 May 2022 11:35:31 +0200
+Subject: [PATCH 1/2] tegra194: Set SD/eMMC boot order as default priority
+
+We don't disable the rest, just in case users need to do
+quick tests with another distribution like ubuntu,
+for comparison.
+
+Upstream-status: Inappropriate[configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ bootloader/partner/common/lib/cbo/tegrabl_cbo.c        | 6 +++---
+ bootloader/partner/t18x/cboot/platform/t194/platform.c | 7 ++++---
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/bootloader/partner/common/lib/cbo/tegrabl_cbo.c b/bootloader/partner/common/lib/cbo/tegrabl_cbo.c
+index cbc7e52..c3c913d 100644
+--- a/bootloader/partner/common/lib/cbo/tegrabl_cbo.c
++++ b/bootloader/partner/common/lib/cbo/tegrabl_cbo.c
+@@ -36,18 +36,18 @@ static char **p_boot_dev_order;
+ static const char *default_boot_dev_order[] = {
+ 	/* Specified in the order of priority from top to bottom */
+ 	"sd",
++	"emmc",
+ 	"usb",
+ 	"nvme",
+-	"emmc",
+ 	"net",
+ };
+ 
+ static uint8_t default_boot_order[NUM_SECONDARY_STORAGE_DEVICES] = {
+ 	/* Specified in the order of priority from top to bottom */
+ 	BOOT_FROM_SD,
++	BOOT_FROM_BUILTIN_STORAGE,
+ 	BOOT_FROM_USB,
+ 	BOOT_FROM_NVME,
+-	BOOT_FROM_BUILTIN_STORAGE,
+ 	BOOT_FROM_NETWORK,
+ 	BOOT_DEFAULT,
+ };
+@@ -64,9 +64,9 @@ char *boot_cfg_vars[] = {
+ 
+ static struct boot_devices g_boot_devices[] = {
+ 	{"sd",		BOOT_FROM_SD},
++	{"emmc",        BOOT_FROM_BUILTIN_STORAGE},
+ 	{"usb",		BOOT_FROM_USB},
+ 	{"net",		BOOT_FROM_NETWORK},
+-	{"emmc",	BOOT_FROM_BUILTIN_STORAGE},
+ 	{"ufs",		BOOT_FROM_BUILTIN_STORAGE},
+ 	{"sata",	BOOT_FROM_BUILTIN_STORAGE},
+ 	{"nvme",	BOOT_FROM_NVME},
+diff --git a/bootloader/partner/t18x/cboot/platform/t194/platform.c b/bootloader/partner/t18x/cboot/platform/t194/platform.c
+index 815f90e..537649d 100644
+--- a/bootloader/partner/t18x/cboot/platform/t194/platform.c
++++ b/bootloader/partner/t18x/cboot/platform/t194/platform.c
+@@ -669,14 +669,15 @@ void platform_init(void)
+ 	}
+ #endif
+ 
+-	pr_info("Load in CBoot Boot Options partition and parse it\n");
++	pr_info("Ensure no boot option file is read from any raw partition and use default balenaOS boot order\n");
++	/*
+ 	err = tegrabl_read_cbo(CBO_PARTITION);
+ 	if (err != TEGRABL_NO_ERROR) {
+ 		pr_warn("%s: tegrabl_read_cbo failed with error %#x\n", __func__, err);
+ 		is_cbo_read = false;
+ 	}
+-
+-	(void)tegrabl_cbo_parse_info(is_cbo_read);
++	*/
++	(void)tegrabl_cbo_parse_info(false);
+ 
+ #if defined(CONFIG_ENABLE_SHELL)
+ 	enter_shell_upon_user_request();
+-- 
+2.17.1
+
