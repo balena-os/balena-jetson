@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.98.12+rev1
+## (2022-05-09)
+
+* Use SD-CARD or eMMC as boot device on Xavier cboot [Alexandru Costache]
+
 # v2.98.12
 ## (2022-05-03)
 

@@ -1,4 +1,18 @@
 - commits:
+    - subject: Use SD-CARD or eMMC as boot device on Xavier cboot
+      hash: 74b54e48f6d3f7b981870fce4299b15878ce8dce
+      body: ""
+      footer:
+        Changelog-entry: Use SD-CARD or eMMC as boot device on Xavier cboot
+        changelog-entry: Use SD-CARD or eMMC as boot device on Xavier cboot
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.98.12+rev1
+  title: "'cboot: Use SD-CARD or eMMC as boot device on Xavier'"
+  date: 2022-05-09T07:14:56.331Z
+- commits:
     - subject: Update layers/meta-balena to 0c96705ba26cda1062eff0b128eccb4f9388f9cc
       hash: b8b4b58650b660f3913a2fb24bb4ea8fd7632123
       body: Update layers/meta-balena
