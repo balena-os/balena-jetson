@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.98.12+rev2
+## (2022-05-10)
+
+* Allow for partitions to enumerate right after provisioning [Alexandru Costache]
+
 # v2.98.12+rev1
 ## (2022-05-09)
 

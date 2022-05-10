@@ -1,4 +1,21 @@
 - commits:
+    - subject: Allow for partitions to enumerate right after provisioning
+      hash: 7f1b9f43bbc80a6958053980f66861a3f7f97c20
+      body: |
+        Starting with 32.7.1 the Xavier AGX needs a delay
+        for the partitions to enumerate after rereadpt
+        is triggered.
+      footer:
+        Changelog-entry: Allow for partitions to enumerate right after provisioning
+        changelog-entry: Allow for partitions to enumerate right after provisioning
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.98.12+rev2
+  title: "'blockdev: Allow for partitions to enumerate right after provisioning'"
+  date: 2022-05-10T15:35:03.004Z
+- commits:
     - subject: Use SD-CARD or eMMC as boot device on Xavier cboot
       hash: 74b54e48f6d3f7b981870fce4299b15878ce8dce
       body: ""
