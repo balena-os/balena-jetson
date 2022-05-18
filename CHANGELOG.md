@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.98.12+rev3
+## (2022-05-18)
+
+* linux-tegra: Update dtb quark-nano L4T R32.7.1 [ClintHaerinck]
+* Added CTI Quark Nano device type [ClintHaerinck]
+
 # v2.98.12+rev2
 ## (2022-05-10)
 

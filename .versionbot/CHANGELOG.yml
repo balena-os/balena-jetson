@@ -1,4 +1,30 @@
 - commits:
+    - subject: "linux-tegra: Update dtb quark-nano L4T R32.7.1"
+      hash: 4e9f7f8807cce0269873156efe6ff8042f77f70a
+      body: |
+        Update CTI Quark Nano dtb to L4T R32.7.1
+      footer:
+        Changelog-entry: "linux-tegra: Update dtb quark-nano L4T R32.7.1"
+        changelog-entry: "linux-tegra: Update dtb quark-nano L4T R32.7.1"
+        Signed-off-by: Clint Haerinck clint.haerinck@citymesh.com
+        signed-off-by: Clint Haerinck clint.haerinck@citymesh.com
+      author: ClintHaerinck
+      nested: []
+    - subject: Added CTI Quark Nano device type
+      hash: 1213467f88d995a4b71abf51365e25d9d7ee1ea8
+      body: |
+        Added CTI Quark Nano device type
+      footer:
+        Changelog-entry: Added CTI Quark Nano device type
+        changelog-entry: Added CTI Quark Nano device type
+        Signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+        signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+      author: ClintHaerinck
+      nested: []
+  version: 2.98.12+rev3
+  title: "'Feat/quark-nano-r32.7.1'"
+  date: 2022-05-18T21:57:36.066Z
+- commits:
     - subject: Allow for partitions to enumerate right after provisioning
       hash: 7f1b9f43bbc80a6958053980f66861a3f7f97c20
       body: |
