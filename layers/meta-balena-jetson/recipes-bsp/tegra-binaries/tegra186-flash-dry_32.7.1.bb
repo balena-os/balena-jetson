@@ -16,12 +16,12 @@ DEPENDS = " \
 inherit deploy perlnative python3native
 
 BOOT_BINDIFF="boot0_t186.bindiff"
-BOOT_BINDIFF:jetson-tx2-4gb="boot0_t186_4gb.bindiff"
 BOOT_BINDIFF:jetson-tx2-nx-devkit="boot0_t186_nx_devkit.bindiff"
 
 SRC_URI = " \
     file://resinOS-flash186.xml \
     file://partition_specification186.txt \
+    file://tx2_28_x_hook_fix.sh \
     file://${BOOT_BINDIFF} \
 "
 
@@ -35,11 +35,6 @@ PROD_CFG="tegra186-mb1-bct-prod-quill-p3310-1000-c03.cfg"
 BR_CMD_CONFIG="tegra186-mb1-bct-bootrom-quill-p3310-1000-c03.cfg"
 
 # Jetson TX2 4GB overrides
-PINMUX_CFG:jetson-tx2-4gb="tegra186-mb1-bct-pinmux-quill-p3489-1000-a00.cfg"
-PMIC_CFG:jetson-tx2-4gb="tegra186-mb1-bct-pmic-lightning-p3489-1000-a00.cfg"
-PMC_CFG:jetson-tx2-4gb="tegra186-mb1-bct-pad-quill-p3489-1000-a00.cfg"
-PROD_CFG:jetson-tx2-4gb="tegra186-mb1-bct-prod-storm-p3489-1000-a00.cfg"
-BR_CMD_CONFIG:jetson-tx2-4gb="tegra186-mb1-bct-bootrom-quill-p3489-1000-a00.cfg"
 SDRAM_CFG="${MACHINE}.cfg"
 
 # Jetson TX2 NX in Xavier NX Devkit overrides
@@ -100,12 +95,7 @@ BOARDREV="c03"
 BPFDTBREV="c04"
 PMICREV="c04"
 
-BOARDREV:jetson-tx2-4gb="a00"
-BPFDTBREV:jetson-tx2-4gb="a00"
-PMICREV:jetson-tx2-4gb="a00"
-
 BPMP_DTB="tegra186-a02-bpmp-quill-p3310-1000-c04-00-te770d-ucm2.dtb"
-BPMP_DTB:jetson-tx2-4gb="tegra186-a02-bpmp-lightning-p3489-a00-00-te770m.dtb"
 BPMP_DTB:jetson-tx2-nx-devkit="tegra186-bpmp-p3636-0001-a00-00.dtb"
 
 do_configure() {
@@ -240,6 +230,10 @@ do_configure() {
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557444 count=6 skip=128  of=boot0.img conv=notrunc
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=622980 count=6 skip=134  of=boot0.img conv=notrunc
 
+    # Added as of L4T 32.7.1 for TX2
+    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=623472 count=32 skip=140  of=boot0.img conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557936 count=32 skip=172  of=boot0.img conv=notrunc
+
     cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img
 }
 
@@ -248,6 +242,13 @@ do_install() {
     cp -r ${S}/tegraflash/signed/* ${D}/${BINARY_INSTALL_PATH}
     cp ${WORKDIR}/partition_specification186.txt ${D}/${BINARY_INSTALL_PATH}/
     cp ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img ${D}/${BINARY_INSTALL_PATH}/
+    # This file contains an updated hook for older L4T 28.X based images,
+    # which allows an older image to re-create the 28.X partition layout
+    # in case the rollback-health checks fail. The hostapp-update hook
+    # from the new L4T 32.X rootfs replaces the old 28.X hook with this
+    # improved one, if it has not been updated already. This is part of the
+    # ongoing improvement for L4T transitioning.
+    install -m 0755 ${WORKDIR}/tx2_28_x_hook_fix.sh ${D}/${BINARY_INSTALL_PATH}/
     rm -rf ${DEPLOY_DIR_IMAGE}/tegra-binaries
 }
 

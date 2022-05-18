@@ -12,9 +12,9 @@ SRC_URI:append = " \
     file://0001-Support-referencing-the-root-partition-label-from-GP.patch \
     file://xhci-ring-Don-t-show-incorrect-WARN-message-about.patch \
     file://0001-dont-export-rpmb-as-part.patch \
+    file://0002-Update-qmi_wwan-to-kernel-4.14.patch \
 "
-#    file://0002-qmi_wwan-Update-from-4.14-kernel.patch 
-#"
+
 SRC_URI:append:jetson-tx2 = " \
     file://0001-Expose-spidev-to-the-userspace.patch \
     file://0002-mttcan-ivc-enable.patch \
@@ -30,14 +30,6 @@ SRC_URI:append:jetson-tx2 = " \
 
 SRC_URI:append:jetson-xavier-nx-devkit-seeed-2mic-hat = " \
     file://tegra194-p3668-all-p3509-0000-seeed-2mic-hat.dtb \
-"
-
-SRC_URI:append:cti-rogue-xavier = " \
-    file://tegra194-agx-cti-AGX101.dtb \
-"
-
-SRC_URI:append:nru120s-xavier = " \
-    file://NRU120-32-4-3.dtb \
 "
 
 SRC_URI:append:astro-tx2 = " \
@@ -76,7 +68,7 @@ SRC_URI:append:photon-tx2-nx = " \
     file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
     file://tegra186-tx2-nx-cti-NGX003.dtb \
     file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
-    file://tegra186-tx2-nx-cti-NGX003-IMX477-2CAM.dtb \
+    file://tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb \
 "
 
 SRC_URI:append:photon-xavier-nx = " \
@@ -373,7 +365,7 @@ do_deploy:append:quark-nano() {
 do_deploy:append:photon-tx2-nx() {
     cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003.dtb "${DEPLOYDIR}"
     cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb "${DEPLOYDIR}"
-    cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX477-2CAM.dtb "${DEPLOYDIR}"
+    cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb "${DEPLOYDIR}"
 }
 
 do_deploy:append:photon-xavier-nx() {
@@ -388,10 +380,3 @@ do_deploy:append:astro-tx2() {
     cp ${WORKDIR}/tegra186-tx2-cti-ASG001-revG+.dtb "${DEPLOYDIR}"
 }
 
-do_deploy:append:cti-rogue-xavier() {
-    cp ${WORKDIR}/tegra194-agx-cti-AGX101.dtb "${DEPLOYDIR}"
-}
-
-do_deploy:append:nru120s-xavier() {
-    cp ${WORKDIR}/NRU120-32-4-3.dtb "${DEPLOYDIR}"
-}

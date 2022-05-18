@@ -8,31 +8,83 @@ set -o errexit
 
 . /usr/libexec/os-helpers-fs
 
+DURING_UPDATE=${DURING_UPDATE:-0}
+bootloader_device="/dev/mmcblk0boot0"
 partspec="/resin-boot/bootfiles/partition_specification194.txt"
-new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive" -t ext4)
+bootloader_blob="/resin-boot/bootfiles/boot0.img"
 
 info_log()
 {
     echo "[INFO] $@"
 }
 
-info_log "New partition is ${new_part}"
+# Check if old release made use of
+# DURING_UPDATE flag and backport rollback-altboot
+# fix to old hook if necessary.
+backport_rollback_altboot_fix()
+{
+    inactive_hook=$(find /mnt/sysroot/active/ | grep "99-resin-bootfiles-xavier")
+    if grep -q "DURING_UPDATE" "${inactive_hook}"; then
+        info_log "No need to backport altboot fix to old hook"
+    else
+        info_log "Will backport rollback-altboot fix to old hook"
+        sed -i 's/os-helpers-fs/os-helpers-fs \nDURING_UPDATE=${DURING_UPDATE:-0}\nif [ "$DURING_UPDATE" = "0" ]; then target_sysroot="active"; else target_sysroot="inactive"; fi; /g' ${inactive_hook}
+        sed -i 's|/mnt/sysroot/inactive|/mnt/sysroot/${target_sysroot}|g' ${inactive_hook}
+        info_log "Applied rollback-altboot fix to old hostapp-update hook"
+    fi
+}
 
-rootstr=$(get_dev_label "${new_part}")
+get_label_suffix_by_slot()
+{
+    if [ $1 -eq 0 ]; then
+        echo ''
+    else
+        echo '_b'
+    fi
+}
+
+if ! command -v tegra-boot-control &> /dev/null
+then
+    info_log "Could not find tegra-boot-control!"
+    exit 1
+fi
+
+redundancy_state=$(/usr/bin/tegra-boot-control -s | awk -F 'Redundancy:' '{print $2}' | awk '{print $1}' | tr -d '\n')
+info_log "Redundancy is currently ${redundancy_state}"
+
+# Enable boot slot redundancy if not enabled already
+tegra-boot-control -e
+curr_slot=$(/usr/bin/tegra-boot-control -c)
+info_log "Current active slot is ${curr_slot}"
+
+if [ "$DURING_UPDATE" = "1" ]; then
+    backport_rollback_altboot_fix
+    info_log "Target active slot is $((target_slot = ! curr_slot))"
+    target_sysroot="inactive"
+else
+    info_log "Target active slot stays $((target_slot = curr_slot))"
+    target_sysroot="active"
+fi
+
+target_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/${target_sysroot}" -t ext4)
+info_log "New rootfs partition is ${target_part}"
+
+target_label_suffix=$(get_label_suffix_by_slot ${target_slot})
+rootstr=$(get_dev_label "${target_part}")
 rootl=""
 
 update_needed() {
     current_update_file=${1}
     device=${2}
-    update_size=$(ls -al $current_update_file | awk '{print $5}')
-    update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
-    existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+        update_size=$(ls -al $current_update_file | awk '{print $5}')
+        update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
+        existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
 
-    if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
-        echo 1
-    else
-        echo 0
-    fi
+        if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
+            echo 1
+        else
+            echo 0
+        fi
 }
 
 case "$rootstr" in
@@ -52,8 +104,8 @@ info_log "New root is resin-root${rootl}"
 dtbname=$(cat "$partspec" | grep "kernel-dtb_b" | cut -d ':' -f 2 | awk -F'_sigheader' '{print $1}')
 dtbfile="${dtbname}-root${rootl}_sigheader.dtb.encrypt"
 kernel="boot_sigheader.img.encrypt"
-
 partitions=$(cat "${partspec}")
+
 for n in ${partitions}; do
     part_name=$(echo $n | cut -d ':' -f 1)
     file_name=$(echo $n | cut -d ':' -f 2)
@@ -68,35 +120,61 @@ for n in ${partitions}; do
         continue
     fi
 
+    # On the Xavier AGX, MB1 on 32.6.1 wants both slots _a and _b to have
+    # 32.6.1 binaries, otherwise it enters debug mode as soon as the retry
+    # count goes down to 0. We have tried updating only _b slots inside boot0 blob,
+    # marking old slot as successfull too before switching to the new one, but without
+    # success. The only solution is to update everything to 32.6.1 and just leave
+    # the old kernel and kernel dtb in place, for the fallback to take place.
+    # See: https://github.com/OE4T/meta-tegra/issues/879#issuecomment-1034908517
+    dst="${file_path}"
     src="/resin-boot/bootfiles/$file_name"
-    dst="$file_path"
-
-    if [ $(update_needed $src $dst) -eq 1 ]; then
-        info_log "Will update ${dst}..."
-        dd if=${src} of=${dst}
-        dd if=${src} of="${dst}_b"
+    if [ -e ${dst} ]; then
+        if [ $(update_needed $src $dst) -eq 1 ]; then
+            info_log "Will update ${dst} ..."
+            dd if=${src} of="${dst}"
+            info_log "Updated ${dst}"
+        else
+            info_log "No need to update ${dst}"
+        fi
     else
-        info_log "No need to update ${dst}"
+        info_log "Partition ${dst} not found"
     fi
 done
 
-# root is contained in the dtb cmdline, needs to be updated to switch rootfs
-info_log "Writing ${dtbfile} to specific partitions..."
+# DTB contains root partition label, update is mandatory on the new boot slot, before switching it to active
+info_log "Writing ${dtbfile} to specific to bootloader-dtb partition."
 dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb")
+
+info_log "Writing ${dtbfile} to specific to bootloader-dtb_b partition."
 dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "bootloader-dtb_b")
-dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb")
-dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb_b")
+
+dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dtb${target_label_suffix}")
 
 info_log "Writing kernel ${kernel} to specific partitions..."
 
-dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel")
-dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel_b")
-
+dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel${target_label_suffix}")
 info_log "Updating boot image on hw partition mmcblk0boot0..."
 
-echo 0 > /sys/block/mmcblk0boot0/force_ro
-dd if=/resin-boot/bootfiles/boot0.img of=/dev/mmcblk0boot0
-sync
-echo 1 > /sys/block/mmcblk0boot0/force_ro
+existing_bootloader_md5sum=$(dd if=$bootloader_device bs=1M status=none | md5sum | awk '{print $1}')
+update_bootloader_md5sum=$(md5sum $bootloader_blob | awk '{print $1}')
+
+if [ ! "$existing_bootloader_md5sum" = "$update_bootloader_md5sum" ]; then
+    echo 0 > /sys/block/mmcblk0boot0/force_ro
+    dd if=$bootloader_blob of=$bootloader_device
+    sync
+    echo 1 > /sys/block/mmcblk0boot0/force_ro
+fi
+
+# Update slot selection after the qspi was updated, otherwise
+# scratch register contents will be lost
+info_log "Setting active slot to ${target_slot}"
+/usr/bin/tegra-boot-control -e
+/usr/bin/tegra-boot-control -a ${target_slot}
+
+if [ "$DURING_UPDATE" = "0" ]; then
+    /usr/bin/tegra-boot-control -m
+    info_log "Running in rollback-altboot, next boot will be from the same slot. Marked boot as successful."
+fi
 
 info_log "Done."

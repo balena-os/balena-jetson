@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM = "file://${BALENA_COREBASE}/COPYING.Apache-2.0;md5=89aea4e17d9
 
 IMAGE_ROOTFS_ALIGNMENT ?= "4"
 
+BOOT_BINDIFF="boot0_t194_agx.bindiff"
+
 DEPENDS = " \
     coreutils-native \
     virtual/bootloader \
@@ -16,23 +18,19 @@ DEPENDS = " \
     virtual/bootlogo \
     "
 
-inherit deploy python3native perlnative
+inherit deploy python3native perlnative l4t_bsp
 
 SRC_URI = " \
     file://resinOS-flash194.xml \
     file://partition_specification194.txt \
-    file://cti-rogue-32-4-3-pinmux.cfg \
+    file://${BOOT_BINDIFF} \
 "
 
 PINMUXCFG = "tegra19x-mb1-pinmux-p2888-0000-a04-p2822-0000-b01.cfg"
-PINMUXCFG_cti-rogue-xavier = "cti-rogue-32-4-3-pinmux.cfg"
 LNXSIZE ?= "67108864"
 DTBNAME = "tegra194-p2888-0001-p2822-0000"
-DTBNAME_cti-rogue-xavier = "tegra194-agx-cti-AGX101"
-DTBNAME_nru120s-xavier = "NRU120-32-4-3"
 KERNEL_DEVICETREE = "${DEPLOY_DIR_IMAGE}/${DTBNAME}.dtb"
 DTBFILE ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE', True).split()[0])}"
-
 
 IMAGE_TEGRAFLASH_FS_TYPE ??= "ext4"
 IMAGE_TEGRAFLASH_ROOTFS ?= "${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE}"
@@ -44,7 +42,7 @@ LNXFILE="${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin"
 IMAGE_TEGRAFLASH_KERNEL ?= "${DEPLOY_DIR_IMAGE}/${LNXFILE}"
 BINARY_INSTALL_PATH = "/opt/tegra-binaries"
 
-OS_KERNEL_CMDLINE = "${@bb.utils.contains('DEVELOPMENT_IMAGE','1','console=ttyTHS0,115200n8 console=tty1 debug loglevel=7','console=null quiet splash vt.global_cursor_default=0 consoleblank=0',d)}"
+OS_KERNEL_CMDLINE = "${@bb.utils.contains('DISTRO_FEATURES','osdev-image','console=ttyTHS0,115200n8 console=tty1 ','console=null quiet splash vt.global_cursor_default=0 consoleblank=0',d)} l4tver=${L4T_VERSION}"
 ROOTA_ARGS="root=LABEL=resin-rootA ro rootwait rootfstype=ext4 ${KERNEL_ARGS} ${OS_KERNEL_CMDLINE}"
 ROOTB_ARGS="root=LABEL=resin-rootB ro rootwait rootfstype=ext4 ${KERNEL_ARGS} ${OS_KERNEL_CMDLINE}"
 
@@ -193,7 +191,6 @@ do_configure() {
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra186-flash/${SOC_FAMILY}-flash-helper.sh ./
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra186-flash/tegraflash.py ./
 
-    cp ${WORKDIR}/cti-rogue-32-4-3-pinmux.cfg .
     # bup is based on the rootfs, which is not built at this point
     # not using it for the moment
     # sed -e 's,^function ,,' ${STAGING_BINDIR_NATIVE}/tegra186-flash/l4t_bup_gen.func > ./l4t_bup_gen.func
@@ -252,6 +249,30 @@ do_configure() {
     # MEM_BCT (a + b)
     dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=720896 bs=1 conv=notrunc
     dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=925696 bs=1 conv=notrunc
+
+    # Although the device will boot fine, rtcpu may not run as expected unless
+    # we patch the boot blob to resemble entirely the one created during provisioning by the flashing tools.
+    # Example dmesg logs of this failure:
+    # tegra-hsp-mailbox ivc-bc00000.rtcpu: IOVM setup error: 110
+    # tegra186-cam-rtcpu bc00000.rtcpu: command: 0x00000000: empty mailbox timeout
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=557072 bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=560096 skip=32  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=561168 skip=64  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=562176 skip=96  bs=1 count=320 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=563536 skip=416  bs=1 count=320 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=587152 skip=736  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=638992 skip=768  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=642016 skip=800  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=643088 skip=832  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=644096 skip=864  bs=1 count=320 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=645456 skip=1184  bs=1 count=320 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=669072 skip=1504  bs=1 count=32 conv=notrunc
+
+    # Needed in L4T 32.7.1
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=587312 skip=1536  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=669232 skip=1568  bs=1 count=32 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=2441216 skip=1600  bs=1 count=320 conv=notrunc
+    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=2445312 skip=1920  bs=1 count=320 conv=notrunc
 
     cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/
 }

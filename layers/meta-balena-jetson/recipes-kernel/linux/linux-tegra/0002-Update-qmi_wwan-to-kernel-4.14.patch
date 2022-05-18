@@ -1,31 +1,26 @@
-From 8c03105a0b8ac451a9bc4baa8d3e9ee6cdd2527c Mon Sep 17 00:00:00 2001
+From 2d15f1a225b7c89ba26dbde44a927d32e1c52b51 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Thu, 27 May 2021 12:59:12 +0200
+Date: Sat, 19 Feb 2022 20:06:02 +0100
 Subject: [PATCH] Update qmi_wwan to kernel 4.14
 
 Modem Internet Networking was not working for the Spacely board.
 These updates were necessary to have internet over GSM Modems.
 
 Upstream-Status: Inappropriate [backport]
-
 Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
 ---
- drivers/net/usb/qmi_wwan.c | 388 ++++++++++++++++++++++++++++++++++++-
- 1 file changed, 379 insertions(+), 9 deletions(-)
+ drivers/net/usb/qmi_wwan.c | 383 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 374 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/net/usb/qmi_wwan.c b/drivers/net/usb/qmi_wwan.c
-index de7b431fdd6b..fc54f33297f8 100644
+index a571024882d7..98aaa601705a 100644
 --- a/drivers/net/usb/qmi_wwan.c
 +++ b/drivers/net/usb/qmi_wwan.c
-@@ -57,12 +57,210 @@ struct qmi_wwan_state {
+@@ -57,8 +57,208 @@ struct qmi_wwan_state {
  
  enum qmi_wwan_flags {
  	QMI_WWAN_FLAG_RAWIP = 1 << 0,
 +	QMI_WWAN_FLAG_MUX = 1 << 1,
- };
- 
- enum qmi_wwan_quirks {
- 	QMI_WWAN_QUIRK_DTR = 1 << 0,	/* needs "set DTR" request */
  };
  
 +struct qmimux_hdr {
@@ -60,17 +55,18 @@ index de7b431fdd6b..fc54f33297f8 100644
 +
 +static netdev_tx_t qmimux_start_xmit(struct sk_buff *skb, struct net_device *dev)
 +{
-+       struct qmimux_priv *priv = netdev_priv(dev);
-+       unsigned int len = skb->len;
-+       struct qmimux_hdr *hdr;
++        struct qmimux_priv *priv = netdev_priv(dev);
++        unsigned int len = skb->len;
++        struct qmimux_hdr *hdr;
 +
-+       hdr = (struct qmimux_hdr*)skb_push(skb, sizeof(struct qmimux_hdr));
-+       hdr->pad = 0;
-+       hdr->mux_id = priv->mux_id;
-+       hdr->pkt_len = cpu_to_be16(len);
-+       skb->dev = priv->real_dev;
-+       return dev_queue_xmit(skb);
++        hdr = (struct qmimux_hdr*)skb_push(skb, sizeof(struct qmimux_hdr));
++        hdr->pad = 0;
++        hdr->mux_id = priv->mux_id;
++        hdr->pkt_len = cpu_to_be16(len);
++        skb->dev = priv->real_dev;
++        return dev_queue_xmit(skb);
 +}
++
 +
 +static const struct net_device_ops qmimux_netdev_ops = {
 +       .ndo_open       = qmimux_open,
@@ -172,6 +168,7 @@ index de7b431fdd6b..fc54f33297f8 100644
 +       }
 +       return 1;
 +}
++
 +static int qmimux_register_device(struct net_device *real_dev, u8 mux_id)
 +{
 +       struct net_device *new_dev;
@@ -225,10 +222,10 @@ index de7b431fdd6b..fc54f33297f8 100644
 +       free_netdev(dev);
 +}
 +
- static void qmi_wwan_netdev_setup(struct net_device *net)
- {
- 	struct usbnet *dev = netdev_priv(net);
-@@ -86,6 +284,106 @@ static void qmi_wwan_netdev_setup(struct net_device *net)
+ enum qmi_wwan_quirks {
+ 	QMI_WWAN_QUIRK_DTR = 1 << 0,	/* needs "set DTR" request */
+ };
+@@ -86,6 +286,105 @@ static void qmi_wwan_netdev_setup(struct net_device *net)
  	usbnet_change_mtu(net, net->mtu);
  }
  
@@ -331,11 +328,10 @@ index de7b431fdd6b..fc54f33297f8 100644
 +       return ret;
 +}
 +
-+
  static ssize_t raw_ip_show(struct device *d, struct device_attribute *attr, char *buf)
  {
  	struct usbnet *dev = netdev_priv(to_net_dev(d));
-@@ -139,9 +437,13 @@ static ssize_t raw_ip_store(struct device *d,  struct device_attribute *attr, co
+@@ -139,9 +438,13 @@ static ssize_t raw_ip_store(struct device *d,  struct device_attribute *attr, co
  }
  
  static DEVICE_ATTR_RW(raw_ip);
@@ -344,35 +340,36 @@ index de7b431fdd6b..fc54f33297f8 100644
  
  static struct attribute *qmi_wwan_sysfs_attrs[] = {
  	&dev_attr_raw_ip.attr,
-+	&dev_attr_add_mux.attr,
-+	&dev_attr_del_mux.attr,
++        &dev_attr_add_mux.attr,
++        &dev_attr_del_mux.attr,
  	NULL,
  };
  
-@@ -185,6 +487,9 @@ static int qmi_wwan_rx_fixup(struct usbnet *dev, struct sk_buff *skb)
+@@ -185,6 +488,9 @@ static int qmi_wwan_rx_fixup(struct usbnet *dev, struct sk_buff *skb)
  	if (skb->len < dev->net->hard_header_len)
  		return 0;
  
-+	if (info->flags & QMI_WWAN_FLAG_MUX)
-+		return qmimux_rx_fixup(dev, skb);
++        if (info->flags & QMI_WWAN_FLAG_MUX)
++                return qmimux_rx_fixup(dev, skb);
 +
  	switch (skb->data[0] & 0xf0) {
  	case 0x40:
  		proto = htons(ETH_P_IP);
-@@ -672,6 +977,13 @@ static const struct usb_device_id products[] = {
+@@ -672,7 +978,13 @@ static const struct usb_device_id products[] = {
  		USB_DEVICE_AND_INTERFACE_INFO(0x03f0, 0x581d, USB_CLASS_VENDOR_SPEC, 1, 7),
  		.driver_info = (unsigned long)&qmi_wwan_info,
  	},
-+	{       /* Quectel EP06/EG06/EM06 */
-+		USB_DEVICE_AND_INTERFACE_INFO(0x2c7c, 0x0306,
-+					USB_CLASS_VENDOR_SPEC,
-+					USB_SUBCLASS_VENDOR_SPEC,
-+					0xff),
-+		.driver_info        = (unsigned long)&qmi_wwan_info_quirk_dtr,
-+	},
- 
+-
++        {       /* Quectel EP06/EG06/EM06 */
++                USB_DEVICE_AND_INTERFACE_INFO(0x2c7c, 0x0306,
++                                        USB_CLASS_VENDOR_SPEC,
++                                        USB_SUBCLASS_VENDOR_SPEC,
++                                        0xff),
++                .driver_info        = (unsigned long)&qmi_wwan_info_quirk_dtr,
++        },
  	/* 3. Combined interface devices matching on interface number */
  	{QMI_FIXED_INTF(0x0408, 0xea42, 4)},	/* Yota / Megafon M100-1 */
+ 	{QMI_FIXED_INTF(0x05c6, 0x6001, 3)},	/* 4G LTE usb-modem U901 */
 @@ -814,6 +1126,8 @@ static const struct usb_device_id products[] = {
  	{QMI_FIXED_INTF(0x1435, 0xd181, 3)},	/* Wistron NeWeb D18Q1 */
  	{QMI_FIXED_INTF(0x1435, 0xd181, 4)},	/* Wistron NeWeb D18Q1 */
@@ -382,10 +379,10 @@ index de7b431fdd6b..fc54f33297f8 100644
  	{QMI_FIXED_INTF(0x16d8, 0x6003, 0)},	/* CMOTech 6003 */
  	{QMI_FIXED_INTF(0x16d8, 0x6007, 0)},	/* CMOTech CHE-628S */
  	{QMI_FIXED_INTF(0x16d8, 0x6008, 0)},	/* CMOTech CMU-301 */
-@@ -910,13 +1224,15 @@ static const struct usb_device_id products[] = {
- 	{QMI_FIXED_INTF(0x1199, 0x9056, 8)},	/* Sierra Wireless Modem */
- 	{QMI_FIXED_INTF(0x1199, 0x9057, 8)},
+@@ -913,13 +1227,13 @@ static const struct usb_device_id products[] = {
  	{QMI_FIXED_INTF(0x1199, 0x9061, 8)},	/* Sierra Wireless Modem */
+ 	{QMI_FIXED_INTF(0x1199, 0x9063, 8)},	/* Sierra Wireless EM7305 */
+ 	{QMI_FIXED_INTF(0x1199, 0x9063, 10)},	/* Sierra Wireless EM7305 */
 -	{QMI_FIXED_INTF(0x1199, 0x9071, 8)},	/* Sierra Wireless MC74xx */
 -	{QMI_FIXED_INTF(0x1199, 0x9071, 10)},	/* Sierra Wireless MC74xx */
 -	{QMI_FIXED_INTF(0x1199, 0x9079, 8)},	/* Sierra Wireless EM74xx */
@@ -393,8 +390,6 @@ index de7b431fdd6b..fc54f33297f8 100644
 -	{QMI_FIXED_INTF(0x1199, 0x907b, 8)},	/* Sierra Wireless EM74xx */
 -	{QMI_FIXED_INTF(0x1199, 0x907b, 10)},	/* Sierra Wireless EM74xx */
 -	{QMI_FIXED_INTF(0x1199, 0x9091, 8)},	/* Sierra Wireless EM7565 */
-+        {QMI_FIXED_INTF(0x1199, 0x9063, 8)},    /* Sierra Wireless EM7305 */
-+        {QMI_FIXED_INTF(0x1199, 0x9063, 10)},   /* Sierra Wireless EM7305 */
 +        {QMI_QUIRK_SET_DTR(0x1199, 0x9071, 8)}, /* Sierra Wireless MC74xx */
 +        {QMI_QUIRK_SET_DTR(0x1199, 0x9071, 10)},/* Sierra Wireless MC74xx */
 +        {QMI_QUIRK_SET_DTR(0x1199, 0x9079, 8)}, /* Sierra Wireless EM74xx */
@@ -405,27 +400,23 @@ index de7b431fdd6b..fc54f33297f8 100644
  	{QMI_FIXED_INTF(0x1bbb, 0x011e, 4)},	/* Telekom Speedstick LTE II (Alcatel One Touch L100V LTE) */
  	{QMI_FIXED_INTF(0x1bbb, 0x0203, 2)},	/* Alcatel L800MA */
  	{QMI_FIXED_INTF(0x2357, 0x0201, 4)},	/* TP-LINK HSUPA Modem MA180 */
-@@ -925,7 +1241,10 @@ static const struct usb_device_id products[] = {
- 	{QMI_FIXED_INTF(0x1bc7, 0x1100, 3)},	/* Telit ME910 */
+@@ -931,6 +1245,7 @@ static const struct usb_device_id products[] = {
  	{QMI_FIXED_INTF(0x1bc7, 0x1101, 3)},	/* Telit ME910 dual modem */
  	{QMI_FIXED_INTF(0x1bc7, 0x1200, 5)},	/* Telit LE920 */
--	{QMI_FIXED_INTF(0x1bc7, 0x1201, 2)},	/* Telit LE920 */
-+        {QMI_QUIRK_SET_DTR(0x1bc7, 0x1201, 2)}, /* Telit LE920, LE920A4 */
-+        {QMI_QUIRK_SET_DTR(0x1bc7, 0x1900, 1)}, /* Telit LN940 series */
-+        {QMI_FIXED_INTF(0x1c9e, 0x9801, 3)},    /* Telewell TW-3G HSPA+ */
-+        {QMI_FIXED_INTF(0x1c9e, 0x9803, 4)},    /* Telewell TW-3G HSPA+ */
+ 	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1201, 2)},	/* Telit LE920, LE920A4 */
++	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1900, 1)}, /* Telit LN940 series */
+ 	{QMI_FIXED_INTF(0x1c9e, 0x9801, 3)},	/* Telewell TW-3G HSPA+ */
+ 	{QMI_FIXED_INTF(0x1c9e, 0x9803, 4)},	/* Telewell TW-3G HSPA+ */
  	{QMI_FIXED_INTF(0x1c9e, 0x9b01, 3)},	/* XS Stick W100-2 from 4G Systems */
- 	{QMI_FIXED_INTF(0x0b3c, 0xc000, 4)},	/* Olivetti Olicard 100 */
- 	{QMI_FIXED_INTF(0x0b3c, 0xc001, 4)},	/* Olivetti Olicard 120 */
-@@ -961,6 +1280,7 @@ static const struct usb_device_id products[] = {
- 	{QMI_QUIRK_SET_DTR(0x2c7c, 0x0191, 4)},	/* Quectel EG91 */
+@@ -971,6 +1286,7 @@ static const struct usb_device_id products[] = {
+ 	{QMI_QUIRK_SET_DTR(0x2c7c, 0x0195, 4)},	/* Quectel EG95 */
  	{QMI_FIXED_INTF(0x2c7c, 0x0296, 4)},	/* Quectel BG96 */
  	{QMI_QUIRK_SET_DTR(0x2c7c, 0x0306, 4)},	/* Quectel EP06 Mini PCIe */
-+        {QMI_QUIRK_SET_DTR(0x2cb7, 0x0104, 4)}, /* Fibocom NL678 series */
++	{QMI_QUIRK_SET_DTR(0x2cb7, 0x0104, 4)}, /* Fibocom NL678 series */
  
  	/* 4. Gobi 1000 devices */
  	{QMI_GOBI1K_DEVICE(0x05c6, 0x9212)},	/* Acer Gobi Modem Device */
-@@ -1023,6 +1343,20 @@ static const struct usb_device_id products[] = {
+@@ -1033,6 +1349,19 @@ static const struct usb_device_id products[] = {
  };
  MODULE_DEVICE_TABLE(usb, products);
  
@@ -442,11 +433,10 @@ index de7b431fdd6b..fc54f33297f8 100644
 +       return false;
 +}
 +
-+
  static bool quectel_ec20_detected(struct usb_interface *intf)
  {
  	struct usb_device *dev = interface_to_usbdev(intf);
-@@ -1070,14 +1404,50 @@ static int qmi_wwan_probe(struct usb_interface *intf,
+@@ -1080,14 +1409,50 @@ static int qmi_wwan_probe(struct usb_interface *intf,
  		return -ENODEV;
  	}
  

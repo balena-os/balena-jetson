@@ -1,4 +1,4 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/32.7.1:"
 
 UBOOT_KCONFIG_SUPPORT = "1"
 
@@ -8,8 +8,8 @@ LIC_FILES_CHKSUM = "\
     file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025 \
 "
 
-# The u-boot version 2021.01 from
-# meta-tegra doesn't work well when
+# The u-boot versions 2021 / 2022 from
+# meta-tegra don't work well when
 # booting with custom device trees, even
 # if it's the same dt that's written
 # in the bootblob or in the dtb partitions.
@@ -19,6 +19,15 @@ SRCBRANCH="l4t/l4t-r32.6.1-v2020.04"
 SRCREV="46e4604c78d3804ccd4cf9624460a86ea5318a61"
 
 LIC_FILES_CHKSUM="file://Licenses/README;md5=30503fd321432fc713238f582193b78e"
+
+# bitbake and local git fails to fetch/clone the upstream repo so we
+# use the meta-tegra mirror on top of which we apply a couple patches
+# that were introduced by 32.7.1.
+SRC_URI:append = " \
+    file://0001-t186-Lanai-Fix-hang-with-extlinux.conf-FDT-DTB.patch \
+    file://0002-T210-XUSB-Add-code-to-find-load-RP4-blob-XUSB-FW-on-.patch \
+    file://0004-tegra-config-update-TX2-NX-uboot-env-offset.patch \
+"
 
 BALENA_BOOT_PART:jetson-nano = "0xC"
 BALENA_DEFAULT_ROOT_PART:jetson-nano = "0xD"
@@ -39,7 +48,6 @@ TEGRA_BOARD_FDT_FILE:n510-tx2="tegra186-tx2-aetina-n510-p3489-0888-a00-00-base.d
 TEGRA_BOARD_FDT_FILE:n310-tx2="tegra186-tx2-aetina-n310-p3489-0888-a00-00-base.dtb"
 TEGRA_BOARD_FDT_FILE:blackboard-tx2="tegra186-tx2-blackboard.dtb"
 TEGRA_BOARD_FDT_FILE:jetson-tx2="tegra186-quill-p3310-1000-c03-00-base.dtb"
-TEGRA_BOARD_FDT_FILE:jetson-tx2-4gb="tegra186-quill-p3489-0888-a00-00-base.dtb"
 TEGRA_BOARD_FDT_FILE:jetson-tx2-nx-devkit="tegra186-p3636-0001-p3509-0000-a01.dtb"
 TEGRA_BOARD_FDT_FILE:astro-tx2="tegra186-tx2-cti-ASG001-revG+.dtb"
 TEGRA_BOARD_FDT_FILE:floyd-nano = "tegra210-p3448-0002-p3449-0000-b00-floyd-nano.dtb"
@@ -87,7 +95,6 @@ SRC_URI:append:jetson-tx2 = " \
     file://tx2-remove-vpr-carveout-on-rollback.patch \
     file://tx2-Integrate-with-Balena-u-boot-environment.patch \
     file://tx2nx-Remove-unused-boot-targets.patch \
-    file://tx2-nx-p3636-0001-Increase-kernel-size-on-TX2-NX.patch \
 "
 
 BALENA_BOOT_PART:jetson-tx1 = "0xB"

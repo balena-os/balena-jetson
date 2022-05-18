@@ -1,0 +1,36 @@
+From 4335beb6928ab58fb3e62712b100d23282d4b929 Mon Sep 17 00:00:00 2001
+From: "Wayne Wang(SW-TEGRA)" <waywang@nvidia.com>
+Date: Mon, 1 Nov 2021 17:37:38 +0800
+Subject: [PATCH 4/4] tegra: config: update TX2-NX uboot env offset
+
+Correct env offset to 0xFFFD8000 to match the partition layout
+
+Bug 3421670
+
+Change-Id: I00518d80220fbc478cf127cebe9acf29adb189f9
+Signed-off-by: Wayne Wang (SW-TEGRA) <waywang@nvidia.com>
+Reviewed-on: https://git-master.nvidia.com/r/c/3rdparty/u-boot/+/2619599
+GVS: Gerrit_Virtual_Submit
+Tested-by: mobile promotions <svcmobile_promotions@nvidia.com>
+Reviewed-by: Tom Warren <twarren@nvidia.com>
+Reviewed-by: mobile promotions <svcmobile_promotions@nvidia.com>
+---
+ configs/p3636-0001_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configs/p3636-0001_defconfig b/configs/p3636-0001_defconfig
+index 50f54984cb..9117982fb9 100644
+--- a/configs/p3636-0001_defconfig
++++ b/configs/p3636-0001_defconfig
+@@ -2,7 +2,7 @@ CONFIG_ARM=y
+ CONFIG_TEGRA=y
+ CONFIG_SYS_TEXT_BASE=0x80080000
+ CONFIG_ENV_SIZE=0x2000
+-CONFIG_ENV_OFFSET=0xFFFFE000
++CONFIG_ENV_OFFSET=0xFFFD8000
+ CONFIG_NR_DRAM_BANKS=1026
+ CONFIG_TEGRA186=y
+ CONFIG_TARGET_P3636_0001=y
+-- 
+2.17.1
+
