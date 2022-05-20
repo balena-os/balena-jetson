@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.98.12+rev3
+## (2022-05-20)
+
+
+<details>
+<summary> Update balena-yocto-scripts to ae2cc2c2a69beec1c39333dd08624e4fec02c6e4 [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.5
+> ### (2022-05-19)
+> 
+> * jenkins_build: Finalize when required [Alex Gonzalez]
+> * balena-lib: Finalise release before tagging [Alex Gonzalez]
+> * balena-api: Add function to get final state of release [Alex Gonzalez]
+> * balena-lib: Extract release finalization as function [Alex Gonzalez]
+> * Update balena-cli version to latest [Alex Gonzalez]
+> * balena-deploy: Fix header on balena_deploy_block() [Alex Gonzalez]
+> 
+</details>
+
 # v2.98.12+rev2
 ## (2022-05-10)
 

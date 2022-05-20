@@ -1,4 +1,93 @@
 - commits:
+    - subject: Update balena-yocto-scripts to ae2cc2c2a69beec1c39333dd08624e4fec02c6e4
+      hash: 5d721130621316a80a04046cf44f02b065dce738
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to ae2cc2c2a69beec1c39333dd08624e4fec02c6e4
+        changelog-entry: Update balena-yocto-scripts to ae2cc2c2a69beec1c39333dd08624e4fec02c6e4
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "jenkins_build: Finalize when required"
+              hash: 85728e3fdc27f988af5383f320858eba5056e8d4
+              body: |
+                If the build job is set to finalize then do so.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-lib: Finalise release before tagging"
+              hash: 2243ff38f3589c021c0013477b92e6888f57eba8
+              body: >
+                This is so we can check that we are tagging the correct version
+                before
+
+                doing it, as tagging makes the release visible.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-api: Add function to get final state of release"
+              hash: 3e2e25182d45801e8e4df9908170e73d4696f81a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-lib: Extract release finalization as function"
+              hash: 969f6b941bd9fb34d82fbc0d48838b7b4898b2e1
+              body: >
+                This allows it to be called from other context, like the OS
+                automation
+
+                test suite.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Update balena-cli version to latest
+              hash: 13cdae57ddaa8e37f8a9a5d0c2873c2964cd3d31
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-deploy: Fix header on balena_deploy_block()"
+              hash: dbbf059bf9b8df60b7578c7a41e0678fbff60043
+              body: >
+                The arguments to this function have been re-ordered but the
+                header had
+
+                not been modified.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.5
+          title: "'Build and deploy'"
+          date: 2022-05-19T17:25:06.676Z
+  version: 2.98.12+rev3
+  title: "'Update balena-yocto-scripts digest to ae2cc2c'"
+  date: 2022-05-20T22:03:51.112Z
+- commits:
     - subject: Allow for partitions to enumerate right after provisioning
       hash: 7f1b9f43bbc80a6958053980f66861a3f7f97c20
       body: |
