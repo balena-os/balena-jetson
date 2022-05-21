@@ -1,4 +1,19 @@
 - commits:
+    - subject: Add contracts submodule
+      hash: 2c75bfbbc5b63e46a8daddf84c67cd371ea08a59
+      body: |
+        This is used to build and deploy an OS contract to the fleet.
+      footer:
+        Changelog-entry: Add contracts submodule
+        changelog-entry: Add contracts submodule
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.98.12+rev4
+  title: "'Add contracts submodule'"
+  date: 2022-05-21T09:47:43.503Z
+- commits:
     - subject: Update balena-yocto-scripts to ae2cc2c2a69beec1c39333dd08624e4fec02c6e4
       hash: 5d721130621316a80a04046cf44f02b065dce738
       body: Update balena-yocto-scripts
