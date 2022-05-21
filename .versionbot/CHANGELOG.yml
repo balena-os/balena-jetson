@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 6ffb1c8d87c8d0940405cbbc954aa625b4b1f94a
+      hash: 1b61958f3f4735628ec9232d00dbe74e17ab4a10
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 6ffb1c8d87c8d0940405cbbc954aa625b4b1f94a
+        changelog-entry: Update contracts to 6ffb1c8d87c8d0940405cbbc954aa625b4b1f94a
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "jetson-xavier-agx: Update L4T in base images"
+              hash: 029d39073ebc6136c5797526fbcdfe1525f5d950
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-1.13.75
+          title: "'jetson-xavier-agx: Update L4T in base images'"
+          date: 2022-05-21T10:51:21.212Z
+  version: 2.98.12+rev5
+  title: "'Update contracts digest to 6ffb1c8'"
+  date: 2022-05-21T11:52:02.272Z
+- commits:
     - subject: Add contracts submodule
       hash: 2c75bfbbc5b63e46a8daddf84c67cd371ea08a59
       body: |
