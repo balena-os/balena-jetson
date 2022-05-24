@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.98.12+rev6
+## (2022-05-24)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 7b2a89987f196ec4261d240a88c1790c55b366b0 [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.6
+> ### (2022-05-24)
+> 
+> * balena-lib: Check versions before finalizing [Alex Gonzalez]
+> * balena-deploy-block: Do not always finalise on deploy [Alex Gonzalez]
+> * balena-deploy-block: Add OS version to contract [Alex Gonzalez]
+> * balena-deploy: Generate OS contract if not available [Alex Gonzalez]
+> * balena-lib: Build contracts [Alex Gonzalez]
+> * Add generate-oscontract script [Alex Gonzalez]
+> 
+</details>
+
 # v2.98.12+rev5
 ## (2022-05-21)
 

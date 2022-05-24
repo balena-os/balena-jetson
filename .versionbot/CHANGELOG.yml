@@ -1,4 +1,93 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 7b2a89987f196ec4261d240a88c1790c55b366b0
+      hash: fde6b47a91d69472d16e6fd03004a4138de85e1c
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 7b2a89987f196ec4261d240a88c1790c55b366b0
+        changelog-entry: Update balena-yocto-scripts to 7b2a89987f196ec4261d240a88c1790c55b366b0
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-lib: Check versions before finalizing"
+              hash: 0ae1389a69b857b466b4eef81396d5f1b6bc4ae6
+              body: >
+                Only allow to finalize draft releases that have matching semver
+                with
+
+                the device repository being deployed.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-deploy-block: Do not always finalise on deploy"
+              hash: 754833d6ef773b68a9eecafb426783ac70eb8767
+              body: >
+                Introduce a new final step after draft deployment to finalise
+                releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-deploy-block: Add OS version to contract"
+              hash: 2c692984079215c2c916c5e4df79e200486be1ff
+              body: >
+                If there is an OS contract, add the OS version we are building
+                for.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-deploy: Generate OS contract if not available"
+              hash: 2205c4de1dadafbf26f9f7b303b88c4da6d7710e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-lib: Build contracts"
+              hash: b8c08faf2a86434793bcad67e063ade9754142ff
+              body: >
+                Add a function to build all OS contracts and return the one for
+                the
+
+                specified slug.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Add generate-oscontract script
+              hash: 20894636355622ab0ded6b2e6a4f804f78961d99
+              body: |
+                This script generates OS contracts for all device types.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.6
+          title: "'Configure Renovate'"
+          date: 2022-05-24T10:16:21.892Z
+  version: 2.98.12+rev6
+  title: "'Update balena-yocto-scripts digest to 7b2a899'"
+  date: 2022-05-24T12:00:04.470Z
+- commits:
     - subject: Update contracts to 6ffb1c8d87c8d0940405cbbc954aa625b4b1f94a
       hash: 1b61958f3f4735628ec9232d00dbe74e17ab4a10
       body: Update contracts
