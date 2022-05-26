@@ -1,4 +1,45 @@
 - commits:
+    - subject: Update contracts to f251e053b36b3a6d14cd022b9745e478dcad9a6a
+      hash: 8945881eefb249ebcae3444d6708294577b1adb2
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to f251e053b36b3a6d14cd022b9745e478dcad9a6a
+        changelog-entry: Update contracts to f251e053b36b3a6d14cd022b9745e478dcad9a6a
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "sw.os-image: Add balena-image software image"
+              hash: 4473a99902a3793a33b63300778ad0118b8366cf
+              body: >
+                This is used by the OS builders to deploy releases. This
+                contract contains
+
+                details related to the balena-image artifact generated in the balenaOS
+
+                build.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+            - subject: "sw.os: Add balenaOS contract"
+              hash: 29b697e2a05e026d9b92ee67cdf6dc47f8cc2488
+              body: |
+                This is uded by the OS builder to deploy balenaOS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+          version: contracts-1.13.76
+          title: "'Add sw.os and sw.os-image contracts'"
+          date: 2022-05-23T11:09:26.128Z
+  version: 2.98.12+rev7
+  title: "'Update contracts digest to f251e05'"
+  date: 2022-05-26T13:03:01.758Z
+- commits:
     - subject: Update balena-yocto-scripts to 7b2a89987f196ec4261d240a88c1790c55b366b0
       hash: fde6b47a91d69472d16e6fd03004a4138de85e1c
       body: Update balena-yocto-scripts
