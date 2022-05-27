@@ -1,4 +1,32 @@
 - commits:
+    - subject: Update layers/meta-balena to cc2bc321c33d9c2af1f4566793e16b075e425a7c
+      hash: 59c7e9485fc74bc4ef2d7cabe220b1c79539bb1b
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to cc2bc321c33d9c2af1f4566793e16b075e425a7c
+        changelog-entry: Update layers/meta-balena to cc2bc321c33d9c2af1f4566793e16b075e425a7c
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "supervisor: Update balena-supervisor to v13.1.11"
+              hash: 1f1266bd0893b963528e88dfd7fd08f232088cb9
+              body: ""
+              footer:
+                Relates-to: https://github.com/balena-os/balena-supervisor/pull/1944
+                relates-to: https://github.com/balena-os/balena-supervisor/pull/1944
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Felipe Lalanne <felipe@balena.io>
+                signed-off-by: Felipe Lalanne <felipe@balena.io>
+              author: Felipe Lalanne
+              nested: []
+          version: meta-balena-2.98.32
+          title: "'supervisor: Update balena-supervisor to v13.1.11'"
+          date: 2022-05-27T15:22:00.185Z
+  version: 2.98.32
+  title: "'Update layers/meta-balena digest to cc2bc32'"
+  date: 2022-05-27T18:53:27.871Z
+- commits:
     - subject: Update layers/meta-balena to 7ae427858052ddad086a32a7458e301103d02013
       hash: ac424504dc05b9ea064ea3d587c1fe269030f729
       body: Update layers/meta-balena
