@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.98.32+rev1
+## (2022-05-27)
+
+
+<details>
+<summary> Update contracts to 35dea15031cf273d469171f81ed24c394332caf5 [Renovate Bot] </summary>
+
+> ## contracts-2.0.0
+> ### (2022-05-27)
+> 
+> * Clean up installation method and add instruction partials [Micah Halter]
+> 
+</details>
+
 # v2.98.32
 ## (2022-05-27)
 
