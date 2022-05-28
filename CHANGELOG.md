@@ -1,6 +1,30 @@
 Change log
 -----------
 
+# v2.98.33
+## (2022-05-28)
+
+
+<details>
+<summary> Update layers/meta-balena to 95c96e0624507fd9701912c67d3ae5ec5dbdf6f9 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.33
+> ### (2022-05-27)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 95649fb [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.3.5
+>> #### (2022-05-25)
+>> 
+>> * workers: qemu: fix vars path for x86_64 [Joseph Kogut]
+>> 
+> </details>
+> 
+> 
+</details>
+
 # v2.98.32+rev1
 ## (2022-05-27)
 
