@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.98.33+rev1
+## (2022-06-01)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 2df9e2ae2084a293e7b729eb0538f69b221bc0be [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.7
+> ### (2022-06-01)
+> 
+> * balena-lib: balena_lib_release_finalize: Pass the correct arguments [Alex Gonzalez]
+> * balena-lib: Tag ESR fleets with patch independent tags [Alex Gonzalez]
+> 
+</details>
+
 # v2.98.33
 ## (2022-05-28)
 

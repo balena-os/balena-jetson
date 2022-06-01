@@ -1,4 +1,50 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 2df9e2ae2084a293e7b729eb0538f69b221bc0be
+      hash: da4a848d61dd3a0ada3de8703995f2af97a87bae
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 2df9e2ae2084a293e7b729eb0538f69b221bc0be
+        changelog-entry: Update balena-yocto-scripts to 2df9e2ae2084a293e7b729eb0538f69b221bc0be
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-lib: balena_lib_release_finalize: Pass the correct arguments"
+              hash: e28b745d4ba121b639ba79dad2377f051fe5d3e2
+              body: >
+                The balena_api_fetch_fleet_tag requires a slug as first
+                argument, not
+
+                a fleet that can contain the organization too.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-lib: Tag ESR fleets with patch independent tags"
+              hash: d51ecb6d91fe6ecf91de1ecde4fff700f7f88e67
+              body: >
+                Otherwise patch updates of ESR branches move the ESR phase when
+                they
+
+                should not. For example, if 2022.1.1 is current, 2022.1.2 is also
+
+                current and should not move 2022.1.1 to sunset.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.7
+          title: "'balena-lib: Tag ESR fleets with patch independent tags'"
+          date: 2022-05-31T19:39:43.444Z
+  version: 2.98.33+rev1
+  title: "'Update balena-yocto-scripts digest to 2df9e2a'"
+  date: 2022-06-01T00:07:25.283Z
+- commits:
     - subject: Update layers/meta-balena to 95c96e0624507fd9701912c67d3ae5ec5dbdf6f9
       hash: 8461a6510f6b825a00f521b54937ef6a116ed386
       body: Update layers/meta-balena
