@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2022.4.2
+## (2022-06-01)
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.19.8 [Alex Gonzalez] </summary>
+
+> ## balena-yocto-scripts-1.19.8
+> ### (2022-06-01)
+> 
+> * balena-lib: release_finalize: Do not retag phase for ESR branch patch [Alex Gonzalez]
+> 
+</details>
+
 # v2022.4.1
 ## (2022-06-01)
 

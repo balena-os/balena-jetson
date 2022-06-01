@@ -1,4 +1,39 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.19.8
+      hash: dcab13ca5800914e6b1cfb494c6afadef9664e5f
+      body: |
+        Update balena-yocto-scripts from v1.19.7 to v1.19.8
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.19.8
+        changelog-entry: Update balena-yocto-scripts to v1.19.8
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: "balena-lib: release_finalize: Do not retag phase for ESR branch patch"
+              hash: ffdcb572e75b6bddc890710a6c1e4702d08a86a7
+              body: >
+                When we patch an ESR branch, for example from v2022.1.0 to
+                v2022.1.1,
+
+                do not update the next, current, sunset ESR  phases as they remain the
+
+                same.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.8
+          title: "'balena-lib: release_finalize: Do not retag phase for ESR branch patch'"
+          date: 2022-06-01T11:14:12.365Z
+  version: 2022.4.2
+  title: "'balena-yocto-scripts: Update to v1.19.8'"
+  date: 2022-06-01T15:39:11.051Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.19.7
       hash: 9daf52edb1a7dc8906cf748e8d9757b961eead0e
       body: |
