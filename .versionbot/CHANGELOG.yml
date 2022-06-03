@@ -1,4 +1,59 @@
 - commits:
+    - subject: Update contracts to bba65f2a1904e5ccc61e25793c8b4be1f02f3942
+      hash: f0d3e527ed57f9b07c5f7fcb3fb8389a22e55ff7
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to bba65f2a1904e5ccc61e25793c8b4be1f02f3942
+        changelog-entry: Update contracts to bba65f2a1904e5ccc61e25793c8b4be1f02f3942
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update QEMU to v7.0.0+balena1
+              hash: 09da1dcdad42b7ea6aba665549e022029bb2860b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Remove the wrapper shim that base images have around sh on first run
+              hash: cb3c0138081af7b73498e22f201af71277ec532c
+              body: >
+                The wrapper will potentially break other packages that expect sh
+                to be a real shell (In case the real sh shell binary is not
+                restored yet)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add golang v1.18.3 and v1.17.11
+              hash: 08afe67fa031ac33c9bb5f5e6031f15347a4efe9
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v18.3.0 v17.9.1 and v16.15.1
+              hash: f04cb9eda01595742b964a4a3e9eab7289cbc2ac
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.1
+          title: "'Few base images update'"
+          date: 2022-06-03T09:11:15.593Z
+  version: 2.98.35+rev1
+  title: "'Update contracts digest to bba65f2'"
+  date: 2022-06-03T11:48:43.390Z
+- commits:
     - subject: Update layers/meta-balena to ff147b2a19933df0c16fb37cb7bb294e77caa985
       hash: 6b51d7732655aaf0b2a7a2b1b3441fe23e432c99
       body: Update layers/meta-balena

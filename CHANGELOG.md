@@ -1,6 +1,23 @@
 Change log
 -----------
 
+# v2.98.35+rev1
+## (2022-06-03)
+
+
+<details>
+<summary> Update contracts to bba65f2a1904e5ccc61e25793c8b4be1f02f3942 [Renovate Bot] </summary>
+
+> ## contracts-2.0.1
+> ### (2022-06-03)
+> 
+> * Update QEMU to v7.0.0+balena1 [Trong Nghia Nguyen]
+> * Remove the wrapper shim that base images have around sh on first run [Trong Nghia Nguyen]
+> * Add golang v1.18.3 and v1.17.11 [Trong Nghia Nguyen]
+> * Add node v18.3.0 v17.9.1 and v16.15.1 [Trong Nghia Nguyen]
+> 
+</details>
+
 # v2.98.35
 ## (2022-06-02)
 
