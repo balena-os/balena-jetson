@@ -1,6 +1,45 @@
 Change log
 -----------
 
+# v2.98.39
+## (2022-06-04)
+
+
+<details>
+<summary> Update layers/meta-balena to 82f6128a170dd68e671e30278a4f98398f5d1034 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.39
+> ### (2022-06-04)
+> 
+> * tests: cloud: reduce waitUntil interval [Joseph Kogut]
+> 
+> ## meta-balena-2.98.38
+> ### (2022-06-03)
+> 
+> * Added all device support options [Ryan H]
+> 
+> ## meta-balena-2.98.37
+> ### (2022-06-03)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 8976bdb [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.3.9
+>> #### (2022-06-02)
+>> 
+>> * core: bump node 12 -> 14 [Joseph Kogut]
+>> 
+>> ### leviathan-2.3.8
+>> #### (2022-06-02)
+>> 
+>> * core: suiteSubprocess: replace this.state.log w/ console.log [Joseph Kogut]
+>> 
+> </details>
+> 
+> 
+</details>
+
 # v2.98.36
 ## (2022-06-03)
 

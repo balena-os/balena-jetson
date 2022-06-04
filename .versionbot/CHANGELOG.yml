@@ -1,4 +1,93 @@
 - commits:
+    - subject: Update layers/meta-balena to 82f6128a170dd68e671e30278a4f98398f5d1034
+      hash: 443ab774273c15e6d62ac9c0ece8496d7ec8c7c5
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 82f6128a170dd68e671e30278a4f98398f5d1034
+        changelog-entry: Update layers/meta-balena to 82f6128a170dd68e671e30278a4f98398f5d1034
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: cloud: reduce waitUntil interval"
+              hash: 34f77b125c97d82e182bca1cee94fddc49ad5b07
+              body: >
+                When the promise called in waitUntil fails, the function
+                defaults to a
+
+                30s interval before trying again. Reduce this to a 5s interval w/
+
+                maximum 5m retry window in the cloud suite.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.98.39
+          title: "'tests: cloud: reduce waitUntil interval'"
+          date: 2022-06-04T12:43:32.134Z
+        - commits:
+            - subject: Added all device support options
+              hash: 5d29b6d1e0808d87103897f8210a75342f7f898f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Hampton (@rhampt) rhampt@balena.io
+                signed-off-by: Ryan Hampton (@rhampt) rhampt@balena.io
+              author: Ryan H
+              nested: []
+          version: meta-balena-2.98.38
+          title: "'Added all device support options'"
+          date: 2022-06-03T22:19:04.182Z
+        - commits:
+            - subject: Update tests/leviathan digest to 8976bdb
+              hash: de94a30c1fb3b82ab45da049870c21abd48067c0
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "core: bump node 12 -> 14"
+                      hash: e40a9484c760fb0292da80c6fe6da46eb4373eec
+                      body: |
+                        Bump Node 12.19.1 to 14.19.3 in core
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.3.9
+                  title: "'core: bump node 12 -> 14'"
+                  date: 2022-06-02T19:29:24.315Z
+                - commits:
+                    - subject: "core: suiteSubprocess: replace this.state.log w/ console.log"
+                      hash: c5fd5673c41b9ad48c818a4895712d8ee6c22729
+                      body: |
+                        This fixes the error:
+                          TypeError: Cannot read property 'state' of undefined
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.3.8
+                  title: "'core: suiteSubprocess: replace this.state.log w/ console.log'"
+                  date: 2022-06-02T16:35:18.359Z
+          version: meta-balena-2.98.37
+          title: "'Update tests/leviathan digest to 8976bdb'"
+          date: 2022-06-03T18:25:50.520Z
+  version: 2.98.39
+  title: "'Update layers/meta-balena digest to 82f6128'"
+  date: 2022-06-04T17:54:39.645Z
+- commits:
     - subject: Update layers/meta-balena to 17a4e839adefeedbe603b9b007800656588c6d77
       hash: 82752f5d51299fd8a1418f3b7df3c6ec36a8675c
       body: Update layers/meta-balena
