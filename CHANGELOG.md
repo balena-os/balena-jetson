@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.98.40
+## (2022-06-04)
+
+
+<details>
+<summary> Update layers/meta-balena to efd8306a7a838b600d2cbf77a4ecfbd30ba9324a [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.40
+> ### (2022-06-04)
+> 
+> * tests: hup: reduce delay between retries [Joseph Kogut]
+> 
+</details>
+
 # v2.98.39
 ## (2022-06-04)
 
