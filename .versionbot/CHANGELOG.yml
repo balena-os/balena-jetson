@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update contracts to 58bcfbc0b0237177c51db2d7120e61d70e9c415b
+      hash: 12a0d959717f2d377e0bc929a14fbe6547810d5c
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 58bcfbc0b0237177c51db2d7120e61d70e9c415b
+        changelog-entry: Update contracts to 58bcfbc0b0237177c51db2d7120e61d70e9c415b
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "sw.os - hw.device-type: Update Xavier NX SD and Xavier NX eMMC to
+                32.7.1"
+              hash: 5550fdff88e0f6c4c93af3ceec5936f937791dd7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.2
+          title: "'sw.os - hw.device-type: Update Xavier NX SD and Xavier NX eMMC to L4T
+            32.7.1'"
+          date: 2022-06-05T12:34:53.567Z
+  version: 2.98.40+rev1
+  title: "'Update contracts digest to 58bcfbc'"
+  date: 2022-06-05T14:08:47.221Z
+- commits:
     - subject: Update layers/meta-balena to efd8306a7a838b600d2cbf77a4ecfbd30ba9324a
       hash: 09e3ac9879ae1c9eb756164c681b8dfaf300ec01
       body: Update layers/meta-balena
