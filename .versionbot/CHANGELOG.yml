@@ -1,4 +1,42 @@
 - commits:
+    - subject: Update layers/meta-balena to dafd28999c58f4b4ae7e6fb28a4923e0b65d4a54
+      hash: 5368128ebfa83b38ed7316deccc491f316ca4999
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to dafd28999c58f4b4ae7e6fb28a4923e0b65d4a54
+        changelog-entry: Update layers/meta-balena to dafd28999c58f4b4ae7e6fb28a4923e0b65d4a54
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 4fbc1b8
+              hash: 47aef0c5ec7b76cc50a00e1cca6c7d1397ba3a36
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "worker: Expose additional QEMU runtime args via docker-compose"
+                      hash: ee574bb798cafa3e4a0504d2dde72079f8db8eeb
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.3.10
+                  title: "'worker: Expose additional QEMU runtime args via docker-compose'"
+                  date: 2022-06-05T16:58:48.060Z
+          version: meta-balena-2.98.41
+          title: "'Update tests/leviathan digest to 4fbc1b8'"
+          date: 2022-06-05T18:58:18.622Z
+  version: 2.98.41
+  title: "'Update layers/meta-balena digest to dafd289'"
+  date: 2022-06-05T22:29:22.381Z
+- commits:
     - subject: Update contracts to 58bcfbc0b0237177c51db2d7120e61d70e9c415b
       hash: 12a0d959717f2d377e0bc929a14fbe6547810d5c
       body: Update contracts

@@ -1,6 +1,30 @@
 Change log
 -----------
 
+# v2.98.41
+## (2022-06-05)
+
+
+<details>
+<summary> Update layers/meta-balena to dafd28999c58f4b4ae7e6fb28a4923e0b65d4a54 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.41
+> ### (2022-06-05)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4fbc1b8 [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.3.10
+>> #### (2022-06-05)
+>> 
+>> * worker: Expose additional QEMU runtime args via docker-compose [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+</details>
+
 # v2.98.40+rev1
 ## (2022-06-05)
 
