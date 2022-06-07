@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.98.42
+## (2022-06-07)
+
+
+<details>
+<summary> Update layers/meta-balena to 3a62a83ec12b05377b46d46bee9661b8b6b4a090 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.42
+> ### (2022-06-05)
+> 
+> * tests:cloud: Register teardown only when DUT is reachable [Florin Sarbu]
+> 
+</details>
+
 # v2.98.41
 ## (2022-06-05)
 
