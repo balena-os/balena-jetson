@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.98.42+rev1
+## (2022-06-08)
+
+* Add build and deploy workflow [Alex Gonzalez]
+
 # v2.98.42
 ## (2022-06-07)
 
