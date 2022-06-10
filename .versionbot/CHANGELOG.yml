@@ -1,4 +1,103 @@
 - commits:
+    - subject: Update layers/meta-balena to 466c0e3a56da6605f033d8fd1b37c301c96af979
+      hash: 580cc0032e86373d27bd17cdad29e1e6e07419fc
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 466c0e3a56da6605f033d8fd1b37c301c96af979
+        changelog-entry: Update layers/meta-balena to 466c0e3a56da6605f033d8fd1b37c301c96af979
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: os: chrony: fix formatting of this.worker"
+              hash: c79e4b2b470f726e8099702cfeaea6da18e7e286
+              body: >
+                Test context is now accessible from self, remove verbose
+
+                this.context.get() syntax when calling worker.executeCommandInHostOS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: chrony: reduce delays and retries"
+              hash: 1064fd20a474af3aac8253f34cf543fb78725f9f
+              body: >
+                When calling waitUntil(), reduce calling intervals and the total
+                number
+
+                of retries. This effectively halves the runtime for these tests, as the
+
+                latency for detecting success is much lower.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.98.45
+          title: "'Reduce chrony timeouts'"
+          date: 2022-06-09T23:03:44.828Z
+        - commits:
+            - subject: Update tests/leviathan digest to ea72650
+              hash: 264147110d2517cb7929cdf709de1cd228f20dae
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: catch error in executeCommandInhostOs
+                      hash: db1677995f1cf2f93284dcd35bb173d1cb3e08ca
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.4.1
+                  title: "'catch error in executeCommandInhostOs'"
+                  date: 2022-06-09T13:28:01.544Z
+                - commits:
+                    - subject: get ssh to work with ed25519 algorithm
+                      hash: 6bdaedab27c0a919eddd74cb784bddfd8281d90b
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.4.0
+                  title: "'get ssh to work with ed25519 algorithm'"
+                  date: 2022-06-07T11:26:55.354Z
+          version: meta-balena-2.98.44
+          title: "'Update tests/leviathan digest to ea72650'"
+          date: 2022-06-09T21:46:58.389Z
+        - commits:
+            - subject: "tests: cloud: update container names"
+              hash: 8b85216ea886c77788ceaf377ee775e9c48913df
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.98.43
+          title: "'tests: cloud: update container names'"
+          date: 2022-06-09T11:03:45.627Z
+  version: 2.98.45
+  title: "'Update layers/meta-balena digest to 466c0e3'"
+  date: 2022-06-10T02:44:40.386Z
+- commits:
     - subject: Add build and deploy workflow
       hash: c4f17ff1ecf63161449a34882da0b4683339dc58
       body: >

@@ -1,6 +1,46 @@
 Change log
 -----------
 
+# v2.98.45
+## (2022-06-10)
+
+
+<details>
+<summary> Update layers/meta-balena to 466c0e3a56da6605f033d8fd1b37c301c96af979 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.45
+> ### (2022-06-09)
+> 
+> * tests: os: chrony: fix formatting of this.worker [Joseph Kogut]
+> * tests: os: chrony: reduce delays and retries [Joseph Kogut]
+> 
+> ## meta-balena-2.98.44
+> ### (2022-06-09)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to ea72650 [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.4.1
+>> #### (2022-06-09)
+>> 
+>> * catch error in executeCommandInhostOs [rcooke-warwick]
+>> 
+>> ### leviathan-2.4.0
+>> #### (2022-06-07)
+>> 
+>> * get ssh to work with ed25519 algorithm [rcooke-warwick]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.98.43
+> ### (2022-06-09)
+> 
+> * tests: cloud: update container names [rcooke-warwick]
+> 
+</details>
+
 # v2.98.42+rev1
 ## (2022-06-08)
 
