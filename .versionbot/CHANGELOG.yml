@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update contracts to 1733467586d1af917c169806986179fdf039336e
+      hash: 42ebeef78fc8335c66272c72c008ebfb85aca916
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 1733467586d1af917c169806986179fdf039336e
+        changelog-entry: Update contracts to 1733467586d1af917c169806986179fdf039336e
+      author: Renovate Bot
+      nested: []
+  version: 2.98.45+rev1
+  title: "'Update contracts digest to 1733467'"
+  date: 2022-06-13T22:04:14.159Z
+- commits:
     - subject: Update layers/meta-balena to 466c0e3a56da6605f033d8fd1b37c301c96af979
       hash: 580cc0032e86373d27bd17cdad29e1e6e07419fc
       body: Update layers/meta-balena
