@@ -261,6 +261,7 @@ BALENA_CONFIGS[nfsfs] = " \
     CONFIG_NFS_FS=m \
     CONFIG_NFS_V2=m \
     CONFIG_NFS_V3=m \
+    CONFIG_NFS_V4=m \
 "
 
 BALENA_CONFIGS[backlight] = " \
