@@ -1,4 +1,18 @@
 - commits:
+    - subject: "linux-tegra: Enable NFSv4 config"
+      hash: b8cfef353e689e21989169efe7d060aa3cf80f80
+      body: ""
+      footer:
+        Changelog-entry: "linux-tegra: Enable NFSv4 config"
+        changelog-entry: "linux-tegra: Enable NFSv4 config"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.98.45+rev2
+  title: "'linux-tegra: Enable NFSv4 config'"
+  date: 2022-06-18T12:27:17.792Z
+- commits:
     - subject: Update contracts to 1733467586d1af917c169806986179fdf039336e
       hash: 42ebeef78fc8335c66272c72c008ebfb85aca916
       body: Update contracts

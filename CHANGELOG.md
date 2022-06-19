@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.98.45+rev2
+## (2022-06-18)
+
+* linux-tegra: Enable NFSv4 config [Alexandru Costache]
+
 # v2.98.45+rev1
 ## (2022-06-13)
 
