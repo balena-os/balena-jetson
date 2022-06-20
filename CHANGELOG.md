@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v2.98.45+rev3
+## (2022-06-20)
+
+* linux-tegra: Update CTI Astro G+ dtb to 32.7.1 [Alexandru Costache]
+* linux-tegra: Update CTI Spacely dtb to 32.7.1 [Alexandru Costache]
+* linux-tegra: Update CTI Orbitty dtb to 32.7.1 [Alexandru Costache]
+
 # v2.98.45+rev2
 ## (2022-06-18)
 

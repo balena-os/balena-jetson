@@ -1,4 +1,38 @@
 - commits:
+    - subject: "linux-tegra: Update CTI Astro G+ dtb to 32.7.1"
+      hash: 418c1cfceb6fb5552bcdcb4b28e34c0cb4b70682
+      body: ""
+      footer:
+        Changelog-entry: "linux-tegra: Update CTI Astro G+ dtb to 32.7.1"
+        changelog-entry: "linux-tegra: Update CTI Astro G+ dtb to 32.7.1"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "linux-tegra: Update CTI Spacely dtb to 32.7.1"
+      hash: a3acde3b4972e6d219175769f8b582a04c600b27
+      body: ""
+      footer:
+        Changelog-entry: "linux-tegra: Update CTI Spacely dtb to 32.7.1"
+        changelog-entry: "linux-tegra: Update CTI Spacely dtb to 32.7.1"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "linux-tegra: Update CTI Orbitty dtb to 32.7.1"
+      hash: 814def2d75bde80ed0242a180c123b87891708e7
+      body: ""
+      footer:
+        Changelog-entry: "linux-tegra: Update CTI Orbitty dtb to 32.7.1"
+        changelog-entry: "linux-tegra: Update CTI Orbitty dtb to 32.7.1"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.98.45+rev3
+  title: "'Update CTI dtbs for Astro G+, Spacely and Orbitty to 32.7.1'"
+  date: 2022-06-20T08:11:59.103Z
+- commits:
     - subject: "linux-tegra: Enable NFSv4 config"
       hash: b8cfef353e689e21989169efe7d060aa3cf80f80
       body: ""
