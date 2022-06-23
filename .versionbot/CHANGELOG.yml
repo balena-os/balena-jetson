@@ -1,4 +1,63 @@
 - commits:
+    - subject: Update contracts to 98c8c8ef3039bb927ce39f77eed4479f12c77fac
+      hash: 73e24d01b63d70013e1ce5126581cc827313c5e1
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 98c8c8ef3039bb927ce39f77eed4479f12c77fac
+        changelog-entry: Update contracts to 98c8c8ef3039bb927ce39f77eed4479f12c77fac
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add libffi3.4 linked python binaries
+              hash: 29fc985046aa9aeca97be260d09e026ad1319da1
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.4
+          title: "'Add libffi3.4 linked python binaries'"
+          date: 2022-06-21T18:55:56.538Z
+        - commits:
+            - subject: Add Python v3.10.5 and v3.9.13
+              hash: 971223d30b9bf7391ffe57b36182c4857bf4c3aa
+              body: >
+                Update checksum for v3.8.13 and v3.7.13 since they were rebuilt
+                to add tkinter modules
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add support for Alpine Linux 3.16
+              hash: 49617527cd147d2013158786ee22f8489340143c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add support for Ubuntu Jammy and Kinetic
+              hash: 143ad01883d861aba4f6359a4386634eb9592684
+              body: |
+                Drop support for Ubuntu Hirsute
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.3
+          title: "'Few base images updates'"
+          date: 2022-06-13T20:38:36.573Z
+  version: 2.98.45+rev4
+  title: "'Update contracts digest to 98c8c8e'"
+  date: 2022-06-23T21:56:39.586Z
+- commits:
     - subject: "linux-tegra: Update CTI Astro G+ dtb to 32.7.1"
       hash: 418c1cfceb6fb5552bcdcb4b28e34c0cb4b70682
       body: ""
