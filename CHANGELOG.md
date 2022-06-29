@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.98.45+rev6
+## (2022-06-29)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 29b218350eb1553f0f2c4da2753e9f6722226f41 [renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.19.9
+> ### (2022-06-28)
+> 
+> * balena-deploy: pin balena-img to v4.1.2 [Joseph Kogut]
+> * balena-deploy: s/resin-img/balena-img [Joseph Kogut]
+> 
+</details>
+
 # v2.98.45+rev5
 ## (2022-06-28)
 
