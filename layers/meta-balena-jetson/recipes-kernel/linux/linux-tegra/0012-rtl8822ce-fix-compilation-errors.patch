@@ -1,0 +1,175 @@
+From 8a7866efad342febfd7697b7a44793dec80dfef7 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 4 Jul 2022 14:47:14 +0200
+Subject: [PATCH 1/2] rtl8822ce: fix compilation errors
+
+This patch fixes building of the updated 8822ce module
+for the Jetson platform.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ .../net/wireless/realtek/rtl8822ce/Kconfig    |  2 +-
+ .../net/wireless/realtek/rtl8822ce/Makefile   | 37 +++++++++++++------
+ .../phydm/halrf/rtl8822c/halrf_iqk_8822c.c    |  1 +
+ .../realtek/rtl8822ce/hal/phydm/mp_precomp.h  |  2 +
+ .../realtek/rtl8822ce/hal/phydm/phydm.mk      |  2 +-
+ 5 files changed, 30 insertions(+), 14 deletions(-)
+
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/Kconfig b/nvidia/drivers/net/wireless/realtek/rtl8822ce/Kconfig
+index 3b259173f2f6..1b207ff56389 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/Kconfig
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/Kconfig
+@@ -1,4 +1,4 @@
+-config RTL8822BE
++config RTL8822CE
+ 	tristate "Realtek 8822C PCIE WiFi"
+ 	depends on PCI
+ 	---help---
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/Makefile b/nvidia/drivers/net/wireless/realtek/rtl8822ce/Makefile
+index 9a5967771a1f..5ff6dac2ce32 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/Makefile
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/Makefile
+@@ -20,8 +20,8 @@ ifeq ($(GCC_VER_49),1)
+ EXTRA_CFLAGS += -Wno-date-time	# Fix compile error && warning on gcc 4.9 and later
+ endif
+ 
+-EXTRA_CFLAGS += -I$(src)/include
+-
++SOURCETREE = $(srctree.nvidia)/drivers/net/wireless/realtek/rtl8822ce
++EXTRA_CFLAGS += -I$(SOURCETREE)/include -I$(SOURCETREE)/hal/phydm
+ EXTRA_LDFLAGS += --strip-debug
+ 
+ CONFIG_AUTOCFG_CP = n
+@@ -143,7 +143,7 @@ CONFIG_SECURITY_MEM = n
+ CONFIG_SECURITY_MEM_ADDR = 0
+ CONFIG_SECURITY_MEM_SIZE = 3686400
+ ###################### Platform Related #######################
+-CONFIG_PLATFORM_I386_PC = y
++CONFIG_PLATFORM_I386_PC = n
+ CONFIG_PLATFORM_ANDROID_X86 = n
+ CONFIG_PLATFORM_ANDROID_INTEL_X86 = n
+ CONFIG_PLATFORM_JB_X86 = n
+@@ -160,6 +160,7 @@ CONFIG_PLATFORM_MT53XX = n
+ CONFIG_PLATFORM_ARM_MX51_241H = n
+ CONFIG_PLATFORM_FS_MX61 = n
+ CONFIG_PLATFORM_ACTIONS_ATJ227X = n
++CONFIG_PLATFORM_TEGRA = y
+ CONFIG_PLATFORM_TEGRA3_CARDHU = n
+ CONFIG_PLATFORM_TEGRA4_DALMORE = n
+ CONFIG_PLATFORM_ARM_TCC8900 = n
+@@ -276,10 +277,10 @@ _HAL_INTFS_FILES :=	hal/hal_intf.o \
+ 			hal/led/hal_$(HCI_NAME)_led.o
+ 
+ 
+-EXTRA_CFLAGS += -I$(src)/platform
++EXTRA_CFLAGS += -I$(SOURCETREE)/platform
+ _PLATFORM_FILES := platform/platform_ops.o
+ 
+-EXTRA_CFLAGS += -I$(src)/hal/btc
++EXTRA_CFLAGS += -I$(SOURCETREE)/hal/btc
+ 
+ ########### HAL_RTL8188E #################################
+ ifeq ($(CONFIG_RTL8188E), y)
+@@ -1332,6 +1333,18 @@ endif
+ 
+ EXTRA_CFLAGS += -DDM_ODM_SUPPORT_TYPE=0x04
+ 
++ifeq ($(CONFIG_PLATFORM_TEGRA), y)
++ARCH = arm
++KVER := $(shell uname -r)
++KSRC := /lib/modules/$(KVER)/build
++EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
++EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211 -DRTW_USE_CFG80211_STA_EVENT
++EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE
++EXTRA_CFLAGS += -DRTW_P2P_GROUP_INTERFACE=1
++EXTRA_CFLAGS += -Wno-error=date-time
++MODULE_NAME = rtl8822ce
++endif
++
+ ifeq ($(CONFIG_RTW_MBO), y)
+ EXTRA_CFLAGS += -DCONFIG_RTW_MBO -DCONFIG_RTW_80211K -DCONFIG_RTW_WNM -DCONFIG_RTW_BTM_ROAM
+ EXTRA_CFLAGS += -DCONFIG_RTW_80211R
+@@ -2347,31 +2360,31 @@ endif
+ ifneq ($(KERNELRELEASE),)
+ 
+ ########### this part for *.mk ############################
+-include $(src)/hal/phydm/phydm.mk
++include $(SOURCETREE)/hal/phydm/phydm.mk
+ 
+ ########### HAL_RTL8822B #################################
+ ifeq ($(CONFIG_RTL8822B), y)
+-include $(src)/rtl8822b.mk
++include $(SOURCETREE)/rtl8822b.mk
+ endif
+ 
+ ########### HAL_RTL8821C #################################
+ ifeq ($(CONFIG_RTL8821C), y)
+-include $(src)/rtl8821c.mk
++include $(SOURCETREE)/rtl8821c.mk
+ endif
+ 
+ ########### HAL_RTL8822C #################################
+ ifeq ($(CONFIG_RTL8822C), y)
+-include $(src)/rtl8822c.mk
++include $(SOURCETREE)/rtl8822c.mk
+ endif
+ 
+ ########### HAL_RTL8814B #################################
+ ifeq ($(CONFIG_RTL8814B), y)
+-include $(src)/rtl8814b.mk
++include $(SOURCETREE)/rtl8814b.mk
+ endif
+ 
+ ########### HAL_RTL8723F #################################
+ ifeq ($(CONFIG_RTL8723F), y)
+-include $(src)/rtl8723f.mk
++include $(SOURCETREE)/rtl8723f.mk
+ endif
+ 
+ rtk_core :=	core/rtw_cmd.o \
+@@ -2421,7 +2434,7 @@ ifeq ($(CONFIG_SDIO_HCI), y)
+ rtk_core += core/rtw_sdio.o
+ endif
+ 
+-EXTRA_CFLAGS += -I$(src)/core/crypto
++EXTRA_CFLAGS += -I$(SOURCETREE)/core/crypto
+ rtk_core += \
+ 		core/crypto/aes-internal.o \
+ 		core/crypto/aes-internal-enc.o \
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/halrf/rtl8822c/halrf_iqk_8822c.c b/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/halrf/rtl8822c/halrf_iqk_8822c.c
+index 7cb70b758fbf..c110be916667 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/halrf/rtl8822c/halrf_iqk_8822c.c
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/halrf/rtl8822c/halrf_iqk_8822c.c
+@@ -24,6 +24,7 @@
+  *****************************************************************************/
+ 
+ #include "mp_precomp.h"
++#include "../../../btc/mp_precomp.h"
+ #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
+ #if RT_PLATFORM == PLATFORM_MACOSX
+ #include "phydm_precomp.h"
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/mp_precomp.h b/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/mp_precomp.h
+index 897adc13ffca..4f0e96161d04 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/mp_precomp.h
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/mp_precomp.h
+@@ -22,3 +22,5 @@
+  * Larry Finger <Larry.Finger@lwfinger.net>
+  *
+  *****************************************************************************/
++
++#include "phydm_types.h"
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/phydm.mk b/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/phydm.mk
+index 042db19d26ba..42c8273b878a 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/phydm.mk
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/hal/phydm/phydm.mk
+@@ -245,4 +245,4 @@ _PHYDM_FILES += hal/phydm/$(RTL871X)/halhwimg8723f_bb.o\
+ 								hal/phydm/halrf/$(RTL871X)/halrf_dpk_8723f.o\
+ 								hal/phydm/halrf/$(RTL871X)/halrf_rfk_init_8723f.o\
+ 								hal/phydm/halrf/$(RTL871X)/halhwimg8723f_rf.o
+-endif
+\ No newline at end of file
++endif
+-- 
+2.17.1
+
