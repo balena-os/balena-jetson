@@ -1,0 +1,79 @@
+From fbb96eba13f8b70a3a143f5cc1e81f7772355b31 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 4 Jul 2022 18:01:27 +0200
+Subject: [PATCH 2/2] nvidia: net/wireless/realtek: clean up indentation issues
+
+now flagged as errors by gcc 11.  Some of these were actual
+bugs.
+
+This patch is already present in the meta-tegra tree and
+is rebased now on top of the latest 8822ce driver version.
+
+Signed-off-by: Matt Madison <matt@madison.systems>
+
+Upstream-status: Inappropriate [backport]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ .../wireless/realtek/rtl8822ce/core/efuse/rtw_efuse.c  |  2 +-
+ .../net/wireless/realtek/rtl8822ce/core/rtw_mlme.c     |  5 ++++-
+ .../net/wireless/realtek/rtl8822ce/core/rtw_recv.c     | 10 +++++-----
+ 3 files changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/efuse/rtw_efuse.c b/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/efuse/rtw_efuse.c
+index f105378a7238..34be9dbf3338 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/efuse/rtw_efuse.c
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/efuse/rtw_efuse.c
+@@ -940,7 +940,7 @@ void rtw_efuse_analyze(PADAPTER	padapter, u8 Type, u8 Fake)
+ 	for (i = 0; i < mapLen; i++) {
+ 		if (i % 16 == 0)
+ 			RTW_PRINT_SEL(RTW_DBGDUMP, "0x%03x: ", i);
+-			_RTW_PRINT_SEL(RTW_DBGDUMP, "%02X%s"
++		_RTW_PRINT_SEL(RTW_DBGDUMP, "%02X%s"
+ 				, pEfuseHal->fakeEfuseInitMap[i]
+ 				, ((i + 1) % 16 == 0) ? "\n" : (((i + 1) % 8 == 0) ? "	  " : " ")
+ 			);
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_mlme.c b/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_mlme.c
+index 2c2f5a39fd68..8f3a47cd2e8f 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_mlme.c
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_mlme.c
+@@ -3792,12 +3792,15 @@ void rtw_drv_scan_by_self(_adapter *padapter, u8 reason)
+ 		#ifdef CONFIG_LAYER2_ROAMING
+ 		if (rtw_chk_roam_flags(padapter, RTW_ROAM_ACTIVE) && pmlmepriv->need_to_roam == _TRUE)
+ 			RTW_INFO(FUNC_ADPT_FMT" need to roam, don't care BusyTraffic\n", FUNC_ADPT_ARG(padapter));
+-		else
++		else {
+ 		#endif
+ 		{
+ 			RTW_INFO(FUNC_ADPT_FMT" exit BusyTraffic\n", FUNC_ADPT_ARG(padapter));
+ 			goto exit;
+ 		}
++		#ifdef CONFIG_LAYER2_ROAMING
++		}
++		#endif
+ 	}
+ 	else if (ssc_chk != SS_ALLOW)
+ 		goto exit;
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_recv.c b/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_recv.c
+index 2e946f1bd089..c4cb1e4282c2 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_recv.c
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_recv.c
+@@ -3826,11 +3826,11 @@ int validate_mp_recv_frame(_adapter *adapter, union recv_frame *precv_frame)
+ 			for (i = 0; i < precv_frame->u.hdr.len; i = i + 8)
+ 				RTW_INFO("%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X:\n", *(ptr + i),
+ 					*(ptr + i + 1), *(ptr + i + 2) , *(ptr + i + 3) , *(ptr + i + 4), *(ptr + i + 5), *(ptr + i + 6), *(ptr + i + 7));
+-				RTW_INFO("#############################\n");
+-				_rtw_memset(pmppriv->mplink_buf, '\0' , sizeof(pmppriv->mplink_buf));
+-				_rtw_memcpy(pmppriv->mplink_buf, ptr, precv_frame->u.hdr.len);
+-				pmppriv->mplink_rx_len = precv_frame->u.hdr.len;
+-				pmppriv->mplink_brx =_TRUE;
++			RTW_INFO("#############################\n");
++			_rtw_memset(pmppriv->mplink_buf, '\0' , sizeof(pmppriv->mplink_buf));
++			_rtw_memcpy(pmppriv->mplink_buf, ptr, precv_frame->u.hdr.len);
++			pmppriv->mplink_rx_len = precv_frame->u.hdr.len;
++			pmppriv->mplink_brx =_TRUE;
+ 		}
+ 	}
+ 	if (pmppriv->bloopback) {
+-- 
+2.17.1
+
