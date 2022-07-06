@@ -1,6 +1,215 @@
 Change log
 -----------
 
+# v2.99.27
+## (2022-07-01)
+
+
+<details>
+<summary> Update layers/meta-balena to d748c184c7348683378b4e8f0dbc2cfc014b65de [renovate[bot]] </summary>
+
+> ## meta-balena-2.99.27
+> ### (Invalid date)
+> 
+> * tests: os: fingerprint: fix errant promise [Joseph Kogut]
+> 
+> ## meta-balena-2.99.26
+> ### (2022-06-29)
+> 
+> * tests: cloud: Wait for random triggers to be updated [Kyle Harding]
+> 
+> ## meta-balena-2.99.25
+> ### (2022-06-28)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4fe9b19 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.5.5
+>> #### (2022-06-24)
+>> 
+>> * github: Run e2e tests via github actions [Kyle Harding]
+>> * make: Clean local volumes before running tests [Kyle Harding]
+>> * worker: Pin worker image to latest by default [Kyle Harding]
+>> * e2e: Update e2e suite config to support testbots [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.99.24
+> ### (2022-06-28)
+> 
+> * tests: Increase delay when testing randomized timers [Kyle Harding]
+> 
+> ## meta-balena-2.99.23
+> ### (2022-06-27)
+> 
+> * Update: update balena-io/balena-supervisor to v14.0.8 [renovate[bot]]
+> 
+> ## meta-balena-2.99.22
+> ### (2022-06-27)
+> 
+> * balena-supervisor: Replace BOOT_MOUNTPOINT with BALENA_BOOT_MOUNTPOINT [Alex Gonzalez]
+> * balena-config-vars: Remove BOOT_MOUNTPOINT from configuration environment [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.21
+> ### (2022-06-27)
+> 
+> * balena-config-vars: Do not use systemctl to list unit files [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.20
+> ### (2022-06-24)
+> 
+> * tests: os: make apiKey an optional parameter [Joseph Kogut]
+> 
+> ## meta-balena-2.99.19
+> ### (2022-06-24)
+> 
+> * tests: os: purge-data: reduce intervals in waitUntil [Joseph Kogut]
+> 
+> ## meta-balena-2.99.18
+> ### (2022-06-23)
+> 
+> * tests: os: config-json: fix race in udevRules test [Joseph Kogut]
+> 
+> ## meta-balena-2.99.17
+> ### (2022-06-22)
+> 
+> * Update balena-io/balena-supervisor to v14.0.7 [renovate[bot]]
+> 
+> ## meta-balena-2.99.16
+> ### (2022-06-22)
+> 
+> * tests: os: modem: reduce time taken scanning for modems [Joseph Kogut]
+> 
+> ## meta-balena-2.99.15
+> ### (2022-06-21)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 9e0ab34 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.5.4
+>> #### (2022-06-17)
+>> 
+>> * core: worker: simplify rebootDut [Joseph Kogut]
+>> * core: worker: reduce interval in executeCommandInHostOS [Joseph Kogut]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.99.14
+> ### (2022-06-21)
+> 
+> * tests: os: chrony: simplify error handling [Joseph Kogut]
+> * tests: os: chrony: use waitForServiceState [Joseph Kogut]
+> * tests: os: chrony: block NTP by disabling DNS resolution [Joseph Kogut]
+> 
+> ## meta-balena-2.99.13
+> ### (2022-06-21)
+> 
+> * Update balena-io/balena-supervisor to v14 [renovate[bot]]
+> 
+> ## meta-balena-2.99.12
+> ### (2022-06-20)
+> 
+> * renovate: Add regex manager for balena-supervisor [Kyle Harding]
+> 
+> ## meta-balena-2.99.11
+> ### (2022-06-20)
+> 
+> * tests: cloud: check preloaded app starts w/o api [rcooke-warwick]
+> 
+> ## meta-balena-2.99.10
+> ### (2022-06-18)
+> 
+> * Update backport for current being 2.88.x [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.9
+> ### (2022-06-17)
+> 
+> * hostapp-update-hooks: Rework bootfiles blacklist [Florin Sarbu]
+> 
+> ## meta-balena-2.99.8
+> ### (2022-06-17)
+> 
+> * base-files: Fix syntax in mdns.allow addition [Alex Gonzalez]
+> * efitools: Fix append syntax [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.7
+> ### (2022-06-17)
+> 
+> * resindataexpander: Move get_part_table_type to os-helpers-fs [Michal Toman]
+> 
+> ## meta-balena-2.99.6
+> ### (2022-06-17)
+> 
+> * balena-efi.service: Mount if /mnt/boot/EFI is a symlink [Michal Toman]
+> 
+> ## meta-balena-2.99.5
+> ### (2022-06-17)
+> 
+> * grub-efi: disable shim_lock when in secure boot mode [Michal Toman]
+> 
+> ## meta-balena-2.99.4
+> ### (2022-06-16)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 6934150 [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.5.3
+>> #### (2022-06-16)
+>> 
+>> * patch: Fix failFast options [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.5.2
+>> #### (2022-06-15)
+>> 
+>> * core: worker: handle all local connections the same [Joseph Kogut]
+>> 
+>> ### leviathan-2.5.1
+>> #### (2022-06-14)
+>> 
+>> * core: catch ssh errors correctly [rcooke-warwick]
+>> 
+>> ### leviathan-2.5.0
+>> #### (2022-06-13)
+>> 
+>> * make: Disable buildkit and add --pull to worker flags [Kyle Harding]
+>> * patch: Replace worker Dockerfile with bh.cr reference [Kyle Harding]
+>> * patch: Remove testbot worker compose file [Kyle Harding]
+>> * patch: Remove balena-ci workflow for deploying to rigs [Kyle Harding]
+>> * Remove worker references from package.json [Kyle Harding]
+>> * Remove worker source files [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.99.3
+> ### (2022-06-16)
+> 
+> * tests: os: Run os suite before hup and cloud [Kyle Harding]
+> * tests: os: Refactor config-json tests to wait for passing results [Kyle Harding]
+> * tests: os: chrony: Avoid conflicts with supervisor firewall [Kyle Harding]
+> 
+> ## meta-balena-2.99.2
+> ### (2022-06-13)
+> 
+> * tests: os: chrony: reduce retry interval [Joseph Kogut]
+> 
+> ## meta-balena-2.99.1
+> ### (2022-06-11)
+> 
+> * tests: hup: gzip hostapp before transfer to DUT [rcooke-warwick]
+> 
+> ## meta-balena-2.99.0
+> ### (2022-06-10)
+> 
+> * chronyd: Add time synchronization healthcheck [Alex Gonzalez]
+> 
+</details>
+
 # v2.98.45+rev7
 ## (2022-06-29)
 
