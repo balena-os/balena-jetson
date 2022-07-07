@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.99.27+rev1
+## (2022-07-07)
+
+* linux-tegra: Enable NFS V4 server support [Alexandru Costache]
+
 # v2.99.27
 ## (2022-07-01)
 

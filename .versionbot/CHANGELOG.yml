@@ -1,4 +1,18 @@
 - commits:
+    - subject: "linux-tegra: Enable NFS V4 server support"
+      hash: d8a438b954a053d431e09575e86c3064525cb643
+      body: ""
+      footer:
+        Changelog-entry: "linux-tegra: Enable NFS V4 server support"
+        changelog-entry: "linux-tegra: Enable NFS V4 server support"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.99.27+rev1
+  title: "'linux-tegra: Enable NFS V4 server support'"
+  date: 2022-07-07T12:34:38.036Z
+- commits:
     - subject: Update layers/meta-balena to d748c184c7348683378b4e8f0dbc2cfc014b65de
       hash: b77c87b2a94d3b442ffb3ee0ddcca1989dbc849d
       body: Update layers/meta-balena
