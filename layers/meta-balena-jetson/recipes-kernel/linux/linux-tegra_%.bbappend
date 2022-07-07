@@ -259,9 +259,11 @@ BALENA_CONFIGS[rtl8822ce] = " \
 BALENA_CONFIGS:append = " nfsfs backlight "
 BALENA_CONFIGS[nfsfs] = " \
     CONFIG_NFS_FS=m \
-    CONFIG_NFS_V2=m \
-    CONFIG_NFS_V3=m \
-    CONFIG_NFS_V4=m \
+    CONFIG_NFS_V2=y \
+    CONFIG_NFS_V3=y \
+    CONFIG_NFS_V4=y \
+    CONFIG_NFSD_V3=y \
+    CONFIG_NFSD_V4=y \
 "
 
 BALENA_CONFIGS[backlight] = " \
