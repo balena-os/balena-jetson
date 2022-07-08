@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update build and deploy workflow to support ESR tags
+      hash: ffa5f0ec0b4eb415ff63be7fdc45f77243772347
+      body: |
+        This adds support for build and deploy of ESR tags.
+      footer:
+        Changelog-entry: Update build and deploy workflow to support ESR tags
+        changelog-entry: Update build and deploy workflow to support ESR tags
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.99.27+rev2
+  title: "'workflows: Update build and deploy to 0.0.6'"
+  date: 2022-07-08T15:58:12.403Z
+- commits:
     - subject: "linux-tegra: Enable NFS V4 server support"
       hash: d8a438b954a053d431e09575e86c3064525cb643
       body: ""
