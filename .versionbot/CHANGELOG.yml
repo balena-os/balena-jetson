@@ -1,4 +1,65 @@
 - commits:
+    - subject: Update contracts to e6f7ecd2977facdc5ee141b4bb7dc2719001df45
+      hash: d16e52f7968746170212e42bb9f547262affa339
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to e6f7ecd2977facdc5ee141b4bb7dc2719001df45
+        changelog-entry: Update contracts to e6f7ecd2977facdc5ee141b4bb7dc2719001df45
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add node v18.6.0
+              hash: 9c2c0aeb2570a4c34e02d118c82d0ab548c01832
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add golang v1.8.4 and v1.17.12
+              hash: ba582ac955d9f8c50634556860289ee1473770fd
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v18.5.0 v16.16.0 and v14.20.0
+              hash: 036940834afc4231e89caffe4ea94dbfc2f665d2
+              body: |
+                Drop v17.x series
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Remove Debian Stretch as it is EOL
+              hash: 623e9032a3e81cf42d11736e7eed3ed54a24ebbc
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.5
+          title: "'Few base images updates'"
+          date: 2022-07-14T10:50:25.683Z
+    - subject: Update layers/meta-balena to e25da86814cf073f06a45186609ca053955219c7
+      hash: 46a4aa686853381b71c59ffc07fc73785e2cc002
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e25da86814cf073f06a45186609ca053955219c7
+        changelog-entry: Update layers/meta-balena to e25da86814cf073f06a45186609ca053955219c7
+      author: renovate[bot]
+      nested: []
+  version: 2.99.29
+  title: "'Update contracts digest to e6f7ecd'"
+  date: 2022-07-14T15:18:10.347Z
+- commits:
     - subject: Update layers/meta-balena to 52d875f2794f049e43cb79e63ec419e2ab090471
       hash: 95492ea4ac4f0b24e1350c94e363a9aaff1dfa05
       body: Update layers/meta-balena
