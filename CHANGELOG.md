@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.100.1
+## (2022-07-15)
+
+
+<details>
+<summary> Update layers/meta-balena to 904cf6fe2654cc58f831e8ff9b553470916d3874 [renovate[bot]] </summary>
+
+> ## meta-balena-2.100.1
+> ### (2022-07-15)
+> 
+> * tests: cloud: fix production mode ssh test [Joseph Kogut]
+> 
+</details>
+
+
+<details>
+<summary> Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca [renovate[bot]] </summary>
+
+> ## meta-balena-2.100.1
+> ### (2022-07-15)
+> 
+> * tests: cloud: fix production mode ssh test [Joseph Kogut]
+> 
+</details>
+
 # v2.99.29
 ## (2022-07-14)
 

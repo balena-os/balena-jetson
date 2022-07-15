@@ -1,4 +1,70 @@
 - commits:
+    - subject: Update layers/meta-balena to 904cf6fe2654cc58f831e8ff9b553470916d3874
+      hash: 9a8c6ee65b31a62ca821490707f032df1d410cbf
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 904cf6fe2654cc58f831e8ff9b553470916d3874
+        changelog-entry: Update layers/meta-balena to 904cf6fe2654cc58f831e8ff9b553470916d3874
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: cloud: fix production mode ssh test"
+              hash: 916d400456ef2cb58f13c7b8b6e542c23b57e8c2
+              body: >
+                This test was broken previously, and would fail with "All
+                configured
+
+                authentication methods failed" after a long delay caused by excessive
+
+                retries.
+
+
+                Fixes: #2719
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.100.1
+          title: "'tests: cloud: fix production mode ssh test'"
+          date: 2022-07-15T00:06:09.193Z
+    - subject: Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca
+      hash: 99f4c1fc14489f678ac290dc2573522577362863
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca
+        changelog-entry: Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: cloud: fix production mode ssh test"
+              hash: 916d400456ef2cb58f13c7b8b6e542c23b57e8c2
+              body: >
+                This test was broken previously, and would fail with "All
+                configured
+
+                authentication methods failed" after a long delay caused by excessive
+
+                retries.
+
+
+                Fixes: #2719
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.100.1
+          title: "'tests: cloud: fix production mode ssh test'"
+          date: 2022-07-15T00:06:09.193Z
+  version: 2.100.1
+  title: "'Update layers/meta-balena digest to 904cf6f'"
+  date: 2022-07-15T17:28:26.164Z
+- commits:
     - subject: Update contracts to e6f7ecd2977facdc5ee141b4bb7dc2719001df45
       hash: d16e52f7968746170212e42bb9f547262affa339
       body: Update contracts
