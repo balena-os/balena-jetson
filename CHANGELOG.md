@@ -1,6 +1,30 @@
 Change log
 -----------
 
+# v2.100.2
+## (2022-07-15)
+
+
+<details>
+<summary> Update layers/meta-balena to 7d1109f4319315955a5ef56d062252bbfcdce6f5 [renovate[bot]] </summary>
+
+> ## meta-balena-2.100.2
+> ### (2022-07-15)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to c2755a1 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.6.6
+>> #### (2022-07-15)
+>> 
+>> * core: worker: add retryOptions to executeCommand methods [Joseph Kogut]
+>> 
+> </details>
+> 
+> 
+</details>
+
 # v2.100.1
 ## (2022-07-15)
 
