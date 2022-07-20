@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.100.3
+## (2022-07-20)
+
+
+<details>
+<summary> Update layers/meta-balena to c34abd0168622b7766004de8a27f0e96f556b035 [renovate[bot]] </summary>
+
+> ## meta-balena-2.100.3
+> ### (2022-07-20)
+> 
+> * tests: ssh-auth: Rework to prevent race conditions [Kyle Harding]
+> 
+</details>
+
 # v2.100.2+rev1
 ## (2022-07-17)
 
