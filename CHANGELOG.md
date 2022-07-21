@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.100.6
+## (2022-07-21)
+
+
+<details>
+<summary> Update layers/meta-balena to 2438d75a2515240ef254b956da08094b3f4e2d61 [renovate[bot]] </summary>
+
+> ## meta-balena-2.100.6
+> ### (2022-07-21)
+> 
+> * balena-config-vars: Do not use cache in flasher images [Alex Gonzalez]
+> 
+</details>
+
 # v2.100.5
 ## (2022-07-21)
 
