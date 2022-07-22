@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.100.8
+## (2022-07-22)
+
+
+<details>
+<summary> Update layers/meta-balena to 9b7bbeaffe87b8dab49eb98163188c77c1934f8e [renovate[bot]] </summary>
+
+> ## meta-balena-2.100.8
+> ### (2022-07-21)
+> 
+> * tests/os: Add 243390 unmanged Wifi HATs tests from testLodge [Alexandru Costache]
+> 
+</details>
+
 # v2.100.7
 ## (2022-07-22)
 
