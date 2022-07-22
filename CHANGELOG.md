@@ -1,6 +1,23 @@
 Change log
 -----------
 
+# v2.100.7
+## (2022-07-22)
+
+
+<details>
+<summary> Update layers/meta-balena to 39681bd5d8a584784c385a042a707bf1c35b2369 [renovate[bot]] </summary>
+
+> ## meta-balena-2.100.7
+> ### (2022-07-21)
+> 
+> * tests: hup: Clear inactive storage partition before HUP [Kyle Harding]
+> * tests: hup: Add root partition tests [Kyle Harding]
+> * tests: hup: Replace custom steps with tests and verify exit code [Kyle Harding]
+> * tests: hup: Wait for rollback files to be removed or created [Kyle Harding]
+> 
+</details>
+
 # v2.100.6
 ## (2022-07-21)
 

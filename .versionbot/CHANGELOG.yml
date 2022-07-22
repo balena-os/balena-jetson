@@ -1,4 +1,67 @@
 - commits:
+    - subject: Update layers/meta-balena to 39681bd5d8a584784c385a042a707bf1c35b2369
+      hash: 29f789b6f7f63f0e70aef49f7b29db9874123167
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 39681bd5d8a584784c385a042a707bf1c35b2369
+        changelog-entry: Update layers/meta-balena to 39681bd5d8a584784c385a042a707bf1c35b2369
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: hup: Clear inactive storage partition before HUP"
+              hash: 411639a031cdbdfc8ccdcc911e06f94fbf28ca9c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests: hup: Add root partition tests"
+              hash: 0aa0a53a27867ce9e1a1d511f68736d62a9b3b1c
+              body: |
+                Rather than verify the OS version that doesn't always
+                change between upgrades, we should confirm that we are not
+                running on the same root partition as we were before HUP.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests: hup: Replace custom steps with tests and verify exit code"
+              hash: 60923171f34aa9d55edce08b010a7b48f97f615f
+              body: |
+                We want to fail the test if one of setup steps fails to execute.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests: hup: Wait for rollback files to be removed or created"
+              hash: e4ba7abc3225f26926cf6cd9acee1431bb839950
+              body: |
+                Rather than waiting for services to become inactive, just
+                wait for the expected files to be created or removed in
+                the state partition.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.100.7
+          title: "'tests: hup: Clear inactive storage partition before HUP'"
+          date: 2022-07-21T16:21:04.482Z
+  version: 2.100.7
+  title: "'Update layers/meta-balena digest to 39681bd'"
+  date: 2022-07-22T02:09:16.542Z
+- commits:
     - subject: Update layers/meta-balena to 2438d75a2515240ef254b956da08094b3f4e2d61
       hash: 429ff049410a34b09da88b61b2bfaf678c725c85
       body: Update layers/meta-balena
