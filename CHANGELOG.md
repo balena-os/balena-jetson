@@ -1,6 +1,27 @@
 Change log
 -----------
 
+# v2.100.10
+## (2022-07-24)
+
+
+<details>
+<summary> Update layers/meta-balena to dd080e1b54a37355856865fd7a5bb05a69b9592d [renovate[bot]] </summary>
+
+> ## meta-balena-2.100.10
+> ### (2022-07-24)
+> 
+> * tests: cloud: preload: fix no-return-await [Joseph Kogut]
+> * tests: cloud: preload: reduce waitUntil interval [Joseph Kogut]
+> * tests: cloud: multicontainer: reduce waitUntil interval [Joseph Kogut]
+> 
+> ## meta-balena-2.100.9
+> ### (2022-07-22)
+> 
+> * tests: os: engine-socket - wait for response [rcooke-warwick]
+> 
+</details>
+
 # v2.100.8
 ## (2022-07-22)
 
