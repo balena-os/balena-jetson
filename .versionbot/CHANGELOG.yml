@@ -1,4 +1,34 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 09e4514953fed499a69c224b47969fd2c3fb7ab8
+      hash: 66e21a38ac09d271aae8b6b1d1d3bd6d72bf9686
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 09e4514953fed499a69c224b47969fd2c3fb7ab8
+        changelog-entry: Update balena-yocto-scripts to 09e4514953fed499a69c224b47969fd2c3fb7ab8
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "balena-api: On hostapp creation, set class to app"
+              hash: 3bb4995b8bedcfe83b75c3ef6151725828dd1eb8
+              body: >
+                Applications can be fleet, blocks or apps, and hostapps need to
+                be set
+
+                as apps.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.11
+          title: "'balena-api: On hostapp creation, set class to app'"
+          date: 2022-07-25T17:11:36.181Z
+  version: 2.100.10+rev1
+  title: "'Update balena-yocto-scripts digest to 09e4514'"
+  date: 2022-07-25T18:52:52.195Z
+- commits:
     - subject: Update layers/meta-balena to dd080e1b54a37355856865fd7a5bb05a69b9592d
       hash: 43c173bd11959095a53cb471a4d8dec2ebc5f754
       body: Update layers/meta-balena
