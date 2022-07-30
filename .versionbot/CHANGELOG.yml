@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update contracts to 9db49d2fbb34542f53bf496135c32cccf5df487c
+      hash: 5c4e544e1effd2a37d75f39a6ce4b4a148286101
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 9db49d2fbb34542f53bf496135c32cccf5df487c
+        changelog-entry: Update contracts to 9db49d2fbb34542f53bf496135c32cccf5df487c
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "hw.device-type: fix tdpzu9 device name"
+              hash: acb15b0bc5d545447881d327977d7901e88a8dea
+              body: |
+                Remove "V1R2" version from Topic Device Name
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+                signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+              author: Francois
+          version: contracts-2.0.7
+          title: "'hw.device-type: fix tdpzu9 device name'"
+          date: 2022-07-19T11:11:57.633Z
+  version: 2.101.0+rev1
+  title: "'Update contracts digest to 9db49d2'"
+  date: 2022-07-30T19:33:20.005Z
+- commits:
     - subject: Update layers/meta-balena to c233b4107fc25b08e963e2419b40263409d2de9e
       hash: 43285aeba812be1c43ece9d7beea0a55b0406ab1
       body: Update layers/meta-balena
