@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2.101.0
+## (2022-07-30)
+
+
+<details>
+<summary> Update layers/meta-balena to c233b4107fc25b08e963e2419b40263409d2de9e [renovate[bot]] </summary>
+
+> ## meta-balena-2.101.0
+> ### (2022-07-29)
+> 
+> * resin-device-register: Use fatrw to access the boot partition [Alex Gonzalez]
+> * hostapp-update-hooks: Use fatrw to access the boot partition [Alex Gonzalez]
+> * balena-unique-key: Use fatrw to access the boot partition [Alex Gonzalez]
+> * balena-rollback: Use fatrw if available [Alex Gonzalez]
+> * update-hostapp-extensions: Use fatrw if available [Alex Gonzalez]
+> * balena-config-vars: Provide FAT safe filesystem access alternatives [Alex Gonzalez]
+> * fatrw: Add recipe [Alex Gonzalez]
+> 
+</details>
+
 # v2.100.11
 ## (2022-07-25)
 
