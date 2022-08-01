@@ -126,6 +126,10 @@ IMAGE_INSTALL:append:jetson-xavier-nx-devkit-emmc = " \
     tegra-nvpmodel \
     tegra-configs-nvstartup \
     tegra-configs-udev \
+    tegra-wifi \
+    tegra-bluetooth \
+    tegra-firmware-rtl8822 \
+    tegra-udrm-probeconf \
     mtd-utils \
     tegra-boot-tools \
 "
