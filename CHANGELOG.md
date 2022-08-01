@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.101.0+rev2
+## (2022-08-01)
+
+* linux/linux-tegra: Update Spacely, Orbitty, Astro G+ dtbs to 32.7.2 [Alexandru Costache]
+
 # v2.101.0+rev1
 ## (2022-07-30)
 

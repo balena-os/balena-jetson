@@ -1,4 +1,18 @@
 - commits:
+    - subject: "linux/linux-tegra: Update Spacely, Orbitty, Astro G+ dtbs to 32.7.2"
+      hash: 4f5d740bb71e6f5b31ceb2bc89e5ef23d3b55601
+      body: ""
+      footer:
+        Changelog-entry: "linux/linux-tegra: Update Spacely, Orbitty, Astro G+ dtbs to 32.7.2"
+        changelog-entry: "linux/linux-tegra: Update Spacely, Orbitty, Astro G+ dtbs to 32.7.2"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.101.0+rev2
+  title: "'Update BSP to L4T 32.7.2'"
+  date: 2022-08-01T14:06:29.349Z
+- commits:
     - subject: Update contracts to 9db49d2fbb34542f53bf496135c32cccf5df487c
       hash: 5c4e544e1effd2a37d75f39a6ce4b4a148286101
       body: Update contracts
