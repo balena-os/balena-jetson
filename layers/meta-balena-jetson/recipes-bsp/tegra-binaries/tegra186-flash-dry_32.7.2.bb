@@ -226,11 +226,11 @@ do_configure() {
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=748032 count=24 skip=88  of=boot0.img conv=notrunc
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=748416 count=16 skip=112  of=boot0.img conv=notrunc
 
-    # This part is specific to the TX2 NX
+    # This part is specific to the TX2 NX, which is the same on 32.7.2 and on 32.7.1
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557444 count=6 skip=128  of=boot0.img conv=notrunc
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=622980 count=6 skip=134  of=boot0.img conv=notrunc
 
-    # Added as of L4T 32.7.1 for TX2
+    # Added as of L4T 32.7.1 for TX2, applies to 32.7.2
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=623472 count=32 skip=140  of=boot0.img conv=notrunc
     dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557936 count=32 skip=172  of=boot0.img conv=notrunc
 

@@ -1,6 +1,50 @@
 Change log
 -----------
 
+# v2.101.0+rev3
+## (2022-08-02)
+
+* linux-tegra: Include configuration files [Alexandru Costache]
+
+# v2.101.0+rev2
+## (2022-08-01)
+
+* linux/linux-tegra: Update Spacely, Orbitty, Astro G+ dtbs to 32.7.2 [Alexandru Costache]
+
+# v2.101.0+rev1
+## (2022-07-30)
+
+
+<details>
+<summary> Update contracts to 9db49d2fbb34542f53bf496135c32cccf5df487c [renovate[bot]] </summary>
+
+> ## contracts-2.0.7
+> ### (2022-07-19)
+> 
+> * hw.device-type: fix tdpzu9 device name [Francois]
+> 
+</details>
+
+# v2.101.0
+## (2022-07-30)
+
+
+<details>
+<summary> Update layers/meta-balena to c233b4107fc25b08e963e2419b40263409d2de9e [renovate[bot]] </summary>
+
+> ## meta-balena-2.101.0
+> ### (2022-07-29)
+> 
+> * resin-device-register: Use fatrw to access the boot partition [Alex Gonzalez]
+> * hostapp-update-hooks: Use fatrw to access the boot partition [Alex Gonzalez]
+> * balena-unique-key: Use fatrw to access the boot partition [Alex Gonzalez]
+> * balena-rollback: Use fatrw if available [Alex Gonzalez]
+> * update-hostapp-extensions: Use fatrw if available [Alex Gonzalez]
+> * balena-config-vars: Provide FAT safe filesystem access alternatives [Alex Gonzalez]
+> * fatrw: Add recipe [Alex Gonzalez]
+> 
+</details>
+
 # v2.100.11
 ## (2022-07-25)
 
