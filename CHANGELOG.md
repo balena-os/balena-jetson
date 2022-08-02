@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.101.0+rev3
+## (2022-08-02)
+
+* linux-tegra: Include configuration files [Alexandru Costache]
+
 # v2.101.0+rev2
 ## (2022-08-01)
 

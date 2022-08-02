@@ -1,4 +1,25 @@
 - commits:
+    - subject: "linux-tegra: Include configuration files"
+      hash: 78c56a65779c92d34e9cfaba47dfcfb217c91823
+      body: |
+        In commit 853224bd12f21175e273aedbc0466ac19e3aec25
+        we brought in the kernel recipe from meta-tegra
+        to fix a initramfs issue in L4T 32.7.2, until we
+        will have Kirkstone support in meta-balena. Currently
+        we use Honister for the device integration layers
+        and meta-tegra 32.7.2 which is compatible with Kirkstone 4.0
+        and Langdale 4.1.
+      footer:
+        Changelog-entry: "linux-tegra: Include configuration files"
+        changelog-entry: "linux-tegra: Include configuration files"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.101.0+rev3
+  title: "'linux-tegra: use recipe from meta-tegra'"
+  date: 2022-08-02T13:41:44.574Z
+- commits:
     - subject: "linux/linux-tegra: Update Spacely, Orbitty, Astro G+ dtbs to 32.7.2"
       hash: 4f5d740bb71e6f5b31ceb2bc89e5ef23d3b55601
       body: ""
