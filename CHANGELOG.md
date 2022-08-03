@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.101.0+rev5
+## (2022-08-03)
+
+* Flag jetson-tx1 as discontinued [Alex Gonzalez]
+
 # v2.101.0+rev4
 ## (2022-08-02)
 

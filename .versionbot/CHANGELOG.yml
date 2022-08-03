@@ -1,4 +1,23 @@
 - commits:
+    - subject: Flag jetson-tx1 as discontinued
+      hash: de8e07d324a18d27e29e698c0bac6fdd5d4b4fc0
+      body: |
+        The `state` field in device-type.json is no longer used by the cloud,
+        it's enough to set the hostapp as `is_archived`.
+
+        However, until we stop using device-type.json it would be confusing not
+        to update the state field.
+      footer:
+        Changelog-entry: Flag jetson-tx1 as discontinued
+        changelog-entry: Flag jetson-tx1 as discontinued
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.101.0+rev5
+  title: "'jetson-tx1: Flag as discontinued'"
+  date: 2022-08-03T15:52:35.413Z
+- commits:
     - subject: Remove final argument from build and deploy workflow
       hash: c5aa19ced0b1dc9160d703df9cf48e78eca9f6c7
       body: |
