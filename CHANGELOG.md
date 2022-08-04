@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.101.1
+## (2022-08-04)
+
+
+<details>
+<summary> Update layers/meta-balena to 7a62296718a363abd393107933f30e611ec27d1e [renovate[bot]] </summary>
+
+> ## meta-balena-2.101.1
+> ### (2022-08-01)
+> 
+> * os-config: Update os-config from v1.2.1 to v1.2.10 [Zahari Petkov]
+> 
+</details>
+
 # v2.101.0+rev6
 ## (2022-08-03)
 

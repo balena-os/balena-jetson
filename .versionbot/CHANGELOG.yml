@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update layers/meta-balena to 7a62296718a363abd393107933f30e611ec27d1e
+      hash: 019981bea9668552b754315a5e46bfb9005ee1ac
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 7a62296718a363abd393107933f30e611ec27d1e
+        changelog-entry: Update layers/meta-balena to 7a62296718a363abd393107933f30e611ec27d1e
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "os-config: Update os-config from v1.2.1 to v1.2.10"
+              hash: 1663c7d601882813f9219209fefee6bfb3eb2e6d
+              body: |
+                The tool now has optimized binary size in release builds
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.101.1
+          title: "'Optimize binary size in release builds for Rust tools'"
+          date: 2022-08-01T14:48:59.790Z
+  version: 2.101.1
+  title: "'Update layers/meta-balena digest to 7a62296'"
+  date: 2022-08-04T11:30:22.138Z
+- commits:
     - subject: Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5
       hash: 052f1ee15fd13df27d34dc22bfe6c098d302a6a7
       body: Update contracts
