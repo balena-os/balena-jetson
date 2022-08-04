@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.101.0+rev6
+## (2022-08-03)
+
+
+<details>
+<summary> Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5 [renovate[bot]] </summary>
+
+> ## contracts-2.0.8
+> ### (2022-08-03)
+> 
+> * Update dotnet contract to latest v6.x and v3.x [Trong Nghia Nguyen]
+> * Add node v18.7.0 [Trong Nghia Nguyen]
+> 
+</details>
+
 # v2.101.0+rev5
 ## (2022-08-03)
 

@@ -1,4 +1,38 @@
 - commits:
+    - subject: Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5
+      hash: 052f1ee15fd13df27d34dc22bfe6c098d302a6a7
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5
+        changelog-entry: Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update dotnet contract to latest v6.x and v3.x
+              hash: 8723082c3e626e277d24a6ed4e8667fc2324377a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v18.7.0
+              hash: 71c4516bc9af8b65fae9f9f25ceca6e3f61eddc0
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.8
+          title: "'Few base images updates'"
+          date: 2022-08-03T00:13:19.196Z
+  version: 2.101.0+rev6
+  title: "'Update contracts digest to b48eaf2'"
+  date: 2022-08-03T19:44:28.403Z
+- commits:
     - subject: Flag jetson-tx1 as discontinued
       hash: de8e07d324a18d27e29e698c0bac6fdd5d4b4fc0
       body: |
