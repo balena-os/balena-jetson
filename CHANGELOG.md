@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v2.101.1+rev1
+## (2022-08-05)
+
+
+<details>
+<summary> Update contracts to 3d133659481f38ee1bba63d3835a231c70c11eec [renovate[bot]] </summary>
+
+> ## contracts-2.0.9
+> ### (2022-08-04)
+> 
+> * generic-amd64: match genericx86-64-ext connectivity [Joseph Kogut]
+> * generic-amd64: update name to include GPT qualifier [Joseph Kogut]
+> * genericx86-64-ext: update name to include MBR qualifier [Joseph Kogut]
+> 
+</details>
+
 # v2.101.1
 ## (2022-08-04)
 

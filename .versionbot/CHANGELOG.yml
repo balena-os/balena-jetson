@@ -1,4 +1,63 @@
 - commits:
+    - subject: Update contracts to 3d133659481f38ee1bba63d3835a231c70c11eec
+      hash: 1c751282dce0ab5e095e87b37755b4fd685a2d04
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 3d133659481f38ee1bba63d3835a231c70c11eec
+        changelog-entry: Update contracts to 3d133659481f38ee1bba63d3835a231c70c11eec
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "generic-amd64: match genericx86-64-ext connectivity"
+              hash: ed449edbd6504f97e94f11f1f97075582cf27e7b
+              body: >
+                Disable bluetooth/wifi in generic-amd64 to match
+                genericx86-64-ext.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+            - subject: "generic-amd64: update name to include GPT qualifier"
+              hash: ab8af4bff6ccff7d650c794ec8dc3e31be6f1671
+              body: >
+                Update the long name for generic-amd64 to include the MBR
+                qualifier,
+
+                matching the device type coffeescript file.
+
+
+                https://github.com/balena-os/balena-generic/pull/122
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+            - subject: "genericx86-64-ext: update name to include MBR qualifier"
+              hash: d511fa372a606ddbc1814b35d109c4cc0aef57e2
+              body: >
+                Update the long name for genericx86-64-ext to include the MBR
+                qualifier,
+
+                matching the device type coffeescript file.
+
+
+                Related: https://github.com/balena-os/balena-intel/pull/534
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+          version: contracts-2.0.9
+          title: "'x86-64 device types rename'"
+          date: 2022-08-04T15:36:26.752Z
+  version: 2.101.1+rev1
+  title: "'Update contracts digest to 3d13365'"
+  date: 2022-08-05T17:18:57.453Z
+- commits:
     - subject: Update layers/meta-balena to 7a62296718a363abd393107933f30e611ec27d1e
       hash: 019981bea9668552b754315a5e46bfb9005ee1ac
       body: Update layers/meta-balena
