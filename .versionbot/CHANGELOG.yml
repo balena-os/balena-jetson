@@ -1,4 +1,67 @@
 - commits:
+    - subject: Update layers/meta-balena to afcbee0c5dad04f02ba2a3ecb5d6d7db21f7ebe4
+      hash: 3542888260a63a799986478c98520c008868df60
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to afcbee0c5dad04f02ba2a3ecb5d6d7db21f7ebe4
+        changelog-entry: Update layers/meta-balena to afcbee0c5dad04f02ba2a3ecb5d6d7db21f7ebe4
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update balena-io/balena-supervisor to v14.0.13
+              hash: 86f7f397f711093dcf71a86c349f3adc29bd17ac
+              body: Update balena-io/balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.101.3
+          title: "'Update balena-io/balena-supervisor to v14.0.13'"
+          date: 2022-08-05T17:03:57.877Z
+        - commits:
+            - subject: DRY the HUP smoke tests
+              hash: 46dc350d829c352dae62a87eb1aec21e69789503
+              body: >
+                Our tests perform two HUPs (into and out of the release under
+                test), and
+
+                the code for both of these HUPs were duplicated. This commit factors
+
+                this code out to a common function.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+            - subject: Check volume contents over HUPs
+              hash: ef4e861fdd1dd7ea8d3a9b6dd34a0e1e30c8e852
+              body: >
+                This is a small improvement over our previous test: in addition
+                to
+
+                checking that the volumes themselves are preserved over HUPs, we now
+
+                check if the contents of these volumes is preserved.
+
+
+                Resolves #2428
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-2.101.2
+          title: "'Check volume contents over HUPs'"
+          date: 2022-08-05T13:32:38.536Z
+  version: 2.101.3
+  title: "'Update layers/meta-balena digest to afcbee0'"
+  date: 2022-08-08T13:03:51.619Z
+- commits:
     - subject: Update contracts to 3d133659481f38ee1bba63d3835a231c70c11eec
       hash: 1c751282dce0ab5e095e87b37755b4fd685a2d04
       body: Update contracts
