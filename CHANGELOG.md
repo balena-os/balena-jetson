@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.101.3+rev1
+## (2022-08-11)
+
+
+<details>
+<summary> Update contracts to 91807ae538dccedb69877eed28ae6752287e2f21 [renovate[bot]] </summary>
+
+> ## contracts-2.0.11
+> ### (2022-08-10)
+> 
+> * generic-amd64: update logo to be vendor agnostic [Joseph Kogut]
+> 
+> ## contracts-2.0.10
+> ### (2022-08-10)
+> 
+> * generic-amd64: disable private [Joseph Kogut]
+> 
+</details>
+
 # v2.101.3
 ## (2022-08-08)
 

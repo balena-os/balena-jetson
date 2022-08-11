@@ -1,4 +1,43 @@
 - commits:
+    - subject: Update contracts to 91807ae538dccedb69877eed28ae6752287e2f21
+      hash: 320a39d390156075bdfa9c5c9999f7666cf1760e
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 91807ae538dccedb69877eed28ae6752287e2f21
+        changelog-entry: Update contracts to 91807ae538dccedb69877eed28ae6752287e2f21
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "generic-amd64: update logo to be vendor agnostic"
+              hash: 77be9ac931237432f35a993cfe30395c04f4c27e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+          version: contracts-2.0.11
+          title: "'generic-amd64: update logo to be vendor agnostic'"
+          date: 2022-08-10T23:53:37.506Z
+        - commits:
+            - subject: "generic-amd64: disable private"
+              hash: fecb953bc4ea8162f476fb0f498febd9ce332813
+              body: |
+                This device type should be public
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+          version: contracts-2.0.10
+          title: "'generic-amd64: disable private'"
+          date: 2022-08-10T23:34:11.931Z
+  version: 2.101.3+rev1
+  title: "'Update contracts digest to 91807ae'"
+  date: 2022-08-11T00:44:20.035Z
+- commits:
     - subject: Update layers/meta-balena to afcbee0c5dad04f02ba2a3ecb5d6d7db21f7ebe4
       hash: 3542888260a63a799986478c98520c008868df60
       body: Update layers/meta-balena
