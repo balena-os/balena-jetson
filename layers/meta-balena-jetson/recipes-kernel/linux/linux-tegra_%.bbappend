@@ -52,6 +52,7 @@ SRC_URI:append:jetson-nano-emmc = " \
     file://nano-mark-gpio-as-disabled-when-freed.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
     file://nvidia-platform-t210-enable-SPI0-pins-on-40-pin-head.patch \
+    file://tegra210-p3448-0002-p3449-0000-b00-auvidea-jn30d.dtb \
 "
 
 SRC_URI:append:photon-nano = " \
@@ -73,6 +74,10 @@ SRC_URI:append:photon-xavier-nx = " \
 
 SRC_URI:append:cnx100-xavier-nx = " \
     file://tegra194-xavier-nx-cnx100.dtb \
+"
+
+SRC_URI:append:jetson-tx2-nx-devkit = " \
+    file://tegra186-p3636-0001-p3509-0000-a01-auvidea-jn30d.dtb \
 "
 
 TEGRA_INITRAMFS_INITRD = "0"
