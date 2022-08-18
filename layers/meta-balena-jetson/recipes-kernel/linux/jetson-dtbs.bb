@@ -20,6 +20,7 @@ SRC_URI = " \
 	file://tegra186-tx2-nx-cti-NGX003.dtb \
 	file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
 	file://tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb \
+	file://tegra186-p3636-0001-p3509-0000-a01-auvidea-jn30d.dtb \
 "
 
 do_install[depends] += " linux-tegra:do_deploy "
@@ -72,6 +73,7 @@ do_install:jetson-tx2-nx-devkit() {
 	install -m 0644 ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb  ${D}/boot/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb
 	install -m 0644 ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb  ${D}/boot/tegra186-tx2-nx-cti-NGX003-IMX477-2CAM.dtb
 	install -m 0644 ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb  ${D}/boot/tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb
+	install -m 0644 ${WORKDIR}/tegra186-p3636-0001-p3509-0000-a01-auvidea-jn30d.dtb  ${D}/boot/tegra186-p3636-0001-p3509-0000-a01-auvidea-jn30d.dtb
 }
 
 FILES:${PN}:jetson-tx2 += " \
@@ -115,4 +117,5 @@ FILES:${PN}:jetson-tx2-nx-devkit += " \
 	/boot/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
 	/boot/tegra186-tx2-nx-cti-NGX003-IMX477-2CAM.dtb \
 	/boot/tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb \
+	/tegra210-p3448-0002-p3449-0000-b00-auvidea-jn30d.dtb \
 "

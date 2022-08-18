@@ -26,6 +26,7 @@ SRC_URI:append:jetson-tx2 = " \
     file://realsense_powerlinefrequency_control_fix_linux-yocto_4.4.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
+    file://tegra210-p3448-0002-p3449-0000-b00-auvidea-jn30d.dtb \
 "
 
 SRC_URI:append:jetson-xavier-nx-devkit-seeed-2mic-hat = " \
