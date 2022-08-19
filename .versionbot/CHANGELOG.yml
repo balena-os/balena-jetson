@@ -1,4 +1,38 @@
 - commits:
+    - subject: Update contracts to 39a79c43f1b8ab4426d7a9c1cdeb9a9514101061
+      hash: a753e964b98fa33d63ec171b3140a03284708554
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 39a79c43f1b8ab4426d7a9c1cdeb9a9514101061
+        changelog-entry: Update contracts to 39a79c43f1b8ab4426d7a9c1cdeb9a9514101061
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add golang v1.19 and v1.18.5
+              hash: 8894fddc2adcac1fb33ed221af5e31133b743f4c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v16.17.0
+              hash: 37bcbeb9968c3f92a12b303523cccb15ee3b315a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.12
+          title: "'Few base images updates'"
+          date: 2022-08-19T06:01:15.871Z
+  version: 2.101.7+rev2
+  title: "'Update contracts digest to 39a79c4'"
+  date: 2022-08-19T11:16:45.024Z
+- commits:
     - subject: Update balena-yocto-scripts to 99807501efffc8c5034c88361049650a02511a78
       hash: 2995a7db3e2ed6606339f9f0b28939e1b41b1d68
       body: Update balena-yocto-scripts
