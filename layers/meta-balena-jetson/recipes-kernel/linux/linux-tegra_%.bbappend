@@ -58,6 +58,7 @@ SRC_URI:append:jetson-nano-emmc = " \
 SRC_URI:append:photon-nano = " \
     file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
     file://tegra210-nano-cti-NGX003.dtb \
+    file://tegra210-nano-cti-NGX004.dtb \
 "
 
 SRC_URI:append:photon-tx2-nx = " \
@@ -353,6 +354,7 @@ do_deploy:append:jn30b-nano() {
 
 do_deploy:append:photon-nano() {
     cp ${WORKDIR}/tegra210-nano-cti-NGX003.dtb "${DEPLOYDIR}"
+    cp ${WORKDIR}/tegra210-nano-cti-NGX004.dtb "${DEPLOYDIR}"
 }
 
 do_deploy:append:photon-tx2-nx() {
