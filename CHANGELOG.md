@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.101.7+rev4
+## (2022-08-22)
+
+* linux-tegra: Add dtb's CTI Quark to photon-nano L4T R32.7.2 [Clint Haerinck]
+* linux-tegra: Update dtb's photon-nano L4T R32.7.2 [Clint Haerinck]
+
 # v2.101.7+rev3
 ## (2022-08-22)
 

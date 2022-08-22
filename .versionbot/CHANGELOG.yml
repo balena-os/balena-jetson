@@ -1,4 +1,30 @@
 - commits:
+    - subject: "linux-tegra: Add dtb's CTI Quark to photon-nano L4T R32.7.2"
+      hash: 0016965b0babedab4e07aecf8d0a1ccbe66917e3
+      body: |
+        Added dtb's for CTI Quark Nano to photon-nano device type
+      footer:
+        Changelog-entry: "linux-tegra: Add dtb's CTI Quark to photon-nano L4T R32.7.2"
+        changelog-entry: "linux-tegra: Add dtb's CTI Quark to photon-nano L4T R32.7.2"
+        Signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+        signed-off-by: Clint Haerinck <clint.haerinck@citymesh.com>
+      author: Clint Haerinck
+      nested: []
+    - subject: "linux-tegra: Update dtb's photon-nano L4T R32.7.2"
+      hash: 07dda530d7f99e3b47c3256baa2462b94883c168
+      body: |
+        Update CTI Photon Nano dtb's to L4T R32.7.2
+      footer:
+        Changelog-entry: "linux-tegra: Update dtb's photon-nano L4T R32.7.2"
+        changelog-entry: "linux-tegra: Update dtb's photon-nano L4T R32.7.2"
+        Signed-off-by: Clint Haerinck clint.haerinck@citymesh.com
+        signed-off-by: Clint Haerinck clint.haerinck@citymesh.com
+      author: Clint Haerinck
+      nested: []
+  version: 2.101.7+rev4
+  title: "'Update CTI Quark and Photon nano'"
+  date: 2022-08-22T11:17:58.895Z
+- commits:
     - subject: Add support for the Auvidea JN30D-Nano and JN30d-TX2 board.
       hash: b46f2bdd19eb9ce6a569e389b9bf3725971fd9e4
       body: >
