@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.101.7+rev3
+## (2022-08-22)
+
+* Add support for the Auvidea JN30D-Nano and JN30d-TX2 board. [Raphael Dürscheid]
+
 # v2.101.7+rev2
 ## (2022-08-19)
 

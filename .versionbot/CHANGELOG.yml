@@ -1,4 +1,23 @@
 - commits:
+    - subject: Add support for the Auvidea JN30D-Nano and JN30d-TX2 board.
+      hash: b46f2bdd19eb9ce6a569e389b9bf3725971fd9e4
+      body: >
+        Add support for Auvidea JN30D-Nano and JN30d-TX2 board.
+
+        A break out board bundled with the NVIDIA Jetson Nano or TX2 and similar to the
+
+        dev kit.
+      footer:
+        Changelog-entry: Add support for the Auvidea JN30D-Nano and JN30d-TX2 board.
+        changelog-entry: Add support for the Auvidea JN30D-Nano and JN30d-TX2 board.
+        Signed-off-by: Raphael Dürscheid <compiaffe@users.noreply.github.com>
+        signed-off-by: Raphael Dürscheid <compiaffe@users.noreply.github.com>
+      author: Raphael Dürscheid
+      nested: []
+  version: 2.101.7+rev3
+  title: "'layers/meta-balena-jetson: Add new boards: Auvidea JN30D-Nano, JN30D-TX2'"
+  date: 2022-08-22T09:41:14.978Z
+- commits:
     - subject: Update contracts to 39a79c43f1b8ab4426d7a9c1cdeb9a9514101061
       hash: a753e964b98fa33d63ec171b3140a03284708554
       body: Update contracts
