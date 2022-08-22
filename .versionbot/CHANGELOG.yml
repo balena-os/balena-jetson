@@ -1,4 +1,20 @@
 - commits:
+    - subject: Modify layer ordering
+      hash: 8aef67edaea30e57ddf1175f13c3147084350e0d
+      body: |
+        Yocto classes and conf files ignore layer priorities and are parsed
+        in order instead.
+      footer:
+        Changelog-entry: Modify layer ordering
+        changelog-entry: Modify layer ordering
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.101.7+rev5
+  title: "'bblayers: Modify layer ordering'"
+  date: 2022-08-22T14:16:06.246Z
+- commits:
     - subject: "linux-tegra: Add dtb's CTI Quark to photon-nano L4T R32.7.2"
       hash: 0016965b0babedab4e07aecf8d0a1ccbe66917e3
       body: |
