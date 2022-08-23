@@ -1,4 +1,44 @@
 - commits:
+    - subject: Update layers/meta-balena to f2de8e3d438671ac740bfa2119ab881afc5d2101
+      hash: d66e69c10fc59a02cf83ba1d1b524eeb8c88508b
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f2de8e3d438671ac740bfa2119ab881afc5d2101
+        changelog-entry: Update layers/meta-balena to f2de8e3d438671ac740bfa2119ab881afc5d2101
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to f7533c1
+              hash: d31e056f263085ce4451bd99a01911c359b9e0f6
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "compose: qemu: enable loopback and metadata devices"
+                      hash: 962a1705b11457c7d9a87c17cc9e3bf1671d2257
+                      body: >
+                        Copied from
+                        https://github.com/balena-os/leviathan-worker/pull/21
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.7.3
+                  title: "'compose: qemu: enable loopback and metadata devices'"
+                  date: 2022-08-16T17:06:56.295Z
+          version: meta-balena-2.101.9
+          title: "'Update tests/leviathan digest to f7533c1'"
+          date: 2022-08-23T03:16:57.699Z
+  version: 2.101.9
+  title: "'Update layers/meta-balena digest to f2de8e3'"
+  date: 2022-08-23T07:23:36.334Z
+- commits:
     - subject: Update layers/meta-balena to ab80d0fbfbd28e10b7aa14739203a680d37815bd
       hash: efa325bc96e80ea00df4bff75ea73fcac7cb528d
       body: Update layers/meta-balena
