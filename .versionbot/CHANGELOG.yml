@@ -1,4 +1,275 @@
 - commits:
+    - subject: Update layers/meta-balena to 59f3caaab340bf15bf562b60e1f7315c437e1297
+      hash: e3ccf30470a2f6c3c5abe35179073f4920ea3228
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 59f3caaab340bf15bf562b60e1f7315c437e1297
+        changelog-entry: Update layers/meta-balena to 59f3caaab340bf15bf562b60e1f7315c437e1297
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "meta-balena-thud: initramfs: Fix building with latest meta-balena"
+              hash: 30bc6e7d27fb2ceaff5ea241fdd0e7b8224b84ea
+              body: >
+                The latest meta-balena includes `util-linux-findmnt` as a kexec
+                module
+
+                dependency and this package has not yet been split from `util-linux` in
+
+                thud.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.102.1
+          title: "'meta-balena-thud: initramfs: Fix building with latest meta-balena'"
+          date: 2022-08-29T08:26:13.610Z
+        - commits:
+            - subject: "meta-balena-common: distro: Add rust preferred versions"
+              hash: 0d3221fe5378ddb09248694ba2eb8571db63511b
+              body: >
+                Also, do not set the preferred version for integration layers so
+                we
+
+                use the same rust version across all Yocto releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-common: os-config: Update to v1.2.11"
+              hash: 6b5d60c8295477abe3cd8ac4ed5779843f3ebd3a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-integration: Replace parallel_make_argument()"
+              hash: 127be828f7c665d7bc6035b0b45d2cf81acfc0fa
+              body: >
+                The oe.utils parallel_make_argument() was introduced in Zeus, so
+                this
+
+                commit replaces by a direct call to fetch PARALLEL_MAKE.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-integration: Update cmake for versions below Zeus"
+              hash: c12764c100cc9bdbcc6fd5c9f5c62f327e695e11
+              body: >
+                In order to use the same rust toolchain across all supported
+                Yocto
+
+                versions this commit updates the cmake version on all integration layers
+
+                below Zeus to 3.13.4, which is the minimum version to compile the rust
+
+                1.62 toolchain.
+
+
+                The cmake recipe and classes come from Poky's 2daa03ecfeaf
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Add condition check for parallel_make_argument()
+                use"
+              hash: bb853604fed3daa17abab38325a765b546751550
+              body: >
+                This function is not part of all supported Yocto versions so
+                make a
+
+                check for its existence before using it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Provide crate fetcher for Yocto versions without it"
+              hash: 8c251ac51f23b750f3716f16fbd5d5b9cd6c74dc
+              body: >
+                The crate fetcher was introduced in bitbake in Kirkstone, before
+                that
+
+                it was living in meta-rust.
+
+
+                We want to use the balena-rust layer across a wide variety of Yocto
+
+                versions so include the fetcher conditionally.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Modify to use without oe.rust.arch_to_rust_arch()
+                support"
+              hash: 5c48ac4b15bbabce38fb73488deae1b0bb219414
+              body: >
+                The arch_to_rust_arch() function was introduced to cater for
+                ppc64le
+
+                systems and is not present in older Yocto releases.
+
+
+                This commit reverts to the previous way of setting the rust architecture.
+
+                It will not work for ppc64le and if we would need to support such an
+
+                architecture the arch_to_rust_arch() function will still be called if it
+
+                exists in Kirkstone or newer Yocto versions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Add rust recipes to keep the rust version a
+                distribution config"
+              hash: ecf0f36e6a316584dcf10397fa00d146a5bd478a
+              body: >
+                With Kirkstone and the support of openSSL 3.0 it's not possible
+                to find
+
+                a set of dependencies that work for all of our rust applications across
+
+                the 1.32 to 1.62 toolchain versions that are supported across all the
+
+                Yocto versions we keep compatibility with.
+
+
+                This layer allows to set a preferred version as a distro setting that can
+
+                be used across all Yocto versions.
+
+
+                These rust recipes come from Poky Kirkstone
+
+                2642bdb8908afb800e6dc5722602a87228dd8694
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Add compatibility layer"
+              hash: 9242585678e1e9027483fedcbe1d3e795deb0ebf
+              body: >
+                This layer will allow to use the same rust toolchain across all
+                supported
+
+                Yocto compatibility layers.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.102.0
+          title: "'Add meta-balena-rust compatibility layer'"
+          date: 2022-08-25T09:10:02.651Z
+        - commits:
+            - subject: "renovate: Fix nested changelogs and change-type for SV updates"
+              hash: 516432877cf9fda8b65cae1b3cddcd8bd8cc249d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.101.11
+          title: "'renovate: Fix nested changelogs and change-type for SV updates'"
+          date: 2022-08-24T12:22:37.592Z
+        - commits:
+            - subject: "meta-resin-sumo: linux-firmware: Move to a location included in
+                BBPATH"
+              hash: 148fcadbb792bdbabdbc152b886125415b3e4838
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-resin-sumo: use v1.14.2"
+              hash: 5bb3a29c1c5dfa0f02da47e48f3b64d3d3f9cd08
+              body: |
+                Newer versions are not compatible with the libc version in sumo.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-resin-sumo: libqmi: Use v1.26.0"
+              hash: 1c25bb333c6cb458af955274c82f164a83a2b914
+              body: |
+                Newer versions are incompatible with the libc available in sumo.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-resin-sumo: libmbim: use v 1.24.2"
+              hash: 1fe708b4bf84e60032c4e7f52316632a49ecc490
+              body: >
+                The current meta-balena libmbim is not compatible with sumo's
+                libc
+
+                version.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena: Disable GOCACHE"
+              hash: 2e79582c81a6f0f5ff42ed01bdc69ba06550e63a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.101.10
+          title: "'Update sumo compatibility layer'"
+          date: 2022-08-23T08:15:40.582Z
+  version: 2.102.1
+  title: "'Update layers/meta-balena digest to 59f3caa'"
+  date: 2022-08-29T15:46:46.326Z
+- commits:
     - subject: Update contracts to 3bd4b2097a2796afc9a56a580e555982aad4f10b
       hash: bdb722209419d144742f40153f133472a9a50303
       body: Update contracts
