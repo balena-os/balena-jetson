@@ -1,6 +1,33 @@
 Change log
 -----------
 
+# v2.102.4
+## (2022-09-03)
+
+
+<details>
+<summary> Update layers/meta-balena to 608994976c4d5d4f1f4558245f6abc375ac0c0c7 [renovate[bot]] </summary>
+
+> ## meta-balena-2.102.4
+> ### (Invalid date)
+> 
+> * udev: run resin-update-state after md assemble [Joseph Kogut]
+> * resin_update_state_probe: do not skip md devices [Joseph Kogut]
+> 
+</details>
+
+
+<details>
+<summary> Update layers/meta-balena to a24e52592b2fbc1c60e6a6fc39c61470219f61b1 [renovate[bot]] </summary>
+
+> ## meta-balena-2.102.4
+> ### (Invalid date)
+> 
+> * udev: run resin-update-state after md assemble [Joseph Kogut]
+> * resin_update_state_probe: do not skip md devices [Joseph Kogut]
+> 
+</details>
+
 # v2.102.1
 ## (2022-08-29)
 
