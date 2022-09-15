@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.102.4+rev1
+## (2022-09-14)
+
+
+<details>
+<summary> Update contracts to 7ea918011dc38f509a7ae3bce30c3391bc839dd9 [renovate[bot]] </summary>
+
+> ## contracts-2.0.15
+> ### (2022-09-14)
+> 
+> * hw.device-type: Set LED to false for rockpi-4b [Alexandru Costache]
+> 
+> ## contracts-2.0.14
+> ### (2022-09-06)
+> 
+> * Add node v18.8.0 [Trong Nghia Nguyen]
+> 
+</details>
+
 # v2.102.4
 ## (2022-09-03)
 
