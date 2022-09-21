@@ -1,4 +1,40 @@
 - commits:
+    - subject: Update contracts to f2ace726406411ac4202d114ec8264a1a2c7af97
+      hash: 34c638637a4b87acd8d0e5438ec9cb6f592ebb44
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to f2ace726406411ac4202d114ec8264a1a2c7af97
+        changelog-entry: Update contracts to f2ace726406411ac4202d114ec8264a1a2c7af97
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "hw.device-type: Remove led for RockPro64"
+              hash: 4b807a312743b4896c80fb865b2dbe3c7d303b43
+              body: |
+                This DT does not set a led in the device
+                repository, let's remove this option
+                from here for testbot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.16
+          title: "'hw.device-type: Remove led for RockPro64'"
+          date: 2022-09-21T07:48:51.253Z
+    - subject: Update layers/meta-balena to a17b3251407b74e424a6bcf7850783975c366cf0
+      hash: 40e27437fdbc00068a4776e66c73b85e9f257dea
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to a17b3251407b74e424a6bcf7850783975c366cf0
+        changelog-entry: Update layers/meta-balena to a17b3251407b74e424a6bcf7850783975c366cf0
+      author: renovate[bot]
+      nested: []
+  version: 2.103.3
+  title: "'Update contracts digest to f2ace72'"
+  date: 2022-09-21T10:14:23.395Z
+- commits:
     - subject: Update layers/meta-balena to 81b94e873538faf4684977bafc501d3565288751
       hash: cfa669362f99860693b490e9cc59a1aa7268bcac
       body: Update layers/meta-balena

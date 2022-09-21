@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v2.103.3
+## (2022-09-21)
+
+
+<details>
+<summary> Update contracts to f2ace726406411ac4202d114ec8264a1a2c7af97 [renovate[bot]] </summary>
+
+> ## contracts-2.0.16
+> ### (2022-09-21)
+> 
+> * hw.device-type: Remove led for RockPro64 [Alexandru Costache]
+> 
+</details>
+
+* Update layers/meta-balena to a17b3251407b74e424a6bcf7850783975c366cf0 [renovate[bot]]
+
 # v2.103.2
 ## (2022-09-15)
 
