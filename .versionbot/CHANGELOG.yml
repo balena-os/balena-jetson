@@ -1,4 +1,18 @@
 - commits:
+    - subject: "u-boot: Update TX2 carveout removal list"
+      hash: da50c4a6e06dff18d37f155837d98dda9c78164f
+      body: ""
+      footer:
+        Changelog-entry: "u-boot: Update TX2 carveout removal list"
+        changelog-entry: "u-boot: Update TX2 carveout removal list"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.105.2+rev1
+  title: "'u-boot: Update TX2 carveout removal list'"
+  date: 2022-09-28T10:10:21.744Z
+- commits:
     - subject: Update layers/meta-balena to d17b08668a56aa67c7b55594c3c910e66fbd4baf
       hash: cf6df5b75c42a6fc10ef5af4184306efb13e2487
       body: Update layers/meta-balena

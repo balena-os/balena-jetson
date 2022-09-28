@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.105.2+rev1
+## (2022-09-28)
+
+* u-boot: Update TX2 carveout removal list [Alexandru Costache]
+
 # v2.105.2
 ## (2022-09-22)
 
