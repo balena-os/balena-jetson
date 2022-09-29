@@ -1,0 +1,48 @@
+From 2325879529380c5f1feb77449ffa8c2212bf8cc6 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Thu, 29 Sep 2022 14:30:40 +0200
+Subject: [PATCH] builds meta-tegra
+
+---
+ conf/machine/jetson-agx-orin-devkit.conf             | 2 +-
+ recipes-bsp/tegra-binaries/tegra-bootfiles_35.1.0.bb | 2 +-
+ recipes-bsp/uefi/l4t-launcher-extlinux.bb            | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/conf/machine/jetson-agx-orin-devkit.conf b/conf/machine/jetson-agx-orin-devkit.conf
+index 385bbf36..c711f9cf 100644
+--- a/conf/machine/jetson-agx-orin-devkit.conf
++++ b/conf/machine/jetson-agx-orin-devkit.conf
+@@ -26,4 +26,4 @@ BPF_FILE ?= "bpmp_t234-TE990M-A1_prod.bin"
+ BPFDTB_FILE ?= "tegra234-bpmp-3701-0000-3737-0000.dtb"
+ TBCDTB_FILE ?= "tegra234-p3701-0000-p3737-0000.dtb"
+ WB0SDRAM_BCT ?= "tegra234-p3701-0000-p3737-0000-TE990M-wb0sdram.dts"
+-OVERLAY_DTB_FILE ?= "${TEGRA_BOOTCONTROL_OVERLAYS},tegra234-p3737-camera-dual-imx274-overlay.dtbo,tegra234-p3737-camera-e3331-overlay.dtbo,tegra234-p3737-camera-e3333-overlay.dtbo,tegra234-p3737-camera-imx185-overlay.dtbo,tegra234-p3737-camera-imx390-overlay.dtbo"
++OVERLAY_DTB_FILE ?= "${TEGRA_BOOTCONTROL_OVERLAYS},tegra234-p3737-camera-dual-imx274-overlay.dtbo,tegra234-p3737-camera-e3331-overlay.dtbo,tegra234-p3737-camera-e3333-overlay.dtbo,tegra234-p3737-camera-imx185-overlay.dtbo,tegra234-p3737-camera-imx390-overlay.dtbo,tegra234-p3737-overlay-pcie.dtbo,tegra234-p3737-audio-codec-rt5658-40pin.dtbo,tegra234-p3737-a03-overlay.dtbo,tegra234-p3737-a04-overlay.dtbo,tegra234-p3737-camera-dual-imx274-overlay.dtbo"
+diff --git a/recipes-bsp/tegra-binaries/tegra-bootfiles_35.1.0.bb b/recipes-bsp/tegra-binaries/tegra-bootfiles_35.1.0.bb
+index ebb028f2..b55d2caa 100644
+--- a/recipes-bsp/tegra-binaries/tegra-bootfiles_35.1.0.bb
++++ b/recipes-bsp/tegra-binaries/tegra-bootfiles_35.1.0.bb
+@@ -109,7 +109,7 @@ do_install:append:tegra234() {
+     install -m 0644 ${S}/bootloader/${NVIDIA_BOARD}/BCT/tegra234* ${D}${datadir}/tegraflash/
+ }
+ 
+-PACKAGES = "${PN}-dev"
++PACKAGES = " ${PN} ${PN}-dev"
+ FILES:${PN}-dev = "${datadir}"
+ RRECOMMENDS:${PN}-dev = ""
+ PACKAGE_ARCH = "${MACHINE_ARCH}"
+diff --git a/recipes-bsp/uefi/l4t-launcher-extlinux.bb b/recipes-bsp/uefi/l4t-launcher-extlinux.bb
+index 0be8e233..54734605 100644
+--- a/recipes-bsp/uefi/l4t-launcher-extlinux.bb
++++ b/recipes-bsp/uefi/l4t-launcher-extlinux.bb
+@@ -71,5 +71,5 @@ do_install:tegra234() {
+     install -m 0644 ${B}/extlinux.conf ${D}/boot/extlinux/
+ }
+ 
+-FILES:${PN} = "/boot"
++FILES:${PN} = "/boot/extlinux/extlinux.conf /boot/Image"
+ PACKAGE_ARCH = "${MACHINE_ARCH}"
+-- 
+2.37.2
+
