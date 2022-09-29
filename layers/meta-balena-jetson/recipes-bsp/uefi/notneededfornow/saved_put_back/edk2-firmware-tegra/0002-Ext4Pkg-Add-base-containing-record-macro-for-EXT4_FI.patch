@@ -1,0 +1,114 @@
+From d5d002b0c6854d0443eb365661d6839a1e59e168 Mon Sep 17 00:00:00 2001
+From: Savva Mitrofanov <savvamtr@gmail.com>
+Date: Sun, 24 Jul 2022 18:27:31 +0600
+Subject: [PATCH 2/2] Ext4Pkg: Add base containing record macro for EXT4_FILE
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We shouldn't use direct casts, because in the future it could break
+the code, so using BASE_CR would be safe against possible structure
+changes and rearrangements
+
+Cc: Marvin Häuser <mhaeuser@posteo.de>
+Cc: Pedro Falcato <pedro.falcato@gmail.com>
+Cc: Vitaly Cheptsov <vit9696@protonmail.com>
+Signed-off-by: Savva Mitrofanov <savvamtr@gmail.com>
+Reviewed-by: Marvin Häuser <mhaeuser@posteo.de>
+---
+ Features/Ext4Pkg/Ext4Dxe/Ext4Dxe.h |  2 ++
+ Features/Ext4Pkg/Ext4Dxe/File.c    | 16 ++++++++--------
+ 2 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/Features/Ext4Pkg/Ext4Dxe/Ext4Dxe.h b/Features/Ext4Pkg/Ext4Dxe/Ext4Dxe.h
+index 17f6995976..756472e446 100644
+--- a/Features/Ext4Pkg/Ext4Dxe/Ext4Dxe.h
++++ b/Features/Ext4Pkg/Ext4Dxe/Ext4Dxe.h
+@@ -382,6 +382,8 @@ struct _Ext4File {
+   EXT4_DENTRY           *Dentry;
+ };
+ 
++#define EXT4_FILE_FROM_THIS(This)  BASE_CR ((This), EXT4_FILE, Protocol)
++
+ #define EXT4_FILE_FROM_OPEN_FILES_NODE(Node)                                   \
+   BASE_CR(Node, EXT4_FILE, OpenFilesListNode)
+ 
+diff --git a/Features/Ext4Pkg/Ext4Dxe/File.c b/Features/Ext4Pkg/Ext4Dxe/File.c
+index ae9230d642..b1744ad56c 100644
+--- a/Features/Ext4Pkg/Ext4Dxe/File.c
++++ b/Features/Ext4Pkg/Ext4Dxe/File.c
+@@ -562,7 +562,7 @@ Ext4Open (
+   EXT4_FILE   *FoundFile;
+   EXT4_FILE   *Source;
+ 
+-  Source = (EXT4_FILE *)This;
++  Source = EXT4_FILE_FROM_THIS (This);
+ 
+   //
+   // Reset SymLoops counter
+@@ -599,7 +599,7 @@ Ext4Close (
+   IN EFI_FILE_PROTOCOL  *This
+   )
+ {
+-  return Ext4CloseInternal ((EXT4_FILE *)This);
++  return Ext4CloseInternal (EXT4_FILE_FROM_THIS (This));
+ }
+ 
+ /**
+@@ -680,7 +680,7 @@ Ext4ReadFile (
+   EXT4_PARTITION  *Partition;
+   EFI_STATUS      Status;
+ 
+-  File      = (EXT4_FILE *)This;
++  File      = EXT4_FILE_FROM_THIS (This);
+   Partition = File->Partition;
+ 
+   ASSERT (Ext4FileIsOpenable (File));
+@@ -731,7 +731,7 @@ Ext4WriteFile (
+ {
+   EXT4_FILE  *File;
+ 
+-  File = (EXT4_FILE *)This;
++  File = EXT4_FILE_FROM_THIS (This);
+ 
+   if (!(File->OpenMode & EFI_FILE_MODE_WRITE)) {
+     return EFI_ACCESS_DENIED;
+@@ -761,7 +761,7 @@ Ext4GetPosition (
+ {
+   EXT4_FILE  *File;
+ 
+-  File = (EXT4_FILE *)This;
++  File = EXT4_FILE_FROM_THIS (This);
+ 
+   if (Ext4FileIsDir (File)) {
+     return EFI_UNSUPPORTED;
+@@ -794,7 +794,7 @@ Ext4SetPosition (
+ {
+   EXT4_FILE  *File;
+ 
+-  File = (EXT4_FILE *)This;
++  File = EXT4_FILE_FROM_THIS (This);
+ 
+   // Only seeks to 0 (so it resets the ReadDir operation) are allowed
+   if (Ext4FileIsDir (File) && (Position != 0)) {
+@@ -1062,7 +1062,7 @@ Ext4GetInfo (
+   EXT4_FILE       *File;
+   EXT4_PARTITION  *Partition;
+ 
+-  File      = (EXT4_FILE *)This;
++  File      = EXT4_FILE_FROM_THIS (This);
+   Partition = File->Partition;
+ 
+   if (CompareGuid (InformationType, &gEfiFileInfoGuid)) {
+@@ -1179,7 +1179,7 @@ Ext4SetInfo (
+   EXT4_FILE       *File;
+   EXT4_PARTITION  *Partition;
+ 
+-  File      = (EXT4_FILE *)This;
++  File      = EXT4_FILE_FROM_THIS (This);
+   Partition = File->Partition;
+ 
+   if (Partition->ReadOnly) {
+-- 
+2.37.2
+

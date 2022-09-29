@@ -1,0 +1,131 @@
+Index: edk2-tegra/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
+===================================================================
+--- edk2-tegra.orig/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
++++ edk2-tegra/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
+@@ -2321,6 +2321,83 @@ Exit:
+   return Status;
+ }
+ 
++STATIC
++EFI_STATUS
++EFIAPI
++ProcessResinOSuEnv (
++  IN EFI_HANDLE            DeviceHandle,
++  IN UINT32                BootChain,
++  OUT EFI_HANDLE           *RootFsHandle,
++  OUT UINTN                RootPart
++)
++{
++  EFI_STATUS       Status;
++  EFI_DEVICE_PATH *FullDevicePath;
++  EFI_FILE_HANDLE  FileHandle = NULL;
++  CHAR16          *FileLine = NULL;
++  CHAR16          *CleanLine;
++  BOOLEAN          Ascii;
++
++  if (RootFsHandle == NULL) {
++    return EFI_INVALID_PARAMETER;
++  }
++
++  Status = FindPartitionInfo (DeviceHandle, L"resin-boot", BootChain, NULL, RootFsHandle);
++  if (EFI_ERROR (Status)) {
++    ErrorPrint (L"%a: Unable to find partition resin-boot\r\n", __FUNCTION__);
++    return Status;
++  }
++
++  Status = VerifyDetachedCertificateFile (BOOT_CONF_PATH, *RootFsHandle,
++                                          &FileHandle, NULL, NULL);
++  if (FileHandle == NULL) {
++    FullDevicePath = FileDevicePath (*RootFsHandle, BOOT_CONF_PATH);
++    if (FullDevicePath == NULL) {
++      ErrorPrint (L"%a: Failed to create file device path resinOS_uEnvt.xt\r\n", __FUNCTION__);
++      return EFI_OUT_OF_RESOURCES;
++    }
++
++    ErrorPrint (L"%a: Created path plm\r\n", __FUNCTION__);
++
++    Status = EfiOpenFileByDevicePath (&FullDevicePath, &FileHandle, EFI_FILE_MODE_READ, 0);
++    if (EFI_ERROR (Status)) {
++      ErrorPrint (L"%a: Failed to open file resinOS_uEnv.txt: %r\r\n", __FUNCTION__, Status);
++      return Status;
++    }
++    ErrorPrint (L"%a: Opened resinOS_uEnv\r\n", __FUNCTION__);
++  } else {
++        FileHandleSetPosition(FileHandle, 0);
++  }
++
++  while (!FileHandleEof (FileHandle)) {
++    if (FileLine != NULL) {
++      FreePool (FileLine);
++      FileLine = NULL;
++    }
++    FileLine = FileHandleReturnLine (FileHandle, &Ascii);
++    if (FileLine == NULL) {
++      break;
++    }
++
++    CleanLine = CleanExtLinuxLine (FileLine);
++    if (*CleanLine != CHAR_NULL) {
++      ErrorPrint(L"CleanLine is %s\r\n", CleanLine);
++      if (StrStr(CleanLine, L"resin_root_part=0x")) {
++        RootPart =  StrDecimalToUintn(CleanLine + 18);
++       ErrorPrint(L"RootPart is %d \r\n", RootPart);
++      }
++    }
++  }
++
++  if (FileLine != NULL) {
++    FreePool (FileLine);
++    FileLine = NULL;
++  }
++
++  return EFI_SUCCESS;
++}
++
++
+ /**
+   This is the declaration of an EFI image entry point. This entry point is
+   the same for UEFI Applications, UEFI OS Loaders, and UEFI Drivers, including
+@@ -2363,6 +2440,10 @@ L4TLauncher (
+     return Status;
+   }
+ 
++  // Force loading of BOOTAA64.EFI from resin-boot
++  ErrorPrint(L"Forcing load of boot binary from resin-boot\r\n");
++  BootParams.BootMode = NVIDIA_L4T_BOOTMODE_DIRECT;
++
+   if (BootParams.BootMode == NVIDIA_L4T_BOOTMODE_GRUB) {
+     ErrorPrint (L"%a: Attempting GRUB Boot\r\n", __FUNCTION__);
+     do {
+@@ -2408,6 +2489,11 @@ L4TLauncher (
+   if (BootParams.BootMode == NVIDIA_L4T_BOOTMODE_DIRECT) {
+     ErrorPrint (L"%a: Attempting Direct Boot\r\n", __FUNCTION__);
+     do {
++      UINTN PartNo = 0;
++      ErrorPrint(L"Lets try load a file. Will call ProcessResinOSuEnv\r\n");
++      Status = ProcessResinOSuEnv (LoadedImage->DeviceHandle, BootParams.BootChain, &RootFsDeviceHandle, PartNo);
++      ErrorPrint(L"Called processResinOSuEnv - %d\r\n", PartNo);
++
+       Status = ProcessExtLinuxConfig (LoadedImage->DeviceHandle, BootParams.BootChain, &ExtLinuxConfig, &RootFsDeviceHandle);
+       if (EFI_ERROR (Status)) {
+         ErrorPrint (L"%a: Unable to process extlinux config: %r\r\n", __FUNCTION__, Status);
+Index: edk2-tegra/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.h
+===================================================================
+--- edk2-tegra.orig/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.h
++++ edk2-tegra/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.h
+@@ -26,13 +26,13 @@
+ #define BOOTCHAIN_OVERRIDE_STRING      L"bootchain="
+ 
+ #define MAX_PARTITION_NAME_SIZE        36 //From the UEFI spec for GPT partitions
+-
++#define BOOT_CONF_PATH                 L"resinOS_uEnv.txt"
+ #define BOOT_FW_VARIABLE_NAME          L"BootChainFwCurrent"
+ #define BOOT_OS_VARIABLE_NAME          L"BootChainOsCurrent"
+ #define BOOT_OS_OVERRIDE_VARIABLE_NAME L"BootChainOsOverride"
+ #define ROOTFS_INFO_VARIABLE_NAME      L"RootfsInfo"
+ 
+-#define ROOTFS_BASE_NAME               L"APP"
++#define ROOTFS_BASE_NAME               L"resin-rootA"
+ #define BOOTIMG_BASE_NAME              L"kernel"
+ #define BOOTIMG_DTB_BASE_NAME          L"kernel-dtb"
+ #define RECOVERY_BASE_NAME             L"recovery"

@@ -1,0 +1,4 @@
+A_kernel:boot.img:262144
+A_kernel-dtb:DTB_FILE:768
+B_kernel:boot.img:262144
+B_kernel-dtb:DTB_FILE:768

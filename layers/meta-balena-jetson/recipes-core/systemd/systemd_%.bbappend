@@ -15,9 +15,8 @@ do_install:append:jetson-nano-emmc(){
     echo "" > ${D}/${sysconfdir}/systemd/system.conf.d/watchdog.conf
 }
 
-
-
-do_install:append:jetson-tx1(){
+do_install:append:jetson-agx-orin-devkit(){
     # Same as for the jetson nano, since both are tegra210
     echo "" > ${D}/${sysconfdir}/systemd/system.conf.d/watchdog.conf
 }
+

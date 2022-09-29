@@ -1,0 +1,17 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+SRC_URI[sha256sum] = "616ac2c4596a795b23f9017a787780ca1f7a521cd1967caa24da4387b9d9140b"
+###SRC_URI = "https://developer.nvidia.com/embedded/l4t/r35_release_v1.0/sources/nvidia-l4t-jetson-uefi-source.tbz2"
+ 
+#SRC_URI:append = " \
+#	file://symlink_patches.diff 
+#"
+#	file://resin_boot_support.diff 
+
+#		file://0001-Ext4Pkg-Add-symbolic-links-support.patch 
+#		file://0002-Ext4Pkg-Add-base-containing-record-macro-for-EXT4_FI.patch 
+#"
+#		file://0001-Try-symlink.patch 
+#		file://0001-work-resinosuenv.patch 
+
+
+DEPENDS:remove = "nvdisp-init"

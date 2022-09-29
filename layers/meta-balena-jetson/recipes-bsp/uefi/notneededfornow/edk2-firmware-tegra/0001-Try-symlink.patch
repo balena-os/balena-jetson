@@ -1,0 +1,33 @@
+From a8651b062c038c9276e5def41c15765dbae19115 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 22 Aug 2022 11:44:56 +0200
+Subject: [PATCH] Try symlink
+
+---
+ .../Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c       | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c b/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
+index d7d9ab65..27bc36eb 100644
+--- a/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
++++ b/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
+@@ -62,7 +62,7 @@
+ #define BOOT_OS_OVERRIDE_VARIABLE_NAME L"BootChainOsOverride"
+ #define L4T_BOOTMODE_VARIABLE_NAME     L"L4TDefaultBootMode"
+ 
+-#define ROOTFS_BASE_NAME               L"APP"
++#define ROOTFS_BASE_NAME               L"resin-rootA"
+ #define BOOTIMG_BASE_NAME              L"kernel"
+ #define RECOVERY_BASE_NAME             L"recovery"
+ 
+@@ -987,6 +987,7 @@ ProcessExtLinuxConfig (
+       ErrorPrint (L"%a: Failed to open file: %r\r\n", __FUNCTION__, Status);
+       return Status;
+     }
++    ErrorPrint (L"%a: ROOTFS_BASE_NAME: %a - EXTLINUX_CONF_PATH:%a\r\n", __FUNCTION__, ROOTFS_BASE_NAME, EXTLINUX_CONF_PATH);
+   } else {
+         FileHandleSetPosition(FileHandle, 0);
+   }
+-- 
+2.37.2
+

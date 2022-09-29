@@ -1,0 +1,31 @@
+Index: uefi/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
+===================================================================
+--- uefi.orig/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
++++ uefi/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
+@@ -62,7 +62,7 @@
+ #define BOOT_OS_OVERRIDE_VARIABLE_NAME L"BootChainOsOverride"
+ #define L4T_BOOTMODE_VARIABLE_NAME     L"L4TDefaultBootMode"
+ 
+-#define ROOTFS_BASE_NAME               L"APP"
++#define ROOTFS_BASE_NAME               L"resin-boot"
+ #define BOOTIMG_BASE_NAME              L"kernel"
+ #define RECOVERY_BASE_NAME             L"recovery"
+ 
+@@ -497,7 +497,7 @@ UpdateBootConfig (
+ 
+   Status = FindPartitionInfo (DeviceHandle, ROOTFS_BASE_NAME, BootChain, &PartitionIndex, NULL);
+   if (EFI_ERROR (Status)) {
+-    ErrorPrint (L"%a: Unable to find rootfs partition info\r\n", __FUNCTION__);
++    ErrorPrint (L"%a: Unable to find rootfs partition info - PartitionIndex %d\r\n", __FUNCTION__, PartitionIndex);
+     return Status;
+   }
+ 
+@@ -959,7 +959,7 @@ ProcessExtLinuxConfig (
+ 
+   Status = FindPartitionInfo (DeviceHandle, ROOTFS_BASE_NAME, BootChain, NULL, RootFsHandle);
+   if (EFI_ERROR (Status)) {
+-    ErrorPrint (L"%a: Unable to find partition info\r\n", __FUNCTION__);
++    ErrorPrint (L"%a: Unable to find partition info - XXX\r\n", __FUNCTION__);
+     return Status;
+   }
+ 

@@ -1,0 +1,42 @@
+From c080c8b598b5303942a60b15525fb1bf1b54cb61 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Sat, 10 Sep 2022 12:12:39 +0200
+Subject: [PATCH] Fix pitch
+
+https://github.com/NVIDIA/edk2-nvidia/commit/5858a329a5933607aa872fd2c6528741d4846a7f
+---
+ .../NvDisplayControllerDxe/NvDisplayControllerDxe.c    | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/edk2-nvidia/Silicon/NVIDIA/Drivers/NvDisplayControllerDxe/NvDisplayControllerDxe.c b/edk2-nvidia/Silicon/NVIDIA/Drivers/NvDisplayControllerDxe/NvDisplayControllerDxe.c
+index 917486a0..fd68b7df 100644
+--- a/edk2-nvidia/Silicon/NVIDIA/Drivers/NvDisplayControllerDxe/NvDisplayControllerDxe.c
++++ b/edk2-nvidia/Silicon/NVIDIA/Drivers/NvDisplayControllerDxe/NvDisplayControllerDxe.c
+@@ -416,7 +416,7 @@ CreateFramebufferResource (
+ {
+   EFI_STATUS    Status;
+   VOID          *Address;
+-  UINTN         Size, Pages;
++  UINTN         Pitch, Size, Pages;
+ 
+   /* The GOP driver treats bits [25:0] as non-address bits and masks
+      them away. Require 64 MB alignment (2^26 B) to make sure the
+@@ -425,8 +425,14 @@ CreateFramebufferResource (
+   CONST UINTN Alignment = SIZE_64MB;
+ 
+   ZeroMem (Desc, sizeof (*Desc));
++ /* Calculate pitch as the size of a framebuffer row, rounded up to
++     the next power of two. */
++  Pitch = HorizontalResolution * PixelSize;
++  if ((Pitch & -Pitch) != Pitch) {
++    Pitch = (UINTN) GetPowerOfTwo32 ((UINT32) Pitch) << 1;
++  }
+ 
+-  Size = HorizontalResolution * VerticalResolution * PixelSize;
++  Size = VerticalResolution * Pitch;
+   /* Since we are allocating the framebuffer memory as
+      EfiRuntimeServicesData, make sure the size is a multiple of
+      RUNTIME_PAGE_ALLOCATION_GRANULARITY in order to avoid problems
+-- 
+2.37.2
+

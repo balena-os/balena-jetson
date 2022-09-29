@@ -1,0 +1,162 @@
+From d0174bf4f33973951c9149728ed424d4246b9c7f Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Thu, 18 Aug 2022 16:49:04 +0200
+Subject: [PATCH] load file test
+
+---
+ .../Application/L4TLauncher/L4TLauncher.c     | 116 ++++++++++++++++++
+ 1 file changed, 116 insertions(+)
+
+diff --git a/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c b/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
+index a191eb65..ed44c25c 100644
+--- a/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
++++ b/edk2-nvidia/Silicon/NVIDIA/Application/L4TLauncher/L4TLauncher.c
+@@ -78,6 +78,9 @@
+ 
+ #define EXTLINUX_CBOOT_ARG             L"${cbootargs}"
+ 
++#define EXTLINUX_KEY_ROOTPART          L"ROOTPART"
++#define BOOT_CONF_PATH             L"resinOS_uEnv.txt"
++
+ #define MAX_EXTLINUX_OPTIONS           10
+ typedef struct {
+   UINT32 BootMode;
+@@ -907,8 +910,11 @@ CheckCommandString (
+   CHAR16 *Value;
+   if (StrnCmp (CommandLine, Key, StrLen (Key)) == 0) {
+     Value = CleanExtLinuxLine (CommandLine + StrLen (Key));
++    ErrorPrint (L"%a: CommandLine %s\r\n", __FUNCTION__, CommandLine);
+     if (Buffer != NULL) {
+       *Buffer = AllocateCopyPool (StrSize (Value), Value);
++      ErrorPrint (L"%a: Value %s\r\n", __FUNCTION__, Value);
++      ErrorPrint (L"%a: Buffer %s\r\n\r\n", __FUNCTION__, Buffer);
+       if (*Buffer == NULL) {
+         return EFI_OUT_OF_RESOURCES;
+       }
+@@ -1641,6 +1647,112 @@ Exit:
+   return Status;
+ }
+ 
++/*************************************************************************************/
++/*
++STATIC
++EFI_STATUS
++EFIAPI
++CheckRootString (
++  IN CHAR16       *CommandLine,
++  IN CONST CHAR16 *Key,
++  OUT CHAR16      **Value;
++)
++{
++  if (StrnCmp (CommandLine, Key, StrLen (Key)) == 0) {
++    *Value = CleanExtLinuxLine (CommandLine + StrLen (Key));
++    ErrorPrint (L"%a: Clean CommandLine %a - %s\r\n", __FUNCTION__, CommandLine, *Value);
++    return EFI_SUCCESS;
++  }
++  return EFI_NOT_FOUND;
++}
++*/
++
++STATIC
++EFI_STATUS
++EFIAPI
++ProcessResinOSuEnv (
++  IN EFI_HANDLE            DeviceHandle,
++  IN UINT32                BootChain,
++  OUT EFI_HANDLE           *RootFsHandle
++)
++{
++  EFI_STATUS       Status;
++  EFI_DEVICE_PATH *FullDevicePath;
++  EFI_FILE_HANDLE  FileHandle = NULL;
++  CHAR16          *FileLine = NULL;
++  CHAR16          *CleanLine;
++  BOOLEAN          Ascii;
++ // CHAR16          *RootPart = NULL;
++  if (RootFsHandle == NULL) {
++    return EFI_INVALID_PARAMETER;
++  }
++
++  Status = FindPartitionInfo (DeviceHandle, L"resin-boot", BootChain, NULL, RootFsHandle);
++  if (EFI_ERROR (Status)) {
++    ErrorPrint (L"%a: Unable to find partition resin-boot - XXX\r\n", __FUNCTION__);
++    return Status;
++  }
++
++  ErrorPrint (L"%a: Will call verifyDetachedPLM- XXX\r\n", __FUNCTION__);
++  Status = VerifyDetachedCertificateFile (BOOT_CONF_PATH, *RootFsHandle,
++                                          &FileHandle, NULL, NULL);
++  ErrorPrint (L"%a: Called verifyDetachedPLM- XXX\r\n", __FUNCTION__);
++
++  if (FileHandle == NULL) {
++    FullDevicePath = FileDevicePath (*RootFsHandle, BOOT_CONF_PATH);
++    if (FullDevicePath == NULL) {
++      ErrorPrint (L"%a: Failed to create file device path resinOS_uEnvt.xt\r\n", __FUNCTION__);
++      return EFI_OUT_OF_RESOURCES;
++    }
++
++    ErrorPrint (L"%a: Created path plm\r\n", __FUNCTION__);
++
++    Status = EfiOpenFileByDevicePath (&FullDevicePath, &FileHandle, EFI_FILE_MODE_READ, 0);
++    if (EFI_ERROR (Status)) {
++      ErrorPrint (L"%a: Failed to open file resinOS_uEnv.txt: %r\r\n", __FUNCTION__, Status);
++      return Status;
++    }
++    ErrorPrint (L"%a: Opened resinOS_uEnv\r\n", __FUNCTION__);
++  } else {
++        FileHandleSetPosition(FileHandle, 0);
++  }
++   ErrorPrint(L"In processResinOSuenv>>>>\r\n");
++  while (!FileHandleEof (FileHandle)) {
++    if (FileLine != NULL) {
++      FreePool (FileLine);
++      FileLine = NULL;
++    }
++    FileLine = FileHandleReturnLine (FileHandle, &Ascii);
++    if (FileLine == NULL) {
++      break;
++    }
++
++    CleanLine = CleanExtLinuxLine (FileLine);
++    if (*CleanLine != CHAR_NULL) {
++      ErrorPrint(L"CleanLine is %s\r\n", CleanLine);
++      /* 
++      Status = CheckRootString (CleanLine, EXTLINUX_KEY_ROOTPART, &RootPart);
++      if (!EFI_ERROR (Status)) {
++        RootIndex = StrDecimalToUintn (RootPart);
++        ErrorPrint(L"%a: Found root part! - %d\r\n", RootIndex);
++        continue;
++      }
++     */
++    }
++  }
++   ErrorPrint(L"OUT processResinOSuenv>>>>\r\n");
++
++  if (FileLine != NULL) {
++    FreePool (FileLine);
++    FileLine = NULL;
++  }
++  
++  return EFI_SUCCESS;
++}
++
++
++/*************************************************************************************/
++
+ /**
+   This is the declaration of an EFI image entry point. This entry point is
+   the same for UEFI Applications, UEFI OS Loaders, and UEFI Drivers, including
+@@ -1725,6 +1837,10 @@ L4TLauncher (
+ 
+   if (BootParams.BootMode == NVIDIA_L4T_BOOTMODE_DIRECT) {
+     do {
++      ErrorPrint(L"Lets try load a file. Will call ProcessResinOSuEnv\r\n");
++      Status = ProcessResinOSuEnv (LoadedImage->DeviceHandle, BootParams.BootChain, &RootFsDeviceHandle);
++      ErrorPrint(L"Called processResinOSuEnv \r\n");    
++
+       Status = ProcessExtLinuxConfig (LoadedImage->DeviceHandle, BootParams.BootChain, &ExtLinuxConfig, &RootFsDeviceHandle);
+       if (EFI_ERROR (Status)) {
+         ErrorPrint (L"%a: Unable to process extlinux config: %r\r\n", __FUNCTION__, Status);
+-- 
+2.37.2
+
