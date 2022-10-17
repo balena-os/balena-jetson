@@ -1,4 +1,264 @@
 - commits:
+    - subject: Update layers/meta-balena to bfb53e361ce9a3205e9c468f7c83b614acb3c52e
+      hash: 76d7a5d0063530f503ac60693bf5a95674e76a2b
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to bfb53e361ce9a3205e9c468f7c83b614acb3c52e
+        changelog-entry: Update layers/meta-balena to bfb53e361ce9a3205e9c468f7c83b614acb3c52e
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "classes: kernel-balena: Allow aufs patching to use network"
+              hash: 549c6922e4d427f37727b6dffb7e5008f5afdfb6
+              body: |
+                On kirkstone, tasks need to be explicitely allowed to access the
+                network.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.12
+          title: ""
+          date: 2022-10-17T08:41:58.221Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.2.10
+              hash: e6a6abbb3994937bbb5e5d2e1479e97a76faec88
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.105.11
+          title: ""
+          date: 2022-10-13T20:48:28.279Z
+        - commits:
+            - subject: "classes: kernel-balena: improve aufs branch selection"
+              hash: 83f866691184df43c5b08b9da646a5bf99227b7b
+              body: >
+                The task that applies the aufs patches is still required to support
+
+                hostOS updates between aufs and overlay2 balenaOS versions.
+
+
+                This commit adds support for 5.15 kernels and improves the branch
+
+                selection logic to cover some corner cases.
+
+
+                It also adds a test task so that we can test regressions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.10
+          title: ""
+          date: 2022-10-12T13:48:37.596Z
+        - commits:
+            - subject: "meta-balena-rust: Fix ABI for arm"
+              hash: efe707f06134a345ef4d6f396555b4c3e057f23d
+              body: >
+                The move to include the ABI in the target definition was done in Poky:
+
+                d6b563710e6cc0857843433d85023d47f9f2037d
+
+
+                Without much explanation in the commit, the ABI was removed in Poky:
+
+                e4c16d11128f0e9cc2567fc9e3579e9a94988b2e
+
+
+                Only to be re-introduced, also without much explanation in Poky:
+
+                0bf2fd16273436f1cd9ea2ab99ad882e879f965d
+
+
+                Then, there was a partial revert to remove the ABI again in Poky:
+
+                66ff1fb3a164fa794ee186960809e3fa9e938b48
+
+
+                This last 66ff1fb3a164fa794ee186960809e3fa9e938b48 commit is reverted here as
+
+                it fails to build for ARM targets. All our boards that cover all the
+
+                possible ABIs build with this change.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.9
+          title: ""
+          date: 2022-10-11T21:36:12.907Z
+        - commits:
+            - subject: "meta-balena-thud: Enable GOCACHE"
+              hash: a2189c33b4969a76c963dad736f60d23e6fba83c
+              body: |
+                Versions above 1.12 require GOCACHE to be used.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.8
+          title: ""
+          date: 2022-10-11T15:49:46.421Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.2.8
+              hash: 5a09b25d77f3dd3fe467fab36d218578f2d2d2d3
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.105.7
+          title: ""
+          date: 2022-10-06T11:12:36.851Z
+        - commits:
+            - subject: Update tests/leviathan digest to 4482393
+              hash: f3b00f1bb4c811fdd020de0f13d12da301393a43
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: 'Revert "worker: Pin to stable release 2.5.10 prior to md support"'
+                      hash: 4f6f194e231fb1afccb0a86f6f8550e26dbcd142
+                      body: >
+                        This reverts commit 3b6ce13734e98e981492e01bc874c0a439cb1536.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.9.9
+                  title: ""
+                  date: 2022-10-05T23:52:50.772Z
+                - commits:
+                    - subject: Switch to Flowzone for CI
+                      hash: b4397c12da38c2bfd00be93a3d1f5d666e389ea9
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: Remove leftover balena.yml file
+                      hash: 376b764d8ee5404f096e8cdcc8b877aa44e30dfd
+                      body: |
+                        This repo is not deployed as a fleet, instead the
+                        balena-os/leviathan-worker is deployed as a block and
+                        as a fleet.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.9.8
+                  title: ""
+                  date: 2022-10-05T23:37:02.507Z
+          version: meta-balena-2.105.6
+          title: ""
+          date: 2022-10-06T03:18:48.372Z
+        - commits:
+            - subject: Update tests/leviathan digest to a2079bd
+              hash: 897f002e8f17452caeb92a947e4dc67854d820e2
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: Splie interface name into config
+                      hash: e49a508e0390cb5f89d34c3a6f5d91ff27ee31b0
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                    - subject: "core: Specify wireless interface name for the 243390 device type"
+                      hash: ab724d208cdbb8ba8a34b3c6cdd46144a4265f7a
+                      body: |
+                        The 243390 device specific tests assess that the hotspot
+                        connection is created on the intended interface. We thus
+                        need to ensure that the connection to the testbot is
+                        established using the embedded wifi chip.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                      author: Alexandru Costache
+                      nested: []
+                  version: leviathan-2.9.7
+                  title: "'core: Add 243390-rpi3 support, use specific network configuration for
+                    it'"
+                  date: 2022-09-30T11:46:08.530Z
+          version: meta-balena-2.105.5
+          title: ""
+          date: 2022-10-01T08:58:29.896Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.2.7
+              hash: 819b8e70d8a918cc534d68091b150fc2bc74d71d
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.105.4
+          title: ""
+          date: 2022-10-01T02:59:51.026Z
+        - commits:
+            - subject: "flowzone: Run also for pull requests into ESR branches"
+              hash: 1c9fa8bf07231b5ede3d640292161b62eeb818af
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Switch from balenaCI to flowzone
+              hash: 970175638be9665a05faeb5ac7a6b29ccb996237
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Pagan Gazzard
+              nested: []
+          version: meta-balena-2.105.3
+          title: ""
+          date: 2022-09-30T18:43:16.299Z
+  version: 2.105.12
+  title: ""
+  date: 2022-10-17T11:48:53.530Z
+- commits:
     - subject: Update build and deploy workflow to v0.0.12
       hash: ccbfe59229048f5593d9a9e54c672ef0ab9abc98
       body: |
