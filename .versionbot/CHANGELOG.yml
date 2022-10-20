@@ -1,4 +1,61 @@
 - commits:
+    - subject: Update layers/meta-balena to 0c378990ffead64c9141e82f76299914c416436d
+      hash: 026ea8c642b2a77d96ec42f241550eef33c05c8f
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 0c378990ffead64c9141e82f76299914c416436d
+        changelog-entry: Update layers/meta-balena to 0c378990ffead64c9141e82f76299914c416436d
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "common: openvpn: remove resin.conf"
+              hash: ce288ba9138ab385370e2375a64ef8c185feb2c9
+              body: >
+                This config file hasn't been used since commit 2db88c2, which unified
+
+                how managed and unmanaged images operate. Since that commit, openvpn
+
+                starts up if the config file at /etc/openvpn/openvpn.conf is found, and
+
+                otherwise remains inactive. This file is populated by os-config.
+
+
+                Remove the old config to prevent misdirection and cleanup the layer.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.105.16
+          title: ""
+          date: 2022-10-20T02:12:40.759Z
+        - commits:
+            - subject: "Revert \"chrony: update to version 4.1 to match kirkstone's version\""
+              hash: 3ea5184c30f3051d58f1a1befd19c76c17ee4334
+              body: >
+                With the updated version the systemd watchdog events are not received.
+
+
+                Fixes #2823
+
+
+                This reverts commit 5049451b32d2d2c59f2aeb4713b2e6539bffeb49.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.15
+          title: ""
+          date: 2022-10-19T16:58:50.881Z
+  version: 2.105.16
+  title: ""
+  date: 2022-10-20T06:59:32.714Z
+- commits:
     - subject: Update layers/meta-balena to 85705947f289798d36c534aae5dc3582627e2a99
       hash: 7248fd83eb2ac914f7966a209b688c5f3f8bf9ba
       body: Update layers/meta-balena
