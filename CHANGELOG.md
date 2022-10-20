@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.105.16+rev2
+## (2022-10-20)
+
+
+<details>
+<summary> Update contracts to 38de093f2a5afdb1948b295ba11a18b6ebe626e9 [renovate[bot]] </summary>
+
+> ## contracts-2.0.21
+> ### (2022-10-20)
+> 
+> * Add node v19.0.0 [Trong Nghia Nguyen]
+> 
+</details>
+
 # v2.105.16+rev1
 ## (2022-10-20)
 
