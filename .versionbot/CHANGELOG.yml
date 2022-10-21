@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to 5c78a62b8409752294e244bd1ecc111b4b969da7
+      hash: eb59fed2dc5b2ce5a03e0b48a5e1984f51881a17
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 5c78a62b8409752294e244bd1ecc111b4b969da7
+        changelog-entry: Update layers/meta-balena to 5c78a62b8409752294e244bd1ecc111b4b969da7
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: hup: reduce num. flashes and  hostapp sends"
+              hash: 51f558450d60776470f92341789e14eecc217a65
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.105.17
+          title: ""
+          date: 2022-10-21T15:04:03.760Z
+  version: 2.105.17
+  title: ""
+  date: 2022-10-21T16:28:04.269Z
+- commits:
     - subject: Update contracts to 38de093f2a5afdb1948b295ba11a18b6ebe626e9
       hash: 14dc65a24160de8638434a737b792d5a68c17832
       body: Update contracts
