@@ -1,6 +1,30 @@
 Change log
 -----------
 
+# v2.105.18
+## (2022-10-25)
+
+
+<details>
+<summary> Update layers/meta-balena to ad75f015f985b1dff097568475d80c05924bfdae [renovate[bot]] </summary>
+
+> ## meta-balena-2.105.18
+> ### (2022-10-25)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to f83df7d [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.0
+>> #### (2022-10-25)
+>> 
+>> * minor: Add @balena/leviathan-test-helpers package [Vipul Gupta (@vipulgupta2048)]
+>> 
+> </details>
+> 
+> 
+</details>
+
 # v2.105.17
 ## (2022-10-21)
 
