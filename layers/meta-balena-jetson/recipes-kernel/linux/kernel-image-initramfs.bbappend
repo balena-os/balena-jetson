@@ -14,3 +14,10 @@ do_install:append:jetson-xavier-nx-devkit-emmc() {
 do_install:append:jetson-xavier-nx-devkit() {
     echo "" > ${D}/boot/${type}
 }
+
+# Fixes error: packages already installed
+# by kernel-image-initramfs
+do_install:append() {
+        rm ${D}/boot/Image || true
+}
+
