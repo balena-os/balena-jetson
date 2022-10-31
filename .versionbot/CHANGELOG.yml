@@ -1,4 +1,83 @@
 - commits:
+    - subject: Update contracts to edff7336f8c7fd074aed1fd087a595ee2ca05651
+      hash: fa235c61bfb34e355e6a65ad39f2390b960997ef
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to edff7336f8c7fd074aed1fd087a595ee2ca05651
+        changelog-entry: Update contracts to edff7336f8c7fd074aed1fd087a595ee2ca05651
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add Python v3.11.0 v3.10.8 v3.9.15 v3.8.15 and v3.7.15
+              hash: fbabb315a61ab269458acd051d91e848e2e81cc3
+              body: |
+                Update pip to v22.3 and setuptools to v65.5.0.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.26
+          title: ""
+          date: 2022-10-31T01:49:50.638Z
+        - commits:
+            - subject: Fix incorrect partials in device type contracts
+              hash: 23b23bf963943277e5d5c02bc78d2fb52b4ba7fd
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Micah Halter <micah@balena.io>
+                signed-off-by: Micah Halter <micah@balena.io>
+              author: Micah Halter
+          version: contracts-2.0.25
+          title: ""
+          date: 2022-10-27T16:05:36.897Z
+        - commits:
+            - subject: Add node v18.12.0
+              hash: 76cc4e57fb052486256f3b8f2c2b0239b11c2856
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.24
+          title: ""
+          date: 2022-10-27T11:18:14.564Z
+        - commits:
+            - subject: "sw.os+hw.device-type: Add distro-config.tpl for
+                jetson-agx-orin-devkit"
+              hash: 76dfd72bece570ec8fdf96006135603d2e81b699
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.23
+          title: ""
+          date: 2022-10-25T15:58:44.499Z
+        - commits:
+            - subject: "hw+device-type: Add jetson-agx-orin-devkit device type"
+              hash: 9b5a7433a5965ed3152a63b9cab756e9cc68c015
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.22
+          title: ""
+          date: 2022-10-24T14:57:49.013Z
+  version: 2.105.18+rev1
+  title: ""
+  date: 2022-10-31T04:41:36.563Z
+- commits:
     - subject: Update layers/meta-balena to ad75f015f985b1dff097568475d80c05924bfdae
       hash: 221e86baef0a8d30d624299804c6382d0f3aba6a
       body: Update layers/meta-balena
