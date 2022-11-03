@@ -1,6 +1,45 @@
 Change log
 -----------
 
+# v2.105.24
+## (2022-11-03)
+
+
+<details>
+<summary> Update layers/meta-balena to 912634a99a4ae09855c2c517c620ec16f843dd95 [renovate[bot]] </summary>
+
+> ## meta-balena-2.105.24
+> ### (2022-11-03)
+> 
+> * Update balena-os/balena-supervisor to v14.2.18 [renovate[bot]]
+> 
+> ## meta-balena-2.105.23
+> ### (2022-11-01)
+> 
+> * tests: hup: handle exception when unwrapping non-flasher image [Joseph Kogut]
+> 
+> ## meta-balena-2.105.22
+> ### (2022-11-01)
+> 
+> * Update Docs Link Updated the link in the docs to the device-type listings (on hub as SOT) [Ryan H]
+> 
+> ## meta-balena-2.105.21
+> ### (2022-10-27)
+> 
+> * openssh: allow RSA signatures with SHA1 algorithms [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.20
+> ### (2022-10-26)
+> 
+> * meta-resin-sumo: libical: Fix build QA error [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.19
+> ### (2022-10-26)
+> 
+> * meta-resin-sumo: keep tpm2-tools in 5.0 [Alex Gonzalez]
+> 
+</details>
+
 # v2.105.18+rev1
 ## (2022-10-31)
 
