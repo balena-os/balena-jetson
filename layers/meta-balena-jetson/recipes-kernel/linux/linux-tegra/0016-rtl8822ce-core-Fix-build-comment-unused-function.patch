@@ -1,0 +1,37 @@
+From c6d9dd57c6bfdeeb4ba3b646abe384ee0315d45f Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Fri, 4 Nov 2022 17:44:26 +0100
+Subject: [PATCH] rtl8822ce/core: Fix build, comment unused function
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_ap.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_ap.c b/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_ap.c
+index d4119f9f9ec5..b75c8e51d523 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_ap.c
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/core/rtw_ap.c
+@@ -1207,6 +1207,7 @@ void update_sta_info_apmode(_adapter *padapter, struct sta_info *psta)
+ 	_exit_critical_bh(&psta->lock, &irqL);
+ }
+ 
++/*
+ #ifdef CONFIG_RTW_80211K
+ static void update_rm_cap(u8 *frame_head, _adapter *pa, u32 pktlen, int offset)
+ {
+@@ -1218,8 +1219,9 @@ static void update_rm_cap(u8 *frame_head, _adapter *pa, u32 pktlen, int offset)
+ 	if (res != NULL)
+ 		_rtw_memcpy((void *)pa->rmpriv.rm_en_cap_def, (res + 2), len);
+ }
+-#endif
+ 
++#endif
++*/
+ static void update_ap_info(_adapter *padapter, struct sta_info *psta)
+ {
+ 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+-- 
+2.37.2
+
