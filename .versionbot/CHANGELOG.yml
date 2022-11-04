@@ -1,4 +1,28 @@
 - commits:
+    - subject: Update layers/meta-balena to 81cdced65f90570af857c9cf012775558003c1c5
+      hash: 7a3c0be377df58f9d33afbd50222c4168ae0d921
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 81cdced65f90570af857c9cf012775558003c1c5
+        changelog-entry: Update layers/meta-balena to 81cdced65f90570af857c9cf012775558003c1c5
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.2.20
+              hash: 6b77e059fb1fc0e3eddebaa5702fce26f11b5e76
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.105.25
+          title: ""
+          date: 2022-11-04T02:27:30.706Z
+  version: 2.105.25
+  title: ""
+  date: 2022-11-04T03:56:31.569Z
+- commits:
     - subject: Update layers/meta-balena to 912634a99a4ae09855c2c517c620ec16f843dd95
       hash: 06089365bd38460808e095dd15fedbef600c9fed
       body: Update layers/meta-balena
