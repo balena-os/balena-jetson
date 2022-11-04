@@ -30,6 +30,7 @@ SRC_URI:append:jetson-tx2 = " \
     file://0012-rtl8822ce-fix-compilation-errors.patch \
     file://0013-nvidia-net-wireless-realtek-clean-up-indentation-iss.patch \
     file://0014-realtek-rtl8822ce-Enable-802.11D-and-802.11K.patch \
+    file://0015-drivers-bluetooth-realtek-Update-rtk_bt-to-5.12.1.8.patch \
 "
 
 SRC_URI:append:jetson-xavier-nx-devkit-seeed-2mic-hat = " \
