@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.105.28
+## (2022-11-06)
+
+
+<details>
+<summary> Update layers/meta-balena to 496bde37adf3bdabcf3baa3c3dbbaba8ed2c59e1 [renovate[bot]] </summary>
+
+> ## meta-balena-2.105.28
+> ### (2022-11-06)
+> 
+> * patch: Delete conf.js for test suites [Vipul Gupta (@vipulgupta2048)]
+> 
+</details>
+
 # v2.105.27
 ## (2022-11-05)
 

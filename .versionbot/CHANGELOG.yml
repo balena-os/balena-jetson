@@ -1,4 +1,28 @@
 - commits:
+    - subject: Update layers/meta-balena to 496bde37adf3bdabcf3baa3c3dbbaba8ed2c59e1
+      hash: 2e84c19f3bda1b1b14a4abc3058f12f1c6ae787b
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 496bde37adf3bdabcf3baa3c3dbbaba8ed2c59e1
+        changelog-entry: Update layers/meta-balena to 496bde37adf3bdabcf3baa3c3dbbaba8ed2c59e1
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "patch: Delete conf.js for test suites"
+              hash: 5e52f52aec4cd1ccd238dd0e6ee6dd68fdc1dc63
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.105.28
+          title: ""
+          date: 2022-11-06T11:05:01.690Z
+  version: 2.105.28
+  title: ""
+  date: 2022-11-06T15:06:33.960Z
+- commits:
     - subject: Update layers/meta-balena to 4f26a52c25bd3b246cc623b271873891da2fd737
       hash: 52df51bbced23d0f87fa707814b38a01e7154947
       body: Update layers/meta-balena
