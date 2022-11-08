@@ -26,6 +26,12 @@ SRC_URI:append:jetson-tx2 = " \
     file://realsense_powerlinefrequency_control_fix_linux-yocto_4.4.patch \
     file://0001-mttcan_ivc-Fix-build-failure-with-kernel-4.9.patch \
     file://0001-gasket-Backport-gasket-driver-from-linux-coral.patch \
+    file://0011-Import-rtl88x2CE_WiFi_linux_v5.12.1.8-2-g58609677a.2.patch \
+    file://0012-rtl8822ce-fix-compilation-errors.patch \
+    file://0013-nvidia-net-wireless-realtek-clean-up-indentation-iss.patch \
+    file://0014-realtek-rtl8822ce-Enable-802.11D-and-802.11K.patch \
+    file://0015-drivers-bluetooth-realtek-Update-rtk_bt-to-5.12.1.8.patch \
+    file://0016-rtl8822ce-core-Fix-build-comment-unused-function.patch \
 "
 
 SRC_URI:append:jetson-xavier-nx-devkit-seeed-2mic-hat = " \
@@ -253,7 +259,7 @@ BALENA_CONFIGS[cfginput] = " \
 		CONFIG_INPUT_KEYCHORD=m \
 "
 
-BALENA_CONFIGS:append:jetson-xavier-nx-devkit = " rtl8822ce "
+BALENA_CONFIGS:append = " rtl8822ce "
 BALENA_CONFIGS[rtl8822ce] = " \
 		CONFIG_RTL8822CE=m \
 		CONFIG_RTK_BTUSB=m \

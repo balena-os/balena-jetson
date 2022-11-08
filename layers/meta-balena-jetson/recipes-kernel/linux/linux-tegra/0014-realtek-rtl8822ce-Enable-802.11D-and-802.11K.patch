@@ -1,0 +1,45 @@
+From 4e56e27a2bceaf3f1956ac6ab5b8b10ac03e3ad5 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Fri, 4 Nov 2022 15:06:56 +0100
+Subject: [PATCH] realtek/rtl8822ce: Enable 802.11D and 802.11K
+
+This is done as per the request in internal
+thread https://jel.ly.fish/support-thread-1-0-0-front-cnv-d2dnnyl
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ .../drivers/net/wireless/realtek/rtl8822ce/include/autoconf.h  | 3 ++-
+ .../net/wireless/realtek/rtl8822ce/os_dep/linux/os_intfs.c     | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/include/autoconf.h b/nvidia/drivers/net/wireless/realtek/rtl8822ce/include/autoconf.h
+index 093888603259..3cf6fd48ed81 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/include/autoconf.h
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/include/autoconf.h
+@@ -169,7 +169,8 @@
+ 
+ #define CONFIG_GLOBAL_UI_PID
+ 
+-/*#define CONFIG_RTW_80211K*/
++#define CONFIG_80211D
++#define CONFIG_RTW_80211K
+ /*#define CONFIG_ADAPTOR_INFO_CACHING_FILE*/ /* now just applied on 8192cu only, should make it general...*/
+ /*#define CONFIG_RESUME_IN_WORKQUEUE*/
+ /*#define CONFIG_SET_SCAN_DENY_TIMER*/
+diff --git a/nvidia/drivers/net/wireless/realtek/rtl8822ce/os_dep/linux/os_intfs.c b/nvidia/drivers/net/wireless/realtek/rtl8822ce/os_dep/linux/os_intfs.c
+index 51db394f9d02..204b211b6f37 100644
+--- a/nvidia/drivers/net/wireless/realtek/rtl8822ce/os_dep/linux/os_intfs.c
++++ b/nvidia/drivers/net/wireless/realtek/rtl8822ce/os_dep/linux/os_intfs.c
+@@ -434,7 +434,7 @@ int rtw_hw_wps_pbc = 0;
+ #endif
+ 
+ #ifdef CONFIG_80211D
+-int rtw_80211d = 0;
++int rtw_80211d = 1;
+ #endif
+ 
+ #ifdef CONFIG_PCI_ASPM
+-- 
+2.37.2
+
