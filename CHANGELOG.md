@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.105.30
+## (2022-11-08)
+
+
+<details>
+<summary> Update layers/meta-balena to 0d399dcb9ac7ece013f76a119e8643228eb114b7 [renovate[bot]] </summary>
+
+> ## meta-balena-2.105.30
+> ### (2022-11-08)
+> 
+> * tests: os: ensure by-state links are created [Joseph Kogut]
+> 
+> ## meta-balena-2.105.29
+> ### (2022-11-07)
+> 
+> * prepare-openvpn: do not use cached configuration [Alex Gonzalez]
+> 
+</details>
+
 # v2.105.28+rev1
 ## (2022-11-07)
 
