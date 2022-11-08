@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.105.30+rev1
+## (2022-11-08)
+
+* linux-tegra: Update 8822ce driver to 5.12.1.8 [Alexandru Costache]
+
 # v2.105.30
 ## (2022-11-08)
 

@@ -1,4 +1,24 @@
 - commits:
+    - subject: "linux-tegra: Update 8822ce driver to 5.12.1.8"
+      hash: 9bd9639e78b8a5467e3fcf3205436468edda8dce
+      body: |
+        This change updates the in-tree 8822ce driver
+        and includes it for all device types present in
+        this repository.
+
+        Default build configuration flags are used,
+        as present in the original driver source archive.
+      footer:
+        Changelog-entry: "linux-tegra: Update 8822ce driver to 5.12.1.8"
+        changelog-entry: "linux-tegra: Update 8822ce driver to 5.12.1.8"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.105.30+rev1
+  title: ""
+  date: 2022-11-08T14:18:18.849Z
+- commits:
     - subject: Update layers/meta-balena to 0d399dcb9ac7ece013f76a119e8643228eb114b7
       hash: d433438d373aa46d2159d0efb4802ce310878a1e
       body: Update layers/meta-balena
