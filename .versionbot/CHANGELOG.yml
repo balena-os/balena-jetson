@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to b20827d63cbe7b1168f2b63b3bde216231e1b4ba
+      hash: bba0dc669aef507d683ce03e64411a148514bfae
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to b20827d63cbe7b1168f2b63b3bde216231e1b4ba
+        changelog-entry: Update contracts to b20827d63cbe7b1168f2b63b3bde216231e1b4ba
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add node v18.12.1
+              hash: ec1ce7e89c1882f531e394ebf7f815ae3f9af94f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.28
+          title: ""
+          date: 2022-11-09T07:37:26.681Z
+  version: 2.105.30+rev2
+  title: ""
+  date: 2022-11-09T09:15:41.651Z
+- commits:
     - subject: "linux-tegra: Update 8822ce driver to 5.12.1.8"
       hash: 9bd9639e78b8a5467e3fcf3205436468edda8dce
       body: |
