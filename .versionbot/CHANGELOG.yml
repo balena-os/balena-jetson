@@ -1,4 +1,62 @@
 - commits:
+    - subject: Update layers/meta-balena to c5f580c7bd8e7d1391331c1611ab340be68d8d6a
+      hash: 736ebd22f58481aa5fae671cc54f24504aef2ced
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to c5f580c7bd8e7d1391331c1611ab340be68d8d6a
+        changelog-entry: Update layers/meta-balena to c5f580c7bd8e7d1391331c1611ab340be68d8d6a
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.3.0
+              hash: 099700fd5247b20af5aec205f51e54c0a6c1fef3
+              body: Update balena-supervisor
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.106.0
+          title: ""
+          date: 2022-11-10T05:31:24.750Z
+        - commits:
+            - subject: Enable network access for tasks talking to the signing service
+              hash: ab1d75a0db11cde16d93cb7b3ebe734f61583e28
+              body: >
+                Since kirkstone tasks have network access disabled by default so we need
+
+                to enable it explicitly for tasks that talk to the signing service.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.105.32
+          title: ""
+          date: 2022-11-09T15:15:46.084Z
+        - commits:
+            - subject: Add meta-balena-esr workflow
+              hash: bcaddc164814569a9971c728bfbae316bbae88b3
+              body: >
+                This workflow will create an ESR branch from the latest patch of the
+
+                previous minor version the first day of each quarter.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.31
+          title: ""
+          date: 2022-11-08T20:30:19.317Z
+  version: 2.106.0
+  title: ""
+  date: 2022-11-10T13:19:42.044Z
+- commits:
     - subject: "jetson-dtbs: Update tegra186-tx2-6.dtb"
       hash: 194974cb499c88c52609a7c2a5ae1b33a05e14e5
       body: |
