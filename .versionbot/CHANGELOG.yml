@@ -1,4 +1,26 @@
 - commits:
+    - subject: "jetson-dtbs: Update tegra186-tx2-6.dtb"
+      hash: 194974cb499c88c52609a7c2a5ae1b33a05e14e5
+      body: |
+        This new version of the tegra186_tx2_6.dtb file
+        adds the "nvidia,rx_frames" element to the "ether_qos" block.
+
+        Alexandru: I moved the dtb added by Todd from the root
+        of the respository to the jetson-dtbs package, so it
+        can be included in the next image releases.
+
+        This is a rebase of https://github.com/balena-os/balena-jetson/pull/438
+      footer:
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+        Changelog-entry: "jetson-dtbs: Update tegra186-tx2-6.dtb"
+        changelog-entry: "jetson-dtbs: Update tegra186-tx2-6.dtb"
+      author: ttomaino
+      nested: []
+  version: 2.105.30+rev3
+  title: ""
+  date: 2022-11-10T08:40:31.456Z
+- commits:
     - subject: Update contracts to b20827d63cbe7b1168f2b63b3bde216231e1b4ba
       hash: bba0dc669aef507d683ce03e64411a148514bfae
       body: Update contracts

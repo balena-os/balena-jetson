@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.105.30+rev3
+## (2022-11-10)
+
+* jetson-dtbs: Update tegra186-tx2-6.dtb [ttomaino]
+
 # v2.105.30+rev2
 ## (2022-11-09)
 
