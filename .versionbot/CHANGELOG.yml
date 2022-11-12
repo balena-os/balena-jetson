@@ -1,4 +1,109 @@
 - commits:
+    - subject: Update layers/meta-balena to 5f789c7e57c7be71b8e333ac7127a809d2161935
+      hash: 5743cdc7e6d7065da9b92d7572a902beb1f34884
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 5f789c7e57c7be71b8e333ac7127a809d2161935
+        changelog-entry: Update layers/meta-balena to 5f789c7e57c7be71b8e333ac7127a809d2161935
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "ssh-auth: setConfig: run synchronously"
+              hash: 5534839614a5221068d25fb703658b780d6c7463
+              body: >
+                Most tests expects a specific device configuration so having the setting
+
+                run asynchronously leads to unexpected failures.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "cloud: ssh-auth: use custom path for custom key"
+              hash: 6c83fd02383baf7b6932858a3e88ae207cbecc3b
+              body: >
+                Right now it overwrites the key created by the cloud suite to connect
+
+                to the proxy.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: Set permissions for cache file"
+              hash: 3406f9a45a5a97542972c442f1c8a8e3e80a7d37
+              body: >
+                The sshd daemon is configured to fetch keys from the API for local
+
+                user connections. The script that fetches the keys, cloud-public-sshkeys,
+
+                sources balena-config-vars and is run as an exclusive non-root user.
+
+
+                Let's set the correct permissions for this file to allow not to break
+
+                the above.
+
+
+                Also, add a test to check that the SSH authentication with user
+
+                registered keys does not break again.
+
+
+                Fixes #2785
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.106.4
+          title: ""
+          date: 2022-11-12T15:47:45.326Z
+        - commits:
+            - subject: "common: kernel-devsrc: fix pseudo abort"
+              hash: e5307d7c7459ac977914122edc11d9ae7222e54b
+              body: >
+                Yocto builds will abort due to inconsistencies between the pseudo
+
+                database and files modified outside of the pseudo context [0].
+
+
+                This will occasionally cause builds to fail in the do_deploy step of the
+
+                kernel-devsrc recipe. [1]
+
+
+                Fix this by not removing the kernel_source tarball in the do_deploy
+
+                step.
+
+
+                Fixes: https://github.com/balena-os/meta-balena/issues/2806
+
+
+                [0] https://wiki.yoctoproject.org/wiki/Pseudo_Abort
+
+                [1] https://github.com/balena-os/meta-balena/issues/2806
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.106.3
+          title: ""
+          date: 2022-11-11T08:21:56.144Z
+  version: 2.106.4
+  title: ""
+  date: 2022-11-12T21:28:22.082Z
+- commits:
     - subject: Update layers/meta-balena to 301f76a3232fb25463f89f6382eb0e14189dcc0e
       hash: 4cbc40d9c51b863467855d2cb68d8de3b0013239
       body: Update layers/meta-balena
