@@ -1,4 +1,47 @@
 - commits:
+    - subject: Update layers/meta-balena to af180bb6f4c61940cbf23d0b92dbceadea10aa3f
+      hash: e3ad5d8493638ea0055fb78d33c3196cbac085cc
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to af180bb6f4c61940cbf23d0b92dbceadea10aa3f
+        changelog-entry: Update layers/meta-balena to af180bb6f4c61940cbf23d0b92dbceadea10aa3f
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "openvpn: fix a race condition that leaves system with no running
+                supervisor"
+              hash: fd788120e5915820e75240e548760fd107cc0580
+              body: >
+                The `os-config` application stops the supervisor before fetching openvpn
+
+                configuration and starting the `openvpn` service unit.
+
+
+                As the `openvpn` service units stops `os-config`, it might not get to
+
+                restart the supervisor.
+
+
+                This commit checks that `os-config` is not already active before
+
+                starting it.
+
+
+                Fixes #2855
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.106.5
+          title: ""
+          date: 2022-11-14T09:32:57.346Z
+  version: 2.106.5
+  title: ""
+  date: 2022-11-14T20:51:42.565Z
+- commits:
     - subject: Update balena-yocto-scripts to 3fbd0884bd7d599664587d0ab25fea22d77323ba
       hash: 2200f8fd527586c5710440f29ee40c9545e07f4a
       body: Update balena-yocto-scripts
