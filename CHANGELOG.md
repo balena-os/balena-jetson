@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.106.8
+## (2022-11-17)
+
+
+<details>
+<summary> Update layers/meta-balena to 8c48d6b05236f1ab2fe8b081181947ed8683b0f1 [renovate[bot]] </summary>
+
+> ## meta-balena-2.106.8
+> ### (2022-11-17)
+> 
+> * classes: kernel-balena: add wireguard module [Alex Gonzalez]
+> 
+</details>
+
 # v2.106.7
 ## (2022-11-15)
 

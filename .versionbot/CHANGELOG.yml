@@ -1,4 +1,35 @@
 - commits:
+    - subject: Update layers/meta-balena to 8c48d6b05236f1ab2fe8b081181947ed8683b0f1
+      hash: 21b1469089947ff8d58b937e203b6589cf90508e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 8c48d6b05236f1ab2fe8b081181947ed8683b0f1
+        changelog-entry: Update layers/meta-balena to 8c48d6b05236f1ab2fe8b081181947ed8683b0f1
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "classes: kernel-balena: add wireguard module"
+              hash: a3491c4ba4161ca7b6e9c25e6e0beb33f0f67a04
+              body: >
+                Add the wireguard module by default so it is included in all device
+
+                types. This is a frequently requested by customers and will avoid having
+
+                to patch individual device repositories.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.106.8
+          title: ""
+          date: 2022-11-17T11:04:24.192Z
+  version: 2.106.8
+  title: ""
+  date: 2022-11-17T13:46:09.316Z
+- commits:
     - subject: Update layers/meta-balena to f64f63370e54d5ed14e124578ed9193c765ade92
       hash: 697419c2be37859d0b5fbabf7764113f26f22938
       body: Update layers/meta-balena
