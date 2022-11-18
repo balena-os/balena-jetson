@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to df352d2fcc6c70f7eb00e5276208510fe7ec9822
+      hash: 61799c366a4f34f3902d1d4449bc94d32c3582e1
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to df352d2fcc6c70f7eb00e5276208510fe7ec9822
+        changelog-entry: Update layers/meta-balena to df352d2fcc6c70f7eb00e5276208510fe7ec9822
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "docs: add RAID setup info"
+              hash: c1be8607aca2b4086230305689a0bc6ea77f5cc7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.107.1
+          title: ""
+          date: 2022-11-17T22:46:30.954Z
+  version: 2.107.1
+  title: ""
+  date: 2022-11-18T01:06:55.779Z
+- commits:
     - subject: Update layers/meta-balena to 7dd85ab83df0e2987cfecf4ea0cfcb9d96a020fc
       hash: f586fb3e14a2ac697116c5d3320a7ccb34f4641f
       body: Update layers/meta-balena
