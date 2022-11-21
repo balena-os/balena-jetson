@@ -185,11 +185,11 @@ BALENA_CONFIGS_DEPS[gamepad] = " \
 
 BALENA_CONFIGS:append:jetson-tx2 = " can"
 BALENA_CONFIGS[can] = " \
-                CONFIG_CAN=m \
-                CONFIG_CAN_RAW=m \
-                CONFIG_CAN_DEV=m \
-                CONFIG_MTTCAN=m \
-                CONFIG_MTTCAN_IVC=m \
+                CONFIG_CAN=y \
+                CONFIG_CAN_RAW=y \
+                CONFIG_CAN_DEV=y \
+                CONFIG_MTTCAN=n \
+                CONFIG_MTTCAN_IVC=y \
 "
 
 BALENA_CONFIGS:append:jetson-tx2 = " gasket"
