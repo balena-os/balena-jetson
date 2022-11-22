@@ -1,4 +1,62 @@
 - commits:
+    - subject: Update layers/meta-balena to d91e674a5bffd7f35944265d244b360bf6e3e8b9
+      hash: 0a0b4fce6cfea5d3c6ad9c5c1d6b44538ea0a829
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to d91e674a5bffd7f35944265d244b360bf6e3e8b9
+        changelog-entry: Update layers/meta-balena to d91e674a5bffd7f35944265d244b360bf6e3e8b9
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.4.2
+              hash: f5b649f4a2ad0192bad28f332ad45d35725e8d56
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.107.5
+          title: ""
+          date: 2022-11-22T01:19:51.508Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.4.1
+              hash: 3904c5734f5307cc6d225df7021dea61d8a014fd
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.107.4
+          title: ""
+          date: 2022-11-19T22:54:21.548Z
+        - commits:
+            - subject: "kernel-balena: Kernel version check should include provided version"
+              hash: 42ec259c4d1c6e9a7c8171f21157562ed3a07cc9
+              body: >
+                When adding a kernel configuration conditional in a provided kernel
+
+                version, make the check include the provided kernel version as that is
+
+                the intuitive way to understand it.
+
+
+                The two places that use this function already used it in this way.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.107.3
+          title: ""
+          date: 2022-11-19T14:52:45.759Z
+  version: 2.107.5
+  title: ""
+  date: 2022-11-22T05:03:39.237Z
+- commits:
     - subject: Update layers/meta-balena to a2d882935a9f80b1b685784d7f83d9d81c9805ee
       hash: f9d3ce9e7c1dc2ad508fd5fefe202ac208ac8c3a
       body: Update layers/meta-balena
