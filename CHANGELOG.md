@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.107.5+rev1
+## (2022-11-22)
+
+* conf/layer: Update to Kirkstone [Alexandru Costache]
+
 # v2.107.5
 ## (2022-11-22)
 

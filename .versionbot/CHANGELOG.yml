@@ -1,4 +1,18 @@
 - commits:
+    - subject: "conf/layer: Update to Kirkstone"
+      hash: c3808f48c5251c1b1029f0391b4a34dfd37dba92
+      body: ""
+      footer:
+        Changelog-entry: "conf/layer: Update to Kirkstone"
+        changelog-entry: "conf/layer: Update to Kirkstone"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.107.5+rev1
+  title: ""
+  date: 2022-11-22T18:15:26.632Z
+- commits:
     - subject: Update layers/meta-balena to d91e674a5bffd7f35944265d244b360bf6e3e8b9
       hash: 0a0b4fce6cfea5d3c6ad9c5c1d6b44538ea0a829
       body: Update layers/meta-balena
