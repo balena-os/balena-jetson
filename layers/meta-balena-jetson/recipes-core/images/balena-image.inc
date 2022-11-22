@@ -181,3 +181,5 @@ IMAGE_INSTALL:append:jetson-tx1 = " \
     linux-firmware-bcm4354 \
     bt-scripts \
 "
+
+IMAGE_INSTALL:remove = "kernel-image-initramfs"

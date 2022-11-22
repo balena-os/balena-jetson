@@ -96,16 +96,6 @@ SRC_URI:append:jetson-tx2 = " \
     file://tx2nx-Remove-unused-boot-targets.patch \
 "
 
-BALENA_BOOT_PART:jetson-tx1 = "0xB"
-BALENA_DEFAULT_ROOT_PART:jetson-tx1 = "0xC"
-
-# Needs further investigation as per
-# https://github.com/balena-os/balena-jetson/issues/90
-#SRC_URI:append:jetson-tx1 = " 
-#    file://Add-part-index-command.patch 
-#    file://tx1-Integrate-with-BalenaOS-environment.patch 
-#"
-
 # extlinux will now be installed in the rootfs,
 # near the kernel, initrd is not used
 do_install:append() {
@@ -123,7 +113,7 @@ FILES:u-boot-tegra:remove = " \
     /boot/initrd \
 "
 
-FILES:${PN} += " /boot/extlinux/extlinux.conf \"
+FILES:${PN} += " /boot/extlinux/extlinux.conf "
 
 # Our extlinux is provided by the kernel
 do_install[depends] += " virtual/kernel:do_deploy"

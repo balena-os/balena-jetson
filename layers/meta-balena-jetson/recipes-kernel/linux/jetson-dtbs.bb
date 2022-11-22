@@ -80,6 +80,10 @@ do_install:jetson-tx2-nx-devkit() {
 	install -m 0644 ${WORKDIR}/tegra186-p3636-0001-p3509-0000-a01-auvidea-jn30d.dtb  ${D}/boot/tegra186-p3636-0001-p3509-0000-a01-auvidea-jn30d.dtb
 }
 
+do_install:append() {
+	install -m 0644 ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin ${D}/boot/${KERNEL_IMAGETYPE}
+}
+
 FILES:${PN}:jetson-tx2 += " \
 	/boot/tegra186-tx2-6.dtb \
 	/boot/tegra186-tx2-cti-ASG006-IMX274-6CAM.dtb \
@@ -125,3 +129,5 @@ FILES:${PN}:jetson-tx2-nx-devkit += " \
 	/boot/tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb \
 	/boot/tegra186-p3636-0001-p3509-0000-a01-auvidea-jn30d.dtb \
 "
+
+FILES:${PN}:append = " /boot/Image "
