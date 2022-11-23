@@ -1,4 +1,28 @@
 - commits:
+    - subject: Update layers/meta-balena to 1add3a4b003475a96b0414a5dec83152eab58bf3
+      hash: 6722fc6ac7a87e61b4e4934071fdd9efdc3046c0
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 1add3a4b003475a96b0414a5dec83152eab58bf3
+        changelog-entry: Update layers/meta-balena to 1add3a4b003475a96b0414a5dec83152eab58bf3
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.4.4
+              hash: 6917f26494d1c68803508c8c5ff3d06e5fa0d99c
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.107.6
+          title: ""
+          date: 2022-11-22T21:24:54.566Z
+  version: 2.107.6
+  title: ""
+  date: 2022-11-23T00:06:55.202Z
+- commits:
     - subject: "conf/layer: Update to Kirkstone"
       hash: c3808f48c5251c1b1029f0391b4a34dfd37dba92
       body: ""
