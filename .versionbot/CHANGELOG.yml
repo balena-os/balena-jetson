@@ -1,4 +1,123 @@
 - commits:
+    - subject: Update layers/meta-balena to ce3b3d7d17723fd03a4df278c6baff10b29be22e
+      hash: 794cb3882f6df739a707418e8116e843140a27bd
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to ce3b3d7d17723fd03a4df278c6baff10b29be22e
+        changelog-entry: Update layers/meta-balena to ce3b3d7d17723fd03a4df278c6baff10b29be22e
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to bdf8eb2
+              hash: 443fd7c7a87d8d43f2f42b697ae975d9ebce5484
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: add high level architecture overview
+                      hash: 49fcd08d9b7d8af9a3b1f33c6d758906bf4b63ec
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.10.2
+                  title: ""
+                  date: 2022-11-23T15:38:40.661Z
+                - commits:
+                    - subject: Add conditions for Apple Silicon workstations
+                      hash: ff3d9fee035d2aa7a7c04e47dfbddb638c564878
+                      body: >
+                        Convert Darwin to lowercase and arm64 -> aarch64 as needed.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.10.1
+                  title: ""
+                  date: 2022-11-23T12:09:17.356Z
+          version: meta-balena-2.107.8
+          title: ""
+          date: 2022-11-24T00:10:11.885Z
+        - commits:
+            - subject: "tests: ssh-auth: rework local authentication with cloud keys to work
+                in testbots"
+              hash: f93065327126d39069e5d1d19a4c78b41e582b17
+              body: >
+                The tunnel to port 22222 used by testbots communicate between the core
+
+                container and the DUT does not allow to ssh as a non-root user.
+
+
+                Run ssh from the worker to test local SSH authentication with a cloud
+
+                user.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "ssh-auth: do not use a separate custom key"
+              hash: abf5936f0ada2d7af15c87a147e4416a403b3607
+              body: >
+                Given that testbot devices use a tunnel to specific ports to communicate
+
+                with the DUT that is established with the suite-generated keys, using
+
+                a different keypair for the ssh-auth test would require to tear down and
+
+                re-establish the tunnel.
+
+
+                It's easier to just use the existing key pair in the ssh-auth test.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'Revert "test: ssh-auth: fix test cases using custom keys"'
+              hash: b2450a9df2c1a773b807652bc37e6c92ccecef35
+              body: >
+                Using two set of keys, the one created by the suite to authenticate by
+
+                the proxy and a new custom key, is tricky as when running on testbot the
+
+                key is used to establish the tunnel between core and DUT.
+
+
+                Revert this change in preparation to removing the custom key and
+
+                modifying the tests to use a single key.
+
+
+                This reverts commit b24d92774a67cf0c0b83a29848bdcf6ed8a574db.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.107.7
+          title: ""
+          date: 2022-11-23T14:08:31.414Z
+  version: 2.107.8
+  title: ""
+  date: 2022-11-24T05:29:03.580Z
+- commits:
     - subject: Update layers/meta-balena to 1add3a4b003475a96b0414a5dec83152eab58bf3
       hash: 6722fc6ac7a87e61b4e4934071fdd9efdc3046c0
       body: Update layers/meta-balena
