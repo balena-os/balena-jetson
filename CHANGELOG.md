@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.107.10
+## (2022-11-25)
+
+
+<details>
+<summary> Update layers/meta-balena to fbf651fead37336e826d709f48255897962bdbd5 [renovate[bot]] </summary>
+
+> ## meta-balena-2.107.10
+> ### (2022-11-25)
+> 
+> * balena-image.bb: Include bits for LUKS when FDE is enabled [Michal Toman]
+> 
+</details>
+
 # v2.107.9
 ## (2022-11-24)
 
