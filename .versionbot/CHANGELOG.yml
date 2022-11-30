@@ -1,4 +1,50 @@
 - commits:
+    - subject: Update layers/meta-balena to 8ea20f929eeb3f52b23874c3bd951c961329ad29
+      hash: 832dedf30a60de41e979c8e6c691c5a9aedee38e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 8ea20f929eeb3f52b23874c3bd951c961329ad29
+        changelog-entry: Update layers/meta-balena to 8ea20f929eeb3f52b23874c3bd951c961329ad29
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "test: os: fix search for active interface"
+              hash: 45c5fd9850e5cdcf5360d6910b3fde253b9629a9
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.107.14
+          title: ""
+          date: 2022-11-30T09:07:27.223Z
+        - commits:
+            - subject: "balena-image-flasher: Include LUKS variant of GRUB config with FDE in
+                place"
+              hash: 87b65de7f8506b0a7796d007145a230228b5ae06
+              body: >
+                There are two GRUB config variants - one for regular devices and one
+
+                for devices with FDE enabled. This commit makes flasher include the latter
+
+                in the boot partition when secure boot and FDE is included in the image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.107.13
+          title: ""
+          date: 2022-11-29T13:54:47.975Z
+  version: 2.107.14
+  title: ""
+  date: 2022-11-30T20:39:37.045Z
+- commits:
     - subject: Update layers/meta-balena to 3e67facb7e983b198f29a67ae70a3ff5d9e7a90c
       hash: d39abb6045870166ea3596412a7b37849bb4ba78
       body: Update layers/meta-balena
