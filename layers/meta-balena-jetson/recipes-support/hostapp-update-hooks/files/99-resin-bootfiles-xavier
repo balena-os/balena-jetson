@@ -12,6 +12,7 @@ DURING_UPDATE=${DURING_UPDATE:-0}
 bootloader_device="/dev/mmcblk0boot0"
 partspec="/resin-boot/bootfiles/partition_specification194.txt"
 bootloader_blob="/resin-boot/bootfiles/boot0.img"
+bootpart_kernel="/mnt/boot/bootfiles/boot_sigheader.img.encrypt"
 
 info_log()
 {
@@ -31,6 +32,13 @@ backport_rollback_altboot_fix()
         sed -i 's/os-helpers-fs/os-helpers-fs \nDURING_UPDATE=${DURING_UPDATE:-0}\nif [ "$DURING_UPDATE" = "0" ]; then target_sysroot="active"; else target_sysroot="inactive"; fi; /g' ${inactive_hook}
         sed -i 's|/mnt/sysroot/inactive|/mnt/sysroot/${target_sysroot}|g' ${inactive_hook}
         info_log "Applied rollback-altboot fix to old hostapp-update hook"
+    fi
+
+    if [ -e ${bootpart_kernel} ]; then
+        rm ${bootpart_kernel}
+        info_log "Removed signed kernel binary from boot partition, it is now located in the rootfs"
+    else
+        info_log "No need to remove kernel binary from boot partition"
     fi
 }
 
@@ -153,7 +161,7 @@ dd if=/resin-boot/bootfiles/${dtbfile} of=$(get_state_path_from_label "kernel-dt
 
 info_log "Writing kernel ${kernel} to specific partitions..."
 
-dd if=/resin-boot/bootfiles/${kernel}  of=$(get_state_path_from_label "kernel${target_label_suffix}")
+dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel${target_label_suffix}")
 info_log "Updating boot image on hw partition mmcblk0boot0..."
 
 existing_bootloader_md5sum=$(dd if=$bootloader_device bs=1M status=none | md5sum | awk '{print $1}')
