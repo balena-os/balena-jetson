@@ -1,4 +1,21 @@
 - commits:
+    - subject: "meta-balena-jetson: Move kernel signed binary to rootfs"
+      hash: ca422957cd3342adfc876312c6cf7b9a781737ff
+      body: |
+        The kernel blob has been stored in the boot partition
+        since long ago, but it's size has increased so we now
+        need to store it in the rootfs.
+      footer:
+        Changelog-entry: "meta-balena-jetson: Move kernel signed binary to rootfs"
+        changelog-entry: "meta-balena-jetson: Move kernel signed binary to rootfs"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.107.14+rev2
+  title: ""
+  date: 2022-12-05T10:31:20.047Z
+- commits:
     - subject: Update contracts to 5d83fa7ad3a0c95db49ee465c9a77845611f3a3b
       hash: 34add527ad1150474b059665b4837c3c40c39b5b
       body: Update contracts

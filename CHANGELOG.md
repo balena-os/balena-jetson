@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.107.14+rev2
+## (2022-12-05)
+
+* meta-balena-jetson: Move kernel signed binary to rootfs [Alexandru Costache]
+
 # v2.107.14+rev1
 ## (2022-12-01)
 
