@@ -1,4 +1,4 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/32.7.2:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/32.7.3:"
 
 UBOOT_KCONFIG_SUPPORT = "1"
 
@@ -22,7 +22,7 @@ LIC_FILES_CHKSUM="file://Licenses/README;md5=30503fd321432fc713238f582193b78e"
 
 # bitbake and local git fails to fetch/clone the upstream repo so we
 # use the meta-tegra mirror on top of which we apply a couple patches
-# that were introduced by 32.7.1.
+# that were introduced by 32.7.1 / 32.7.3
 SRC_URI:append = " \
     file://0001-t186-Lanai-Fix-hang-with-extlinux.conf-FDT-DTB.patch \
     file://0002-T210-XUSB-Add-code-to-find-load-RP4-blob-XUSB-FW-on-.patch \
