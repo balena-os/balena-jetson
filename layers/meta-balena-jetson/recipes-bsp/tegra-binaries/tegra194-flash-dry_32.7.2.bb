@@ -210,7 +210,7 @@ do_configure() {
     cp ${WORKDIR}/resinOS-flash194.xml ${DEPLOY_DIR_IMAGE}/bootfiles/flash.xml
     cp -r signed/* ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp -r ${DTBNAME}-root*_sigheader.dtb.encrypt ${DEPLOY_DIR_IMAGE}/bootfiles/
-    dd if=/dev/zero of="${DEPLOY_DIR_IMAGE}/bootfiles/bmp.blob" bs=1K count=70
+    dd if=/dev/zero of="${DEPLOY_DIR_IMAGE}/bootfiles/bmp.blob" bs=1K count=1
 
     # This is the Xavier boot0, which wasn't necessary for HUP from L4T 31.x to 32.3.1,
     # but becomes when moving to L4T 32.4.2 or newer.
@@ -281,9 +281,9 @@ do_configure() {
 do_install() {
     install -d ${D}/${BINARY_INSTALL_PATH}
     cp -r ${S}/tegraflash/signed/* ${D}/${BINARY_INSTALL_PATH}
-    # signed boot.img isn't needed in rootfs
     rm ${D}/${BINARY_INSTALL_PATH}/boot*im*
     cp ${S}/tegraflash/${DTBNAME}-rootA.dtb ${D}/${BINARY_INSTALL_PATH}/
+    cp ${DEPLOY_DIR_IMAGE}/bootfiles/boot_sigheader.img.encrypt ${D}/${BINARY_INSTALL_PATH}/
     cp ${WORKDIR}/partition_specification194.txt ${D}/${BINARY_INSTALL_PATH}/
     cp -r ${S}/tegraflash/${DTBNAME}-root*sigheader.dtb.encrypt ${D}/${BINARY_INSTALL_PATH}
     # When generating image, this will be default dtb containing cmdline with root set to resin-rootA
