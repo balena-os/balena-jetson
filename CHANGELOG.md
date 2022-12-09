@@ -1,6 +1,96 @@
 Change log
 -----------
 
+# v2.107.22
+## (2022-12-09)
+
+
+<details>
+<summary> Update layers/meta-balena to 0b95d62f50f71a7aea94e383812cb8fcd0927b0b [renovate[bot]] </summary>
+
+> ## meta-balena-2.107.22
+> ### (2022-12-09)
+> 
+> * tests: os: fsck: make compatible with old yocto releaes [rcooke-warwick]
+> 
+> ## meta-balena-2.107.21
+> ### (2022-12-08)
+> 
+> * tests/connectivity: Run the proxy tests with the actual redsocks uid of the DUT [Florin Sarbu]
+> 
+> ## meta-balena-2.107.20
+> ### (2022-12-07)
+> 
+> * kernel-balena: enable zstd compression [Joseph Kogut]
+> 
+> ## meta-balena-2.107.19
+> ### (2022-12-06)
+> 
+> * image_types_balena: generate bmap file [Joseph Kogut]
+> * flasher: write disk image skipping sparse blocks [Joseph Kogut]
+> * image_types_balena: create sparse disk image [Joseph Kogut]
+> 
+> ## meta-balena-2.107.18
+> ### (2022-12-04)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to fe4d6a1 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.9
+>> #### (2022-12-02)
+>> 
+>> * Revert "docker-compose: stop using the default docker bridge" [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.17
+> ### (2022-12-02)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to de97fa2 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.8
+>> #### (Invalid date)
+>> 
+>> * patch: Improve archivelogs journalctl command [Vipul Gupta (@vipulgupta2048)]
+>> * core: Reduce to 30 the retries number when trying to get the IP address of the DUT [Florin Sarbu]
+>> 
+>> ### leviathan-2.10.7
+>> #### (Invalid date)
+>> 
+>> * docker-compose: stop using the default docker bridge [Alex Gonzalez]
+>> 
+>> ### leviathan-2.10.6
+>> #### (2022-11-29)
+>> 
+>> * os/balenaos: Remove hidden attribute from DUT wireless connection file [Alexandru Costache]
+>> 
+>> ### leviathan-2.10.5
+>> #### (2022-11-29)
+>> 
+>> * patch: Add debug: unstable to docs [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.16
+> ### (2022-12-01)
+> 
+> * Refactor and clean up the purge data tests [Kyle Harding]
+> 
+> ## meta-balena-2.107.15
+> ### (2022-12-01)
+> 
+> * Updated CBS Docs Updated link to the CDS Product Repo [Ryan H]
+> 
+
+</details>
+
 # v2.107.14+rev2
 ## (2022-12-05)
 
