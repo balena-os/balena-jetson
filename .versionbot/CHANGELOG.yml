@@ -1,4 +1,78 @@
 - commits:
+    - subject: Update contracts to 0357433005e9ea7ace7876530d910eeb8386c980
+      hash: 14533079b3fe283ea7f5cc308b9592270687872b
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 0357433005e9ea7ace7876530d910eeb8386c980
+        changelog-entry: Update contracts to 0357433005e9ea7ace7876530d910eeb8386c980
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add partials for dotnet v7
+              hash: b6e275498276319e59b8210e5d62f8c86804919d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.31
+          title: ""
+          date: 2022-12-10T03:49:36.476Z
+        - commits:
+            - subject: Add support for Alpine Linux v3.17
+              hash: 245c201a06d03eb89210654d1d44f0f156ccb790
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add dotnet v7, update v6.x and v3.x to latest versions
+              hash: 2e5771eb99ce3b032e4ba955b12a9bdd95d14408
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add Python v3.11.1 v3.10.9 v3.9.16 v3.8.16 and v3.7.16
+              hash: b22e097bdf0e3b314f8d715c41bb4bbe1efa2570
+              body: |
+                Update pip to v22.3.1 and setuptools to v65.6.3
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add Golang v1.19.4 and v1.18.9
+              hash: 01dc72fe1e17aa5d90b4dc65c03150379811665f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.30
+          title: ""
+          date: 2022-12-09T18:39:08.906Z
+    - subject: Update layers/meta-balena to 1b077510cb474b222865c24677995d59687af06a
+      hash: d0d50048da7aa4d6126dff3f052e52c160a06ea0
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 1b077510cb474b222865c24677995d59687af06a
+        changelog-entry: Update layers/meta-balena to 1b077510cb474b222865c24677995d59687af06a
+      author: renovate[bot]
+      nested: []
+  version: 2.107.25
+  title: ""
+  date: 2022-12-11T22:56:02.397Z
+- commits:
     - subject: Update layers/meta-balena to 581e322552bf300bc136f2bc553558d020cc313c
       hash: a75f22c267ee1f2db80bda1b46dc6905512bd624
       body: Update layers/meta-balena

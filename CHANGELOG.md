@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.107.25
+## (2022-12-11)
+
+
+<details>
+<summary> Update contracts to 0357433005e9ea7ace7876530d910eeb8386c980 [renovate[bot]] </summary>
+
+> ## contracts-2.0.31
+> ### (2022-12-10)
+> 
+> * Add partials for dotnet v7 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.30
+> ### (2022-12-09)
+> 
+> * Add support for Alpine Linux v3.17 [Trong Nghia Nguyen]
+> * Add dotnet v7, update v6.x and v3.x to latest versions [Trong Nghia Nguyen]
+> * Add Python v3.11.1 v3.10.9 v3.9.16 v3.8.16 and v3.7.16 [Trong Nghia Nguyen]
+> * Add Golang v1.19.4 and v1.18.9 [Trong Nghia Nguyen]
+> 
+
+</details>
+
+* Update layers/meta-balena to 1b077510cb474b222865c24677995d59687af06a [renovate[bot]]
+
 # v2.107.23
 ## (2022-12-09)
 
