@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v2.107.30
+## (2022-12-13)
+
+
+<details>
+<summary> Update layers/meta-balena to 654c0b9b5b019196e10b348471a50bc7e2e614a8 [renovate[bot]] </summary>
+
+> ## meta-balena-2.107.30
+> ### (2022-12-13)
+> 
+> * extra-udev-rules: Update teensy.rules [Alex Gonzalez]
+> * extra-udev-rules: Rename recipe [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.107.29
 ## (2022-12-13)
 
