@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update layers/meta-balena to 6dd2fc68bc13b2d8ad4527a1623da292828ed1c9
+      hash: 331d8a3b7f6c473d4ca737ec2ac7934128a82aa4
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 6dd2fc68bc13b2d8ad4527a1623da292828ed1c9
+        changelog-entry: Update layers/meta-balena to 6dd2fc68bc13b2d8ad4527a1623da292828ed1c9
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests/cloud: Increase the wait time for services to start"
+              hash: 99799e83e492f149ff30f956faead7cf34aeeea6
+              body: |
+                Also reduce the interval to 1s.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.107.32
+          title: ""
+          date: 2022-12-14T06:01:21.542Z
+  version: 2.107.32
+  title: ""
+  date: 2022-12-14T09:02:44.252Z
+- commits:
     - subject: Update layers/meta-balena to f342a122039f97e06319ba497b5f6342e1597656
       hash: 7062d5cfda8497bd5d7676c8a2bb19f6ef445200
       body: Update layers/meta-balena
