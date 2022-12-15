@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to 66694d0ba5536dfde9087c2aebc6785730414328
+      hash: a76e4ec538b8867e7b49d7b0b04f47df6872be1c
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 66694d0ba5536dfde9087c2aebc6785730414328
+        changelog-entry: Update layers/meta-balena to 66694d0ba5536dfde9087c2aebc6785730414328
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: cloud: simplify apps to speedup suite"
+              hash: 9552f6ba4961e032fb3bd086548eec06b650609a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.107.37
+          title: ""
+          date: 2022-12-15T14:05:57.987Z
+  version: 2.107.37
+  title: ""
+  date: 2022-12-15T16:11:49.299Z
+- commits:
     - subject: Update contracts to 08f029b5c82e71b9b25fbeef4805815bfa4c24aa
       hash: d619b4ac3c88f451bfa21b851d301084363abde8
       body: Update contracts

@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.107.37
+## (2022-12-15)
+
+
+<details>
+<summary> Update layers/meta-balena to 66694d0ba5536dfde9087c2aebc6785730414328 [renovate[bot]] </summary>
+
+> ## meta-balena-2.107.37
+> ### (2022-12-15)
+> 
+> * tests: cloud: simplify apps to speedup suite [rcooke-warwick]
+> 
+
+</details>
+
 # v2.107.36+rev2
 ## (2022-12-15)
 
