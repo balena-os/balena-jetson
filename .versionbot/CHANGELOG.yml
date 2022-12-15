@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 08f029b5c82e71b9b25fbeef4805815bfa4c24aa
+      hash: d619b4ac3c88f451bfa21b851d301084363abde8
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 08f029b5c82e71b9b25fbeef4805815bfa4c24aa
+        changelog-entry: Update contracts to 08f029b5c82e71b9b25fbeef4805815bfa4c24aa
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add node v19.3.0 v16.19.0 and v14.21.2
+              hash: 6cd73b8776fbf8cddc36560e74ffcfeeac23cfd8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.32
+          title: ""
+          date: 2022-12-15T08:15:08.199Z
+  version: 2.107.36+rev2
+  title: ""
+  date: 2022-12-15T13:06:44.757Z
+- commits:
     - subject: "floyd-Nano: Discontinue device type"
       hash: b8e8092d7d405f3d73f801e9d80aabcf93c7c2d6
       body: >
