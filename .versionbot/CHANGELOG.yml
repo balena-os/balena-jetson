@@ -1,4 +1,23 @@
 - commits:
+    - subject: "floyd-Nano: Discontinue device type"
+      hash: b8e8092d7d405f3d73f801e9d80aabcf93c7c2d6
+      body: >
+        This DT has not been maintained by the contributor
+
+        since support was added. Marking it as discontinued
+
+        as per internal discussion https://balena.zulipchat.com/#narrow/stream/345889-loop.2Fbalena-os/topic/Floyd.20Nano/near/315939998
+      footer:
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+        Changelog-entry: "floyd-Nano: Discontinue device type"
+        changelog-entry: "floyd-Nano: Discontinue device type"
+      author: Alexandru Costache
+      nested: []
+  version: 2.107.36+rev1
+  title: ""
+  date: 2022-12-15T11:14:48.243Z
+- commits:
     - subject: Update layers/meta-balena to fad0927777fe491bb531261b1ea53e1fdd4a00a1
       hash: 1be57de8fbf57ed54c524615bac5dd5fd1181321
       body: Update layers/meta-balena

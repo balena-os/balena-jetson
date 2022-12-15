@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.107.36+rev1
+## (2022-12-15)
+
+* floyd-Nano: Discontinue device type [Alexandru Costache]
+
 # v2.107.36
 ## (2022-12-15)
 
