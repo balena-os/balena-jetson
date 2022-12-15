@@ -10,7 +10,7 @@ module.exports =
 	slug: 'floyd-nano'
 	name: 'Floyd Nano BB02A eMMC'
 	arch: 'aarch64'
-	state: 'released'
+	state: 'discontinued'
 	community: true
 
 	instructions: [
