@@ -1,6 +1,37 @@
 Change log
 -----------
 
+# v2.107.36
+## (2022-12-15)
+
+
+<details>
+<summary> Update layers/meta-balena to fad0927777fe491bb531261b1ea53e1fdd4a00a1 [renovate[bot]] </summary>
+
+> ## meta-balena-2.107.36
+> ### (2022-12-15)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 48ffd13 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.11
+>> #### (2022-12-14)
+>> 
+>> * Avoid conflicting docker networks [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.35
+> ### (2022-12-15)
+> 
+> * patch: Add default debug object to test config [Vipul Gupta (@vipulgupta2048)]
+> 
+
+</details>
+
 # v2.107.34
 ## (2022-12-14)
 
