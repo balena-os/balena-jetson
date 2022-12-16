@@ -1,4 +1,69 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 67cb61f9209482ddd22b3f98ebf6cb3609f0acb7
+      hash: 91050f0f305a214ea886cb9e3eb5715d160afdd0
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 67cb61f9209482ddd22b3f98ebf6cb3609f0acb7
+        changelog-entry: Update balena-yocto-scripts to 67cb61f9209482ddd22b3f98ebf6cb3609f0acb7
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "dockerfile: balena-push-env: update balena CLI version to v14.5.15"
+              hash: 06f4be81c2dd37eb6a6da51024d6857b32200d20
+              body: >
+                Newer supervisor require a CLI >= v13.5.1 to migrate from v2 apps.json
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_generate_ami: add balena org for preloaded app"
+              hash: ee48444b36d3597264a7694b2246b3fee4f6b659
+              body: >
+                Specify the organization and block name when preloading so it is not
+
+                ambiguous.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_generate_ami: distinguish between staging and production"
+              hash: 3a36e81b8a0043cfbbc472dd70b0049b3cef9247
+              body: |
+                Use different tokens to preload from staging and production.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.16
+          title: ""
+          date: 2022-12-16T11:06:42.331Z
+        - commits:
+            - subject: "workflows: add flowzone"
+              hash: 025f8399061f4a0ca6651d643c8c2016c8b1cfa7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.15
+          title: ""
+          date: 2022-12-16T10:49:48.888Z
+  version: 2.107.38+rev1
+  title: ""
+  date: 2022-12-16T14:10:50.946Z
+- commits:
     - subject: Update layers/meta-balena to fb94465957a60691b15731b39b6b22ad616a62d4
       hash: d93378df04e7cfbe1206c11431f6ac657942f84d
       body: Update layers/meta-balena

@@ -1,6 +1,28 @@
 Change log
 -----------
 
+# v2.107.38+rev1
+## (2022-12-16)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 67cb61f9209482ddd22b3f98ebf6cb3609f0acb7 [renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.19.16
+> ### (2022-12-16)
+> 
+> * dockerfile: balena-push-env: update balena CLI version to v14.5.15 [Alex Gonzalez]
+> * jenkins_generate_ami: add balena org for preloaded app [Alex Gonzalez]
+> * jenkins_generate_ami: distinguish between staging and production [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.15
+> ### (2022-12-16)
+> 
+> * workflows: add flowzone [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.107.38
 ## (2022-12-16)
 
