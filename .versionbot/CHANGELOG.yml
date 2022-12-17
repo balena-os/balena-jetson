@@ -1,4 +1,206 @@
 - commits:
+    - subject: Update layers/meta-balena to 1b3b0a273b8aeb2ac69805253657c7ec2ec670b4
+      hash: 84fd6d7dc50e13ce8d221ff2edbaf7f312236e21
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 1b3b0a273b8aeb2ac69805253657c7ec2ec670b4
+        changelog-entry: Update layers/meta-balena to 1b3b0a273b8aeb2ac69805253657c7ec2ec670b4
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update NetworkManager to 1.40.4
+              hash: aeab6a6b030bd6d0047a92dcc8d41fd9e542ffe7
+              body: >
+                Main NetworkManager recipe was migrated to match latest one from
+
+                meta-openembedded, so that all improvements are merged now.
+
+
+                Excluded from it are `iwd` and `dhcpcd` daemon configurations that are
+
+                not used by us.
+
+
+                Default NM firewall in meta-openembedded is `nftables` where we are still
+
+                using `iptables`.
+
+
+                The new recipe relies on `meson` as a build system now.
+
+
+                The .bbapend file that contains modifications specific to balena is preserved.
+
+                Only `balena-client-id.patch` is removed as it references code that no longer
+
+                exists. This is because the internal systemd DHCPv4 client code that NM used
+
+                is now replaced by nettools' n-dhcp4 implementation.
+
+
+                Closes #2872
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update NetworkManager to 1.40.4
+                changelog-entry: Update NetworkManager to 1.40.4
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.108.0
+          title: ""
+          date: 2022-12-16T21:10:35.840Z
+        - commits:
+            - subject: Add upstream resolvconf 1.91 recipe for kirkstone
+              hash: af89ddb51d7829dc045cd3434fb4cf0bec7fba37
+              body: >
+                Current resolvconf version is broken for kirkstone, which is fixed
+                upstream,
+
+                so we reuse the fixed version from upstream.
+
+
+                The symptom is that DNS servers provided by DHCP are not being used.
+
+
+                Closes #2907
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add upstream resolvconf 1.91 recipe for kirkstone
+                changelog-entry: Add upstream resolvconf 1.91 recipe for kirkstone
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.107.40
+          title: ""
+          date: 2022-12-16T16:09:54.407Z
+        - commits:
+            - subject: Update tests/leviathan digest to f44bbbd
+              hash: 1e766256fffb649856eced1e85bbfd5808999993
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: Disable renovate config for now
+                      hash: f0dd47cafe9fe2addc506a9c3fc2295ef0f483a3
+                      body: >
+                        There is a conflict with the balena-os Renovate GitHub App
+
+                        and the balena-io/renovate-config self-hosted job.
+
+
+                        Disable this renovate config for now to stop the
+
+                        GitHub App from processing this repo until the conflict
+
+                        is resolved.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: Restore worker release env var
+                      hash: 83c46ab5d605f64f2cee2b42f460aa403e95f1e9
+                      body: >
+                        This env var is still used by the leviathan-worker project
+
+                        for e3e tests against draft worker releases.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.11.3
+                  title: ""
+                  date: 2022-12-16T00:49:27.820Z
+                - commits:
+                    - subject: Update Node.js to v12.22.12
+                      hash: 5ad6ecf5568b267c8d020e559fd95f252d7047c5
+                      body: |
+                        Update node to 12.22.12
+
+                        Update node from 12.22.7 to 12.22.12
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.11.2
+                  title: ""
+                  date: 2022-12-15T22:00:38.475Z
+                - commits:
+                    - subject: Remove dependabot as renovate is enabled in balena-io/renovate-config
+                      hash: a51b4d5ff26b3c770cf69237936aba2119bd5343
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: Pin worker to a release and add renovate regex template
+                      hash: ee8d737587d3ad511c75d0c986825dfa30bba35a
+                      body: >
+                        This will allow Renovate to bump the worker block reference
+
+                        to point to the latest GitHub tag.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.11.1
+                  title: ""
+                  date: 2022-12-15T20:00:34.137Z
+                - commits:
+                    - subject: Update core/contracts digest to 08f029b
+                      hash: a71d3ec968e21f4e681bea08dfc317786dcd4fec
+                      body: |
+                        Update core/contracts to
+
+                        Update core/contracts from  to
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.11.0
+                  title: ""
+                  date: 2022-12-15T19:23:14.566Z
+                - commits:
+                    - subject: Revert "Avoid conflicting docker subnets"
+                      hash: 1f7383da5580a31ee03d6f38de863e48dd047829
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Vipul Gupta
+                      nested: []
+                  version: leviathan-2.10.12
+                  title: ""
+                  date: 2022-12-15T17:21:51.118Z
+          version: meta-balena-2.107.39
+          title: ""
+          date: 2022-12-16T09:09:09.759Z
+  version: 2.108.0
+  title: ""
+  date: 2022-12-17T02:11:56.557Z
+- commits:
     - subject: Update contracts to b6bdc537c9f9d224301152a0291682172320bf6a
       hash: 9e9d3748a76d14854b230c822979181c77e02da8
       body: Update contracts

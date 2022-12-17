@@ -1,6 +1,64 @@
 Change log
 -----------
 
+# v2.108.0
+## (2022-12-17)
+
+
+<details>
+<summary> Update layers/meta-balena to 1b3b0a273b8aeb2ac69805253657c7ec2ec670b4 [renovate[bot]] </summary>
+
+> ## meta-balena-2.108.0
+> ### (2022-12-16)
+> 
+> * Update NetworkManager to 1.40.4 [Zahari Petkov]
+> 
+> ## meta-balena-2.107.40
+> ### (2022-12-16)
+> 
+> * Add upstream resolvconf 1.91 recipe for kirkstone [Zahari Petkov]
+> 
+> ## meta-balena-2.107.39
+> ### (2022-12-16)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to f44bbbd [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.11.3
+>> #### (2022-12-16)
+>> 
+>> * Disable renovate config for now [Kyle Harding]
+>> * Restore worker release env var [Kyle Harding]
+>> 
+>> ### leviathan-2.11.2
+>> #### (2022-12-15)
+>> 
+>> * Update Node.js to v12.22.12 [Renovate Bot]
+>> 
+>> ### leviathan-2.11.1
+>> #### (2022-12-15)
+>> 
+>> * Remove dependabot as renovate is enabled in balena-io/renovate-config [Kyle Harding]
+>> * Pin worker to a release and add renovate regex template [Kyle Harding]
+>> 
+>> ### leviathan-2.11.0
+>> #### (2022-12-15)
+>> 
+>> * Update core/contracts digest to 08f029b [Renovate Bot]
+>> 
+>> ### leviathan-2.10.12
+>> #### (2022-12-15)
+>> 
+>> * Revert "Avoid conflicting docker subnets" [Vipul Gupta]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v2.107.38+rev2
 ## (2022-12-16)
 
