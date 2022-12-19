@@ -1,4 +1,26 @@
 - commits:
+    - subject: "fan-startup: don't fail if fan not present"
+      hash: b5a4929a7e2ee8146d58ab601a8d085949eeab3a
+      body: ""
+      footer:
+        Changelog-entry: "fan-startup: don't fail if fan not present"
+        changelog-entry: "fan-startup: don't fail if fan not present"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: Update layers/meta-balena to 1d8c6eeed258f1205d6b1e0b78088ea867308b80
+      hash: 8e3004e2f74841d124530a8a953797f82606f7e8
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 1d8c6eeed258f1205d6b1e0b78088ea867308b80
+        changelog-entry: Update layers/meta-balena to 1d8c6eeed258f1205d6b1e0b78088ea867308b80
+      author: renovate[bot]
+      nested: []
+  version: 2.108.1
+  title: ""
+  date: 2022-12-19T19:22:50.838Z
+- commits:
     - subject: Update layers/meta-balena to 1b3b0a273b8aeb2ac69805253657c7ec2ec670b4
       hash: 84fd6d7dc50e13ce8d221ff2edbaf7f312236e21
       body: Update layers/meta-balena

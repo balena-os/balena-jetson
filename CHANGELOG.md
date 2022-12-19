@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.108.1
+## (2022-12-19)
+
+* fan-startup: don't fail if fan not present [Alexandru Costache]
+* Update layers/meta-balena to 1d8c6eeed258f1205d6b1e0b78088ea867308b80 [renovate[bot]]
+
 # v2.108.0
 ## (2022-12-17)
 
