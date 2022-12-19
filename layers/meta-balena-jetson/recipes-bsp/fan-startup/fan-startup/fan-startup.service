@@ -3,7 +3,7 @@ Description=Spin fan at moderate speed at startup to prevent overheating
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c 'echo 100 > /sys/devices/pwm-fan/target_pwm'
+ExecStart=/bin/sh -c 'echo 100 > /sys/devices/pwm-fan/target_pwm || true'
 
 [Install]
 WantedBy=multi-user.target
