@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.108.4+rev1
+## (2022-12-20)
+
+
+<details>
+<summary> Update contracts to b65d5bd372587d4aaabba526d34f67c3f63ea90b [renovate[bot]] </summary>
+
+> ## contracts-2.0.35
+> ### (2022-12-20)
+> 
+> * hw.device-type: Add Owasys owa5X device [Alvaro Guzman]
+> 
+
+</details>
+
 # v2.108.4
 ## (2022-12-20)
 
