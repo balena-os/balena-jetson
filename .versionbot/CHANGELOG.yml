@@ -1,4 +1,53 @@
 - commits:
+    - subject: Update layers/meta-balena to 4f5dc08a949432990996fbb0e9955d261c1282b3
+      hash: b357f4a287be34bd69406d23c7cb9b99d7453a1e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 4f5dc08a949432990996fbb0e9955d261c1282b3
+        changelog-entry: Update layers/meta-balena to 4f5dc08a949432990996fbb0e9955d261c1282b3
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "Engine healthcheck: deal with empty uuid file"
+              hash: 345d1440d34fe042f03884c4ae32f0ba7e7768e8
+              body: >
+                In rare cases (believed to be caused by a non-atomic file creation and
+
+                writing operation in containerd), we end up with an empty file at
+
+                `/mnt/data/docker/containerd/daemon/io.containerd.grpc.v1.introspection/uuid`.
+
+                This causes `ctr version` (and hence the health check) to fail. See
+
+                https://github.com/balena-os/balena-engine/issues/322
+
+
+                This commit addresses this issue in two ways:
+
+
+                1. Before running `ctr version`, we check if the uuid file exists and is
+                   empty. If so, we remove it. (The subsequent execution of `ctr
+                   version` by the healthcheck will create the file again.)
+                2. After running `ctr version`, we check if the uuid file was really
+                   created and is not empty.
+
+                In both cases, when an empty uuid file is detected, we log the event to
+
+                help us confirm our hypothesis about the root cause.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-2.108.5
+          title: ""
+          date: 2022-12-21T21:36:44.680Z
+  version: 2.108.5
+  title: ""
+  date: 2022-12-21T23:31:28.482Z
+- commits:
     - subject: Update contracts to b65d5bd372587d4aaabba526d34f67c3f63ea90b
       hash: 2e7afd425e72ee2fc603e724e3d5d6580f741826
       body: Update contracts
