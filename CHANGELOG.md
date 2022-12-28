@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.108.6
+## (2022-12-28)
+
+
+<details>
+<summary> Update layers/meta-balena to 3a45aa111217e64ef6ab8cbd16d34a12ece49a3c [renovate[bot]] </summary>
+
+> ## meta-balena-2.108.6
+> ### (2022-12-27)
+> 
+> * flasher: output logs to serial console [Joseph Kogut]
+> 
+
+</details>
+
 # v2.108.5+rev1
 ## (2022-12-22)
 
