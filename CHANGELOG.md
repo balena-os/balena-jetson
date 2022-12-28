@@ -1,6 +1,23 @@
 Change log
 -----------
 
+# v2.108.6+rev1
+## (2022-12-28)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 0f1d0265bbabdb2b869f6cf9363d418b52681ffc [renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.19.17
+> ### (2022-12-23)
+> 
+> * jenkins_generate_ami: support using both live and installer images as AMIs [Alex Gonzalez]
+> * balena-generate-ami: Enable nitroTPM support [Alex Gonzalez]
+> * jenkins_build: add argument to build OS development images [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.108.6
 ## (2022-12-28)
 
