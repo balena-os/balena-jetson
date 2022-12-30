@@ -9,8 +9,8 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-balena/meta-balena-rust \
     ${TOPDIR}/../layers/meta-balena/meta-balena-common \
     ${TOPDIR}/../layers/meta-balena/meta-balena-kirkstone \
-    ${TOPDIR}/../layers/meta-tegra \
     ${TOPDIR}/../layers/meta-balena-jetson \
+    ${TOPDIR}/../layers/meta-tegra \
     ${TOPDIR}/../layers/poky/meta \
     ${TOPDIR}/../layers/poky/meta-poky \
     ${TOPDIR}/../layers/meta-openembedded/meta-oe \
