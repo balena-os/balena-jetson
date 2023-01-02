@@ -1,0 +1,67 @@
+From 288f895f7c666f6b505fbb137096f7a6c6702d92 Mon Sep 17 00:00:00 2001
+From: Tom Warren <twarren@nvidia.com>
+Date: Mon, 23 Aug 2021 15:35:22 -0700
+Subject: [PATCH 1/4] t186: Lanai: Fix hang with extlinux.conf FDT DTB
+
+TX2-NX/Lanai was hanging when entering the kernel if the extlinux.conf
+had specified an FDT entry (whether the standard kernel DTB, or one from
+Jetson-IO). TX2 didn't seem to hang under the same conditions, and older
+releases (R32.5, etc.) also didn't have any problem with an FDT entry.
+
+After trying different combinations of DTBs and fdt_copy merge
+parameters, I found that just moving the fdt_addr_r address (which is
+where U-Boot puts the on-disk DTB) slightly allowed the kernel to fully
+boot. Then I found a commit from March 2020 that had adjusted fdt_addr_r's
+address to allow for large kernels:
+
+commit 5dc1dc804d0ffcdb9ddfdf37f8446a9b41f38f78
+Author: Tom Warren <twarren@nvidia.com>
+Date:   Mon Mar 16 17:01:43 2020 -0700
+
+    t210: Adjust ramdisk_addr_r/fdt_addr_r to allow for large kernels
+
+    The L4T kernel is 32MB+, and can overwrite the ramdisk/fdt loaded
+    from extlinux.conf. Adjust the load addresses to fix this for now.
+
+But it seems I only changed the TX2 offset, and not TX2-NX/Lanai. Adding
+the same change for P3636/Lanai allows a disk-based DTB (via FDT in
+extlinux.conf) to be used with the current kernel image just fine.
+I still don't know if the kernel or fdt address/code was being corrupted,
+but this seems like a solid fix for P3636.
+
+Bug 200758959
+
+Change-Id: I767fb9876b392bfd0a368cd42d91b8409e239eab
+Signed-off-by: Tom Warren <twarren@nvidia.com>
+Reviewed-on: https://git-master.nvidia.com/r/c/3rdparty/u-boot/+/2581787
+GVS: Gerrit_Virtual_Submit
+Tested-by: mobile promotions <svcmobile_promotions@nvidia.com>
+Reviewed-by: mobile promotions <svcmobile_promotions@nvidia.com>
+---
+ include/configs/p3636-0001.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/p3636-0001.h b/include/configs/p3636-0001.h
+index 1a8051bc42..712ae7b3e7 100644
+--- a/include/configs/p3636-0001.h
++++ b/include/configs/p3636-0001.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0 */
+ /*
+- * Copyright (c) 2020, NVIDIA CORPORATION.
++ * Copyright (c) 2021, NVIDIA CORPORATION.
+  */
+ 
+ #ifndef _P3636_0001_H
+@@ -31,7 +31,7 @@
+ 		"ramdisk_addr_r\0" \
+ 	"kernel_addr_r_align=00200000\0" \
+ 	"kernel_addr_r_offset=00080000\0" \
+-	"kernel_addr_r_size=02000000\0" \
++	"kernel_addr_r_size=08000000\0" \
+ 	"kernel_addr_r_aliases=loadaddr\0" \
+ 	"fdt_addr_r_align=00200000\0" \
+ 	"fdt_addr_r_offset=00000000\0" \
+-- 
+2.17.1
+

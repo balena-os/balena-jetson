@@ -1,6 +1,6 @@
-From 953d75235cf80fee8593208f89c59520f4c268e3 Mon Sep 17 00:00:00 2001
+From ed1b9df4af7ddce345c52d15a8c7da1ad73b634f Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Thu, 7 Apr 2022 18:11:03 +0200
+Date: Wed, 7 Dec 2022 11:29:34 +0100
 Subject: [PATCH] nvidia/platform/t210: enable SPI0 pins on 40-pin header
 
 * Update pinmux settings for both p3448-0000 and p3448-0002
@@ -10,144 +10,116 @@ This is a port of the patch provided in:
 - https://github.com/OE4T/meta-tegra/wiki/SPI-support
 - https://github.com/OE4T/meta-tegra/issues/707
 
+Re-worked for L4T 32.7.3
+
 Upstream-status: Inappropriate [configuration]
 Signed-off-by: Matt Madison <matt@madison.systems>
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
- .../tegra210-porg-pinmux-p3448-0000-a02.dtsi  | 34 +++++++++----------
- .../tegra210-porg-pinmux-p3448-0000-b00.dtsi  | 34 +++++++++----------
+ .../tegra210-porg-pinmux-p3448-0000-a02.dtsi  | 10 +++---
+ .../tegra210-porg-pinmux-p3448-0000-b00.dtsi  | 10 +++---
  .../tegra210-porg-pinmux-p3448-0002-a02.dtsi  | 34 +++++++++----------
  .../tegra210-porg-pinmux-p3448-0002-b00.dtsi  | 34 +++++++++----------
- 4 files changed, 68 insertions(+), 68 deletions(-)
+ 4 files changed, 44 insertions(+), 44 deletions(-)
 
 diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-a02.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-a02.dtsi
-index 77bf31057028..eeb874cd799e 100644
+index 58b6d66cd187..edc34b08a6d4 100644
 --- a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-a02.dtsi
 +++ b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-a02.dtsi
-@@ -1229,42 +1229,42 @@
+@@ -825,7 +825,7 @@
  
  			spi1_mosi_pc0 {
  				nvidia,pins = "spi1_mosi_pc0";
 -				nvidia,function = "rsvd1";
 +				nvidia,function = "spi1";
  				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -833,7 +833,7 @@
  
  			spi1_miso_pc1 {
  				nvidia,pins = "spi1_miso_pc1";
 -				nvidia,function = "rsvd1";
 +				nvidia,function = "spi1";
  				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -841,7 +841,7 @@
  
  			spi1_sck_pc2 {
  				nvidia,pins = "spi1_sck_pc2";
 -				nvidia,function = "rsvd1";
 +				nvidia,function = "spi1";
  				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -849,7 +849,7 @@
  
  			spi1_cs0_pc3 {
  				nvidia,pins = "spi1_cs0_pc3";
 -				nvidia,function = "rsvd1";
--				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 +				nvidia,function = "spi1";
-+				nvidia,pull = <TEGRA_PIN_PULL_UP>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -857,7 +857,7 @@
  
  			spi1_cs1_pc4 {
  				nvidia,pins = "spi1_cs1_pc4";
 -				nvidia,function = "rsvd1";
--				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 +				nvidia,function = "spi1";
-+				nvidia,pull = <TEGRA_PIN_PULL_UP>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
- 
- 			spi4_mosi_pc7 {
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-b00.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-b00.dtsi
-index 77bf31057028..eeb874cd799e 100644
+index 58b6d66cd187..edc34b08a6d4 100644
 --- a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-b00.dtsi
 +++ b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0000-b00.dtsi
-@@ -1229,42 +1229,42 @@
+@@ -825,7 +825,7 @@
  
  			spi1_mosi_pc0 {
  				nvidia,pins = "spi1_mosi_pc0";
 -				nvidia,function = "rsvd1";
 +				nvidia,function = "spi1";
  				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -833,7 +833,7 @@
  
  			spi1_miso_pc1 {
  				nvidia,pins = "spi1_miso_pc1";
 -				nvidia,function = "rsvd1";
 +				nvidia,function = "spi1";
  				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -841,7 +841,7 @@
  
  			spi1_sck_pc2 {
  				nvidia,pins = "spi1_sck_pc2";
 -				nvidia,function = "rsvd1";
 +				nvidia,function = "spi1";
  				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -849,7 +849,7 @@
  
  			spi1_cs0_pc3 {
  				nvidia,pins = "spi1_cs0_pc3";
 -				nvidia,function = "rsvd1";
--				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 +				nvidia,function = "spi1";
-+				nvidia,pull = <TEGRA_PIN_PULL_UP>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+@@ -857,7 +857,7 @@
  
  			spi1_cs1_pc4 {
  				nvidia,pins = "spi1_cs1_pc4";
 -				nvidia,function = "rsvd1";
--				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
--				nvidia,tristate = <TEGRA_PIN_ENABLE>;
--				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 +				nvidia,function = "spi1";
-+				nvidia,pull = <TEGRA_PIN_PULL_UP>;
-+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
- 			};
- 
- 			spi4_mosi_pc7 {
+ 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+ 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+ 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 diff --git a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-a02.dtsi b/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-a02.dtsi
 index 9be96f812cae..34d72768fb61 100644
 --- a/nvidia/platform/t210/porg/kernel-dts/porg-platforms/tegra210-porg-pinmux-p3448-0002-a02.dtsi
@@ -277,5 +249,5 @@ index 9be96f812cae..34d72768fb61 100644
  
  			spi4_mosi_pc7 {
 -- 
-2.17.1
+2.37.2
 

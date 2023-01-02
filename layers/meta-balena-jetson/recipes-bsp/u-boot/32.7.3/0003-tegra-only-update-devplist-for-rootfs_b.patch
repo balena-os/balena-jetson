@@ -1,0 +1,46 @@
+From 276177e86032d6634bea6fb73a51c4e63dab71a8 Mon Sep 17 00:00:00 2001
+From: Wei Ni <wni@nvidia.com>
+Date: Tue, 26 Oct 2021 15:43:20 +0800
+Subject: [PATCH 3/4] tegra: only update devplist for rootfs_b
+
+The default devplist value can be used for the
+rootfs_a, so we only need to update the devplist to
+2 for rootfs_b.
+
+We don't support using EFI to load rootfs AB, so if the
+user uses the EFI loader, he should not switch to rootfs_b,
+then the "check_rootfs_ab" will keep the devplist as the
+default value, and it can work for the "scan_dev_for_efi".
+
+Bug 3409223
+
+Change-Id: I1ae600676ece708f53f7824ddd0366ebf4116f12
+Reviewed-on: https://git-master.nvidia.com/r/c/3rdparty/u-boot/+/2616602
+GVS: Gerrit_Virtual_Submit
+Tested-by: Wei Ni <wni@nvidia.com>
+Tested-by: mobile promotions <svcmobile_promotions@nvidia.com>
+Reviewed-by: Tom Warren <twarren@nvidia.com>
+Reviewed-by: mobile promotions <svcmobile_promotions@nvidia.com>
+---
+ include/configs/tegra186-common.h | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/include/configs/tegra186-common.h b/include/configs/tegra186-common.h
+index 0574e3d382..fb0f4878c1 100644
+--- a/include/configs/tegra186-common.h
++++ b/include/configs/tegra186-common.h
+@@ -83,11 +83,7 @@
+ #define ROOTFS_AB_SELECT \
+ 	"check_rootfs_ab="                                              \
+ 	"for args in ${cbootargs}; do "                                 \
+-		"rootfs_a=rootfs.slot_suffix=; "                        \
+ 		"rootfs_b=rootfs.slot_suffix=_b; "                      \
+-		"if test ${args} = ${rootfs_a}; then "                  \
+-			"setenv devplist 1; "                           \
+-		"fi; "                                                  \
+ 		"if test ${args} = ${rootfs_b}; then "                  \
+ 			"setenv devplist 2; "                           \
+ 		"fi; "                                                  \
+-- 
+2.17.1
+
