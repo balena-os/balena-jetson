@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.108.9+rev1
+## (2023-01-02)
+
+* recipes-bsp: Work around broken and malformed 32.7.3 BSP download URIs [Alexandru Costache]
+
 # v2.108.9
 ## (2022-12-29)
 

@@ -1,4 +1,20 @@
 - commits:
+    - subject: "recipes-bsp: Work around broken and malformed 32.7.3 BSP download URIs"
+      hash: a567526731012e672a7065d20cbb4ddc896c7d36
+      body: ""
+      footer:
+        Changelog-entry: "recipes-bsp: Work around broken and malformed 32.7.3 BSP
+          download URIs"
+        changelog-entry: "recipes-bsp: Work around broken and malformed 32.7.3 BSP
+          download URIs"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.108.9+rev1
+  title: ""
+  date: 2023-01-02T16:21:50.517Z
+- commits:
     - subject: Update layers/meta-balena to 95d8b0c5bfb36a164081f417b52c8de16f2dc474
       hash: 5414d27efa5d4b89dc4e20f2a199d0a23785cd2a
       body: Update layers/meta-balena
