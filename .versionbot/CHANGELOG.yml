@@ -1,4 +1,92 @@
 - commits:
+    - subject: Update layers/meta-balena to 91b8ee4980b559c90ae3330bf8ebe1c526b26728
+      hash: 211114734fdfdaf83103ea37653cb49e916141d3
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 91b8ee4980b559c90ae3330bf8ebe1c526b26728
+        changelog-entry: Update layers/meta-balena to 91b8ee4980b559c90ae3330bf8ebe1c526b26728
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: os: chrony: disable NTP w/ dnsmasq dbus API"
+              hash: 743e49deef0b99bff17b55510c69c359810892b2
+              body: >
+                The previous method of disabling NTP by stopping the nameserver
+
+                (dnsmasq) relied on the dnsmasq unit not being reactivated before the
+
+                test completed.
+
+
+                Instead, disable NTP by blocking ntp.org in the local dnsmasq instance
+
+                using a dbus method call. NTP is re-enabled as before, by restarting
+
+                dnsmasq.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.108.14
+          title: ""
+          date: 2023-01-04T18:26:07.691Z
+        - commits:
+            - subject: Update tests/leviathan digest to 44dceb4
+              hash: 4180a3d2e17df753171d562017e1c7982d518e1b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "chore(deps): update dependency eslint to 8.31.0"
+                      hash: 3da50c4a3faee39dfb7c816bcdce97a03cd60b89
+                      body: |
+                        Update eslint to 8.31.0
+
+                        Update eslint from 4.19.1 to 8.31.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: renovate[bot]
+                      nested: []
+                  version: leviathan-2.14.3
+                  title: ""
+                  date: 2023-01-04T07:22:54.604Z
+            - subject: Update tests/leviathan digest to 4383482
+              hash: 05c137b17bf8afdc819cee71bb99cd3178106f8b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "chore(deps): update dependency eslint to 8.31.0"
+                      hash: 3da50c4a3faee39dfb7c816bcdce97a03cd60b89
+                      body: |
+                        Update eslint to 8.31.0
+
+                        Update eslint from 4.19.1 to 8.31.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: renovate[bot]
+                      nested: []
+                  version: leviathan-2.14.3
+                  title: ""
+                  date: 2023-01-04T07:22:54.604Z
+          version: meta-balena-2.108.13
+          title: ""
+          date: 2023-01-04T11:31:31.771Z
+  version: 2.108.14
+  title: ""
+  date: 2023-01-04T21:25:41.750Z
+- commits:
     - subject: Update layers/meta-balena to 576d3f249fbab16bf93a4dd5d158bae6f2ad9f9b
       hash: d9e7881a7fcb8598ce05708ce8319f2cf70a1a9b
       body: Update layers/meta-balena
