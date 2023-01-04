@@ -1,4 +1,76 @@
 - commits:
+    - subject: Update layers/meta-balena to 576d3f249fbab16bf93a4dd5d158bae6f2ad9f9b
+      hash: d9e7881a7fcb8598ce05708ce8319f2cf70a1a9b
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 576d3f249fbab16bf93a4dd5d158bae6f2ad9f9b
+        changelog-entry: Update layers/meta-balena to 576d3f249fbab16bf93a4dd5d158bae6f2ad9f9b
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests/hup: Avoid an old engine bug when pulling multiarch images on
+                rpi"
+              hash: 6a47531bd8c1a3a032e57efe6b1c2d764d6d0570
+              body: >
+                This has since been fixed in the engine but since it impacts the HUP from
+
+                version we need to handle it in the test suite.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.108.12
+          title: ""
+          date: 2023-01-04T03:22:27.475Z
+        - commits:
+            - subject: Update tests/leviathan digest to d3485ab
+              hash: 307ebcbf59876e199bb0fa3df3f1889ce426c681
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: 'Revert "minor: Add @balena/leviathan-test-helpers package"'
+                      hash: d662f07d297dc130c1592552f8ef1bcdcdabe37f
+                      body: >
+                        This reverts PR https://github.com/balena-os/leviathan/pull/826.
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.13.0
+                  title: ""
+                  date: 2023-01-03T16:38:27.306Z
+                - commits:
+                    - subject: "chore(deps): update dependency eslint-plugin-standard to 4.1.0"
+                      hash: 995006f5df146e6d24d4ba55474938bfe38fdb61
+                      body: |
+                        Update eslint-plugin-standard to 4.1.0
+
+                        Update eslint-plugin-standard from 3.1.0 to 4.1.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: renovate[bot]
+                      nested: []
+                  version: leviathan-2.12.4
+                  title: ""
+                  date: 2022-12-30T10:01:43.057Z
+          version: meta-balena-2.108.11
+          title: ""
+          date: 2023-01-03T20:21:02.126Z
+  version: 2.108.12
+  title: ""
+  date: 2023-01-04T06:24:03.268Z
+- commits:
     - subject: Update layers/meta-balena to ef1c2dd3af72fcf8d9ac8b8df74caae0d59f4db3
       hash: 1629788db54ae669b98c05a0e5b1d011ddc0e142
       body: Update layers/meta-balena
