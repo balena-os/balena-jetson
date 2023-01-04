@@ -87,6 +87,10 @@ SRC_URI:append:jetson-tx2-nx-devkit = " \
     file://tegra186-p3636-0001-p3509-0000-a01-auvidea-jn30d.dtb \
 "
 
+SRC_URI:append:forecr-dsboard-nx2 = " \
+    file://tegra194-forecr-dsboard-nx2.dtb \
+"
+
 TEGRA_INITRAMFS_INITRD = "0"
 
 BALENA_CONFIGS:remove:astro-tx2 = " mdraid"
@@ -308,7 +312,7 @@ generate_extlinux_conf() {
     mkdir -p ${DEPLOY_DIR_IMAGE}/extlinux || true
     kernelRootspec="${KERNEL_ROOTSPEC}" ; cat >${DEPLOY_DIR_IMAGE}/extlinux/extlinux.conf << EOF
 DEFAULT primary
-TIMEOUT 10
+TIMEOUT 5
 MENU TITLE Boot Options
 LABEL primary
       MENU LABEL primary ${KERNEL_IMAGETYPE}
@@ -381,3 +385,6 @@ do_deploy:append:astro-tx2() {
     cp ${WORKDIR}/tegra186-tx2-cti-ASG001-revG+.dtb "${DEPLOYDIR}"
 }
 
+do_deploy:append:forecr-dsboard-nx2() {
+    cp ${WORKDIR}/tegra194-forecr-dsboard-nx2.dtb "${DEPLOYDIR}"
+}
