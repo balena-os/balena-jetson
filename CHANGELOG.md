@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.108.14+rev1
+## (2023-01-06)
+
+* forecr: Add coffee file and yocto machine [Alexandru Costache]
+* linux-tegra: Add Forecr Xavier NX dtb, patches and configs [Alexandru Costache]
+
 # v2.108.14
 ## (2023-01-04)
 

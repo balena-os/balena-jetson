@@ -1,4 +1,31 @@
 - commits:
+    - subject: "forecr: Add coffee file and yocto machine"
+      hash: d2a5ad93a235ab86b2f5c2f79167a77c57fb20eb
+      body: ""
+      footer:
+        Changelog-entry: "forecr: Add coffee file and yocto machine"
+        changelog-entry: "forecr: Add coffee file and yocto machine"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "linux-tegra: Add Forecr Xavier NX dtb, patches and configs"
+      hash: bbfab90d878b1be79b48cda4054c54b84337ab6d
+      body: |
+        The dtb is included pre-built based on the dts sources visible
+        in the patch. We do so in order to use the default Xavier NX
+        Devkit eMMC in the signed boot blob.
+      footer:
+        Changelog-entry: "linux-tegra: Add Forecr Xavier NX dtb, patches and configs"
+        changelog-entry: "linux-tegra: Add Forecr Xavier NX dtb, patches and configs"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.108.14+rev1
+  title: ""
+  date: 2023-01-06T19:48:03.556Z
+- commits:
     - subject: Update layers/meta-balena to 91b8ee4980b559c90ae3330bf8ebe1c526b26728
       hash: 211114734fdfdaf83103ea37653cb49e916141d3
       body: Update layers/meta-balena
