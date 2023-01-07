@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to cbc450a40296e716e50344b3d625fb9a9b6975f6
+      hash: 7b16c6f82780ffeee27d8111c43728297fb20756
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to cbc450a40296e716e50344b3d625fb9a9b6975f6
+        changelog-entry: Update contracts to cbc450a40296e716e50344b3d625fb9a9b6975f6
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "Forecr DSBOARD NX2 Xavier NX eMMC: Add community device-type"
+              hash: 9845bc4266923d6f66c118f14f976780a3b925a6
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.38
+          title: ""
+          date: 2023-01-07T16:16:43.024Z
+  version: 2.108.15+rev2
+  title: ""
+  date: 2023-01-07T19:37:09.323Z
+- commits:
     - subject: Update contracts to d647331a48dfbc6d398139831054d41fa52f79da
       hash: fdb0c70678313731b106849ff61256e248bfd22c
       body: Update contracts
