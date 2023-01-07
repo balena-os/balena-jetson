@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.108.15+rev1
+## (2023-01-07)
+
+
+<details>
+<summary> Update contracts to d647331a48dfbc6d398139831054d41fa52f79da [renovate[bot]] </summary>
+
+> ## contracts-2.0.37
+> ### (2023-01-07)
+> 
+> * Add node v18.13.0 and v19.4.0 [Trong Nghia Nguyen]
+> 
+
+</details>
+
 # v2.108.15
 ## (2023-01-06)
 
