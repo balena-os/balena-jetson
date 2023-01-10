@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2.108.19
+## (2023-01-10)
+
+
+<details>
+<summary> Update layers/meta-balena to 707ed18ca071fb7d7d557e0774f9f479323892af [renovate[bot]] </summary>
+
+> ## meta-balena-2.108.19
+> ### (2023-01-10)
+> 
+> * redsocks: Increase maximum number of open files [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.18
+> ### (2023-01-09)
+> 
+> * Revert "flasher: output logs to serial console" [Joseph Kogut]
+> 
+
+</details>
+
 # v2.108.17
 ## (2023-01-09)
 

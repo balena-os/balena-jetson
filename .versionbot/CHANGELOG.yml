@@ -1,4 +1,56 @@
 - commits:
+    - subject: Update layers/meta-balena to 707ed18ca071fb7d7d557e0774f9f479323892af
+      hash: 85b16f4e8e947c0f0db6d44ef4192058cd215732
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 707ed18ca071fb7d7d557e0774f9f479323892af
+        changelog-entry: Update layers/meta-balena to 707ed18ca071fb7d7d557e0774f9f479323892af
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "redsocks: Increase maximum number of open files"
+              hash: e90b9159ed5f0dac3d9fe1b1b486201ee85f1161
+              body: >
+                This increases the number of open connections that redsocks can support
+
+                to a new maximum of 2048.
+
+
+                See https://github.com/darkk/redsocks/blob/19b822e345f6a291f6cff6b168f1cfdfeeb2cd7d/base.c#L419
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.19
+          title: ""
+          date: 2023-01-10T18:47:46.842Z
+        - commits:
+            - subject: 'Revert "flasher: output logs to serial console"'
+              hash: 406317b15726798d0c11928851897a530c980170
+              body: >
+                In development mode, the flasher service is killed by getty. Revert this
+
+                change to unbreak the flasher when OS development is enabled.
+
+
+                This reverts commit 131893e433ef64a1f3b05dfcd44b0e022f13646d.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.108.18
+          title: ""
+          date: 2023-01-09T22:49:31.599Z
+  version: 2.108.19
+  title: ""
+  date: 2023-01-10T21:48:58.577Z
+- commits:
     - subject: Update layers/meta-balena to 8347887ab69018c1e4bcf0a7aecbf6faf85af2bd
       hash: cff96a6be2422a205c9117c2c6bd86f4bc77f24c
       body: Update layers/meta-balena
