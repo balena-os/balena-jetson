@@ -1,4 +1,20 @@
 - commits:
+    - subject: Add ESR workflow
+      hash: 10da085aee66a8de5d9272e022f7b0a4d005b484
+      body: |
+        This workflow runs every quarter and creates an ESR release for this
+        device type.
+      footer:
+        Changelog-entry: Add ESR workflow
+        changelog-entry: Add ESR workflow
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.108.19+rev1
+  title: ""
+  date: 2023-01-12T13:31:16.006Z
+- commits:
     - subject: Update layers/meta-balena to 707ed18ca071fb7d7d557e0774f9f479323892af
       hash: 85b16f4e8e947c0f0db6d44ef4192058cd215732
       body: Update layers/meta-balena
