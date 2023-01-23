@@ -15,7 +15,7 @@ module.exports =
 	aliases: [ 'n310-tx2' ]
 	name: 'Aetina N310 TX2'
 	arch: 'aarch64'
-	state: 'released'
+	state: 'discontinued'
 	community: true
 
 	stateInstructions:

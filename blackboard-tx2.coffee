@@ -16,7 +16,7 @@ module.exports =
 	aliases: [ 'blackboard-tx2' ]
 	name: 'Nvidia blackboard TX2'
 	arch: 'aarch64'
-	state: 'released'
+	state: 'discontinued'
 	community: true
 
 	stateInstructions:
