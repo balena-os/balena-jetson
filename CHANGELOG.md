@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.108.19+rev2
+## (2023-01-23)
+
+* Discontinue Blackboard TX2 and N310 TX2 [Alexandru Costache]
+
 # v2.108.19+rev1
 ## (2023-01-12)
 

@@ -1,4 +1,26 @@
 - commits:
+    - subject: Discontinue Blackboard TX2 and N310 TX2
+      hash: a3298cd279625a45c3de1b4f2f4bd641f696542b
+      body: >
+        These boards do not have any platform
+
+        registrations and have not been maintained
+
+        by contributors for more than 6 months.
+
+
+        Internal discussion: https://balena.zulipchat.com/#narrow/stream/345889-loop.2Fbalena-os/topic/Floyd.20Nano/near/322934815
+      footer:
+        Changelog-entry: Discontinue Blackboard TX2 and N310 TX2
+        changelog-entry: Discontinue Blackboard TX2 and N310 TX2
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.108.19+rev2
+  title: ""
+  date: 2023-01-23T15:38:27.971Z
+- commits:
     - subject: Add ESR workflow
       hash: 10da085aee66a8de5d9272e022f7b0a4d005b484
       body: |
