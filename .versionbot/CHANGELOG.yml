@@ -1,4 +1,28 @@
 - commits:
+    - subject: Update layers/meta-balena to 00324bf0a842b63ee46b24ab5a19bff68d4b3799
+      hash: 930632001ea91c3a47fc0c38427b5f597bb640fc
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 00324bf0a842b63ee46b24ab5a19bff68d4b3799
+        changelog-entry: Update layers/meta-balena to 00324bf0a842b63ee46b24ab5a19bff68d4b3799
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "patch: Update balenaOS docs title"
+              hash: ec4bb501c04430c0507e7b31d53b5c0eab25063f
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.108.28
+          title: ""
+          date: 2023-01-26T18:36:44.693Z
+  version: 2.108.28
+  title: ""
+  date: 2023-01-26T20:16:51.900Z
+- commits:
     - subject: add meta-perl to bblayers.conf
       hash: ef84c657f497ac68bf6c3cb1f009c0d07c14a906
       body: |
