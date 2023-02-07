@@ -1,4 +1,534 @@
 - commits:
+    - subject: Update layers/meta-balena to 4cffdcd9cff0a3a7573811e98f15f44124a00ac0
+      hash: ce41f589643ddf7aa923a1a187d619e04f42b389
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 4cffdcd9cff0a3a7573811e98f15f44124a00ac0
+        changelog-entry: Update layers/meta-balena to 4cffdcd9cff0a3a7573811e98f15f44124a00ac0
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "efitools: backport patch to fix build failure"
+              hash: 4497229d9d3435384564cde802a3d16cbc47300c
+              body: >
+                Copied from buildroot mailing list:
+
+                http://lists.busybox.net/pipermail/buildroot/2021-April/610255.html
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "efitools: fix cross-compilation on arm"
+              hash: 86887855e9023e56cd9c96fdfc29053f649366f5
+              body: >
+                efitools defaults ARCH to x86_64 when unset, leading to architecture
+
+                specific flags being misapplied, breaking the build
+
+
+                Set ARCH based on the target architecture, and override OBJCOPY to the
+
+                binary provided by the target architecture's toolchain.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: Only include EFI tools if the machine feature is defined
+              hash: ebeccdfa45e5e98215aa3b47429df1be82750021
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.109.2
+          title: ""
+          date: 2023-02-07T09:05:22.787Z
+        - commits:
+            - subject: "resin-extra-udev-rules: Remove after all device types have been
+                updated"
+              hash: 75dd55660bcb9e37f458b505e23acc3f19dfddc7
+              body: >
+                This recipe has now been renamed to extra-udev-rules across all device
+
+                types repositories.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.109.1
+          title: ""
+          date: 2023-02-06T20:35:12.019Z
+        - commits:
+            - subject: "kernel-balena: Remove apparmor support"
+              hash: 18cd233a83554b58b3540164afd768fdeda60b03
+              body: >
+                Newer releases of moby expect appArmor userland tools when appArmor is
+
+                enabled in the kernel.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.109.0
+          title: ""
+          date: 2023-02-05T16:28:20.664Z
+        - commits:
+            - subject: "flasher: handle user mode system w/out secure boot"
+              hash: 73ca2d64f9bc22764694f774898db02a6c9e9825
+              body: >
+                When a user runs the flasher with secure boot enabled in `config.json`,
+
+                the public keys used to validate the bootloader are enrolled. If any
+
+                other bootloader signature fails to validate against this public key, it
+
+                won't be executed.
+
+
+                If the user attempts to run the balenaOS flasher on that system again
+
+                without first enabling the secure boot option, the flasher won't enroll
+
+                keys, but the installed system will be signed. This will result in a
+
+                secure boot enabled system without full-disk encryption.
+
+
+                Bail out in this case so the user must choose to explicitly opt-in to
+
+                secure boot for the new installation, and full-disk encryption along
+
+                with it. Otherwise, the user must reset the enrolled keys to install
+
+                without secure boot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "flasher: fix keys not enrolling with secure boot enabled"
+              hash: e9622bc5bb415d98bfd3c3277db96e5b585c583b
+              body: >
+                Extended globbing is not enabled by default, which makes the substring
+
+                match for trimming leading zeroes not work. This causes SETUPMODEVAR to
+
+                evaluate to "01", which fails comparison with the string "1", skipping
+
+                key enrollment when secure boot is enabled. Compare using an integer
+
+                expression instead.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "flasher: fix secure boot setup with enrolled keys"
+              hash: 2116dc08fbc8e0df3739fc1067a3884712a55ade
+              body: >
+                When refactoring secure boot setup, a logic mistake in the purpose and
+
+                use of SECUREBOOT_VAR meant that devices booting the flasher with keys already
+
+                enrolled would bail out with an incorrect message about secure boot not
+
+                being supported in firmware.
+
+
+                This variable is `00` on systems with secure boot support in firmware,
+
+                but not enabled and enforced, `01` on systems where secure boot is
+
+                enforced, and empty when secure boot is unsupported.
+
+
+                Change this conditional to bail out only when the variable is empty,
+
+                indicating that secure boot is unsupported.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.108.39
+          title: ""
+          date: 2023-02-03T23:26:11.949Z
+        - commits:
+            - subject: Update leviathan to v2.17.4
+              hash: c1bae2e96f6cc4209899a31e7bdb85078135076d
+              body: |
+                Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested:
+                - commits:
+                    - subject: "patch: Upgrade client to v18"
+                      hash: 4a29cfca1dc2176bf47d032cfd920b01ca4df3a8
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.17.4
+                  title: ""
+                  date: 2023-01-28T07:04:28.321Z
+                - commits:
+                    - subject: "patch: Update client dependencies"
+                      hash: 453e1b5bdd03b724bd8331faa3ea04243efbbfce
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.17.3
+                  title: ""
+                  date: 2023-01-26T20:41:43.701Z
+                - commits:
+                    - subject: "chore(deps): update alpine docker tag to v3.17.1"
+                      hash: 2de5aacb8b4ba86bf2392e23551f9e865138736e
+                      body: |
+                        Update alpine to 3.17.1
+
+                        Update alpine from 3.17.0 to 3.17.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: renovate[bot]
+                      nested: []
+                  version: leviathan-2.17.2
+                  title: ""
+                  date: 2023-01-19T21:20:13.041Z
+                - commits:
+                    - subject: "patch: Convert balenaCloudInteractor to JS"
+                      hash: a8da6622d1ba6468f8130a51b260519847625583
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.17.1
+                  title: ""
+                  date: 2023-01-19T15:53:32.738Z
+                - commits:
+                    - subject: "chore(deps): update dependency json5 [security]"
+                      hash: 36d7967c770b7929948882f043f03c455416572f
+                      body: |
+                        Update json5 to 1.0.2
+
+                        Update json5 from 1.0.1 to 1.0.2
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: renovate[bot]
+                      nested: []
+                  version: leviathan-2.17.0
+                  title: ""
+                  date: 2023-01-19T01:06:24.777Z
+                - commits:
+                    - subject: split swtpm service into separate compose file
+                      hash: 93d0160eb9a07c86c309cb2c0c2f1b709185884d
+                      body: >
+                        Not all platforms support secure boot, notably aarch64 using tianocore
+
+                        firmware. Additionally, swtpm may not be available for all platforms.
+
+                        Accordingly, move the swtpm service to a separate compose file that is
+
+                        only used when secure boot is enabled.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.16.1
+                  title: ""
+                  date: 2023-01-19T00:41:15.836Z
+                - commits:
+                    - subject: "chore(deps): update core/contracts digest to 8392bb2"
+                      hash: ab31953ea1d8e8145be1ee27b876a838c21baa0a
+                      body: |
+                        Update core/contracts to 
+
+                        Update core/contracts from  to 
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: renovate[bot]
+                      nested: []
+                  version: leviathan-2.16.0
+                  title: ""
+                  date: 2023-01-18T06:30:50.979Z
+                - commits:
+                    - subject: "patch: Drop config NPM package"
+                      hash: f4cdd63b1b2976a6699e710e96355250ab439343
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.15.1
+                  title: ""
+                  date: 2023-01-17T12:42:44.293Z
+                - commits:
+                    - subject: "chore(deps): update dependency ansi-regex [security]"
+                      hash: 795fabd9701bb10b46f80b931648a9ccc50f1a48
+                      body: |
+                        Update ansi-regex to 4.1.1
+
+                        Update ansi-regex from 4.1.0 to 4.1.1
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: renovate[bot]
+                      nested: []
+                  version: leviathan-2.15.0
+                  title: ""
+                  date: 2023-01-14T15:28:50.892Z
+                - commits:
+                    - subject: "compose: qemu: add swtpm service"
+                      hash: 302446a90ceedf0e406ed5edef7600925cf55c8c
+                      body: >
+                        QEMU is capable of using an emulated software TPM exposed via socket. A
+
+                        TPM is necessary for full disk encryption (FDE), so add a service to
+
+                        provide this to the QEMU worker.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.14.9
+                  title: ""
+                  date: 2023-01-05T23:53:03.325Z
+          version: meta-balena-2.108.38
+          title: ""
+          date: 2023-02-03T18:37:02.754Z
+        - commits:
+            - subject: Update balena-engine to v20.10.26
+              hash: 488f4d5888f7133ec70a3c41cff6289bb23ef05b
+              body: Update balena-engine
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested: []
+          version: meta-balena-2.108.37
+          title: ""
+          date: 2023-02-02T17:29:34.078Z
+        - commits:
+            - subject: "flasher: remove duplicate EFI boot entries"
+              hash: f93eb1a115a74af3a1875cbbd26306ddb76acd63
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "flasher: create EFI boot entry"
+              hash: 5979409faeaaa2b0df7503b408e202d87c6d2f7b
+              body: >
+                Some firmwares will not boot balenaOS by default without explicitly
+
+                creating a boot entry, so create one on EFI platforms after flashing.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "common: os-helpers-fs: fix get_dev_path_from_label w/ luks"
+              hash: 3b7ad68f938776db770a067de6b2973876cc7430
+              body: >
+                get_dev_path_from_label() calls lsblk to get the name and label of a
+
+                disk, then filters the list using the label and returns a /dev path.
+
+
+                The name returned when using a luks encrypted partition is the
+
+                /dev/mapper name, rather than the kernel's device mapper name under
+
+                /dev/dm-*. When assembling a path under /dev using the luks name, the
+
+                path is invalid, and the by-state links aren't created.
+
+
+                This leads to the rootfs hook failing to find and mount the resin-rootA
+
+                partition.
+
+
+                Change the attribute retrieved using lsblk to kname to fix this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "flasher: make secure boot opt-in"
+              hash: c6b84df2e571231bea8283e88750af949ca78df9
+              body: >
+                Opt-in to secure boot, full-disk encryption, and kernel lockdown with
+
+                the `secureboot` boolean in the `installer` object contained in
+
+                config.json.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "flasher: ensure image is signed before enrollment"
+              hash: 765ec79b9760a8822fab5801459398b798bd5e31
+              body: >
+                The flasher image enrolls the secure boot keys before rebooting into
+
+                secured user mode and creating the encrypted luks volumes on disk.
+
+
+                If the image is not signed, the key enrollment will fail, and the
+
+                flasher will enter a loop trying to enroll them and rebooting.
+
+
+                Instead, skip the key enrollment if the image is not signed, resulting
+
+                in a non secure-boot installation.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "flasher: refactor secure boot block"
+              hash: 7127247bdabe96827b13837a573fc0c3966b1557
+              body: >
+                Improve readability and formatting of secure boot configuration section
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.108.36
+          title: ""
+          date: 2023-02-02T10:23:47.357Z
+        - commits:
+            - subject: "renovate: Add regex manager for balena-engine"
+              hash: 30e3fcdff7a2d02cbe6eb744f02e313471de9785
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.108.35
+          title: ""
+          date: 2023-02-01T17:18:53.825Z
+        - commits:
+            - subject: "docs: Add secure boot and disk encryption overview"
+              hash: 2c808fd7ea1355f3aa9541970f836a978e1bb7c9
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "hostapp-update-hooks: Fail if new keys are used"
+              hash: e61b8183fc046b733f18c55ae21cdde29ec28064
+              body: >
+                Abort the hostOS update if new keys are detected so the device is
+
+                not bricked until updating keys is supported.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: In setupmode program new keys"
+              hash: 46a0b3839eccb69e00d15fd69027b904a8613a89
+              body: >
+                If the device has been configured in setupmode, make the flasher images
+
+                program the balena keys from the boot partition.
+              footer:
+                Relates-to: "#2444"
+                relates-to: "#2444"
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.34
+          title: ""
+          date: 2023-02-01T13:14:46.064Z
+        - commits:
+            - subject: "tests: os: skip persistent logging test for pi0"
+              hash: 2b35568f7d8743a59250dd7824858a42f8eb35fe
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.108.33
+          title: ""
+          date: 2023-01-31T18:21:33.712Z
+  version: 2.109.2
+  title: ""
+  date: 2023-02-07T11:14:53.376Z
+- commits:
     - subject: Update layers/meta-balena to ccab7759d432f7be780c194087c38eca7e02084d
       hash: 40f1083898d3468afbe6b72b37afa1d6ccb431e0
       body: Update layers/meta-balena
