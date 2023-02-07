@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2.110.1
+## (2023-02-07)
+
+
+<details>
+<summary> Update layers/meta-balena to 22f6f33279e7d152dec60de927371312093396cd [Renovate Bot] </summary>
+
+> ## meta-balena-2.110.1
+> ### (2023-02-07)
+> 
+> * renovate: Include to and from versions for supervisor and engine [Kyle Harding]
+> 
+> ## meta-balena-2.110.0
+> ### (2023-02-07)
+> 
+> * Update balena-supervisor to v14.7.1 [Renovate Bot]
+> 
+
+</details>
+
 # v2.109.2
 ## (2023-02-07)
 
