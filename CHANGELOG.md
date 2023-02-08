@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.110.2+rev1
+## (2023-02-08)
+
+* Remove workarounds for mangled upstream download links [Alexandru Costache]
+
 # v2.110.2
 ## (2023-02-08)
 

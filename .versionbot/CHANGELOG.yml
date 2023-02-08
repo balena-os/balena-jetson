@@ -1,4 +1,20 @@
 - commits:
+    - subject: Remove workarounds for mangled upstream download links
+      hash: 2f71186872e220edee88e5829af8d88b32e245d9
+      body: |
+        This reverts commit c8bcde815944a8fa07d9f93e40f8dc4efa83fa94
+        because upstream meta-tegra now includes these workarounds
+      footer:
+        Changelog-entry: Remove workarounds for mangled upstream download links
+        changelog-entry: Remove workarounds for mangled upstream download links
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.110.2+rev1
+  title: ""
+  date: 2023-02-08T13:43:57.826Z
+- commits:
     - subject: Update layers/meta-balena to c005b8bf80326b05d3e7605bdcfda43433232679
       hash: ff42858aa611e3a68f767e3be96ccf4172a4250e
       body: Update layers/meta-balena
