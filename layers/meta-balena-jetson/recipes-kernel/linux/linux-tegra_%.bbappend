@@ -79,11 +79,6 @@ SRC_URI:append:photon-xavier-nx = " \
     file://tegra194-xavier-nx-cti-NGX003.dtb \
 "
 
-SRC_URI:append:forecr-dsb-nx2-xavier-nx-emmc = " \
-    file://0001-forecr-xavier-nx-Port-Kernel-board-support-patches.patch \
-    file://tegra194-p3668-dsboard-nx2-0000.dtb \
-"
-
 SRC_URI:append:cnx100-xavier-nx = " \
     file://tegra194-xavier-nx-cnx100.dtb \
 "
@@ -102,7 +97,6 @@ BALENA_CONFIGS:remove:n310-tx2 = " mdraid"
 BALENA_CONFIGS:remove:n510-tx2 = " mdraid"
 BALENA_CONFIGS:remove:orbitty-tx2 = " mdraid"
 BALENA_CONFIGS:remove:spacely-tx2 = " mdraid"
-BALENA_CONFIGS:remove:forecr-dsb-nx2-xavier-nx-emmc = " mdraid"
 
 BALENA_CONFIGS:append = " tegra-wdt-t21x debug_kmemleak "
 
@@ -290,19 +284,6 @@ BALENA_CONFIGS[backlight] = " \
     CONFIG_BACKLIGHT_CLASS_DEVICE=m \
 "
 
-BALENA_CONFIGS:append:forecr-dsb-nx2-xavier-nx-emmc = " pcf8574 lan743x xr17v35x "
-BALENA_CONFIGS[pcf8574] = " \
-    CONFIG_GPIO_PCF857X=m \
-"
-
-BALENA_CONFIGS[lan743x] = " \
-    CONFIG_LAN743X=m \
-"
-
-BALENA_CONFIGS[xr17v35x] = " \
-    CONFIG_SERIAL_8250_XR17V35X=m \
-"
-
 L4TVER=" l4tver=${L4T_VERSION}"
 KERNEL_ROOTSPEC:jetson-nano = "\${resin_kernel_root} ro rootwait"
 KERNEL_ROOTSPEC:jetson-nano-emmc = "\${resin_kernel_root} ro rootwait"
@@ -390,10 +371,6 @@ do_deploy:append:photon-tx2-nx() {
 
 do_deploy:append:photon-xavier-nx() {
     cp ${WORKDIR}/tegra194-xavier-nx-cti-NGX003.dtb "${DEPLOYDIR}"
-}
-
-do_deploy:append:forecr-dsb-nx2-xavier-nx-emmc() {
-    cp ${WORKDIR}/tegra194-p3668-dsboard-nx2-0000.dtb "${DEPLOYDIR}"
 }
 
 do_deploy:append:cnx100-xavier-nx() {
