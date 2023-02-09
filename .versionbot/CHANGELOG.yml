@@ -1,4 +1,88 @@
 - commits:
+    - subject: Update contracts to 79998a238ca981b890dfb9206f50bde2d367ff7c
+      hash: ea3a42a46fd74b5e186f37c5e5ac5ad57788c8f2
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 79998a238ca981b890dfb9206f50bde2d367ff7c
+        changelog-entry: Update contracts to 79998a238ca981b890dfb9206f50bde2d367ff7c
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Add golang v1.20
+              hash: 038cc1cd40beef684ee1e51207b54afd3eb3c1d4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v19.6.0 and v18.14.0
+              hash: 7074a3fefa923e99da160b37ba296c0480577b20
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.42
+          title: ""
+          date: 2023-02-06T12:00:07.170Z
+        - commits:
+            - subject: Add support for latest dotnet releases v7 (7.0.102) and v6 (6.0.113)
+              hash: 4ac594a0dafbcc1e3522ca40df80b63c9a1d4fa0
+              body: |
+                Drop support for v3.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v19.5.0
+              hash: 255619cd1011b272f7194eb55e182156cf431f93
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.41
+          title: ""
+          date: 2023-02-01T09:00:27.577Z
+        - commits:
+            - subject: Add golang v1.19.5 and v1.18.10
+              hash: 367a8d6f1782238ab4895b8a626256f8d5ae9f88
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.40
+          title: ""
+          date: 2023-01-18T04:50:10.276Z
+        - commits:
+            - subject: "hw.device-type: Add Radxa CM3 on Raspberry Pi Compute Module 4 IO
+                Board"
+              hash: 8672125211a475b2f4742fff0d64273c25bf8421
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.39
+          title: ""
+          date: 2023-01-12T21:09:27.997Z
+  version: 2.110.2+rev3
+  title: ""
+  date: 2023-02-09T17:21:42.798Z
+- commits:
     - subject: Update balena-yocto-scripts to fe6beafdcfa7406b20257cf67a6b74cd8f59142f
       hash: 4a1dc5597fb3dafc3ed7ea9ee4d73ba325cdaa39
       body: Update balena-yocto-scripts

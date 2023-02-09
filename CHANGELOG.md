@@ -1,6 +1,38 @@
 Change log
 -----------
 
+# v2.110.2+rev3
+## (2023-02-09)
+
+
+<details>
+<summary> Update contracts to 79998a238ca981b890dfb9206f50bde2d367ff7c [Renovate Bot] </summary>
+
+> ## contracts-2.0.42
+> ### (2023-02-06)
+> 
+> * Add golang v1.20 [Trong Nghia Nguyen]
+> * Add node v19.6.0 and v18.14.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.41
+> ### (2023-02-01)
+> 
+> * Add support for latest dotnet releases v7 (7.0.102) and v6 (6.0.113) [Trong Nghia Nguyen]
+> * Add node v19.5.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.40
+> ### (2023-01-18)
+> 
+> * Add golang v1.19.5 and v1.18.10 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.39
+> ### (2023-01-12)
+> 
+> * hw.device-type: Add Radxa CM3 on Raspberry Pi Compute Module 4 IO Board [Florin Sarbu]
+> 
+
+</details>
+
 # v2.110.2+rev2
 ## (2023-02-09)
 
