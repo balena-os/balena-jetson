@@ -1,6 +1,49 @@
 Change log
 -----------
 
+# v2.110.2+rev2
+## (2023-02-09)
+
+
+<details>
+<summary> Update balena-yocto-scripts to fe6beafdcfa7406b20257cf67a6b74cd8f59142f [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.23
+> ### (2023-01-28)
+> 
+> * balena-generate-ami: increase import snapshot timeout [Alex Gonzalez]
+> * balena-generate-ami: remove s3 temporary image if snapshot import times out [Alex Gonzalez]
+> * balena-generate-ami: match instance type with image type [Alex Gonzalez]
+> * balena-generate-ami: fix linter warnings [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.22
+> ### (2023-01-25)
+> 
+> * balena-generate-ami: allow for staging deployments [Alex Gonzalez]
+> * jenkins_generate_ami: allow for staging deployment [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.21
+> ### (2023-01-19)
+> 
+> * balene-generate-ami: remove key name [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.20
+> ### (2023-01-18)
+> 
+> * jenkins_generate_ami: default to pull cloud-config apps from balena_os [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.19
+> ### (2023-01-14)
+> 
+> * balena-generate-ami: do not remove AMI snapshot [Alex Gonzalez]
+> * jenkins_generate_ami: use balena_os tokens instead of org specific token [Alex Gonzalez]
+> * jenkins_build: respect the preserve build flag [Alex Gonzalez]
+> * balena-generate-ami: cleanup images after deployment [Alex Gonzalez]
+> * balena-generate-ami: test image before making it public [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.110.2+rev1
 ## (2023-02-08)
 
