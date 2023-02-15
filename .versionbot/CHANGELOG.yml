@@ -1,4 +1,34 @@
 - commits:
+    - subject: Update layers/meta-balena to dcef4ce75f4f77bdcf941d0c095487bc4bc128f4
+      hash: c492424cb5ad97e7f57f23e23de80b1c11d8c387
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to dcef4ce75f4f77bdcf941d0c095487bc4bc128f4
+        changelog-entry: Update layers/meta-balena to dcef4ce75f4f77bdcf941d0c095487bc4bc128f4
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update aufs5 kernel patches for 5.10 versions
+              hash: 525ae72f84fe7092dd642cb1068238e0593f9e2e
+              body: >
+                We update to the newest patch revisions for 5.10 kernel versions from
+                upstream
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update aufs5 kernel patches for 5.10 versions
+                changelog-entry: Update aufs5 kernel patches for 5.10 versions
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.112.1
+          title: ""
+          date: 2023-02-15T10:31:48.529Z
+  version: 2.112.1
+  title: ""
+  date: 2023-02-15T12:23:48.952Z
+- commits:
     - subject: Update layers/meta-balena to 7cc56305880ded60850c3440840dcdba823bd179
       hash: e27f642ec8bf59b3ee2a3d3f0286fa1ad952999c
       body: Update layers/meta-balena
