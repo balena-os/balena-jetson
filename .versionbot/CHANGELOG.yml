@@ -1,4 +1,63 @@
 - commits:
+    - subject: Update layers/meta-balena to e9e5601e6bb0c4ee4ab51094714f88ce074b4b09
+      hash: 0a53fc8099a3c469b1729436e6461b631d12b7c3
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e9e5601e6bb0c4ee4ab51094714f88ce074b4b09
+        changelog-entry: Update layers/meta-balena to e9e5601e6bb0c4ee4ab51094714f88ce074b4b09
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update backports with current 2.102.x
+              hash: 23f8f6428cecd2933800e3ae9f7cdc82f6bdebc7
+              body: |
+                Set current to 2.102.x, next to 2.107.x and sunset to 2.99.x
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: BalenaCI github workflow
+              nested: []
+          version: meta-balena-2.112.4
+          title: ""
+          date: 2023-02-15T13:23:18.936Z
+        - commits:
+            - subject: "workflows: update-backports: remove skipping tests"
+              hash: 36ee78634fdc2c95644fcf2ad303d48b6193b6f2
+              body: >
+                It's not clear how the feature to skip tests work, so modify the commit
+
+                message to be of type patch to avoid balenaCI errors on type none.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.112.3
+          title: ""
+          date: 2023-02-15T13:15:45.445Z
+        - commits:
+            - subject: "workflows: add update-backports"
+              hash: 04b6db97ced04eeae3204c9c88d162355abd297c
+              body: >
+                This workflow will update the backports entry in repo.yml after a new
+
+                ESR release is created.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.112.2
+          title: ""
+          date: 2023-02-15T12:29:05.023Z
+  version: 2.112.4
+  title: ""
+  date: 2023-02-15T15:20:37.446Z
+- commits:
     - subject: Update layers/meta-balena to dcef4ce75f4f77bdcf941d0c095487bc4bc128f4
       hash: c492424cb5ad97e7f57f23e23de80b1c11d8c387
       body: Update layers/meta-balena

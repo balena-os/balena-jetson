@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.112.4
+## (2023-02-15)
+
+
+<details>
+<summary> Update layers/meta-balena to e9e5601e6bb0c4ee4ab51094714f88ce074b4b09 [Renovate Bot] </summary>
+
+> ## meta-balena-2.112.4
+> ### (2023-02-15)
+> 
+> * Update backports with current 2.102.x [BalenaCI github workflow]
+> 
+> ## meta-balena-2.112.3
+> ### (2023-02-15)
+> 
+> * workflows: update-backports: remove skipping tests [Alex Gonzalez]
+> 
+> ## meta-balena-2.112.2
+> ### (2023-02-15)
+> 
+> * workflows: add update-backports [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.112.1
 ## (2023-02-15)
 
