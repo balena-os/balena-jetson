@@ -1,6 +1,23 @@
 Change log
 -----------
 
+# v2.112.8
+## (2023-02-18)
+
+
+<details>
+<summary> Update contracts to 103037ca9624070c01ed388e8fd425bef609e924 [Renovate Bot] </summary>
+
+> ## contracts-2.0.45
+> ### (2023-02-18)
+> 
+> * Add node v19.6.1 v18.14.1 v16.19.1 and v14.21.3 [Trong Nghia Nguyen]
+> 
+
+</details>
+
+* Update layers/meta-balena to 70d37200e8af95b6a784ead0682708c7e7f3acfb [Renovate Bot]
+
 # v2.112.7
 ## (2023-02-16)
 
