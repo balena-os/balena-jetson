@@ -1,4 +1,65 @@
 - commits:
+    - subject: Update layers/meta-balena to 5cc1aa23062247235a71dee20760fd188cd68651
+      hash: 27153ccf26f9ac2b5e87deb59d42b86c0c4880a2
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 5cc1aa23062247235a71dee20760fd188cd68651
+        changelog-entry: Update layers/meta-balena to 5cc1aa23062247235a71dee20760fd188cd68651
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 8a7bdcc
+              hash: 128aa14588d7422beed6ffa68f5594910a394dd3
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update core/contracts digest to 103037c
+                      hash: 552aeee66ae5b0a1918e8ccd1c3e12203a602adc
+                      body: |
+                        Update core/contracts to
+
+                        Update core/contracts from  to
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.21.0
+                  title: ""
+                  date: 2023-02-20T08:26:59.418Z
+                - commits:
+                    - subject: "client: throw errors instead of blanket handling"
+                      hash: 0f4b4b55b01bbfb023bcddba0ea585bcbe968a07
+                      body: >
+                        Remove try/catch block surrounding client code that blanket handles all
+
+                        exceptions, and makes debugging and log messages worse.
+
+
+                        When we don't have a valid way to handle an exception, just throw it.
+
+                        The traceback is more useful than the handler.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.20.1
+                  title: ""
+                  date: 2023-02-20T06:55:01.314Z
+          version: meta-balena-2.112.9
+          title: ""
+          date: 2023-02-20T10:31:10.153Z
+  version: 2.112.9
+  title: ""
+  date: 2023-02-20T14:19:21.300Z
+- commits:
     - subject: Update contracts to 93ba80ca1ffeced474d0567cc58703cdbeb629d5
       hash: 45cee6c3a9cb21501e7e68355ad918d4f7296277
       body: Update contracts
