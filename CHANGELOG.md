@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.112.10
+## (2023-02-20)
+
+
+<details>
+<summary> Update layers/meta-balena to c7ef4ad6fe401699d0c24960ab27a8d10511697f [Renovate Bot] </summary>
+
+> ## meta-balena-2.112.10
+> ### (2023-02-20)
+> 
+> * tests: os: secureboot: skip if system is not locked down [Joseph Kogut]
+> 
+
+</details>
+
 # v2.112.9
 ## (2023-02-20)
 

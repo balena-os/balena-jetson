@@ -1,4 +1,35 @@
 - commits:
+    - subject: Update layers/meta-balena to c7ef4ad6fe401699d0c24960ab27a8d10511697f
+      hash: a394c7695dbe6011c3e0feb6d32ed39205638645
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to c7ef4ad6fe401699d0c24960ab27a8d10511697f
+        changelog-entry: Update layers/meta-balena to c7ef4ad6fe401699d0c24960ab27a8d10511697f
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: os: secureboot: skip if system is not locked down"
+              hash: 00ad363a00eef7805f9f0569d43b933b28504abb
+              body: >
+                Secure boot is now opt-in, even in the case where the image is signed,
+
+                and it's supported in firmware. Skip the secure boot tests when it's not
+
+                enabled at runtime.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.112.10
+          title: ""
+          date: 2023-02-20T15:27:19.879Z
+  version: 2.112.10
+  title: ""
+  date: 2023-02-20T17:19:36.381Z
+- commits:
     - subject: Update layers/meta-balena to 5cc1aa23062247235a71dee20760fd188cd68651
       hash: 27153ccf26f9ac2b5e87deb59d42b86c0c4880a2
       body: Update layers/meta-balena
