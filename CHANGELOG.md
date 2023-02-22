@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2.112.13+rev1
+## (2023-02-22)
+
+
+<details>
+<summary> Update contracts to 6acab7c69f61f6660fe5fa41ccfd617281442fb3 [Renovate Bot] </summary>
+
+> ## contracts-2.0.49
+> ### (2023-02-22)
+> 
+> * patch: Fix spelling for eMMC in Radxa-zero contract [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## contracts-2.0.48
+> ### (2023-02-22)
+> 
+> * hw.device-type: Various fixes [Alexandru Costache]
+> 
+
+</details>
+
 # v2.112.13
 ## (2023-02-22)
 

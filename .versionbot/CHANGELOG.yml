@@ -1,4 +1,53 @@
 - commits:
+    - subject: Update contracts to 6acab7c69f61f6660fe5fa41ccfd617281442fb3
+      hash: 2d5f16402a4a6def3a593e6b110e660bed4d762f
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 6acab7c69f61f6660fe5fa41ccfd617281442fb3
+        changelog-entry: Update contracts to 6acab7c69f61f6660fe5fa41ccfd617281442fb3
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "patch: Fix spelling for eMMC in Radxa-zero contract"
+              hash: e9e6e36541edb814ec751bc31f30a1845f0a0dc1
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+          version: contracts-2.0.49
+          title: ""
+          date: 2023-02-22T11:41:26.966Z
+        - commits:
+            - subject: "hw.device-type: Various fixes"
+              hash: c475248de7096aabe7845dc2c1da5ce1d9bbeb7c
+              body: >
+                - The Jetson TX2 NX has an eMMC and no SD-CARD slot
+
+                - The JN30B Nano uses the eMMC module and not the SD-CARD one
+
+                - The Radxa CM3 on RPI CM4 IOBoard as well as the Radxa zero use
+                  rockchip software tools in order to put the eMMC in mass-storage mode
+                - The CM4 module comes in two flavors: one with eMMC and the Lite version
+                  which uses the carrier board sd-card slot to load the image. Both use the
+                  same balenaOS image.
+                  I switched the storage to internal for this DT because it *may* have
+                  one, but this solely depends on the actual module.
+                  Another consideration is that this DT can also boot from a USB stick
+                  or a NVME drive connected to the mPCIE port.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.48
+          title: ""
+          date: 2023-02-22T10:12:35.263Z
+  version: 2.112.13+rev1
+  title: ""
+  date: 2023-02-22T14:20:26.037Z
+- commits:
     - subject: Update layers/meta-balena to f6327ce662208faa11b250b47518a5f01679dd25
       hash: 3a9adf5557cbd49800e6c38076da740fc88598f7
       body: Update layers/meta-balena
