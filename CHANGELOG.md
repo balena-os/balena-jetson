@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v2.112.13
+## (2023-02-22)
+
+
+<details>
+<summary> Update layers/meta-balena to f6327ce662208faa11b250b47518a5f01679dd25 [Renovate Bot] </summary>
+
+> ## meta-balena-2.112.13
+> ### (2023-02-22)
+> 
+> * recipes-bsp/u-boot: Disable saveenv shell command [Alexandru Costache]
+> * Update tests/leviathan digest to 771bac8 [Renovate Bot]
+> 
+
+</details>
+
 # v2.112.12+rev2
 ## (2023-02-21)
 

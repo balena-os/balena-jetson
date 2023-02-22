@@ -1,4 +1,54 @@
 - commits:
+    - subject: Update layers/meta-balena to f6327ce662208faa11b250b47518a5f01679dd25
+      hash: 3a9adf5557cbd49800e6c38076da740fc88598f7
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f6327ce662208faa11b250b47518a5f01679dd25
+        changelog-entry: Update layers/meta-balena to f6327ce662208faa11b250b47518a5f01679dd25
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "recipes-bsp/u-boot: Disable saveenv shell command"
+              hash: 376e597c49c8b011559294501d9158184d4742f4
+              body: >
+                balenaOS uboot exports specific environment variables
+
+                in resinOS_uEnv.txt and does not have any use-cases of
+
+                saving the entire uboot environment in any device specific
+
+                partitions. This because it relies on the default environment being
+
+                stored in the u-boot binary.
+
+
+                Let's disable the saveenv command and avoid potential incorrect
+
+                usage which may overwrite the partition table, resin-boot filesystem
+
+                or other areas of the eMMC that may be pre-configured by the BSP.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: Update tests/leviathan digest to 771bac8
+              hash: 3c5ea2af806515b479f605d0df64fd347393b5f6
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested: []
+          version: meta-balena-2.112.13
+          title: ""
+          date: 2023-02-22T10:34:14.804Z
+  version: 2.112.13
+  title: ""
+  date: 2023-02-22T12:22:24.580Z
+- commits:
     - subject: Update CI workflow to allow external contributions
       hash: ebb4dc8dd61c95d259fc2c3a3d7a46261f939850
       body: ""
