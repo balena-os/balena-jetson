@@ -1,6 +1,29 @@
 Change log
 -----------
 
+# v2.112.14
+## (2023-02-22)
+
+
+<details>
+<summary> Update layers/meta-balena to 80ca81f9e4ec9d4b2e4d21bc1cf12bd59220be5a [Renovate Bot] </summary>
+
+> ## meta-balena-2.112.14
+> ### (2023-02-22)
+> 
+> * balena-config-vars: Remove dependency on fatrw [Alex Gonzalez]
+> * balena-config-vars: split in two packages [Alex Gonzalez]
+> * Add raid support based on machine features [Alex Gonzalez]
+> * packagegroup-resin: add resin-device-progress dependency [Alex Gonzalez]
+> * resin-init-flasher: remove device-register and device-progress dependencies [Alex Gonzalez]
+> * resin-init-flasher: reduce dependencies [Alex Gonzalez]
+> * os-helpers-fs: replace inform with info helper [Alex Gonzalez]
+> * resin-init-flasher: Build time check on INTERNAL_DEVICE_KERNEL only for flasher device types [Alex Gonzalez]
+> * resin-init-flasher: wait for the by-label links to be created [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.112.13+rev2
 ## (2023-02-22)
 
