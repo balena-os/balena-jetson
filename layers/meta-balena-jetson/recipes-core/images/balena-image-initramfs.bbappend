@@ -17,3 +17,5 @@ PACKAGE_INSTALL:remove:n310-tx2 = " mdraid"
 PACKAGE_INSTALL:remove:n510-tx2 = " mdraid"
 PACKAGE_INSTALL:remove:orbitty-tx2 = " mdraid"
 PACKAGE_INSTALL:remove:spacely-tx2 = " mdraid"
+
+PACKAGE_INSTALL:remove = " initramfs-module-recovery"
