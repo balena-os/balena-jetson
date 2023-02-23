@@ -1,4 +1,21 @@
 - commits:
+    - subject: remove recovery module from balena-image-initramfs
+      hash: e3ff732f9d792b9eed4409303df37bd03afae867
+      body: |
+        The Jetson family does not have enough space to increase the initramfs
+        size and the recovery functionality does not fit in the current maximum
+        space allocation of 32MB.
+      footer:
+        Changelog-entry: remove recovery module from balena-image-initramfs
+        changelog-entry: remove recovery module from balena-image-initramfs
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.112.14+rev1
+  title: ""
+  date: 2023-02-23T10:13:30.339Z
+- commits:
     - subject: Update layers/meta-balena to 80ca81f9e4ec9d4b2e4d21bc1cf12bd59220be5a
       hash: e12e5f1b3235f063272a474aa00e228dde2ff092
       body: Update layers/meta-balena
