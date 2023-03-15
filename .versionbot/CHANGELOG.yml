@@ -1,4 +1,54 @@
 - commits:
+    - subject: "linux-tegra: Update CTI Photon TX2 NX DTBS to L4T 32.7.2"
+      hash: d986484149c3cf3426ce1031ea391eb079d325a4
+      body: |
+        At the time of this commit, latest CTI dtbs for TX2 NX
+        carrier boards are on L4T 32.7.2 - 19-Aug-22, they most
+        likely work fine with L4T 32.7.3 too.
+      footer:
+        Changelog-entry: "linux-tegra: Update CTI Photon TX2 NX DTBS to L4T 32.7.2"
+        changelog-entry: "linux-tegra: Update CTI Photon TX2 NX DTBS to L4T 32.7.2"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "tegra-binaries: Update TX2 NX boot blob for L4T 32.7.3"
+      hash: c459d44e7fcb1e2eb7aab0a607e73992e265bfa3
+      body: ""
+      footer:
+        Changelog-entry: "tegra-binaries: Update TX2 NX boot blob for L4T 32.7.3"
+        changelog-entry: "tegra-binaries: Update TX2 NX boot blob for L4T 32.7.3"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: trigger deploy builds on multi-digit revisions too
+      hash: 098f59502e25a6dbac85a625c23dfcdbbf6706a3
+      body: >
+        According to github action syntax [1], there is no special character
+
+        to denote a match on zero or more of the preceding character, so
+
+        replace `[0-9]?` which only matches zero or one of the preceding
+
+        characters with a `*`.
+
+
+        [1] https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+
+
+        [skip ci]
+      footer:
+        Changelog-entry: trigger deploy builds on multi-digit revisions too
+        changelog-entry: trigger deploy builds on multi-digit revisions too
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.112.14+rev2
+  title: ""
+  date: 2023-03-15T13:48:18.451Z
+- commits:
     - subject: remove recovery module from balena-image-initramfs
       hash: e3ff732f9d792b9eed4409303df37bd03afae867
       body: |

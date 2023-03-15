@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v2.112.14+rev2
+## (2023-03-15)
+
+* linux-tegra: Update CTI Photon TX2 NX DTBS to L4T 32.7.2 [Alexandru Costache]
+* tegra-binaries: Update TX2 NX boot blob for L4T 32.7.3 [Alexandru Costache]
+* trigger deploy builds on multi-digit revisions too [Alex Gonzalez]
+
 # v2.112.14+rev1
 ## (2023-02-23)
 
