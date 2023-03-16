@@ -1,4 +1,18 @@
 - commits:
+    - subject: Prevent duplicate CI workflow executions
+      hash: acd7f6fc75fbe45f8dde1d20adb8cfa8c3651250
+      body: ""
+      footer:
+        Changelog-entry: Prevent duplicate CI workflow executions
+        changelog-entry: Prevent duplicate CI workflow executions
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.112.14+rev5
+  title: ""
+  date: 2023-03-16T18:50:43.126Z
+- commits:
     - subject: Update contracts to 0ff4f419b4467349d7cb1d1202b580004067664c
       hash: ce367fc31adbe8e4d1762f17ebeec568c0adab73
       body: Update contracts
