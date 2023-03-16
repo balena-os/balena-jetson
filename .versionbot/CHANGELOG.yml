@@ -1,4 +1,83 @@
 - commits:
+    - subject: Update contracts to 0ff4f419b4467349d7cb1d1202b580004067664c
+      hash: ce367fc31adbe8e4d1762f17ebeec568c0adab73
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 0ff4f419b4467349d7cb1d1202b580004067664c
+        changelog-entry: Update contracts to 0ff4f419b4467349d7cb1d1202b580004067664c
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "patch: Remove CircleCI in favor of Flowzone"
+              hash: 9bed27db936f4ad6acffa4a74cd0fcad72cc313d
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+          version: contracts-2.0.54
+          title: ""
+          date: 2023-03-16T15:05:25.391Z
+        - commits:
+            - subject: "patch: Fix fluid tags for revpi-core-3"
+              hash: 9ec5bf22c8e0d5033a8b08a432b7651da8616360
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+          version: contracts-2.0.53
+          title: ""
+          date: 2023-03-16T13:25:57.856Z
+        - commits:
+            - subject: "patch: Fix punctuation in partials"
+              hash: 5062b5bb7b22233ea8851996151834fa0554ea2a
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+            - subject: "patch: Fix spelling of eMMC"
+              hash: 044cc4865a8997e40f3ee4724a3592ce2ae42cbf
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+            - subject: "patch: Fix spelling of while"
+              hash: 95fbb009bb43ef40b77c61961571c64308685aff
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+          version: contracts-2.0.52
+          title: ""
+          date: 2023-03-16T12:46:31.310Z
+        - commits:
+            - subject: "node: do not set unsafe-perm with npm 9 and newer"
+              hash: c1950ce76e44b48196c44874e09c8857651bddd8
+              body: >
+                The unsafe-perm config option has been dropped in npm 9, trying to set it
+
+                ends with an error and therefore fails the build. With this patch
+
+                the build script parses the major version from `npm --version` and only
+
+                sets unsafe-perm on npm 8 and older.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+          version: contracts-2.0.51
+          title: ""
+          date: 2023-02-24T21:25:17.414Z
+  version: 2.112.14+rev4
+  title: ""
+  date: 2023-03-16T18:19:55.784Z
+- commits:
     - subject: Update balena-yocto-scripts to 93f94ff88593966c1f417861b235e729d5192ba6
       hash: 89c8289f793d3f2c824b9dddd671e3dd16385362
       body: Update balena-yocto-scripts
