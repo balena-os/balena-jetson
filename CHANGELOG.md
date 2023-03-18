@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.113.14
+## (2023-03-18)
+
+* layers/meta-balena: update to v2.113.14 [Alexandru Costache]
+
 # v2.112.14+rev5
 ## (2023-03-16)
 
