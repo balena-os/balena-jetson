@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.113.14+rev1
+## (2023-03-20)
+
+* balena-image-flasher: Add back kernel to the boot partition for the TX2 [Alexandru Costache]
+
 # v2.113.14
 ## (2023-03-18)
 
