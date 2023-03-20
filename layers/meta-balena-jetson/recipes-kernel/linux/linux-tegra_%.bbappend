@@ -271,9 +271,9 @@ BALENA_CONFIGS[rtl8822ce] = " \
 BALENA_CONFIGS:append = " nfsfs backlight "
 BALENA_CONFIGS[nfsfs] = " \
     CONFIG_NFS_FS=m \
-    CONFIG_NFS_V2=y \
-    CONFIG_NFS_V3=y \
-    CONFIG_NFS_V4=y \
+    CONFIG_NFS_V2=m \
+    CONFIG_NFS_V3=m \
+    CONFIG_NFS_V4=m \
     CONFIG_NFSD_V3=y \
     CONFIG_NFSD_V4=y \
 "
@@ -282,6 +282,11 @@ BALENA_CONFIGS[backlight] = " \
     CONFIG_BACKLIGHT_PWM=m \
     CONFIG_BACKLIGHT_LP855X=m \
     CONFIG_BACKLIGHT_CLASS_DEVICE=m \
+"
+
+BALENA_CONFIGS:append:jetson-tx2 = " optimize-size"
+BALENA_CONFIGS[optimize-size] = " \
+    CONFIG_CC_OPTIMIZE_FOR_SIZE=y \
 "
 
 L4TVER=" l4tver=${L4T_VERSION}"
