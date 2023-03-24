@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.113.14+rev2
+## (2023-03-24)
+
+* jetson-dtbs: Update tegra186-tx2-6.dtb [ttomaino]
+
 # v2.113.14+rev1
 ## (2023-03-20)
 

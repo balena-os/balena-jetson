@@ -1,4 +1,22 @@
 - commits:
+    - subject: "jetson-dtbs: Update tegra186-tx2-6.dtb"
+      hash: 1e19fa443650b45a0d4417495971f7ebc677900a
+      body: >
+        This new version of the tegra186_tx2_6.dtb file has been built against L4T
+        32.7.3.
+
+        md5sum e043e5068c98541032cfaaa46b8e47e4
+      footer:
+        Signed-off-by: Todd Tomaino ttomaino@email.com
+        signed-off-by: Todd Tomaino ttomaino@email.com
+        Changelog-entry: "jetson-dtbs: Update tegra186-tx2-6.dtb"
+        changelog-entry: "jetson-dtbs: Update tegra186-tx2-6.dtb"
+      author: ttomaino
+      nested: []
+  version: 2.113.14+rev2
+  title: ""
+  date: 2023-03-24T11:31:17.021Z
+- commits:
     - subject: "balena-image-flasher: Add back kernel to the boot partition for the TX2"
       hash: aa345aba6ff0737eef1bcce62b230a91e2e6f1f6
       body: ""
