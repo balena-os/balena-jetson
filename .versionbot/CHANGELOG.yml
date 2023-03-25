@@ -1,4 +1,18 @@
 - commits:
+    - subject: "u-boot-tegra: Increase environment size"
+      hash: b65574840ab97b089dbad5fa1437f26057ac9c78
+      body: ""
+      footer:
+        Changelog-entry: "u-boot-tegra: Increase environment size"
+        changelog-entry: "u-boot-tegra: Increase environment size"
+        Signed-off-by: Alexandru Costche <alexandru@balena.io>
+        signed-off-by: Alexandru Costche <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.113.27+rev1
+  title: ""
+  date: 2023-03-25T18:47:22.643Z
+- commits:
     - subject: Update layers/meta-balena to ead4a8fb7c11d565ca2be168b2bf33a69f1bc7f6
       hash: e78b49d3b850c5a7937c2f75a8f3b65e3e4f2a4b
       body: Update layers/meta-balena

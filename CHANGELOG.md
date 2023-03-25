@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.113.27+rev1
+## (2023-03-25)
+
+* u-boot-tegra: Increase environment size [Alexandru Costache]
+
 # v2.113.27
 ## (2023-03-24)
 
