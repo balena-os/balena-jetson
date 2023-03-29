@@ -32,6 +32,7 @@ SRC_URI:append:jetson-tx2 = " \
     file://0014-realtek-rtl8822ce-Enable-802.11D-and-802.11K.patch \
     file://0015-drivers-bluetooth-realtek-Update-rtk_bt-to-5.12.1.8.patch \
     file://0016-rtl8822ce-core-Fix-build-comment-unused-function.patch \
+    file://0017-rtl8822ce-os_dep-Fix-rssi-monitor-event-behavior.patch \
 "
 
 SRC_URI:append:jetson-xavier-nx-devkit-seeed-2mic-hat = " \
