@@ -1,4 +1,20 @@
 - commits:
+    - subject: "linux-tegra: Add patch for fixing rssi monitor event behavior"
+      hash: 23c0bece3e9152921512cb10178bb2d74772b5d9
+      body: |
+        This commit adds the patch named
+        0017-rtl8822ce-os_dep-Fix-rssi-monitor-event-behavior.patch
+      footer:
+        Changelog-entry: "linux-tegra: Add patch for fixing rssi monitor event behavior"
+        changelog-entry: "linux-tegra: Add patch for fixing rssi monitor event behavior"
+        Signed-off-by: Todd Tomaino <ttomaino@email.com>
+        signed-off-by: Todd Tomaino <ttomaino@email.com>
+      author: ttomaino
+      nested: []
+  version: 2.113.27+rev2
+  title: ""
+  date: 2023-03-29T17:14:32.970Z
+- commits:
     - subject: "u-boot-tegra: Increase environment size"
       hash: b65574840ab97b089dbad5fa1437f26057ac9c78
       body: ""

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.113.27+rev2
+## (2023-03-29)
+
+* linux-tegra: Add patch for fixing rssi monitor event behavior [ttomaino]
+
 # v2.113.27+rev1
 ## (2023-03-25)
 
