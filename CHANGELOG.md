@@ -1,6 +1,83 @@
 Change log
 -----------
 
+# v2.113.33
+## (2023-03-30)
+
+
+<details>
+<summary> Update layers/meta-balena to 98b6efa43d3d83df72b49b4caed6ade5b5326fa9 [Renovate Bot] </summary>
+
+> ## meta-balena-2.113.33
+> ### (2023-03-28)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to e5dcbae [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.23.2
+>> #### (2023-03-28)
+>> 
+>> * patch: Update path to balena-io/renovate-config [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.113.32
+> ### (2023-03-28)
+> 
+> * renovate: Inherit automerge settings from org [Kyle Harding]
+> 
+> ## meta-balena-2.113.31
+> ### (2023-03-28)
+> 
+> * Don't create core dumps in containers by default [Leandro Motta Barros]
+> * Make sure balenaEngine owns the container cgroups [Leandro Motta Barros]
+> 
+> ## meta-balena-2.113.30
+> ### (2023-03-27)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.33 [Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.33
+>> #### (2023-03-27)
+>> 
+>> * Add integration tests for balena's "delta on load" [Leandro Motta Barros]
+>> * Simplify and improve delta error handling [Leandro Motta Barros]
+>> * Refactor the xfer portions of delta [Leandro Motta Barros]
+>> * Refactor the distribution portions of delta [Leandro Motta Barros]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.113.29
+> ### (2023-03-27)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.9.8 [Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.9.8
+>> #### (2023-03-27)
+>> 
+>> * Revert "Use multi-arch in dockerfile" [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.113.28
+> ### (2023-03-27)
+> 
+> * README: modify migration documentation to match module [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.113.27+rev2
 ## (2023-03-29)
 

@@ -1,4 +1,259 @@
 - commits:
+    - subject: Update layers/meta-balena to 98b6efa43d3d83df72b49b4caed6ade5b5326fa9
+      hash: 5361ce6c9da61acaeeedfe16c5eaf3a6d4e44b7c
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 98b6efa43d3d83df72b49b4caed6ade5b5326fa9
+        changelog-entry: Update layers/meta-balena to 98b6efa43d3d83df72b49b4caed6ade5b5326fa9
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to e5dcbae
+              hash: a536523b56cbbfc50b9db7e356cd142bb674e9fd
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "patch: Update path to balena-io/renovate-config"
+                      hash: 2698c25cb7bf70920b5025f941ea57b16532285c
+                      body: ""
+                      footer: {}
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.23.2
+                  title: ""
+                  date: 2023-03-28T17:08:00.960Z
+          version: meta-balena-2.113.33
+          title: ""
+          date: 2023-03-28T20:47:58.221Z
+        - commits:
+            - subject: "renovate: Inherit automerge settings from org"
+              hash: 1db559de9180eaf96235bed661060b4b34d98ca4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.113.32
+          title: ""
+          date: 2023-03-28T16:06:51.691Z
+        - commits:
+            - subject: Don't create core dumps in containers by default
+              hash: 1a78f2a1a27684bf244c881555b691d63a3247f6
+              body: >
+                Setting `LimitCORE=0` will avoid the creation of core dump files on
+
+                containers. This will avoid cases in which a crashlooping user app ends
+
+                up filling up the entire storage with dump files.
+
+
+                Users can re-enable core dumps in their services by manually setting the
+
+                `ulimits.core`. For example:
+
+
+                ```
+
+                services:
+                  my-service:
+                    ulimits:
+                      core: -1
+                ```
+
+
+                (Where -1 is used to mean "unlimited")
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+            - subject: Make sure balenaEngine owns the container cgroups
+              hash: 5efa793c5af63ef177de95b8b4251799b0de7f40
+              body: >
+                Setting `Delegate=yes` ensures that systemd will not change anything on
+
+                the cgroups created for running the containers.
+
+
+                This setting is used upstream since this commit:
+
+                https://github.com/moby/moby/commit/d16737f971092767c1b9d28302a3f5aedbe2f576
+
+
+                And also is recommended by systemd: https://systemd.io/CGROUP_DELEGATION/
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-2.113.31
+          title: ""
+          date: 2023-03-28T03:45:14.883Z
+        - commits:
+            - subject: Update balena-engine to v20.10.33
+              hash: e902f495278255bdea5f341ac7634d5ec0238d5d
+              body: |
+                Update balena-engine from 20.10.32 to 20.10.33
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Add integration tests for balena's "delta on load"
+                      hash: 47a0a065f8c28bfdcbac2f0e96d9cbc3adb1c3bb
+                      body: ""
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Simplify and improve delta error handling
+                      hash: 2c972dff108a153896116b07798bbc959c07ef01
+                      body: >
+                        The original delta code on the `xfer` package used to set `d.err` when
+
+                        an unexpected EOF was found in the delta tar stream. Turns out `d.err`
+
+                        would end up being overwritten before it was read, so that initial
+
+                        assignment was effectively a no-op.
+
+
+                        This commit simplifies the code a little bit by removing this bogus
+
+                        assignment and also improves the error reporting a notch by adding more
+
+                        context to the error messages.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Refactor the xfer portions of delta
+                      hash: 8c9e6ec7c0efcb81c718c979ad45133f64679fc8
+                      body: >
+                        This factors out portions of the `xfer` package, so that we can
+
+                        reuse this functionality between `balena pull` and `balena load`. There
+
+                        was a good deal of duplication.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Refactor the distribution portions of delta
+                      hash: 34dd5a92f29e85a77926b9c5983552054dd483c8
+                      body: >
+                        This factors out portions of the `distribution` package, so that we can
+
+                        reuse this functionality between `balena pull` and `balena load`. There
+
+                        was a good deal of duplication.
+
+
+                        This piece of code is tricky to factor out into a separate function.
+
+                        Basically we had two options:
+
+
+                        1. Create a completely reusable, DRY function that encapsulates all the
+                           duplicate code. Sounds nice until you noticed that would be a
+                           horrendous function with 5 return values and overly obscure
+                           semantics.
+                        2. We create a small set of functions with clearer interfaces and
+                           semantics, but which will still lead to some code duplication between
+                           the `pull` and `load` implementations.
+
+                        I opted for the second alternative because the resulting code is much
+
+                        easier to understand and maintain. Also, the remaining duplication is
+
+                        mostly dumb, integration and error handling code that almost writes
+
+                        itself as we call the new reusable functions -- so, this is sort of a
+
+                        benign duplication.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.33
+                  title: ""
+                  date: 2023-03-27T18:46:44.671Z
+          version: meta-balena-2.113.30
+          title: ""
+          date: 2023-03-27T21:30:24.970Z
+        - commits:
+            - subject: Update balena-supervisor to v14.9.8
+              hash: 52b8dee720722c0e917810676321a713075e09e1
+              body: |
+                Update balena-supervisor from 14.9.7 to 14.9.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Revert "Use multi-arch in dockerfile"
+                      hash: 75eeac5ed4b7ec076482c0cace2d2cfca8b6b2d4
+                      body: >
+                        This reverts commit 00e389e5f559dd10e49cfa411784b89498c3c0eb.
+
+
+                        Images generated using this dockerfile still don't have the right
+
+                        architecture. More testing is needed
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.9.8
+                  title: ""
+                  date: 2023-03-27T08:05:44.148Z
+          version: meta-balena-2.113.29
+          title: ""
+          date: 2023-03-27T14:11:59.453Z
+        - commits:
+            - subject: "README: modify migration documentation to match module"
+              hash: f237b34bd6510d106202461b78da7fa0f2637ca0
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.113.28
+          title: ""
+          date: 2023-03-27T09:42:22.974Z
+  version: 2.113.33
+  title: ""
+  date: 2023-03-30T16:41:52.232Z
+- commits:
     - subject: "linux-tegra: Add patch for fixing rssi monitor event behavior"
       hash: 23c0bece3e9152921512cb10178bb2d74772b5d9
       body: |
