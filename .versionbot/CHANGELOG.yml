@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update meta-balena from v2.107.40 to v2.107.44
+      hash: ac10281bc5c4d34429e4677e33656e9085586bed
+      body: |
+        Update meta-balena from 2.107.40 to v2.107.44
+      footer:
+        Changelog-entry: Update meta-balena from v2.107.40 to v2.107.44
+        changelog-entry: Update meta-balena from v2.107.40 to v2.107.44
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2023.1.1
+  title: ""
+  date: 2023-03-31T13:55:07.434Z
+- commits:
     - subject: Update contracts to b6bdc537c9f9d224301152a0291682172320bf6a
       hash: 9e9d3748a76d14854b230c822979181c77e02da8
       body: Update contracts
