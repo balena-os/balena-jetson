@@ -55,10 +55,6 @@ UBOOT_VARS:append = "\
     TEGRA_BOARD_FDT_FILE \
 "
 
-# meta-balena patch does not apply cleanly, so we refactor it
-SRC_URI:remove = " file://resin-specific-env-integration-kconfig.patch "
-SRC_URI:append = " file://local-resin-specific-env-integration-kconfig.patch "
-
 # These changes are necessary since balenaOS 2.39.0
 # for all boards that use u-boot
 SRC_URI:append = " \
