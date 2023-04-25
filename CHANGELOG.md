@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.113.33+rev1
+## (2023-04-25)
+
+* u-boot-tegra: Remove kconfig patches [Alexandru Costache]
+
 # v2.113.33
 ## (2023-03-30)
 
