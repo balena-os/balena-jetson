@@ -1,4 +1,68 @@
 - commits:
+    - subject: Update layers/meta-balena to 92a2e312bc49b6c35402efc528b035a66d9969ef
+      hash: e1bc9348dbb1b5d23772c4e2c15af7c132b38a5d
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 92a2e312bc49b6c35402efc528b035a66d9969ef
+        changelog-entry: Update layers/meta-balena to 92a2e312bc49b6c35402efc528b035a66d9969ef
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 62e4099
+              hash: c1931cf32a8f884c2ebe73e2558afef558a39c9a
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update alpine Docker tag to v3.18.0
+                      hash: 17174d8a1f5e61e03ccd71bc0dd1c3247cc33b79
+                      body: |
+                        Update alpine from 3.17.3 to 3.18.0
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.27.0
+                  title: ""
+                  date: 2023-05-29T22:58:52.645Z
+                - commits:
+                    - subject: Update core/contracts digest to fd4af4e
+                      hash: 7b44fe1af6900656ec56a52122d7f61f39e494c8
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.26.1
+                  title: ""
+                  date: 2023-05-29T21:57:30.744Z
+                - commits:
+                    - subject: Update balena-cli to v16.1.0 with arm64 binaries
+                      hash: 6ee61795d23f48be83fd9404835e9641d8c65271
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.26.0
+                  title: ""
+                  date: 2023-05-29T08:42:40.808Z
+          version: meta-balena-2.115.6
+          title: ""
+          date: 2023-06-08T15:22:38.847Z
+  version: 2.115.6
+  title: ""
+  date: 2023-06-08T21:07:41.861Z
+- commits:
     - subject: Update balena-os/github-workflows to
       hash: 2cc360ba620ced8cf1a468f719ad87d67eabeee8
       body: Update balena-os/github-workflows
