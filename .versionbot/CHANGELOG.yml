@@ -1,4 +1,116 @@
 - commits:
+    - subject: Update contracts to fd4af4e5694608cc0c87d9bff2a5b27b2c5f2f39
+      hash: 94f063b5bc5956303416a4b07c2cfc538e3b830b
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to fd4af4e5694608cc0c87d9bff2a5b27b2c5f2f39
+        changelog-entry: Update contracts to fd4af4e5694608cc0c87d9bff2a5b27b2c5f2f39
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Fix LED support for ISG-503
+              hash: 8c779e12dbb16892528af17d8749cff1902146ad
+              body: >
+                The LED support was incorrectly changed in
+                https://github.com/balena-io/contracts/commit/4bb6eb1f732957e605f00e47b068199f14ff1765
+
+                Let's switch it back to unsupported. 
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.60
+          title: ""
+          date: 2023-05-04T13:38:26.884Z
+        - commits:
+            - subject: "hw.device-type: Add revpi-connect-s"
+              hash: d81ef3d12565d9c0e81d776a6a156f22f6322728
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Obaid Chemkhi obaid.chemkhi@voltstorage.com
+                signed-off-by: Obaid Chemkhi obaid.chemkhi@voltstorage.com
+              author: Obaid Ch
+          version: contracts-2.0.59
+          title: ""
+          date: 2023-05-03T09:53:24.491Z
+        - commits:
+            - subject: "jetson-agx-orin-devkit: Mention the RAM configuration in the device
+                name"
+              hash: 82d3a94938956376eeafa518a863a344acd2190b
+              body: |
+                By default the AGX Orin Devkit has 32GB RAM, however, new
+                production modules have been released with L4T 35.3.1 so we
+                should emphasize that newer modules may not work with this
+                image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.58
+          title: ""
+          date: 2023-04-27T11:52:02.405Z
+        - commits:
+            - subject: "debian/ubuntu jetson-orin-nx-xavier-nx-devkit: Add distro configs"
+              hash: ad9d69f447d9091f1ae2a582b02941472efb0539
+              body: |
+                The Orin NX modules uses L4T 35.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Alexandru Costache
+            - subject: "Orin NX: Update flashing steps"
+              hash: c7e77638474694870874afa17a453b727b3797d3
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.57
+          title: ""
+          date: 2023-04-07T12:53:58.620Z
+        - commits:
+            - subject: "jetson-orin-nx-xavier-nx-devkit: Add contract for device type"
+              hash: ddae0174c36b0893d723308d948d72c276787ed5
+              body: |
+                The provisioning instructions are incomplete at this time, they
+                will be updated once the balenaOS integration is complete. The
+                device needs to be inspected in staging first.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.56
+          title: ""
+          date: 2023-04-04T08:46:42.967Z
+        - commits:
+            - subject: "iot-gate-imx8plus: Update provisioning instructions"
+              hash: 25cbb9cb1c96a96367a1d35615f6b679e4a20df5
+              body: |
+                Bring in the latest updates from the coffee file
+                in the device repository.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru
+          version: contracts-2.0.55
+          title: ""
+          date: 2023-03-29T18:35:00.091Z
+  version: 2.115.5+rev2
+  title: ""
+  date: 2023-06-08T18:22:52.980Z
+- commits:
     - subject: Update balena-yocto-scripts to e9f9ef5b729ac01f0b8efe0a16187fbb00d0bf54
       hash: 7ec4ef9556c96ed44a825fcbc2915096a7d9e985
       body: Update balena-yocto-scripts
