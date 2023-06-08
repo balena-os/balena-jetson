@@ -1,6 +1,207 @@
 Change log
 -----------
 
+# v2.115.5
+## (2023-06-08)
+
+
+<details>
+<summary> Update layers/meta-balena to 7c31e98312e50f7cc6380b00701c6ed8ff3da216 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-2.115.5
+> ### (2023-06-08)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.2 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.2
+>> #### (2023-06-05)
+>> 
+>> * Handle Engine-host race condition for "always" and "unless-stopped" restart policy [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.115.4
+> ### (2023-06-01)
+> 
+> * docs: Make secure boot docs more detailed [Michal Toman]
+> 
+> ## meta-balena-2.115.3
+> ### (2023-05-29)
+> 
+> * resin-init-flasher: check that commands exist before calling [Alex Gonzalez]
+> 
+> ## meta-balena-2.115.2
+> ### (2023-05-28)
+> 
+> * os-helpers: do not fail build if API tests fail [Alex Gonzalez]
+> 
+> ## meta-balena-2.115.1
+> ### (2023-05-17)
+> 
+> * tests: config: set both network options to false [rcooke-warwick]
+> * tests: hup: use contract to configure network [rcooke-warwick]
+> * tests: cloud: use contract to configure network [rcooke-warwick]
+> * tests: os: use contract to configure network [rcooke-warwick]
+> 
+> ## meta-balena-2.115.0
+> ### (2023-05-12)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.1 [Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.1
+>> #### (2023-05-11)
+>> 
+>> * Fix `sw.arch` typo when testing contracts [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.11.0
+>> #### (2023-05-10)
+>> 
+>> * Add `arch.sw` to the valid container requirements [Felipe Lalanne]
+>> * Allow using slug to validate hw.device-type contract [Felipe Lalanne]
+>> * Simplify and move lib/contract.spec.ts to tests/unit [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.10.11
+>> #### (2023-05-08)
+>> 
+>> * Add information about hdmi port 2 config vars [Felipe Lalanne]
+>> * Update table formatting on configurations.md [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.114.25
+> ### (2023-05-12)
+> 
+> * tests: hup: enable boot-switch skip [rcooke-warwick]
+> * tests: cloud: enable boot-switch skip Commit body [rcooke-warwick]
+> * tests: os: enable boot-switch skip [rcooke-warwick]
+> 
+> ## meta-balena-2.114.24
+> ### (2023-05-11)
+> 
+> * resin-init-flasher: add more comments around efi/boot partition split [Michal Toman]
+> * resin-init-flasher: reboot into signed flasher when provisioning secure boot [Michal Toman]
+> * resin-init-flasher: Fill db EFI variable from esl file instead of auth [Michal Toman]
+> 
+> ## meta-balena-2.114.23
+> ### (2023-05-06)
+> 
+> * tests: suites: remove default migration force configuration [Alex Gonzalez]
+> * resin-init-flasher: avoid partition labels clashes [Alex Gonzalez]
+> * initrdscripts: recovery: set adb default timeouts in minutes [Alex Gonzalez]
+> * tests: move installerForceMigration suite configuration to balenaOS section [Alex Gonzalez]
+> * tests: simplify accessing config.json data [Alex Gonzalez]
+> 
+> ## meta-balena-2.114.22
+> ### (2023-05-05)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.36 [Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.36
+>> #### (2023-05-04)
+>> 
+>> * Further improve resilience of image pulls [Leandro Motta Barros]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.114.21
+> ### (2023-05-05)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 256b844 [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.25.6
+>> #### (2023-05-04)
+>> 
+>> * suite: move installer configuration to balenaOS configuration section [Alex Gonzalez]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.114.20
+> ### (2023-05-04)
+> 
+> * Updated the CDS link [Ryan]
+> 
+> ## meta-balena-2.114.19
+> ### (2023-05-04)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to e6180e9 [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.25.5
+>> #### (2023-05-03)
+>> 
+>> * Update core/contracts digest to 75cd5e9 [Renovate Bot]
+>> 
+>> ### leviathan-2.25.4
+>> #### (2023-05-01)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.6 [Renovate Bot]
+>> 
+>> ### leviathan-2.25.3
+>> #### (2023-05-01)
+>> 
+>> * Update core/contracts digest to 6c6ed28 [Renovate Bot]
+>> 
+>> ### leviathan-2.25.2
+>> #### (2023-04-26)
+>> 
+>> * suite: add installerForceMigration configuration [Alex Gonzalez]
+>> 
+>> ### leviathan-2.25.1
+>> #### (2023-04-25)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.4 [Renovate Bot]
+>> 
+>> ### leviathan-2.25.0
+>> #### (2023-04-20)
+>> 
+>> * Update Node.js to v18.16.0 [Renovate Bot]
+>> 
+>> ### leviathan-2.24.5
+>> #### (2023-04-20)
+>> 
+>> * Update alpine Docker tag to v3.17.3 [Renovate Bot]
+>> 
+>> ### leviathan-2.24.4
+>> #### (2023-04-20)
+>> 
+>> * Update core/contracts digest to 777cd35 [Renovate Bot]
+>> 
+>> ### leviathan-2.24.3
+>> #### (2023-04-17)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.2 [Renovate Bot]
+>> 
+>> ### leviathan-2.24.2
+>> #### (2023-04-15)
+>> 
+>> * docker-compose-qemu: allow to configure internal disk [Alex Gonzalez]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
+* Remove pull_request_target event run for ESR targets [Alex Gonzalez]
+
 # v2.114.18
 ## (2023-05-04)
 
