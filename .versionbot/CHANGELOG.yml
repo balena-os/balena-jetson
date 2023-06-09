@@ -1,4 +1,32 @@
 - commits:
+    - subject: Update layers/meta-balena to d6546982c2e7777336a00b4d7e289cadc3efb714
+      hash: 0042c889e7f06299ff0e44a1330966cbe4bf67d2
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to d6546982c2e7777336a00b4d7e289cadc3efb714
+        changelog-entry: Update layers/meta-balena to d6546982c2e7777336a00b4d7e289cadc3efb714
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "README: Add bootloader section"
+              hash: c27e2989052871033c414bed5042948da91533de
+              body: |
+                with info on how u-boot, grub, cboot and
+                UEFI L4TLauncher are used in balenaOS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.115.7
+          title: ""
+          date: 2023-06-09T13:09:46.102Z
+  version: 2.115.7
+  title: ""
+  date: 2023-06-09T15:24:02.438Z
+- commits:
     - subject: Update layers/meta-balena to 92a2e312bc49b6c35402efc528b035a66d9969ef
       hash: e1bc9348dbb1b5d23772c4e2c15af7c132b38a5d
       body: Update layers/meta-balena
