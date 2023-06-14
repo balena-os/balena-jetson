@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.115.8
+## (2023-06-14)
+
+
+<details>
+<summary> Update layers/meta-balena to 9760ab707b5c48d9a67ccacee61eacb063e14ac0 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-2.115.8
+> ### (2023-06-14)
+> 
+> * balena_check_crc: Add helper u-boot command for crc manipulation [Alexandru Costache]
+> 
+
+</details>
+
 # v2.115.7
 ## (2023-06-09)
 
