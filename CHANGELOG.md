@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.115.8+rev2
+## (2023-06-19)
+
+
+<details>
+<summary> Update contracts to c777910763b2476da6648200ab00629755b24da2 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.61
+> ### (2023-06-14)
+> 
+> * hw/device-type: Update contract.json for iot-gate-imx8 [Alexandru Costache]
+> 
+
+</details>
+
 # v2.115.8+rev1
 ## (2023-06-19)
 
