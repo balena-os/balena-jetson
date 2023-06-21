@@ -1,6 +1,37 @@
 Change log
 -----------
 
+# v2.115.10
+## (2023-06-21)
+
+
+<details>
+<summary> Update layers/meta-balena to f420c91e38843f5cf9b3f68122ee8cb71f9f605f [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-2.115.10
+> ### (2023-06-21)
+> 
+> * resin-init-flasher: Format encrypted partitions as LUKS2 [Michal Toman]
+> 
+> ## meta-balena-2.115.9
+> ### (2023-06-15)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.3 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.3
+>> #### (2023-06-15)
+>> 
+>> * Update balena-io/deploy-to-balena-action to v0.27.0 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v2.115.8+rev2
 ## (2023-06-19)
 

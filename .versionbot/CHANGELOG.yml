@@ -1,4 +1,66 @@
 - commits:
+    - subject: Update layers/meta-balena to f420c91e38843f5cf9b3f68122ee8cb71f9f605f
+      hash: 3498611ac318f0ed78a18d6e61a67299999f670e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f420c91e38843f5cf9b3f68122ee8cb71f9f605f
+        changelog-entry: Update layers/meta-balena to f420c91e38843f5cf9b3f68122ee8cb71f9f605f
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "resin-init-flasher: Format encrypted partitions as LUKS2"
+              hash: 9e01a5d485ee93975b531b9dbd304db9b73de3fa
+              body: >
+                This should be the default but with no explicit argument we
+                still
+
+                end up with LUKS1 partitions. This patch adds the parameter to enforce
+
+                LUKS2 formatting and adds conversion to LUKS2 to the cryptsetup
+
+                initrd script.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.115.10
+          title: ""
+          date: 2023-06-21T05:08:09.995Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.3
+              hash: 1d9f52fee5040b952077846bef79ea99bdf465e0
+              body: |
+                Update balena-supervisor from 14.11.2 to 14.11.3
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action to v0.27.0
+                      hash: 1675c16622d861ce6e6e445400b5440a447688f7
+                      body: |
+                        Update balena-io/deploy-to-balena-action
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Changelog-entry: Update balena-io/deploy-to-balena-action to v0.27.0
+                        changelog-entry: Update balena-io/deploy-to-balena-action to v0.27.0
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-14.11.3
+                  title: ""
+                  date: 2023-06-15T19:49:42.493Z
+          version: meta-balena-2.115.9
+          title: ""
+          date: 2023-06-15T23:43:34.815Z
+  version: 2.115.10
+  title: ""
+  date: 2023-06-21T08:12:49.790Z
+- commits:
     - subject: Update contracts to c777910763b2476da6648200ab00629755b24da2
       hash: 1cee72c66d778cf8a031414182b54f4294b7bdce
       body: Update contracts
