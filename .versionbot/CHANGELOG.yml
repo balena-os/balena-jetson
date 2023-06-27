@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 6c4386a7b918796f26b7e06e8ee5585403330e4f
+      hash: 9fc70ab624658a960d1f098ffbc39fd4b877f489
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 6c4386a7b918796f26b7e06e8ee5585403330e4f
+        changelog-entry: Update contracts to 6c4386a7b918796f26b7e06e8ee5585403330e4f
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "hw.device-type: Add Jetson Orin Nano Devkit 8GB (SD) module"
+              hash: ffa98b5a136997b6cc187751d0133a9e7d8fa8cd
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.62
+          title: ""
+          date: 2023-06-27T10:51:03.778Z
+  version: 2.115.13+rev1
+  title: ""
+  date: 2023-06-27T12:32:02.296Z
+- commits:
     - subject: Update layers/meta-balena to 87c91cdae3ca87e44a9417627c260701a5f85df9
       hash: fda925dcb2450ab1b1003ffd5e262025aa28a0d1
       body: Update layers/meta-balena

@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.115.13+rev1
+## (2023-06-27)
+
+
+<details>
+<summary> Update contracts to 6c4386a7b918796f26b7e06e8ee5585403330e4f [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.62
+> ### (2023-06-27)
+> 
+> * hw.device-type: Add Jetson Orin Nano Devkit 8GB (SD) module [Alexandru Costache]
+> 
+
+</details>
+
 # v2.115.13
 ## (2023-06-26)
 
