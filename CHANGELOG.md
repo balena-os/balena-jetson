@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.115.17
+## (2023-06-28)
+
+
+<details>
+<summary> Update layers/meta-balena to 2df4a2410980aa482ebc6355e329a055917fa09d [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-2.115.17
+> ### (2023-06-28)
+> 
+> * balena-keys: add SIGN_KMOD_KEY_APPEND [Joseph Kogut]
+> 
+
+</details>
+
 # v2.115.16
 ## (2023-06-28)
 

@@ -1,4 +1,51 @@
 - commits:
+    - subject: Update layers/meta-balena to 2df4a2410980aa482ebc6355e329a055917fa09d
+      hash: d6b412c73003282723bf3fb52a0544c40f6fe3d0
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 2df4a2410980aa482ebc6355e329a055917fa09d
+        changelog-entry: Update layers/meta-balena to 2df4a2410980aa482ebc6355e329a055917fa09d
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-keys: add SIGN_KMOD_KEY_APPEND"
+              hash: 981a4eec5106bc41643dc708bd64470093ad741c
+              body: >
+                This variable accepts the base64 encoded public key of a kernel
+                module
+
+                signing keypair and appends it to the list of trusted keys the kernel
+
+                will use to validate signed modules. Multiple keys may be appended,
+
+                delimited with a semicolon.
+
+
+                A PEM file can be used like so:
+
+
+                SIGN_KMOD_KEY_APPEND="$( sed -e '/-----BEGIN CERTIFICATE-----/d' \
+                                             -e 's/-----END CERTIFICATE-----/;/g' \
+                                             -e '$d' signing_key.pem \
+                                         | tr -d '\n' )"
+
+                balena-yocto-scripts/build/balena-build.sh \
+                    -g "-a SIGN_KMOD_KEY_APPEND=${SIGN_KMOD_KEY_APPEND}" \
+                    ...
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.115.17
+          title: ""
+          date: 2023-06-28T20:35:09.852Z
+  version: 2.115.17
+  title: ""
+  date: 2023-06-28T22:36:13.388Z
+- commits:
     - subject: Update layers/meta-balena to c2004fe8aea1c95bccb4151079cbfb63c07e864c
       hash: 5b94db997190765ab607af74cfe0375a3dd73ed5
       body: Update layers/meta-balena
