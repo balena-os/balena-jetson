@@ -1,4 +1,231 @@
 - commits:
+    - subject: Update layers/meta-balena to c2004fe8aea1c95bccb4151079cbfb63c07e864c
+      hash: 5b94db997190765ab607af74cfe0375a3dd73ed5
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to c2004fe8aea1c95bccb4151079cbfb63c07e864c
+        changelog-entry: Update layers/meta-balena to c2004fe8aea1c95bccb4151079cbfb63c07e864c
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update balena-supervisor to v14.11.8
+              hash: ff30642b741a2bd44091fa41e7b2d0f5c13470fd
+              body: |
+                Update balena-supervisor from 14.11.7 to 14.11.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Parse container exit error message instead of status
+                      hash: 71d24d6e3366b28e1466e99322d58420b5ebbb67
+                      body: >
+                        The previous implementation in #2170 of parsing the
+                        container status was too general,
+
+                        because it relied on the mistaken assumption that a container would have a status of
+
+                        `Stopped` if it was manually stopped. This turned out to be untrue, as manually stopped
+
+                        containers were also getting restarted by the Supervisor due to their inspect status of
+
+                        `exited`. With this, parsing the exit message became unavoidable as there are no other
+
+                        clear ways to discern a container that has been manually stopped and shouldn't be started
+
+                        from a container experiencing the Engine-host race condition issue (again, see #2170).
+
+
+                        Since we're just parsing the exit error message, we don't need to worry about different behaviors
+
+                        amongst restart policies, as any container with the error message on exit should be started.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Closes: "#2178"
+                        closes: "#2178"
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina W
+                      nested: []
+                  version: balena-supervisor-14.11.8
+                  title: ""
+                  date: 2023-06-23T18:46:22.881Z
+          version: meta-balena-2.115.16
+          title: ""
+          date: 2023-06-28T07:37:09.027Z
+        - commits:
+            - subject: Update balena-engine to v20.10.37
+              hash: c607d7be4d740802ab5e27b67f5e6714e1407855
+              body: |
+                Update balena-engine from 20.10.36 to 20.10.37
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: "Bugfix: concatReadSeekCloser.Read() with buffers of any size"
+                      hash: 84471473ce02a0b8820e13105f845b67c19903c9
+                      body: >
+                        Previously, `concatReadSeekCloser.Read()` would
+                        incorrectly return
+
+                        an `io.ErrUnexpectedEOF` if the last read from the second concatenated
+
+                        `Reader` didn't completely fill the passed buffer.
+
+
+                        For instance:
+
+
+                        ```
+                              First Reader    Second Reader
+                            |aaaaaaaaaaaaa|bbbbbbbbbbbbbbbbbbb|      <--- concatReadSeekCloser
+                            |--- previously read ---|--- buffer ---| <--- last read
+                                                              |xxxx| <--- "excess" buffer
+                        ```
+
+
+                        In this example, we have a `concatReadSeekCloser` that concatenates two
+
+                        `Reader`s (`aaa...` and `bbb...`). The last `Read()` used a buffer
+
+                        larger than the yet-to-be-read portion of the `bbb...`. So, it would
+
+                        incorrectly return an `io.ErrUnexpectedEOF`.
+
+
+                        This commit makes sure that last `Read()` returns all the remaining data
+
+                        without an error. It also adds various test cases for
+
+                        `concatReadSeekCloser.Read()`, many of which would fail before this
+
+                        correction.
+
+
+                        Interestingly, this bug was silently affecting us. Not in a fatal way,
+
+                        but causing deltas to be larger than necessary. Indeed, running
+
+                        `TestDeltaSize` after this commit shows that some test cases are
+
+                        producing deltas smaller than what we expected before. For posterity,
+
+                        see all the details below.
+
+
+                        We use `concatReadSeekCloser`s to concatenate all layers of the basis
+
+                        image when creating the "signature" of the basis image. In this process,
+
+                        the `concatReadSeekCloser`s are wrapped around by a buffered reader with
+
+                        a buffer of 65kB.
+
+
+                        If, in any read, part of this 65kB buffer was beyond the second
+
+                        concatenated reader, it would result in an `io.ErrUnexpectedEOF`. This
+
+                        would not cause the whole process to fail, but would prematurely end the
+
+                        signature generation: some of the final blocks in the basis image would
+
+                        not be added to the signature. Therefore, if those blocks appeared in
+
+                        the target image, they'd result in (larger) LITERAL, instead of
+
+                        (smaller) COPY operations.
+
+
+                        For illustration, here's the delta generated for the `delta-006-008`
+
+                        test case. First before this commit:
+
+
+                        ```
+                          OP_COPY_N1_N2 0 512
+                          OP_COPY_N2_N2 1536 1024
+                          OP_COPY_N2_N2 3584 1024
+                          OP_COPY_N2_N2 5632 1536
+                          OP_COPY_N2_N2 8192 1536
+                          OP_COPY_N2_N2 10752 4096
+                          OP_COPY_N2_N2 15872 8704
+                          OP_COPY_N2_N2 25600 10752
+                          OP_COPY_N2_N2 37376 10752
+                          OP_COPY_N2_N4 49152 131584
+                          OP_COPY_N4_N4 181760 150528
+                          OP_COPY_N4_N4 333312 500736
+                          OP_COPY_N4_N4 835072 1000960
+                          OP_COPY_N4_N4 1837056 1000960
+                          OP_COPY_N4_N4 2839040 1027584    # Here: a COPY op...
+                          OP_LITERAL_N2 21504              # ...followed by a 21 kB LITERAL.
+                          OP_COPY_N4_N2 2838528 512
+                          OP_COPY_N4_N2 2838528 512
+                                 OP_END
+                        ```
+
+
+                        And after this commit:
+
+
+                        ```
+                         OP_COPY_N1_N2 0 512
+                          OP_COPY_N2_N2 1536 1024
+                          OP_COPY_N2_N2 3584 1024
+                          OP_COPY_N2_N2 5632 1536
+                          OP_COPY_N2_N2 8192 1536
+                          OP_COPY_N2_N2 10752 4096
+                          OP_COPY_N2_N2 15872 8704
+                          OP_COPY_N2_N2 25600 10752
+                          OP_COPY_N2_N2 37376 10752
+                          OP_COPY_N2_N4 49152 131584
+                          OP_COPY_N4_N4 181760 150528
+                          OP_COPY_N4_N4 333312 500736
+                          OP_COPY_N4_N4 835072 1000960
+                          OP_COPY_N4_N4 1837056 1000960
+                          OP_COPY_N4_N4 2839040 1049088    # COPY only, since we detected a longer match
+                          OP_COPY_N4_N2 3888640 512
+                          OP_COPY_N4_N2 3888640 512
+                                 OP_END
+                        ```
+
+
+                        That 21kB LITERAL is the difference in size we saw in the test results.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Minor code and comments tweaks
+                      hash: 7dd51428c918980163fbe34511152dc72e7a3372
+                      body: >
+                        Using `defer` for the sake of being more idiomatic (and
+                        maybe slightly
+
+                        more reliable); plus, using the proper doc comment standards.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.37
+                  title: ""
+                  date: 2023-06-26T13:44:22.217Z
+          version: meta-balena-2.115.15
+          title: ""
+          date: 2023-06-28T02:21:32.534Z
+  version: 2.115.16
+  title: ""
+  date: 2023-06-28T09:37:11.431Z
+- commits:
     - subject: Update layers/meta-balena to 515a2063746f0a5a1aea47cd6064673f7e80a716
       hash: 4c42d8a8a5f4428a594c5f93ef42967f7e91c384
       body: Update layers/meta-balena

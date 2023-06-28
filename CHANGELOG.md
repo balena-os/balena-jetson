@@ -1,6 +1,49 @@
 Change log
 -----------
 
+# v2.115.16
+## (2023-06-28)
+
+
+<details>
+<summary> Update layers/meta-balena to c2004fe8aea1c95bccb4151079cbfb63c07e864c [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-2.115.16
+> ### (2023-06-28)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.8 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.8
+>> #### (2023-06-23)
+>> 
+>> * Parse container exit error message instead of status [Christina W]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.115.15
+> ### (2023-06-28)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.37 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.37
+>> #### (2023-06-26)
+>> 
+>> * Bugfix: concatReadSeekCloser.Read() with buffers of any size [Leandro Motta Barros]
+>> * Minor code and comments tweaks [Leandro Motta Barros]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v2.115.14
 ## (2023-06-27)
 
