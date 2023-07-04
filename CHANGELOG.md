@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v3.0.0
+## (2023-07-04)
+
+
+<details>
+<summary> Update layers/meta-balena to 05dfed30f590eb14e1721a471262d64e798dea46 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.0.0
+> ### (2023-07-04)
+> 
+> * mkfs-hostapp-native: Allow the compile task to access the network [Alex Gonzalez]
+> * mkfs-hostapp-native: Use image tags instead of parsing docker output [Alex Gonzalez]
+> * kernel-headers-test: Use image tags instead of parsing docker output [Alex Gonzalez]
+> * kernel-headers-test: Allow network access for compile task [Alex Gonzalez]
+> * kernel-modules-headers: use kernel-devsrc to provide kernel headers [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.115.18+rev1
 ## (2023-06-29)
 
