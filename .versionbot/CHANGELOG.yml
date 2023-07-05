@@ -1,4 +1,78 @@
 - commits:
+    - subject: Update layers/meta-balena to fac2a045b028c533f12b67712d663cfd3a360649
+      hash: 1cd1df93e82437fa2fd1558340ccfb719bcfe33e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to fac2a045b028c533f12b67712d663cfd3a360649
+        changelog-entry: Update layers/meta-balena to fac2a045b028c533f12b67712d663cfd3a360649
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 498d4cb
+              hash: f4a1b8bd1c044e3a49d66bb3a820bc03cfc6faeb
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.9
+                      hash: 637c10800ffbd5c514f11b83768178716ab110ad
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.8 to 2.9.9
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.3
+                  title: ""
+                  date: 2023-07-05T11:03:27.568Z
+                - commits:
+                    - subject: Update core/contracts digest to 6e3d563
+                      hash: cf53ba6f0d58dce5b6d8e94a799600f52dbfe75d
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.2
+                  title: ""
+                  date: 2023-07-05T10:03:26.492Z
+                - commits:
+                    - subject: "patch: Pass env variables to client"
+                      hash: 09086c9c1c3471c8c803e6a91cbd72b09f1c9210
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.28.1
+                  title: ""
+                  date: 2023-07-05T09:00:56.929Z
+                - commits:
+                    - subject: "minor: Make client work with different balenaCloud environments"
+                      hash: d975cfff5f15cfdffffa81202de5ad6fd8d41d87
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.28.0
+                  title: ""
+                  date: 2023-06-30T15:07:41.244Z
+          version: meta-balena-3.0.2
+          title: ""
+          date: 2023-07-05T13:49:59.489Z
+  version: 3.0.2
+  title: ""
+  date: 2023-07-05T16:50:58.836Z
+- commits:
     - subject: Update layers/meta-balena to 0232d66721fc127cc14e5078bbc811d50b3cf7a4
       hash: 0d0b97f2d92ebc7223a17b7c008effae8f2b41cb
       body: Update layers/meta-balena
