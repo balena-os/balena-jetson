@@ -1,4 +1,59 @@
 - commits:
+    - subject: Update layers/meta-balena to 0232d66721fc127cc14e5078bbc811d50b3cf7a4
+      hash: 0d0b97f2d92ebc7223a17b7c008effae8f2b41cb
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 0232d66721fc127cc14e5078bbc811d50b3cf7a4
+        changelog-entry: Update layers/meta-balena to 0232d66721fc127cc14e5078bbc811d50b3cf7a4
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "docs: Explain TPM ownership and possible TPM fill-up with secure boot"
+              hash: 3770f5898cef8fc5ba70276056bf534e8c197186
+              body: >
+                Explain that balenaOS does not take control of the TPM and that
+                it
+
+                is possible to fill all the key slots with enough provisioning cycles.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "docs: Recommend BIOS password and no F-key shortcuts with secure boot"
+              hash: 586a46f447f859ec5866a78abddb85e6a2441451
+              body: >
+                We have seen devices that won't change PCR1 hash when a
+                temporary boot
+
+                order override was applied or secure boot was disabled via BIOS setup.
+
+                The implementation of what PCR1 actually measures is very
+
+                device-specific, but many of the risks can be mitigated by setting up
+
+                a BIOS password and disabling F-key shortcuts for interacting with
+
+                the firmware.
+
+
+                [skip ci]
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-3.0.1
+          title: ""
+          date: 2023-07-04T20:47:23.997Z
+  version: 3.0.1
+  title: ""
+  date: 2023-07-05T00:48:32.308Z
+- commits:
     - subject: Update layers/meta-balena to 05dfed30f590eb14e1721a471262d64e798dea46
       hash: db525c4a21f208f5b4ab2ffa3b57352f3b24d6f6
       body: Update layers/meta-balena

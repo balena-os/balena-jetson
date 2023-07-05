@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v3.0.1
+## (2023-07-05)
+
+
+<details>
+<summary> Update layers/meta-balena to 0232d66721fc127cc14e5078bbc811d50b3cf7a4 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.0.1
+> ### (2023-07-04)
+> 
+> * docs: Explain TPM ownership and possible TPM fill-up with secure boot [Michal Toman]
+> * docs: Recommend BIOS password and no F-key shortcuts with secure boot [Michal Toman]
+> 
+
+</details>
+
 # v3.0.0
 ## (2023-07-04)
 
