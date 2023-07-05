@@ -1,4 +1,51 @@
 - commits:
+    - subject: Update layers/meta-balena to 744eb2021a797c2e2b116e791c395cd0e6b133d7
+      hash: 52cc5dd4ee0b67a97df62672124b9ef2e15692a6
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 744eb2021a797c2e2b116e791c395cd0e6b133d7
+        changelog-entry: Update layers/meta-balena to 744eb2021a797c2e2b116e791c395cd0e6b133d7
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update balena-supervisor to v14.11.9
+              hash: ea7301f6c8a24b2090adec21074598f9bd644dda
+              body: |
+                Update balena-supervisor from 14.11.8 to 14.11.9
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Remove the 'Stopped' status for services
+                      hash: 38fe8dae75cd05bf313626b968e208dcfb6f307c
+                      body: >
+                        It's not an official status from container inspects, and
+                        the Supervisor
+
+                        doesn't set it internally anywhere. It's better to remove it entirely as the
+
+                        method by which Supervisor sets internal service statuses is by using a global
+
+                        event emitter (reportNewStatus) which makes things difficult to test.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.11.9
+                  title: ""
+                  date: 2023-06-28T21:01:03.352Z
+          version: meta-balena-3.0.3
+          title: ""
+          date: 2023-07-05T17:50:36.341Z
+  version: 3.0.3
+  title: ""
+  date: 2023-07-05T20:51:38.968Z
+- commits:
     - subject: Update layers/meta-balena to fac2a045b028c533f12b67712d663cfd3a360649
       hash: 1cd1df93e82437fa2fd1558340ccfb719bcfe33e
       body: Update layers/meta-balena
