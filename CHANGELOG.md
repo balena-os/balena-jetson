@@ -1,6 +1,32 @@
 Change log
 -----------
 
+# v3.0.4
+## (2023-07-06)
+
+
+<details>
+<summary> Update layers/meta-balena to 6a3ed9d310f41d687c9751f8e3e8c37604195cd4 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.0.4
+> ### (2023-07-05)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.38 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.38
+>> #### (2023-07-03)
+>> 
+>> * Document a couple of troubleshooting tips [Leandro Motta Barros]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v3.0.3
 ## (2023-07-05)
 

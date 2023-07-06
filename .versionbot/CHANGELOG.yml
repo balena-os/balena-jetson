@@ -1,4 +1,47 @@
 - commits:
+    - subject: Update layers/meta-balena to 6a3ed9d310f41d687c9751f8e3e8c37604195cd4
+      hash: 62c434ad5f7fdbea5ff8f311c0d98590af1f788d
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 6a3ed9d310f41d687c9751f8e3e8c37604195cd4
+        changelog-entry: Update layers/meta-balena to 6a3ed9d310f41d687c9751f8e3e8c37604195cd4
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update balena-engine to v20.10.38
+              hash: 74c07c2f4979b78eac4bc95a70fe6988bcd44590
+              body: |
+                Update balena-engine from 20.10.37 to 20.10.38
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Document a couple of troubleshooting tips
+                      hash: c8cc7e6e22d65ece306d125fee17e65b51bde84a
+                      body: >
+                        These are some smaller things I do every now and then
+                        when
+
+                        troubleshooting and are worth documenting.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.38
+                  title: ""
+                  date: 2023-07-03T14:00:04.969Z
+          version: meta-balena-3.0.4
+          title: ""
+          date: 2023-07-05T21:55:41.168Z
+  version: 3.0.4
+  title: ""
+  date: 2023-07-06T00:52:10.414Z
+- commits:
     - subject: Update layers/meta-balena to 744eb2021a797c2e2b116e791c395cd0e6b133d7
       hash: 52cc5dd4ee0b67a97df62672124b9ef2e15692a6
       body: Update layers/meta-balena
