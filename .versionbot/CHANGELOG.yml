@@ -1,4 +1,76 @@
 - commits:
+    - subject: Update layers/meta-balena to f7963b6b6d2cafd4d2b9ab4cfb12052d1afa0e53
+      hash: 6c0850dd9ae4013e1b785f47674f0f82fd8facc8
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f7963b6b6d2cafd4d2b9ab4cfb12052d1afa0e53
+        changelog-entry: Update layers/meta-balena to f7963b6b6d2cafd4d2b9ab4cfb12052d1afa0e53
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "kernel-devsrc: fix for v6.1+"
+              hash: 1687110706cbde4a4d968afb04b3abc07e5c7eaa
+              body: >
+                Adapted as a bbappend from:
+
+                https://git.yoctoproject.org/poky/commit/meta/recipes-kernel/linux/kernel-devsrc.bb?id=2be1b5d7d38d72c35ec593b98366d128fe5ce12c
+
+
+                The 6.1 kernel has a number of Kbuild and architecture changes
+
+                that required us to update our devsrc recipe. With these changes
+
+                we are once again able to build on target modules for all
+
+                supported archectures.
+
+
+                (From OE-Core rev: a3972b3f919400a12bb9a546ae98092cbfdcdbb8)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.0.6
+          title: ""
+          date: 2023-07-06T09:59:05.261Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.10
+              hash: ff0ccecb9211bccf482105bc40d453f82a44d3f9
+              body: |
+                Update balena-supervisor from 14.11.9 to 14.11.10
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Add revpi-connect-s to Raspberry Pi variants
+                      hash: 8d2b310af840d86ed9b96ac5bb4c5bc74e52e7ff
+                      body: >
+                        We need the supervisor to be able to manage config.txt
+                        changes for the
+
+                        Revolution Pi Connect S.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Florin Sarbu <florin@balena.io>
+                        signed-off-by: Florin Sarbu <florin@balena.io>
+                      author: Florin Sarbu
+                      nested: []
+                  version: balena-supervisor-14.11.10
+                  title: ""
+                  date: 2023-07-05T19:00:39.117Z
+          version: meta-balena-3.0.5
+          title: ""
+          date: 2023-07-06T01:55:50.942Z
+  version: 3.0.6
+  title: ""
+  date: 2023-07-06T11:56:37.045Z
+- commits:
     - subject: Update layers/meta-balena to 6a3ed9d310f41d687c9751f8e3e8c37604195cd4
       hash: 62c434ad5f7fdbea5ff8f311c0d98590af1f788d
       body: Update layers/meta-balena
