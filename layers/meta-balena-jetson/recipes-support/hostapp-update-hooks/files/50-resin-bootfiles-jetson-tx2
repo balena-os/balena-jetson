@@ -2,6 +2,8 @@
 
 . /usr/libexec/os-helpers-fs
 
+set -o errexit
+
 NVIDIA_PART_OFFSET="4097"
 DEV_PATH="/dev/mmcblk0"
 BOOT_PART="${DEV_PATH}boot0"
@@ -98,8 +100,31 @@ update_partition_binaries()
     for line in $(cat $1); do
         part_name=$(echo $line | cut -d ':' -f 1)
         file_name=$(echo $line | cut -d ':' -f 2)
-	src="${BIN_INSTALL_PATH}/${file_name}"
-	dst=$(get_state_path_from_label  "$part_name")
+        src="${BIN_INSTALL_PATH}/${file_name}"
+        dst=$(get_state_path_from_label "$part_name")
+        retries=0
+        max_retries=5
+
+
+        # On a different CDS DT we had instances where /dev/disk/by-state symlinks appeared briefly,
+        # only to disappear later when dd tried to access them. Let's ensure the link exists and retry otherwise.
+        # At most, if no symlink exists or it can't be used, dd will fail and the old hooks will be run.
+        # We've seen this race happen sporadically with the first partition, mts-bootpack, for that device-type
+        # so let's bring in the fix for the generic tx2 as well. And also set errexit because at this point
+        # any units running on 28.x should have been upgraded, and even so, we do backport_rollback_health_fix()
+        while [ ! -L "$dst" ]
+        do
+            info_log "Symlink $dst for $part_name not found, will retry in a second..."
+            sleep 1;
+            retries=$(( $retries + 1 ))
+            if [ $retries -ge $max_retries ]; then
+                info_log "Retries limit reached and $dst is still not present, bail out!"
+                exit 1
+            fi
+            dst=$(get_state_path_from_label "$part_name")
+            info_log "State path after retry is $dst"
+        done
+
 	if [ $(update_needed $src $dst) -eq 1 ]; then
             info_log "Will update ${dst}"
             dd if=${src} of=${dst} bs=1K
