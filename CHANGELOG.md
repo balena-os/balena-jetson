@@ -1,6 +1,37 @@
 Change log
 -----------
 
+# v3.0.9
+## (2023-07-13)
+
+
+<details>
+<summary> Update layers/meta-balena to cd6d6ef437a25ada9a03029367e3b6f36c2b4f6d [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.0.9
+> ### (2023-07-13)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to b1581a2 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.6
+>> #### (2023-07-13)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.12 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.5
+>> #### (2023-07-13)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.11 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v3.0.8+rev1
 ## (2023-07-12)
 
