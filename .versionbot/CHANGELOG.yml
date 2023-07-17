@@ -1,4 +1,38 @@
 - commits:
+    - subject: "hostapp-update-hooks: Improve state symlinks checks"
+      hash: fe2786b65be31c3c6c863cc1c21b3a745c79eb8f
+      body: >
+        On a dfferent type of CDS devices, the state symlink to the mts-bootpack
+
+        partition may be present when hup starts but later when
+
+        dd is used to calculate the md5sum they were removed
+
+
+        It's possible that udev repopulates the /dev/disk/by- directories,
+
+        so let's check if the initial symlink disappeared and
+
+        perform a couple retries if it did, to see if it gets re-created or
+
+        can be obtained from the partlabel directory.
+
+        At most, if none of the symlinks exist anymore the update will fail and the
+
+        hooks from the previous OS will run. The update procedure should
+
+        be re-triggered from the API in this case.
+      footer:
+        Changelog-entry: "hostapp-update-hooks: Improve state symlinks checks"
+        changelog-entry: "hostapp-update-hooks: Improve state symlinks checks"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 3.0.11+rev2
+  title: ""
+  date: 2023-07-17T14:23:44.908Z
+- commits:
     - subject: Update balena-os/github-workflows to
       hash: 2534725f1a148e933babf5921e9a9564551a8808
       body: Update balena-os/github-workflows

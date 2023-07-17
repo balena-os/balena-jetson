@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v3.0.11+rev2
+## (2023-07-17)
+
+* hostapp-update-hooks: Improve state symlinks checks [Alexandru Costache]
+
 # v3.0.11+rev1
 ## (2023-07-14)
 
