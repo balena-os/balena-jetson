@@ -1,4 +1,83 @@
 - commits:
+    - subject: Update layers/meta-balena to 8d432e761bf29b2f9f3f8f9f711b087f9133cfa6
+      hash: c1ec88e101d58e6686257ca4cd1c38f2d26f4222
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 8d432e761bf29b2f9f3f8f9f711b087f9133cfa6
+        changelog-entry: Update layers/meta-balena to 8d432e761bf29b2f9f3f8f9f711b087f9133cfa6
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 4e4c1bb
+              hash: ea0654d17b9ddf5babc8e647a919199b36f26e09
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.13
+                      hash: ea149d835fd8b170ae9a8554e063e964c4b34af6
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.12 to 2.9.13
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.8
+                  title: ""
+                  date: 2023-07-19T09:05:02.721Z
+                - commits:
+                    - subject: update e2e tests to use sshconfig
+                      hash: 1f44580c2010f0e88eb395da951cb539b6afbcdb
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                    - subject: "core: allow configurable ssh target"
+                      hash: 3b72e4963586aa9687aad5f6339910f587201fc2
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.28.7
+                  title: ""
+                  date: 2023-07-18T14:08:01.343Z
+          version: meta-balena-3.0.13
+          title: ""
+          date: 2023-07-19T18:45:09.490Z
+        - commits:
+            - subject: "tests/os: skip boot switch during provisioning"
+              hash: 7320af76d0a64561ff563384e5710f37c27a5852
+              body: |
+                The imx8mm-var-dart-plt also uses a custom implementation
+                for detecting the boot switch, so let's make use of the
+                existing support in meta-balena for the testbot provisioning
+                use-case and add this DT in the Autokit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io
+                signed-off-by: Alexandru Costache <alexandru@balena.io
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-3.0.12
+          title: ""
+          date: 2023-07-16T10:42:23.885Z
+  version: 3.0.13
+  title: ""
+  date: 2023-07-19T21:46:57.135Z
+- commits:
     - subject: "hostapp-update-hooks: Improve state symlinks checks"
       hash: fe2786b65be31c3c6c863cc1c21b3a745c79eb8f
       body: >
