@@ -166,6 +166,11 @@ do_configure() {
     fdtput -t s ./${DTBNAME}-rootA.dtb /chosen bootargs "$bootargs ${ROOTA_ARGS}"
     fdtput -t s ./${DTBNAME}-rootB.dtb /chosen bootargs "$bootargs ${ROOTB_ARGS}"
 
+   for dtnode in can1 can2
+    do
+       fdtput -t x tegra194-a02-bpmp-p2888-a04.dtb "/clocks/clock@$dtnode" "allowed-parents" "121" "5b" "13a" "5e"
+    done
+
     # Make bootable image from kernel and sign it
     cp ${DEPLOY_DIR_IMAGE}/${LNXFILE} ${LNXFILE}
     ln -sf ${STAGING_BINDIR_NATIVE}/tegra186-flash/mkbootimg ./
