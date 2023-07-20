@@ -1,0 +1,60 @@
+From 27f116121c55baaa5098fa889d4155e36bcb8490 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Thu, 20 Jul 2023 09:41:50 +0200
+Subject: [PATCH] use pllaon as clock source for mttcan1 and mttcan2
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ .../tegra194-no-pll-aon-clock.dtsi                   | 12 ++++++------
+ .../tegra194-p2888-0001-p2822-0000-common.dtsi       |  3 +--
+ 2 files changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/nvidia/platform/t19x/common/kernel-dts/t19x-common-platforms/tegra194-no-pll-aon-clock.dtsi b/nvidia/platform/t19x/common/kernel-dts/t19x-common-platforms/tegra194-no-pll-aon-clock.dtsi
+index fe0bddc113b9..c0ab786750d6 100644
+--- a/nvidia/platform/t19x/common/kernel-dts/t19x-common-platforms/tegra194-no-pll-aon-clock.dtsi
++++ b/nvidia/platform/t19x/common/kernel-dts/t19x-common-platforms/tegra194-no-pll-aon-clock.dtsi
+@@ -24,20 +24,20 @@
+         };
+ 
+         mttcan@c310000 {
+-		pll_source = "osc";
++		pll_source = "pllaon";
+                 clocks = <&bpmp_clks TEGRA194_CLK_CAN1_CORE>,
+                         <&bpmp_clks TEGRA194_CLK_CAN1_HOST>,
+                         <&bpmp_clks TEGRA194_CLK_CAN1>,
+-                        <&bpmp_clks TEGRA194_CLK_OSC>;
+-		 clock-names = "can_core", "can_host","can", "osc";
++                        <&bpmp_clks TEGRA194_CLK_PLLAON>;
++		 clock-names = "can_core", "can_host","can", "pllaon";
+         };
+ 
+         mttcan@c320000 {
+-		pll_source = "osc";
++		pll_source = "pllaon";
+                 clocks = <&bpmp_clks TEGRA194_CLK_CAN2_CORE>,
+                         <&bpmp_clks TEGRA194_CLK_CAN2_HOST>,
+                         <&bpmp_clks TEGRA194_CLK_CAN2>,
+-                        <&bpmp_clks TEGRA194_CLK_OSC>;
+-		 clock-names = "can_core", "can_host","can", "osc";
++                        <&bpmp_clks TEGRA194_CLK_PLLAON>;
++		 clock-names = "can_core", "can_host","can", "pllaon";
+         };
+ };
+diff --git a/nvidia/platform/t19x/galen/kernel-dts/common/tegra194-p2888-0001-p2822-0000-common.dtsi b/nvidia/platform/t19x/galen/kernel-dts/common/tegra194-p2888-0001-p2822-0000-common.dtsi
+index 86e0a74b37b3..3b71ca1b85c3 100644
+--- a/nvidia/platform/t19x/galen/kernel-dts/common/tegra194-p2888-0001-p2822-0000-common.dtsi
++++ b/nvidia/platform/t19x/galen/kernel-dts/common/tegra194-p2888-0001-p2822-0000-common.dtsi
+@@ -357,8 +357,7 @@
+ 		compatible = "nvidia,clocks-config";
+ 		status = "okay";
+ 		disable {
+-			clocks = <&aon_clks TEGRA194_CLK_PLLAON>,
+-				<&bpmp_clks TEGRA194_CLK_CAN1>,
++			clocks = <&bpmp_clks TEGRA194_CLK_CAN1>,
+ 				<&bpmp_clks TEGRA194_CLK_CAN2>;
+ 		};
+ 	};
+-- 
+2.37.2
+

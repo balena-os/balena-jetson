@@ -35,6 +35,10 @@ SRC_URI:append:jetson-tx2 = " \
     file://0017-rtl8822ce-os_dep-Fix-rssi-monitor-event-behavior.patch \
 "
 
+SRC_URI:append:jetson-xavier = " \
+    file://0001-use-pllaon-as-clock-source-for-mttcan1-and-mttcan2.patch \
+"
+
 SRC_URI:append:jetson-xavier-nx-devkit-seeed-2mic-hat = " \
     file://tegra194-p3668-all-p3509-0000-seeed-2mic-hat.dtb \
 "
