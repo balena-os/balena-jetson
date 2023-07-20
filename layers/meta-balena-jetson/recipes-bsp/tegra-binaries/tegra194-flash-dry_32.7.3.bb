@@ -150,7 +150,7 @@ do_configure() {
     done
 
     for f in ${STAGING_DATADIR}/tegraflash/tegra194-*-bpmp-*.dtb; do
-        ln -s $f .
+        cp $f .
         cp $f ${DEPLOY_DIR_IMAGE}/bootfiles/
     done
 
@@ -165,11 +165,6 @@ do_configure() {
     bootargs="`fdtget ./${DTBFILE} /chosen bootargs 2>/dev/null`"
     fdtput -t s ./${DTBNAME}-rootA.dtb /chosen bootargs "$bootargs ${ROOTA_ARGS}"
     fdtput -t s ./${DTBNAME}-rootB.dtb /chosen bootargs "$bootargs ${ROOTB_ARGS}"
-
-   for dtnode in can1 can2
-    do
-       fdtput -t x tegra194-a02-bpmp-p2888-a04.dtb "/clocks/clock@$dtnode" "allowed-parents" "121" "5b" "13a" "5e"
-    done
 
     # Make bootable image from kernel and sign it
     cp ${DEPLOY_DIR_IMAGE}/${LNXFILE} ${LNXFILE}
