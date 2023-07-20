@@ -1,4 +1,59 @@
 - commits:
+    - subject: Update layers/meta-balena to e378e5c5ac8186c1d8164a05f8aa669c1fe97ed9
+      hash: 168c8a617b5e726d04d2257a2d2a60473c9e8ee4
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e378e5c5ac8186c1d8164a05f8aa669c1fe97ed9
+        changelog-entry: Update layers/meta-balena to e378e5c5ac8186c1d8164a05f8aa669c1fe97ed9
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update balena-supervisor to v14.11.12
+              hash: dd6b9c93a5cfc4f4a04e190700284c79d4bd9f9a
+              body: |
+                Update balena-supervisor from 14.11.10 to 14.11.12
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: "mount-partitions: do not hardcode partition types"
+                      hash: cc2ca84448e2a3894294c39b8078c050c0237b87
+                      body: >
+                        Query instead the device for its filesystem type before
+                        mounting.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                        signed-off-by: Alex Gonzalez <alexg@balena.io>
+                      author: Alex Gonzalez
+                      nested: []
+                  version: balena-supervisor-14.11.12
+                  title: ""
+                  date: 2023-07-19T07:55:53.054Z
+                - commits:
+                    - subject: "backends: Add Jetson Orin NANO custom device-tree support"
+                      hash: 512240c54490ccd0cb83c13f0c6e8cae43fe9a88
+                      body: ""
+                      footer:
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Alexandru Costache
+                      nested: []
+                  version: balena-supervisor-14.11.11
+                  title: ""
+                  date: 2023-07-12T08:35:23.009Z
+          version: meta-balena-3.0.14
+          title: ""
+          date: 2023-07-20T06:59:16.510Z
+  version: 3.0.14
+  title: ""
+  date: 2023-07-20T09:48:27.024Z
+- commits:
     - subject: Update layers/meta-balena to 8d432e761bf29b2f9f3f8f9f711b087f9133cfa6
       hash: c1ec88e101d58e6686257ca4cd1c38f2d26f4222
       body: Update layers/meta-balena
