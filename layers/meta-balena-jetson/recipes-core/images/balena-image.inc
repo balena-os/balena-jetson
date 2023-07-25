@@ -66,7 +66,7 @@ BALENA_BOOT_PARTITION_FILES:jetson-xavier = " \
     bootfiles/warmboot_t194_prod_sigheader.bin.encrypt:/bootfiles/warmboot_t194_prod_sigheader.bin.encrypt \
     bootfiles/${DTBNAME}-rootA_sigheader.dtb.encrypt:/bootfiles/${DTBNAME}-rootA_sigheader.dtb.encrypt \
     bootfiles/${DTBNAME}-rootB_sigheader.dtb.encrypt:/bootfiles/${DTBNAME}-rootB_sigheader.dtb.encrypt \
-    bootfiles/boot0.img:/bootfiles/boot0.img \
+    bootfiles/boot0_t194.bin.gz:/bootfiles/boot0_t194.bin.gz \
     tegra-binaries/partition_specification194.txt:/bootfiles/partition_specification194.txt \
 "
 

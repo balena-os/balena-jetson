@@ -11,7 +11,7 @@ set -o errexit
 DURING_UPDATE=${DURING_UPDATE:-0}
 bootloader_device="/dev/mmcblk0boot0"
 partspec="/resin-boot/bootfiles/partition_specification194.txt"
-bootloader_blob="/resin-boot/bootfiles/boot0.img"
+bootloader_blob="/resin-boot/bootfiles/boot0_t194.bin.gz"
 bootpart_kernel="/mnt/boot/bootfiles/boot_sigheader.img.encrypt"
 
 info_log()
@@ -165,11 +165,11 @@ dd if=/opt/tegra-binaries/${kernel}  of=$(get_state_path_from_label "kernel${tar
 info_log "Updating boot image on hw partition mmcblk0boot0..."
 
 existing_bootloader_md5sum=$(dd if=$bootloader_device bs=1M status=none | md5sum | awk '{print $1}')
-update_bootloader_md5sum=$(md5sum $bootloader_blob | awk '{print $1}')
+update_bootloader_md5sum=$(zcat $bootloader_blob | md5sum | awk '{print $1}')
 
 if [ ! "$existing_bootloader_md5sum" = "$update_bootloader_md5sum" ]; then
     echo 0 > /sys/block/mmcblk0boot0/force_ro
-    dd if=$bootloader_blob of=$bootloader_device
+    zcat $bootloader_blob > $bootloader_device
     sync
     echo 1 > /sys/block/mmcblk0boot0/force_ro
 fi

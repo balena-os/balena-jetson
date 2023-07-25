@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${BALENA_COREBASE}/COPYING.Apache-2.0;md5=89aea4e17d9
 
 IMAGE_ROOTFS_ALIGNMENT ?= "4"
 
-BOOT_BINDIFF="boot0_t194_agx.bindiff"
+BOOT_BLOB="boot0_t194.bin.gz"
 
 DEPENDS = " \
     coreutils-native \
@@ -23,7 +23,7 @@ inherit deploy python3native perlnative l4t_bsp
 SRC_URI = " \
     file://resinOS-flash194.xml \
     file://partition_specification194.txt \
-    file://${BOOT_BINDIFF} \
+    file://${BOOT_BLOB};unpack=0 \
 "
 
 PINMUXCFG = "tegra19x-mb1-pinmux-p2888-0000-a04-p2822-0000-b01.cfg"
@@ -150,7 +150,7 @@ do_configure() {
     done
 
     for f in ${STAGING_DATADIR}/tegraflash/tegra194-*-bpmp-*.dtb; do
-        ln -s $f .
+        cp $f .
         cp $f ${DEPLOY_DIR_IMAGE}/bootfiles/
     done
 
@@ -214,67 +214,7 @@ do_configure() {
 
     # This is the Xavier boot0, which wasn't necessary for HUP from L4T 31.x to 32.3.1,
     # but becomes when moving to L4T 32.4.2 or newer.
-
-    dd if=/dev/zero of=boot0.img bs=8388608 count=1
-
-    # BCT (a)
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=3072 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=16384 bs=1 conv=notrunc
-
-    # mb1 (a + b)
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_t194_prod_sigheader.bin.encrypt of=boot0.img seek=32768 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_t194_prod_sigheader.bin.encrypt of=boot0.img seek=294912 bs=1 conv=notrunc #(32768 + 262144 which is mb1 size)
-
-    # MB1_BCT (a + b)
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_bct_MB1_sigheader.bct.encrypt of=boot0.img seek=557056 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_bct_MB1_sigheader.bct.encrypt of=boot0.img seek=638976 bs=1 conv=notrunc #(32768 + 262144 which is mb1 size)
-
-    # spe-fw (a + b)
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_t194_sigheader.bin.encrypt of=boot0.img seek=1130496 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_t194_sigheader.bin.encrypt of=boot0.img seek=1261568 bs=1 conv=notrunc
-
-    # mb2 (a + b)
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_t194_sigheader.bin.encrypt of=boot0.img seek=1392640 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_t194_sigheader.bin.encrypt of=boot0.img seek=1654784 bs=1 conv=notrunc
-
-    # mts-preboot (a + b)
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=1916928 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt of=boot0.img seek=2179072 bs=1 conv=notrunc
-
-    # SMD (a + b)
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=boot0.img seek=2441216 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=boot0.img seek=2445312 bs=1 conv=notrunc
-
-    # MEM_BCT (a + b)
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=720896 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mem_coldboot_sigheader.bct.encrypt of=boot0.img seek=925696 bs=1 conv=notrunc
-
-    # Although the device will boot fine, rtcpu may not run as expected unless
-    # we patch the boot blob to resemble entirely the one created during provisioning by the flashing tools.
-    # Example dmesg logs of this failure:
-    # tegra-hsp-mailbox ivc-bc00000.rtcpu: IOVM setup error: 110
-    # tegra186-cam-rtcpu bc00000.rtcpu: command: 0x00000000: empty mailbox timeout
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=557072 bs=1 count=32 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=560096 skip=32  bs=1 count=32 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=561168 skip=64  bs=1 count=32 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=562176 skip=96  bs=1 count=320 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=563536 skip=416  bs=1 count=320 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=587152 skip=736  bs=1 count=32 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=638992 skip=768  bs=1 count=32 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=642016 skip=800  bs=1 count=32 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=643088 skip=832  bs=1 count=32 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=644096 skip=864  bs=1 count=320 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=645456 skip=1184  bs=1 count=320 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=669072 skip=1504  bs=1 count=32 conv=notrunc
-
-    # Needed in L4T 32.7.2
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=587312 skip=1536  bs=1 count=32 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=669232 skip=1568  bs=1 count=32 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=2441216 skip=1600  bs=1 count=320 conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} of=boot0.img seek=2445312 skip=1920  bs=1 count=320 conv=notrunc
-
-    cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/
+    cp ${WORKDIR}/${BOOT_BLOB} ${DEPLOY_DIR_IMAGE}/bootfiles/
 }
 
 
