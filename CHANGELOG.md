@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v3.0.16+rev1
+## (2023-07-25)
+
+* conf/layer: Enable debug uart on development images and ttyTCU0 [Alexandru Costache]
+* linux-tegra: Use pllaon as clock parent for can1 and can2 [Alexandru Costache]
+* tegra194-flash-dry: Set pllaon as parent for can1 and can2 in bpmp [Alexandru Costache]
+
 # v3.0.16
 ## (2023-07-22)
 

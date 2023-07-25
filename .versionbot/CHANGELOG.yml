@@ -1,4 +1,44 @@
 - commits:
+    - subject: "conf/layer: Enable debug uart on development images and ttyTCU0"
+      hash: a97103469b2c874fb4b4af9be53f54f740037699
+      body: >
+        This enables debug uart on the Xavier AGX microUSB port which on a
+        hostPC
+
+        is listed as ttyUSBx.
+      footer:
+        Changelog-entry: "conf/layer: Enable debug uart on development images and ttyTCU0"
+        changelog-entry: "conf/layer: Enable debug uart on development images and ttyTCU0"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "linux-tegra: Use pllaon as clock parent for can1 and can2"
+      hash: 78ef5a8dd47671d65efd9f9d93b78bc7de9f004e
+      body: >
+        As per JF ticket
+        https://jel.ly.fish/support-thread-1-0-0-front-cnv-edwr3t9
+      footer:
+        Changelog-entry: "linux-tegra: Use pllaon as clock parent for can1 and can2"
+        changelog-entry: "linux-tegra: Use pllaon as clock parent for can1 and can2"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "tegra194-flash-dry: Set pllaon as parent for can1 and can2 in bpmp"
+      hash: a17896ce48c83cb7116440c54a40ad9d9cf72a8f
+      body: ""
+      footer:
+        Changelog-entry: "tegra194-flash-dry: Set pllaon as parent for can1 and can2 in bpmp"
+        changelog-entry: "tegra194-flash-dry: Set pllaon as parent for can1 and can2 in bpmp"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 3.0.16+rev1
+  title: ""
+  date: 2023-07-25T12:07:56.610Z
+- commits:
     - subject: Update layers/meta-balena to e1f474a9b8d28d5b0a0b993dd52108c214a376ea
       hash: ba2ad9a8768cf6bbf34db0d53ac712dc2fb15b16
       body: Update layers/meta-balena
