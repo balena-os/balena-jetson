@@ -1,4 +1,126 @@
 - commits:
+    - subject: Update layers/meta-balena to ced059b1f06281129434311dddc8ddab3d65fb5b
+      hash: cff85def9f11605775307feb1bad65b0f87ded50
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to ced059b1f06281129434311dddc8ddab3d65fb5b
+        changelog-entry: Update layers/meta-balena to ced059b1f06281129434311dddc8ddab3d65fb5b
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "linux/kernel-devsrc: Fix aarch64 kernel-headers-test build"
+              hash: 65abb381ec266066b24f53fa3119dd47ec8af1a3
+              body: >
+                This fix has been ported from the following upstream
+
+                change: https://patchwork.yoctoproject.org/project/oe-core/patch/002c31d6add77e1002fb1ccd4050ce826a654170.1659653543.git.bruce.ashfield@gmail.com/
+
+                and fixes the following compilation error on generic-aarch64:
+
+                    make[1]: *** No rule to make target 'arch/arm64/tools/gen-sysreg.awk',
+                    needed by 'arch/arm64/include/generated/asm/sysreg-defs.h'.  Stop.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-3.1.1
+          title: ""
+          date: 2023-07-26T18:12:23.719Z
+        - commits:
+            - subject: "linux-firmware: upgrade 20210511 -> 20230404"
+              hash: 6035e749c4bd989f7b8d23a5f48848af7d75efd8
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "common: firmware: repackage iwlwifi-quz-a0-hr-b0"
+              hash: 1bf5489acc3e4c3696bccdae98ea95653ec0d8b7
+              body: |
+                Package all subversions of this firmware
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "common: firmware: repackage iwlwifi-cc-a0"
+              hash: 1336cb0802c8589439557afca0c28d2aee248e60
+              body: >
+                Repackage iwlwifi-cc-a0 to include all firmware versions shipped
+
+                upstream, rather than only an older version (48) that's no longer
+
+                shipped as of 20230404.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "compat: connectivity: drop deprecated iwlwifi files"
+              hash: daef22bbb706898721eee131872862a5e2d7709e
+              body: >
+                linux-firmware-20230404 no longer ships several older firmware
+                versions,
+
+                remove them.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "compat: install linux-firmware-iwlwifi-3160"
+              hash: 9442d98a51bb0ef62991bd4292717e2052cd39ef
+              body: >
+                Replace older versioned iwlwifi packages with
+
+                linux-firmware-iwlwifi-3160 package that includes all versions shipped
+
+                in linux-firmware.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-3.1.0
+          title: ""
+          date: 2023-07-25T21:09:07.177Z
+        - commits:
+            - subject: "balena-image: Install extra_uEnv for all boards that use u-boot"
+              hash: c9d665f0c2a0454a84d9890d56e4d93f57bf93ad
+              body: >
+                Some board BSPs may define UBOOT_MACHINE, others UBOOT_CONFIG,
+
+                let's make sure we include the extra_uEnv.txt file in the non-flasher
+
+                image for both cases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-3.0.17
+          title: ""
+          date: 2023-07-25T13:45:11.862Z
+  version: 3.1.1
+  title: ""
+  date: 2023-07-26T23:13:24.735Z
+- commits:
     - subject: "conf/layer: Enable debug uart on development images and ttyTCU0"
       hash: a97103469b2c874fb4b4af9be53f54f740037699
       body: >
