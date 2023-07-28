@@ -1,6 +1,28 @@
 Change log
 -----------
 
+# v3.1.3
+## (2023-07-28)
+
+
+<details>
+<summary> Update layers/meta-balena to 3df341dcfa5681fc27d0713814635ddfe20d6a17 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.1.3
+> ### (2023-07-28)
+> 
+> * resin-init-flasher: Install the dispatcher scripts to installation media [Alex Gonzalez]
+> * balena-net-config: populate the dispatcher bind mount [Alex Gonzalez]
+> * resin-mounts: add dispatcher.d bind mount [Alex Gonzalez]
+> 
+> ## meta-balena-3.1.2
+> ### (2023-07-27)
+> 
+> * grub-conf: Do not hardcode the path for grub_extraenv [Michal Toman]
+> 
+
+</details>
+
 # v3.1.1
 ## (2023-07-26)
 

@@ -1,4 +1,96 @@
 - commits:
+    - subject: Update layers/meta-balena to 3df341dcfa5681fc27d0713814635ddfe20d6a17
+      hash: 9f41637e09f29a2590cbbddffbe6b5455f99c807
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 3df341dcfa5681fc27d0713814635ddfe20d6a17
+        changelog-entry: Update layers/meta-balena to 3df341dcfa5681fc27d0713814635ddfe20d6a17
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "resin-init-flasher: Install the dispatcher scripts to installation
+                media"
+              hash: 77d61290946ed69f348f05887334b28fc2aa0435
+              body: >
+                The flasher/installer image can be configured by the user and
+                that
+
+                configuration finishes up in the installed image. Add the dispatcher
+
+                scripts to this existing mechanim.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-net-config: populate the dispatcher bind mount"
+              hash: 0d1798d8742f34d92fd0d98314d349ba4b5dc54a
+              body: >
+                On boot, the dispatcher script are copied from the boot
+                partition where
+
+                the user has configured them, to the bind mount used by the running
+
+                applications.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-mounts: add dispatcher.d bind mount"
+              hash: 32abffb44d74fc0be6949ed6e893ee3476ffcf2e
+              body: >
+                This allows for user configuration of NetworkManager's
+                dispatcher
+
+                scripts.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.1.3
+          title: ""
+          date: 2023-07-28T11:36:17.599Z
+        - commits:
+            - subject: "grub-conf: Do not hardcode the path for grub_extraenv"
+              hash: f7ec67bd53e0998c12bcbdcaccea99f1f6856bcf
+              body: >
+                At this moment grub.cfg sources /grub/grub_extraenv which works
+                fine
+
+                on MBR systems, however on EFI systems this does not work because GRUB
+
+                is installed in /EFI/BOOT/ rather than /grub/.
+
+
+                This patch replaces the hardcoded /grub with ${prefix} which should
+
+                expand to the appropriate directory regardless of the platform. It also
+
+                removes the loading of grub_extraenv from the secure boot variant
+
+                of the GRUB config since this would not load without a signature anyway.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-3.1.2
+          title: ""
+          date: 2023-07-27T15:15:34.234Z
+  version: 3.1.3
+  title: ""
+  date: 2023-07-28T18:20:04.928Z
+- commits:
     - subject: Update layers/meta-balena to ced059b1f06281129434311dddc8ddab3d65fb5b
       hash: cff85def9f11605775307feb1bad65b0f87ded50
       body: Update layers/meta-balena
