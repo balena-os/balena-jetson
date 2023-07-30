@@ -1,4 +1,20 @@
 - commits:
+    - subject: "tegra-bootfiles: Modify can parents for a04 bpmp for Xavier AGX"
+      hash: 0c7b1b2ce70cb6f40011dac259cb5bf42e72c5fb
+      body: >
+        tegra194-a02-bpmp-p2888-a04.dtb should be modified instead of
+        tegra194-a02-bpmp-p2888-a01.dtb
+      footer:
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+        Changelog-entry: "tegra-bootfiles: Modify can parents for a04 bpmp for Xavier AGX"
+        changelog-entry: "tegra-bootfiles: Modify can parents for a04 bpmp for Xavier AGX"
+      author: Alexandru Costache
+      nested: []
+  version: 3.1.3+rev1
+  title: ""
+  date: 2023-07-30T06:40:45.474Z
+- commits:
     - subject: Update layers/meta-balena to 3df341dcfa5681fc27d0713814635ddfe20d6a17
       hash: 9f41637e09f29a2590cbbddffbe6b5455f99c807
       body: Update layers/meta-balena

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v3.1.3+rev1
+## (2023-07-30)
+
+* tegra-bootfiles: Modify can parents for a04 bpmp for Xavier AGX [Alexandru Costache]
+
 # v3.1.3
 ## (2023-07-28)
 
