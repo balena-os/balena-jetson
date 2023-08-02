@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v3.1.5
+## (2023-08-02)
+
+
+<details>
+<summary> Update layers/meta-balena to a71647f35b7987e21887d7cf0d0f6a883662ff5b [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.1.5
+> ### (2023-08-01)
+> 
+> * Reduce scope of app token used for backports and ESR [Kyle Harding]
+> 
+> ## meta-balena-3.1.4
+> ### (Invalid date)
+> 
+> * kernel-balena: remove mispelled config setting [Alex Gonzalez]
+> 
+
+</details>
+
 # v3.1.3+rev1
 ## (2023-07-30)
 
