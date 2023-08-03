@@ -1,4 +1,42 @@
 - commits:
+    - subject: Update contracts to bf0ec3d5a42dae4babeed8485030a0ca50f6fde3
+      hash: 7efef9819b1739827a19c86a87c54f383f0157c6
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to bf0ec3d5a42dae4babeed8485030a0ca50f6fde3
+        changelog-entry: Update contracts to bf0ec3d5a42dae4babeed8485030a0ca50f6fde3
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Replace ifupdown with ifupdown-ng for alpine edge
+              hash: cf7dde1ae72cd0edaa94c783da271b1bf22542ea
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.65
+          title: ""
+          date: 2023-08-02T20:23:30.063Z
+        - commits:
+            - subject: Remove OpenJDK v7 as it has been removed from alpine edge
+              hash: 343a2f5d0a08de2f9bb5ad1013150e98f23feb2c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.64
+          title: ""
+          date: 2023-08-02T20:02:24.824Z
+  version: 3.1.6+rev1
+  title: ""
+  date: 2023-08-03T02:41:11.491Z
+- commits:
     - subject: Update layers/meta-balena to a84dc6fbc5967f67acf0d12f4fe5a9081a70cb63
       hash: a9b57207ee2a5a0b19ff3991c13b5aebe31ce7f1
       body: Update layers/meta-balena

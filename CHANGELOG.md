@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v3.1.6+rev1
+## (2023-08-03)
+
+
+<details>
+<summary> Update contracts to bf0ec3d5a42dae4babeed8485030a0ca50f6fde3 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.65
+> ### (2023-08-02)
+> 
+> * Replace ifupdown with ifupdown-ng for alpine edge [Kyle Harding]
+> 
+> ## contracts-2.0.64
+> ### (2023-08-02)
+> 
+> * Remove OpenJDK v7 as it has been removed from alpine edge [Kyle Harding]
+> 
+
+</details>
+
 # v3.1.6
 ## (2023-08-02)
 
