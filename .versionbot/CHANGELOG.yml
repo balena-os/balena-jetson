@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to a54f1b2a8253d564634789283980d54004201bdf
+      hash: 911a29fd45f19cc61cdd2ccad80306a9ffab9af4
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to a54f1b2a8253d564634789283980d54004201bdf
+        changelog-entry: Update layers/meta-balena to a54f1b2a8253d564634789283980d54004201bdf
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: os: eng. healthcheck: retry timeout change"
+              hash: 288ccf608306695c7a709ca682726e82282918f0
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-3.1.7
+          title: ""
+          date: 2023-08-08T12:49:13.321Z
+  version: 3.1.7
+  title: ""
+  date: 2023-08-08T17:02:39.518Z
+- commits:
     - subject: Update contracts to bf0ec3d5a42dae4babeed8485030a0ca50f6fde3
       hash: 7efef9819b1739827a19c86a87c54f383f0157c6
       body: Update contracts
