@@ -1,4 +1,36 @@
 - commits:
+    - subject: Update layers/meta-balena to e6802f52d479d4ac76622dc6049740c03b0172c2
+      hash: 10693ac0285bb26fd95683ad6f27878246089f8b
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e6802f52d479d4ac76622dc6049740c03b0172c2
+        changelog-entry: Update layers/meta-balena to e6802f52d479d4ac76622dc6049740c03b0172c2
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "hostapp-update: bind-mount /sys for Jetson efivars"
+              hash: 5e0dbce7a08ec04a281e21a7df8c03affafeb8f2
+              body: |
+                The hostapp-update hooks for UEFI capsule updates
+                need to create and update the contents of some platform
+                specific efi variables inside the /sys directory, and thus
+                we need to bindmount this directory in the hostapp-update
+                script for internal testing, as well as in balenahup for
+                api triggered updates.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-3.1.10
+          title: ""
+          date: 2023-08-12T00:14:11.652Z
+  version: 3.1.10
+  title: ""
+  date: 2023-08-12T04:15:32.508Z
+- commits:
     - subject: Update layers/meta-balena to b7d25711fe3895125b92a0ff2852aa82f5c75cee
       hash: 1c95a96b0ed2a3585a055ccb1ecd8f963e85a0ba
       body: Update layers/meta-balena

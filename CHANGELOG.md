@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.1.10
+## (2023-08-12)
+
+
+<details>
+<summary> Update layers/meta-balena to e6802f52d479d4ac76622dc6049740c03b0172c2 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.1.10
+> ### (2023-08-12)
+> 
+> * hostapp-update: bind-mount /sys for Jetson efivars [Alexandru Costache]
+> 
+
+</details>
+
 # v3.1.9
 ## (2023-08-11)
 
