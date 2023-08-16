@@ -1,4 +1,89 @@
 - commits:
+    - subject: Update layers/meta-balena to eeb57a87d32b9dafb4656a5a598a57da425892e4
+      hash: 7cd071c6d1b5bd047ac755c36affc98257bdb5e4
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to eeb57a87d32b9dafb4656a5a598a57da425892e4
+        changelog-entry: Update layers/meta-balena to eeb57a87d32b9dafb4656a5a598a57da425892e4
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "Integration layers: mobile-broadband-provider: fix fetch failure"
+              hash: 38cd8393b4a69b78a348e15176c232244e67bdb2
+              body: >
+                mobile-broadband-provider-info 'master' branch was renamed to
+                'main',
+
+                causing do_fetch() to fail before it was changes in Yocto Kirkstone
+
+                commit e4795393c4882cf38273521539cc255a4ffcb34a.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.1.13
+          title: ""
+          date: 2023-08-16T13:31:36.723Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.14
+              hash: f42a9345171daeb1834ec50edae5a60cfac4f1c7
+              body: |
+                Update balena-supervisor from 14.11.13 to 14.11.14
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action to v0.28.0
+                      hash: 4f54395be2cbbb7bcd1d0c1a9acef3b707f34691
+                      body: Update balena-io/deploy-to-balena-action
+                      footer:
+                        Changelog-entry: Update balena-io/deploy-to-balena-action to v0.28.0
+                        changelog-entry: Update balena-io/deploy-to-balena-action to v0.28.0
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-14.11.14
+                  title: ""
+                  date: 2023-08-14T23:47:06.985Z
+          version: meta-balena-3.1.12
+          title: ""
+          date: 2023-08-15T04:26:33.597Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.13
+              hash: dd37dc33373fed3295dd64658a8728ddd6a3998e
+              body: |
+                Update balena-supervisor from 14.11.12 to 14.11.13
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: "patch: Remove reference of override_lock variable"
+                      hash: 7560c70a085d27d8b44eb0dab8b3fa40ab0c9e94
+                      body: This is being done to keep the source of truth for this variable in one
+                        place and reduce confusion since it's better for
+                        dashboard users to reference the dashboard option rather
+                        than the actual variable name
+                      footer: {}
+                      author: Vipul Gupta
+                      nested: []
+                  version: balena-supervisor-14.11.13
+                  title: ""
+                  date: 2023-08-10T16:51:23.863Z
+          version: meta-balena-3.1.11
+          title: ""
+          date: 2023-08-12T05:34:05.584Z
+  version: 3.1.13
+  title: ""
+  date: 2023-08-16T19:33:30.991Z
+- commits:
     - subject: Update layers/meta-balena to e6802f52d479d4ac76622dc6049740c03b0172c2
       hash: 10693ac0285bb26fd95683ad6f27878246089f8b
       body: Update layers/meta-balena

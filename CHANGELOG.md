@@ -1,6 +1,53 @@
 Change log
 -----------
 
+# v3.1.13
+## (2023-08-16)
+
+
+<details>
+<summary> Update layers/meta-balena to eeb57a87d32b9dafb4656a5a598a57da425892e4 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.1.13
+> ### (2023-08-16)
+> 
+> * Integration layers: mobile-broadband-provider: fix fetch failure [Alex Gonzalez]
+> 
+> ## meta-balena-3.1.12
+> ### (2023-08-15)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.14 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.14
+>> #### (2023-08-14)
+>> 
+>> * Update balena-io/deploy-to-balena-action to v0.28.0 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.1.11
+> ### (2023-08-12)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.13 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.13
+>> #### (2023-08-10)
+>> 
+>> * patch: Remove reference of override_lock variable [Vipul Gupta]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v3.1.10
 ## (2023-08-12)
 
