@@ -1,6 +1,78 @@
 Change log
 -----------
 
+# v3.2.4
+## (2023-08-21)
+
+
+<details>
+<summary> Update layers/meta-balena to ab712a25ab4b9747037fc2a20f76e1d0b6f49e5e [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.2.4
+> ### (2023-08-21)
+> 
+> * tests: cloud: lockfile: change test order [rcooke-warwick]
+> 
+> ## meta-balena-3.2.3
+> ### (2023-08-21)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 26e6cea [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.11
+>> #### (2023-08-18)
+>> 
+>> * improve autokit quickstart [rcooke-warwick]
+>> 
+>> ### leviathan-2.28.10
+>> #### (2023-08-18)
+>> 
+>> * patch: Update suites dependencies to latest [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.28.9
+>> #### (2023-08-18)
+>> 
+>> * patch: Add balenaCloud configurable environments to e2e [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.2.2
+> ### (2023-08-18)
+> 
+> * modemmanager: hold ModemManager 1.14.2 on Thud [Alex Gonzalez]
+> * meta-balena-thud: libqmi: Use v1.26.0 [Alex Gonzalez]
+> * meta-balena-thud: libmbim: use v 1.24.2 [Alex Gonzalez]
+> 
+> ## meta-balena-3.2.1
+> ### (2023-08-17)
+> 
+> * meta-balena-thud: adapt migrate module dependencies [Alex Gonzalez]
+> 
+> ## meta-balena-3.2.0
+> ### (2023-08-17)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.12.0 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.12.0
+>> #### (2023-08-17)
+>> 
+>> * Update README [Felipe Lalanne]
+>> * Replace node-dbus with @balena/systemd [Felipe Lalanne]
+>> * Replace dbus test service with mock-systemd-bus [Felipe Lalanne]
+>> * Update to nodejs 18 [Pagan Gazzard]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v3.1.13
 ## (2023-08-16)
 

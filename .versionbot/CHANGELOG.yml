@@ -1,4 +1,203 @@
 - commits:
+    - subject: Update layers/meta-balena to ab712a25ab4b9747037fc2a20f76e1d0b6f49e5e
+      hash: ef8bc9f1083d3bf40b4dcf37cbba93743e410c41
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to ab712a25ab4b9747037fc2a20f76e1d0b6f49e5e
+        changelog-entry: Update layers/meta-balena to ab712a25ab4b9747037fc2a20f76e1d0b6f49e5e
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: cloud: lockfile: change test order"
+              hash: 3134d64124c6dbbcd34f54874a1f4eaee09a4c6f
+              body: |
+                Change the test order to make things more consistent.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-3.2.4
+          title: ""
+          date: 2023-08-21T17:51:32.589Z
+        - commits:
+            - subject: Update tests/leviathan digest to 26e6cea
+              hash: 59254670dbe87a26764f9264e5a2d2839deb245d
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: improve autokit quickstart
+                      hash: fb7005cb55d91ce5b0713af9e534803d0841ff57
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.28.11
+                  title: ""
+                  date: 2023-08-18T14:21:19.299Z
+                - commits:
+                    - subject: "patch: Update suites dependencies to latest"
+                      hash: 6b20fa345404169da50b3b9bd853c41105448e67
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.28.10
+                  title: ""
+                  date: 2023-08-18T14:00:30.655Z
+                - commits:
+                    - subject: "patch: Add balenaCloud configurable environments to e2e"
+                      hash: e1858f52a46fc154644352ae9d85d22959523e22
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.28.9
+                  title: ""
+                  date: 2023-08-18T10:12:14.545Z
+          version: meta-balena-3.2.3
+          title: ""
+          date: 2023-08-21T11:51:01.752Z
+        - commits:
+            - subject: "modemmanager: hold ModemManager 1.14.2 on Thud"
+              hash: a13370eb1f57c42aaf78364b09e3424c8d801049
+              body: >
+                Latest stable ModemManager does not compile anymore on Thud, so
+                we
+
+                there use the previous version 1.14.2.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-thud: libqmi: Use v1.26.0"
+              hash: c0f6308d2308551e2bf9b51c1512cfd1ad3ef6b9
+              body: |
+                Newer versions are incompatible with the libc available in sumo.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-thud: libmbim: use v 1.24.2"
+              hash: 2dc7b072896e9793fa9292e9dcdc06de54f2ce4d
+              body: >
+                The current meta-balena libmbim is not compatible with thud's
+                libc
+
+                version.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.2.2
+          title: ""
+          date: 2023-08-18T12:38:52.035Z
+        - commits:
+            - subject: "meta-balena-thud: adapt migrate module dependencies"
+              hash: 5ff9a0c1077ef3c2ff3ff2a2ba678944fb0073a2
+              body: >
+                On Thud, the util-linux recipe had still not split components
+                into
+
+                different packages.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.2.1
+          title: ""
+          date: 2023-08-17T14:35:32.390Z
+        - commits:
+            - subject: Update balena-supervisor to v14.12.0
+              hash: 4f2c41743c27ea27d6eaedd5b4516427d9157d10
+              body: |
+                Update balena-supervisor from 14.11.14 to 14.12.0
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update README
+                      hash: c88d557aafc3088e4048a8cd9b9fc5fea8a45e01
+                      body: >
+                        Add the new dependency on RUST, reorganize the
+                        documentation
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Replace node-dbus with @balena/systemd
+                      hash: 327dc31ef02caa365e5a0c03597ba18d121c32a3
+                      body: >
+                        The node-dbus module is unmaintained and a blocker for
+                        the update to
+
+                        Node 18. Switching to our own node bindings for systemd solves this
+
+                        issue
+                      footer:
+                        Relates-to: Shouqun/node-dbus#241
+                        relates-to: Shouqun/node-dbus#241
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Replace dbus test service with mock-systemd-bus
+                      hash: 8f17c30de68f62477a52dd16a268e1d003c666ea
+                      body: >
+                        This avoids unnecessary mocking and tests against the
+                        real systemd API
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Update to nodejs 18
+                      hash: 2da691bcd5dd5ee8d8ee9460d93c895b73b4e2f4
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-14.12.0
+                  title: ""
+                  date: 2023-08-17T00:38:30.372Z
+          version: meta-balena-3.2.0
+          title: ""
+          date: 2023-08-17T04:33:51.281Z
+  version: 3.2.4
+  title: ""
+  date: 2023-08-21T23:53:03.601Z
+- commits:
     - subject: Update layers/meta-balena to eeb57a87d32b9dafb4656a5a598a57da425892e4
       hash: 7cd071c6d1b5bd047ac755c36affc98257bdb5e4
       body: Update layers/meta-balena
