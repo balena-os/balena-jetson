@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v3.2.4+rev1
+## (2023-08-22)
+
+
+<details>
+<summary> Update contracts to d09ff464591acafff8da686110ecc315f94745fa [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.68
+> ### (2023-08-15)
+> 
+> * iot-gate-imx8plus: Improve provisioning instructions for Windows [Alexandru Costache]
+> 
+> ## contracts-2.0.67
+> ### (2023-08-03)
+> 
+> * Fix conditional when installing libssl1.1 [Kyle Harding]
+> 
+> ## contracts-2.0.66
+> ### (2023-08-03)
+> 
+> * Fix a condition where /etc/nsswitch.conf exists and the build fails [Kyle Harding]
+> 
+
+</details>
+
 # v3.2.4
 ## (2023-08-21)
 

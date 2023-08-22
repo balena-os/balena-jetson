@@ -1,4 +1,55 @@
 - commits:
+    - subject: Update contracts to d09ff464591acafff8da686110ecc315f94745fa
+      hash: dded1b4f3a34f5df35000d9bde40e4fabdc6d3e5
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to d09ff464591acafff8da686110ecc315f94745fa
+        changelog-entry: Update contracts to d09ff464591acafff8da686110ecc315f94745fa
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "iot-gate-imx8plus: Improve provisioning instructions for Windows"
+              hash: dbfd03e791d69c657a295d92cd823e32f4bf2369
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.68
+          title: ""
+          date: 2023-08-15T07:20:27.206Z
+        - commits:
+            - subject: Fix conditional when installing libssl1.1
+              hash: 29e5a99050fb93fcea404fd48d2db029acf4acb3
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.67
+          title: ""
+          date: 2023-08-03T20:27:02.315Z
+        - commits:
+            - subject: Fix a condition where /etc/nsswitch.conf exists and the build fails
+              hash: c8c521ae9fdb908fb37642154d5fbe73a2849985
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.66
+          title: ""
+          date: 2023-08-03T20:04:14.870Z
+  version: 3.2.4+rev1
+  title: ""
+  date: 2023-08-22T03:53:43.810Z
+- commits:
     - subject: Update layers/meta-balena to ab712a25ab4b9747037fc2a20f76e1d0b6f49e5e
       hash: ef8bc9f1083d3bf40b4dcf37cbba93743e410c41
       body: Update layers/meta-balena
