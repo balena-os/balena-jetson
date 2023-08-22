@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.2.5
+## (2023-08-22)
+
+
+<details>
+<summary> Update layers/meta-balena to b65f4a096bfae592e7f02acf7dd0be2110c84ae9 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.2.5
+> ### (2023-08-22)
+> 
+> * contributing-device-support.md: Clarify repo set-up in balenaOS org for private device types [Florin Sarbu]
+> 
+
+</details>
+
 # v3.2.4+rev1
 ## (2023-08-22)
 
