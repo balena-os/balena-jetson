@@ -1,4 +1,61 @@
 - commits:
+    - subject: Update layers/meta-balena to d0fb824dca1869d27592e5c48b757cbf95ae106f
+      hash: 91f6c2a8c5f225ff8d13ebfcfc8a66f05e763575
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to d0fb824dca1869d27592e5c48b757cbf95ae106f
+        changelog-entry: Update layers/meta-balena to d0fb824dca1869d27592e5c48b757cbf95ae106f
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to e7622aa
+              hash: 0734600358fedd609c76d95ac14067584c4643c9
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.18
+                      hash: 2b27e7a539bd30b96ffb02e0491f720095e0c484
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.13 to 2.9.18
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.12
+                  title: ""
+                  date: 2023-08-23T21:00:04.376Z
+          version: meta-balena-3.2.7
+          title: ""
+          date: 2023-08-24T02:00:02.949Z
+        - commits:
+            - subject: "resin-u-boot.class: Fix for older u-boot versions"
+              hash: 8da86ebc124eacda1a1bf22d183f13a112c22158
+              body: |
+                The env_get() function was renamed from getenv() in commit
+                00caae6d47645e68d6e5277aceb69592b49381a6
+                env: Rename getenv/_f() to env_get()
+
+                Fix the balena_check_crc32 function to build for those older
+                u-boots too.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.2.6
+          title: ""
+          date: 2023-08-23T19:20:53.089Z
+  version: 3.2.7
+  title: ""
+  date: 2023-08-24T07:01:18.000Z
+- commits:
     - subject: Update layers/meta-balena to b65f4a096bfae592e7f02acf7dd0be2110c84ae9
       hash: eae65e12460692b3af7e2fdc942fe4c5ef973069
       body: Update layers/meta-balena

@@ -1,6 +1,37 @@
 Change log
 -----------
 
+# v3.2.7
+## (2023-08-24)
+
+
+<details>
+<summary> Update layers/meta-balena to d0fb824dca1869d27592e5c48b757cbf95ae106f [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.2.7
+> ### (2023-08-24)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to e7622aa [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.12
+>> #### (2023-08-23)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.18 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.2.6
+> ### (2023-08-23)
+> 
+> * resin-u-boot.class: Fix for older u-boot versions [Alex Gonzalez]
+> 
+
+</details>
+
 # v3.2.5
 ## (2023-08-22)
 
