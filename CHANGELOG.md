@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.2.8+rev1
+## (2023-08-29)
+
+
+<details>
+<summary> Update contracts to ca46c341b263adfd70071288d669f7479983f326 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.71
+> ### (2023-08-29)
+> 
+> * Add the BeagleBone AI-64. [Lisandro Damián Nicanor Pérez Meyer]
+> 
+
+</details>
+
 # v3.2.8
 ## (2023-08-24)
 
