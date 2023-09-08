@@ -1,6 +1,118 @@
 Change log
 -----------
 
+# v4.0.1
+## (2023-09-08)
+
+
+<details>
+<summary> Update layers/meta-balena to 6db6c7c9774bf58dc4676816280f81fae83df78e [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.0.1
+> ### (2023-09-08)
+> 
+> * classes: sign: add a retry to the signing call [Alex Gonzalez]
+> 
+> ## meta-balena-4.0.0
+> ### (2023-09-06)
+> 
+> * Update actions/checkout action to v4 [Self-hosted Renovate Bot]
+> 
+> ## meta-balena-3.2.12
+> ### (2023-09-06)
+> 
+> * timesync-https: skip time sync if connectivity URI is null [Alex Gonzalez]
+> * README: update time in the OS section [Alex Gonzalez]
+> 
+> ## meta-balena-3.2.11
+> ### (2023-09-01)
+> 
+> * Update tibdex/github-app-token action to v1.8.2 [Self-hosted Renovate Bot]
+> 
+> ## meta-balena-3.2.10
+> ### (2023-09-01)
+> 
+> * meta-resin-pyro: do not apply further modemmanager updates [Alex Gonzalez]
+> 
+> ## meta-balena-3.2.9
+> ### (2023-09-01)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to b353754 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.25
+>> #### (Invalid date)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.21 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.24
+>> #### (Invalid date)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.20 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.23
+>> #### (Invalid date)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.19 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.22
+>> #### (Invalid date)
+>> 
+>> * add nocache flash to balena push [rcooke-warwick]
+>> 
+>> ### leviathan-2.28.21
+>> #### (Invalid date)
+>> 
+>> * patch: Update client dependencies [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.28.20
+>> #### (Invalid date)
+>> 
+>> * patch: Clarify env variables in Documentation [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.28.19
+>> #### (Invalid date)
+>> 
+>> * patch: Add .nojekyll file to docs [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.28.18
+>> #### (2023-08-29)
+>> 
+>> * patch: Resolve dead links in README [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.28.17
+>> #### (2023-08-29)
+>> 
+>> * Update core/contracts digest to ca46c34 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.16
+>> #### (2023-08-25)
+>> 
+>> * Update core/contracts digest to d61d911 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.15
+>> #### (2023-08-25)
+>> 
+>> * Update actions/checkout digest to f43a0e5 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.14
+>> #### (2023-08-25)
+>> 
+>> * Remove custom automerge rules and use the inherited rules [Kyle Harding]
+>> 
+>> ### leviathan-2.28.13
+>> #### (2023-08-25)
+>> 
+>> * patch: Exit GH job if tests fails [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v3.2.8+rev1
 ## (2023-08-29)
 
