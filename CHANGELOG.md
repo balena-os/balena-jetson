@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v4.0.1+rev1
+## (2023-09-08)
+
+
+<details>
+<summary> Update contracts to 518a1d424f09a11dc1b60a16026bfe8ffe07ca78 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.72
+> ### (2023-09-04)
+> 
+> * raspberrypi4-unipi-neuron: Add new device type [Florin Sarbu]
+> 
+
+</details>
+
 # v4.0.1
 ## (2023-09-08)
 
