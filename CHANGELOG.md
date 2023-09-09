@@ -1,6 +1,32 @@
 Change log
 -----------
 
+# v4.0.2
+## (2023-09-09)
+
+
+<details>
+<summary> Update layers/meta-balena to 5e772f467a81643ad3b78007ce9662df03782bc1 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.0.2
+> ### (2023-09-08)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.39 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.39
+>> #### (Invalid date)
+>> 
+>> * Don't enable AppArmor if `apparmor_parser` is not present [Leandro Motta Barros]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v4.0.1+rev1
 ## (2023-09-08)
 
