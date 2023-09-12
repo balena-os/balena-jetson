@@ -1,4 +1,65 @@
 - commits:
+    - subject: Update layers/meta-balena to 5ebb6671a99eaaa577e03fd16290d25493d05ee2
+      hash: da0dbc4fe7b1df03a3d78a4fea86d26a3b8f6d6a
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 5ebb6671a99eaaa577e03fd16290d25493d05ee2
+        changelog-entry: Update layers/meta-balena to 5ebb6671a99eaaa577e03fd16290d25493d05ee2
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: renovate updates patch only
+              hash: 1a0b95602763304669ddaffe1cb67cc026723244
+              body: ""
+              footer:
+                change-type: patch
+              author: ab77
+              nested: []
+          version: meta-balena-4.0.4
+          title: ""
+          date: 2023-09-11T18:49:51.206Z
+        - commits:
+            - subject: Update tests/leviathan digest to 0acfe61
+              hash: 411e0b19183a2d6177872ac56623c9a509a584bf
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update actions/upload-artifact digest to a8a3f3a
+                      hash: a0872927995592524673167c1bc33ad587ff50a6
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.27
+                  title: ""
+                  date: 2023-09-06T19:51:32.877Z
+                - commits:
+                    - subject: Update core/contracts digest to 518a1d4
+                      hash: 10a961344aeff9113d7674cd7a98a0e493f115e5
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.26
+                  title: ""
+                  date: 2023-09-04T07:57:26.710Z
+          version: meta-balena-4.0.3
+          title: ""
+          date: 2023-09-09T03:01:22.296Z
+  version: 4.0.4
+  title: ""
+  date: 2023-09-12T01:13:39.314Z
+- commits:
     - subject: Update layers/meta-balena to 5e772f467a81643ad3b78007ce9662df03782bc1
       hash: 0a244474b77dd2dcb250b2d6dfb4863d5dff6ff3
       body: Update layers/meta-balena

@@ -1,6 +1,42 @@
 Change log
 -----------
 
+# v4.0.4
+## (2023-09-12)
+
+
+<details>
+<summary> Update layers/meta-balena to 5ebb6671a99eaaa577e03fd16290d25493d05ee2 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.0.4
+> ### (2023-09-11)
+> 
+> * renovate updates patch only [ab77]
+> 
+> ## meta-balena-4.0.3
+> ### (2023-09-09)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 0acfe61 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.27
+>> #### (2023-09-06)
+>> 
+>> * Update actions/upload-artifact digest to a8a3f3a [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.26
+>> #### (2023-09-04)
+>> 
+>> * Update core/contracts digest to 518a1d4 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v4.0.2
 ## (2023-09-09)
 
