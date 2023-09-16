@@ -1,4 +1,131 @@
 - commits:
+    - subject: Update layers/meta-balena to 8f952b7a5c8db38d6c674c2a0bef577c743ba2f0
+      hash: 07d2087004d1d16e7a0f5990326a7401c95128d0
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 8f952b7a5c8db38d6c674c2a0bef577c743ba2f0
+        changelog-entry: Update layers/meta-balena to 8f952b7a5c8db38d6c674c2a0bef577c743ba2f0
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 397a10f
+              hash: b8421872d45f16e654fde0e1d1e240968c475422
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.23
+                      hash: 7c2d1e6651350949eafa17fd038018bae40df8d7
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.22 to 2.9.23
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.29
+                  title: ""
+                  date: 2023-09-14T10:54:52.758Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.22
+                      hash: 3d8c8a9c5c8e3d9d8b09300a4d65af8bb42db05c
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.21 to 2.9.22
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.28
+                  title: ""
+                  date: 2023-09-12T16:58:45.014Z
+          version: meta-balena-4.0.9
+          title: ""
+          date: 2023-09-15T23:27:58.821Z
+        - commits:
+            - subject: Enable back ModemManager AT commands through D-Bus and	mmcli
+              hash: da1a6c0dd2e74fc8b98aafb109eed5aed7e95c43
+              body: >
+                That feature was lost when transitioning from autotools to meson.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Enable back ModemManager AT commands through D-Bus and	mmcli
+                changelog-entry: Enable back ModemManager AT commands through D-Bus and	mmcli
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-4.0.8
+          title: ""
+          date: 2023-09-15T17:27:00.202Z
+        - commits:
+            - subject: Update tibdex/github-app-token action to v2
+              hash: c0ba7aaea9cd960d9066822d5319cafac93b57d0
+              body: |
+                Update tibdex/github-app-token from v1.8.2 to v2.0.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested: []
+          version: meta-balena-4.0.7
+          title: ""
+          date: 2023-09-14T01:20:50.000Z
+        - commits:
+            - subject: Update balena-supervisor to v14.12.1
+              hash: e24c7a84c64b4fe1465303987c898268a22cb73f
+              body: |
+                Update balena-supervisor from 14.12.0 to 14.12.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Bump sqlite3 to 5.1.6
+                      hash: 99962dc94f2356008c063ede08a2a71b4ef21630
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Bump knex to v2.5.1
+                      hash: 06e258ecad2e91f40c2b1602a59b0120bc5639c3
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.12.1
+                  title: ""
+                  date: 2023-08-21T16:17:32.755Z
+          version: meta-balena-4.0.6
+          title: ""
+          date: 2023-09-13T20:19:59.968Z
+        - commits:
+            - subject: "tests: os: retry healthcheck disable"
+              hash: 19e9d67b642ca815b5da5315fcab84701a54c985
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-4.0.5
+          title: ""
+          date: 2023-09-13T14:15:00.133Z
+  version: 4.0.9
+  title: ""
+  date: 2023-09-16T04:29:02.820Z
+- commits:
     - subject: Update layers/meta-balena to 5ebb6671a99eaaa577e03fd16290d25493d05ee2
       hash: da0dbc4fe7b1df03a3d78a4fea86d26a3b8f6d6a
       body: Update layers/meta-balena

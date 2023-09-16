@@ -1,6 +1,69 @@
 Change log
 -----------
 
+# v4.0.9
+## (2023-09-16)
+
+
+<details>
+<summary> Update layers/meta-balena to 8f952b7a5c8db38d6c674c2a0bef577c743ba2f0 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.0.9
+> ### (2023-09-15)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 397a10f [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.29
+>> #### (2023-09-14)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.23 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.28
+>> #### (2023-09-12)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.22 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.8
+> ### (2023-09-15)
+> 
+> * Enable back ModemManager AT commands through D-Bus and	mmcli [Zahari Petkov]
+> 
+> ## meta-balena-4.0.7
+> ### (2023-09-14)
+> 
+> * Update tibdex/github-app-token action to v2 [Self-hosted Renovate Bot]
+> 
+> ## meta-balena-4.0.6
+> ### (2023-09-13)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.12.1 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.12.1
+>> #### (2023-08-21)
+>> 
+>> * Bump sqlite3 to 5.1.6 [Felipe Lalanne]
+>> * Bump knex to v2.5.1 [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.5
+> ### (2023-09-13)
+> 
+> * tests: os: retry healthcheck disable [rcooke-warwick]
+> 
+
+</details>
+
 # v4.0.4
 ## (2023-09-12)
 
