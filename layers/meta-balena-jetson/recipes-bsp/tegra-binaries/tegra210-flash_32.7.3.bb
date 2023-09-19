@@ -17,11 +17,18 @@ DEPENDS = " \
 
 inherit deploy python3native perlnative
 
+BOOT_BLOB:jetson-nano = "boot0nano_sd.bin.gz"
+BOOT_BLOB:jetson-nano-emmc = "boot0nano_emmc.bin.gz"
+
+# TODO: Update blob for 2GB Devkit
+BOOT_BLOB:jetson-nano-2gb-devkit = "boot0nano_sd.bin.gz"
+
 SRC_URI = " \
     file://resinOS-flash210.xml \
     file://partition_specification210.txt \
     file://resinOS-flash210-2gb.xml \
     file://partition_specification210-2gb.txt \
+    file://${BOOT_BLOB};unpack=0 \
 "
 
 VARIANT = ""
@@ -176,35 +183,7 @@ do_configure() {
     cp ${DEPLOY_DIR_IMAGE}/${DTBFILE} ${DEPLOY_DIR_IMAGE}/bootfiles/
     rm -rf ${_PID}
 
-    for off in 0 10240 32768 65536 98304 131072 163840 196608 229376; do
-        dd if=${DEPLOY_DIR_IMAGE}/bootfiles/${MACHINE}.bct of=${BOOT0} bs=1 seek=${off} conv=notrunc
-    done
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot.bin.encrypt of=${BOOT0} bs=1 seek=262144 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot.bin.encrypt of=${BOOT0} bs=1 seek=524288 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_cpu.bin.encrypt of=${BOOT0} bs=1 seek=720896 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/${DTBFILE}.encrypt of=${BOOT0} bs=1 seek=851968 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/${DTBFILE}.encrypt of=${BOOT0} bs=1 seek=2555904 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/cboot.bin.encrypt of=${BOOT0} bs=1 seek=1179648 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/warmboot.bin.encrypt of=${BOOT0} bs=1 seek=1769472 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/sc7entry-firmware.bin.encrypt of=${BOOT0} bs=1 seek=1835008 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/tos-mon-only.img.encrypt of=${BOOT0} bs=1 seek=2097152 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/u-boot.bin.encrypt of=${BOOT0} bs=1 seek=2883584 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/eks.img of=${BOOT0} bs=1 seek=3637248 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/rp4.blob of=${BOOT0} bs=1 seek=3899392 conv=notrunc
-
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/flash.xml.bin of=${BOOT0} bs=1 seek=458752 conv=notrunc
-
-    cp ${S}/tegraflash/${BOOT0} ${DEPLOY_DIR_IMAGE}/bootfiles/
+    zcat ${WORKDIR}/${BOOT_BLOB} > ${DEPLOY_DIR_IMAGE}/bootfiles/${BOOT0}
 }
 
 do_install() {
