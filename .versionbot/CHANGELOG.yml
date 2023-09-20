@@ -1,4 +1,21 @@
 - commits:
+    - subject: "tegra-binaries/tegra210-flash: Update Nano SD to 32.7.3, switch to
+        prebuilt boot blob"
+      hash: 8cb0e254b82695ae63934d445c47daa10d91a074
+      body: ""
+      footer:
+        Changelog-entry: "tegra-binaries/tegra210-flash: Update Nano SD to 32.7.3,
+          switch to prebuilt boot blob"
+        changelog-entry: "tegra-binaries/tegra210-flash: Update Nano SD to 32.7.3,
+          switch to prebuilt boot blob"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 4.0.9+rev2
+  title: ""
+  date: 2023-09-20T05:49:42.414Z
+- commits:
     - subject: Update .gitmodules with submodule branch information
       hash: 728b8a557c337012305aed63727b6ec3630e1bf7
       body: ""

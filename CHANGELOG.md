@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v4.0.9+rev2
+## (2023-09-20)
+
+* tegra-binaries/tegra210-flash: Update Nano SD to 32.7.3, switch to prebuilt boot blob [Alexandru Costache]
+
 # v4.0.9+rev1
 ## (2023-09-19)
 
