@@ -1,6 +1,33 @@
 Change log
 -----------
 
+# v4.0.11
+## (2023-09-21)
+
+
+<details>
+<summary> Update layers/meta-balena to 2afff0f8f102e7525f41c81c6c41d0c184a6e5be [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.0.11
+> ### (2023-09-21)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.40 [Leandro Motta Barros] </summary>
+> 
+>> ### balena-engine-20.10.40
+>> #### (2023-09-11)
+>> 
+>> * Re-vendor to get the containerd-shim-runc-v2 sources [Leandro Motta Barros]
+>> * Default to io.containerd.runc.v2 [Robert Günzler]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v4.0.10
 ## (2023-09-20)
 
