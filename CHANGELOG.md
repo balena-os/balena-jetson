@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v4.0.12
+## (2023-09-25)
+
+
+<details>
+<summary> Update layers/meta-balena to 4fe79e7ee65f47c0a5baebbd82b35aec71d92fbd [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.0.12
+> ### (2023-09-25)
+> 
+> * Check if SUPERVISOR_OVERRIDE_LOCK is set [jaomaloy]
+> * Check and get service lockfiles on HUP reboot [jaomaloy]
+> 
+
+</details>
+
 # v4.0.11+rev1
 ## (2023-09-22)
 

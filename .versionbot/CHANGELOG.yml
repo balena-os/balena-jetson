@@ -1,4 +1,44 @@
 - commits:
+    - subject: Update layers/meta-balena to 4fe79e7ee65f47c0a5baebbd82b35aec71d92fbd
+      hash: e05e06e9b02af85f0695e769622459918a075279
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 4fe79e7ee65f47c0a5baebbd82b35aec71d92fbd
+        changelog-entry: Update layers/meta-balena to 4fe79e7ee65f47c0a5baebbd82b35aec71d92fbd
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Check if SUPERVISOR_OVERRIDE_LOCK is set
+              hash: 02c52347758feb3214990ef6d83be5d804b6e6f2
+              body: |
+                This is so that we respect user's decision
+                to skip update locks on HUP as well.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: jaomaloy <jaomaloy@balena.io>
+                signed-off-by: jaomaloy <jaomaloy@balena.io>
+              author: jaomaloy
+              nested: []
+            - subject: Check and get service lockfiles on HUP reboot
+              hash: 0ab1230d19f4f60cb780d9d1495eb9062b5ec5e0
+              body: |
+                This is so that the HUP reboot doesn't interrupt
+                any user service processes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: jaomaloy <jao.maloy@balena.io>
+                signed-off-by: jaomaloy <jao.maloy@balena.io>
+              author: jaomaloy
+              nested: []
+          version: meta-balena-4.0.12
+          title: ""
+          date: 2023-09-25T12:04:56.750Z
+  version: 4.0.12
+  title: ""
+  date: 2023-09-25T17:05:50.323Z
+- commits:
     - subject: Update balena-os/github-workflows to v0.0.22
       hash: e8fcbff00edd6234b1153352d4cb71f89a9be8a1
       body: Update balena-os/github-workflows
