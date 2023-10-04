@@ -4,7 +4,7 @@ DEVICE_SPECIFIC_SPACE:jetson-nano = "49152"
 DEVICE_SPECIFIC_SPACE:jetson-nano-emmc = "49152"
 DEVICE_SPECIFIC_SPACE:jetson-nano-2gb-devkit = "49152"
 
-BALENA_BOOT_PARTITION_FILES:jetson-tx2 = " \
+BALENA_BOOT_PARTITION_FILES:append:jetson-tx2 = " \
     extlinux/extlinux.conf:/extlinux/extlinux.conf \
 "
 

@@ -25,8 +25,11 @@ DTBFILE:cnx100-xavier-nx = "tegra194-xavier-nx-cnx100.dtb"
 DTBNAME:jetson-xavier="tegra194-p2888-0001-p2822-0000"
 DTBNAME:jetson-xavier-nx-devkit-seeed-2mic-hat="tegra194-p3668-all-p3509-0000-seeed-2mic-hat"
 
-# Name update files as partition names for easier updating
-BALENA_BOOT_PARTITION_FILES:jetson-nano = " \
+BALENA_BOOT_PARTITION_FILES:append = " \
+    dispatcher.d/50-sample-script:/dispatcher.d/50-sample-script \
+"
+
+NANO_BOOT_PARTITION_FILES = " \
     bootfiles/nvtboot_cpu.bin.encrypt:/bootfiles/TBC \
     bootfiles/${DTBFILE}.encrypt:/bootfiles/RP1 \
     bootfiles/cboot.bin.encrypt:/bootfiles/EBT \
@@ -40,13 +43,15 @@ BALENA_BOOT_PARTITION_FILES:jetson-nano = " \
     bootfiles/bmp.blob:/bootfiles/BMP \
 "
 
-BALENA_BOOT_PARTITION_FILES:jetson-nano-emmc = "${BALENA_BOOT_PARTITION_FILES:jetson-nano}"
-BALENA_BOOT_PARTITION_FILES:jetson-nano-2gb-devkit = "${BALENA_BOOT_PARTITION_FILES:jetson-nano}"
+# Name update files as partition names for easier updating
+BALENA_BOOT_PARTITION_FILES:append:jetson-nano = " ${NANO_BOOT_PARTITION_FILES} "
+BALENA_BOOT_PARTITION_FILES:append:jetson-nano-emmc = "${NANO_BOOT_PARTITION_FILES}"
+BALENA_BOOT_PARTITION_FILES:append:jetson-nano-2gb-devkit = "${NANO_BOOT_PARTITION_FILES}"
 
 
 do_rootfs:balenaos-img:jetson-xavier[depends] += " tegra194-flash-dry:do_deploy "
 
-BALENA_BOOT_PARTITION_FILES:jetson-xavier = " \
+BALENA_BOOT_PARTITION_FILES:append:jetson-xavier = " \
     bootfiles/mb1_t194_prod_sigheader.bin.encrypt:/bootfiles/mb1_t194_prod_sigheader.bin.encrypt \
     bootfiles/spe_t194_sigheader.bin.encrypt:/bootfiles/spe_t194_sigheader.bin.encrypt \
     bootfiles/nvtboot_t194_sigheader.bin.encrypt:/bootfiles/nvtboot_t194_sigheader.bin.encrypt \
