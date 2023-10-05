@@ -1,4 +1,20 @@
 - commits:
+    - subject: "recipes-connectivity/networkmanager: Add sample dispatcher script"
+      hash: fedfca2329863105c6ff67fdc1f8f9257bf13f15
+      body: |
+        because jetson-flash needs the dispatcher.d directory to actually exist
+        in the balena-image due to a bug in fatfs node library
+      footer:
+        Changelog-entry: "recipes-connectivity/networkmanager: Add sample dispatcher script"
+        changelog-entry: "recipes-connectivity/networkmanager: Add sample dispatcher script"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 4.0.15+rev2
+  title: ""
+  date: 2023-10-05T11:43:29.159Z
+- commits:
     - subject: Update contracts to 27ea28be5e65c06cac559ab5bddeccf77d13830f
       hash: 7419f3e11b722c2fab1a3f7950659bacd56e64a3
       body: Update contracts

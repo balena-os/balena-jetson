@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v4.0.15+rev2
+## (2023-10-05)
+
+* recipes-connectivity/networkmanager: Add sample dispatcher script [Alexandru Costache]
+
 # v4.0.15+rev1
 ## (2023-09-28)
 
