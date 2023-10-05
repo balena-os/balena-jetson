@@ -1,0 +1,12 @@
+#!/bin/bash
+
+INTERFACE=$1
+ACTION=$2
+
+if [ "$INTERFACE" != "eth0" ]; then
+    exit 0                                           
+fi                                                   
+
+if [ "$ACTION" == "up" ]; then
+    echo "The ethernet interface has been activated"
+fi
