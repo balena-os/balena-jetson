@@ -1,4 +1,83 @@
 - commits:
+    - subject: Update balena-yocto-scripts to c9f72aa9d032ab2281b918dab5970f18568a7644
+      hash: 6700e3b9fa99cfbe9790b3c87fb11e5050e9d24c
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to c9f72aa9d032ab2281b918dab5970f18568a7644
+        changelog-entry: Update balena-yocto-scripts to c9f72aa9d032ab2281b918dab5970f18568a7644
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: README.md ChangeType is needed for PR so add to README example
+              hash: 9f554545b218b3d00af08f1b6971605a1617ed22
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex J Lennon <ajlennon@dynamicdevices.co.uk>
+                signed-off-by: Alex J Lennon <ajlennon@dynamicdevices.co.uk>
+              author: Alex J Lennon
+              nested: []
+          version: balena-yocto-scripts-1.19.38
+          title: ""
+          date: 2023-10-11T06:39:29.551Z
+        - commits:
+            - subject: "Dockerfile_yocto-build-env: Add screen"
+              hash: 7ca8164eec0ba2903b5a463166fdb2d9370d3ba4
+              body: |
+                To enable us to use `bitbake -c devshell foo` in container
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex J Lennon <ajlennon@dynamicdevices.co.uk>
+                signed-off-by: Alex J Lennon <ajlennon@dynamicdevices.co.uk>
+              author: Alex J Lennon
+              nested: []
+          version: balena-yocto-scripts-1.19.37
+          title: ""
+          date: 2023-10-10T13:49:21.732Z
+        - commits:
+            - subject: "flowzone: allow external contributions"
+              hash: e44cdd1b12d22ffb6d93408e794defee812436c2
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.36
+          title: ""
+          date: 2023-10-10T12:37:01.374Z
+        - commits:
+            - subject: "balena-deploy: fail if device type not found"
+              hash: 14896d0846e52ce45ed5b14e2b62cb965983c44a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "balena-api: Dont assume private if can't get DT"
+              hash: ae7c2e15e7ce6ee3588e1026653f0e54ff7c39f8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: balena-yocto-scripts-1.19.35
+          title: ""
+          date: 2023-09-28T08:26:37.671Z
+  version: 4.0.22+rev1
+  title: ""
+  date: 2023-10-11T12:04:40.162Z
+- commits:
     - subject: Update layers/meta-balena to 010ff351b1875554aa86fbaa4f1ac5b8f865cc7f
       hash: ea2768e6b4f96a152b64b8532deb995f75454136
       body: Update layers/meta-balena

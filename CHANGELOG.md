@@ -1,6 +1,37 @@
 Change log
 -----------
 
+# v4.0.22+rev1
+## (2023-10-11)
+
+
+<details>
+<summary> Update balena-yocto-scripts to c9f72aa9d032ab2281b918dab5970f18568a7644 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.38
+> ### (2023-10-11)
+> 
+> * README.md ChangeType is needed for PR so add to README example [Alex J Lennon]
+> 
+> ## balena-yocto-scripts-1.19.37
+> ### (2023-10-10)
+> 
+> * Dockerfile_yocto-build-env: Add screen [Alex J Lennon]
+> 
+> ## balena-yocto-scripts-1.19.36
+> ### (2023-10-10)
+> 
+> * flowzone: allow external contributions [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.35
+> ### (2023-09-28)
+> 
+> * balena-deploy: fail if device type not found [rcooke-warwick]
+> * balena-api: Dont assume private if can't get DT [rcooke-warwick]
+> 
+
+</details>
+
 # v4.0.22
 ## (2023-10-10)
 
