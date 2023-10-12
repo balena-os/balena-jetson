@@ -1,4 +1,74 @@
 - commits:
+    - subject: Update layers/meta-balena to 4b47f04ece3742de572dd04180e1e30744ed3980
+      hash: 3b68ac50c82d989c1bebf439218a28cebbdd30e8
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 4b47f04ece3742de572dd04180e1e30744ed3980
+        changelog-entry: Update layers/meta-balena to 4b47f04ece3742de572dd04180e1e30744ed3980
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update Pin dependencies
+              hash: 52aec8faecdffd8c957d75bef99bb632ab79aceb
+              body: |
+                Update actions/checkout
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested: []
+          version: meta-balena-4.0.25
+          title: ""
+          date: 2023-10-11T21:28:49.290Z
+        - commits:
+            - subject: "classes: image_types_balena: do not hardcode path to data image"
+              hash: 68365fdf211485e4a9694192cf10899136ce75ce
+              body: >
+                Use the `DEPLOY_DIR_IMAGES` variable which is filled by the
+                deploy
+
+                class from the docker-disk recipe deploy task.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-4.0.24
+          title: ""
+          date: 2023-10-11T16:21:53.282Z
+        - commits:
+            - subject: "os-helpers-fs: fix returning multiple matching devices"
+              hash: 3d99028daf1f9bfb0513f4e0702f3863aed3a205
+              body: >
+                When searching for devices matching the glob list in
+
+                get_internal_device(), a glob match breaks from a nested loop rather
+
+                than the parent loop, allowing the function to output multiple matches.
+
+
+                When running the flasher, this results in the script failing with an
+
+                incorrect path to the internal disk.
+
+
+                Break from the parent loop to fix this behavior.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-4.0.23
+          title: ""
+          date: 2023-10-10T20:22:32.072Z
+  version: 4.0.25
+  title: ""
+  date: 2023-10-12T04:06:13.584Z
+- commits:
     - subject: Update balena-yocto-scripts to c9f72aa9d032ab2281b918dab5970f18568a7644
       hash: 6700e3b9fa99cfbe9790b3c87fb11e5050e9d24c
       body: Update balena-yocto-scripts
