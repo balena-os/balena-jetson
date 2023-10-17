@@ -1,6 +1,52 @@
 Change log
 -----------
 
+# v4.0.26
+## (2023-10-17)
+
+
+<details>
+<summary> Update layers/meta-balena to b4ba19cb95af296ddb8a4c9998cc741ec9562659 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.0.26
+> ### (2023-10-17)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 62974d9 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.0
+>> #### (2023-10-16)
+>> 
+>> * minor: Add Zip Compression support [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.28.35
+>> #### (2023-10-16)
+>> 
+>> * client: enable searching multiple apps for worker [rcooke-warwick]
+>> 
+>> ### leviathan-2.28.34
+>> #### (2023-10-13)
+>> 
+>> * Update core/contracts digest to a06c0cc [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.33
+>> #### (2023-10-13)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.24 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.32
+>> #### (2023-10-02)
+>> 
+>> * Update core/contracts digest to d68265e [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v4.0.25
 ## (2023-10-12)
 
