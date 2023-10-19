@@ -1,4 +1,99 @@
 - commits:
+    - subject: Update contracts to 2d44c9cb5c64b185fed20caf59d846de4d4b8280
+      hash: 5119fc542890b5f8e6c967393eb69e862730a75e
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 2d44c9cb5c64b185fed20caf59d846de4d4b8280
+        changelog-entry: Update contracts to 2d44c9cb5c64b185fed20caf59d846de4d4b8280
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "device: Add Compulab UCM-iMX93"
+              hash: 2bbde3e92d6e1a6c3f9d63e9e79b14b70b755f80
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexnadru Costache <alexandru@balena.io>
+                signed-off-by: Alexnadru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.79
+          title: ""
+          date: 2023-10-19T12:44:49.999Z
+        - commits:
+            - subject: "hw.device-type: Modify bluechiptechnology-tm3"
+              hash: 744605ce53f5091f1661c301962dba44c439481a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Chris Richardson <crichardson@bluechiptechnology.com>
+                signed-off-by: Chris Richardson <crichardson@bluechiptechnology.com>
+              author: crichardson
+          version: contracts-2.0.78
+          title: ""
+          date: 2023-10-19T07:29:25.960Z
+        - commits:
+            - subject: "hw.device-type: Add bluechiptechnology-tm3"
+              hash: 68790a8618f57524be7ea70b7502d65917de91ad
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Chris Richardson <crichardson@bluechiptechnology.com>
+                signed-off-by: Chris Richardson <crichardson@bluechiptechnology.com>
+              author: crichardson
+          version: contracts-2.0.77
+          title: ""
+          date: 2023-10-09T06:33:17.864Z
+        - commits:
+            - subject: "hw.device-type: Add Eurotec Lowpad lcbzu9 device"
+              hash: dab4d718a6012af2774111fb00c0a4d2f3497d24
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+                signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+              author: Francois Loubser
+          version: contracts-2.0.76
+          title: ""
+          date: 2023-10-02T06:46:15.804Z
+        - commits:
+            - subject: "raspberrypi5: remove reference to 64bits in display name"
+              hash: 5f7d9230b8ed3caffbfab717b2a197a5b6d83466
+              body: |
+                There won't be a 32bits OS for this device type.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+          version: contracts-2.0.75
+          title: ""
+          date: 2023-09-28T14:04:28.190Z
+        - commits:
+            - subject: "raspberrypi5: Explicitly flag as public for the switch to apply"
+              hash: da8c456a1aecb30dfe1ef3ad27e0ac59449ecac8
+              body: >
+                As the device was previously private, the `is_private` needs to
+                be
+
+                explicitly set to false for the device type to become public.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+          version: contracts-2.0.74
+          title: ""
+          date: 2023-09-28T13:27:54.317Z
+  version: 4.0.26+rev1
+  title: ""
+  date: 2023-10-19T17:35:09.307Z
+- commits:
     - subject: Update layers/meta-balena to b4ba19cb95af296ddb8a4c9998cc741ec9562659
       hash: 8591e542b90e2e6b56ffcdaef133149f315ea6a6
       body: Update layers/meta-balena
