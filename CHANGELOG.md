@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v4.0.26+rev3
+## (2023-10-20)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 39430b27390c28c4b055fb8711005600112a6951 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.39
+> ### (2023-10-20)
+> 
+> * Dockerfile_yocto-build-env: Install rsync and uudecode host dependencies [Alexandru Costache]
+> 
+
+</details>
+
 # v4.0.26+rev2
 ## (2023-10-20)
 
