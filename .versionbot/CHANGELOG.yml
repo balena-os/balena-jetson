@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 42e712dfe54929870e1ef51fc95cff10f760ab08
+      hash: 00db66b571ee233d56e526048a38a92dd3078de9
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 42e712dfe54929870e1ef51fc95cff10f760ab08
+        changelog-entry: Update contracts to 42e712dfe54929870e1ef51fc95cff10f760ab08
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "hw.device-type: Modify bluechiptechnology-tm3"
+              hash: 3d2002c5e35f4d20fc5ef5307f52f1cfbb91d6ab
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Chris Richardson <crichardson@bluechiptechnology.com>
+                signed-off-by: Chris Richardson <crichardson@bluechiptechnology.com>
+              author: crichardson
+          version: contracts-2.0.80
+          title: ""
+          date: 2023-10-20T05:40:17.796Z
+  version: 4.0.26+rev2
+  title: ""
+  date: 2023-10-20T10:37:56.974Z
+- commits:
     - subject: Update contracts to 2d44c9cb5c64b185fed20caf59d846de4d4b8280
       hash: 5119fc542890b5f8e6c967393eb69e862730a75e
       body: Update contracts
