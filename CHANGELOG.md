@@ -1,6 +1,75 @@
 Change log
 -----------
 
+# v5.1.53
+## (2024-03-13)
+
+
+<details>
+<summary> Update layers/meta-balena to 4f480f5a5ef8595e963b373ea03f9f684ab9073b [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-5.1.53
+> ### (2024-03-12)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.1.5 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.1.5
+>> #### (2024-03-12)
+>> 
+>> * Update fatrw to v0.2.21 [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.52
+> ### (2024-03-11)
+> 
+> * images: balena-image-initramfs: remove uneeded kernel image [Alex Gonzalez]
+> * classes: kernel-balena-noimage: add extra space [Alex Gonzalez]
+> 
+> ## meta-balena-5.1.51
+> ### (2024-03-08)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.1.4 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.1.4
+>> #### (2024-03-08)
+>> 
+>> * Update balena-register-device and its deps [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.1.3
+>> #### (2024-03-07)
+>> 
+>> * Remove dependency on @balena/happy-eyeballs [Felipe Lalanne]
+>> * Update Node to v20 [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.1.2
+>> #### (2024-03-06)
+>> 
+>> * Update typescript to v5 [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.1.1
+>> #### (2024-03-04)
+>> 
+>> * Update @balena/lint to v7 [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.50
+> ### (2024-03-07)
+> 
+> * tests/device-tree: Rework to account for new form of setting dtoverlay in config.txt by the supervisor [Florin Sarbu]
+> 
+
+</details>
+
 # v5.1.49
 ## (2024-03-07)
 

@@ -1,4 +1,205 @@
 - commits:
+    - subject: Update layers/meta-balena to 4f480f5a5ef8595e963b373ea03f9f684ab9073b
+      hash: ce5ee0fe4db1c4a1df925f64470b32ae5e8e0db1
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 4f480f5a5ef8595e963b373ea03f9f684ab9073b
+        changelog-entry: Update layers/meta-balena to 4f480f5a5ef8595e963b373ea03f9f684ab9073b
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update balena-supervisor to v16.1.5
+              hash: b15d808d021e647afc8c4da22f64dc9e7c929310
+              body: |
+                Update balena-supervisor from 16.1.4 to 16.1.5
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update fatrw to v0.2.21
+                      hash: 772702793c3ebf9bf3ac8119934436f2caa44bef
+                      body: |
+                        Update fatrw from 0.2.9 to 0.2.21
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.1.5
+                  title: ""
+                  date: 2024-03-12T13:33:05.116Z
+          version: meta-balena-5.1.53
+          title: ""
+          date: 2024-03-12T18:48:47.631Z
+        - commits:
+            - subject: "images: balena-image-initramfs: remove uneeded kernel image"
+              hash: f1ac14d114955678b62a0cbe661f71297e32a621
+              body: |
+                Remove the kernel image from the initramfs to save space.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: kernel-balena-noimage: add extra space"
+              hash: 3696a0d8ad5f6d67903e3918bbe186300a2245ff
+              body: >
+                When appending a variable a space needs to be prefixed to create
+                a
+
+                space separated list.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-5.1.52
+          title: ""
+          date: 2024-03-11T15:55:46.939Z
+        - commits:
+            - subject: Update balena-supervisor to v16.1.4
+              hash: 932d20360314f8297c9b34f5940a95847cc48f58
+              body: |
+                Update balena-supervisor from 16.1.0 to 16.1.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-register-device and its deps
+                      hash: 790f6b71e4c127a6c6078e3f3797992e78995d3b
+                      body: |
+                        This bumps the related dependencies
+
+                        - balena-register-device
+                        - balena-request
+                        - balena-auth
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.1.4
+                  title: ""
+                  date: 2024-03-08T14:10:19.423Z
+                - commits:
+                    - subject: Remove dependency on @balena/happy-eyeballs
+                      hash: 08727ed2b5f67c55b2469d3ee5c5e2857119521b
+                      body: >
+                        Node 20 now implements the happy eyeballs algorithm as
+                        part of its core
+
+                        `net` module, with the
+                        [autoSelectFamily](https://nodejs.org/docs/latest-v20.x/api/net.html#netgetdefaultautoselectfamily)
+                        option of `socket.connect`. This option defaults to
+                        `true`, meaning that a separate
+
+                        implementation of happy eyeballs is no longer needed.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Update Node to v20
+                      hash: b77dba20462df90ca720dae3fcacb84628fd5069
+                      body: >
+                        This updates the supervisor runtime to latest Node LTS
+                        version. There
+
+                        are no breaking changes related to this bump.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.1.3
+                  title: ""
+                  date: 2024-03-07T16:10:24.150Z
+                - commits:
+                    - subject: Update typescript to v5
+                      hash: 6217546894e25c8216d305f231876fc888a6e407
+                      body: >
+                        This also updates code to use the default import syntax
+                        instead of
+
+                        `import * as` when the imported module exposes a
+                        default. This is needed
+
+                        with the latest typescript version.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.1.2
+                  title: ""
+                  date: 2024-03-06T14:06:45.274Z
+                - commits:
+                    - subject: Update @balena/lint to v7
+                      hash: 988a1c9e9a2317a66f2be0a1dbddb89f8084014f
+                      body: >
+                        This updates balena lint to the latest version to enable
+                        eslint support
+
+                        and unblock Typescript updates. This is a huge number of
+                        changes as the
+
+                        linting rules are much more strict now, requiring
+                        modifiying most files
+
+                        in the codebase. This commit also bumps the test
+                        dependency `rewire` as
+
+                        that was interfering with the update of balena-lint
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.1.1
+                  title: ""
+                  date: 2024-03-04T18:16:11.250Z
+          version: meta-balena-5.1.51
+          title: ""
+          date: 2024-03-08T18:44:40.323Z
+        - commits:
+            - subject: "tests/device-tree: Rework to account for new form of setting dtoverlay
+                in config.txt by the supervisor"
+              hash: 12a0940ce31031e203364dd6c76a4fc07697133b
+              body: |
+                The supervisor will now write the following dtoverlay setting
+
+                "gpio-key,gpio=4,active_low=0,gpio_pull=down"
+
+                into config.txt in the following form:
+
+                dtoverlay=gpio-key
+                dtparam=gpio=4
+                dtparam=active_low=0
+                dtparam=gpio_pull=down
+
+                So we need to rework the test to account for these changes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-5.1.50
+          title: ""
+          date: 2024-03-07T11:28:39.221Z
+  version: 5.1.53
+  title: ""
+  date: 2024-03-13T01:54:02.095Z
+- commits:
     - subject: Update layers/meta-balena to 069243961adb123830eb4073a6245b2fa1e6f8b3
       hash: ed51a3a2b45efffa72af9a1f4b85be7a5dec6354
       body: Update layers/meta-balena
