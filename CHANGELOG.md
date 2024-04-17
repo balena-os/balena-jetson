@@ -1,6 +1,70 @@
 Change log
 -----------
 
+# v5.2.2+rev1
+## (2024-04-17)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 35108dbe920e2b96e976065df205e265d19d86a5 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.21.6
+> ### (2024-03-25)
+> 
+> * Revert "balena-build: avoid using device-type as a prefix in yocto sstate" [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.21.5
+> ### (2024-03-14)
+> 
+> * Merge AMI publishing dependencies into yocto-build-env [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.21.4
+> ### (2024-03-13)
+> 
+> * balena-build: avoid using device-type as a prefix in yocto sstate [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.21.3
+> ### (2024-02-11)
+> 
+> * Enable S3 Server Side Encryption flags [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.21.2
+> ### (2024-02-08)
+> 
+> * automation/include: Pass helper image version [Florin Sarbu]
+> 
+> ## balena-yocto-scripts-1.21.1
+> ### (2024-02-07)
+> 
+> * balena-deploy: Remove docker.io when pulling image [Alexandru]
+> 
+> ## balena-yocto-scripts-1.21.0
+> ### (2024-02-02)
+> 
+> * Return image id after pulling helper images [Kyle Harding]
+> * Build and publish helper images with Flowzone [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.20.0
+> ### (2024-02-02)
+> 
+> * Remove unused block-build functions [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.19.41
+> ### (2023-12-22)
+> 
+> * automation/balena-deploy: Pin to known working version of balena-img [Alexandru Costache]
+> 
+> ## balena-yocto-scripts-1.19.40
+> ### (2023-11-13)
+> 
+> * Dockerfiles: update balenaCLI version to 17.2.2 [Alex Gonzalez]
+> * balena-deploy-block.sh: deploy licenses and changelog as release assets [Alex Gonzalez]
+> * balena-deploy: Add changelog to deployed artifacts [Alex Gonzalez]
+> * balena-api: add release assets helper functions [Alex Gonzalez]
+> 
+
+</details>
+
 # v5.2.2
 ## (2024-03-20)
 
