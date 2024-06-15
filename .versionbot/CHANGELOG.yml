@@ -1,4 +1,137 @@
 - commits:
+    - subject: Update balena-yocto-scripts to bdd131fd36a3edcc9a1bb2af493794ced60379a6
+      hash: 7ab3dc921584f66696d9cb0d38ccb4d3400a50b3
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to bdd131fd36a3edcc9a1bb2af493794ced60379a6
+        changelog-entry: Update balena-yocto-scripts to bdd131fd36a3edcc9a1bb2af493794ced60379a6
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update job conditions to allow non-PR events for internal branches
+              hash: 2d0f1029d7b5489feb7c98d749ff66c8faf2f1e7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Hardcode environment paths at the job level
+              hash: 5dc710c0cc5d8a1c0da97bbb9d39fdb51f5a4497
+              body: |
+                This is easier to read and less likely to break
+                with unexpected values.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Replace test inputs with a single JSON matrix input
+              hash: 0d6cb8ac05fec8dd314f12e5335f847ef3f8ab78
+              body: |
+                This allows full control over which test conditions are
+                used for each test job without combinatorial explosion.
+
+                For example, different environments could be used for
+                specific test suites, or the cloud suite could be run
+                twice while the other suites run once.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.4
+          title: ""
+          date: 2024-06-14T15:57:11.418Z
+        - commits:
+            - subject: "jenkins_generate_ami: pass yocto scripts version as an env var to
+                helper container"
+              hash: af71169b93e855c8ecb378b5de3d4a1c12f44510
+              body: >
+                The ami deploys in jenkins fail at the moment because the
+                balena-lib.inc script fails to fetch the version of the yocto
+                scripts when running inside the helper image. Passing the
+                version to the helper image via an env var helps this
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: balena-yocto-scripts-1.22.3
+          title: ""
+          date: 2024-06-13T19:04:31.350Z
+        - commits:
+            - subject: Update the triggers on the example test workflow
+              hash: 1f09e509e09a1a44b62772b9e197fe183c72744d
+              body: |
+                We do not need to run the workflow on close/merge, and we
+                can skip the manual workflow runs on this project as
+                each device type will have it's own workflow in the device
+                repos supporting manual triggers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.2
+          title: ""
+          date: 2024-06-12T17:54:57.718Z
+        - commits:
+            - subject: Prevent duplicate workflow runs for multiple triggers
+              hash: e0132cfba86fcc05527dc4702d6841723752be38
+              body: |
+                This may need to be force merged.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Add catchall job to yocto-build-deploy for merge requirements
+              hash: 6b023b572a35d18743cf4a5d36b9d2f7443fc744
+              body: |
+                This is a helper job to avoid having to mark all build/test
+                matrices as required, as this job will always run and return
+                success or failure.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.1
+          title: ""
+          date: 2024-06-07T13:45:18.699Z
+        - commits:
+            - subject: Create workflow to build and deploy balenaOS
+              hash: 5868caaa3b7bf506381c8d22f7b0b4035f7e2658
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.0
+          title: ""
+          date: 2024-06-06T17:24:03.676Z
+  version: 5.3.3+rev3
+  title: ""
+  date: 2024-06-15T04:55:59.988Z
+- commits:
     - subject: Update layers/poky to db3cb6f1138d1765fb64d2415083c8503f318a5f
       hash: 35e62149a1acef6fb1fb02a8b6fb788bdfab7384
       body: Update layers/poky

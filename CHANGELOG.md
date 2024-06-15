@@ -1,6 +1,44 @@
 Change log
 -----------
 
+# v5.3.3+rev3
+## (2024-06-15)
+
+
+<details>
+<summary> Update balena-yocto-scripts to bdd131fd36a3edcc9a1bb2af493794ced60379a6 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.22.4
+> ### (2024-06-14)
+> 
+> * Update job conditions to allow non-PR events for internal branches [Kyle Harding]
+> * Hardcode environment paths at the job level [Kyle Harding]
+> * Replace test inputs with a single JSON matrix input [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.22.3
+> ### (2024-06-13)
+> 
+> * jenkins_generate_ami: pass yocto scripts version as an env var to helper container [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.22.2
+> ### (2024-06-12)
+> 
+> * Update the triggers on the example test workflow [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.22.1
+> ### (2024-06-07)
+> 
+> * Prevent duplicate workflow runs for multiple triggers [Kyle Harding]
+> * Add catchall job to yocto-build-deploy for merge requirements [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.22.0
+> ### (2024-06-06)
+> 
+> * Create workflow to build and deploy balenaOS [Kyle Harding]
+> 
+
+</details>
+
 # v5.3.3+rev2
 ## (2024-05-30)
 
