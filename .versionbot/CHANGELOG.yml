@@ -1,4 +1,144 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 64c93852695af74dc1ddb355da0c8e2ff464638c
+      hash: 6c06bfc3daedc7d96ffdcc23899afcb1a710cf16
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 64c93852695af74dc1ddb355da0c8e2ff464638c
+        changelog-entry: Update balena-yocto-scripts to 64c93852695af74dc1ddb355da0c8e2ff464638c
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Fix quoting of $GITHUB_OUTPUT
+              hash: 5f56f3236d8ee3d764e46e419aa2431dd42d45ff
+              body: |
+                We had typos in two cases, in which we missed the opening quote.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: balena-yocto-scripts-1.24.2
+          title: ""
+          date: 2024-07-02T00:54:39.074Z
+        - commits:
+            - subject: Simplify check for secure boot
+              hash: be189f7e2f6fb26f778f29e1f955a1cdd01bc8a4
+              body: >
+                We were previously introducing a variable that was essentially
+
+                replicating the contents of an input. This commit makes use of
+                the input
+
+                directly.
+
+
+                Incidentally, the previous code also had a small bug/typo, in
+                which we
+
+                mixed a test for string length with a test for string equality.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: balena-yocto-scripts-1.24.1
+          title: ""
+          date: 2024-06-27T20:35:29.474Z
+        - commits:
+            - subject: Support runner selection in the test matrix
+              hash: d409cb0fbaa307a179973b60e5faff8cda6bc34b
+              body: >
+                Default to self-hosted X64 with KVM for now to align with
+                Jenkins but in the future
+
+                we should consider using GitHub hosted runners for the testbot
+                workers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Allow both combinatorial and include syntax for test_matrix
+              hash: 2bfc3a0d72830626366cf210f4fe9a0e649688c5
+              body: >
+                The include syntax allows full control over settings used
+
+                in each test job, but the combinatorial is simpler to write
+
+                for basic use cases.
+
+
+                Rather than force one, we can allow both and default to the
+                simple
+
+                syntax.
+
+
+                Marking as minor since the input syntax has changed, but isn't
+
+                currently used in production anywhere.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.24.0
+          title: ""
+          date: 2024-06-26T21:26:13.711Z
+        - commits:
+            - subject: Refactor secrets and variables to use environments
+              hash: c46eb9cfa4a272f00af4029c31e355477169802a
+              body: |
+                Reduce the required secrets and inputs required by
+                relying on vars and secrets set in each GitHub Environment.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.23.1
+          title: ""
+          date: 2024-06-26T12:43:22.833Z
+        - commits:
+            - subject: "Dockerfiles: update balenaCLI version to 18.2.2"
+              hash: cd6ff2606e5f7a251c6b03d4cfbea371d00a9db7
+              body: |
+                Update balena CLI from 17.2.2 to 18.2.2.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "Dockerfile_yocto-build-env: bump base image to 22.04"
+              hash: e027c512dbcf801a66a4bb4da15639ca67eedd2e
+              body: >
+                This brings a new Docker engine version which supports cgroup v2.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.23.0
+          title: ""
+          date: 2024-06-19T15:20:58.274Z
+  version: 5.3.3+rev4
+  title: ""
+  date: 2024-07-02T06:07:11.210Z
+- commits:
     - subject: Update balena-yocto-scripts to bdd131fd36a3edcc9a1bb2af493794ced60379a6
       hash: 7ab3dc921584f66696d9cb0d38ccb4d3400a50b3
       body: Update balena-yocto-scripts
