@@ -5,7 +5,7 @@ containers. \
 "
 HOMEPAGE = "https://github.com/NVIDIA/nvidia-container-runtime"
 
-# Taken from meta-tegra at revision 92f1be3f98cff3362e0d3c2bc7b581e541c9412b
+# Taken from meta-tegra at revision c9c342a23738f70f4f1b1d53f5d22b3ba237ea2b
 
 LICENSE = "BSD-3-Clause & Apache-2.0 & MIT & ISC"
 LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=06cff45c51018e430083a716510821b7 \
@@ -17,17 +17,16 @@ LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=06cff45c51018e430083a716
 		    file://src/${GO_INSTALL}/vendor/github.com/stretchr/testify/LICENSE;md5=d4c9e9b2abd3afaebed1524a9a77b937"
 
 SRC_URI = " \
-    git://github.com/NVIDIA/nvidia-container-runtime;protocol=https \
+    git://github.com/NVIDIA/nvidia-container-runtime.git;protocol=https;branch=master \
     file://l4t.csv \
 "
 SRCREV = "027d6c876ad8c163f53e75cbd5a6a54776985e5c"
 
 GO_IMPORT = "github.com/NVIDIA/${BPN}"
 GO_INSTALL = "${GO_IMPORT}/runtime/src"
+export GO111MODULE = "off"
 
 S = "${WORKDIR}/git"
-
-REQUIRED_DISTRO_FEATURES = "virtualization"
 
 inherit go
 
