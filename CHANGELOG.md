@@ -1,6 +1,858 @@
 Change log
 -----------
 
+# v6.0.13
+## (2024-08-26)
+
+
+<details>
+<summary> Update layers/meta-balena to f95917dab4a9e2f6b7e6830c22ba26d461fac816 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.0.13
+> ### (2024-08-26)
+> 
+> * classes/image_types_balena: Add support for device specific boot filesystem options [Alexandru Costache]
+> 
+> ## meta-balena-6.0.12
+> ### (2024-08-23)
+> 
+> * Update balena-os/balena-yocto-scripts action to v1.25.25 [balena-renovate[bot]]
+> 
+> ## meta-balena-6.0.11
+> ### (2024-08-21)
+> 
+> * Update balena-os/balena-yocto-scripts action to v1.25.24 [balena-renovate[bot]]
+> 
+> ## meta-balena-6.0.10
+> ### (2024-08-14)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.4.6 [balena-renovate[bot]] </summary>
+> 
+>> ### balena-supervisor-16.4.6
+>> #### (Invalid date)
+>> 
+>> * Update semver to v7.6.3 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.4.5
+>> #### (2024-07-25)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.74 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.0.9
+> ### (2024-08-14)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to f4e9332 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.25
+>> #### (2024-08-06)
+>> 
+>> * Update actions/upload-artifact digest to 834a144 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.24
+>> #### (2024-08-06)
+>> 
+>> * Update core/contracts digest to 6d69a05 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.23
+>> #### (2024-07-23)
+>> 
+>> * core: remove nested retries in getDutIp function [rcooke-warwick]
+>> 
+>> ### leviathan-2.31.22
+>> #### (2024-07-23)
+>> 
+>> * patch: Add migration & secureboot options to e2e test suite [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.31.21
+>> #### (2024-07-22)
+>> 
+>> * Update docker/setup-buildx-action digest to aa33708 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.0.8
+> ### (2024-08-14)
+> 
+> * tests: os: add check for iptables rules [rcooke-warwick]
+> 
+> ## meta-balena-6.0.7
+> ### (2024-08-09)
+> 
+> * modemmanager: Fix Quectel modems initialization bug [Florin Sarbu]
+> 
+> ## meta-balena-6.0.6
+> ### (2024-07-25)
+> 
+> * patch: Fix broken links in CDS Docs [Vipul Gupta]
+> 
+> ## meta-balena-6.0.5
+> ### (2024-07-22)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.4.4 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.4.4
+>> #### (2024-07-17)
+>> 
+>> * Improve log message typing [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-16.4.3
+>> #### (2024-07-16)
+>> 
+>> * Logs: only truncate the message if it's possible it will need it [Pagan Gazzard]
+>> * Logs: skip setting default values if we're dropping as an invalid log [Pagan Gazzard]
+>> * Logs: only call `Date.now()` if a timestamp is not already present [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-16.4.2
+>> #### (2024-07-16)
+>> 
+>> * Cleanup images after state-engine tests [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.0.4
+> ### (2024-07-22)
+> 
+> * Update balena-os/balena-yocto-scripts action to v1.25.8 [Self-hosted Renovate Bot]
+> 
+> ## meta-balena-6.0.3
+> ### (2024-07-22)
+> 
+> * Update docker API version to match the v20.10 engine version [Alex Gonzalez]
+> * conf: distro: set default docker API version [Alex Gonzalez]
+> 
+> ## meta-balena-6.0.2
+> ### (2024-07-19)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 081cbeb [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.31.20
+>> #### (2024-07-15)
+>> 
+>> * Update core/contracts digest to 17b44ca [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.19
+>> #### (2024-07-12)
+>> 
+>> * Update core/contracts digest to 773c77c [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.18
+>> #### (2024-07-12)
+>> 
+>> * client: use /start endpoint of worker to reserve worker if IDLE immediately [rcooke-warwick]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.0.1
+> ### (2024-07-19)
+> 
+> * NetworkManager: remove duplicate rules in shared dispatcher script [Michal Toman]
+> 
+> ## meta-balena-6.0.0
+> ### (2024-07-19)
+> 
+> * common: remove module compression bbclass [Joseph Kogut]
+> * kernel-balena: enable zstd module compression [Joseph Kogut]
+> * image-balena: support zst compressed modules [Joseph Kogut]
+> * kmod: enable zstd [Joseph Kogut]
+> 
+> ## meta-balena-5.4.1
+> ### (2024-07-17)
+> 
+> * Add build-only GHA workflows for missing devices [Kyle Harding]
+> 
+> ## meta-balena-5.4.0
+> ### (2024-07-13)
+> 
+> * classes: kernel-balena: remove configuration warnings for 6.1 [Alex Gonzalez]
+> * classes: balena-bootloader: add USB configuration dependencies [Alex Gonzalez]
+> * initrscripts: migrate: use configuration file to specify post-install action [Alex Gonzalez]
+> * resin-init-flasher: use configuration file to specify post-install action [Alex Gonzalez]
+> * tests: secureboot: add RPI specialization [Alex Gonzalez]
+> 
+> ## meta-balena-5.3.28
+> ### (2024-07-10)
+> 
+> * Add GHA yocto workflows for common device types [Kyle Harding]
+> 
+> ## meta-balena-5.3.27
+> ### (2024-07-07)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 60b559c [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.31.17
+>> #### (2024-07-05)
+>> 
+>> * Update actions/upload-artifact digest to 0b2256b [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.16
+>> #### (2024-07-04)
+>> 
+>> * Update docker/setup-buildx-action digest to 4fd8129 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.15
+>> #### (2024-06-24)
+>> 
+>> * patch: Remove internal presentation link to testbot [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.31.14
+>> #### (2024-06-24)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.13
+>> #### (2024-06-19)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.41 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.12
+>> #### (2024-06-19)
+>> 
+>> * Docs: Fix endpoint name from s/status/state [Vipul Gupta]
+>> 
+>> ### leviathan-2.31.11
+>> #### (2024-06-17)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.10
+>> #### (2024-06-14)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.9
+>> #### (2024-06-14)
+>> 
+>> * Update core/contracts digest to 8adfb6d [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.8
+>> #### (2024-06-14)
+>> 
+>> * Update actions/checkout digest to 692973e [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.7
+>> #### (2024-06-14)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.40 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.6
+>> #### (2024-06-14)
+>> 
+>> * allow for secureboot flasher env var for non-qemu runs [rcooke-warwick]
+>> 
+>> ### leviathan-2.31.5
+>> #### (2024-06-02)
+>> 
+>> * Update core/contracts digest to 94c4f90 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.4
+>> #### (2024-05-27)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.3
+>> #### (2024-05-24)
+>> 
+>> * Update actions/upload-artifact digest to 6546280 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.2
+>> #### (2024-05-23)
+>> 
+>> * Update Pin docker/setup-buildx-action action to d70bba7 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.31.1
+>> #### (2024-05-23)
+>> 
+>> * Client: Update alpine packages before installing packages [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.31.0
+>> #### (2024-05-23)
+>> 
+>> * minor: Add leviathan GitHub Action [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.30.22
+>> #### (2024-05-20)
+>> 
+>> * Update actions/checkout digest to a5ac7e5 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.21
+>> #### (2024-05-20)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.20
+>> #### (2024-05-13)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.19
+>> #### (2024-05-08)
+>> 
+>> * Update actions/checkout digest to 44c2b7a [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.18
+>> #### (2024-05-07)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.39 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.17
+>> #### (2024-05-06)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.38 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.16
+>> #### (2024-05-06)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.15
+>> #### (2024-05-06)
+>> 
+>> * patch: Replace environment switcher in e2e config.js [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.30.14
+>> #### (2024-04-29)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.13
+>> #### (2024-04-25)
+>> 
+>> * Update actions/upload-artifact digest to 6546280 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.12
+>> #### (2024-04-25)
+>> 
+>> * Update actions/checkout digest to 0ad4b8f [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.3.26
+> ### (2024-07-07)
+> 
+> * tests: secureboot: rename resetWorker() to resetDUT() [Alex Gonzalez]
+> * tests: secureboot: refactor to facilitate extension [Alex Gonzalez]
+> 
+> ## meta-balena-5.3.25
+> ### (2024-07-06)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.4.1 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.4.1
+>> #### (2024-07-05)
+>> 
+>> * Remove custom typings for docker-delta [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.4.0
+>> #### (2024-07-04)
+>> 
+>> * Refactor host-config to be its own module [Christina Ying Wang]
+>> * Add HostConfig.parse method [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.3.24
+> ### (2024-07-04)
+> 
+> * workflows: fix linter errors [Alex Gonzalez]
+> 
+> ## meta-balena-5.3.23
+> ### (2024-07-02)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.3.17 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.3.17
+>> #### (2024-06-25)
+>> 
+>> * Fix engine deadlock on network+service change [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.3.16
+>> #### (2024-06-17)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.72 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.3.22
+> ### (2024-07-01)
+> 
+> * initrdscripts: make the kexec script fail hard in unexpected states [Michal Toman]
+> 
+> ## meta-balena-5.3.21
+> ### (2024-06-13)
+> 
+> * initrdscripts: Allow passing extra kernel arguments to kexec [Michal Toman]
+> 
+> ## meta-balena-5.3.20
+> ### (2024-06-11)
+> 
+> * hostapp-update-hooks: Re-add check for UEFI to signed-update hook [Michal Toman]
+> 
+> ## meta-balena-5.3.19
+> ### (2024-06-10)
+> 
+> * kernel-balena: do not use cache for signed kernel modules [Alex Gonzalez]
+> 
+> ## meta-balena-5.3.18
+> ### (2024-06-10)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.3.15 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.3.15
+>> #### (2024-06-10)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.71 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.3.17
+> ### (2024-06-09)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.3.14 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.3.14
+>> #### (2024-06-09)
+>> 
+>> * Update got to v14.4.1 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.3.13
+>> #### (2024-06-05)
+>> 
+>> * Split target state set/get into separate module [Felipe Lalanne]
+>> * Move device-state.ts into the device-state/index.ts [Felipe Lalanne]
+>> * Move device-state/target state to api-binder/poll [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.3.12
+>> #### (2024-06-03)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.70 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.3.16
+> ### (2024-06-06)
+> 
+> * Work around uuid file corruption in balenaEngine health check [Leandro Motta Barros]
+> 
+> ## meta-balena-5.3.15
+> ### (2024-06-05)
+> 
+> * os-helpers-tpm2: fix empty efivar reads [Joseph Kogut]
+> * rollback-health: bind mount EFI partition in old_rootfs [Joseph Kogut]
+> * rollback-health: mount securityfs in old_rootfs [Joseph Kogut]
+> * os-helpers-tpm2: compute_pcr7 w/ events post separator [Joseph Kogut]
+> 
+> ## meta-balena-5.3.14
+> ### (2024-06-02)
+> 
+> * rtl8192cu: Remove this unmaintained out-of-tree kernel driver [Florin Sarbu]
+> 
+> ## meta-balena-5.3.13
+> ### (2024-06-01)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.3.11 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.3.11
+>> #### (2024-05-27)
+>> 
+>> * Move OS variant retrieval to config module [Felipe Lalanne]
+>> * Do not export balenaApi on api-binder [Felipe Lalanne]
+>> * Move api-keys module to src/lib [Felipe Lalanne]
+>> * Do not re-export ContractObject on lib/contracts [Felipe Lalanne]
+>> * Move Compose(Network|Volume)Config to top level types [Felipe Lalanne]
+>> * Move composition types to compose/types [Felipe Lalanne]
+>> * Split compose types into interface and implementation [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.3.12
+> ### (2024-06-01)
+> 
+> * patch: Add Test Suite specific config for GHA [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-5.3.11
+> ### (2024-05-27)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.3.10 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.3.10
+>> #### (2024-05-27)
+>> 
+>> * Update got to v14.3.0 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.3.9
+>> #### (2024-05-27)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.69 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.3.10
+> ### (2024-05-24)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.3.8 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.3.8
+>> #### (2024-05-24)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.68 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.3.7
+>> #### (2024-05-24)
+>> 
+>> * Update sinon to v18 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.3.6
+>> #### (2024-05-20)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.67 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.3.9
+> ### (2024-05-24)
+> 
+> * NetworkManager: do not use FW rule numbers in shared dispatcher script [Michal Toman]
+> 
+> ## meta-balena-5.3.8
+> ### (2024-05-23)
+> 
+> * tests: safe-reboot: fetch and modify target state [rcooke-warwick]
+> 
+> ## meta-balena-5.3.7
+> ### (2024-05-22)
+> 
+> * tests: os: modem: fix curl command [rcooke-warwick]
+> 
+> ## meta-balena-5.3.6
+> ### (2024-05-20)
+> 
+> * peak: Update to version 8.17.0 [Florin Sarbu]
+> 
+> ## meta-balena-5.3.5
+> ### (2024-05-16)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.3.5 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.3.5
+>> #### (2024-05-13)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.66 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.3.4
+>> #### (2024-05-12)
+>> 
+>> * Update semver to v7.6.2 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.3.3
+>> #### (2024-05-10)
+>> 
+>> * Update semver to v7.6.1 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.3.2
+>> #### (2024-05-06)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.65 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.3.1
+>> #### (2024-05-01)
+>> 
+>> * Update @balena/contrato to 0.9.4 [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.3.0
+>> #### (Invalid date)
+>> 
+>> * Add rpi support to balenaOS secure boot [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.37
+>> #### (2024-04-29)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.63 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.36
+>> #### (2024-04-29)
+>> 
+>> * Remove unused event-stream dependency [Christina Ying Wang]
+>> * Update io-ts to 2.2.20, io-ts-reporters to 2.0.1, fp-ts to 2.16.5 [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.35
+>> #### (2024-04-29)
+>> 
+>> * Update @types dependencies [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-16.2.34
+>> #### (2024-04-29)
+>> 
+>> * Dev: update husky to v9 [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-16.2.33
+>> #### (2024-04-26)
+>> 
+>> * Update docker related dependencies [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.2.32
+>> #### (2024-04-26)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.62 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.31
+>> #### (2024-04-26)
+>> 
+>> * Move lib/fs-utils tests to testfs [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.30
+>> #### (2024-04-24)
+>> 
+>> * Update supertest to v7 [Christina Ying Wang]
+>> * Update fork-ts-checker-webpack-plugin to v9 [Christina Ying Wang]
+>> * Update yargs to v17, tar-stream to v3 [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.29
+>> #### (2024-04-24)
+>> 
+>> * Refactor MDNS resolver into a module [Felipe Lalanne]
+>> * Fix mdnsResolver import [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.2.28
+>> #### (2024-04-23)
+>> 
+>> * Gracefully handle multiple reboot/shutdown requests [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.27
+>> #### (2024-04-23)
+>> 
+>> * Update ts-node to v10 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.26
+>> #### (2024-04-23)
+>> 
+>> * Remove unnecessary @types packages [Christina Ying Wang]
+>> * Update knex to 3.1.0 [Christina Ying Wang]
+>> * Update json-mask to 2.0.0 [Christina Ying Wang]
+>> * Update lint-staged to 15.2.2 [Christina Ying Wang]
+>> * Update mocha-pod to 2.0.5 [Christina Ying Wang]
+>> * Update mocha to 10.4.0 [Christina Ying Wang]
+>> * Update rewire to 7, @balena/lint to 8 [Christina Ying Wang]
+>> * Update nodemon to 3.1.0 [Christina Ying Wang]
+>> * Update sinon to 17 [Christina Ying Wang]
+>> * Update systeminformation to 5.22.7 [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.25
+>> #### (2024-04-19)
+>> 
+>> * Update copy-webpack-plugin to v12 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.24
+>> #### (2024-04-19)
+>> 
+>> * Update webpack-cli to v5 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.23
+>> #### (2024-04-19)
+>> 
+>> * Update got to v14 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.22
+>> #### (2024-04-19)
+>> 
+>> * Update @types/supertest to v6 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.21
+>> #### (2024-04-18)
+>> 
+>> * Remove unused `tmp` dependency [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-16.2.20
+>> #### (2024-04-17)
+>> 
+>> * Update rimraf [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.19
+>> #### (2024-04-17)
+>> 
+>> * Update semver to v7.6.0 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.18
+>> #### (2024-04-15)
+>> 
+>> * Update event-stream to v3.3.5 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.17
+>> #### (2024-04-15)
+>> 
+>> * Add additional update lock tests for lockOverride & force [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.16
+>> #### (2024-04-15)
+>> 
+>> * Update @types/chai-things to v0.0.38 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.15
+>> #### (2024-04-15)
+>> 
+>> * Update webpack to v5.76.0 [SECURITY] [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.14
+>> #### (2024-04-15)
+>> 
+>> * Disable automerge for major npm devDependencies [Kyle Harding]
+>> 
+>> ### balena-supervisor-16.2.13
+>> #### (2024-04-15)
+>> 
+>> * Update shell-quote to v1.7.3 [SECURITY] [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.12
+>> #### (2024-04-15)
+>> 
+>> * Update express to v4.19.2 [SECURITY] [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.11
+>> #### (2024-04-15)
+>> 
+>> * Enable npm package management via Renovate [Kyle Harding]
+>> 
+>> ### balena-supervisor-16.2.10
+>> #### (2024-04-15)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.58 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.9
+>> #### (2024-04-12)
+>> 
+>> * Don't follow symlinks when checking for lockfiles [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.8
+>> #### (2024-04-12)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.57 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.7
+>> #### (2024-04-12)
+>> 
+>> * Add memory usage healthcheck [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.6
+>> #### (2024-04-10)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.55 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.5
+>> #### (2024-04-09)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.54 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.4
+>> #### (2024-04-09)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.53 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.3
+>> #### (2024-04-09)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.52 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.2.2
+>> #### (2024-04-08)
+>> 
+>> * Inherit Renovate settings from balena-io [Kyle Harding]
+>> 
+>> ### balena-supervisor-16.2.1
+>> #### (2024-04-06)
+>> 
+>> * Fix some RegEx io-ts types [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.2.0
+>> #### (2024-04-05)
+>> 
+>> * Take lock before updating service metadata [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.3.4
+> ### (2024-05-12)
+> 
+> * hostapp-update-hooks: 99-balena-bootloader: Adapt to secure boot [Alex Gonzalez]
+> * hostapp-update-hooks: fix linter warnings [Alex Gonzalez]
+> * classes: image-balena: use relative path to generate boot fingerprint [Alex Gonzalez]
+> * os-helpers: add a helper function to generate fingerprint files [Alex Gonzalez]
+> * classes: sign-rsa: add dependencies [Alex Gonzalez]
+> * initrdscripts: migrate: allow command line argument configuration [Alex Gonzalez]
+> * classes: image-balena: provide board configuration hook [Alex Gonzalez]
+> * initrdscripts: abroot: add missing dependency [Alex Gonzalez]
+> * classes: kernel-balena: selectively include dmcrypt for signed images [Alex Gonzalez]
+> * hostapp-update-hooks: only include os-helpers-sb for signed builds [Alex Gonzalez]
+> * hostapp-update-hooks: 1-bootfiles: Check for os-helpers-sb before including [Alex Gonzalez]
+> * docs: add secure boot abstractions details [Alex Gonzalez]
+> * initrdscripts: fsuuidinit: use file based mutex to avoid race condition [Alex Gonzalez]
+> * systemd: update_state_probe: Use a file mutex to avoid race condition [Alex Gonzalez]
+> * os-helpers: extend filesystem helper with wait4rm [Alex Gonzalez]
+> * os-helpers-fs: regenerate_uuid: skip remounting [Joseph Kogut]
+> * resin-init-flasher: replace fatal with fail [Alex Gonzalez]
+> * balena-image-bootloader-initramfs: add modules needed for secure boot [Alex Gonzalez]
+> * classes: balena-bootloader: add support for encrypted disks mount and kexec [Alex Gonzalez]
+> * classes: balena-bootloader: specify a deployment subfolder [Alex Gonzalez]
+> * classes: kernel-balena: add secureboot configuration dependencies [Alex Gonzalez]
+> * classes: kernel-balena: non-efi device types also use EFI signing for kexec [Alex Gonzalez]
+> * classes: sign-efi: allow to configure deployment directory [Alex Gonzalez]
+> * classes: sign-efi: support compressed payloads [Alex Gonzalez]
+> 
+
+</details>
+
 # v5.3.3+rev4
 ## (2024-07-02)
 

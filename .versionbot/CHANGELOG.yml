@@ -1,4 +1,3328 @@
 - commits:
+    - subject: Update layers/meta-balena to f95917dab4a9e2f6b7e6830c22ba26d461fac816
+      hash: 786a29d846b7ef2828e35bccae20b59e4d78cda1
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f95917dab4a9e2f6b7e6830c22ba26d461fac816
+        changelog-entry: Update layers/meta-balena to f95917dab4a9e2f6b7e6830c22ba26d461fac816
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "classes/image_types_balena: Add support for device specific boot
+                filesystem options"
+              hash: 8a7b00339067e4b95933fe4936fc7bbfeacf97bf
+              body: >
+                The beagleplay is unable to load u-boot from the sd-card
+
+                boot partition if the standard geometry set by mkfs.vfat is used
+                -
+
+                that is 16 heads / 63 sectors per track.
+
+
+                We noticed that using a geometry of 16 heads / 32 sectors per
+                track
+
+                make the device to boot from the sd-card, so we make the
+
+                boot filesystem options configurable from the device repository
+
+                to apply this setting.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.0.13
+          title: ""
+          date: 2024-08-26T15:40:04.137Z
+        - commits:
+            - subject: Update balena-os/balena-yocto-scripts action to v1.25.25
+              hash: 811bd5df9d6e2b6911fb50183391af3a332e851b
+              body: |
+                Update balena-os/balena-yocto-scripts from v1.25.24 to v1.25.25
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.0.12
+          title: ""
+          date: 2024-08-23T21:26:41.583Z
+        - commits:
+            - subject: Update balena-os/balena-yocto-scripts action to v1.25.24
+              hash: 1eb2d61ca566456fa21e1a007f9081566c199007
+              body: |
+                Update balena-os/balena-yocto-scripts from v1.25.8 to v1.25.24
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.0.11
+          title: ""
+          date: 2024-08-21T23:19:30.509Z
+        - commits:
+            - subject: Update balena-supervisor to v16.4.6
+              hash: 6137928e264def6afbbe5a42f8bc496419ab65a4
+              body: |
+                Update balena-supervisor from 16.4.4 to 16.4.6
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update semver to v7.6.3
+                      hash: 340e69d0c22e12281ac8608eda2b5a871e645e19
+                      body: |
+                        Update semver from 7.6.2 to 7.6.3
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.4.6
+                  title: ""
+                  date: 2024-07-30T14:43:21.325Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.74
+                      hash: 92be067b0d2e408a526e55bd3a6a57e46dc52687
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.72 to
+                        2.0.74
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.4.5
+                  title: ""
+                  date: 2024-07-25T14:31:14.222Z
+          version: meta-balena-6.0.10
+          title: ""
+          date: 2024-08-14T20:51:23.124Z
+        - commits:
+            - subject: Update tests/leviathan digest to f4e9332
+              hash: d475c7b424d396d03c712befb3fdb2934d7513f0
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update actions/upload-artifact digest to 834a144
+                      hash: 6a81dc37849f6290f104e3bbb95bc8b60f240ab5
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.25
+                  title: ""
+                  date: 2024-08-06T15:54:52.299Z
+                - commits:
+                    - subject: Update core/contracts digest to 6d69a05
+                      hash: 02819efbdc5ca46918d80ec2b23c18274995629b
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.24
+                  title: ""
+                  date: 2024-08-06T10:14:13.280Z
+                - commits:
+                    - subject: "core: remove nested retries in getDutIp function"
+                      hash: fc8a48737153dc528a005f4d963e0f3f54426aae
+                      body: >
+                        the function that was being used to fetch the DUT ip
+                        from the worker had nested retries that led to 30x5 =
+                        150 retries, and timeouts taking ~40 mins in the case
+                        the DUT wasn't reachable (autokit setup fault, device
+                        not booting, problem during flashing). This removes the
+                        nested retries and reduces the retries to 50 /  ~ 10mins
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.31.23
+                  title: ""
+                  date: 2024-07-23T13:24:35.947Z
+                - commits:
+                    - subject: "patch: Add migration & secureboot options to e2e test suite"
+                      hash: 7abd1e4f8483b2a5704c5f4e0b1f974e0fafc762
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.31.22
+                  title: ""
+                  date: 2024-07-23T13:00:12.436Z
+                - commits:
+                    - subject: Update docker/setup-buildx-action digest to aa33708
+                      hash: dda330bb67cff678a5b7758f31ebf53bbc58886c
+                      body: |
+                        Update docker/setup-buildx-action
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.21
+                  title: ""
+                  date: 2024-07-22T10:33:23.487Z
+          version: meta-balena-6.0.9
+          title: ""
+          date: 2024-08-14T11:50:03.782Z
+        - commits:
+            - subject: "tests: os: add check for iptables rules"
+              hash: ac651d898929d492f3ec93a852f65b46d3883ac7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-6.0.8
+          title: ""
+          date: 2024-08-14T01:35:51.540Z
+        - commits:
+            - subject: "modemmanager: Fix Quectel modems initialization bug"
+              hash: 2d53d2cb60a155ece0563fbb39629056e2c959d0
+              body: >
+                With the update to ModemManager version 1.22.0 we now have some
+                Quectel modems failing
+
+                to use QMI properly:
+
+
+                ModemManager[1178]: [modem0] power state updated: on
+
+                ModemManager[1178]: [modem0] (quectel) modem reset detected,
+                triggering reprobe
+
+                ModemManager[1178]: [modem0] (quectel) modem reset detected,
+                triggering reprobe
+
+                .
+
+                .
+
+                .
+
+                ModemManager[1178]: [modem0] failed waiting for final state: Too
+                much time waiting to get to a final state
+
+                ModemManager[1178]: [modem0] failed enabling modem: Operation
+                was cancelled
+
+                ModemManager[1178]: [modem1] couldn't start initialization:
+                Transaction timed out
+
+                ModemManager[1178]: [modem1] fatal error initializing: Fatal
+                error: modem is unusable
+
+
+                This has been fixed upstream with the 2 patches we backport
+                here:
+
+
+                ModemManager[1139]: [modem0] power state updated: on
+
+                ModemManager[1139]: [modem0] (quectel) continuing without
+                enabling profile manager events
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.0.7
+          title: ""
+          date: 2024-08-09T17:47:34.390Z
+        - commits:
+            - subject: "patch: Fix broken links in CDS Docs"
+              hash: 1a9cee2069b3381eddbea606a5aeaa4a436f5643
+              body: ""
+              footer: {}
+              author: Vipul Gupta
+              nested: []
+          version: meta-balena-6.0.6
+          title: ""
+          date: 2024-07-25T10:23:04.133Z
+        - commits:
+            - subject: Update balena-supervisor to v16.4.4
+              hash: cd92e92408d399a81fa11e221cbd6f23849cefbb
+              body: |
+                Update balena-supervisor from 16.4.1 to 16.4.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Improve log message typing
+                      hash: 4976578a830f3db6484e940a710928544709511d
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-16.4.4
+                  title: ""
+                  date: 2024-07-17T14:48:47.790Z
+                - commits:
+                    - subject: "Logs: only truncate the message if it's possible it will need it"
+                      hash: c5d0eafea9016792d3eea04bf9d9df7886eb8bc0
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: "Logs: skip setting default values if we're dropping as an invalid log"
+                      hash: 34cf8b67081d7d353319839eab129569a186cd71
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: "Logs: only call `Date.now()` if a timestamp is not already present"
+                      hash: 0a817af10c7dc107b7524a63b2410ff84c275a8d
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-16.4.3
+                  title: ""
+                  date: 2024-07-16T22:28:15.802Z
+                - commits:
+                    - subject: Cleanup images after state-engine tests
+                      hash: f38714d40ffa0c1a885016e8fdfbca46aff4108f
+                      body: >
+                        Tests on GitHub started failing recently because of
+                        leftover images from
+
+                        the state engine test suite. This fixes that issue to
+                        allow tests to
+
+                        pass.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.4.2
+                  title: ""
+                  date: 2024-07-16T21:55:49.331Z
+          version: meta-balena-6.0.5
+          title: ""
+          date: 2024-07-22T10:13:24.211Z
+        - commits:
+            - subject: Update balena-os/balena-yocto-scripts action to v1.25.8
+              hash: a8e3ff95943773edee89f4b1b5b4762b8e9e9bdd
+              body: |
+                Update balena-os/balena-yocto-scripts from v1.25.7 to v1.25.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested: []
+          version: meta-balena-6.0.4
+          title: ""
+          date: 2024-07-22T09:14:24.239Z
+        - commits:
+            - subject: Update docker API version to match the v20.10 engine version
+              hash: b129f29043de773bf9f6b2259e30cd62487c3d41
+              body: >
+                Update the API version to the version set in the distro
+                configuration,
+
+                which must match the API version of the balena package.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "conf: distro: set default docker API version"
+              hash: 39194a01acb4bfaf51f6d59a0a77b1988519620f
+              body: >
+                This is used to match the API version used in the build pipeline
+                with
+
+                the balena version used in the image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.0.3
+          title: ""
+          date: 2024-07-22T08:23:04.274Z
+        - commits:
+            - subject: Update tests/leviathan digest to 081cbeb
+              hash: 1440f5c245ed251c5677cc72ec9de6e120b41c38
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update core/contracts digest to 17b44ca
+                      hash: c889b407e4ad56080c98850022def0d122108863
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.20
+                  title: ""
+                  date: 2024-07-15T14:07:29.332Z
+                - commits:
+                    - subject: Update core/contracts digest to 773c77c
+                      hash: 2e512d7f1aac17346613962564293e78a0ecd971
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.19
+                  title: ""
+                  date: 2024-07-12T10:30:54.239Z
+                - commits:
+                    - subject: "client: use /start endpoint of worker to reserve worker if IDLE
+                        immediately"
+                      hash: 41b535e9ad160a6c663cf39137da562b4843829a
+                      body: >
+                        There is a problem where if the multiple jobs are
+                        running at the same time, all waiting for a worker to be
+                        IDLE, multiple jobs start using the worker at the same
+                        time. The reason was that first, the state of the worker
+                        is polled using /state - then, after some delay, it is
+                        reserved using the /start endpoint. Problem 1 was that
+                        there is a delay between checking and reserving -
+                        leading to a window of time where another job could do
+                        the same thing. Problem 2 is that once /start was used,
+                        there was nothing to stop the client from continuing,
+                        even if the worker was BUSY. This commit forgoes the
+                        /state endpoint, and just skips to trying /start - if
+                        the worker is IDLE, its instanly reserved, if its BUSY,
+                        the reponse is actually checked and nothing happens.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.31.18
+                  title: ""
+                  date: 2024-07-12T09:25:30.846Z
+          version: meta-balena-6.0.2
+          title: ""
+          date: 2024-07-19T23:27:39.748Z
+        - commits:
+            - subject: "NetworkManager: remove duplicate rules in shared dispatcher script"
+              hash: 90093d5d780bb236e21add3a55f270c08623768a
+              body: >
+                Sometimes on NetworkManager restart a new rule for a shared
+                interface
+
+                is added, but the old rule is not cleaned up properly, so the
+                rules
+
+                are just piling up. This patch makes the shared dispatcher
+                script
+
+                clean up duplicates if it finds any.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.0.1
+          title: ""
+          date: 2024-07-19T16:09:46.427Z
+        - commits:
+            - subject: "common: remove module compression bbclass"
+              hash: fbb35d54e5833db8a05b37e6cbce4bf1ca6ec1b7
+              body: >
+                This class is no longer necessary, as the kernel is configured
+                to use
+
+                module compression and in-kernel decompression when available.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "kernel-balena: enable zstd module compression"
+              hash: 3aa66ff60a50af2fa21714223f390f09114dbb1d
+              body: >
+                Enable zstandard module compression in kernels > v5.13, as this
+                feature
+
+                was introduced in commit c3d7ef377eb25, first published in that
+                release.
+              footer:
+                Change-type: major
+                change-type: major
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "image-balena: support zst compressed modules"
+              hash: 77ce253c9593b0d25e94d72e295a71e484a3b55e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "kmod: enable zstd"
+              hash: df352c7fcd132871842326023bf61f8da80d5a22
+              body: >
+                Enable zstd support for kmod to allow modprobe to load
+                compressed
+
+                modules.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.0.0
+          title: ""
+          date: 2024-07-19T00:08:00.449Z
+        - commits:
+            - subject: Add build-only GHA workflows for missing devices
+              hash: af70358b6b17b309cb043a3f15e1cca8084b1976
+              body: |
+                For meta-balena PRs we only want to test virtual devices,
+                but we will do a sanity build for many types.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-5.4.1
+          title: ""
+          date: 2024-07-17T18:02:25.707Z
+        - commits:
+            - subject: "classes: kernel-balena: remove configuration warnings for 6.1"
+              hash: f5b822dc97248625933d5b6a2ad4c6c53bf3381d
+              body: |
+                * MEMCG_SWAP has been removed in v6.1 in 023223dfbfb34fcc
+                * NFSD_V3 is enabled by default since v5.18 in 5f9a62ff7d2808c
+                * 88EU_AP_MODE has been removed since v5.16 in 102243f893ecdef
+                * NFT_COUNTER has been removed since v5.17 in e6007b85dfa284c
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: balena-bootloader: add USB configuration dependencies"
+              hash: cdd36189676b67f8a7d5d7a5fe3aa695bc809bd6
+              body: >
+                The intention was to allow the balena bootloader to use USB
+                disks but
+
+                the current configuration does not work as it misses needed
+                dependencies.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrscripts: migrate: use configuration file to specify post-install
+                action"
+              hash: 4efe68ae68e4c5c4346d654eb462db837d9fd5f8
+              body: >
+                Use the flasher configuration file to specify the post-install
+                action.
+
+
+                This is to shutdown (the default) when the flasher runs from an
+                external
+
+                media, or to reboot when running from the same media as is the
+                case for
+
+                the migrator tool.
+
+
+                Also, assert that a locked device can only install from memory.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: use configuration file to specify post-install
+                action"
+              hash: 9f9f552d02001cddec262eb5db670946c1380b4d
+              body: >
+                Traditionally after programming the flasher image would shutdown
+                the
+
+                device to allow for the removal of the external device and
+                booting from
+
+                the internal storage.
+
+
+                As more use case appeared, like programming from the initramfs
+                when the
+
+                flasher image runs on the same target device it will program,
+                the post
+
+                install action needs to support rebooting instead as physical
+                access to
+
+                the device to power on cannot be expected. This is the case for
+                remote
+
+                migration, AMI VM installs and also secure boot installs.
+
+
+                The current code just checks for the existence of the `shutdown`
+                command
+
+                which is not present on the initramfs to decide whether to
+                shutdown or
+
+                reboot.
+
+
+                This commit improves that logic by defaulting to shutdown but
+                allowing the
+
+                configuration file to specify a reboot instead.
+
+
+                Also, it improves the robustness of the reboot/shutdown by
+                falling down
+
+                to sys-rq, and provides a way to override the reboot/shutdown by
+                device
+
+                layers that require it.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: secureboot: add RPI specialization"
+              hash: e645c1959ba011b30c4a7bcb15558475edb51343
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-5.4.0
+          title: ""
+          date: 2024-07-13T12:45:59.968Z
+        - commits:
+            - subject: Add GHA yocto workflows for common device types
+              hash: 261e54604908c6d55ae7ac0b8e7502c76663c58e
+              body: |
+                These workflows are for testing the build steps only.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-5.3.28
+          title: ""
+          date: 2024-07-10T22:33:19.858Z
+        - commits:
+            - subject: Update tests/leviathan digest to 60b559c
+              hash: ce164c99859f0a63bd989c12a79fe5383222ec94
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update actions/upload-artifact digest to 0b2256b
+                      hash: 634605505991815b37365613d3f65462b7f7f117
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.17
+                  title: ""
+                  date: 2024-07-05T16:35:55.914Z
+                - commits:
+                    - subject: Update docker/setup-buildx-action digest to 4fd8129
+                      hash: c7d16dc7200e15f5f233b42d928b93ad2ec5421b
+                      body: |
+                        Update docker/setup-buildx-action
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.16
+                  title: ""
+                  date: 2024-07-04T08:59:03.246Z
+                - commits:
+                    - subject: "patch: Remove internal presentation link to testbot"
+                      hash: 6c463f8b491d0888da8f945e67267768837c61c1
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.31.15
+                  title: ""
+                  date: 2024-06-24T10:24:09.683Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 6548d2e71ede53c8898c87f64a4d036b769583b2
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.14
+                  title: ""
+                  date: 2024-06-24T00:51:12.941Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.41
+                      hash: 58b9d5d14c10731f278acac23a4e3a4795c2f80c
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.40 to 2.9.41
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.13
+                  title: ""
+                  date: 2024-06-19T14:31:11.330Z
+                - commits:
+                    - subject: "Docs: Fix endpoint name from s/status/state"
+                      hash: dd947ed4a48352fcc5eec2bd83f6a7472af8db2e
+                      body: >
+                        Fixing the endpoint name in debugging docs that queries
+                        state of the autokit at any given time.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Vipul Gupta
+                      nested: []
+                  version: leviathan-2.31.12
+                  title: ""
+                  date: 2024-06-19T11:04:59.485Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: b590ee109467cf2f980e2313dafe0f20464fc8c2
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.11
+                  title: ""
+                  date: 2024-06-17T01:35:29.787Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 7453b7e2f8df73448b5e6f18e8fc2d6370175c11
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.10
+                  title: ""
+                  date: 2024-06-14T21:10:23.800Z
+                - commits:
+                    - subject: Update core/contracts digest to 8adfb6d
+                      hash: c83ac6f8d44f43cadc96e9f512b2f70b1214c014
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.9
+                  title: ""
+                  date: 2024-06-14T18:51:36.751Z
+                - commits:
+                    - subject: Update actions/checkout digest to 692973e
+                      hash: e3909ff2f7de84e0e737ec80ae7a43e28dc106f9
+                      body: |
+                        Update actions/checkout
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.8
+                  title: ""
+                  date: 2024-06-14T17:28:40.011Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.40
+                      hash: d0f907b4f1c37b3bf9273027adc18e3d385a5150
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.39 to 2.9.40
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.7
+                  title: ""
+                  date: 2024-06-14T16:29:26.061Z
+                - commits:
+                    - subject: allow for secureboot flasher env var for non-qemu runs
+                      hash: b345ee183b5d59e2e7db6829a2aafb3be45f47e3
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.31.6
+                  title: ""
+                  date: 2024-06-14T15:20:02.197Z
+                - commits:
+                    - subject: Update core/contracts digest to 94c4f90
+                      hash: 790c99d390ba0245431ae4ad1e44dfea4611b734
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.5
+                  title: ""
+                  date: 2024-06-02T05:30:12.262Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 5617fa831e769036ecdb5793499c64b9e834055a
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.4
+                  title: ""
+                  date: 2024-05-27T00:54:27.981Z
+                - commits:
+                    - subject: Update actions/upload-artifact digest to 6546280
+                      hash: 4df25074b0281634fa3a5e16c8ac18b8309fe2ae
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.3
+                  title: ""
+                  date: 2024-05-24T11:46:00.261Z
+                - commits:
+                    - subject: Update Pin docker/setup-buildx-action action to d70bba7
+                      hash: bf08c8334e173fbfd3f2a9140e4f3afc37cd82c4
+                      body: |
+                        Update docker/setup-buildx-action
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.2
+                  title: ""
+                  date: 2024-05-23T17:31:49.642Z
+                - commits:
+                    - subject: "Client: Update alpine packages before installing packages"
+                      hash: 88ed7504ed0d3ac55e35dcccc47022fc1cf93e45
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.31.1
+                  title: ""
+                  date: 2024-05-23T16:28:47.291Z
+                - commits:
+                    - subject: "minor: Add leviathan GitHub Action"
+                      hash: 7f12b2f4f5aa7b8f1606b6371e9d912d23d05297
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.31.0
+                  title: ""
+                  date: 2024-05-23T15:51:18.879Z
+                - commits:
+                    - subject: Update actions/checkout digest to a5ac7e5
+                      hash: 3c340b68afb1350d4c70822f8be762d546bcf0c2
+                      body: |
+                        Update actions/checkout
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.22
+                  title: ""
+                  date: 2024-05-20T14:53:19.824Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 5775a6a6344431666750c6da3bb5fe3339e81f85
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.21
+                  title: ""
+                  date: 2024-05-20T00:49:54.576Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 64d09ca585cd78bb190609736cfe3be95187b3e3
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.20
+                  title: ""
+                  date: 2024-05-13T00:49:52.608Z
+                - commits:
+                    - subject: Update actions/checkout digest to 44c2b7a
+                      hash: e3a3ec99b4d6db66a3e96cf590b6465d1b8588c6
+                      body: |
+                        Update actions/checkout
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.19
+                  title: ""
+                  date: 2024-05-08T20:30:26.900Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.39
+                      hash: 9ad6bc06f1a8a958471d2426c7e6d8129e3d3df3
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.38 to 2.9.39
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.18
+                  title: ""
+                  date: 2024-05-07T12:53:41.157Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.38
+                      hash: 4753f547d9bde9b3d8a78909e4de1f3a4d9acc25
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.37 to 2.9.38
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.17
+                  title: ""
+                  date: 2024-05-06T17:30:19.575Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: ed2e76c3ca10c30f726b7551a634265331243884
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.16
+                  title: ""
+                  date: 2024-05-06T14:33:32.489Z
+                - commits:
+                    - subject: "patch: Replace environment switcher in e2e config.js"
+                      hash: 75f42b3b0a8da9b0507f270c301cb085c77f7225
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.30.15
+                  title: ""
+                  date: 2024-05-06T13:23:51.937Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 08bf2f6129c3f0c6affadf2fb0e911537918a1ca
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.14
+                  title: ""
+                  date: 2024-04-29T00:49:40.498Z
+                - commits:
+                    - subject: Update actions/upload-artifact digest to 6546280
+                      hash: 22810bf7023d730a71a975d1f8aec81f76f82c41
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.13
+                  title: ""
+                  date: 2024-04-25T16:30:40.539Z
+                - commits:
+                    - subject: Update actions/checkout digest to 0ad4b8f
+                      hash: f710b126338558cf7cd57e005fc962de6fa208af
+                      body: |
+                        Update actions/checkout
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.30.12
+                  title: ""
+                  date: 2024-04-25T15:30:54.349Z
+          version: meta-balena-5.3.27
+          title: ""
+          date: 2024-07-07T06:33:56.377Z
+        - commits:
+            - subject: "tests: secureboot: rename resetWorker() to resetDUT()"
+              hash: 22091c584523ce1255836530f3e4192a4cacbfb7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: secureboot: refactor to facilitate extension"
+              hash: b0ee0abd0dbd483fc60ca0ba96afd00da44c7c6f
+              body: >
+                As the secure boot feature is extended to more device types, the
+                test
+
+                needs to be easy to extend.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-5.3.26
+          title: ""
+          date: 2024-07-07T00:24:51.531Z
+        - commits:
+            - subject: Update balena-supervisor to v16.4.1
+              hash: e7a2723b8a0d0707574605462c8be396a9321e13
+              body: |
+                Update balena-supervisor from 16.3.17 to 16.4.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Remove custom typings for docker-delta
+                      hash: 28706510da4f3f09a12c4db6250dfe8f2a12eaa3
+                      body: >
+                        This are no longer needed since docker-delta migrated to
+                        typescript in
+
+                        v4 and the custom typings were actually masking some
+                        bugs
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.4.1
+                  title: ""
+                  date: 2024-07-05T21:13:40.384Z
+                - commits:
+                    - subject: Refactor host-config to be its own module
+                      hash: 53f5641ef1cd2e5374f55a50a601fb80d4872511
+                      body: >
+                        The host-config module exposes the following interfaces:
+                        get,
+
+                        patch, and parse.
+
+
+                        `get` gets host configuration such as redsocks proxy
+                        configuration
+
+                        and hostname and returns it in an object of type
+                        HostConfiguration.
+
+
+                        `patch` takes an object of type HostConfiguration or
+                        LegacyHostConfiguration
+
+                        and updates the hostname and redsocks proxy
+                        configuration, optionally
+
+                        forcing the patch through update locks.
+
+
+                        `parse` takes a user input of unknown type and parses it
+                        into type
+
+                        HostConfiguration or LegacyHostConfiguration for
+                        patching, erroring if
+
+                        parse was unsuccessful.
+
+
+                        LegacyHostConfiguration is a looser typing of the user
+                        input which does
+
+                        not validate values of the five known proxy fields of
+                        type, ip, port,
+
+                        username, and password. We should stop supporting it in
+                        the next
+
+                        major Supervisor API release.
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Add HostConfig.parse method
+                      hash: be986a62a5835116d58903fac9ffcf5c7d1fd0e1
+                      body: >
+                        Parses input from PATCH /v1/device/host-config into
+                        either
+
+                        type HostConfiguration, or if LegacyHostConfiguration if
+
+                        input is of an acceptable shape (for backwards
+                        compatibility).
+
+
+                        Once input has been determined to be of type
+                        HostConfiguration,
+
+                        we can easily extract ProxyConfig from the object for
+                        patching,
+
+                        stringifying, and writing to redsocks.conf.
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.4.0
+                  title: ""
+                  date: 2024-07-04T20:25:36.036Z
+          version: meta-balena-5.3.25
+          title: ""
+          date: 2024-07-06T02:24:59.802Z
+        - commits:
+            - subject: "workflows: fix linter errors"
+              hash: cd2e5faba65a6598952999953fcd4eb64520ac3a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-5.3.24
+          title: ""
+          date: 2024-07-04T17:12:37.404Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.17
+              hash: 521d51db1023846cf95e40a9f2b0a514ec8aea6d
+              body: |
+                Update balena-supervisor from 16.3.15 to 16.3.17
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Fix engine deadlock on network+service change
+                      hash: ede27b63cecc2a9ae3139a905d9c6ab32418a72b
+                      body: >
+                        This fixes a regression on the supervisor state engine
+                        computation
+
+                        (added on v16.2.0) when
+
+                        the target state removes a network at the same time that
+                        a service
+
+                        referencing that network is changed. Example going from
+
+
+                        ```
+
+                        services:
+                           one:
+                              image: alpine: 3.18
+                              networks: ['balena']
+
+                        networks:
+                           balena:
+                        ```
+
+
+                        to
+
+
+                        ```
+
+                        services:
+                           one:
+                              image: alpine: latest
+                        ```
+
+
+                        Would never reach the target state as killing the
+                        service in order to
+
+                        remove the network is prioritized, but one of the
+                        invariants in the target state calculation is
+
+                        to not kill any services until all images have been
+                        downloaded. These
+
+                        two instructions were in contradiction leading to a
+                        deadlock.
+
+
+                        The fix involves only adding removal steps for services
+                        depending on a
+
+                        changing network or volume if the service container is
+                        not being removed
+
+                        already.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.3.17
+                  title: ""
+                  date: 2024-06-25T01:03:26.734Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.72
+                      hash: 170733422a7a8fb2e58482508fe74dc2fcb282a5
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.71 to
+                        2.0.72
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.16
+                  title: ""
+                  date: 2024-06-17T01:56:08.257Z
+          version: meta-balena-5.3.23
+          title: ""
+          date: 2024-07-02T14:03:58.762Z
+        - commits:
+            - subject: "initrdscripts: make the kexec script fail hard in unexpected states"
+              hash: 0b6199dddbb52e963d7b6e5feb5771f2b61a0f35
+              body: >
+                At this moment the kexec initrd script is skipped when
+                ROOTFS_DIR
+
+                is not defined or if the new rootfs is mounted, but does not
+                contain
+
+                a kernel image in the expected place. This is undesirable as we
+
+                assume this is the last script executed by the balena
+                bootloader.
+
+
+                This patch makes the kexec script always execute in the balena
+
+                bootloader and makes it fail hard in unexpected states, which
+                means
+
+                the script is always an exit point for the balena bootloader,
+
+                whether the actual kexec call succeeds or not.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-5.3.22
+          title: ""
+          date: 2024-07-01T15:01:00.393Z
+        - commits:
+            - subject: "initrdscripts: Allow passing extra kernel arguments to kexec"
+              hash: 02d42d3cc887fb761da348f86bf5e13f1dacaeb2
+              body: >
+                At this moment the kexec initrd script just takes the original
+                kernel
+
+                command line, replaces root with UUID and removes bootloader
+                args.
+
+
+                We have found at least one use-case (on the Pi4 and firmware
+                GPIOs),
+
+                where a different initrd script needs to pass extra arguments
+
+                to the kexec'd kernel. With this patch it will append the
+                contents
+
+                of the KEXEC_EXTRA_ARGS variable to the kernel command line.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-5.3.21
+          title: ""
+          date: 2024-06-13T10:02:03.824Z
+        - commits:
+            - subject: "hostapp-update-hooks: Re-add check for UEFI to signed-update hook"
+              hash: 972ef5f6090fc48a94a313bf01d8d59c6a3570d9
+              body: >
+                In 328222014146f0116e0208443f3e255d0e85ef15 we have removed
+
+                the signed-update hook from systems that do not have EFI
+
+                in MACHINE_FEATURES. This on its own makes sense, however
+                together
+
+                with it we have also removed the runtime check for whether the
+                running
+
+                system is actually booted in UEFI mode.
+
+
+                This effectively means it is no longer possible to update the
+                host OS
+
+                on a device type able to boot in both UEFI and BIOS modes
+
+                (intel-nuc and genericx86-64-ext) when booted in BIOS mode,
+
+                as the signed-update hook is executed unconditionally and fails
+
+                if the device is not running UEFI.
+
+
+                This patch re-adds the runtime check to only execute the hook
+
+                if the system is actually booted in UEFI mode.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-5.3.20
+          title: ""
+          date: 2024-06-11T12:55:22.727Z
+        - commits:
+            - subject: "kernel-balena: do not use cache for signed kernel modules"
+              hash: 389054e84c0b1fd382d737c39fb2bb02c2b3e9b2
+              body: >
+                On parallel builds that share a state cache there are mismatches
+                between
+
+                a signed kernel and modules. Avoid using the cache when building
+                signed
+
+                modules to avoid this mismatch.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-5.3.19
+          title: ""
+          date: 2024-06-10T16:38:00.806Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.15
+              hash: c2d302e736ee35a65ccb57094aac780ddecd48cd
+              body: |
+                Update balena-supervisor from 16.3.14 to 16.3.15
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.71
+                      hash: 552f77cef5aa4ff0107c5bd558755e4ed4c81ab2
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.70 to
+                        2.0.71
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.15
+                  title: ""
+                  date: 2024-06-10T01:57:02.800Z
+          version: meta-balena-5.3.18
+          title: ""
+          date: 2024-06-10T06:36:26.645Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.14
+              hash: 30faae36bf1a000b2aa0ca6a0d99bf374426354a
+              body: |
+                Update balena-supervisor from 16.3.11 to 16.3.14
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update got to v14.4.1
+                      hash: 11628cda16986b76f67969970fe708e24d3ab125
+                      body: |
+                        Update got from 14.3.0 to 14.4.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.14
+                  title: ""
+                  date: 2024-06-09T13:29:56.248Z
+                - commits:
+                    - subject: Split target state set/get into separate module
+                      hash: 45d1f1f964e777b5168b089858af0cec33f98c68
+                      body: >
+                        This removes the circular dependency between device
+                        state index and
+
+                        preloading and cleans up the device state module code
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move device-state.ts into the device-state/index.ts
+                      hash: fedeb518e5315a7cb593818c2e80a5d8e459cefa
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move device-state/target state to api-binder/poll
+                      hash: 9497eed380e63f3b5d794071879ad9e8e4369178
+                      body: >
+                        This goes in the direction of grouping modules by
+                        responsibility. The
+
+                        api-binder module is the middleware between the device
+                        and the backend,
+
+                        thus the target state polling code makes more sense
+                        there.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.3.13
+                  title: ""
+                  date: 2024-06-05T20:43:08.205Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.70
+                      hash: d7a325b80a5c79d290b7bb232dabb4a7ac2737f9
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.69 to
+                        2.0.70
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.12
+                  title: ""
+                  date: 2024-06-03T01:55:57.227Z
+          version: meta-balena-5.3.17
+          title: ""
+          date: 2024-06-09T18:34:28.024Z
+        - commits:
+            - subject: Work around uuid file corruption in balenaEngine health check
+              hash: e3696fc97f5553f138c92947c5f080ccdef5c6e5
+              body: >
+                We have detected one more way in which the uuid file used by
+                containerd
+
+                can get corrupted. This time, the file is not empty, but doesn't
+                contain
+
+                a valid UUID either.
+
+
+                This commit thus extends the existing workaround to also handle
+                this
+
+                case.
+
+
+                See https://github.com/balena-os/balena-engine/issues/322
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-5.3.16
+          title: ""
+          date: 2024-06-06T22:28:17.347Z
+        - commits:
+            - subject: "os-helpers-tpm2: fix empty efivar reads"
+              hash: 3f9d048f964f922c9bfaeee4939197cb31c8eef6
+              body: >
+                When reading from efi variables in hostapp-update hooks during
+                rollback,
+
+                tcgtool will improperly read zero bytes from efivar files. This
+                results
+
+                in an improper calculation of the PCR 7 digest, and an
+                unbootable
+
+                system.
+
+
+                Read the file contents, skipping the first four bytes that are
+
+                attributes, and pipe the data directly to tcgtool to work around
+                this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "rollback-health: bind mount EFI partition in old_rootfs"
+              hash: 8761c1d6536d86249757f37925ae40d905716cc3
+              body: >
+                Some hooks, such as 0-signed-update, will attempt to read files
+                from the
+
+                EFI system partition, such as combined policy binaries.
+
+
+                Bind mount the EFI partition into old_rootfs before running
+                hooks to
+
+                ensure this is available.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "rollback-health: mount securityfs in old_rootfs"
+              hash: e87838103af3c5ee05c60b7105353f987af47e61
+              body: >
+                When rollback-health runs, a failing healthcheck causes the
+
+                hostapp-update hooks to be run from the inactive partition, to
+                make the
+
+                inactive system bootable again.
+
+
+                The 0-signed-update hook, which updates the sealing policy for
+                secure
+
+                boot enabled systems, reads from the securityfs mounted at
+
+                /sys/kernel/security in order to parse the TPM event log.
+
+
+                If this filesystem isn't mounted, the hook will improperly
+                detect that
+
+                the TPM event log isn't available, and unneccessarily create a
+                combined
+
+                policy when a single PCR policy would suffice.
+
+
+                Mount this filesystem in old_rootfs before chrooting to fix
+                this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "os-helpers-tpm2: compute_pcr7 w/ events post separator"
+              hash: e4f8f6f9c79f994f873bc930bfa028f2161a29d9
+              body: >
+                In commit 1c19ebb, we append digests from the TPM event log
+
+                corresponding to events that are logged before EV_SEPARATOR. For
+
+                instance, parsing the event log on a typical system for event
+                types, the
+
+                output looks like this:
+
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (SecureBoot)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (PK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (KEK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (db)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (dbx)
+
+                EV_SEPARATOR
+
+
+                This system requires no merging of event log digests.
+
+
+                On systems that measure EFI binaries (mostly only QEMU w/ edk2),
+                we also
+
+                get this:
+
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (SecureBoot)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (PK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (KEK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (db)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (dbx)
+
+                EV_SEPARATOR
+
+                EV_EFI_VARIABLE_AUTHORITY (bootx64.efi)
+
+                EV_EFI_VARIABLE_AUTHORITY (bzImage)
+
+
+                Again, this requires no merging. We compute the signature of the
+
+                relevant EFI binaries ourselves, as they're subject to change
+                during
+
+                hostapp-update.
+
+
+                However, we've also seen event logs like this:
+
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (SecureBoot)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (PK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (KEK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (db)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (dbx)
+
+                EV_EFI_ACTION (DMA Protection Disabled)
+
+                EV_SEPARATOR
+
+
+                This case is the one we've handled previously, by reading from
+                the event
+
+                log and appending event digests before EV_SEPARATOR. We stopped
+                at
+
+                EV_SEPARATOR because we weren't parsing event types previously,
+                and this
+
+                digest is a constant that's easily recognized. However, we've
+                since
+
+                encountered systems that have unexpected events *after*
+                EV_SEPARATOR, as
+
+                shown below.
+
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (SecureBoot)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (PK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (KEK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (db)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (dbx)
+
+                EV_SEPARATOR
+
+                Unknown event type (?!)
+
+
+                In order to handle this, parse digests and event types into
+                temporary
+
+                files and iterate through them together. We only stop appending
+                digests
+
+                from the event log when the next event type is
+                EV_EFI_VARIABLE_AUTHORITY
+
+                (EFI binary signature) or we hit the end of the list. This
+                should
+
+                account for all possible variations.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-5.3.15
+          title: ""
+          date: 2024-06-05T00:15:59.506Z
+        - commits:
+            - subject: "rtl8192cu: Remove this unmaintained out-of-tree kernel driver"
+              hash: e3b7a1555542e6b1381f1a5f7131b935d1f66f22
+              body: >
+                The source code for this driver hasn't been updated in 9 years
+                so
+
+                let's remove it by also considering we were not using it.
+                Instead,
+
+                machines that need to use a driver for this WiFi chipset can
+                selectively
+
+                enable the in-tree kernel driver which has been improved in the
+                last years.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-5.3.14
+          title: ""
+          date: 2024-06-02T18:07:03.720Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.11
+              hash: 55af41dcebb294ea9ebeeb2fd759d79065dc3bf2
+              body: |
+                Update balena-supervisor from 16.3.10 to 16.3.11
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Move OS variant retrieval to config module
+                      hash: 027c2575b1147b5395c61e3d824f9dff95e7f1d0
+                      body: >
+                        This also deprecates the `getOSVariant` function of the
+                        `os-release`
+
+                        module, as the OS variant are no longer defined in
+                        `/etc/os-release`.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Do not export balenaApi on api-binder
+                      hash: 59689b27892a0bb3e6ec692c158070b6defb48a9
+                      body: >
+                        Instead, add `getBalenaApi` function to api-helper so
+                        other modules can
+
+                        access a balena API instance.
+
+
+                        Further reduces circular dependencies to 5
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move api-keys module to src/lib
+                      hash: ac2db38742962a31af63549f0d9f257e6a1331f3
+                      body: >
+                        This removes circular dependencies between the
+                        device-api module and
+
+                        the compose module, reducing total circular dependencies
+                        to 15
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Do not re-export ContractObject on lib/contracts
+                      hash: 48f75e61b8c53c532c27eb0c3f0d878312b4f2e7
+                      body: |
+                        Further reduce circular dependencies to 10
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move Compose(Network|Volume)Config to top level types
+                      hash: bef5e784400d13d2788748e059e36c761d956f23
+                      body: |
+                        This reduces dependencies from 80 to 47
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move composition types to compose/types
+                      hash: 234e0de07599c1033d04c77d2df9a000d38f60dd
+                      body: >
+                        This reduces circular dependencies from 250 to 80 by
+                        ensuring that
+
+                        modules that only require types do not import the full
+                        module with all
+
+                        its dependencies.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Split compose types into interface and implementation
+                      hash: 94de4006a07baada9336721c4084a00f885a6572
+                      body: >
+                        This splits `App`, `Network`, `Service` and `Volume`
+                        which used to be
+
+                        defined as classes into an interface and a class
+                        implementation that is
+
+                        not exported. This will allow to work with just the
+                        types in some cases
+
+                        and prevent circular dependencies when importing.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.3.11
+                  title: ""
+                  date: 2024-05-27T20:04:25.017Z
+          version: meta-balena-5.3.13
+          title: ""
+          date: 2024-05-31T23:09:30.017Z
+        - commits:
+            - subject: "patch: Add Test Suite specific config for GHA"
+              hash: 4ecd7852f4eb0cd204e31cf3b8634c168782ce46
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-5.3.12
+          title: ""
+          date: 2024-05-31T16:03:25.568Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.10
+              hash: a500fccd65e2cf7d31ed6730cc6fd12e0220b757
+              body: |
+                Update balena-supervisor from 16.3.8 to 16.3.10
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update got to v14.3.0
+                      hash: 4764bca2c4122a37f1f4c684e673ddca3812b4c9
+                      body: |
+                        Update got from 14.2.1 to 14.3.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.10
+                  title: ""
+                  date: 2024-05-27T02:41:46.106Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.69
+                      hash: 9cdb363e4cf274e5506247cc55cebef0c676de7e
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.68 to
+                        2.0.69
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.9
+                  title: ""
+                  date: 2024-05-27T01:59:21.096Z
+          version: meta-balena-5.3.11
+          title: ""
+          date: 2024-05-27T06:50:02.553Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.8
+              hash: ca994c7c5d3598b0f1844e3c98bc37b756d056c6
+              body: |
+                Update balena-supervisor from 16.3.5 to 16.3.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.68
+                      hash: 8a7972c783845576741c626f7ac543671ebf868b
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.67 to
+                        2.0.68
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.8
+                  title: ""
+                  date: 2024-05-24T14:29:17.821Z
+                - commits:
+                    - subject: Update sinon to v18
+                      hash: 6b47c3572dea75c161e3931f05f37c46828d90a2
+                      body: |
+                        Update sinon from 17.0.1 to 18.0.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.7
+                  title: ""
+                  date: 2024-05-24T13:45:20.892Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.67
+                      hash: 21f72b0ce9fd977517df3bf0ee5c186a17d432c9
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.66 to
+                        2.0.67
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.6
+                  title: ""
+                  date: 2024-05-20T01:54:04.811Z
+          version: meta-balena-5.3.10
+          title: ""
+          date: 2024-05-24T22:52:04.637Z
+        - commits:
+            - subject: "NetworkManager: do not use FW rule numbers in shared dispatcher
+                script"
+              hash: ab8d61194d84045e4b74f60e4172a69dd52a3509
+              body: >
+                Manipulating the firewall rules by index introduces a race
+                condition.
+
+                Both NetworkManager and balenaEngine add the rules to the top
+
+                of the FORWARD chain instead of appending, so if we first look
+                up
+
+                a rule by number and then use the number to refer to it, we can
+                not
+
+                guarantee that the rule number has not changed (iow the rule has
+                not
+
+                been moved down) in the meantime.
+
+
+                This patch removes the use of rule numbers completely and makes
+
+                the "shared" dispatcher script refer to the rules by definition.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-5.3.9
+          title: ""
+          date: 2024-05-24T12:34:18.221Z
+        - commits:
+            - subject: "tests: safe-reboot: fetch and modify target state"
+              hash: af4d36646c2c301fceadcd10143096b187b67bd1
+              body: >
+                This is a fix targeted for the revpi-connect-4 which requires a
+                config.txt param to be present to connect to wifi. The old way
+                we did this test results in the config.txt being wiped - so now
+                we fetch and change the current state to maintain the existing
+                configuration and avoid this
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-5.3.8
+          title: ""
+          date: 2024-05-23T11:43:26.464Z
+        - commits:
+            - subject: "tests: os: modem: fix curl command"
+              hash: 6a62c9fea1611658504e3ccdff29bd8ae7467b3d
+              body: >
+                The modem test was broken when changing from ping to curl as
+                part of 071c018. Here it is fixed
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-5.3.7
+          title: ""
+          date: 2024-05-22T07:06:53.156Z
+        - commits:
+            - subject: "peak: Update to version 8.17.0"
+              hash: 2ab3cb2eb859d0a8658fda0739e6d287adc0bc6d
+              body: >
+                This is needed to have it compiled against kernel version
+                6.6.23,
+
+                which we will include in balena-generic.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-5.3.6
+          title: ""
+          date: 2024-05-20T08:35:07.780Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.5
+              hash: 982ac50fe144182b53ab00fd5ebe8e0f8bec7a89
+              body: |
+                Update balena-supervisor from 16.1.10 to 16.3.5
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.66
+                      hash: 0786f6d95bf67c5ba7002dd10bdde2578a4b28ea
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.65 to
+                        2.0.66
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.5
+                  title: ""
+                  date: 2024-05-13T01:53:50.173Z
+                - commits:
+                    - subject: Update semver to v7.6.2
+                      hash: da5fdc5d781ce2c6dcf61f7344ef7a75aa5eb180
+                      body: |
+                        Update semver from 7.6.1 to 7.6.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.4
+                  title: ""
+                  date: 2024-05-12T16:29:18.605Z
+                - commits:
+                    - subject: Update semver to v7.6.1
+                      hash: 6ebeab14c1f8484335c553de10e64f4bae109797
+                      body: |
+                        Update semver from 7.6.0 to 7.6.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.3
+                  title: ""
+                  date: 2024-05-10T16:29:32.262Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.65
+                      hash: 9945629f0a9fde10ec23668d3fc793e696ef82fb
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.63 to
+                        2.0.65
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.2
+                  title: ""
+                  date: 2024-05-06T01:53:45.002Z
+                - commits:
+                    - subject: Update @balena/contrato to 0.9.4
+                      hash: 1dcd156fc84376fcba8141f37c4901e176b5cdb4
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.3.1
+                  title: ""
+                  date: 2024-05-01T01:06:23.630Z
+                - commits:
+                    - subject: Add rpi support to balenaOS secure boot
+                      hash: 3017ca6308ad8fce9e65882441a9ef5e123e9c6f
+                      body: |
+                        - Loop through `rpi`, `efi` for crypt boot mount
+                        - Remove `exit 1` from dbus_get_mount
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.3.0
+                  title: ""
+                  date: 2024-04-30T21:13:08.847Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.63
+                      hash: 6c2a07bd776c27fda9d34e9205152b8aac0476eb
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.62 to
+                        2.0.63
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.37
+                  title: ""
+                  date: 2024-04-29T22:28:45.427Z
+                - commits:
+                    - subject: Remove unused event-stream dependency
+                      hash: 23ba3e43849bca6172a3783c82216c360c986eb2
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update io-ts to 2.2.20, io-ts-reporters to 2.0.1, fp-ts to 2.16.5
+                      hash: f510dd9a8068df4d0c14f6598388bf5c15e235b4
+                      body: >
+                        TODO: Upgrading io-ts to 2.2.21 will result in some unit
+                        tests for
+
+                        io-ts type validation breaking, due to a change in
+                        t.record's handling
+
+                        of decoding unknown objects. In <2.2.21, a record with a
+                        custom key type
+
+                        will decode an unknown object to Left if it has a key is
+                        not of the custom
+
+                        type. Whereas in io-ts@2.2.21, t.record will strip the
+                        invalid key and
+
+                        decode to Right. This is a breaking change for us.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.36
+                  title: ""
+                  date: 2024-04-29T19:54:50.854Z
+                - commits:
+                    - subject: Update @types dependencies
+                      hash: 4adf7105209a3aa407a93e22870100fe0b468015
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-16.2.35
+                  title: ""
+                  date: 2024-04-29T16:10:01.354Z
+                - commits:
+                    - subject: "Dev: update husky to v9"
+                      hash: 7df3c1f5fca8ae3e2a1a015b5698420c278e06c1
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-16.2.34
+                  title: ""
+                  date: 2024-04-29T15:09:50.951Z
+                - commits:
+                    - subject: Update docker related dependencies
+                      hash: ae823fea181e2b1680940538b04b5af37c1b3229
+                      body: >
+                        This bumps dockerode, removes resin-docker-build in
+                        favor of
+
+                        @balena/compose, and updates docker-delta and
+                        docker-progress packages.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.2.33
+                  title: ""
+                  date: 2024-04-26T19:51:36.874Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.62
+                      hash: 20f6cb07cb1989f99eaa54625d8e4b502e2e0919
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.58 to
+                        2.0.62
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.32
+                  title: ""
+                  date: 2024-04-26T01:51:50.589Z
+                - commits:
+                    - subject: Move lib/fs-utils tests to testfs
+                      hash: 9c968b8d06a407e943d9f91eb5f89863280d7962
+                      body: |
+                        This removes mock-fs as a dependency
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.31
+                  title: ""
+                  date: 2024-04-26T00:40:13.656Z
+                - commits:
+                    - subject: Update supertest to v7
+                      hash: 35e17cf22c0e45c14daa2efa24eb07358d14fff6
+                      body: |
+                        This patches a `formidable` package vulnerability
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update fork-ts-checker-webpack-plugin to v9
+                      hash: 73b71386fe00fdf9896ef6f14ead75920e9318bf
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update yargs to v17, tar-stream to v3
+                      hash: 717c8cd6149eb46b8b7e39b3021fd86321f95089
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.30
+                  title: ""
+                  date: 2024-04-24T18:35:21.169Z
+                - commits:
+                    - subject: Refactor MDNS resolver into a module
+                      hash: 6f02b17968d02c2e27b523e40a25ef4c4815d20a
+                      body: >
+                        Also add integration tests for the resolver
+                        functionality to prevent
+
+                        regressions.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Fix mdnsResolver import
+                      hash: ad52561de548ef9f2dfec67187ae0d903e0bedfe
+                      body: >
+                        The `mdns-resolver` module does not provide a default
+                        export. Trying to
+
+                        use a default import notation, causes the `resolve`
+                        function to not be
+
+                        found, breaking MDNS resolution.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.2.29
+                  title: ""
+                  date: 2024-04-24T15:13:31.152Z
+                - commits:
+                    - subject: Gracefully handle multiple reboot/shutdown requests
+                      hash: 14bdc522c17c924ce560da81f735b96bac41bd4d
+                      body: >
+                        Since HTTP's server.close() is async, there is a slim
+                        chance
+
+                        for two instances of /v1/reboot or /v1/shutdown to be
+                        processed.
+
+                        If the server is already closed when server.close() is
+                        called,
+
+                        the call throws ERR_SERVER_NOT_RUNNING
+
+                        which doesn't need to be surfaced to the user. This
+                        change
+
+                        only allows one server.close() attempt to occur at a
+                        time.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.28
+                  title: ""
+                  date: 2024-04-23T20:19:12.030Z
+                - commits:
+                    - subject: Update ts-node to v10
+                      hash: d14824f2fddffb0292af94c001d90e816ddb94c6
+                      body: |
+                        Update ts-node from 8.10.2 to 10.9.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.27
+                  title: ""
+                  date: 2024-04-23T19:33:02.255Z
+                - commits:
+                    - subject: Remove unnecessary @types packages
+                      hash: 8ebb26663880d879e5eb6528512822c99e1ef42b
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update knex to 3.1.0
+                      hash: 17a7e60506f36403a98c0205d80989edcb1997f6
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update json-mask to 2.0.0
+                      hash: 77f6f17042d9fda21d90dc5363824562f1ddd0f6
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update lint-staged to 15.2.2
+                      hash: f3809dccfb3cf787da9ccd9fefab6d0f2554d895
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update mocha-pod to 2.0.5
+                      hash: 9ca027ad486ecffac20f1cff714c493e92b7befc
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update mocha to 10.4.0
+                      hash: 7c423958ea61c12f3786b9a52567dea75d2351c5
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update rewire to 7, @balena/lint to 8
+                      hash: 5d6a73514165f4fc60b64d3eebafc0419e50e228
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update nodemon to 3.1.0
+                      hash: d887809494ce27859ddd571048f4c7266c0c4bec
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update sinon to 17
+                      hash: bd26d8877003aa751df0216f341e776d39370724
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Update systeminformation to 5.22.7
+                      hash: 7bb5900649b42ecd418dc21590b7359c2088cc5c
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.26
+                  title: ""
+                  date: 2024-04-23T18:58:25.318Z
+                - commits:
+                    - subject: Update copy-webpack-plugin to v12
+                      hash: dde0e86a1abfab8c8f0e954ed632d5b154dc5a55
+                      body: |
+                        Update copy-webpack-plugin from 11.0.0 to 12.0.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.25
+                  title: ""
+                  date: 2024-04-19T15:46:46.217Z
+                - commits:
+                    - subject: Update webpack-cli to v5
+                      hash: 00f1610870497c4e2436d0fc022f4de30b90707b
+                      body: |
+                        Update webpack-cli from 4.10.0 to 5.1.4
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.24
+                  title: ""
+                  date: 2024-04-19T14:55:50.059Z
+                - commits:
+                    - subject: Update got to v14
+                      hash: 148ba6e0c31ac09834cb8ad598bf1cac35ca1095
+                      body: |
+                        Update got from 12.6.1 to 14.2.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.23
+                  title: ""
+                  date: 2024-04-19T13:34:13.665Z
+                - commits:
+                    - subject: Update @types/supertest to v6
+                      hash: e24691fa63c1f2b6f097e0bcb510bfc9da1eda7d
+                      body: |
+                        Update @types/supertest from 2.0.12 to 6.0.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.22
+                  title: ""
+                  date: 2024-04-19T12:25:19.313Z
+                - commits:
+                    - subject: Remove unused `tmp` dependency
+                      hash: 12cc8eb91b52545d84a22e511ddd63ad4ac677ad
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-16.2.21
+                  title: ""
+                  date: 2024-04-18T02:44:36.677Z
+                - commits:
+                    - subject: Update rimraf
+                      hash: 5e5a803e26ac36a3085701c3c7055553be6d2fcb
+                      body: |
+                        Update @types/rimraf from 2.0.5 to 4.0.5
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.20
+                  title: ""
+                  date: 2024-04-17T15:39:15.721Z
+                - commits:
+                    - subject: Update semver to v7.6.0
+                      hash: 52268d83fa6d8fd364e765b4c0d11128040e9410
+                      body: |
+                        Update semver from 7.5.4 to 7.6.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.19
+                  title: ""
+                  date: 2024-04-17T14:38:48.064Z
+                - commits:
+                    - subject: Update event-stream to v3.3.5
+                      hash: 36e0fed219b041fa9695dd97629f710d52d76129
+                      body: |
+                        Update event-stream from 3.3.4 to 3.3.5
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.18
+                  title: ""
+                  date: 2024-04-15T21:29:50.342Z
+                - commits:
+                    - subject: Add additional update lock tests for lockOverride & force
+                      hash: 57207c35398f147205fdc25d5010ec3fb51b132e
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.17
+                  title: ""
+                  date: 2024-04-15T20:57:03.828Z
+                - commits:
+                    - subject: Update @types/chai-things to v0.0.38
+                      hash: 28d583067193fd0bcdb56732faf659785389f248
+                      body: |
+                        Update @types/chai-things from 0.0.35 to 0.0.38
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.16
+                  title: ""
+                  date: 2024-04-15T16:33:18.061Z
+                - commits:
+                    - subject: Update webpack to v5.76.0 [SECURITY]
+                      hash: 6517d7fdbd6185c448846f7265c411fb0a2d899c
+                      body: |
+                        Update webpack from 5.74.0 to 5.76.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.15
+                  title: ""
+                  date: 2024-04-15T15:29:42.533Z
+                - commits:
+                    - subject: Disable automerge for major npm devDependencies
+                      hash: dfff74d21c1c05b0e9a4560db807887b079a73dc
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: balena-supervisor-16.2.14
+                  title: ""
+                  date: 2024-04-15T14:19:35.895Z
+                - commits:
+                    - subject: Update shell-quote to v1.7.3 [SECURITY]
+                      hash: 7398e53626f90d574ea5ce9b318e518fce8d0c19
+                      body: |
+                        Update shell-quote from 1.7.2 to 1.7.3
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.13
+                  title: ""
+                  date: 2024-04-15T13:53:49.933Z
+                - commits:
+                    - subject: Update express to v4.19.2 [SECURITY]
+                      hash: 9dfb0c576429290c42754e64f27e86bbde8e23bf
+                      body: |
+                        Update express from 4.17.1 to 4.19.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.12
+                  title: ""
+                  date: 2024-04-15T11:31:06.812Z
+                - commits:
+                    - subject: Enable npm package management via Renovate
+                      hash: 23c2f6ddf10216ad47935ff8bf894274299b0ba2
+                      body: |
+                        Settings are inherited from balena-io/renovate-config
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: balena-supervisor-16.2.11
+                  title: ""
+                  date: 2024-04-15T10:40:13.559Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.58
+                      hash: d7c14686cf22d9b82da1e3d7c8e52efb71da6ddc
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.57 to
+                        2.0.58
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.10
+                  title: ""
+                  date: 2024-04-15T03:02:03.903Z
+                - commits:
+                    - subject: Don't follow symlinks when checking for lockfiles
+                      hash: 6e185fbd447bce46179f60a9e650a3a35937d990
+                      body: >
+                        The Supervisor should only care whether a lockfile
+                        exists or
+
+                        not. This also fixes an edge case where a user symlinked
+                        a lockfile
+
+                        to a nonexistent file, causing the Supervisor to enter
+                        an error
+
+                        loop as it was not able to `stat` the nonexistent file.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.9
+                  title: ""
+                  date: 2024-04-12T16:50:06.044Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.57
+                      hash: 97633816850f0d13d70cdfa2afb8bc9652e71fa2
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.55 to
+                        2.0.57
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.8
+                  title: ""
+                  date: 2024-04-12T11:30:35.445Z
+                - commits:
+                    - subject: Add memory usage healthcheck
+                      hash: f863075bdc5714baebcce8b73ddd95240fd04583
+                      body: >
+                        This healthcheck fails when Supervisor memory usage is
+                        above a threshold
+
+                        based on initial memory measurements after device state
+                        has settled.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.7
+                  title: ""
+                  date: 2024-04-12T01:49:06.409Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.55
+                      hash: 6864ab329aa9879a2d12aa19b2e70cadfff5fb49
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.54 to
+                        2.0.55
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.6
+                  title: ""
+                  date: 2024-04-10T16:30:09.955Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.54
+                      hash: 30351e5f12dbc7f0f2ea3633ad3e63c458adec4a
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.53 to
+                        2.0.54
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.5
+                  title: ""
+                  date: 2024-04-09T18:43:49.721Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.53
+                      hash: 7d7391194876c5593733113ee23ff28d24eb3422
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.52 to
+                        2.0.53
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.4
+                  title: ""
+                  date: 2024-04-09T17:32:28.461Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.52
+                      hash: 55de8ae4300a57776e9134218937fdf732a7f17a
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.27 to
+                        2.0.52
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.2.3
+                  title: ""
+                  date: 2024-04-09T16:30:46.790Z
+                - commits:
+                    - subject: Inherit Renovate settings from balena-io
+                      hash: 58e05d0f63a9c789c4163a678b782cb56763250f
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: balena-supervisor-16.2.2
+                  title: ""
+                  date: 2024-04-08T14:36:45.050Z
+                - commits:
+                    - subject: Fix some RegEx io-ts types
+                      hash: b7922e687567899c668474c3ee5e6f2e89f0989d
+                      body: >
+                        io-ts types that were generated using
+                        `shortStringWithRegex` were testing
+
+                        against `VAR_NAME_REGEX`, instead of the Regex that was
+                        specified when
+
+                        generating the type. This affected `DockerName` such
+                        that service names with
+
+                        a dash in the middle were returning as false when passed
+                        through the
+
+                        `DockerName.is` type guard, affecting how
+                        `getServicesLockedByAppId` was
+
+                        returning a map of locked services.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.1
+                  title: ""
+                  date: 2024-04-06T08:22:13.914Z
+                - commits:
+                    - subject: Take lock before updating service metadata
+                      hash: af6359f7ae2db4a656598947120bb46d5d3730de
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.2.0
+                  title: ""
+                  date: 2024-04-05T02:35:13.875Z
+          version: meta-balena-5.3.5
+          title: ""
+          date: 2024-05-16T10:54:49.219Z
+        - commits:
+            - subject: "hostapp-update-hooks: 99-balena-bootloader: Adapt to secure boot"
+              hash: 241caa3243c23363841e7aa6f89cc116cf24d200
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "hostapp-update-hooks: fix linter warnings"
+              hash: a35ae938fd981e4e2bd84031352f1417f07b1a01
+              body: |
+                Remove some of the low-risk linter warnings.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: image-balena: use relative path to generate boot fingerprint"
+              hash: b30ce236a9e8f6229d5af527d853e6e3fc090d72
+              body: >
+                Ideally we would re-use the function is the target os-helpers-fs
+                file,
+
+                but Yocto's recipe bash support is not completely compatible
+                with POSIX syntax.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers: add a helper function to generate fingerprint files"
+              hash: 487b4f4dbc62de77f6b76f27f80bab69a192bee1
+              body: >
+                This function will be re-used as it's called from the HUP hooks
+                and
+
+                from the flasher image for secure boot devices that split boot
+
+                partitions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: sign-rsa: add dependencies"
+              hash: eafbc411e99430ade0d4e141e4c3e7f59ae0feb9
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: migrate: allow command line argument configuration"
+              hash: c8de15a999aec50915c7cf829e7ec3886aaa3182
+              body: >
+                The migrate module is currently only enabled if specified in
+                config.json.
+
+                This commit introduces a command line argument override for
+                board
+
+                integration layers to use. This allows for example for
+                non-flasher device
+
+                types to force the migration.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: image-balena: provide board configuration hook"
+              hash: cda7d24207d736bc8fe4f58ed47489ecc2db2db3
+              body: >
+                Add a hook for boards to initialize boot partition configuration.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: abroot: add missing dependency"
+              hash: 593ce8db2c2de1b6b92e3e57af932a4d3eefe14f
+              body: >
+                The abroot script sources balena-config-defaults so let's make
+                sure
+
+                it's included in the build.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: kernel-balena: selectively include dmcrypt for signed images"
+              hash: 1bdb0d2be57c2f7697c5af6d3bdc76cf873ddd06
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "hostapp-update-hooks: only include os-helpers-sb for signed builds"
+              hash: bfe9204622793b6afb0879c0fce0aad2d0cb7de6
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "hostapp-update-hooks: 1-bootfiles: Check for os-helpers-sb before
+                including"
+              hash: 55ea286a40181f0e809280f4e8f2c9ed743d4bb7
+              body: |
+                The `os-helpers-sb` file is only included for signed builds.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "docs: add secure boot abstractions details"
+              hash: 91dad6cdb1b4e9e10a9ac4017d4b975256d9186c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: fsuuidinit: use file based mutex to avoid race
+                condition"
+              hash: 3f6a302bf53c6c0a609015c92ff927c7575412d9
+              body: >
+                As soon as the UUID is regenerated udev runs the correspondign
+                rules.
+
+
+                However, the rules expect the new UUID to be cached in a file,
+                so there
+
+                is a race condition between the creation of the file and the
+                udev rule.
+
+
+                This commit avoid the race condition by using a file mutex that
+                the
+
+                udev rule can wait on.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "systemd: update_state_probe: Use a file mutex to avoid race condition"
+              hash: ef51b29b330e77b2111644fa4dbae156ca753e6c
+              body: >
+                As soon as the UUID is modified udev re-runs the rules for the
+                partition.
+
+                However, the rule expects the new root UUID to be cached in a
+                file, and
+
+                if the udev rule gets there before the file is created it fails.
+
+
+                This commit waits on a lock file mutex before accessing said
+                file.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers: extend filesystem helper with wait4rm"
+              hash: bb77f62506329bb4f09a480b5ef1239742e71294
+              body: >
+                This function waits until a file is removed or times out -
+                useful to
+
+                implement basic file based mutexes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers-fs: regenerate_uuid: skip remounting"
+              hash: 7674716ffd7472f7a487c027ba756803e1d446fb
+              body: >
+                Remounting filesystems is done on systems with a broken clock in
+                order
+
+                to prevent tune2fs from bailing out when the last mounted time
+                is in the
+
+                future. This resets the last mounted time to now.
+
+
+                However, the filesystem is immediately unmounted again without
+                being
+
+                utilized, and the mount and unmount process is time consuming.
+                Instead,
+
+                use `-e continue` to tell tune2fs to continue after an error,
+                which
+
+                achieves the same result with less time and complexity.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "resin-init-flasher: replace fatal with fail"
+              hash: 53e995bfc70dcea70b476cb26a5e68df0e2a53a8
+              body: >
+                The fatal() function is only defined while running in the
+                initramfs
+
+                while fail() is provided by the OS helper logging which is
+                available
+
+                in both the OS and flasher image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-image-bootloader-initramfs: add modules needed for secure boot"
+              hash: dfa88cfb6cf195c9748a41fe5bdad4954a72f27d
+              body: >
+                The balena bootloader needs to mount encrypted disks to kexec
+                the final
+
+                kernel which is stored in the encrypted root partitions.
+
+
+                It also needs to run the data partition expander twice on boot,
+                once in the
+
+                balena bootloader that expands the disk, and later on the final
+
+                initramfs to expand the file system.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: balena-bootloader: add support for encrypted disks mount and
+                kexec"
+              hash: dccf18856d3198ed2bb3394792b859de12aad407
+              body: >
+                The kernel needs crypto support to mount encrypted disks at boot
+                and
+
+                kexec image authentication.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: balena-bootloader: specify a deployment subfolder"
+              hash: 1e1c465dc899377dd10350038f20a653eea95325
+              body: >
+                This prevents overwritting deployment files that are also
+                deployed
+
+                by the standard linux recipe.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: kernel-balena: add secureboot configuration dependencies"
+              hash: f8eca19e9180b7d4f2d80ae87ef4074be7a81ff5
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: kernel-balena: non-efi device types also use EFI signing for
+                kexec"
+              hash: 8b4f5dd0f5e806954897f3dbac3da00f0487ba88
+              body: >
+                Remove the conditional to signing the kernel initramfs on EFI
+                machine
+
+                features as kexec also requires this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: sign-efi: allow to configure deployment directory"
+              hash: fc36626aeedfe681e5198083112c4f17e8688596
+              body: >
+                This is needed for systems that build and deploy two different
+                linux
+
+                kernels like is the case when using the balena bootloader so
+                that
+
+                different recipes do not try to deploy the same files.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: sign-efi: support compressed payloads"
+              hash: ac9955350690d0f044a9e15469a93819c3591f27
+              body: >
+                The EFI class is used to sign Linux kernel binaries, and these
+                can come
+
+                in a zImage (compressed) format that needs to be decompressed
+                before
+
+                signing.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-5.3.4
+          title: ""
+          date: 2024-05-12T17:56:11.300Z
+  version: 6.0.13
+  title: ""
+  date: 2024-08-26T21:39:06.341Z
+- commits:
     - subject: Update balena-yocto-scripts to 64c93852695af74dc1ddb355da0c8e2ff464638c
       hash: 6c06bfc3daedc7d96ffdcc23899afcb1a710cf16
       body: Update balena-yocto-scripts
