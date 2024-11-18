@@ -7,17 +7,13 @@ set -o errexit
 # the rest of the bootloader binaries
 
 . /usr/libexec/os-helpers-fs
+. /usr/libexec/os-helpers-logging
 
 DURING_UPDATE=${DURING_UPDATE:-0}
 declare -a UPDATED_PARTITIONS=()
 bootloader_device="/dev/mtdblock0"
 bootloader_blob="/opt/tegra-binaries/boot0.img"
 partspec=$(find "/opt/tegra-binaries/" | grep "partition_specification194_nx")
-
-info_log()
-{
-    echo "[INFO] $@"
-}
 
 # Check if old hook made use of DURING_UPDATE
 # and if not, backport rollback-altboot fix
@@ -26,12 +22,12 @@ backport_rollback_altboot_fix()
 {
     inactive_hook=$(find /mnt/sysroot/active/ | grep "99-resin-bootfiles-xavier-nx-devkit")
     if grep -q "DURING_UPDATE" "${inactive_hook}"; then
-        info_log "No need to backport altboot fix to old hook"
+        info "No need to backport altboot fix to old hook"
     else
-        info_log "Will backport rollback-altboot fix to old hook"
+        info "Will backport rollback-altboot fix to old hook"
         sed -i 's/os-helpers-fs/os-helpers-fs \nDURING_UPDATE=${DURING_UPDATE:-0}\nif [ "$DURING_UPDATE" = "0" ]; then target_sysroot="active"; else target_sysroot="inactive"; fi; /g' ${inactive_hook}
         sed -i 's|/mnt/sysroot/inactive|/mnt/sysroot/${target_sysroot}|g' ${inactive_hook}
-        info_log "Applied rollback-altboot fix to old hostapp-update hook"
+        info "Applied rollback-altboot fix to old hostapp-update hook"
     fi
 }
 
@@ -46,29 +42,29 @@ get_label_suffix_by_slot()
 
 if ! command -v tegra-boot-control &> /dev/null
 then
-    info_log "Could not find tegra-boot-control!"
+    info "Could not find tegra-boot-control!"
     exit 1
 fi
 
 redundancy_state=$(/usr/bin/tegra-boot-control -s | awk -F 'Redundancy:' '{print $2}' | awk '{print $1}' | tr -d '\n')
-info_log "Redundancy is currently ${redundancy_state}"
+info "Redundancy is currently ${redundancy_state}"
 
 # Enable boot slot redundancy if not enabled already
 tegra-boot-control -e
 curr_slot=$(/usr/bin/tegra-boot-control -c)
-info_log "Current active slot is ${curr_slot}"
+info "Current active slot is ${curr_slot}"
 
 if [ "$DURING_UPDATE" = "1" ]; then
     backport_rollback_altboot_fix
-    info_log "Target active slot is $((target_slot = ! curr_slot))"
+    info "Target active slot is $((target_slot = ! curr_slot))"
     target_sysroot="inactive"
 else
-    info_log "Target active slot stays $((target_slot = curr_slot))"
+    info "Target active slot stays $((target_slot = curr_slot))"
     target_sysroot="active"
 fi
 
 target_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/${target_sysroot}" -t ext4)
-info_log "New rootfs partition is ${target_part}"
+info "New rootfs partition is ${target_part}"
 
 target_label_suffix=$(get_label_suffix_by_slot ${target_slot})
 rootstr=$(get_dev_label "${target_part}")
@@ -82,7 +78,7 @@ update_needed() {
     else
         update_size=$(ls -al $current_update_file | awk '{print $5}')
         update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
-        existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+        existing_md5sum=$(dd if=$device count=1 bs=$update_size status=none | md5sum | awk '{print $1}')
 
         if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
             echo 1
@@ -104,7 +100,7 @@ case "$rootstr" in
         ;;
 esac
 
-info_log "New root is resin-root${rootl}"
+info "New root is resin-root${rootl}"
 
 dtbname=$(cat "$partspec" | grep "kernel-dtb_b" | cut -d ':' -f 2 | awk -F'_sigheader' '{print $1}')
 dtbfile="${dtbname}-root${rootl}_sigheader.dtb.encrypt"
@@ -130,34 +126,34 @@ for n in ${partitions}; do
 
     if [ -e ${dst} ]; then
         if [ $(update_needed $src $dst) -eq 1 ]; then
-            info_log "Will update ${dst} ..."
-            dd if=${src} of="${dst}"
+            info "Will update ${dst} ..."
+            dd if=${src} of="${dst}" bs=64K conv=fsync
             UPDATED_PARTITIONS+=(${dst})
-            info_log "Updated ${dst}"
+            info "Updated ${dst}"
         else
-            info_log "No need to update ${dst}"
+            info "No need to update ${dst}"
         fi
     else
-        info_log "Duplicate slot for target partition ${dst} not available, ignoring."
+        info "Duplicate slot for target partition ${dst} not available, ignoring."
     fi
 done
 
 # DTB contains root partition, update is mandatory on the new boot slot, before switching it to active
-info_log "Writing ${dtbfile} to specific partitions..."
-dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb${target_label_suffix}")
+info "Writing ${dtbfile} to specific partitions..."
+dd if=/opt/tegra-binaries/${dtbfile} of=$(get_state_path_from_label "kernel-dtb${target_label_suffix}") bs=64K conv=fsync
 
-info_log "Writing kernel ${kernel} to specific partitions..."
-dd if=/opt/tegra-binaries/${kernel} of=$(get_state_path_from_label "kernel${target_label_suffix}")
+info "Writing kernel ${kernel} to specific partitions..."
+dd if=/opt/tegra-binaries/${kernel} of=$(get_state_path_from_label "kernel${target_label_suffix}") bs=64K conv=fsync
 
 existing_bootloader_md5sum=$(dd if=$bootloader_device bs=1M status=none | md5sum | awk '{print $1}')
 update_bootloader_md5sum=$(md5sum $bootloader_blob | awk '{print $1}')
 
 if [ ! "$existing_bootloader_md5sum" = "$update_bootloader_md5sum" ]; then
-    info_log "Will update bootloader device"
+    info "Will update bootloader device"
     flash_erase /dev/mtd0 0 0 || true
-    dd if=$bootloader_blob of=$bootloader_device bs=1M
+    dd if=$bootloader_blob of=$bootloader_device bs=1M conv=fsync
 else
-    info_log "No need to update bootloader device"
+    info "No need to update bootloader device"
 fi
 
 # Sync internal memory
@@ -165,13 +161,13 @@ sync /dev/mmcblk0
 
 # Update slot selection after the qspi was updated, otherwise
 # scratch register contents will be lost
-info_log "Setting active slot to ${target_slot}"
+info "Setting active slot to ${target_slot}"
 /usr/bin/tegra-boot-control -e
 /usr/bin/tegra-boot-control -a ${target_slot}
 
 if [ "$DURING_UPDATE" = "0" ]; then
     /usr/bin/tegra-boot-control -m
-    info_log "Running in rollback-altboot, next boot will be from the same slot. Marked boot as successful."
+    info "Running in rollback-altboot, next boot will be from the same slot. Marked boot as successful."
 fi
 
-info_log "Done."
+info "Done."

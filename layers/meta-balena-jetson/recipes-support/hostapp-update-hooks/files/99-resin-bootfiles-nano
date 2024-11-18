@@ -3,19 +3,15 @@
 set -o errexit
 
 . /usr/libexec/os-helpers-fs
+. /usr/libexec/os-helpers-logging
 
 QSPI="/dev/mtd0"
 BOOTLOADER_DEVICE="/dev/mtdblock0"
 
-info_log()
-{
-    echo "[INFO] $@"
-}
-
 # Jetson Nano SD has a qspi-nor,
 # Jetson Nano eMMC doesn't.
 if [ ! -e "${BOOTLOADER_DEVICE}" ]; then
-    info_log "This Nano module does not have a QSPI NOR, using hardware partition for boot blob"
+    info "This Nano module does not have a QSPI NOR, using hardware partition for boot blob"
     BOOTLOADER_DEVICE="/dev/mmcblk0boot0"
 fi
 
@@ -52,10 +48,10 @@ for n in ${partitions}; do
     dst="$file_path"
 
     if [ $(update_needed $src $dst) -eq 1 ]; then
-        info_log "Will update ${dst}..."
-        dd if=${src} of=${dst}
+        info "Will update ${dst}..."
+        dd if=${src} of=${dst} bs=64K conv=fsync
     else
-        info_log "No need to update ${dst}"
+        info "No need to update ${dst}"
     fi
 done
 
@@ -63,15 +59,15 @@ existing_bootloader_md5sum=$(dd if=${BOOTLOADER_DEVICE} bs=1M status=none | md5s
 update_bootloader_md5sum=$(md5sum ${BOOT_BLOB} | awk '{print $1}')
 
 if [ ! "$existing_bootloader_md5sum" = "$update_bootloader_md5sum" ]; then
-    info_log "Will update bootloader device ${BOOTLOADER_DEVICE}"
+    info "Will update bootloader device ${BOOTLOADER_DEVICE}"
     if [ -e "${QSPI}" ]; then
         flash_erase ${QSPI} 0 0 || true
     else
         echo 0 > /sys/block/mmcblk0boot0/force_ro
     fi
-    dd if=${BOOT_BLOB} of=${BOOTLOADER_DEVICE} bs=1M || true
+    dd if=${BOOT_BLOB} of=${BOOTLOADER_DEVICE} bs=1M conv=fsync
 else
-    info_log "No need to update bootloader device"
+    info "No need to update bootloader device"
 fi
 
 sync
