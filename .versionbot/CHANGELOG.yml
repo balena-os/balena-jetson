@@ -1,4 +1,35 @@
 - commits:
+    - subject: "layers/meta-balena: Update to v6.1.10"
+      hash: 790d140c394f6beff1e80766395680c10e5bcf78
+      body: ""
+      footer:
+        Changelog-entry: "layers/meta-balena: Update to v6.1.10"
+        changelog-entry: "layers/meta-balena: Update to v6.1.10"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "hostapp-update-hooks: Improve firmware update speed"
+      hash: da856755eec4cdfe7229d0e66fc9bad0f1175008
+      body: |
+        by reading/writing in larger chunks, ensure data
+        is flushed to disk. This reduces the risk of the
+        device not booting in case of an accidental power
+        cut during the OS update.
+
+        Also update logging to make use of the os logging
+        helper functions.
+      footer:
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+        Changelog-entry: "hostapp-update-hooks: Improve firmware update speed"
+        changelog-entry: "hostapp-update-hooks: Improve firmware update speed"
+      author: Alexandru Costache
+      nested: []
+  version: 6.1.10
+  title: ""
+  date: 2024-11-22T12:13:36.290Z
+- commits:
     - subject: Add GHA Built Test Deploy workflows
       hash: 63da15aab286fbbaf279de76335f54ce51b9c380
       body: ""

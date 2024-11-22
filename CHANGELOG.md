@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v6.1.10
+## (2024-11-22)
+
+* layers/meta-balena: Update to v6.1.10 [Alexandru Costache]
+* hostapp-update-hooks: Improve firmware update speed [Alexandru Costache]
+
 # v6.0.36
 ## (2024-11-21)
 
