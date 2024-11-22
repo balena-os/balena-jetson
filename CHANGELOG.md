@@ -1,6 +1,48 @@
 Change log
 -----------
 
+# v6.1.13
+## (2024-11-22)
+
+
+<details>
+<summary> Update layers/meta-balena to 7db3c31ccc6640f4c424e910db6999e06d27f34d [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.1.13
+> ### (2024-11-22)
+> 
+> * u-boot: env_resin: fix use of skip bootcount [Alex Gonzalez]
+> * initrdscripts: migrate: panic on installation failure [Alex Gonzalez]
+> 
+> ## meta-balena-6.1.12
+> ### (2024-11-21)
+> 
+> * balena-os: allow to specify early console for OS development builds [Alex Gonzalez]
+> 
+> ## meta-balena-6.1.11
+> ### (2024-11-20)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to ae505eb [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.62
+>> #### (2024-11-20)
+>> 
+>> * Update actions/checkout digest to 11bd719 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.61
+>> #### (2024-11-20)
+>> 
+>> * Update balena-io/balena-cli to v19.16.0 [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v6.1.10
 ## (2024-11-22)
 

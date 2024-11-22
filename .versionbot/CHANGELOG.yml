@@ -1,4 +1,118 @@
 - commits:
+    - subject: Update layers/meta-balena to 7db3c31ccc6640f4c424e910db6999e06d27f34d
+      hash: ab3e93a8a2181f9a6026c2730c8498736ff50f36
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 7db3c31ccc6640f4c424e910db6999e06d27f34d
+        changelog-entry: Update layers/meta-balena to 7db3c31ccc6640f4c424e910db6999e06d27f34d
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "u-boot: env_resin: fix use of skip bootcount"
+              hash: 5fbf52822a0743ead7693364f41da7895d69ce72
+              body: >
+                When `os_bc_skip` is set, the bootcount variable is not set and
+                the
+
+                altboot check incorrectly assumes the boot limit has exceeded.
+
+
+                Make sure the bootcount comparison only takes place if bootcount
+                has
+
+                been set.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: migrate: panic on installation failure"
+              hash: 0277b0573d25dd314fe4b0eda5ca5b3e08b69ce2
+              body: >
+                Right now if the flashing script errors out the initramfs just
+                keeps
+
+                running modules. This is a security risk specially for secure
+                boot
+
+                systems as at that point we have an authorized trusted OS
+                running in
+
+                an unvetted path.
+
+
+                This commit exits init if the flasher returns, and also attemps
+                to crash
+
+                the kernel followed by an infinite sleep for paranoic reasons.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.1.13
+          title: ""
+          date: 2024-11-22T14:23:50.319Z
+        - commits:
+            - subject: "balena-os: allow to specify early console for OS development builds"
+              hash: eea406c78c131ec36c2fd8b26f6072f055dec89a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.1.12
+          title: ""
+          date: 2024-11-21T13:18:17.719Z
+        - commits:
+            - subject: Update tests/leviathan digest to ae505eb
+              hash: 42464576742648b84f86795f7d39cae12ff9bb9a
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update actions/checkout digest to 11bd719
+                      hash: 9653c1e68ca07d9a9d7545cb018c4b2e09cbe914
+                      body: |
+                        Update actions/checkout
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.62
+                  title: ""
+                  date: 2024-11-20T16:48:51.826Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.16.0
+                      hash: 6b53a5af4bd9cb758ae28a3b595d1effd7d96b82
+                      body: |
+                        Update balena-io/balena-cli from 19.0.18 to 19.16.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.61
+                  title: ""
+                  date: 2024-11-20T15:54:30.635Z
+          version: meta-balena-6.1.11
+          title: ""
+          date: 2024-11-20T18:59:00.812Z
+  version: 6.1.13
+  title: ""
+  date: 2024-11-22T20:44:43.015Z
+- commits:
     - subject: "layers/meta-balena: Update to v6.1.10"
       hash: 790d140c394f6beff1e80766395680c10e5bcf78
       body: ""
