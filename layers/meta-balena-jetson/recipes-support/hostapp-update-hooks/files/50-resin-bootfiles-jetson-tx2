@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . /usr/libexec/os-helpers-fs
+. /usr/libexec/os-helpers-logging
 
 set -o errexit
 
@@ -13,11 +14,6 @@ OFFS=(1659 5243 18043)
 BOOT_BLOB="${BIN_INSTALL_PATH}/boot0.img"
 DURING_UPDATE=${DURING_UPDATE:-0}
 
-info_log()
-{
-    echo "[INFO] $@"
-}
-
 # Old 28.x based images are not able to re-write the
 # 28.x L4T partition layout with the offsets expected
 # by the tegra firmware at that revision. We therefore
@@ -29,20 +25,20 @@ backport_rollback_health_fix()
     # On 32.x releases this file was renamed, there's no need to update it
     if [ -e ${inactive_hook} ]; then
         if grep -q "DURING_UPDATE" "${inactive_hook}"; then
-            info_log "No need to backport rollback-health fix to old hook"
+            info "No need to backport rollback-health fix to old hook"
         else
             # Extra check, new 32.X systems use a different name for the partition spec file
             old_part_spec=$(find /mnt/sysroot/active/ -name "partition_specification.txt")
             if [ -e ${old_part_spec} ]; then
-                info_log "Will backport rollback-health fix to old hostapp-update hook"
+                info "Will backport rollback-health fix to old hostapp-update hook"
                 cp "${BIN_INSTALL_PATH}/tx2_28_x_hook_fix.sh" ${inactive_hook}
-                info_log "Applied rollback-health fix to old hostapp-update hook"
+                info "Applied rollback-health fix to old hostapp-update hook"
             else
-                info_log "Old partition specification file not found in current sysroot: ${old_part_spec}, hook will not be replaced!"
+                info "Old partition specification file not found in current sysroot: ${old_part_spec}, hook will not be replaced!"
             fi
         fi
     else
-        info_log "Upgrading from an L4T 32.X system, rollback-health fix is not needed"
+        info "Upgrading from an L4T 32.X system, rollback-health fix is not needed"
     fi
 }
 
@@ -53,7 +49,7 @@ update_needed() {
     update_size=$(ls -al $current_update_file | awk '{print $5}')
     update_md5sum=$(md5sum $current_update_file | awk '{print $1'})
 
-    existing_md5sum=$(dd if=$device bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+    existing_md5sum=$(dd if=$device count=1 bs=$update_size status=none | md5sum | awk '{print $1}')
 
     if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
         echo 1
@@ -77,8 +73,8 @@ get_odm_value() {
 set_odm_value() {
     for offset in ${OFFS[@]}
     do
-        info_log "Writing ODM byte ${1} to ${2} at offset ${offset}"
-        echo -n -e "\\x${1}" | dd of=${2} seek=${offset} bs=1 count=1 conv=notrunc
+        info "Writing ODM byte ${1} to ${2} at offset ${offset}"
+        echo -n -e "\\x${1}" | dd of=${2} seek=${offset} bs=1 count=1 conv=notrunc,fsync
     done
 }
 
@@ -114,23 +110,23 @@ update_partition_binaries()
         # any units running on 28.x should have been upgraded, and even so, we do backport_rollback_health_fix()
         while [ ! -L "$dst" ]
         do
-            info_log "Symlink $dst for $part_name not found, will retry in a second..."
+            info "Symlink $dst for $part_name not found, will retry in a second..."
             sleep 1;
             retries=$(( $retries + 1 ))
             if [ $retries -ge $max_retries ]; then
-                info_log "Retries limit reached and $dst is still not present, bail out!"
+                info "Retries limit reached and $dst is still not present, bail out!"
                 exit 1
             fi
             dst=$(get_state_path_from_label "$part_name")
-            info_log "State path after retry is $dst"
+            info "State path after retry is $dst"
         done
 
 	if [ $(update_needed $src $dst) -eq 1 ]; then
-            info_log "Will update ${dst}"
-            dd if=${src} of=${dst} bs=1K
-            info_log "Updated ${dst}"
+            info "Will update ${dst}"
+            dd if=${src} of=${dst} bs=64K conv=fsync
+            info "Updated ${dst}"
         else
-            info_log "No need to update ${dst}"
+            info "No need to update ${dst}"
         fi
     done
 }
@@ -138,15 +134,15 @@ update_partition_binaries()
 NUM_ADSP_PART=$(parted -s ${DEV_PATH} print | grep adsp | wc -l)
 if [ ${NUM_ADSP_PART} -lt 2 ]; then
     # adsp-fw partitions are mandatory only on L4T 32.2
-    info_log "ADSP firmware partition NOT found:${NUM_ADSP_PART}. Will upgrade partition table to L4T 32.2"
+    info "ADSP firmware partition NOT found:${NUM_ADSP_PART}. Will upgrade partition table to L4T 32.2"
     UPGRADE_PARTITIONS=1
 else
-    info_log "Found ${NUM_ADSP_PART} ADSP firmware partitions. No need to upgrade GPT"
+    info "Found ${NUM_ADSP_PART} ADSP firmware partitions. No need to upgrade GPT"
 fi
 
 if [ ${UPGRADE_PARTITIONS} -eq 1 ]; then
     backport_rollback_health_fix
-    info_log "Removing old L4T 28.X partitions"
+    info "Removing old L4T 28.X partitions"
 
     num_parts=$(sfdisk -l /dev/mmcblk0 | grep mmcblk0p | wc -l)
     for (( idx=1; idx <= ${num_parts}; ++idx ))
@@ -158,7 +154,7 @@ if [ ${UPGRADE_PARTITIONS} -eq 1 ]; then
             fi
         done
 
-    info_log "Proceeding to create new L4T partitions"
+    info "Proceeding to create new L4T partitions"
 
     # If the partition table was rolled-back to 28.X due to rollback-health,
     # we first need to set the new (32.X) number of partitions in the MBR
@@ -173,11 +169,11 @@ if [ ${UPGRADE_PARTITIONS} -eq 1 ]; then
         part_size=$(echo $n | cut -d ':' -f 3)
         end=$(expr ${start} \+ ${part_size} \- 1)
         parted -s ${DEV_PATH} unit s mkpart $part_name ${start} ${end}
-        dd if="${BIN_INSTALL_PATH}/${file_name}" of=${DEV_PATH} conv=notrunc seek=${start}
+        dd if="${BIN_INSTALL_PATH}/${file_name}" of=${DEV_PATH} conv=notrunc seek=${start} conv=fsync
         start=$(expr ${end} \+ 1)
     done
 
-    info_log "Created L4T 32.X partitions"
+    info "Created L4T 32.X partitions"
 
 elif [ ${UPGRADE_PARTITIONS} -eq 0 ]; then
     update_partition_binaries "${BIN_INSTALL_PATH}/partition_specification186.txt"
@@ -187,11 +183,11 @@ bootpart_odm=$(get_odm_value ${BOOT_PART});
 bootblob_odm=$(get_odm_value ${BOOT_BLOB});
 
 if [[ ${bootpart_odm} != "unmatched"} ]] && [[ ${bootblob_odm} != "unmatched" ]] ; then
-    info_log "Valid ODMDATA values found in both ${BOOT_PART} and ${BOOT_BLOB}"
+    info "Valid ODMDATA values found in both ${BOOT_PART} and ${BOOT_BLOB}"
     if [[ ${bootpart_odm} == ${bootblob_odm} ]]; then
-        info_log "No need to transfer existing ODMDATA"
+        info "No need to transfer existing ODMDATA"
     else
-        info_log "Existing ODMDATA ${bootpart_odm} does not match HUP ODMDATA ${bootblob_odm}"
+        info "Existing ODMDATA ${bootpart_odm} does not match HUP ODMDATA ${bootblob_odm}"
         set_odm_value ${bootpart_odm} ${BOOT_BLOB}
     fi;
 else
@@ -202,13 +198,14 @@ src=${BOOT_BLOB}
 dst=${BOOT_PART}
 
 if [ $(update_needed $src $dst) -eq 1 ]; then
-    info_log "Will update $dst"
+    info "Will update $dst"
     echo 0 > /sys/block/mmcblk0boot0/force_ro
-    dd if=${src} of=${dst} bs=1K
+    # 64K block size gives optimal performance, larger values show no speed-up
+    dd if=${src} of=${dst} bs=64K conv=fsync
     echo 1 > /sys/block/mmcblk0boot0/force_ro
-    info_log "Updated $dst"
+    info "Updated $dst"
 else
-    info_log "No need to update ${dst}"
+    info "No need to update ${dst}"
 fi
 
 sync
