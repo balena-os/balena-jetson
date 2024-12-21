@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update layers/meta-openembedded to
+        7b3fdcdfaab2fc964bbf9eec2cce4e03001fa8cf
+      hash: 5036b501b1cec24e1bf84bedb63f86abfed60768
+      body: Update layers/meta-openembedded
+      footer:
+        Changelog-entry: Update layers/meta-openembedded to
+          7b3fdcdfaab2fc964bbf9eec2cce4e03001fa8cf
+        changelog-entry: Update layers/meta-openembedded to
+          7b3fdcdfaab2fc964bbf9eec2cce4e03001fa8cf
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.1.13+rev2
+  title: ""
+  date: 2024-12-21T12:40:24.885Z
+- commits:
     - subject: Explicitly set GITHUB_TOKEN permissions for yocto workflow
       hash: 6bdab33fc5b7de2f2ace286965eb07b077801373
       body: ""
