@@ -20,10 +20,7 @@ DTBFILE:jn30b-nano = "tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb"
 DTBFILE:photon-nano = "tegra210-nano-cti-NGX003.dtb"
 DTBFILE:photon-tx2-nx = "tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb"
 DTBFILE:floyd-nano="tegra210-p3448-0002-p3449-0000-b00-floyd-nano.dtb"
-DTBFILE:photon-xavier-nx = "tegra194-xavier-nx-cti-NGX003.dtb"
 DTBFILE:cnx100-xavier-nx = "tegra194-xavier-nx-cnx100.dtb"
-DTBNAME:jetson-xavier="tegra194-p2888-0001-p2822-0000"
-DTBNAME:jetson-xavier-nx-devkit-seeed-2mic-hat="tegra194-p3668-all-p3509-0000-seeed-2mic-hat"
 
 BALENA_BOOT_PARTITION_FILES:append = " \
     dispatcher.d/50-sample-script:/dispatcher.d/50-sample-script \
@@ -48,54 +45,17 @@ BALENA_BOOT_PARTITION_FILES:append:jetson-nano = " ${NANO_BOOT_PARTITION_FILES} 
 BALENA_BOOT_PARTITION_FILES:append:jetson-nano-emmc = "${NANO_BOOT_PARTITION_FILES}"
 BALENA_BOOT_PARTITION_FILES:append:jetson-nano-2gb-devkit = "${NANO_BOOT_PARTITION_FILES}"
 
-
-do_rootfs:balenaos-img:jetson-xavier[depends] += " tegra194-flash-dry:do_deploy "
-
-BALENA_BOOT_PARTITION_FILES:append:jetson-xavier = " \
-    bootfiles/mb1_t194_prod_sigheader.bin.encrypt:/bootfiles/mb1_t194_prod_sigheader.bin.encrypt \
-    bootfiles/spe_t194_sigheader.bin.encrypt:/bootfiles/spe_t194_sigheader.bin.encrypt \
-    bootfiles/nvtboot_t194_sigheader.bin.encrypt:/bootfiles/nvtboot_t194_sigheader.bin.encrypt \
-    bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt:/bootfiles/preboot_c10_prod_cr_sigheader.bin.encrypt \
-    bootfiles/slot_metadata.bin:/bootfiles/slot_metadata.bin \
-    bootfiles/bmp.blob:/bootfiles/bmp.blob \
-    bootfiles/mce_c10_prod_cr_sigheader.bin.encrypt:/bootfiles/mce_c10_prod_cr_sigheader.bin.encrypt \
-    bootfiles/mts_c10_prod_cr_sigheader.bin.encrypt:/bootfiles/mts_c10_prod_cr_sigheader.bin.encrypt \
-    bootfiles/cboot_t194_sigheader.bin.encrypt:/bootfiles/cboot_t194_sigheader.bin.encrypt \
-    bootfiles/tos-trusty_t194_sigheader.img.encrypt:/bootfiles/tos-trusty_t194_sigheader.img.encrypt \
-    bootfiles/eks_sigheader.img.encrypt:/bootfiles/eks_sigheader.img.encrypt \
-    bootfiles/bpmp_t194_sigheader.bin.encrypt:/bootfiles/bpmp_t194_sigheader.bin.encrypt \
-    bootfiles/tegra194-a02-bpmp-p2888-a04_sigheader.dtb.encrypt:/bootfiles/tegra194-a02-bpmp-p2888-a04_sigheader.dtb.encrypt \
-    bootfiles/xusb_sil_rel_fw:/bootfiles/xusb_sil_rel_fw \
-    bootfiles/camera-rtcpu-rce_sigheader.img.encrypt:/bootfiles/camera-rtcpu-rce_sigheader.img.encrypt \
-    bootfiles/adsp-fw_sigheader.bin.encrypt:/bootfiles/adsp-fw_sigheader.bin.encrypt \
-    bootfiles/warmboot_t194_prod_sigheader.bin.encrypt:/bootfiles/warmboot_t194_prod_sigheader.bin.encrypt \
-    bootfiles/${DTBNAME}-rootA_sigheader.dtb.encrypt:/bootfiles/${DTBNAME}-rootA_sigheader.dtb.encrypt \
-    bootfiles/${DTBNAME}-rootB_sigheader.dtb.encrypt:/bootfiles/${DTBNAME}-rootB_sigheader.dtb.encrypt \
-    bootfiles/boot0_t194.bin.gz:/bootfiles/boot0_t194.bin.gz \
-    tegra-binaries/partition_specification194.txt:/bootfiles/partition_specification194.txt \
-"
-
 do_rootfs:balenaos-img:jetson-tx2[depends] += " tegra186-flash-dry:do_deploy \
                                                linux-tegra:do_deploy \
 "
 
-do_rootfs:balenaos-img:jetson-xavier-nx-devkit-emmc[depends] += " tegra194-nxde-flash-dry:do_deploy "
-do_rootfs:balenaos-img:jetson-xavier-nx-devkit[depends] += " tegra194-nxde-sdcard-flash:do_deploy "
-
 # The space resinOS takes will amount to 1GiB
 IMAGE_ROOTFS_SIZE = "487424"
-
-# Bootloader blob is 32MB on the NX
-IMAGE_ROOTFS_SIZE:jetson-xavier-nx-devkit-emmc = "733184"
-IMAGE_ROOTFS_SIZE:jetson-xavier-nx-devkit = "733184"
 
 # Need space for all the above signed update binaries
 BALENA_BOOT_SIZE:jetson-nano = "80960"
 BALENA_BOOT_SIZE:jetson-nano-2gb-devkit = "80960"
 BALENA_BOOT_SIZE:jetson-nano-emmc = "80960"
-BALENA_BOOT_SIZE:jetson-xavier = "121440"
-BALENA_BOOT_SIZE:jetson-xavier-nx-devkit-emmc = "121440"
-BALENA_BOOT_SIZE:jetson-xavier-nx-devkit = "121440"
 BALENA_BOOT_SIZE:jetson-tx2="80960"
 BALENA_BOOT_SIZE:jetson-tx1="80960"
 
@@ -111,48 +71,6 @@ IMAGE_PACKAGES_NANO = " \
 IMAGE_INSTALL:append:jetson-nano = "${IMAGE_PACKAGES_NANO}"
 IMAGE_INSTALL:append:jetson-nano-emmc = "${IMAGE_PACKAGES_NANO}"
 IMAGE_INSTALL:append:jetson-nano-2gb-devkit = "${IMAGE_PACKAGES_NANO}"
-
-IMAGE_INSTALL:append:jetson-xavier = " \
-    tegra194-flash-dry \
-    fan-startup \
-    parted \
-    gptfdisk \
-    tegra-nvpmodel \
-    tegra-configs-nvstartup \
-    tegra-configs-udev \
-    tegra-boot-tools \
-"
-
-IMAGE_INSTALL:append:jetson-xavier-nx-devkit-emmc = " \
-    tegra194-nxde-flash-dry \
-    parted \
-    gptfdisk \
-    tegra-nvpmodel \
-    tegra-configs-nvstartup \
-    tegra-configs-udev \
-    tegra-wifi \
-    tegra-bluetooth \
-    tegra-firmware-rtl8822 \
-    tegra-udrm-probeconf \
-    mtd-utils \
-    tegra-boot-tools \
-"
-
-IMAGE_INSTALL:append:jetson-xavier-nx-devkit = " \
-    tegra194-nxde-sdcard-flash \
-    fan-startup \
-    parted \
-    gptfdisk \
-    tegra-nvpmodel \
-    tegra-configs-nvstartup \
-    tegra-configs-udev \
-    mtd-utils \
-    tegra-bluetooth \
-    tegra-wifi \
-    tegra-firmware-rtl8822 \
-    tegra-udrm-probeconf \
-    tegra-boot-tools \
-"
 
 IMAGE_INSTALL:append:jetson-tx2 = " \
     tegra186-flash-dry \
