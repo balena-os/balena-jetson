@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Wed, 14 Jun 2023 00:54:15 +0200
+Subject: [PATCH] Don't upgrade SSL security level to 1 when setting ciphers
+
+This resets it from our intended zero from tls_set_conn_flags.
+---
+ src/crypto/tls_openssl.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/crypto/tls_openssl.c b/src/crypto/tls_openssl.c
+index 7a929450b949..3e157a2dd2f3 100644
+--- a/src/crypto/tls_openssl.c
++++ b/src/crypto/tls_openssl.c
+@@ -4703,10 +4703,13 @@ int tls_connection_set_cipher_list(void *tls_ctx, struct tls_connection *conn,
+ 		 * cipher suites for EAP-FAST.
+ 		 */
+ 		SSL_set_security_level(conn->ssl, 0);
+-	} else if (SSL_get_security_level(conn->ssl) == 0) {
++	}
++#if OPENSSL_VERSION_NUMBER < 0x30000000L
++	else if (SSL_get_security_level(conn->ssl) == 0) {
+ 		/* Force at least security level 1 */
+ 		SSL_set_security_level(conn->ssl, 1);
+ 	}
++#endif
+ #endif /* EAP_FAST_OR_TEAP */
+ #endif
+
