@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v6.3.19+rev2
+## (2025-02-21)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 800cd18b1f924e8ad8029689fef3ca52d99d7e1e [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.30.31
+> ### (2025-02-21)
+> 
+> * barys: build unique machine-image combinations [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.30.30
+> ### (2025-02-17)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.30.29
+> ### (2025-02-15)
+> 
+> * Update actions/create-github-app-token action to v1.11.5 [balena-renovate[bot]]
+> 
+
+</details>
+
 # v6.3.19+rev1
 ## (2025-02-14)
 

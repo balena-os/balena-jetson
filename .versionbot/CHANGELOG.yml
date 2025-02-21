@@ -1,4 +1,66 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 800cd18b1f924e8ad8029689fef3ca52d99d7e1e
+      hash: ca47f52acbb7a8e72afe97a4c1d982ea5ee74bb6
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 800cd18b1f924e8ad8029689fef3ca52d99d7e1e
+        changelog-entry: Update balena-yocto-scripts to 800cd18b1f924e8ad8029689fef3ca52d99d7e1e
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "barys: build unique machine-image combinations"
+              hash: 290992af63811118ef49a1059f78c1395066a279
+              body: >
+                Keep track of the different machine-image combos being built not
+                to
+
+                duplicate fields.
+
+
+                This allows to have multiple device types that build the same
+                machine,
+
+                for example if they have different feature layers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.30.31
+          title: ""
+          date: 2025-02-21T13:29:22.936Z
+        - commits:
+            - subject: Update Lock file maintenance
+              hash: 8e7c1a346f5014efb14fd4d7cb5072861cce4087
+              body: |
+                Update 
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.30.30
+          title: ""
+          date: 2025-02-17T01:26:27.806Z
+        - commits:
+            - subject: Update actions/create-github-app-token action to v1.11.5
+              hash: 4230aee42ff2b813084cbdea6b25652900e7decb
+              body: |
+                Update actions/create-github-app-token from 1.11.3 to 1.11.5
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.30.29
+          title: ""
+          date: 2025-02-15T02:02:24.051Z
+  version: 6.3.19+rev2
+  title: ""
+  date: 2025-02-21T17:04:49.579Z
+- commits:
     - subject: Update balena-yocto-scripts to aa023bcecf7150e38137b401a6e4043c5ea7815d
       hash: 666564746b92a3f9b261840842b51d1389865dfd
       body: Update balena-yocto-scripts
