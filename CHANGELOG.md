@@ -1,6 +1,57 @@
 Change log
 -----------
 
+# v6.4.1
+## (2025-03-03)
+
+
+<details>
+<summary> Update layers/meta-balena to c5c44af22a753a6678504d2f1d3c3f23d1405a45 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.4.1
+> ### (2025-02-28)
+> 
+> * tests/device-tree: Rework test to not use the sysfs gpio interface [Florin Sarbu]
+> 
+> ## meta-balena-6.4.0
+> ### (2025-02-27)
+> 
+> * hup: hooks: silence tpm2_flushcontext trap while updating policy [Joseph Kogut]
+> * hup: hooks: update passphrase in TPM NVRAM [Joseph Kogut]
+> * os-helpers-tpm2: lowercase vars in print_pcr_val_bin [Joseph Kogut]
+> * hup: signed-update: store passphrase in TPM [Joseph Kogut]
+> * hostapp-update-hooks: use generate_pcr_digests [Joseph Kogut]
+> * balena-init-flasher-tpm: use generate_pcr_digests [Joseph Kogut]
+> * balena-init-flasher-tpm: write LUKS passphrase to TPM nvram [Joseph Kogut]
+> * os-helpers-tpm2: add generate_pcr_digests [Joseph Kogut]
+> * os-helpers-tpm2: add tpm_nvram_store_passphrase [Joseph Kogut]
+> * os-helpers-tpm2: add size param to hw_gen_passphrase [Joseph Kogut]
+> * cryptsetup-efi-tpm: retrieve passphrase from TPM [Joseph Kogut]
+> * os-helpers-tpm2: add tpm_nvram_retrieve_passphrase [Joseph Kogut]
+> 
+> ## meta-balena-6.3.23
+> ### (2025-02-25)
+> 
+> * modemmanager: patch for Cinterion port types [Kirill Zabelin]
+> 
+> ## meta-balena-6.3.22
+> ### (2025-02-24)
+> 
+> * kernel-devsrc.bb: Use recipe from Poky for 6.12+ kernels [Florin Sarbu]
+> 
+> ## meta-balena-6.3.21
+> ### (2025-02-21)
+> 
+> * kernel-balena.bbclass: Add aufs patches for 6.12 kernels [Florin Sarbu]
+> 
+> ## meta-balena-6.3.20
+> ### (2025-02-18)
+> 
+> * resin-mounts: only run non-encrypted mount if partition exists [Alex Gonzalez]
+> 
+
+</details>
+
 # v6.3.19+rev4
 ## (2025-03-03)
 
