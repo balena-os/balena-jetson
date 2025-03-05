@@ -1,4 +1,44 @@
 - commits:
+    - subject: Update balena-yocto-scripts to bc16afdc0d32e3e4f94cb2a44ae3610cc8c2fdbb
+      hash: bf4a78aff472c8a28ec7af10ea521f7db9f8f2d1
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to bc16afdc0d32e3e4f94cb2a44ae3610cc8c2fdbb
+        changelog-entry: Update balena-yocto-scripts to bc16afdc0d32e3e4f94cb2a44ae3610cc8c2fdbb
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update aws/aws-cli to v2.24.17
+              hash: cfdd8dd512cf3416b7a7ad5da87928c7b8cfda93
+              body: |
+                Update aws/aws-cli from 2.24.16 to 2.24.17
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.14
+          title: ""
+          date: 2025-03-04T23:03:35.356Z
+        - commits:
+            - subject: Add signing environment to All Jobs context
+              hash: 592bf3a1261009519b101577c64258306e932f34
+              body: |
+                This is one of the unique identifiers for merge requirements.
+              footer:
+                CHange-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.31.13
+          title: ""
+          date: 2025-03-04T12:49:02.985Z
+  version: 6.4.1+rev4
+  title: ""
+  date: 2025-03-05T03:08:44.323Z
+- commits:
     - subject: Update balena-yocto-scripts to 4e8d58a64e996869301c996fd61aafe7496ebafc
       hash: 8e80264c42b44719dca049908d1cf0b4d606991f
       body: Update balena-yocto-scripts
