@@ -1,6 +1,258 @@
 Change log
 -----------
 
+# v6.4.2+rev1
+## (2025-03-07)
+
+
+<details>
+<summary> Update contracts to 1adfd1c331b3464969cc09a5c7cc3583ef1fe3de [balena-renovate[bot]] </summary>
+
+> ## contracts-2.0.128
+> ### (2025-02-05)
+> 
+> * Improve testing of contracts [Felipe Lalanne]
+> * Remove unused sw.os-image contracts [Felipe Lalanne]
+> 
+> ## contracts-2.0.127
+> ### (2025-01-28)
+> 
+> * Mark alpine 3.21 as the default alpine version [Thodoris Greasidis]
+> 
+> ## contracts-2.0.126
+> ### (2025-01-28)
+> 
+> * Add alpine 3.21 [Felipe Lalanne]
+> 
+> ## contracts-2.0.125
+> ### (2025-01-15)
+> 
+> * hw.device-type: Switch to using markdown for links [Alexandru Costache]
+> 
+> ## contracts-2.0.124
+> ### (2025-01-07)
+> 
+> * sw.os+hw.device-type: Add Forecr DSB Orin Nano 8GB and Orin NX 16GB distro tpl files [Alexandru Costache]
+> * forecr-dsb-ornx-lan-orin-nx-16gb: Add new public device type [Alexandru Costache]
+> 
+> ## contracts-2.0.123
+> ### (2025-01-02)
+> 
+> * Forecr DSB ORNX: Update device name [Alexandru]
+> 
+> ## contracts-2.0.122
+> ### (2024-12-23)
+> 
+> * hw.device-type: add Forecr DSB ORNX entries [Alex Suykov]
+> 
+> ## contracts-2.0.121
+> ### (2024-12-18)
+> 
+> * hw.device-type: Fix compatibility with existing sdk structure [Alexandru Costache]
+> 
+> ## contracts-2.0.120
+> ### (2024-12-18)
+> 
+> * add eg5120-imx8mp contract [Ryan Cooke]
+> 
+> ## contracts-2.0.119
+> ### (2024-12-16)
+> 
+> * contracts/hw.device-type: Update instructions for Orin flasher types [Alexandru Costache]
+> 
+> ## contracts-2.0.118
+> ### (2024-12-04)
+> 
+> * hw.device-type: update logo for nitrogen8M Mini [Jonathan Berger]
+> 
+> ## contracts-2.0.117
+> ### (2024-11-25)
+> 
+> * hw.device-type: Rename Seeed J3010 and J4012 to include module name [Alexandru Costache]
+> 
+> ## contracts-2.0.116
+> ### (2024-10-17)
+> 
+> * Add alpine 3.20 [Otavio Jacobi]
+> 
+> ## contracts-2.0.115
+> ### (2024-10-17)
+> 
+> * Add alpine 3.19 [Otavio Jacobi]
+> 
+> ## contracts-2.0.114
+> ### (2024-10-09)
+> 
+> * sw.os+hw.device-type: Update all Orin devices to r36.3 in sources.list [Alexandru Costache]
+> * hw.device-type: Remove superfluous instructions for beagleplay [Alexandru]
+> 
+> ## contracts-2.0.113
+> ### (2024-08-20)
+> 
+> * iotdin-imx8p: Update the devices contract [Valentin Raevsky]
+> 
+> ## contracts-2.0.112
+> ### (2024-08-19)
+> 
+> * Add support for Ubuntu Noble [ruffsl]
+> 
+> ## contracts-2.0.111
+> ### (2024-08-08)
+> 
+> * patch: Add versionList to OpenJDK [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## contracts-2.0.110
+> ### (2024-08-07)
+> 
+> * Add CompuLab iotdin-imx8p to harware contract. [Valentin Raevsky]
+> 
+> ## contracts-2.0.109
+> ### (2024-08-06)
+> 
+> * hw.device-type: Update provisioning instructions for AGX Orin 64GB [Alexandru]
+> 
+> ## contracts-2.0.108
+> ### (2024-07-25)
+> 
+> * hw.device-type: Add new device-type Jetson AGX Orin 64GB Devkit [Alexandru Costache]
+> 
+> ## contracts-2.0.107
+> ### (2024-07-15)
+> 
+> * beagleplay: Fix provisioning instructions [Alexandru]
+> 
+> ## contracts-2.0.106
+> ### (2024-07-12)
+> 
+> * hw.device-type: Disable bluetooth until this feature is officially supported [delhiryder]
+> 
+> ## contracts-2.0.105
+> ### (2024-06-06)
+> 
+> * sw.os+hw.device-type: Update Jetson Orin distro configs for L4T 35.5.0 repositories [Alexandru Costache]
+> 
+> ## contracts-2.0.104
+> ### (2024-06-02)
+> 
+> * jetson-orin-nano-seeed-j3010: Specify RAM size for the Seeed J3010 [Alexandru Costache]
+> * jetson-orin-nano-seeed-j3010: add Seeed J3010 device-type [Alex Suykov]
+> 
+> ## contracts-2.0.103
+> ### (2024-04-11)
+> 
+> * Remove Ubuntu Lunar 23.04 since it's EOL [Thodoris Greasidis]
+> 
+> ## contracts-2.0.102
+> ### (2024-04-11)
+> 
+> * Remove Fedora 36 since it's EOL [Thodoris Greasidis]
+> 
+> ## contracts-2.0.101
+> ### (2024-04-10)
+> 
+> * Remove outdated jdk & jre 8 [Thodoris Greasidis]
+> * Remove python 3.7.16 since it's in EOL [Thodoris Greasidis]
+> * Remove node v14 & v16 since they are EOL [Thodoris Greasidis]
+> 
+> ## contracts-2.0.100
+> ### (2024-04-08)
+> 
+> * Add Advantech ECU1370 to hardware contract. [Lisandro Pérez Meyer]
+> 
+> ## contracts-2.0.99
+> ### (2024-04-07)
+> 
+> * Add node v20.12.0 for debian [Thodoris Greasidis]
+> 
+> ## contracts-2.0.98
+> ### (2024-03-26)
+> 
+> * hw.device-type: Add bluechiptechnology-db1 [crichardson]
+> 
+> ## contracts-2.0.97
+> ### (2024-03-21)
+> 
+> * hw.device-type: Add beagleplay device [delhiryder]
+> 
+> ## contracts-2.0.96
+> ### (2024-03-14)
+> 
+> * hw.device-type: Add beaglebone-play device [delhiryder]
+> 
+> ## contracts-2.0.95
+> ### (2024-02-26)
+> 
+> * sw.os+hw.device-type: Update Jetson Orin repositories [Alexandru Costache]
+> * jetson-orin-nx-seeed-j4012: Add ubuntu and debian distro tpl files [Alexandru Costache]
+> 
+> ## contracts-2.0.94
+> ### (2024-02-14)
+> 
+> * odyssey-x86: Update icon to latest revision [Alexandru Costache]
+> 
+> ## contracts-2.0.93
+> ### (2024-02-08)
+> 
+> * hw.device-type: Add Kontron i.MX8M Mini device [joris-bright]
+> 
+> ## contracts-2.0.92
+> ### (2024-02-01)
+> 
+> * hw.device-type: Add phyboard-lyra-am62xx-2 device [Atanas Bunchev]
+> 
+> ## contracts-2.0.91
+> ### (2024-02-01)
+> 
+> * Remove generic-amd64-fde device type [Michal Toman]
+> 
+> ## contracts-2.0.90
+> ### (2024-01-10)
+> 
+> * hw.device-type: Update svg icon for seeed-j4012 [Alexandru Costache]
+> 
+> ## contracts-2.0.89
+> ### (2024-01-05)
+> 
+> * hw.device-type: Fix hyperlinks in provisioning instructions [Alexandru Costache]
+> 
+> ## contracts-2.0.88
+> ### (2024-01-03)
+> 
+> * jetson-orin-nx-seeed-j4012: Add Seeed J4012 device-type [Alexandru Costache]
+> 
+> ## contracts-2.0.87
+> ### (2023-12-29)
+> 
+> * hw.device-type: Fix device type is_private flag for imx8mp-var-dart [Florin Sarbu]
+> 
+> ## contracts-2.0.86
+> ### (2023-12-28)
+> 
+> * hw.device-type: Add Variscite DART-MX8M-PLUS [Florin Sarbu]
+> 
+> ## contracts-2.0.85
+> ### (2023-12-21)
+> 
+> * patch: Remove wiki link reference to flash Tinker Board [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## contracts-2.0.84
+> ### (2023-12-13)
+> 
+> * iot-gate-imx8plus: Update flashing instructions and name [Alexandru Costache]
+> 
+> ## contracts-2.0.83
+> ### (2023-11-24)
+> 
+> * revpi-connect-4: Added contract files for revpi-connect-4 [Waqar Rashid]
+> 
+> ## contracts-2.0.82
+> ### (2023-11-22)
+> 
+> * lcbzu9: boot from internal storage [Francois Loubser]
+> 
+
+</details>
+
 # v6.4.2
 ## (2025-03-07)
 
