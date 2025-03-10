@@ -1,4 +1,55 @@
 - commits:
+    - subject: Update balena-yocto-scripts to bf40474f48fdf8631160849a9a636e0d172401ca
+      hash: 9d9df9942ab88d56d6cd1e8fa1273572752901e4
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to bf40474f48fdf8631160849a9a636e0d172401ca
+        changelog-entry: Update balena-yocto-scripts to bf40474f48fdf8631160849a9a636e0d172401ca
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update Lock file maintenance
+              hash: 54a3a99f0b4caa31e407da6aff704e53f10b42d6
+              body: |
+                Update 
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.20
+          title: ""
+          date: 2025-03-10T01:45:33.930Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.24.20
+              hash: ef1d98f311889b9ba4c431e49a80d0b53879855c
+              body: |
+                Update aws/aws-cli from 2.24.19 to 2.24.20
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.19
+          title: ""
+          date: 2025-03-07T23:16:28.279Z
+        - commits:
+            - subject: Update product-os/review-commit-action action to v0.2.3
+              hash: f83eeceeb1b0cfcbd38a7f9f079ee86e09f7c3b0
+              body: |
+                Update product-os/review-commit-action from 0.2.2 to 0.2.3
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.18
+          title: ""
+          date: 2025-03-07T19:21:38.788Z
+  version: 6.4.2+rev4
+  title: ""
+  date: 2025-03-10T04:54:03.257Z
+- commits:
     - subject: Update layers/poky to d103d2df505abd76f75e75114905062503a6bcc8
       hash: 9287e85e09a60e6a914937b758974f8466290f0b
       body: Update layers/poky
