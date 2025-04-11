@@ -14,9 +14,9 @@ SRC_URI += " \
 "
 
 FILES:${PN} = " \
-    /lib/udev/rules.d/99-nv-wifibt.rules \
-    /lib/systemd/nvwifibt.sh \
-    /lib/systemd/nvwifibt-pre.sh \
+    ${nonarch_base_libdir}/udev/rules.d/99-nv-wifibt.rules \
+    ${nonarch_base_libdir}/systemd/nvwifibt.sh \
+    ${nonarch_base_libdir}/systemd/nvwifibt-pre.sh \
 "
 
 SYSTEMD_SERVICE:${PN} = "nvwifibt.service nvwifibt-unblock.service"
@@ -25,8 +25,8 @@ RDEPENDS:${PN} = " bash systemd"
 
 do_install:append() {
     install -d ${D}/${systemd_unitdir}/system
-    install -d ${D}/${base_libdir}/udev/rules.d
-    install -m 644 ${WORKDIR}/99-nv-wifibt.rules ${D}/${base_libdir}/udev/rules.d
+    install -d ${D}/${nonarch_base_libdir}/udev/rules.d
+    install -m 644 ${WORKDIR}/99-nv-wifibt.rules ${D}/${nonarch_base_libdir}/udev/rules.d
     install -m 644 ${WORKDIR}/nvwifibt.service ${D}/${systemd_unitdir}/system
     install -m 644 ${WORKDIR}/nvwifibt-unblock.service ${D}/${systemd_unitdir}/system
     install -m 755 ${WORKDIR}/nvwifibt.sh  ${D}/${systemd_unitdir}/
