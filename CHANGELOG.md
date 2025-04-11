@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v6.4.2+rev6
+## (2025-04-11)
+
+* Use nonarch_base_libdir to install files in /usr/lib instead of /lib for the tegra-configs recipe [Florin Sarbu]
+* Use nonarch_base_libdir to install files in /usr/lib instead of /lib for bt-scripts [Florin Sarbu]
+
 # v6.4.2+rev5
 ## (2025-03-13)
 

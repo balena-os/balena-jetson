@@ -1,4 +1,44 @@
 - commits:
+    - subject: Use nonarch_base_libdir to install files in /usr/lib instead of /lib
+        for the tegra-configs recipe
+      hash: 2968b7b4d656e41182daf81a9a41b651e96ef25e
+      body: >
+        Using the nonarch_base_libdir variable to change the install path to
+        /usr/lib instead
+
+        of hardcoding directly to /lib will help us when we enable the usrmerge
+        feature.
+      footer:
+        Changelog-entry: Use nonarch_base_libdir to install files in /usr/lib instead of
+          /lib for the tegra-configs recipe
+        changelog-entry: Use nonarch_base_libdir to install files in /usr/lib instead of
+          /lib for the tegra-configs recipe
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Use nonarch_base_libdir to install files in /usr/lib instead of /lib
+        for bt-scripts
+      hash: 15d7f35d01250a8dbe27dd7a4f155d191a8b4658
+      body: >
+        Using the nonarch_base_libdir variable to change the install path to
+        /usr/lib instead
+
+        of hardcoding directly to /lib will help us when we enable the usrmerge
+        feature.
+      footer:
+        Changelog-entry: Use nonarch_base_libdir to install files in /usr/lib instead of
+          /lib for bt-scripts
+        changelog-entry: Use nonarch_base_libdir to install files in /usr/lib instead of
+          /lib for bt-scripts
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.4.2+rev6
+  title: ""
+  date: 2025-04-11T10:40:13.748Z
+- commits:
     - subject: Update balena-yocto-scripts to d727c0d74901bdd22d81a0a00a97511d37d384d5
       hash: e83c22ca7185d7c0315eb2383cfb52c75420c79b
       body: Update balena-yocto-scripts
