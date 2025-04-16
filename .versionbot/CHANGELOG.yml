@@ -1,4 +1,56 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 4ebe790eed9dbde36944496ee1ef14ba6bc4c5be
+      hash: 8dea30b6baa94b2a21c7e165e457cdd11dd8969d
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 4ebe790eed9dbde36944496ee1ef14ba6bc4c5be
+        changelog-entry: Update balena-yocto-scripts to 4ebe790eed9dbde36944496ee1ef14ba6bc4c5be
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "Leviathan: Add aarch64 testbot fleet to worker pool"
+              hash: db746e411d9640cf48772b87d03a362f1e155fa4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: balena-yocto-scripts-1.31.77
+          title: ""
+          date: 2025-04-15T14:56:51.996Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.26.2
+              hash: 88ec1824b9eba69b15bdfa614d4788eff702d384
+              body: |
+                Update aws/aws-cli from 2.26.1 to 2.26.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.76
+          title: ""
+          date: 2025-04-14T21:59:45.235Z
+        - commits:
+            - subject: Update Lock file maintenance
+              hash: f7559dff39ccf70e06cbe7c83d8ca9ff55946f4a
+              body: |
+                Update 
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.75
+          title: ""
+          date: 2025-04-14T02:26:49.959Z
+  version: 6.4.2+rev8
+  title: ""
+  date: 2025-04-16T12:49:41.776Z
+- commits:
     - subject: Update balena-yocto-scripts to 1c9b4cbc8be5a0e1f8c56fd899adff1f23fef285
       hash: 42003e20d96a01ef811964a0a3ad7d08d66614f5
       body: Update balena-yocto-scripts
