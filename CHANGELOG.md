@@ -1,6 +1,278 @@
 Change log
 -----------
 
+# v6.5.21
+## (2025-04-19)
+
+
+<details>
+<summary> Update layers/meta-balena to 5f3124f1b6aca95eab4bcf5a422a96a907966eb6 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.5.21
+> ### (2025-04-19)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 5ecdcd3 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.104
+>> #### (2025-04-16)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.59 [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.5.20
+> ### (2025-04-19)
+> 
+> * kernel-balena: add aufs commit for v6.6.84 [Alex Gonzalez]
+> 
+> ## meta-balena-6.5.19
+> ### (2025-04-17)
+> 
+> * os-helpers-tpm2: Always use password protection for TPM NVRAM writes [Michal Toman]
+> 
+> ## meta-balena-6.5.18
+> ### (2025-04-15)
+> 
+> * hostapp-update-hooks: make rollback possible when migrating to TPM NVRAM [Michal Toman]
+> 
+> ## meta-balena-6.5.17
+> ### (2025-04-09)
+> 
+> * tests: os: secureboot: update kernel-module-build to v3.0.2 [Alex Gonzalez]
+> * tests: secureboot: adapt kernel modules test to private device types [Alex Gonzalez]
+> 
+> ## meta-balena-6.5.16
+> ### (2025-04-09)
+> 
+> * os-helpers: tpm_nvram_store_passphrase: remove tpm2_shutdown [Joseph Kogut]
+> 
+> ## meta-balena-6.5.15
+> ### (2025-04-09)
+> 
+> * initrdscripts: mount securityfs in migrate script [Michal Toman]
+> 
+> ## meta-balena-6.5.14
+> ### (2025-04-09)
+> 
+> * tests: whitelist extra PCR2 events by default [Michal Toman]
+> 
+> ## meta-balena-6.5.13
+> ### (2025-04-09)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v17 [balena-renovate[bot]] </summary>
+> 
+>> ### balena-supervisor-17.0.2
+>> #### (2025-04-02)
+>> 
+>> * Fix search for app leftover locks [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-17.0.1
+>> #### (2025-03-25)
+>> 
+>> * Clarify firewall docs on behavior with host network containers [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-17.0.0
+>> #### (2025-03-24)
+>> 
+>> * Add Docker network label if custom ipam config [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.12.9
+>> #### (2025-03-20)
+>> 
+>> * Start a dependent if all dependencies are started [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.12.8
+>> #### (2025-03-12)
+>> 
+>> * Remove GOT retries on state poll [Felipe Lalanne]
+>> * Ensure poll socket timeout is defined early [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.5.12
+> ### (2025-04-08)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to b8e76d7 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.103
+>> #### (2025-04-08)
+>> 
+>> * Add kernel headers artifacts [Alex Gonzalez]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.5.11
+> ### (2025-04-08)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 8b32739 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.102
+>> #### (2025-04-07)
+>> 
+>> * Update core/contracts digest to 34033e6 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.101
+>> #### (2025-04-07)
+>> 
+>> * Update balena-io/balena-cli to v21.1.9 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.100
+>> #### (2025-04-02)
+>> 
+>> * Update core/contracts digest to d077818 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.99
+>> #### (2025-04-02)
+>> 
+>> * Update balena-io/balena-cli to v21.1.4 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.98
+>> #### (2025-04-01)
+>> 
+>> * Update balena-io/balena-cli to v21.1.3 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.97
+>> #### (2025-04-01)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.58 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.96
+>> #### (2025-03-27)
+>> 
+>> * Improve device selection logs [Alex Gonzalez]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.5.10
+> ### (2025-04-08)
+> 
+> * resin-init-flasher: Sleep before SysRq to let shutdown properly execute if need be [Florin Sarbu]
+> 
+> ## meta-balena-6.5.9
+> ### (2025-04-03)
+> 
+> * balena-unique-key: Fix dependency on /home/root/.rnd mount point [Florin Sarbu]
+> 
+> ## meta-balena-6.5.8
+> ### (2025-04-02)
+> 
+> * resin-init-flasher: Do not check exitcode of reboot, halt or poweroff [Michal Toman]
+> * Replace the usage of /dev/fd/1 by /proc/self/fd/1 [Michal Toman]
+> * balena-init-flasher-efi: look for kernel in both / and /tmp [Michal Toman]
+> 
+> ## meta-balena-6.5.7
+> ### (2025-04-01)
+> 
+> * kernel-balena.bbclass: enable multipath TCP [Joseph Kogut]
+> 
+> ## meta-balena-6.5.6
+> ### (2025-04-01)
+> 
+> * tests: os: modem: Skip modem test if no SIM detected [Ryan Cooke]
+> 
+> ## meta-balena-6.5.5
+> ### (Invalid date)
+> 
+> * initrdscripts: Force migration with secure boot enabled [Michal Toman]
+> 
+> ## meta-balena-6.5.4
+> ### (2025-03-27)
+> 
+> * classes: kernel-balena: enable CONFIG_MEMCG_V1 when needed [Alex Gonzalez]
+> 
+> ## meta-balena-6.5.3
+> ### (2025-03-27)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to c3c6661 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.95
+>> #### (2025-03-25)
+>> 
+>> * Update balena-io/balena-cli to v21 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.94
+>> #### (2025-03-25)
+>> 
+>> * Extend selection of devices to run secureboot tests [Alex Gonzalez]
+>> 
+>> ### leviathan-2.31.93
+>> #### (2025-03-19)
+>> 
+>> * Update balena-io/balena-cli to v20.2.10 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.92
+>> #### (2025-03-19)
+>> 
+>> * Update docker/setup-buildx-action digest to b5ca514 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.91
+>> #### (2025-03-19)
+>> 
+>> * Update actions/upload-artifact digest to ea165f8 [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.5.2
+> ### (2025-03-19)
+> 
+> * kernel-balena: enable CONFIG_MODULE_COMPRESS as needed [Joseph Kogut]
+> 
+> ## meta-balena-6.5.1
+> ### (2025-03-14)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 81e7f26 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.90
+>> #### (2025-02-25)
+>> 
+>> * Update balena-io/balena-cli to v20.2.7 [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.5.0
+> ### (2025-03-13)
+> 
+> * resin-init-flasher: Support devices using 3rd party UEFI drivers [Michal Toman]
+> * efitools: Allow building an ESL from a list of hashes [Michal Toman]
+> 
+> ## meta-balena-6.4.4
+> ### (2025-03-12)
+> 
+> * Differentiate MACHINE from DEVICE_TYPE [Alex Gonzalez]
+> 
+> ## meta-balena-6.4.3
+> ### (2025-03-10)
+> 
+> * secureboot: imx: program bootloader in integrity check [Alex Gonzalez]
+> * secureboot: imx: increase kernel headers required version [Alex Gonzalez]
+> 
+
+</details>
+
 # v6.4.2+rev11
 ## (2025-04-19)
 
