@@ -1,4 +1,54 @@
 - commits:
+    - subject: Update contracts to 34033e690fc5b1c194114c3aab492036db837bd2
+      hash: 884051bab09087eb180fbc7b3a9de3dd42b84744
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 34033e690fc5b1c194114c3aab492036db837bd2
+        changelog-entry: Update contracts to 34033e690fc5b1c194114c3aab492036db837bd2
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Add EDATEC Sensing contract and logo
+              hash: 2504d5f5bb1a11056495ce3e44f8f60f297593e4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ray <rxie@edatec.cn>
+                signed-off-by: Ray <rxie@edatec.cn>
+              author: RayX123456
+          version: contracts-2.0.131
+          title: ""
+          date: 2025-04-03T09:12:05.127Z
+        - commits:
+            - subject: "hw.device-type: Update links to docs for UEFI version checking"
+              hash: cd8fa068d9e3a1a5d8aeda35829973963fc4e204
+              body: |
+                ... also include the L4T minor revision in the UEFI version
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.130
+          title: ""
+          date: 2025-03-28T11:36:03.120Z
+        - commits:
+            - subject: Mark Bookworm as the default version for Debian
+              hash: a8bfdf9a34c4642608db6d3140fd95bbc629f477
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Thodoris Greasidis
+          version: contracts-2.0.129
+          title: ""
+          date: 2025-03-14T13:31:13.451Z
+  version: 6.4.2+rev10
+  title: ""
+  date: 2025-04-19T09:09:03.878Z
+- commits:
     - subject: Update balena-yocto-scripts to 5e33bdd77f207ccf64016feb3a30f4af05e57e96
       hash: 448a601854e51f6ea7084aeef60a21c7b4fc5efd
       body: Update balena-yocto-scripts
