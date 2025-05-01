@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.5.21+rev2
+## (2025-05-01)
+
+
+<details>
+<summary> Update contracts to a1e8b75d3ed6714ac854a9d95cd4fc458ca33646 [balena-renovate[bot]] </summary>
+
+> ## contracts-2.0.132
+> ### (Invalid date)
+> 
+> * imx6ul-var-dart: Update provisioning instructions [Alexandru]
+> 
+
+</details>
+
 # v6.5.21+rev1
 ## (2025-04-23)
 
