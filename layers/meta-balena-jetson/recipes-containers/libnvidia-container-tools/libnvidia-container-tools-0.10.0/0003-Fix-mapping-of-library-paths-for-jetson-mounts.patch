@@ -1,17 +1,19 @@
-From 2753ed9d92689dadc3f91643343735360818a6ea Mon Sep 17 00:00:00 2001
-From: Matt Madison <matt@madison.systems>
-Date: Sat, 14 Mar 2020 07:16:38 -0700
-Subject: [PATCH] Fix mapping of library paths for jetson mounts
+From 08af34415b46e77e50cbc13846a74fda1352558f Mon Sep 17 00:00:00 2001
+From: Ilies CHERGUI <ilies.chergui@gmail.com>
+Date: Sun, 8 Aug 2021 21:40:36 +0100
+Subject: [PATCH 3/4] Fix mapping of library paths for jetson mounts
 
+Signed-off-by: Matt Madison <matt@madison.systems>
+Signed-off-by: Ilies CHERGUI <ilies.chergui@gmail.com>
 ---
  Makefile           |  3 +-
- src/jetson_mount.c | 72 +++++++++++++++++++++++++++++++++++++++-------
+ src/jetson_mount.c | 70 ++++++++++++++++++++++++++++++++++++++++------
  src/jetson_mount.h |  2 +-
- src/nvc_mount.c    |  6 ++--
- 4 files changed, 66 insertions(+), 17 deletions(-)
+ src/nvc_mount.c    |  4 +--
+ 4 files changed, 65 insertions(+), 14 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 6150129..a574800 100644
+index 3f02b9d..d179986 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -113,9 +113,8 @@ LIB_PKGCFG  := $(LIB_NAME).pc
@@ -26,16 +28,21 @@ index 6150129..a574800 100644
              -Wall -Wextra -Wcast-align -Wpointer-arith -Wmissing-prototypes -Wnonnull \
              -Wwrite-strings -Wlogical-op -Wformat=2 -Wmissing-format-attribute -Winit-self -Wshadow \
 diff --git a/src/jetson_mount.c b/src/jetson_mount.c
-index dff9c97..8d3e275 100644
+index 1c5d9de..5cf94c8 100644
 --- a/src/jetson_mount.c
 +++ b/src/jetson_mount.c
-@@ -18,28 +18,69 @@
+@@ -18,6 +18,9 @@
  #include "utils.h"
  #include "xfuncs.h"
  #include "jetson_mount.h"
 +#define stringify(s__) stringify__(s__)
 +#define stringify__(s__) #s__
 +static const char *hostlibdir = stringify(HOST_LIBDIR) "/";
+ 
+ static int
+ resolve_symlink(struct error *err, const char *src, char *dst)
+@@ -34,30 +37,69 @@ resolve_symlink(struct error *err, const char *src, char *dst)
+ }
  
  char **
 -mount_jetson_files(struct error *err, const char *root, const struct nvc_container *cnt, char *paths[], size_t size)
@@ -53,11 +60,15 @@ index dff9c97..8d3e275 100644
  
          for (size_t i = 0; i < size; ++i) {
 +                int samepath = 0;
+                 if (!match_jetson_library_flags(paths[i], cnt->flags) &&
+                     !match_jetson_directory_flags(paths[i], cnt->flags))
+                         continue;
+ 
                  if (path_new(err, src, root) < 0)
                          goto fail;
 -                if (path_new(err, dst, cnt->cfg.rootfs) < 0)
 -                        goto fail;
--
+ 
 +                if (dir != NULL) {
 +                        size_t hostlibdirlen = strlen(hostlibdir);
 +                        /*
@@ -104,7 +115,7 @@ index dff9c97..8d3e275 100644
                          goto fail;
  
                  if (file_mode(err, src, &mode) < 0)
-@@ -71,22 +112,31 @@ create_jetson_symlinks(struct error *err, const char *root, const struct nvc_con
+@@ -89,25 +131,35 @@ create_jetson_symlinks(struct error *err, const char *root, const struct nvc_con
          char src[PATH_MAX];
          char src_lnk[PATH_MAX];
          char dst[PATH_MAX];
@@ -112,11 +123,14 @@ index dff9c97..8d3e275 100644
  
          for (size_t i = 0; i < size; ++i) {
 +                file = basename(paths[i]);
+                 if (!match_jetson_symlink_flags(paths[i], cnt->flags))
+                         continue;
+ 
                  if (path_new(err, src, root) < 0)
                          return (-1);
 -                if (path_new(err, dst, cnt->cfg.rootfs) < 0)
 -                        return (-1);
--
+ 
                  if (path_append(err, src, paths[i]) < 0)
                          return (-1);
 -                if (path_append(err, dst, paths[i]) < 0)
@@ -143,12 +157,12 @@ index dff9c97..8d3e275 100644
                          return (-1);
  
 diff --git a/src/jetson_mount.h b/src/jetson_mount.h
-index 76ade6a..a7b390f 100644
+index c11e6d3..b1af835 100644
 --- a/src/jetson_mount.h
 +++ b/src/jetson_mount.h
-@@ -11,7 +11,7 @@
- int resolve_symlink(struct error *, const char *, char *);
- void unmount(const char *);
+@@ -8,7 +8,7 @@
+ #include "nvc_internal.h"
+ #include "error.h"
  
 -char **mount_jetson_files(struct error *, const char *, const struct nvc_container *, char * [], size_t);
 +char **mount_jetson_files(struct error *, const char *, const struct nvc_container *, const char *, char * [], size_t);
@@ -156,10 +170,10 @@ index 76ade6a..a7b390f 100644
  
  #endif /* HEADER_JETSON_MOUNT_H */
 diff --git a/src/nvc_mount.c b/src/nvc_mount.c
-index 61af23d..67ac414 100644
+index fc2d0ec..8971e28 100644
 --- a/src/nvc_mount.c
 +++ b/src/nvc_mount.c
-@@ -486,15 +486,15 @@ nvc_driver_mount(struct nvc_context *ctx, const struct nvc_container *cnt, const
+@@ -477,7 +477,7 @@ nvc_driver_mount(struct nvc_context *ctx, const struct nvc_container *cnt, const
  
          log_info("mount jetson libraries");
          if (info->jetson->libs != NULL && info->jetson->nlibs > 0) {
@@ -168,13 +182,15 @@ index 61af23d..67ac414 100644
                          goto fail;
                  ptr = array_append(ptr, tmp, array_size(tmp));
                  free(tmp);
-         }
+@@ -485,7 +485,7 @@ nvc_driver_mount(struct nvc_context *ctx, const struct nvc_container *cnt, const
  
          log_info("mount jetson dirs");
--        if (info->jetson->libs != NULL && info->jetson->nlibs > 0) {
+         if (info->jetson->dirs != NULL && info->jetson->ndirs > 0) {
 -                if ((tmp = (const char **)mount_jetson_files(&ctx->err, ctx->cfg.root, cnt, info->jetson->dirs, info->jetson->ndirs)) == NULL)
-+        if (info->jetson->dirs != NULL && info->jetson->ndirs > 0) {
 +                if ((tmp = (const char **)mount_jetson_files(&ctx->err, ctx->cfg.root, cnt, NULL, info->jetson->dirs, info->jetson->ndirs)) == NULL)
                          goto fail;
                  ptr = array_append(ptr, tmp, array_size(tmp));
                  free(tmp);
+-- 
+2.32.0
+
