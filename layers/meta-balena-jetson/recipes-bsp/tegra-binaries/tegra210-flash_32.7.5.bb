@@ -14,6 +14,9 @@ DEPENDS = " \
     tegra210-flashtools-native \
     dtc-native \
 "
+# This file has been obtained from the Overlay_PCN211181_r32.7.5.tbz2
+# archive, provided by https://developer.nvidia.com/embedded/linux-tegra-r3275
+NANO_EMMC_BCT="P3448_A00_lpddr4_204Mhz_P987_updated_from_32_7_5_patch"
 
 inherit deploy python3native perlnative
 
@@ -29,6 +32,7 @@ SRC_URI = " \
     file://resinOS-flash210-2gb.xml \
     file://partition_specification210-2gb.txt \
     file://${BOOT_BLOB};unpack=0 \
+    file://P3448_A00_lpddr4_204Mhz_P987_updated_from_32_7_5_patch.cfg \
 "
 
 VARIANT = ""
@@ -85,7 +89,7 @@ do_configure() {
     mkdir -p "${WORKDIR}/tegraflash"
     oldwd=`pwd`
     cd "${WORKDIR}/tegraflash"
-    ln -s "${STAGING_DATADIR}/tegraflash/${MACHINE}.cfg" .
+    cp "${S}/${NANO_EMMC_BCT}.cfg" .
     ln -s "${IMAGE_TEGRAFLASH_KERNEL}" ./${LNXFILE}
     cp "${DEPLOY_DIR_IMAGE}/${DTBFILE}" ./${DTBFILE}
     cp "${DEPLOY_DIR_IMAGE}/u-boot.bin" ./u-boot.bin
@@ -172,7 +176,7 @@ do_configure() {
     dd if=/dev/zero of=bmp.blob count=1 bs=1
 
     touch VERFILE
-    python3 tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${MACHINE}.cfg" --cfg flash.xml --cmd "sign" --keep --odmdata "${ODMDATA}" & \
+    python3 tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${NANO_EMMC_BCT}.cfg" --cfg flash.xml --cmd "sign" --keep --odmdata "${ODMDATA}" & \
         export _PID=$! ; wait ${_PID} || true
 
     rm -rf ${DEPLOY_DIR_IMAGE}/bootfiles/*
