@@ -22,6 +22,7 @@ inherit deploy python3native perlnative
 
 BOOT_BLOB:jetson-nano = "boot0nano_sd.bin.gz"
 BOOT_BLOB:jetson-nano-emmc = "boot0nano_emmc.bin.gz"
+BOOT_BLOB:jn30b-nano = "boot0nano_jn3b_emmc.bin.gz"
 
 # TODO: Update blob for 2GB Devkit
 BOOT_BLOB:jetson-nano-2gb-devkit = "boot0nano_sd.bin.gz"
