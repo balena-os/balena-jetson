@@ -23,7 +23,7 @@ index f2cdd9c019..a27cfa28ed 100644
  
  /* Environment */
 -
-+#define CONFIG_ENV_SIZE                        0x5000  /* Total Size Environment */
++#define CONFIG_ENV_SIZE                        0x6000  /* Total Size Environment */
  /*
   * NS16550 Configuration
   */
