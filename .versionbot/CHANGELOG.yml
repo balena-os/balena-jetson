@@ -1,4 +1,64 @@
 - commits:
+    - subject: Update balena-yocto-scripts to e5c7085d5cd7f4162cb87ac0a1b77a0f85358f0f
+      hash: e0c00223a4e539368a8c43b906a91fde2fe85d95
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to e5c7085d5cd7f4162cb87ac0a1b77a0f85358f0f
+        changelog-entry: Update balena-yocto-scripts to e5c7085d5cd7f4162cb87ac0a1b77a0f85358f0f
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Remove deprecated poll-interval input from review-commit-action
+              hash: 185bf9342daf06809f83c10d0aa57928308b4490
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.33.20
+          title: ""
+          date: 2025-06-09T19:43:26.314Z
+        - commits:
+            - subject: Update balena-os/leviathan action to v2.32.8
+              hash: 950bd24c2801c575a21f460279434c8f8fd35881
+              body: |
+                Update balena-os/leviathan from 2.32.6 to 2.32.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.33.19
+          title: ""
+          date: 2025-06-09T14:23:54.773Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.27.31
+              hash: bc57af45e3ad57db7c1f8a4f5e6715e7c04f552a
+              body: |
+                Update aws/aws-cli from 2.27.30 to 2.27.31
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.33.18
+          title: ""
+          date: 2025-06-06T21:03:06.224Z
+    - subject: Update contracts to 417aec2b1a551295d855acd551cd810d2b69420e
+      hash: 44bee7d6c48361ea3db0975fa4833ca4b445e3fe
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 417aec2b1a551295d855acd551cd810d2b69420e
+        changelog-entry: Update contracts to 417aec2b1a551295d855acd551cd810d2b69420e
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.5.21+rev4
+  title: ""
+  date: 2025-06-10T01:30:02.958Z
+- commits:
     - subject: Update balena-yocto-scripts to 27a875eedfce1dc97f1f58acae8c878f8975b7d5
       hash: 2944d06e0354a1112d6de723f4d3822143114325
       body: Update balena-yocto-scripts
