@@ -12,12 +12,8 @@ SRC_URI:append = " \
     file://0001-dont-export-rpmb-as-part.patch \
     file://fix-brcmfmac-compilation.patch \
     file://hardware-nvidia-platform-t210-porg.patch \
+    file://0002-Update-qmi_wwan-to-kernel-4.14.patch \
 "
-
-TODO: Rework these patches so that they apply
-#file://0001-revert-random-fix-crng_ready-test.patch 
-#    file://xhci-ring-Don-t-show-incorrect-WARN-message-about.patch 
-# //0002-Update-qmi_wwan-to-kernel-4.14.patch
 
 SRC_URI:append:jetson-tx2 = " \
     file://0001-Expose-spidev-to-the-userspace.patch \
