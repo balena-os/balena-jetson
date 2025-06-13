@@ -1,4 +1,163 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 63d8277e363468c468a88012949e8d38e1d5b5d4
+      hash: e3664db799ae286938ce4e04b976336221ba1feb
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 63d8277e363468c468a88012949e8d38e1d5b5d4
+        changelog-entry: Update balena-yocto-scripts to 63d8277e363468c468a88012949e8d38e1d5b5d4
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update aws/aws-cli to v2.27.35
+              hash: 74932cc7b29711c7bbc69278681e765b6a120b74
+              body: |
+                Update aws/aws-cli from 2.27.34 to 2.27.35
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.34.1
+          title: ""
+          date: 2025-06-12T23:13:04.866Z
+        - commits:
+            - subject: Remove docker-image deploy type and only upload artifacts when needed
+              hash: 514b4379a5f14693644cb1bffc27883e5afb0a28
+              body: >
+                We haven't supported a deploy type of docker-image for a few
+                years
+
+                now so we can remove these conditions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Update all jobs to use new artifact format and paths
+              hash: 4d0a23b9eb2a182eeab57a39be673dc461556b9e
+              body: >
+                - Update hostapp-deploy, s3-deploy, ami-deploy, and leviathan
+                jobs to use new hostapp/testing artifacts
+
+
+                - Replace tarball-based artifact handling with individual file
+                decryption and decompression
+
+
+                - Update artifact download paths and decryption logic across all
+                deployment jobs
+
+
+                - Add validation for Docker image loading and improve error
+                handling
+
+
+                - Clean up environment variable assignments and remove duplicate
+                Docker Hub login steps
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Split artifact uploads into hostapp and testing artifacts
+              hash: 163efe77b215eb2e24c2096d7d7ed7134e46fce7
+              body: >
+                - Replace single 'Upload artifacts' with separate uploads for
+                hostapp and testing
+
+
+                - Hostapp artifacts include deflate files, manifests, and
+                metadata for S3/webresource deployment
+
+
+                - Testing artifacts include images and docker containers needed
+                by Leviathan test suites
+
+
+                - Use specific file patterns instead of tarball for better
+                separation of concerns
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Refactor artifact preparation and encryption
+              hash: 4b13dff429331bfe4dbc7ba5357e51fb5a966aee
+              body: >
+                - Move Docker Hub login earlier in workflow to be available for
+                subsequent steps
+
+
+                - Update artifact preparation to use S3_DEPLOY_PATH and disable
+                compression
+
+
+                - Add deflate file preparation step for S3/webresource
+                deployment
+
+
+                - Update encryption to work with individual files instead of
+                tarball
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Add S3_DEPLOY_PATH environment variable
+              hash: 9a72af4cbfb17849489852ad337978c22c93240f
+              body: >
+                This environment variable provides a structured path for
+                deploying artifacts that includes the device slug and OS
+                version, which will be used to organize S3 uploads and
+                downloads.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.34.0
+          title: ""
+          date: 2025-06-12T16:24:28.298Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.27.34
+              hash: ef0243a6675982f9a54c2ccc8c081f57d4c5913b
+              body: |
+                Update aws/aws-cli from 2.27.33 to 2.27.34
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.33.25
+          title: ""
+          date: 2025-06-11T22:22:16.260Z
+        - commits:
+            - subject: Update balena-os/leviathan action to v2.33.1
+              hash: 0f05dcbfedcc33f2163568583650ddf67bd5828a
+              body: |
+                Update balena-os/leviathan from 2.32.8 to 2.33.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.33.24
+          title: ""
+          date: 2025-06-11T04:35:25.924Z
+  version: 6.5.21+rev7
+  title: ""
+  date: 2025-06-13T03:23:13.949Z
+- commits:
     - subject: Update balena-yocto-scripts to 0402d0439cfa0dcc10e24e6ad0497ba133cbe8f3
       hash: 9e7e40b1b3b313b14dcef6ac07a727f8fad90ae9
       body: Update balena-yocto-scripts
