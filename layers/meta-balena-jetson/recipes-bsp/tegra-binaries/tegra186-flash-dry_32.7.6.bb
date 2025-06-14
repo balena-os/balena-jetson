@@ -15,14 +15,17 @@ DEPENDS = " \
 
 inherit deploy perlnative python3native
 
-BOOT_BINDIFF="boot0_t186.bindiff"
-BOOT_BINDIFF:jetson-tx2-nx-devkit="boot0_t186_nx_devkit.bindiff"
+BOOT_BLOB:jetson-tx2 = "boot0_tx2.bin.gz"
 
+# TODO: Update TX2 NX boot blob when that device will have
+# the BSP updated. The TX2 boot blob is used here solely
+# for the purpose of building.
+BOOT_BLOB:jetson-tx2-nx-devkit = "boot0_tx2.bin.gz"
 SRC_URI = " \
     file://resinOS-flash186.xml \
     file://partition_specification186.txt \
     file://tx2_28_x_hook_fix.sh \
-    file://${BOOT_BINDIFF} \
+    file://${BOOT_BLOB};unpack=0 \
 "
 
 IMAGE_UBOOT ??= "u-boot"
@@ -36,6 +39,7 @@ BR_CMD_CONFIG="tegra186-mb1-bct-bootrom-quill-p3310-1000-c03.cfg"
 
 # Jetson TX2 4GB overrides
 SDRAM_CFG="${MACHINE}.cfg"
+SDRAM_CFG:jetson-tx2 = "P3310_A00_8GB_lpddr4_A02_l4t.cfg"
 
 # Jetson TX2 NX in Xavier NX Devkit overrides
 PINMUX_CFG:jetson-tx2-nx-devkit="tegra186-mb1-bct-pinmux-p3636-0001-a00.cfg"
@@ -195,46 +199,7 @@ do_configure() {
     cp -r *.blob   ${DEPLOY_DIR_IMAGE}/bootfiles/
     cp ${DEPLOY_DIR_IMAGE}/${DTBFILE} ${DEPLOY_DIR_IMAGE}/bootfiles/
 
-    # This is the new boot0, which needs to be patched due to some bytes
-    # that differ between our generated image and tegra host tools one, most
-    # probably they are added during flashing
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=3584 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/br_bct_BR.bct of=boot0.img seek=16384 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_prod.bin.encrypt of=boot0.img seek=32768 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_prod.bin.encrypt of=boot0.img seek=294912 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_cold_boot_bct_MB1.bct of=boot0.img seek=557456 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/mb1_cold_boot_bct_MB1.bct of=boot0.img seek=622992 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/dram-ecc_sigheader.bin.encrypt of=boot0.img seek=688128 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/badpage_sigheader.bin.encrypt of=boot0.img seek=743424 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/badpage_sigheader.bin.encrypt of=boot0.img seek=748032 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_sigheader.bin.encrypt of=boot0.img seek=752640 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/spe_sigheader.bin.encrypt of=boot0.img seek=883712 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_sigheader.bin.encrypt of=boot0.img seek=1014784 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/nvtboot_sigheader.bin.encrypt of=boot0.img seek=1276928 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_d15_prod_cr_sigheader.bin.encrypt of=boot0.img seek=1539072 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/preboot_d15_prod_cr_sigheader.bin.encrypt of=boot0.img seek=1801216 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=boot0.img seek=2063360 bs=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bootfiles/slot_metadata.bin of=boot0.img seek=2067456 bs=1 conv=notrunc
-    dd if=/dev/zero of=boot0.img seek=2071552 bs=1 count=2122752 conv=notrunc
-
-    # Patch resulting boot0.img to match partition table for L4T 32.6.1, this part is common for TX2 and TX2 NX
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557056 count=24 skip=0  of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=622592 count=24 skip=24  of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=743424 count=24 skip=48  of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=743808 count=16 skip=72  of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=748032 count=24 skip=88  of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=748416 count=16 skip=112  of=boot0.img conv=notrunc
-
-    # This part is specific to the TX2 NX, which is the same on 32.7.2 and on 32.7.1
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557444 count=6 skip=128  of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=622980 count=6 skip=134  of=boot0.img conv=notrunc
-
-    # Added as of L4T 32.7.1 for TX2, applies to 32.7.2
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=623472 count=32 skip=140  of=boot0.img conv=notrunc
-    dd if=${WORKDIR}/${BOOT_BINDIFF} bs=1 seek=557936 count=32 skip=172  of=boot0.img conv=notrunc
-
-    cp boot0.img ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img
+     zcat ${WORKDIR}/${BOOT_BLOB} > ${DEPLOY_DIR_IMAGE}/bootfiles/boot0.img
 }
 
 do_install() {
