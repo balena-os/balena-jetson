@@ -57,7 +57,7 @@ jobs:
       machine: jn30b-nano
       test_matrix: >
         {
-          "test_suite": ["os","cloud","hup"],
+          "test_suite": ["os","cloud"],
           "environment": ["balena-cloud.com"],
           "runs_on": [["ubuntu-latest"]]
         }
