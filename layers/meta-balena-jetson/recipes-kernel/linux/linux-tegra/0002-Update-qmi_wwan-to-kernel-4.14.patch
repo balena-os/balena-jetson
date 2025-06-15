@@ -1,6 +1,6 @@
-From 2d15f1a225b7c89ba26dbde44a927d32e1c52b51 Mon Sep 17 00:00:00 2001
+From 64b10913ca17a03c5e9e7519855832902cc8759f Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Sat, 19 Feb 2022 20:06:02 +0100
+Date: Fri, 13 Jun 2025 07:33:24 +0000
 Subject: [PATCH] Update qmi_wwan to kernel 4.14
 
 Modem Internet Networking was not working for the Spacely board.
@@ -9,11 +9,11 @@ These updates were necessary to have internet over GSM Modems.
 Upstream-Status: Inappropriate [backport]
 Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
 ---
- drivers/net/usb/qmi_wwan.c | 383 ++++++++++++++++++++++++++++++++++++-
- 1 file changed, 374 insertions(+), 9 deletions(-)
+ drivers/net/usb/qmi_wwan.c | 382 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 373 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/net/usb/qmi_wwan.c b/drivers/net/usb/qmi_wwan.c
-index a571024882d7..98aaa601705a 100644
+index 62eb45a819e7..702ed53de5d4 100644
 --- a/drivers/net/usb/qmi_wwan.c
 +++ b/drivers/net/usb/qmi_wwan.c
 @@ -57,8 +57,208 @@ struct qmi_wwan_state {
@@ -379,7 +379,7 @@ index a571024882d7..98aaa601705a 100644
  	{QMI_FIXED_INTF(0x16d8, 0x6003, 0)},	/* CMOTech 6003 */
  	{QMI_FIXED_INTF(0x16d8, 0x6007, 0)},	/* CMOTech CHE-628S */
  	{QMI_FIXED_INTF(0x16d8, 0x6008, 0)},	/* CMOTech CMU-301 */
-@@ -913,13 +1227,13 @@ static const struct usb_device_id products[] = {
+@@ -914,13 +1228,13 @@ static const struct usb_device_id products[] = {
  	{QMI_FIXED_INTF(0x1199, 0x9061, 8)},	/* Sierra Wireless Modem */
  	{QMI_FIXED_INTF(0x1199, 0x9063, 8)},	/* Sierra Wireless EM7305 */
  	{QMI_FIXED_INTF(0x1199, 0x9063, 10)},	/* Sierra Wireless EM7305 */
@@ -400,15 +400,7 @@ index a571024882d7..98aaa601705a 100644
  	{QMI_FIXED_INTF(0x1bbb, 0x011e, 4)},	/* Telekom Speedstick LTE II (Alcatel One Touch L100V LTE) */
  	{QMI_FIXED_INTF(0x1bbb, 0x0203, 2)},	/* Alcatel L800MA */
  	{QMI_FIXED_INTF(0x2357, 0x0201, 4)},	/* TP-LINK HSUPA Modem MA180 */
-@@ -931,6 +1245,7 @@ static const struct usb_device_id products[] = {
- 	{QMI_FIXED_INTF(0x1bc7, 0x1101, 3)},	/* Telit ME910 dual modem */
- 	{QMI_FIXED_INTF(0x1bc7, 0x1200, 5)},	/* Telit LE920 */
- 	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1201, 2)},	/* Telit LE920, LE920A4 */
-+	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1900, 1)}, /* Telit LN940 series */
- 	{QMI_FIXED_INTF(0x1c9e, 0x9801, 3)},	/* Telewell TW-3G HSPA+ */
- 	{QMI_FIXED_INTF(0x1c9e, 0x9803, 4)},	/* Telewell TW-3G HSPA+ */
- 	{QMI_FIXED_INTF(0x1c9e, 0x9b01, 3)},	/* XS Stick W100-2 from 4G Systems */
-@@ -971,6 +1286,7 @@ static const struct usb_device_id products[] = {
+@@ -984,6 +1298,7 @@ static const struct usb_device_id products[] = {
  	{QMI_QUIRK_SET_DTR(0x2c7c, 0x0195, 4)},	/* Quectel EG95 */
  	{QMI_FIXED_INTF(0x2c7c, 0x0296, 4)},	/* Quectel BG96 */
  	{QMI_QUIRK_SET_DTR(0x2c7c, 0x0306, 4)},	/* Quectel EP06 Mini PCIe */
@@ -416,7 +408,7 @@ index a571024882d7..98aaa601705a 100644
  
  	/* 4. Gobi 1000 devices */
  	{QMI_GOBI1K_DEVICE(0x05c6, 0x9212)},	/* Acer Gobi Modem Device */
-@@ -1033,6 +1349,19 @@ static const struct usb_device_id products[] = {
+@@ -1046,6 +1361,19 @@ static const struct usb_device_id products[] = {
  };
  MODULE_DEVICE_TABLE(usb, products);
  
@@ -436,7 +428,7 @@ index a571024882d7..98aaa601705a 100644
  static bool quectel_ec20_detected(struct usb_interface *intf)
  {
  	struct usb_device *dev = interface_to_usbdev(intf);
-@@ -1080,14 +1409,50 @@ static int qmi_wwan_probe(struct usb_interface *intf,
+@@ -1093,14 +1421,50 @@ static int qmi_wwan_probe(struct usb_interface *intf,
  		return -ENODEV;
  	}
  
@@ -489,5 +481,5 @@ index a571024882d7..98aaa601705a 100644
  	.resume		      =	qmi_wwan_resume,
  	.reset_resume         = qmi_wwan_resume,
 -- 
-2.17.1
+2.34.1
 
