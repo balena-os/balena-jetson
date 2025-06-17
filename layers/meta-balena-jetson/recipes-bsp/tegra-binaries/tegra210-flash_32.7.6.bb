@@ -14,11 +14,15 @@ DEPENDS = " \
     tegra210-flashtools-native \
     dtc-native \
 "
+# This file has been obtained from the Overlay_PCN211181_r32.7.5.tbz2
+# archive, provided by https://developer.nvidia.com/embedded/linux-tegra-r3275
+NANO_EMMC_BCT="P3448_A00_lpddr4_204Mhz_P987"
 
 inherit deploy python3native perlnative
 
 BOOT_BLOB:jetson-nano = "boot0nano_sd.bin.gz"
 BOOT_BLOB:jetson-nano-emmc = "boot0nano_emmc.bin.gz"
+BOOT_BLOB:jn30b-nano = "boot0nano_jn3b_emmc.bin.gz"
 
 # TODO: Update blob for 2GB Devkit
 BOOT_BLOB:jetson-nano-2gb-devkit = "boot0nano_sd.bin.gz"
@@ -29,7 +33,10 @@ SRC_URI = " \
     file://resinOS-flash210-2gb.xml \
     file://partition_specification210-2gb.txt \
     file://${BOOT_BLOB};unpack=0 \
+    https://developer.nvidia.com/downloads/embedded/L4T/r32_Release_v7.5/overlay_32.7.5_PCN211181.tbz2;name=pcnoverlay \
 "
+
+SRC_URI[pcnoverlay.sha256sum] = "c69d6408f56070803532f1df9f1930427a944f1440c7e9be4a9d9d54a652f780"
 
 VARIANT = ""
 VARIANT:jetson-nano-2gb-devkit = "-2gb"
@@ -85,7 +92,7 @@ do_configure() {
     mkdir -p "${WORKDIR}/tegraflash"
     oldwd=`pwd`
     cd "${WORKDIR}/tegraflash"
-    ln -s "${STAGING_DATADIR}/tegraflash/${MACHINE}.cfg" .
+    cp "${WORKDIR}/Linux_for_Tegra/bootloader/t210ref/BCT/${NANO_EMMC_BCT}.cfg" .
     ln -s "${IMAGE_TEGRAFLASH_KERNEL}" ./${LNXFILE}
     cp "${DEPLOY_DIR_IMAGE}/${DTBFILE}" ./${DTBFILE}
     cp "${DEPLOY_DIR_IMAGE}/u-boot.bin" ./u-boot.bin
@@ -172,7 +179,7 @@ do_configure() {
     dd if=/dev/zero of=bmp.blob count=1 bs=1
 
     touch VERFILE
-    python3 tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${MACHINE}.cfg" --cfg flash.xml --cmd "sign" --keep --odmdata "${ODMDATA}" & \
+    python3 tegraflash.py --bl cboot.bin --bldtb "${DTBFILE}" --chip 0x21 --applet nvtboot_recovery.bin --bct "${NANO_EMMC_BCT}.cfg" --cfg flash.xml --cmd "sign" --keep --odmdata "${ODMDATA}" & \
         export _PID=$! ; wait ${_PID} || true
 
     rm -rf ${DEPLOY_DIR_IMAGE}/bootfiles/*

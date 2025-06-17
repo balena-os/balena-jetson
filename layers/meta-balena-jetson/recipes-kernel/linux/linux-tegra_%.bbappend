@@ -8,10 +8,10 @@ SCMVERSION="n"
 # and support using partition label to load rootfs
 # in the case of jetson-xavier and tx2 flasher
 SRC_URI:append = " \
-    file://0001-revert-random-fix-crng_ready-test.patch \
     file://0001-Support-referencing-the-root-partition-label-from-GP.patch \
-    file://xhci-ring-Don-t-show-incorrect-WARN-message-about.patch \
     file://0001-dont-export-rpmb-as-part.patch \
+    file://fix-brcmfmac-compilation.patch \
+    file://hardware-nvidia-platform-t210-porg.patch \
     file://0002-Update-qmi_wwan-to-kernel-4.14.patch \
 "
 
