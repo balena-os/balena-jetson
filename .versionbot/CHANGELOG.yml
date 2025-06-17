@@ -1,4 +1,41 @@
 - commits:
+    - subject: "recipes-bsp/tegra-binaries: Update Jetson TX2, Nano and JN30B from
+        32.7.3 to 32.7.6"
+      hash: 7f622d05d5038041eccbd0f21c930b3613eab775
+      body: ""
+      footer:
+        Changelog-entry: "recipes-bsp/tegra-binaries: Update Jetson TX2, Nano and JN30B
+          from 32.7.3 to 32.7.6"
+        changelog-entry: "recipes-bsp/tegra-binaries: Update Jetson TX2, Nano and JN30B
+          from 32.7.3 to 32.7.6"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "layers/meta-balena: Update to v6.5.38"
+      hash: fb38246792df49caf82c0013dd77c0b95a8508ad
+      body: ""
+      footer:
+        Changelog-entry: "layers/meta-balena: Update to v6.5.38"
+        changelog-entry: "layers/meta-balena: Update to v6.5.38"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "layers/meta-tegra: Update to 32.7.x branch for L4T 32.7.6"
+      hash: 90695c49a30aea77f141f04416453beb5a4be373
+      body: ""
+      footer:
+        Changelog-entry: "layers/meta-tegra: Update to 32.7.x branch for L4T 32.7.6"
+        changelog-entry: "layers/meta-tegra: Update to 32.7.x branch for L4T 32.7.6"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 6.5.38
+  title: ""
+  date: 2025-06-17T08:48:15.687Z
+- commits:
     - subject: Update balena-yocto-scripts to 63d8277e363468c468a88012949e8d38e1d5b5d4
       hash: e3664db799ae286938ce4e04b976336221ba1feb
       body: Update balena-yocto-scripts

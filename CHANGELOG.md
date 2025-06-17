@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v6.5.38
+## (2025-06-17)
+
+* recipes-bsp/tegra-binaries: Update Jetson TX2, Nano and JN30B from 32.7.3 to 32.7.6 [Alexandru Costache]
+* layers/meta-balena: Update to v6.5.38 [Alexandru Costache]
+* layers/meta-tegra: Update to 32.7.x branch for L4T 32.7.6 [Alexandru Costache]
+
 # v6.5.21+rev7
 ## (2025-06-13)
 
