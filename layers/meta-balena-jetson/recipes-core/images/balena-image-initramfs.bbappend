@@ -19,3 +19,4 @@ PACKAGE_INSTALL:remove:orbitty-tx2 = " mdraid"
 PACKAGE_INSTALL:remove:spacely-tx2 = " mdraid"
 
 PACKAGE_INSTALL:remove = " initramfs-module-recovery"
+PACKAGE_INSTALL:remove:jetson-tx2 = " initramfs-module-migrate"
