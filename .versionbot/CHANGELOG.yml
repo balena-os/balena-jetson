@@ -1,4 +1,20 @@
 - commits:
+    - subject: remove migrate module for the jetson-tx2
+      hash: a316e5daa9d29f04c9e5aeaf5d44970e631be245
+      body: |
+        Recent updates in the migrate module has increased its size and it makes
+        the kernel no longer fit in the boot partition of the TX2.
+      footer:
+        Changelog-entry: remove migrate module for the jetson-tx2
+        changelog-entry: remove migrate module for the jetson-tx2
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.5.38+rev2
+  title: ""
+  date: 2025-06-22T20:44:56.755Z
+- commits:
     - subject: Update balena-yocto-scripts to 12e1c0ebd66b9e6813979ab4ee291512f2d7365b
       hash: 7d429bc951ebaad739e399d79be02289030ed964
       body: Update balena-yocto-scripts

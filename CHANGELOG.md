@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.38+rev2
+## (2025-06-22)
+
+* remove migrate module for the jetson-tx2 [Alex Gonzalez]
+
 # v6.5.38+rev1
 ## (2025-06-18)
 
