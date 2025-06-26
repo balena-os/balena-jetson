@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update layers/meta-openembedded to
+        45bddd258a3d1ded925faf8389e01bb948dc7f5b
+      hash: 603bd17252b36783d88cd87dbccaa27593b71dcd
+      body: Update layers/meta-openembedded
+      footer:
+        Changelog-entry: Update layers/meta-openembedded to
+          45bddd258a3d1ded925faf8389e01bb948dc7f5b
+        changelog-entry: Update layers/meta-openembedded to
+          45bddd258a3d1ded925faf8389e01bb948dc7f5b
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.5.38+rev3
+  title: ""
+  date: 2025-06-26T12:12:42.002Z
+- commits:
     - subject: remove migrate module for the jetson-tx2
       hash: a316e5daa9d29f04c9e5aeaf5d44970e631be245
       body: |
