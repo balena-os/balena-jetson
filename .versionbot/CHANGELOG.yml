@@ -1,4 +1,129 @@
 - commits:
+    - subject: Update layers/meta-balena to 39e4434dbaaf6b15e5487740c51d3f1a17cb530f
+      hash: 2cb353fe9bedafd4edc7584bf8f782d043ed2328
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 39e4434dbaaf6b15e5487740c51d3f1a17cb530f
+        changelog-entry: Update layers/meta-balena to 39e4434dbaaf6b15e5487740c51d3f1a17cb530f
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "busybox: add conv support in dd"
+              hash: b2b69965b8c955ef099e5b4bfcf13ea9bdfb835c
+              body: >
+                This is used from the initramfs of flasher devices to erase the
+                disk
+
+                of secrets.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: cryptsetup-efi-tmp: use common encrypted partition
+                asserts"
+              hash: b1e95e0114a34f8c8241db6455c772c6b24b9a30
+              body: >
+                Use the shared helper functions to assert encrypted partitions.
+
+
+                Note that the new functions have introduced some refactoring so
+                that
+
+                they can be used in the general case.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers-fs: move logic to assert luks encrypted partitions"
+              hash: 9671276855e76cd296e5c077af4653b3c88188f9
+              body: >
+                The logic to assert encrypted partitions was being implemented
+                in a
+
+                device specific way as part of cryptsetup - move it to common
+                code so
+
+                that this does not need to be re-implemented for every device
+                type.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: migrate: use an estimated compressed size for raw
+                image"
+              hash: f712bab8bb2df75fbb5a5d37c809f6f9a6c9f5d1
+              body: >
+                The memory check before a migration run was not taking into
+                account
+
+                that the tmp directory is now compressed ram.
+
+
+                This change approximates the compressed size of the raw image
+                which is
+
+                the biggest in the calculation. The rest of the file sizes are
+                left as
+
+                is to provide some buffer for approximation failures and not to
+                complicate
+
+                the logic excessively.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers-fs: add a function to estimate zram compression sizes"
+              hash: 91c07c0f263c5e63d46b438aa6b972458f8f5182
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.5.40
+          title: ""
+          date: 2025-06-26T14:04:59.217Z
+        - commits:
+            - subject: "workflows: remove Jetson Xavier AGX"
+              hash: 2c15ce8d878115f45c77bc39ced83ab4bfda0d4d
+              body: >
+                This device type is no longer being built in the device
+                repository,
+
+                although it has not been officially discontinued yet it probably
+                should.
+
+
+                Removing it from meta-balena not to block development.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.5.39
+          title: ""
+          date: 2025-06-20T12:30:59.288Z
+  version: 6.5.40
+  title: ""
+  date: 2025-06-27T07:01:19.266Z
+- commits:
     - subject: Update balena-yocto-scripts to 88de5690d31ba3bd1c9fb661b59e538785eadaec
       hash: 70386951e6586647d4d66cea3272f81fbf82be34
       body: Update balena-yocto-scripts
