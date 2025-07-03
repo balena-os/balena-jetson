@@ -1,4 +1,33 @@
 - commits:
+    - subject: Update contracts to fc76558c384c10bf228b10909eca346ee9d6b564
+      hash: 8fc5872de9b8dea6284c16c000e446fa6d0ba6ae
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to fc76558c384c10bf228b10909eca346ee9d6b564
+        changelog-entry: Update contracts to fc76558c384c10bf228b10909eca346ee9d6b564
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "hw.device-type: Update J4012 device type name"
+              hash: b28727f64f2838069caf0c7fae213d6b01f20741
+              body: >
+                ... to specify that this is the Classic revision of the carrier
+                board,
+
+                which does not support the SUPER mode.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru
+          version: contracts-2.0.137
+          title: ""
+          date: 2025-07-02T09:19:48.336Z
+  version: 6.5.41+rev2
+  title: ""
+  date: 2025-07-03T03:47:58.716Z
+- commits:
     - subject: Update balena-yocto-scripts to 8d43b5b5bec783ee6e65d6e784e83023139f8147
       hash: fd385fb9d61def1d569a4e7d43b0ed3f0fa0cbe7
       body: Update balena-yocto-scripts
