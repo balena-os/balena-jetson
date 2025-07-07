@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.5.43
+## (2025-07-07)
+
+
+<details>
+<summary> Update layers/meta-balena to 6a98d389b14082f43e6078deed2aaec990f0222e [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.5.43
+> ### (2025-07-07)
+> 
+> * meta-balena-esr: fall back to current minor [Ryan Cooke]
+> 
+
+</details>
+
 # v6.5.42+rev3
 ## (2025-07-06)
 

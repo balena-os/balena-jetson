@@ -1,4 +1,32 @@
 - commits:
+    - subject: Update layers/meta-balena to 6a98d389b14082f43e6078deed2aaec990f0222e
+      hash: 37aa532494c96c43f2047c0cdb1bf415e08b7fb8
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 6a98d389b14082f43e6078deed2aaec990f0222e
+        changelog-entry: Update layers/meta-balena to 6a98d389b14082f43e6078deed2aaec990f0222e
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "meta-balena-esr: fall back to current minor"
+              hash: b04c4769fdffb61e65c365aad7cea8907991cb2d
+              body: >
+                If an esr branch for a previous minor already exists, then fall
+                back to the current minor
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: meta-balena-6.5.43
+          title: ""
+          date: 2025-07-07T10:43:40.599Z
+  version: 6.5.43
+  title: ""
+  date: 2025-07-07T16:50:11.138Z
+- commits:
     - subject: Update layers/meta-openembedded to
         058249f9a836e3aa866436aa6e37d6d48ff768fd
       hash: 118cf6145d45f0e4e75fb1e44da3e7b254d96e70
