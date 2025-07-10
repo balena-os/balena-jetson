@@ -1,4 +1,52 @@
 - commits:
+    - subject: Update balena-yocto-scripts to ccb8899d87c181fa3198a496fe1a514a93de90e5
+      hash: 050ff10eaea7b383a0a79a4ab0ceb6c22a6866cb
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to ccb8899d87c181fa3198a496fe1a514a93de90e5
+        changelog-entry: Update balena-yocto-scripts to ccb8899d87c181fa3198a496fe1a514a93de90e5
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "minor: upload cyclonedx bom.json and vex.json as independend files"
+              hash: f0302f4e650d917c71b846014e4fed65a7916c3a
+              body: ""
+              footer: {}
+              author: Edwin Joassart
+              nested: []
+            - subject: Generate SBOM and VEX (cycloneDX)
+              hash: a534b99e565c2854af0a790c96706f7a348df447
+              body: |
+                https://balena.fibery.io/Work/Project/balenaos-SBOM-as-release-asset-1515
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Generate SBOM and VEX (cycloneDX)
+                changelog-entry: Generate SBOM and VEX (cycloneDX)
+                Signed-off-by: Edwin Joassart <edwin.joassart@balena.io>
+                signed-off-by: Edwin Joassart <edwin.joassart@balena.io>
+              author: Edwin Joassart
+              nested: []
+          version: balena-yocto-scripts-1.36.0
+          title: ""
+          date: 2025-07-09T18:11:19.397Z
+        - commits:
+            - subject: Update Lock file maintenance
+              hash: 1aa6e302995bdc9c32e70d51d535a2721df0dca9
+              body: |
+                Update 
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.35.5
+          title: ""
+          date: 2025-07-04T06:33:15.250Z
+  version: 6.5.43+rev2
+  title: ""
+  date: 2025-07-10T01:57:04.319Z
+- commits:
     - subject: Generate SBOM and VEX (cycloneDX)
       hash: ec41a04361a2b18eb1a18565a266774a3a03390c
       body: >
