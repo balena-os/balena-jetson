@@ -1,4 +1,42 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 7d52b5aa316f5f05df2e3e4701e9e2b3b92083cb
+      hash: bd57cf2b4dc162a499e61eaeb2b32c78b9133269
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 7d52b5aa316f5f05df2e3e4701e9e2b3b92083cb
+        changelog-entry: Update balena-yocto-scripts to 7d52b5aa316f5f05df2e3e4701e9e2b3b92083cb
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update aws/aws-cli to v2.27.50
+              hash: ed8b39f870f7bbf323f71d124647430554d890ad
+              body: |
+                Update aws/aws-cli from 2.27.49 to 2.27.50
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.36.2
+          title: ""
+          date: 2025-07-10T23:05:43.420Z
+        - commits:
+            - subject: Update balena-io/upload-balena-release-asset action to v0.1.4
+              hash: 8c86439772badada857f6c982a77d9ce0ae6b8fc
+              body: |
+                Update balena-io/upload-balena-release-asset from 0.1.3 to 0.1.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.36.1
+          title: ""
+          date: 2025-07-10T18:37:30.402Z
+  version: 6.5.43+rev3
+  title: ""
+  date: 2025-07-11T09:47:14.947Z
+- commits:
     - subject: Update balena-yocto-scripts to ccb8899d87c181fa3198a496fe1a514a93de90e5
       hash: 050ff10eaea7b383a0a79a4ab0ceb6c22a6866cb
       body: Update balena-yocto-scripts
