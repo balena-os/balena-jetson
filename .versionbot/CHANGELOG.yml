@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update layers/meta-balena to 4e67673a7d7d67b5fc4b6d87065b900b00d72341
+      hash: 021369d83f061477b3d1f0b599bc66941b2791ce
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 4e67673a7d7d67b5fc4b6d87065b900b00d72341
+        changelog-entry: Update layers/meta-balena to 4e67673a7d7d67b5fc4b6d87065b900b00d72341
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "meta-balena-YOCTO_RELEASE: update bmap-tools branch name"
+              hash: ca3e8df431c811088982050c5053d4fb5ca46499
+              body: |
+                In Nov 2024 bmap-tools  master branch was renamed to main
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: meta-balena-6.5.44
+          title: ""
+          date: 2025-07-09T16:53:56.590Z
+  version: 6.5.44
+  title: ""
+  date: 2025-07-16T22:10:14.761Z
+- commits:
     - subject: Update layers/poky to 3171dcc835afe49ab49847bdd6bf0d6d392fad03
       hash: 47808808692c49d0f7fe5a69c4afeeeb121623ff
       body: Update layers/poky
