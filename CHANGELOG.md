@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v6.5.44+rev8
+## (2025-07-25)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 31279c7fb29974fd2238f2ad78649acf8c3ab082 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.37.0
+> ### (2025-07-24)
+> 
+> * Use the leviathan action from the submodule in meta-balena [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.36.21
+> ### (2025-07-24)
+> 
+> * upload hostapp artifacts: include encrypted manifest [Ryan Cooke]
+> 
+> ## balena-yocto-scripts-1.36.20
+> ### (2025-07-24)
+> 
+> * Update balena-os/leviathan action to v2.34.4 [balena-renovate[bot]]
+> 
+
+</details>
+
 # v6.5.44+rev7
 ## (2025-07-24)
 

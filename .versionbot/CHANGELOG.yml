@@ -1,4 +1,64 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 31279c7fb29974fd2238f2ad78649acf8c3ab082
+      hash: 2ffa5cbd750d4ee447566d5cc673a4e418498720
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 31279c7fb29974fd2238f2ad78649acf8c3ab082
+        changelog-entry: Update balena-yocto-scripts to 31279c7fb29974fd2238f2ad78649acf8c3ab082
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Use the leviathan action from the submodule in meta-balena
+              hash: edc051f80d18b6969f3a2d7bac7a5520ea6fb2c5
+              body: |
+                The action currently has dependencies on the leviathan base
+                project so we need to keep them aligned for now.
+
+                If a future revision of the action performs it's own fetch of
+                leviathan, we would revert this change.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.37.0
+          title: ""
+          date: 2025-07-24T20:45:42.714Z
+        - commits:
+            - subject: "upload hostapp artifacts: include encrypted manifest"
+              hash: eb5b915a8ff6d23aa207732519829fd0850fffea
+              body: >
+                We encrypt the manifest if its private/signed, but don't look
+                for the encrypted version to upload - fixes that
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: balena-yocto-scripts-1.36.21
+          title: ""
+          date: 2025-07-24T18:14:26.067Z
+        - commits:
+            - subject: Update balena-os/leviathan action to v2.34.4
+              hash: 00b4a8b4c76b40c699af22279dfa84268f3d359b
+              body: |
+                Update balena-os/leviathan from 2.34.0 to 2.34.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.36.20
+          title: ""
+          date: 2025-07-24T14:14:37.776Z
+  version: 6.5.44+rev8
+  title: ""
+  date: 2025-07-25T01:25:06.368Z
+- commits:
     - subject: Update balena-yocto-scripts to 80684fb1a29b96849b2d8bf6693ea1eb2d3f9acb
       hash: abe324b0496589ff889c48b3e43383d672e09d6c
       body: Update balena-yocto-scripts
