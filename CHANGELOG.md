@@ -1,6 +1,37 @@
 Change log
 -----------
 
+# v6.5.47
+## (2025-07-29)
+
+
+<details>
+<summary> Update layers/meta-balena to 542cca8a05d671b349d4d07be2d9bf086fe3781e [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.5.47
+> ### (2025-07-29)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to b33ddb7 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.35.3
+>> #### (2025-07-28)
+>> 
+>> * Bind mount private contracts in the core service [Kyle Harding]
+>> 
+>> ### leviathan-2.35.2
+>> #### (2025-07-28)
+>> 
+>> * Update Lock file maintenance [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v6.5.46
 ## (2025-07-25)
 

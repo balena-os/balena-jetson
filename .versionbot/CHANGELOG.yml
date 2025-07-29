@@ -1,4 +1,66 @@
 - commits:
+    - subject: Update layers/meta-balena to 542cca8a05d671b349d4d07be2d9bf086fe3781e
+      hash: 7ef4b2860c88158e09794905972dfc0a90eacc75
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 542cca8a05d671b349d4d07be2d9bf086fe3781e
+        changelog-entry: Update layers/meta-balena to 542cca8a05d671b349d4d07be2d9bf086fe3781e
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to b33ddb7
+              hash: 05bcaafe9f196f4762775cc87bc740edb344c93c
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Bind mount private contracts in the core service
+                      hash: ba51cc72a4ccf098af5d969ed8d7aeb08e009755
+                      body: >
+                        These contracts used to be copied to the core service at
+                        build
+
+                        time if private device types cloned the repo before
+                        running test suites.
+
+
+                        However, since switching to pre-built images by default
+                        we need to
+
+                        manually mount private contracts to the core service.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.35.3
+                  title: ""
+                  date: 2025-07-28T11:33:30.510Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 2d66ad92dced0d8e34a3b6b588ed4ad961c11cf8
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.35.2
+                  title: ""
+                  date: 2025-07-28T01:09:38.375Z
+          version: meta-balena-6.5.47
+          title: ""
+          date: 2025-07-29T16:25:57.448Z
+  version: 6.5.47
+  title: ""
+  date: 2025-07-29T23:48:20.349Z
+- commits:
     - subject: Update layers/meta-balena to 8bccad64cb05970bb0d202676b5b6c5e52e3ca89
       hash: 4c22d04ff8644fbc904a575d1d4d16bcf96bfaed
       body: Update layers/meta-balena
