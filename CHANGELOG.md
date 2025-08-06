@@ -1,6 +1,46 @@
 Change log
 -----------
 
+# v6.5.48+rev1
+## (2025-08-06)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 038c41d84383f46176a2e70c84f4a0f1da4a9489 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.37.10
+> ### (2025-08-06)
+> 
+> * Update aws/aws-cli to v2.28.3 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.37.9
+> ### (2025-08-06)
+> 
+> * Update balena-io-examples/setup-balena-action action to v0.0.25 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.37.8
+> ### (2025-08-05)
+> 
+> * Update aws/aws-cli to v2.28.2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.37.7
+> ### (2025-08-05)
+> 
+> * Update aws-actions/configure-aws-credentials action to v4.3.1 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.37.6
+> ### (2025-08-04)
+> 
+> * Update docker/login-action action to v3.5.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.37.5
+> ### (2025-08-02)
+> 
+> * Update balena-io-examples/setup-balena-action action to v0.0.24 [balena-renovate[bot]]
+> 
+
+</details>
+
 # v6.5.48
 ## (2025-08-02)
 
