@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 75df416fd02fe21ec54ae5ddeae9fdee8f13ca76
+      hash: dbde16a647896bfc917d065829f678a0168ee0c4
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 75df416fd02fe21ec54ae5ddeae9fdee8f13ca76
+        changelog-entry: Update balena-yocto-scripts to 75df416fd02fe21ec54ae5ddeae9fdee8f13ca76
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update actions/create-github-app-token action to v2.1.1
+              hash: e6b681e61043c747cdc573b7df1d6b023324424c
+              body: |
+                Update actions/create-github-app-token from 2.0.6 to 2.1.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.37.15
+          title: ""
+          date: 2025-08-11T19:42:57.724Z
+  version: 6.5.49+rev1
+  title: ""
+  date: 2025-08-12T04:59:00.658Z
+- commits:
     - subject: Update layers/meta-balena to 9462ad02ceb4ee6ecdbe08d59e870f2531a5b2f7
       hash: b349ce4d3c1855bd6ae51c28d8312e31eea0d307
       body: Update layers/meta-balena
