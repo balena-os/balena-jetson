@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.5.49
+## (2025-08-12)
+
+
+<details>
+<summary> Update layers/meta-balena to 9462ad02ceb4ee6ecdbe08d59e870f2531a5b2f7 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.5.49
+> ### (2025-08-11)
+> 
+> * kernel-balena.bbclass: Remove references to disabling CONFIG_RTL8192CU [Florin Sarbu]
+> 
+
+</details>
+
 # v6.5.48+rev4
 ## (2025-08-09)
 
