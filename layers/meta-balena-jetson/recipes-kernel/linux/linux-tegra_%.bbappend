@@ -66,6 +66,10 @@ SRC_URI:append:jetson-nano-emmc = " \
     file://tegra210-p3448-0002-p3449-0000-b00-auvidea-jn30d.dtb \
 "
 
+SRC_URI:append:jetson-orin-nano-devkit-nvme = " \
+    tegra234-p3768-0000+p3767-0001-nv-super-no-dma.dtb \
+"
+
 SRC_URI:append:photon-nano = " \
     file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
     file://tegra210-nano-cti-NGX003.dtb \
@@ -366,6 +370,10 @@ do_deploy:append:blackboard-tx2() {
 
 do_deploy:append:jn30b-nano() {
     cp ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb "${DEPLOYDIR}"
+}
+
+do_deploy:append:jetson-orin-nano-devkit-nvme() {
+    cp ${WORKDIR}/tegra234-p3768-0000+p3767-0001-nv-super-no-dma.dtb "${DEPLOYDIR}"
 }
 
 do_deploy:append:photon-nano() {

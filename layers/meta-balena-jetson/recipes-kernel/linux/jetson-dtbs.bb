@@ -23,6 +23,7 @@ SRC_URI = " \
 	file://tegra186-tx2-nx-cti-NGX003.dtb \
 	file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
 	file://tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb \
+	file://tegra234-p3768-0000+p3767-0001-nv-super-no-dma.dtb \
 "
 
 do_install[depends] += " linux-tegra:do_deploy "
@@ -68,6 +69,11 @@ do_install:jetson-nano-emmc() {
 do_install:jetson-nano-2gb-devkit() {
 	install -d ${D}/boot/
 	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra210-p3448-0003-p3542-0000.dtb  ${D}/boot/tegra210-p3448-0003-p3542-0000.dtb
+}
+
+do_install:jetson-orin-nano-devkit-nvme() {
+	install -d ${D}/boot/
+	install -m 0644 ${DEPLOY_DIR_IMAGE}/tegra234-p3768-0000+p3767-0001-nv-super-no-dma.dtb  ${D}/boot/tegra234-p3768-0000+p3767-0001-nv-super-no-dma.dtb
 }
 
 do_install:jetson-tx2-nx-devkit() {
@@ -119,6 +125,10 @@ FILES:${PN}:jetson-nano-emmc += " \
 
 FILES:${PN}:jetson-nano-2gb-devkit += " \
         /boot/tegra210-p3448-0003-p3542-0000.dtb \
+"
+
+FILES:${PN}:jetson-orin-nano-devkit-nvme += " \
+        /boot/tegra234-p3768-0000+p3767-0001-nv-super-no-dma.dtb \
 "
 
 FILES:${PN}:jetson-tx2-nx-devkit += " \
