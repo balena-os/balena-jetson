@@ -1,4 +1,279 @@
 - commits:
+    - subject: Update layers/meta-balena to 37b7e9efbdbcab4bc487993f5736ec4fe6974f1c
+      hash: ee4e36560ed496fde8beb41ddb12a89421fbdaf6
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 37b7e9efbdbcab4bc487993f5736ec4fe6974f1c
+        changelog-entry: Update layers/meta-balena to 37b7e9efbdbcab4bc487993f5736ec4fe6974f1c
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "balena: disable buildkit and dependencies with no_buildkit tag"
+              hash: 977ac4e187e4888286ddec1ef926fe195cf0e01d
+              body: |
+                This change disables the builkit backend to reduce the final
+                binary size by 3-4mb.
+
+                If buildkit is enabled manually via DOCKER_BUILDKIT=1 the
+                engine will return a clear error that buildkit is not supported.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "balena: Rebase patches onto upstream Moby v20.10.27"
+              hash: 2533a1a701bcac6cacac1504180475968c3ceee9
+              body: >
+                This rebases all balenaEngine-specific features on top of the
+
+                upstream Moby v20.10.27 release, cleaning up the previously
+
+                intermingled history of merge commits while preserving full
+                commit attribution.
+
+
+                The patch revision appears to go backwards as previously the
+                patch
+
+                value would increase whenever local commits were added. However
+                going forward
+
+                we will track the upstream version exactly and only pin commit
+                SHAs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "go: Update to 1.22.12 for compatibility with balena v20.10.27"
+              hash: a6168f3da54c275d7929fe99a0eecc3c2651b4f8
+              body: >
+                Imports go 1.22.12 from poky scarthgap branch (c973f0e006) to
+                meet
+
+                the minimum version requirement for building balena v20.10.27.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-6.8.0
+          title: ""
+          date: 2025-11-21T17:52:58.091Z
+        - commits:
+            - subject: "os-helpers: generalize get_sector_size"
+              hash: 6501bcfec6810499a78347f09bac8b43b641b6b7
+              body: |
+                Do not limit to specific partition types.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: secureboot: generalize U-boot binary naming"
+              hash: 91bb7f49910b4cb8661e993d798e57a736b7b6b1
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.7.8
+          title: ""
+          date: 2025-11-21T09:46:55.177Z
+        - commits:
+            - subject: simplify disk watchdog tests
+              hash: 2216355d073162c79748367f49d4a1294ede7796
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+                signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+              author: Yann CARDAILLAC
+              nested: []
+          version: meta-balena-6.7.7
+          title: ""
+          date: 2025-11-18T17:31:09.706Z
+        - commits:
+            - subject: Update actions/setup-python action to v6
+              hash: 00de2112bdc41a488ab09eaec47015b88caa3fa5
+              body: |
+                Update actions/setup-python from v5 to v6
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.7.6
+          title: ""
+          date: 2025-11-13T06:31:58.282Z
+        - commits:
+            - subject: "kernel-balena.bbclass: Enable required CONFIG_CGROUP_BPF"
+              hash: 21b4333b7cf17399b1ee5c82e646eb369a1a77f7
+              body: >
+                This is required to fix the following error:
+
+
+                balena-supervisor[13352]: Error response from daemon: No such
+                container: resin_supervisor
+
+                balena-supervisor[13361]: balena_supervisor
+
+                balena-supervisor[13370]: active
+
+                balena-supervisor[13381]: Container config has not changed
+
+                balena-supervisor[13447]: time="2025-11-12T06:15:12Z"
+                level=error msg="error waiting for container: context canceled"
+
+                balena-supervisor[13447]: Error response from daemon: failed to
+                create shim task: OCI runtime create failed: runc create failed:
+
+                unable to start container process: error during container init:
+                error setting cgroup config for procHooks process:
+                bpf_prog_query(BPF_CGROUP_DEVICE) failed: function not
+                implemented: unknown
+
+
+                systemd[1]: balena-supervisor.service: Main process exited,
+                code=exited, status=1/FAILURE
+
+                systemd[1]: balena-supervisor.service: Failed with result
+                'exit-code'.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.7.5
+          title: ""
+          date: 2025-11-12T20:17:22.886Z
+        - commits:
+            - subject: add CONFIG_DM_FLAKEY for disk-watchdog testing
+              hash: f523f9cde68a93b770f47f6cc2522b1a96284eea
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+                signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+              author: Yann CARDAILLAC
+              nested: []
+          version: meta-balena-6.7.4
+          title: ""
+          date: 2025-11-08T09:10:11.321Z
+        - commits:
+            - subject: Update tests/leviathan digest to c549c54
+              hash: e4de9a070360d2f934743b1bedcbfb62995bb079
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.10.14
+                      hash: 1492ec2da6a3a93a5bd1d06f076d4532d331497a
+                      body: >
+                        Update balena-os/leviathan-worker from 2.10.12 to 2.10.14
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.62
+                  title: ""
+                  date: 2025-11-06T14:45:42.174Z
+          version: meta-balena-6.7.3
+          title: ""
+          date: 2025-11-07T17:05:12.407Z
+        - commits:
+            - subject: "balena-os.inc: Enforce PACKAGE_CLASSES to package_ipk"
+              hash: 5c530095011bba2935b3dcac374a415b6710d7ec
+              body: >
+                We used to have the PACKAGE_CLASSES default to package_ipk by
+                using the soft ?= assignment.
+
+                However, starting with Scarthgap poky.conf also does a soft
+                assignment to package_rpm so we
+
+                end up with that instead.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.7.2
+          title: ""
+          date: 2025-11-07T10:28:02.622Z
+        - commits:
+            - subject: "packagegroups/packagegroup-resin-flasher: Set PACKAGE_ARCH"
+              hash: fb118c04107f0aa4c17caf933938038f13963e96
+              body: >
+                Fixes the following error:
+
+                    packagegroup-resin-flasher-1.0-r1 do_package_write_rpm: An allarch packagegroup shouldn't depend on packages which are dynamically renamed
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: "tests/suites: Use USB relay to toggle boot switch on certain devices"
+              hash: 5890f661fac084258c26fe0fe7c5a3572af98521
+              body: |
+                We no longer need to override the boot switch from
+                the flasher image because we have access to the boot pins
+                of the device in question and can control them using a
+                relay. This way we can test if the bootswitch detection
+                mechanism in u-boot works properly.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.7.1
+          title: ""
+          date: 2025-11-06T11:49:00.999Z
+        - commits:
+            - subject: add disk-watchdog daemon
+              hash: fa725ce23e93d918d0eafaf9fa7b15549b0f8b7f
+              body: >
+                This service helps in detecting io errors and try to solve them
+                by issuing a reboot. It avoids reboot loops by tracking boot
+                with a timestamp.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+                signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+              author: Yann CARDAILLAC
+              nested: []
+          version: meta-balena-6.7.0
+          title: ""
+          date: 2025-11-05T10:29:49.790Z
+  version: 6.8.0
+  title: ""
+  date: 2025-11-24T10:24:19.754Z
+- commits:
     - subject: Update balena-yocto-scripts to 6a399312257153d5bc3577e9e7120acdf68a4f1a
       hash: ad8b4629cb9b651eefe0540965ab317f951c417a
       body: Update balena-yocto-scripts

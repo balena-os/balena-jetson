@@ -1,6 +1,81 @@
 Change log
 -----------
 
+# v6.8.0
+## (2025-11-24)
+
+
+<details>
+<summary> Update layers/meta-balena to 37b7e9efbdbcab4bc487993f5736ec4fe6974f1c [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.8.0
+> ### (2025-11-21)
+> 
+> * balena: disable buildkit and dependencies with no_buildkit tag [Kyle Harding]
+> * balena: Rebase patches onto upstream Moby v20.10.27 [Kyle Harding]
+> * go: Update to 1.22.12 for compatibility with balena v20.10.27 [Kyle Harding]
+> 
+> ## meta-balena-6.7.8
+> ### (2025-11-21)
+> 
+> * os-helpers: generalize get_sector_size [Alex Gonzalez]
+> * tests: secureboot: generalize U-boot binary naming [Alex Gonzalez]
+> 
+> ## meta-balena-6.7.7
+> ### (2025-11-18)
+> 
+> * simplify disk watchdog tests [Yann CARDAILLAC]
+> 
+> ## meta-balena-6.7.6
+> ### (2025-11-13)
+> 
+> * Update actions/setup-python action to v6 [balena-renovate[bot]]
+> 
+> ## meta-balena-6.7.5
+> ### (2025-11-12)
+> 
+> * kernel-balena.bbclass: Enable required CONFIG_CGROUP_BPF [Florin Sarbu]
+> 
+> ## meta-balena-6.7.4
+> ### (2025-11-08)
+> 
+> * add CONFIG_DM_FLAKEY for disk-watchdog testing [Yann CARDAILLAC]
+> 
+> ## meta-balena-6.7.3
+> ### (2025-11-07)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to c549c54 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.36.62
+>> #### (2025-11-06)
+>> 
+>> * Update balena-os/leviathan-worker to v2.10.14 [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.7.2
+> ### (2025-11-07)
+> 
+> * balena-os.inc: Enforce PACKAGE_CLASSES to package_ipk [Florin Sarbu]
+> 
+> ## meta-balena-6.7.1
+> ### (2025-11-06)
+> 
+> * packagegroups/packagegroup-resin-flasher: Set PACKAGE_ARCH [Alexandru Costache]
+> * tests/suites: Use USB relay to toggle boot switch on certain devices [Alexandru Costache]
+> 
+> ## meta-balena-6.7.0
+> ### (2025-11-05)
+> 
+> * add disk-watchdog daemon [Yann CARDAILLAC]
+> 
+
+</details>
+
 # v6.6.17+rev3
 ## (2025-11-22)
 
