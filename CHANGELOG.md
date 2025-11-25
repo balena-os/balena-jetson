@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v6.8.0+rev1
+## (2025-11-25)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 2b1cf90fb0333b1d8cdb2c3dbf041fd109e563a2 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.38.96
+> ### (2025-11-24)
+> 
+> * workflows: Add Generic x86_64 (GPT) and Generic AARCH64 device tests [Kyle Harding]
+> * Dockerfile_yocto-build-env: Avoid balena CLI duplicate install [Kyle Harding]
+> 
+
+</details>
+
 # v6.8.0
 ## (2025-11-24)
 
