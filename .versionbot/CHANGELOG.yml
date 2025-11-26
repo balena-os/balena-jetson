@@ -1,4 +1,18 @@
 - commits:
+    - subject: "workflows: remove automatic triggers on discontinued DT workflows"
+      hash: c623fd379a924cde7e4ccf2972ea659a2a71a9e6
+      body: ""
+      footer:
+        Changelog-entry: "workflows: remove automatic triggers on discontinued DT workflows"
+        changelog-entry: "workflows: remove automatic triggers on discontinued DT workflows"
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: Ryan Cooke
+      nested: []
+  version: 6.8.0+rev2
+  title: ""
+  date: 2025-11-26T19:07:55.402Z
+- commits:
     - subject: Update balena-yocto-scripts to 2b1cf90fb0333b1d8cdb2c3dbf041fd109e563a2
       hash: 7b2b122287c94a31417f49e4fa81298d486d07f5
       body: Update balena-yocto-scripts

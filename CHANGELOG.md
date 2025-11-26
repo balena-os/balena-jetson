@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.8.0+rev2
+## (2025-11-26)
+
+* workflows: remove automatic triggers on discontinued DT workflows [Ryan Cooke]
+
 # v6.8.0+rev1
 ## (2025-11-25)
 
