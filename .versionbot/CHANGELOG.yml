@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update layers/poky to 36165cce685e0048fb7a576c009e12d718c80ea1
+      hash: a62399b08935b339d3a339d61d567e00398508e8
+      body: Update layers/poky
+      footer:
+        Changelog-entry: Update layers/poky to 36165cce685e0048fb7a576c009e12d718c80ea1
+        changelog-entry: Update layers/poky to 36165cce685e0048fb7a576c009e12d718c80ea1
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.8.0+rev3
+  title: ""
+  date: 2025-11-26T23:21:22.127Z
+- commits:
     - subject: "workflows: remove automatic triggers on discontinued DT workflows"
       hash: c623fd379a924cde7e4ccf2972ea659a2a71a9e6
       body: ""
