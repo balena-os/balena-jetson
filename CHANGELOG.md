@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.8.1
+## (2025-11-27)
+
+
+<details>
+<summary> Update layers/meta-balena to 74f3bfc67734a173fc733a53c0117bc3e46ee361 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.8.1
+> ### (2025-11-27)
+> 
+> * Upgrade linux-firmware from 20230404 to 20240909 [Florin Sarbu]
+> 
+
+</details>
+
 # v6.8.0+rev3
 ## (2025-11-26)
 

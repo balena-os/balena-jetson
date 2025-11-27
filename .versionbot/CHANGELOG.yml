@@ -1,4 +1,34 @@
 - commits:
+    - subject: Update layers/meta-balena to 74f3bfc67734a173fc733a53c0117bc3e46ee361
+      hash: 64793ca4556552edb4c4b38198ca10efafca2844
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 74f3bfc67734a173fc733a53c0117bc3e46ee361
+        changelog-entry: Update layers/meta-balena to 74f3bfc67734a173fc733a53c0117bc3e46ee361
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Upgrade linux-firmware from 20230404 to 20240909
+              hash: e01fbc5a5ff48e58e6a967e042be4454bbfcb9af
+              body: >
+                This new recipe is taken from Poky revision
+                711c93422918d1810e652e75405b9f9ad6f01167 (scarthgap branch)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Upgrade linux-firmware from 20230404 to 20240909
+                changelog-entry: Upgrade linux-firmware from 20230404 to 20240909
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.8.1
+          title: ""
+          date: 2025-11-27T00:19:03.865Z
+  version: 6.8.1
+  title: ""
+  date: 2025-11-27T07:45:23.234Z
+- commits:
     - subject: Update layers/poky to 36165cce685e0048fb7a576c009e12d718c80ea1
       hash: a62399b08935b339d3a339d61d567e00398508e8
       body: Update layers/poky
