@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.8.2
+## (2025-12-02)
+
+
+<details>
+<summary> Update layers/meta-balena to 08842da74ce8c00ba84383ff69a2867144b81dfe [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.8.2
+> ### (2025-12-02)
+> 
+> * usb-modeswitch-data: Fix packaging for merged usr [Florin Sarbu]
+> 
+
+</details>
+
 # v6.8.1
 ## (2025-11-27)
 

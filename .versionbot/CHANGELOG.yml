@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to 08842da74ce8c00ba84383ff69a2867144b81dfe
+      hash: 1f35540bf93cfcd8aa750519e9b25bc174224595
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 08842da74ce8c00ba84383ff69a2867144b81dfe
+        changelog-entry: Update layers/meta-balena to 08842da74ce8c00ba84383ff69a2867144b81dfe
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "usb-modeswitch-data: Fix packaging for merged usr"
+              hash: a0b3eb932b78b87d5340eae15b4a05c4a7c8cb6c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.8.2
+          title: ""
+          date: 2025-12-02T09:12:30.552Z
+  version: 6.8.2
+  title: ""
+  date: 2025-12-02T18:22:14.857Z
+- commits:
     - subject: Update layers/meta-balena to 74f3bfc67734a173fc733a53c0117bc3e46ee361
       hash: 64793ca4556552edb4c4b38198ca10efafca2844
       body: Update layers/meta-balena
