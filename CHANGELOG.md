@@ -1,6 +1,89 @@
 Change log
 -----------
 
+# v6.8.5
+## (2025-12-03)
+
+
+<details>
+<summary> Update layers/meta-balena to 67f46c9f74b3f9a5ffec8ea155071a11f6dd3acf [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.8.5
+> ### (2025-12-03)
+> 
+> * recipes-support/os-extra-firmware: Add service for configuring extra fw search path [Alexandru Costache]
+> 
+> ## meta-balena-6.8.4
+> ### (2025-12-03)
+> 
+> * linux-firmware_20240909.bb: Fix packaging amdgpu and various other firmware [Florin Sarbu]
+> 
+> ## meta-balena-6.8.3
+> ### (2025-12-02)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v17.2.1 [balena-renovate[bot]] </summary>
+> 
+>> ### balena-supervisor-17.2.1
+>> #### (2025-11-19)
+>> 
+>> * Fix state engine tests failing with newer version of docker [felipe]
+>> * Await provisioning on error before continuing [felipe]
+>> 
+>> ### balena-supervisor-17.2.0
+>> #### (2025-11-03)
+>> 
+>> * Support io.balena.features.host-os.board-rev feature label [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-17.1.10
+>> #### (Invalid date)
+>> 
+>> * Stream logs from host os-update.service [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-17.1.9
+>> #### (2025-10-18)
+>> 
+>> * Update balena-io/deploy-to-balena-action action to v2.0.136 [balena-renovate[bot]]
+>> 
+>> ### balena-supervisor-17.1.8
+>> #### (2025-10-17)
+>> 
+>> * Do not block calls to dbus reboot/shutdown [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-17.1.7
+>> #### (2025-10-16)
+>> 
+>> * Update deep-object-diff to v1.1.9 [balena-renovate[bot]]
+>> 
+>> ### balena-supervisor-17.1.6
+>> #### (2025-10-16)
+>> 
+>> * Add back python3 distutils with py3-setuptools [Christina Ying Wang]
+>> * Bump dependencies [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-17.1.5
+>> #### (2025-10-16)
+>> 
+>> * fix(2433): Fix redaction of secrets in env variables logging [Tomas Mella]
+>> 
+>> ### balena-supervisor-17.1.4
+>> #### (2025-10-15)
+>> 
+>> * Only publish + finalize arm64 & amd64 for staging [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-17.1.3
+>> #### (2025-09-29)
+>> 
+>> * Clarify that a process should hold a lockfile [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v6.8.2+rev1
 ## (2025-12-03)
 
