@@ -1,4 +1,51 @@
 - commits:
+    - subject: Update balena-yocto-scripts to faac8aa73d42ccb9b14c3c86ecc7419776cd83ce
+      hash: 95bfca82f29590d2af7f8e2b7345b42c1229ddc9
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to faac8aa73d42ccb9b14c3c86ecc7419776cd83ce
+        changelog-entry: Update balena-yocto-scripts to faac8aa73d42ccb9b14c3c86ecc7419776cd83ce
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update balena-io/balena-cli to v23.2.2
+              hash: 8a720c985c61482c8f432c7e984ea2abc48aa85a
+              body: |
+                Update balena-io/balena-cli from 23.2.0 to 23.2.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.38.98
+          title: ""
+          date: 2025-12-02T19:23:59.478Z
+        - commits:
+            - subject: Update GitHub Actions
+              hash: cba31254b3639ad0340d02ae5090ee3e2788ec5f
+              body: |
+                Update aws-actions/configure-aws-credentials from 5.1.0 to 5.1.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+            - subject: Update aws/aws-cli to v2.32.4
+              hash: 5b1bf73433b20a3b27a132d0d8e501b5cca68a3c
+              body: |
+                Update aws/aws-cli from 2.32.3 to 2.32.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.38.97
+          title: ""
+          date: 2025-11-29T04:55:21.586Z
+  version: 6.8.2+rev1
+  title: ""
+  date: 2025-12-03T04:06:00.529Z
+- commits:
     - subject: Update layers/meta-balena to 08842da74ce8c00ba84383ff69a2867144b81dfe
       hash: 1f35540bf93cfcd8aa750519e9b25bc174224595
       body: Update layers/meta-balena
