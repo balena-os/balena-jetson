@@ -1,4 +1,38 @@
 - commits:
+    - subject: Update layers/meta-balena to 8584c665b2e32c06d5c2f2f7575576735cda8a56
+      hash: 4a23b5577c1044bbc6d8292798ddfc1de157bb6f
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 8584c665b2e32c06d5c2f2f7575576735cda8a56
+        changelog-entry: Update layers/meta-balena to 8584c665b2e32c06d5c2f2f7575576735cda8a56
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: os: secureboot: skip bootloader integrity for
+                imx8mp-var-dart-pl1000pp"
+              hash: db106f0a475386ce467a1625ae4664b4c52154f5
+              body: >
+                This device type authenticates the bootloader in the SPL and is
+                not able
+
+                to bring the ethernet link up before that as the SPL does not
+                have that
+
+                support.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.8.6
+          title: ""
+          date: 2025-12-04T01:03:56.586Z
+  version: 6.8.6
+  title: ""
+  date: 2025-12-04T09:50:57.898Z
+- commits:
     - subject: Update layers/poky to c76f44b1da3563b8acd364ea0c632265aa3f7e83
       hash: 0c1b0d682285077b7bc6781330c6f3cb79502be2
       body: Update layers/poky

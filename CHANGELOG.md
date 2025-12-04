@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.8.6
+## (2025-12-04)
+
+
+<details>
+<summary> Update layers/meta-balena to 8584c665b2e32c06d5c2f2f7575576735cda8a56 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.8.6
+> ### (2025-12-04)
+> 
+> * tests: os: secureboot: skip bootloader integrity for imx8mp-var-dart-pl1000pp [Alex Gonzalez]
+> 
+
+</details>
+
 # v6.8.5+rev1
 ## (2025-12-04)
 
