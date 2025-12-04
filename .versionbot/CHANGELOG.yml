@@ -1,4 +1,43 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 2c9a51d7ad90ba4625e859aefd503dff0ff6b678
+      hash: bde42507a83611a4a57a9765b59a47848cf9ca6a
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 2c9a51d7ad90ba4625e859aefd503dff0ff6b678
+        changelog-entry: Update balena-yocto-scripts to 2c9a51d7ad90ba4625e859aefd503dff0ff6b678
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: verify that keys from SIGN_KMOD_KEY_APPEND ends up properly in kernel
+              hash: 25cbd8c85b7acc45c3d117b2a7f260b6e67419d1
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+                signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+              author: Yann CARDAILLAC
+              nested: []
+          version: balena-yocto-scripts-1.39.0
+          title: ""
+          date: 2025-12-03T14:35:00.598Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.32.8
+              hash: ec3eb613943c1c473191427c8b7e90b6262850ae
+              body: |
+                Update aws/aws-cli from 2.32.4 to 2.32.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.38.99
+          title: ""
+          date: 2025-12-03T03:21:19.732Z
+  version: 6.8.7+rev1
+  title: ""
+  date: 2025-12-04T20:42:37.532Z
+- commits:
     - subject: Update layers/meta-balena to 0f9c042a0961c07361fd516ccc93886b6234870c
       hash: eeba781c2f1c8353cceb630dcbdb4852dd767655
       body: Update layers/meta-balena
