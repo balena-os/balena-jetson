@@ -1,4 +1,43 @@
 - commits:
+    - subject: Update layers/meta-balena to 0f9c042a0961c07361fd516ccc93886b6234870c
+      hash: eeba781c2f1c8353cceb630dcbdb4852dd767655
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 0f9c042a0961c07361fd516ccc93886b6234870c
+        changelog-entry: Update layers/meta-balena to 0f9c042a0961c07361fd516ccc93886b6234870c
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "linux-firmware: Revert packaging i915 firmware by SoC generations"
+              hash: 43b440248b06c921dcad3423427e3b2fe2a38a3e
+              body: >
+                This reverts e741dcf6f520765c3345c1e64cfc3f31f5b6a604
+
+
+                We only use this separate packaging for the Up Board(s) but even
+                there we will
+
+                trim this list further but only in that device repository.
+
+
+                By not splitting the i915 firmware files in multiple packages we
+                make sure the
+
+                Generic X86_64 image contains all the i915 firmware.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.8.7
+          title: ""
+          date: 2025-12-04T10:16:30.316Z
+  version: 6.8.7
+  title: ""
+  date: 2025-12-04T16:26:53.434Z
+- commits:
     - subject: Update layers/meta-balena to 8584c665b2e32c06d5c2f2f7575576735cda8a56
       hash: 4a23b5577c1044bbc6d8292798ddfc1de157bb6f
       body: Update layers/meta-balena

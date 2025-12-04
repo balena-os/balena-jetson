@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.8.7
+## (2025-12-04)
+
+
+<details>
+<summary> Update layers/meta-balena to 0f9c042a0961c07361fd516ccc93886b6234870c [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.8.7
+> ### (2025-12-04)
+> 
+> * linux-firmware: Revert packaging i915 firmware by SoC generations [Florin Sarbu]
+> 
+
+</details>
+
 # v6.8.6
 ## (2025-12-04)
 
