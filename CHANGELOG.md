@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.9.0
+## (2025-12-07)
+
+
+<details>
+<summary> Update layers/meta-balena to e0d5ffd55a6dbfee857cdd4455bc37c3f70e7681 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.9.0
+> ### (2025-12-07)
+> 
+> * Update ModemManager to 1.24.2 [Florin Sarbu]
+> 
+
+</details>
+
 # v6.8.7+rev1
 ## (2025-12-04)
 
