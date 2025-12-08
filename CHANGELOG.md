@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.9.1
+## (2025-12-08)
+
+
+<details>
+<summary> Update layers/meta-balena to 25fc45e074426146d2038aa652189da7e7f55a6e [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.9.1
+> ### (2025-12-08)
+> 
+> * peak: Update to version 8.20.0 [Florin Sarbu]
+> 
+
+</details>
+
 # v6.9.0
 ## (2025-12-07)
 
