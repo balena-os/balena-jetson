@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.9.1+rev1
+## (2025-12-09)
+
+* Explicitly disable firmware compression [Michal Toman]
+
 # v6.9.1
 ## (2025-12-08)
 

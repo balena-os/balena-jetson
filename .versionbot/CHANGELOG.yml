@@ -1,4 +1,21 @@
 - commits:
+    - subject: Explicitly disable firmware compression
+      hash: 5b2b513891bf39185b72d2d0a6b752899395f03d
+      body: |
+        This was never enabled on any of the devices in this repo, because
+        kernel 4.9 doesn't support it, but we intend to flip the default
+        in meta-balena to enabled, so here we need to explicitly opt-out.
+      footer:
+        Changelog-entry: Explicitly disable firmware compression
+        changelog-entry: Explicitly disable firmware compression
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 6.9.1+rev1
+  title: ""
+  date: 2025-12-09T12:34:22.151Z
+- commits:
     - subject: Update layers/meta-balena to 25fc45e074426146d2038aa652189da7e7f55a6e
       hash: cf5d39f3106e5a5ae8d784670de03971ca686edf
       body: Update layers/meta-balena
