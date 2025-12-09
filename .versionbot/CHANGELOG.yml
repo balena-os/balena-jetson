@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update layers/poky to 40701465df90b38b9068bcbd0ce6aa6587807433
+      hash: 84d8664bee6c9fcfe69f3d1f6fbbbe85fd5a4f05
+      body: Update layers/poky
+      footer:
+        Changelog-entry: Update layers/poky to 40701465df90b38b9068bcbd0ce6aa6587807433
+        changelog-entry: Update layers/poky to 40701465df90b38b9068bcbd0ce6aa6587807433
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.9.1+rev2
+  title: ""
+  date: 2025-12-09T18:16:24.055Z
+- commits:
     - subject: Explicitly disable firmware compression
       hash: 5b2b513891bf39185b72d2d0a6b752899395f03d
       body: |
