@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.9.6
+## (2025-12-11)
+
+
+<details>
+<summary> Update layers/meta-balena to 7d8ce421a3aa6972bb4256b54d7429ffb8d859c0 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.9.6
+> ### (2025-12-11)
+> 
+> * renovate.json: Remove custom balena-git package rules [Kyle Harding]
+> 
+
+</details>
+
 # v6.9.5+rev1
 ## (2025-12-11)
 

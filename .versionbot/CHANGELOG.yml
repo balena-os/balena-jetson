@@ -1,4 +1,40 @@
 - commits:
+    - subject: Update layers/meta-balena to 7d8ce421a3aa6972bb4256b54d7429ffb8d859c0
+      hash: b775beb2acb563e5c09efcf61ef54b56ca5145e6
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 7d8ce421a3aa6972bb4256b54d7429ffb8d859c0
+        changelog-entry: Update layers/meta-balena to 7d8ce421a3aa6972bb4256b54d7429ffb8d859c0
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "renovate.json: Remove custom balena-git package rules"
+              hash: 3b143a83bf6693ff42783f0c7a88107418440c12
+              body: >
+                Since 2533a1a we are no longer versioning or tagging balena
+                commits
+
+                to the engine, so this renovate package rule no longer applies.
+
+
+                Going forward, we will manually bump the commit hash unless we
+                are
+
+                moving to a new upstream tag.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-6.9.6
+          title: ""
+          date: 2025-12-11T01:33:51.039Z
+  version: 6.9.6
+  title: ""
+  date: 2025-12-11T07:02:59.382Z
+- commits:
     - subject: Update layers/meta-openembedded to
         97d4be2839754dadfc326c21948472c2fc2985ce
       hash: eceaf7e74790ffca486d972e70ed569dacb85b99
