@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 8cbefeedbc99bb8a29a28e9540dee75e216b172f
+      hash: 3e5fd04bc9ab48998458ac86f1e3c5ccea2c3548
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 8cbefeedbc99bb8a29a28e9540dee75e216b172f
+        changelog-entry: Update balena-yocto-scripts to 8cbefeedbc99bb8a29a28e9540dee75e216b172f
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update aws/aws-cli to v2.32.15
+              hash: b151aac8b6c210e63225a6b554d36b19f1bdcae5
+              body: |
+                Update aws/aws-cli from 2.32.8 to 2.32.15
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.1
+          title: ""
+          date: 2025-12-11T23:28:40.309Z
+  version: 6.10.0+rev1
+  title: ""
+  date: 2025-12-12T06:45:05.368Z
+- commits:
     - subject: Update layers/meta-balena to df3211d5c6f07b9732f5d9a69087bccc0b55d022
       hash: 9f0da5e4237f16b8c7016f8b44962fb4bc0144d4
       body: Update layers/meta-balena
