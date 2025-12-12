@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.10.1
+## (2025-12-12)
+
+
+<details>
+<summary> Update layers/meta-balena to f8542a3b92f2c76f7051477d298422f7cdd5238b [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.10.1
+> ### (2025-12-11)
+> 
+> * balena-os.inc: Enable firmware compression by default [Michal Toman]
+> 
+
+</details>
+
 # v6.10.0+rev1
 ## (2025-12-12)
 
