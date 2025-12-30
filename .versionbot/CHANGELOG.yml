@@ -1,4 +1,57 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 6ed7f28e2ad3c545946bfcebfc29b25e3359d63a
+      hash: d5f1047d168128707bf84435e0684992eda9e814
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 6ed7f28e2ad3c545946bfcebfc29b25e3359d63a
+        changelog-entry: Update balena-yocto-scripts to 6ed7f28e2ad3c545946bfcebfc29b25e3359d63a
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Fix condition to check for test suites in workflow
+              hash: e26c0f3b25eecba877b789620ef08b8293773c15
+              body: |
+                Check that test_matrix is truthy before attempting to parse as JSON to avoid the error:
+
+                > Error when evaluating 'if' for job 'test'. balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@master (Line: 2239, Col: 9): could not get operand for index access: Error from function 'fromJSON': empty input
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.39.6
+          title: ""
+          date: 2025-12-30T18:18:07.761Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.32.25
+              hash: b77b9b88998bf72ee3c613f313f9b8527ef31b3f
+              body: |
+                Update aws/aws-cli from 2.32.21 to 2.32.25
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.5
+          title: ""
+          date: 2025-12-29T22:42:24.107Z
+        - commits:
+            - subject: Update GitHub Actions
+              hash: 903567ebe732b29780f63a255f3be2c52a4fef53
+              body: |
+                Update actions/checkout from 6.0.0 to 6.0.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.4
+          title: ""
+          date: 2025-12-29T18:00:41.800Z
+  version: 6.10.1+rev3
+  title: ""
+  date: 2025-12-30T23:04:04.328Z
+- commits:
     - subject: Update balena-yocto-scripts to ea6132dc7a5e420392215ce41d19b1617f793af8
       hash: 9bf0618274831288b3557f830b3f93cc6b49c9d5
       body: Update balena-yocto-scripts
