@@ -1,4 +1,73 @@
 - commits:
+    - subject: Update layers/meta-balena to bebcd53042463b275659675a13e85bcb797b5535
+      hash: f2329d7195e818e8edf5db312dbe227636353edb
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to bebcd53042463b275659675a13e85bcb797b5535
+        changelog-entry: Update layers/meta-balena to bebcd53042463b275659675a13e85bcb797b5535
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "kernel-balena.bbclass: Enable DMA-BUF memory heaps"
+              hash: c3e207d8e8c5fa8f35c6f5e3f4ffc7962e579bd7
+              body: >
+                This is required by some external drivers (e.g. metis).
+
+
+                The configuration matches what Fedora 42 and Debian 13 have
+                enabled.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.10.9
+          title: ""
+          date: 2026-01-04T12:08:43.272Z
+        - commits:
+            - subject: Update tests/leviathan digest to c2b518d
+              hash: 31b602609f8ac21d41ca1e5b79774f2549485d0b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 0122f154f4e9e54cadfb835ca902d332964ef3f6
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.79
+                  title: ""
+                  date: 2025-12-29T01:05:55.390Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 353f2dcce89e641799309f5a8a41fc7f189fc2b7
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.78
+                  title: ""
+                  date: 2025-12-22T01:30:09.473Z
+          version: meta-balena-6.10.8
+          title: ""
+          date: 2026-01-01T11:32:30.962Z
+  version: 6.10.9
+  title: ""
+  date: 2026-01-04T16:21:33.271Z
+- commits:
     - subject: Update layers/poky to 37dc9a476ae92cf41dc5c70ed56cbbefd21ce086
       hash: 3aa1953ef6132a70b9ff23320d38bfee882c267b
       body: Update layers/poky
