@@ -1,4 +1,131 @@
 - commits:
+    - subject: Update layers/meta-balena to d8e6c3344e1befd254005d7f10bdaba1faec3581
+      hash: 6ae3ea49924016a5edb450679f02d4ec94cd3692
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to d8e6c3344e1befd254005d7f10bdaba1faec3581
+        changelog-entry: Update layers/meta-balena to d8e6c3344e1befd254005d7f10bdaba1faec3581
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests/extra-firmware: Skip post-reboot extra-firmware check for a
+                specific device"
+              hash: 7c45dfe5f71004108f8873653ae345a20a9d123e
+              body: >
+                ... on which the cboot bootloader does not have FAT support to
+                access
+
+                the extra_uEnv.txt environment file.
+
+
+                This device-type uses an old version of Jetpack 4.0 which does
+                not
+
+                have uboot / grub / UEFI EDK2 / balena-bootloader support.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.10.13
+          title: ""
+          date: 2026-01-08T19:53:44.644Z
+        - commits:
+            - subject: Reduce the size of the balena bootloader by removing unused
+                functionality
+              hash: e658d4b92cb1622009fc5529d573345a426ff09b
+              body: >
+                Newer meta-balena updates are failing for iot-gate-imx8plus-sb
+                with the error:
+
+                ERROR: balena-image-flasher-1.0-r0
+                do_resin_boot_dirgen_and_deploy: resin-boot: Not enough space
+                for atomic copy operations.
+
+
+                In order to have the size reduction available for all
+                balena-bootloader users we do these changes
+
+                directly here in the balena-bootloader class.
+              footer:
+                Changelog-entry: Reduce the size of the balena bootloader by removing unused
+                  functionality
+                changelog-entry: Reduce the size of the balena bootloader by removing unused
+                  functionality
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.10.12
+          title: ""
+          date: 2026-01-08T09:48:14.494Z
+        - commits:
+            - subject: Update balena-supervisor to v17.4.2
+              hash: 7fb52fa3483857556bababd4b5d8d2b20b13fa41
+              body: |
+                Update balena-supervisor from 17.4.1 to 17.4.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Parse multiple child contracts listed under an `or` clause
+                      hash: 5560744c8061bc2e008b4d5a1816fea04b611fd3
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.4.2
+                  title: ""
+                  date: 2026-01-06T19:34:23.699Z
+          version: meta-balena-6.10.11
+          title: ""
+          date: 2026-01-07T11:00:48.232Z
+        - commits:
+            - subject: Update balena-supervisor to v17.4.1
+              hash: bf6e8af96d18bacb0389a78536fe2d02b8ac25b6
+              body: |
+                Update balena-supervisor from 17.4.0 to 17.4.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: "backends: Enable configurable power modes and fan profiles for all
+                        Jetson Orin devices"
+                      hash: d7521507d10b9a5db1a15b960e2ca6f76bf41e3a
+                      body: >
+                        We do so because all Jetson Orin-based devices have been
+                        updated to
+
+                        Jetpack 6.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                      author: Alexandru Costache
+                      nested: []
+                  version: balena-supervisor-17.4.1
+                  title: ""
+                  date: 2026-01-05T18:32:02.308Z
+          version: meta-balena-6.10.10
+          title: ""
+          date: 2026-01-06T13:36:29.354Z
+  version: 6.10.13
+  title: ""
+  date: 2026-01-08T23:21:59.814Z
+- commits:
     - subject: Update layers/meta-balena to bebcd53042463b275659675a13e85bcb797b5535
       hash: f2329d7195e818e8edf5db312dbe227636353edb
       body: Update layers/meta-balena
