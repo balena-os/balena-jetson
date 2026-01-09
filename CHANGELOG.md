@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v6.10.13+rev2
+## (2026-01-09)
+
+
+<details>
+<summary> Update balena-yocto-scripts to bf41c3ab59edafcb639f490752f7008d8a2d3c0d [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.39.9
+> ### (2026-01-03)
+> 
+> * Update actions/download-artifact action to v7 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.39.8
+> ### (2026-01-02)
+> 
+> * Update balena-io/balena-cli to v23.2.14 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.39.7
+> ### (Invalid date)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+
+</details>
+
 # v6.10.13+rev1
 ## (2026-01-09)
 
