@@ -1,4 +1,49 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 829fc3c99e238dd8a4f2c4bbfa84fac209e2b351
+      hash: 61bce7fb67e8c19969d38c579836aa19d60083e0
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 829fc3c99e238dd8a4f2c4bbfa84fac209e2b351
+        changelog-entry: Update balena-yocto-scripts to 829fc3c99e238dd8a4f2c4bbfa84fac209e2b351
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update actions/upload-artifact action to v6
+              hash: f29e9ca8e2677d74543a9c8f8bdb849240a3fae5
+              body: |
+                Update actions/upload-artifact from 5.0.0 to 6.0.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.11
+          title: ""
+          date: 2026-01-14T11:48:56.107Z
+        - commits:
+            - subject: "yocto-build-deploy.yml: Search for build logs only in the location
+                where they are produced"
+              hash: 41e750de0d3e3467bcb84b2e82da795873e8873d
+              body: |
+                Fixes the following error when uploading the build logs:
+
+                Error: ELOOP: too many symbolic links encountered, stat '/home/runner/_work/balena-tm3/balena-tm3/build/tmp/work/cortexa53-crypto-poky-linux/libtool-cross/2.4.7-r0/image/false'
+
+                The logs are creatd only in specific directories so there is no point in searching for them in the entire workspace
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.39.10
+          title: ""
+          date: 2026-01-13T20:45:13.135Z
+  version: 6.10.13+rev3
+  title: ""
+  date: 2026-01-14T16:04:26.075Z
+- commits:
     - subject: Update balena-yocto-scripts to bf41c3ab59edafcb639f490752f7008d8a2d3c0d
       hash: 41af73d843e47abd9f2c128d319d894234ac7ecd
       body: Update balena-yocto-scripts

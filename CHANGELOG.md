@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v6.10.13+rev3
+## (2026-01-14)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 829fc3c99e238dd8a4f2c4bbfa84fac209e2b351 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.39.11
+> ### (2026-01-14)
+> 
+> * Update actions/upload-artifact action to v6 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.39.10
+> ### (2026-01-13)
+> 
+> * yocto-build-deploy.yml: Search for build logs only in the location where they are produced [Florin Sarbu]
+> 
+
+</details>
+
 # v6.10.13+rev2
 ## (2026-01-09)
 
