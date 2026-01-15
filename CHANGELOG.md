@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v6.10.15
+## (2026-01-15)
+
+
+<details>
+<summary> Update layers/meta-balena to 45031eb688e478a90151d1d48e79ad86c0b27b19 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.10.15
+> ### (2026-01-12)
+> 
+> * os-helpers/os-helpers-bootloader-config: Add support for whitelisted cmdline args [Alexandru Costache]
+> 
+> ## meta-balena-6.10.14
+> ### (2026-01-09)
+> 
+> * initrdscripts: Unlock mutex if regenerate_uuid fails in fsuuidsinit [Michal Toman]
+> 
+
+</details>
+
 # v6.10.13+rev4
 ## (2026-01-14)
 

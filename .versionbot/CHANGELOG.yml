@@ -1,4 +1,74 @@
 - commits:
+    - subject: Update layers/meta-balena to 45031eb688e478a90151d1d48e79ad86c0b27b19
+      hash: 3e487f0a4ea8a9dcbcc99ab2c605aa44cb490133
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 45031eb688e478a90151d1d48e79ad86c0b27b19
+        changelog-entry: Update layers/meta-balena to 45031eb688e478a90151d1d48e79ad86c0b27b19
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "os-helpers/os-helpers-bootloader-config: Add support for whitelisted
+                cmdline args"
+              hash: 549db4c8ead797a28243d8b99329aa17524dbdb9
+              body: >
+                ... and use grub-editenv where applicable. We also attempt to
+                save
+
+                any existing environment variables from grub_extra env if it was
+
+                created or edited with any tool other than grub-editenv.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.10.15
+          title: ""
+          date: 2026-01-12T10:42:48.677Z
+        - commits:
+            - subject: "initrdscripts: Unlock mutex if regenerate_uuid fails in fsuuidsinit"
+              hash: 62657c7ccdb690015405804c8d3df00fa814bd87
+              body: >
+                In commit 3f6a302bf53c6c0a609015c92ff927c7575412d9 we've
+                introduced
+
+                a mutex that prevents a race condition between the fsuuidsinit
+                script
+
+                changing FS UUIDs and udev creating the by-state symlinks. This
+                mutex
+
+                is never unlocked if the FS UUID change fails and leaks out
+
+                from the initrd into the final system, where it blocks
+
+                the 65-resin-update-state udev rule from properly executing. The
+                system
+
+                will usually somewhat come up, but fail in weird ways, e.g.
+                automounts
+
+                not working.
+
+
+                This patch unlocks the mutex on failure.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.10.14
+          title: ""
+          date: 2026-01-09T13:35:21.220Z
+  version: 6.10.15
+  title: ""
+  date: 2026-01-15T02:44:48.280Z
+- commits:
     - subject: Update balena-yocto-scripts to 9f18bf21add2a8a3ffa0b96aba7416ba2d752e27
       hash: 060ca8458af515c3807b4e4d9b21fcf25693dbc1
       body: Update balena-yocto-scripts
