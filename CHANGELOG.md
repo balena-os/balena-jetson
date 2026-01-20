@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.10.16
+## (2026-01-20)
+
+
+<details>
+<summary> Update layers/meta-balena to 2d0365852ca8d8378afb7379e63da4bff8a5559e [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.10.16
+> ### (2026-01-20)
+> 
+> * os-helpers: safe-reboot: always sync filesystem before reboot [Alex Gonzalez]
+> 
+
+</details>
+
 # v6.10.15+rev4
 ## (2026-01-20)
 
