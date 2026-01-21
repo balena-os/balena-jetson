@@ -1,6 +1,28 @@
 Change log
 -----------
 
+# v6.10.18
+## (2026-01-21)
+
+
+<details>
+<summary> Update layers/meta-balena to 317c51a00a2f0cfcfb8d7b5c4ff4de0346d1382b [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.10.18
+> ### (2026-01-21)
+> 
+> * initrdscripts: export IS_ROLLBACK and ROOT_PART flags from abroot script [Michal Toman]
+> * initrdscripts: add extrafw script [Michal Toman]
+> * initrdscripts: separate mounting boot partition from abroot [Michal Toman]
+> 
+> ## meta-balena-6.10.17
+> ### (2026-01-21)
+> 
+> * Update vacuum-size to 128M to match vacuum.conf and journald-balena-os.conf [Chris Sawer]
+> 
+
+</details>
+
 # v6.10.16+rev1
 ## (2026-01-21)
 
