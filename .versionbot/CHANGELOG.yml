@@ -1,4 +1,37 @@
 - commits:
+    - subject: Update layers/meta-balena to 4e641880ccacff9e6bd93183affa53ca7767f5f3
+      hash: b54fb57191653442ae013018245652c06ee5238c
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 4e641880ccacff9e6bd93183affa53ca7767f5f3
+        changelog-entry: Update layers/meta-balena to 4e641880ccacff9e6bd93183affa53ca7767f5f3
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "kernel-devsrc.bb: Use recipe from OpenEmbedded Core layer for 6.18+
+                kernels"
+              hash: ea0f634a0b294095c3610b9ff7a36a25a4c4743e
+              body: >
+                This is taken from OpenEmbedded Core rev
+                58b9f90779d1227e30a7de4948b10e49fb5b5ac1 in master.
+
+
+                It is required for being able to compile kernel modules for
+                6.18+ kernels.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.10.26
+          title: ""
+          date: 2026-02-10T20:11:19.017Z
+  version: 6.10.26
+  title: ""
+  date: 2026-02-10T23:49:53.657Z
+- commits:
     - subject: Update layers/meta-balena to 98fc1f506f9a2d33106eb4e60073f2dab057e196
       hash: 6ce5dc5582d41cde8c8fe42105436ee6182ecd62
       body: Update layers/meta-balena

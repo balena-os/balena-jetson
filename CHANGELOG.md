@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.10.26
+## (2026-02-10)
+
+
+<details>
+<summary> Update layers/meta-balena to 4e641880ccacff9e6bd93183affa53ca7767f5f3 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.10.26
+> ### (2026-02-10)
+> 
+> * kernel-devsrc.bb: Use recipe from OpenEmbedded Core layer for 6.18+ kernels [Florin Sarbu]
+> 
+
+</details>
+
 # v6.10.25
 ## (2026-02-04)
 
