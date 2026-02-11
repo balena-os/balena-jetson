@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update layers/poky to ff118ede826a9ae45eb35025a5f7f612880fba01
+      hash: 50edebe2a2aa0dbef8da19db091e93ca774f927d
+      body: Update layers/poky
+      footer:
+        Changelog-entry: Update layers/poky to ff118ede826a9ae45eb35025a5f7f612880fba01
+        changelog-entry: Update layers/poky to ff118ede826a9ae45eb35025a5f7f612880fba01
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.10.26+rev2
+  title: ""
+  date: 2026-02-11T08:22:16.372Z
+- commits:
     - subject: Update balena-yocto-scripts to ce65d6b439fc7e34c2b8bdf179694f8291bd3012
       hash: e9393ebc543ed763bd3109b85d04d2a86cd1b656
       body: Update balena-yocto-scripts
