@@ -1,4 +1,80 @@
 - commits:
+    - subject: Update layers/meta-balena to dcb45126741d9f454c1e98d4cf47cd37b46e2a2d
+      hash: 3adfa74faa867e562dfffccf2c3657067f697bcf
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to dcb45126741d9f454c1e98d4cf47cd37b46e2a2d
+        changelog-entry: Update layers/meta-balena to dcb45126741d9f454c1e98d4cf47cd37b46e2a2d
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests:modem: Disable for kontron-come-xelx"
+              hash: ee77d4f792c0a4eb397b4ee084bce9fd64398fcd
+              body: |
+                Currently the modem is not used on this device type
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.11.2
+          title: ""
+          date: 2026-02-18T14:52:33.063Z
+        - commits:
+            - subject: "peak: Update to version 9.0"
+              hash: 37ab4aef27be7c9042757b3f3d2b91080a5b4259
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.11.1
+          title: ""
+          date: 2026-02-17T13:05:12.004Z
+        - commits:
+            - subject: "openssh: Add sshd.socket burst protection recovery timer"
+              hash: 4ddde103fb870b36943f01fb0544c76617eef3d8
+              body: >
+                Devices with public-facing SSH ports can lose SSH access
+                permanently
+
+                when systemd's trigger rate limiting stops sshd.socket due to
+
+                connection floods from automated scanners. Since there is no
+                built-in
+
+                recovery, headless devices remain unreachable until manual
+                intervention.
+
+
+                Add a systemd timer that checks sshd.socket every 15 minutes and
+
+                restarts it only if Result=trigger-limit-hit — the specific
+                state
+
+                systemd sets when TriggerLimitBurst is exceeded. Manual stops
+                and
+
+                other failure states are left alone.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-6.11.0
+          title: ""
+          date: 2026-02-11T18:34:06.783Z
+  version: 6.11.2
+  title: ""
+  date: 2026-02-18T21:22:30.877Z
+- commits:
     - subject: Update layers/meta-openembedded to
         8a598a2bc9199a4fbb9008a32ab143fb509a0933
       hash: b052576ff6a9e2231fc45f85b4186d92ef4bc3b2

@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v6.11.2
+## (2026-02-18)
+
+
+<details>
+<summary> Update layers/meta-balena to dcb45126741d9f454c1e98d4cf47cd37b46e2a2d [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.11.2
+> ### (2026-02-18)
+> 
+> * tests:modem: Disable for kontron-come-xelx [Florin Sarbu]
+> 
+> ## meta-balena-6.11.1
+> ### (2026-02-17)
+> 
+> * peak: Update to version 9.0 [Florin Sarbu]
+> 
+> ## meta-balena-6.11.0
+> ### (2026-02-11)
+> 
+> * openssh: Add sshd.socket burst protection recovery timer [Kyle Harding]
+> 
+
+</details>
+
 # v6.10.26+rev4
 ## (2026-02-18)
 
