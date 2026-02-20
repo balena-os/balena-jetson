@@ -1,4 +1,69 @@
 - commits:
+    - subject: Update layers/meta-balena to da0ec5aac21ee02dab8be843a37dee512ff37ffe
+      hash: af9e5b86f697b7b782ee85dad2a3c6c77121df0e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to da0ec5aac21ee02dab8be843a37dee512ff37ffe
+        changelog-entry: Update layers/meta-balena to da0ec5aac21ee02dab8be843a37dee512ff37ffe
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "balena-bootloader.bbclass: disable more unnecessary drivers"
+              hash: 1f51bdc9c52ea9ea9207d90f00db581b797409ad
+              body: >
+                Some device types are tight on storage and the balena bootloader
+                is one
+
+                of the cheaper places to save space.
+
+
+                This patch is just another round of disabling unnecessary
+                drivers,
+
+                depending on the device type this one should shrink the
+                resulting
+
+                kernel binary by 300-500kB.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "balena-bootloader.bbclass: add spaces to BALENA_CONFIGS appends"
+              hash: e807ca5c1f055234bb8750e9f21bb5c2ea3eef26
+              body: >
+                At this moment `secureboot` and `shrink_size` sections are
+                appended
+
+                to BALENA_CONFIGS without spaces, so if both are enabled at the
+                same
+
+                time, they merge into `securebootshrink_size`, effectively
+                disabling
+
+                both.
+
+
+                This patch adds a space before each append so that both are
+                treated
+
+                as standalone sections.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.11.3
+          title: ""
+          date: 2026-02-20T06:15:21.216Z
+  version: 6.11.3
+  title: ""
+  date: 2026-02-20T11:22:12.895Z
+- commits:
     - subject: Update balena-yocto-scripts to 2649a8d9024a2986d092dff178da9bd14c39f189
       hash: 5a6ef8641b6b2fd9da7e7439a0beabe625891963
       body: Update balena-yocto-scripts

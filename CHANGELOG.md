@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v6.11.3
+## (2026-02-20)
+
+
+<details>
+<summary> Update layers/meta-balena to da0ec5aac21ee02dab8be843a37dee512ff37ffe [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.11.3
+> ### (2026-02-20)
+> 
+> * balena-bootloader.bbclass: disable more unnecessary drivers [Michal Toman]
+> * balena-bootloader.bbclass: add spaces to BALENA_CONFIGS appends [Michal Toman]
+> 
+
+</details>
+
 # v6.11.2+rev1
 ## (2026-02-19)
 
