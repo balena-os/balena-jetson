@@ -1,4 +1,51 @@
 - commits:
+    - subject: Update layers/meta-balena to a1d617fd820c2d90a97f49e9fc14364204740c6e
+      hash: 88b96138bcfd29c17577d28e3df158bebea328b0
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to a1d617fd820c2d90a97f49e9fc14364204740c6e
+        changelog-entry: Update layers/meta-balena to a1d617fd820c2d90a97f49e9fc14364204740c6e
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "kernel-balena.bbclass: Enable support for traditional iptables
+                backends for newer kernels"
+              hash: 01a6a81809341086d153f94dc38234b4bbcf855b
+              body: >
+                This is required to also work on newer kernels (i.e. 6.18) which
+                use primarily nftables.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.11.5
+          title: ""
+          date: 2026-02-25T03:10:51.056Z
+        - commits:
+            - subject: "tests/modem: Skip modem test on unsupported Orin device-type"
+              hash: e72616cea3600a8781bf094c6f10316ebe8f3325
+              body: |
+                This particular device-type has an e-SIM and cannot be tested
+                in our autokit, because a custom setup is required.
+
+                Connectivity will thus be tested by the vendor.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru
+              nested: []
+          version: meta-balena-6.11.4
+          title: ""
+          date: 2026-02-23T14:31:12.414Z
+  version: 6.11.5
+  title: ""
+  date: 2026-02-27T19:58:21.463Z
+- commits:
     - subject: "workflows: workflows: Move testing to BC from BM"
       hash: a8ef847db15b8ae02b7112c880d39d8d62ea5484
       body: ""
