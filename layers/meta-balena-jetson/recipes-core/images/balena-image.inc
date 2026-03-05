@@ -187,3 +187,7 @@ IMAGE_INSTALL:append:jetson-tx1 = " \
 "
 
 IMAGE_INSTALL:remove = "kernel-image-initramfs"
+
+# This is linux-ffirmware that will be removed
+# in the next major balenaOS release
+IMAGE_INSTALL:append = " ${TEMPORARILY_ALLOWED_PACKAGES} "
