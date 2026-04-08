@@ -66,24 +66,6 @@ SRC_URI:append:jetson-nano-emmc = " \
     file://tegra210-p3448-0002-p3449-0000-b00-auvidea-jn30d.dtb \
 "
 
-SRC_URI:append:photon-nano = " \
-    file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
-    file://tegra210-nano-cti-NGX003.dtb \
-    file://tegra210-nano-cti-NGX004.dtb \
-"
-
-SRC_URI:append:photon-tx2-nx = " \
-    file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
-    file://tegra186-tx2-nx-cti-NGX003.dtb \
-    file://tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb \
-    file://tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb \
-"
-
-SRC_URI:append:photon-xavier-nx = " \
-    file://0001-cti-photon-merge-CDC-MBIM-driver-changes-from-bsp.patch \
-    file://tegra194-xavier-nx-cti-NGX003.dtb \
-"
-
 SRC_URI:append:cnx100-xavier-nx = " \
     file://tegra194-xavier-nx-cnx100.dtb \
 "
@@ -206,25 +188,16 @@ BALENA_CONFIGS[gasket] = " \
 BALENA_CONFIGS:append:jetson-nano = " gasket"
 BALENA_CONFIGS:append:jetson-nano-emmc = " gasket"
 
-BALENA_CONFIGS:append:photon-nano = " tlc591xx"
-BALENA_CONFIGS:append:photon-tx2-nx = " tlc591xx"
-BALENA_CONFIGS:append:photon-xavier-nx = " tlc591xx"
 BALENA_CONFIGS:append:cnx100-xavier-nx = " tlc591xx"
 BALENA_CONFIGS[tlc591xx] = " \
                 CONFIG_LEDS_TLC591XX=m \
 "
 
-BALENA_CONFIGS:append:photon-nano = " cdc-wdm"
-BALENA_CONFIGS:append:photon-tx2-nx = " cdc-wdm"
-BALENA_CONFIGS:append:photon-xavier-nx = " cdc-wdm"
 BALENA_CONFIGS:append:cnx100-xavier-nx = " cdc-wdm"
 BALENA_CONFIGS[cdc-wdm] = " \
                 CONFIG_USB_WDM=m \
 "
 
-BALENA_CONFIGS:append:photon-nano = " sierra-net"
-BALENA_CONFIGS:append:photon-tx2-nx = " sierra-net"
-BALENA_CONFIGS:append:photon-xavier-nx = " sierra-net"
 BALENA_CONFIGS:append:cnx100-xavier-nx = " sierra-net"
 BALENA_CONFIGS[sierra-net] = " \
                 CONFIG_USB_SIERRA_NET=m \
@@ -234,9 +207,6 @@ BALENA_CONFIGS_DEPS[sierra-net] = " \
                 CONFIG_USB_USBNET=m \
 "
 
-BALENA_CONFIGS:append:photon-nano = " cdc-ncm"
-BALENA_CONFIGS:append:photon-tx2-nx = " cdc-ncm"
-BALENA_CONFIGS:append:photon-xavier-nx = " cdc-ncm"
 BALENA_CONFIGS:append:cnx100-xavier-nx = " cdc-ncm"
 BALENA_CONFIGS[cdc-ncm] = " \
                 CONFIG_USB_NET_CDC_NCM=m \
@@ -246,9 +216,6 @@ BALENA_CONFIGS_DEPS[cdc-ncm] = " \
                 CONFIG_USB_USBNET=m \
 "
 
-BALENA_CONFIGS:append:photon-nano = " mii"
-BALENA_CONFIGS:append:photon-tx2-nx = " mii"
-BALENA_CONFIGS:append:photon-xavier-nx = " mii"
 BALENA_CONFIGS:append:cnx100-xavier-nx = " mii"
 BALENA_CONFIGS[mii] = " \
                 CONFIG_MII=m \
@@ -366,21 +333,6 @@ do_deploy:append:blackboard-tx2() {
 
 do_deploy:append:jn30b-nano() {
     cp ${WORKDIR}/tegra210-p3448-0002-p3449-0000-b00-jn30b.dtb "${DEPLOYDIR}"
-}
-
-do_deploy:append:photon-nano() {
-    cp ${WORKDIR}/tegra210-nano-cti-NGX003.dtb "${DEPLOYDIR}"
-    cp ${WORKDIR}/tegra210-nano-cti-NGX004.dtb "${DEPLOYDIR}"
-}
-
-do_deploy:append:photon-tx2-nx() {
-    cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003.dtb "${DEPLOYDIR}"
-    cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-IMX219-2CAM.dtb "${DEPLOYDIR}"
-    cp ${WORKDIR}/tegra186-tx2-nx-cti-NGX003-ARDU-IMX477-2CAM.dtb "${DEPLOYDIR}"
-}
-
-do_deploy:append:photon-xavier-nx() {
-    cp ${WORKDIR}/tegra194-xavier-nx-cti-NGX003.dtb "${DEPLOYDIR}"
 }
 
 do_deploy:append:cnx100-xavier-nx() {
