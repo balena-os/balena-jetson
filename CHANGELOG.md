@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.11.5+rev2
+## (2026-04-08)
+
+* Remove discontinued devices photon-nano, photon-tx2-nx, photon-xavier-nx [Florin Sarbu]
+
 # v6.11.5+rev1
 ## (2026-04-01)
 
