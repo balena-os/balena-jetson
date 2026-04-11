@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-os/github-workflows to
+      hash: a057cef99ff2953f38ff5a58451f2af8d96d4179
+      body: Update balena-os/github-workflows
+      footer:
+        Changelog-entry: Update balena-os/github-workflows to
+        changelog-entry: Update balena-os/github-workflows to
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.11.5+rev3
+  title: ""
+  date: 2026-04-11T10:20:02.903Z
+- commits:
     - subject: Remove discontinued devices photon-nano, photon-tx2-nx, photon-xavier-nx
       hash: f94a55de725fd9ef3935bac420c212145ae50d21
       body: |
