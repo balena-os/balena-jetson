@@ -1,4 +1,105 @@
 - commits:
+    - subject: Update contracts to 7c3bf64c92a839dcbf02cfd69367392e7728fcde
+      hash: aa8c599893ce7f426396294881136ac56578dcb9
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 7c3bf64c92a839dcbf02cfd69367392e7728fcde
+        changelog-entry: Update contracts to 7c3bf64c92a839dcbf02cfd69367392e7728fcde
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "hw.device-type: Add new device-type Compulab IOT-LINK Gateway"
+              hash: 9f8168327bc4393d5fe00aca5cb263003d76de7b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.143
+          title: ""
+          date: 2026-04-22T07:37:35.352Z
+        - commits:
+            - subject: Update iot-gate-imx8plus-d1d8 to remove Wifi and BT
+              hash: caa877e50405ec4dd3c399ae12753c4a4027f372
+              body: |
+                This board does not have a wireless module
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.142
+          title: ""
+          date: 2026-04-09T12:32:15.819Z
+        - commits:
+            - subject: "iot-gate-imx8plus: replace dram size range with explicit dram sizes"
+              hash: 1863899288374bd7ff6b5d42f80480fff11635c9
+              body: >
+                The 1G-8G and 2G-4G slugs could be confused with ranges, so this
+                commit
+
+                replaces them with 1GB or 8GB and 2GB or 4GB.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+          version: contracts-2.0.141
+          title: ""
+          date: 2026-03-16T16:10:34.868Z
+        - commits:
+            - subject: "iot-gate-imx8plus-d1d8: Enable bluetooth and wifi"
+              hash: 51c4c60e2b39798d8155a5bb732d8b119c2b9bcd
+              body: >
+                We attached the official IFM-WB Bluetooth and WiFi module to the
+                DUT in autokit
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.140
+          title: ""
+          date: 2026-03-11T07:59:21.304Z
+        - commits:
+            - subject: "ucm-imx93: Set wifi and bt to false"
+              hash: 56818a46726b814a475d60152dffaf56f701cdb8
+              body: >
+                The SoM we have is a Lite variant (which lacks bluetooth and
+                wifi) so we set
+
+                these to false until we get another SoM that has them.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.139
+          title: ""
+          date: 2026-03-11T07:23:06.723Z
+        - commits:
+            - subject: "contracts/raspberrypi5: Update device name to mention CM5 support"
+              hash: 5b3c3bb100da7a717be67e9acb168cc3d5721af3
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru
+          version: contracts-2.0.138
+          title: ""
+          date: 2026-03-09T10:27:43.239Z
+  version: 6.11.5+rev4
+  title: ""
+  date: 2026-04-22T11:56:34.297Z
+- commits:
     - subject: Update balena-os/github-workflows to
       hash: a057cef99ff2953f38ff5a58451f2af8d96d4179
       body: Update balena-os/github-workflows
