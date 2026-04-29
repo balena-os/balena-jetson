@@ -1,4 +1,74 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 1fd57160c9dea8e511e1c7dea52902438c6e45d8
+      hash: 5a4e9eaac8d46c5defdcfb264b35972b4d94b350
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 1fd57160c9dea8e511e1c7dea52902438c6e45d8
+        changelog-entry: Update balena-yocto-scripts to 1fd57160c9dea8e511e1c7dea52902438c6e45d8
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update aws/aws-cli to v2.34.23
+              hash: 6dd4b0df079d84d31ea0157f30b086df6917de40
+              body: |
+                Update aws/aws-cli from 2.33.25 to 2.34.23
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.31
+          title: ""
+          date: 2026-04-03T08:24:34.624Z
+        - commits:
+            - subject: Update balena-io/balena-cli to v24
+              hash: e5c4beeab5837fda8514834663ede9098ccd6cea
+              body: |
+                Update balena-io/balena-cli from 23.2.30 to 24.0.3
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.30
+          title: ""
+          date: 2026-04-01T07:52:47.775Z
+        - commits:
+            - subject: stop running AMI delete on failure step if no AMI created, and stop AMI
+                deploy on non-finalised workflow-dispatch
+              hash: 703e2ddca64701f96903b8f0ec6d6e651847ae40
+              body: >
+                These 2 rules are there to stop accidental AMI creation or
+                deletion
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+            - subject: "workflows: simplify esr check to tag comparison"
+              hash: e4cbdbab03bdf05a8fcda27584efe7511a402e9e
+              body: >
+                The workflow dispatch ESR check was erroneously matching ESR
+                versions.
+
+                This commit uses the same match for both workflow and dispatch
+                runs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.39.29
+          title: ""
+          date: 2026-03-28T17:54:53.249Z
+  version: 6.12.11+rev2
+  title: ""
+  date: 2026-04-29T09:29:38.766Z
+- commits:
     - subject: Update layers/poky to b0134a0f1382a267f79ec881af916d641d41b235
       hash: 1c3f1522c50207dbd6776c9377577e64c5a31107
       body: Update layers/poky
