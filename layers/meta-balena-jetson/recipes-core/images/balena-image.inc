@@ -184,3 +184,38 @@ IMAGE_INSTALL:append:jetson-tx1 = " \
 "
 
 IMAGE_INSTALL:remove = "kernel-image-initramfs"
+
+COMMON_TEMPORARY_PACKAGES = " \
+    linux-firmware-rtl8192su \
+    linux-firmware-rtl8723b-bt \
+    linux-firmware-wl12xx \
+    linux-firmware-wl18xx \
+    linux-firmware-wlcommon \
+"
+
+TEMPORARILY_ALLOWED_PACKAGES ?= " ${COMMON_TEMPORARY_PACKAGES} "
+
+TEMPORARILY_ALLOWED_PACKAGES:jetson-tx2 ?= " \
+    ${COMMON_TEMPORARY_PACKAGES} \
+"
+
+TEMPORARILY_ALLOWED_PACKAGES:jetson-nano ?= " \
+    ${COMMON_TEMPORARY_PACKAGES} \
+    linux-firmware-ibt-12-16 \
+"
+
+TEMPORARILY_ALLOWED_PACKAGES:jetson-nano-emmc ?= " \
+    ${COMMON_TEMPORARY_PACKAGES} \
+    linux-firmware-ibt-12-16 \
+"
+
+BALENA_ALLOWED_FIRMWARE_PACKAGES = " ${TEMPORARILY_ALLOWED_PACKAGES} "
+
+# TX2 specifically installs linux-firmware-qca, and this is a mixed package
+# which has been requested for some TX2 based devices which use a specific M.2 adapter
+BALENA_ALLOWED_FIRMWARE_PACKAGES:jetson-tx2 = " ${TEMPORARILY_ALLOWED_PACKAGES} linux-firmware-qca "
+
+
+# This is linux-ffirmware that will be removed
+# in the next major balenaOS release
+IMAGE_INSTALL:append = " ${TEMPORARILY_ALLOWED_PACKAGES} "
