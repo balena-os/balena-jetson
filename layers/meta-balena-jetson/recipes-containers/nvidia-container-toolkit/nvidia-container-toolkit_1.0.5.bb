@@ -5,21 +5,21 @@ Provides an OCI hook to enable GPU support in containers. \
 #Home page for now
 HOMEPAGE = "https://github.com/NVIDIA/nvidia-container-runtime"
 
-# Taken from meta-tegra at revision 92f1be3f98cff3362e0d3c2bc7b581e541c9412b
+# Taken from meta-tegra at revision c9c342a23738f70f4f1b1d53f5d22b3ba237ea2b
 
 LICENSE = "Apache-2.0 & BSD-3-Clause & MIT"
 LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd57 \
                     file://src/${GO_IMPORT}/pkg/rpm/SOURCES/LICENSE;md5=06cff45c51018e430083a716510821b7 \
                     file://src/${GO_INSTALL}/vendor/github.com/BurntSushi/toml/COPYING;md5=9e24c0e2a784c1d1fcabb279f4f107e0"
-SRC_URI = "git://github.com/NVIDIA/container-toolkit;protocol=https"
+SRC_URI = "git://github.com/NVIDIA/nvidia-container-toolkit.git;protocol=https;branch=master"
 SRCREV = "60f165ad6901f85b0c3acbf7ce2c66cd759c4fb8"
 
 GO_IMPORT = "github.com/NVIDIA/${BPN}"
 GO_INSTALL = "${GO_IMPORT}/${BPN}"
 
-S = "${WORKDIR}/git"
+export GO111MODULE = "off"
 
-REQUIRED_DISTRO_FEATURES = "virtualization"
+S = "${WORKDIR}/git"
 
 inherit go
 
