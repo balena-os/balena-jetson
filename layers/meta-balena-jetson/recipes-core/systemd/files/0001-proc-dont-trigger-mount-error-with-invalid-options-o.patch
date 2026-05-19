@@ -32,8 +32,7 @@ it is possible changes could be backported to different kernel versions
 so the test isn't 100% foolproof but does give better results than a
 continual stream of bug reports.
 
-Backported from
-https://github.com/rpurdie/systemd/commit/c225bc59b8907de11f389bd8efb82155ccde75a7y
+Backported from https://github.com/rpurdie/systemd/commit/c225bc5
 
 Signed-off-by: Richard Purdie <richard.purdie@linuxfoundation.org>
 Upstream-status: Backport
