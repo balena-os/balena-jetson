@@ -5,9 +5,6 @@ PACKAGE_INSTALL:append = " tegra-firmware-xusb"
 # the kernel size to allow for host extensions support for now.
 #PACKAGE_INSTALL:append:jetson-tx1 = " kernel-module-bcmdhd"
 PACKAGE_INSTALL:remove:jetson-tx1 = "tegra-firmware-xusb"
-PACKAGE_INSTALL:append:jetson-xavier = " util-linux-blockdev initramfs-module-blockdev"
-PACKAGE_INSTALL:append:jetson-xavier-nx-devkit-emmc = " util-linux-blockdev initramfs-module-blockdev"
-PACKAGE_INSTALL:append:jetson-xavier-nx-devkit = " util-linux-blockdev initramfs-module-blockdev"
 
 PACKAGE_INSTALL:remove:astro-tx2 = " mdraid"
 PACKAGE_INSTALL:remove:blackboard-tx2 = " mdraid"
