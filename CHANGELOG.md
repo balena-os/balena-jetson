@@ -1,6 +1,73 @@
 Change log
 -----------
 
+# v6.12.11+rev5
+## (2026-07-15)
+
+
+<details>
+<summary> Update balena-yocto-scripts to b82363e38d36ba5f76b739b906f67f6d0b729464 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.41.7
+> ### (2026-07-14)
+> 
+> * Update product-os/review-commit-action action to v0.3.2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.6
+> ### (2026-07-13)
+> 
+> * Update balena-io/balena-cli to v25 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.5
+> ### (2026-06-29)
+> 
+> * yocto-build-deploy: replace pattern based all history first parent match [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.41.4
+> ### (2026-06-23)
+> 
+> * Decode base64-encoded GitHub App private key before token generation [Kyle Harding]
+> * Update actions/create-github-app-token action to v3 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.3
+> ### (2026-06-10)
+> 
+> * Update GitHub Actions [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.2
+> ### (2026-06-04)
+> 
+> * yocto-build-deploy: soft-skip schema validation when not in checkout [Kyle Harding]
+> * yocto-build-deploy: normalize composition placeholders to __VAR__ form [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.41.1
+> ### (2026-06-03)
+> 
+> * Update aws/aws-cli to v2.34.61 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.0
+> ### (2026-06-03)
+> 
+> * Add hostapp composition build pipeline [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.40.0
+> ### (2026-06-02)
+> 
+> * Make release asset upload step required [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.39.35
+> ### (2026-05-16)
+> 
+> * build/barys: Add Wrynose build support [Alexandru Costache]
+> 
+> ## balena-yocto-scripts-1.39.34
+> ### (2026-05-07)
+> 
+> * Dockerfile_yocto-build-env: Switch to docker-ce, pin 28.5.2 [Kyle Harding]
+> 
+
+</details>
+
 # v6.12.11+rev4
 ## (2026-05-02)
 
