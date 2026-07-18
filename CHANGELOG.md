@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v6.12.11+rev11
+## (2026-07-18)
+
+
+<details>
+<summary> Update contracts to a4ab96e2b9f6f8c40f80072f7dd1d2369eb7466e [balena-renovate[bot]] </summary>
+
+> ## contracts-2.0.146
+> ### (2026-07-16)
+> 
+> * Modify existing device family and manufacturer metadata [Pranas Ziaukas]
+> 
+> ## contracts-2.0.145
+> ### (2026-07-01)
+> 
+> * hw/device-type: Add Jetson AGX Thor Devkit contract [Alexandru Costache]
+> 
+> ## contracts-2.0.144
+> ### (2026-05-19)
+> 
+> * hw.device-type/beaglebone-ai64: Add the beaglebone-ai-64 alias to align with its device repo definition [Thodoris Greasidis]
+> 
+
+</details>
+
 # v6.12.11+rev10
 ## (2026-07-18)
 
