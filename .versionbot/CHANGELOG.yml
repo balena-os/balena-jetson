@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 4c19733cad4cd1473d196d41ea7d2f4531913172
+      hash: 71b6830569d3d912812f24fc32714f059793dee0
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 4c19733cad4cd1473d196d41ea7d2f4531913172
+        changelog-entry: Update balena-yocto-scripts to 4c19733cad4cd1473d196d41ea7d2f4531913172
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update GitHub Actions
+              hash: 4514bea4032abfdacbb32c4e0363d69249c3ca3b
+              body: |
+                Update aws-actions/configure-aws-credentials from 6.0.0 to 6.2.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.41.8
+          title: ""
+          date: 2026-07-15T14:03:30.093Z
+  version: 6.12.11+rev10
+  title: ""
+  date: 2026-07-18T10:04:08.292Z
+- commits:
     - subject: Update product-os/flowzone to 23272ea32abe5fdd9d257c908fbdaf6d75aef036
       hash: 68f26297e4903d1d35d8c216a8eee9480482df27
       body: Update product-os/flowzone

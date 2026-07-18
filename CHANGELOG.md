@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.12.11+rev10
+## (2026-07-18)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 4c19733cad4cd1473d196d41ea7d2f4531913172 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.41.8
+> ### (2026-07-15)
+> 
+> * Update GitHub Actions [balena-renovate[bot]]
+> 
+
+</details>
+
 # v6.12.11+rev9
 ## (2026-07-18)
 
