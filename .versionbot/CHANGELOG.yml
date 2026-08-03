@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update product-os/flowzone to c2781a1ac72f86d587a5875bb7345ec4c72d57f7
+      hash: 3b55a78978dd0a6a4e2320f7bdd7337d2c84364f
+      body: Update product-os/flowzone
+      footer:
+        Changelog-entry: Update product-os/flowzone to c2781a1ac72f86d587a5875bb7345ec4c72d57f7
+        changelog-entry: Update product-os/flowzone to c2781a1ac72f86d587a5875bb7345ec4c72d57f7
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.12.11+rev13
+  title: ""
+  date: 2026-08-03T22:39:52.322Z
+- commits:
     - subject: Update balena-os/github-workflows to
         95c18f8b04886c36223acc04a531c6af10086910
       hash: b5c2538367d84c8896a17f90e40afd517ffa112a
