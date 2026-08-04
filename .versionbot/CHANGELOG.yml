@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 8aa037bbf693fcebce7a7e4e219c6d75d2dead22
+      hash: e098116d952f696902908cdff1678174d9a1b2bf
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 8aa037bbf693fcebce7a7e4e219c6d75d2dead22
+        changelog-entry: Update balena-yocto-scripts to 8aa037bbf693fcebce7a7e4e219c6d75d2dead22
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update docker/login-action action to v4
+              hash: 215d51d8a9266bf3b6a23111be920d3f3f47a126
+              body: |
+                Update docker/login-action from 3.7.0 to 4.5.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.41.9
+          title: ""
+          date: 2026-07-24T15:12:10.086Z
+  version: 6.12.11+rev14
+  title: ""
+  date: 2026-08-04T02:36:18.219Z
+- commits:
     - subject: Update product-os/flowzone to c2781a1ac72f86d587a5875bb7345ec4c72d57f7
       hash: 3b55a78978dd0a6a4e2320f7bdd7337d2c84364f
       body: Update product-os/flowzone
