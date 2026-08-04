@@ -184,3 +184,12 @@ IMAGE_INSTALL:append:jetson-tx1 = " \
 "
 
 IMAGE_INSTALL:remove = "kernel-image-initramfs"
+
+BALENA_STATE_SIZE:jetson-nano-2gb-devkit = "20480"
+BALENA_STATE_SIZE:jetson-nano-emmc = "20480"
+BALENA_STATE_SIZE:jetson-nano = "20480"
+BALENA_STATE_SIZE:jetson-tx1 = "20480"
+BALENA_STATE_SIZE:jetson-tx2 = "20480"
+BALENA_STATE_SIZE:jetson-xavier-nx-devkit-emmc = "20480"
+BALENA_STATE_SIZE:jetson-xavier-nx-devkit = "20480"
+BALENA_STATE_SIZE:jetson-xavier = "20480"
