@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update layers/meta-cyclonedx to 221bf15bf2081d1d025f069429f1b94a14d520af
+      hash: c3ef3008ca077c97ae68244ebecf618a11cae621
+      body: Update layers/meta-cyclonedx
+      footer:
+        Changelog-entry: Update layers/meta-cyclonedx to
+          221bf15bf2081d1d025f069429f1b94a14d520af
+        changelog-entry: Update layers/meta-cyclonedx to
+          221bf15bf2081d1d025f069429f1b94a14d520af
+      author: balena-renovate[bot]
+      nested: []
+  version: 7.7.1+rev1
+  title: ""
+  date: 2026-08-06T12:57:55.806Z
+- commits:
     - subject: Build initramfs packages with -Os for jetson-tx2
       hash: f4c956d48f15f243a58675bae660f1d3d10c4824
       body: |
