@@ -1,6 +1,90 @@
 Change log
 -----------
 
+# v7.9.1
+## (2026-08-07)
+
+
+<details>
+<summary> Update layers/meta-balena to f388c39586de4919dfa25d37eb0a85198932d148 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-7.9.1
+> ### (2026-08-07)
+> 
+> * recipes-containers/balena-extension-runtime: Enable Wrynose builds [Alexandru Costache]
+> 
+> ## meta-balena-7.9.0
+> ### (2026-08-04)
+> 
+> * docs: update hostapp extensions kernel abi compatibility section [Alex Gonzalez]
+> * balena-hostapp-extension: add class [Alex Gonzalez]
+> * kernel-override-hooks: add recipe [Alex Gonzalez]
+> * os-helpers-extensions: use kernel image hash as kernel-abi-id [Alex Gonzalez]
+> * os-helpers-bootenv: leave hup variables to bootloaders hooks [Alex Gonzalez]
+> * rollback-health: use standard os logging [Alex Gonzalez]
+> * initrdscripts(abroot): kernel selection [Alex Gonzalez]
+> * balena-image-bootloader-initramfs: add mount data stage [Alex Gonzalez]
+> * initrdscript: add stage2 data partition mount [Alex Gonzalez]
+> 
+> ## meta-balena-7.8.1
+> ### (2026-08-01)
+> 
+> * initrdscripts: check alignment of data partition in resindataexpander [Michal Toman]
+> 
+> ## meta-balena-7.8.0
+> ### (2026-07-29)
+> 
+> * mobynit: update to v1.1.0 [Alex Gonzalez]
+> 
+> ## meta-balena-7.7.2
+> ### (2026-07-24)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to dacce76 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.36.120
+>> #### (2026-07-24)
+>> 
+>> * Update balena-os/leviathan-worker to v2.10.41 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.119
+>> #### (2026-07-23)
+>> 
+>> * Update balena-os/leviathan-worker to v2.10.40 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.118
+>> #### (2026-07-23)
+>> 
+>> * Update balena-io/balena-cli to v25.1.10 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.117
+>> #### (2026-07-23)
+>> 
+>> * core/lib/common/worker.js: improve reliability of segmented image upload [guille-vega]
+>> 
+>> ### leviathan-2.36.116
+>> #### (2026-07-16)
+>> 
+>> * Update alpine Docker tag to v3.18.12 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.115
+>> #### (2026-07-16)
+>> 
+>> * Update core/contracts digest to a4ab96e [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.114
+>> #### (2026-07-14)
+>> 
+>> * Update Pin dependencies [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v7.7.1+rev1
 ## (2026-08-06)
 
