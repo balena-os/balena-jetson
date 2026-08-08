@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v7.9.2
+## (2026-08-08)
+
+
+<details>
+<summary> Update layers/meta-balena to 669cd979a6d181271989e268bdb334c600b16955 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-7.9.2
+> ### (2026-08-07)
+> 
+> * extra-udev-rules: Disable power management on mlan* wireless network interfaces [Florin Sarbu]
+> 
+
+</details>
+
 # v7.9.1+rev2
 ## (2026-08-08)
 

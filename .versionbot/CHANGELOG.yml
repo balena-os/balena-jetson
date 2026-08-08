@@ -1,4 +1,33 @@
 - commits:
+    - subject: Update layers/meta-balena to 669cd979a6d181271989e268bdb334c600b16955
+      hash: 917e5e73fd9a1cc71ef23915001f7e559df0f596
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 669cd979a6d181271989e268bdb334c600b16955
+        changelog-entry: Update layers/meta-balena to 669cd979a6d181271989e268bdb334c600b16955
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "extra-udev-rules: Disable power management on mlan* wireless network
+                interfaces"
+              hash: ad892c3e437a49a800d57e665f31a834c0dad0b8
+              body: >
+                The moal driver used in various hardware exposes the wireless
+                network interfaces as mlan*
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-7.9.2
+          title: ""
+          date: 2026-08-07T15:12:33.847Z
+  version: 7.9.2
+  title: ""
+  date: 2026-08-08T07:35:43.857Z
+- commits:
     - subject: Update product-os/flowzone to e092fd7d0f26c0e2d9b51f551f7e63617eab56e6
       hash: c188eb0c4acb88c37f515eb24ac1d44cfba4d433
       body: Update product-os/flowzone
