@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v7.9.3
+## (2026-08-08)
+
+
+<details>
+<summary> Update layers/meta-balena to c806f4ead5c1fb34ed161266c2ed07a7c3b150d6 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-7.9.3
+> ### (2026-08-08)
+> 
+> * balena-extension-runtime: do not duplicate binary [Alex Gonzalez]
+> * balena-extension-runtime: update to v1.2.1 [Alex Gonzalez]
+> 
+
+</details>
+
 # v7.9.2
 ## (2026-08-08)
 
