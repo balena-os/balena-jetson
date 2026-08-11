@@ -1,4 +1,168 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 96d6632cc5a14d6ff10ef0c5b28f0be733708e9d
+      hash: d5595810d3e6bc031f489680203fac61ac0c404f
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 96d6632cc5a14d6ff10ef0c5b28f0be733708e9d
+        changelog-entry: Update balena-yocto-scripts to 96d6632cc5a14d6ff10ef0c5b28f0be733708e9d
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "yocto-build-deploy: Transport artifacts via lzma-artifact-action"
+              hash: c3aaf0e52128824c8dbefbe13adb792318cb5a97
+              body: >
+                Replace actions/upload-artifact + actions/download-artifact and
+                the hand-rolled
+
+                openssl encrypt/decrypt steps with
+                product-os/lzma-artifact-action, which
+
+                LZMA-compresses each artifact into a single archive and, for
+                private or
+
+                secure-boot device types, AES-256 encrypts it (whole archive,
+                headers included).
+
+                Its base-directory input keeps the stored paths flat, so
+                downloads restore files
+
+                at the same locations the consumers already expect - the swap is
+                transport-only,
+
+                no path reshuffling.
+
+
+                Raw .img files are uploaded directly instead of pre-zipped: lzma
+                compresses them
+
+                in transit, so the .img.zip loop in balena_deploy_artifacts is
+                dropped and the
+
+                Leviathan/AMI consumers read the raw image (no unzip).
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "hostapp-deploy: Verify required release assets before finalizing"
+              hash: e1d2974ed7c70a27f2d65d441b963a2defa89763
+              body: >
+                Adds a pre-finalize check that queries the release's attached
+                assets via the
+
+                API and fails if any contractually-required asset (consumed by
+                image-maker)
+
+                is missing. Requirements are derived from device-type.json so
+                flasher/raw
+
+                variants are only demanded when the device type produces them,
+                and edge,
+
+                docker-image and archive types are exempt from the
+                image.json/compressed
+
+                requirement.
+
+
+                Documents the contract in docs/specs/hostapp-release-assets.md.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "hostapp-deploy: Group extension release assets by service"
+              hash: 548462df767eebc277b98857cc1c51ee511fdac8
+              body: >
+                Extension image archives and release assets are now uploaded as
+                separate
+
+                build artifacts (extension-image-<service> and
+                extension-assets-<service>).
+
+                The deploy job downloads each extension's assets into its own
+                folder and
+
+                uploads them wholesale, keyed as <service>/<file>, so
+                identically named
+
+                assets from different extensions no longer overwrite each other
+                on download
+
+                or collide as release resources.
+
+
+                This drops the composition-coupled asset staging step in favour
+                of a plain
+
+                download-and-upload, gated by a new has_extension_assets output.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "hostapp-deploy: Always deploy as draft and finalize after asset
+                upload"
+              hash: 3499b48a39ee4ee47034cd27b5c6f78f8f135d30
+              body: >
+                The hostapp release is now always deployed as a draft, and
+                finalized in a
+
+                separate step only after all release assets have been uploaded.
+                This closes
+
+                the window where a finalized release was presented to devices
+                before its
+
+                CHANGELOG, VERSION, manifests, and compressed images were
+                attached.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "hostapp-deploy: Run on ubuntu-24.04 instead of self-hosted"
+              hash: 1c406b483d22fa56a93fd2b566853359d8d9f36e
+              body: >
+                We don't need self-hosted runners for these download and deploy
+                jobs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "deploy: Create deflates via python script during deploy"
+              hash: a2b48f295639ac0b3803463f8384db285be7446d
+              body: |
+                Removes the legacy call to the private DockerHub balena-img tag
+                that was pinned to an old release for compatibility.
+
+                Instead a local python script will create the deflates after
+                the build and remove the need for the custom S3 paths.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.42.0
+          title: ""
+          date: 2026-08-10T19:09:35.449Z
+  version: 7.9.3+rev1
+  title: ""
+  date: 2026-08-11T01:03:44.518Z
+- commits:
     - subject: Update layers/meta-balena to c806f4ead5c1fb34ed161266c2ed07a7c3b150d6
       hash: 8f0f101a17d013b802bb14ee17f2016eb6db60d3
       body: Update layers/meta-balena

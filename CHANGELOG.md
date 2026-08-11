@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v7.9.3+rev1
+## (2026-08-11)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 96d6632cc5a14d6ff10ef0c5b28f0be733708e9d [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.42.0
+> ### (2026-08-10)
+> 
+> * yocto-build-deploy: Transport artifacts via lzma-artifact-action [Kyle Harding]
+> * hostapp-deploy: Verify required release assets before finalizing [Kyle Harding]
+> * hostapp-deploy: Group extension release assets by service [Kyle Harding]
+> * hostapp-deploy: Always deploy as draft and finalize after asset upload [Kyle Harding]
+> * hostapp-deploy: Run on ubuntu-24.04 instead of self-hosted [Kyle Harding]
+> * deploy: Create deflates via python script during deploy [Kyle Harding]
+> 
+
+</details>
+
 # v7.9.3
 ## (2026-08-08)
 
