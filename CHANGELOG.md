@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v7.9.3+rev2
+## (2026-08-11)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 41fe121711c72f671c4b756f3e19f89f0d9561cc [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.42.1
+> ### (2026-08-11)
+> 
+> * Update Pin ubuntu Docker tag to 3b06811 [balena-renovate[bot]]
+> 
+
+</details>
+
 # v7.9.3+rev1
 ## (2026-08-11)
 
