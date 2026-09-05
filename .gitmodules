@@ -17,6 +17,7 @@
 [submodule "layers/meta-tegra"]
 	path = layers/meta-tegra
 	url = https://github.com/OE4T/meta-tegra.git
+	branch = kirkstone-l4t-r32.7.x
 [submodule "contracts"]
 	path = contracts
 	url = https://github.com/balena-io/contracts.git
