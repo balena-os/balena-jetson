@@ -1,4 +1,548 @@
 - commits:
+    - subject: ".gitmodules: Declare a branch for every submodule"
+      hash: 720f19534ad9231a9258be297ce7d879fabcb734
+      body: |
+        check_gitmodules_branches fails while any submodule has no branch
+        declared. 1 submodule had none here. Every branch added
+        contains the current pin.
+      footer:
+        Changelog-entry: ".gitmodules: Declare a branch for every submodule"
+        changelog-entry: ".gitmodules: Declare a branch for every submodule"
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Update layers/meta-balena to 84a61cce6adbcb6bfe05cf08a96f6fe415359104
+      hash: d44f3ff1531935785d8978d0ccea03c4fad6611d
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 84a61cce6adbcb6bfe05cf08a96f6fe415359104
+        changelog-entry: Update layers/meta-balena to 84a61cce6adbcb6bfe05cf08a96f6fe415359104
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 466e576
+              hash: 202b6b05fa009aec7c61883c419d94f7d72aa8bd
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update Node.js
+                      hash: 17b2e1ed1544c90d8d63d97c8ff0edef7474a9c7
+                      body: |
+                        Update node from 22.14.0 to 22.23.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.132
+                  title: ""
+                  date: 2026-09-02T20:19:30.667Z
+          version: meta-balena-8.0.10
+          title: ""
+          date: 2026-09-11T10:47:29.394Z
+        - commits:
+            - subject: "kernel-headers-test: Pin apt to the snapshot archive"
+              hash: 80a936f7feda864aad0b949f3b5be12909cd492a
+              body: >
+                Debian 11 bullseye LTS ended 2026-08-31. Packages are being
+                removed from the
+
+                live mirrors while bullseye-security still advertises them, so
+                apt 404s on
+
+                libc-dev-bin, libssl-dev and linux-libc-dev. bullseye-security
+                has not landed
+
+                on archive.debian.org yet, so there is no live mirror serving a
+                consistent set.
+
+
+                Point apt at the snapshot archive for 20260824T000000Z, the
+                instant this image
+
+                tag was built from. Index and pool then come from the same
+                snapshot and cannot
+
+                disagree. Snapshot Release files are historical so their
+                Valid-Until has passed,
+
+                which needs Acquire::Check-Valid-Until "false".
+
+
+                The base image already ships these lines commented out in
+
+                /etc/apt/sources.list, so this only chooses them.
+              footer:
+                Change-type: patch
+                change-type: patch
+                See: https://github.com/balena-os/meta-balena/issues/3938
+                see: https://github.com/balena-os/meta-balena/issues/3938
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "kernel-headers-test: Replace deprecated balenalib base with
+                debian:bullseye"
+              hash: a87af651323dcd3f1d1c085a1b9e82a0bf3db08e
+              body: >
+                The balenalib base images were deprecated some time ago, and
+                this one also
+
+                pinned a dated tag from 2023 that no longer receives updates.
+                Use the
+
+                upstream debian image instead, pinned to bullseye-20260824. The
+                recipe
+
+                installs everything it needs with apt, so nothing from the
+                balenalib layer
+
+                was being used.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: ".gitmodules: Declare a branch for every submodule"
+              hash: e85ef7467e498ccdba63982788d2d96d48a0fac8
+              body: >
+                check_gitmodules_branches fails while any submodule has no
+                branch declared,
+
+                which currently blocks every PR in this repo. All three pins are
+                ancestors of
+
+                master on their remotes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-8.0.9
+          title: ""
+          date: 2026-09-07T12:08:43.712Z
+        - commits:
+            - subject: "docs: Fix obsolete link to application update locking documentation"
+              hash: 7331c93c62095217cbe9924a655e04215235f853
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ken Bannister <kb2ma@runbox.com>
+                signed-off-by: Ken Bannister <kb2ma@runbox.com>
+              author: Ken Bannister
+              nested: []
+          version: meta-balena-8.0.8
+          title: ""
+          date: 2026-09-03T22:55:02.129Z
+        - commits:
+            - subject: "initrdscripts: more robustness looking for active root"
+              hash: 35dc9967e1e23d36e422e07ba17c0cafdcdf6faf
+              body: >
+                This patch addresses two problems that we have discovered during
+
+                automated QEMU tests:
+
+                1. regenerating UUIDs sometimes makes the by-state symlinks
+                disappear
+
+                2. get_state_path_from_label sometimes picks wrong on encrypted
+                devices
+
+
+                Both fixes have details explained in the comments.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-8.0.7
+          title: ""
+          date: 2026-09-03T14:14:28.030Z
+        - commits:
+            - subject: Update tests/leviathan digest to a0fb22f
+              hash: 81a642b86aafc8e52508170b59522dda3241da5b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update actions/checkout action to v7
+                      hash: 7c0b1f2bd84b4b3d08b28c566ed1156234d7d56a
+                      body: |
+                        Update actions/checkout from 6.1.0 to 7.0.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.131
+                  title: ""
+                  date: 2026-09-01T17:13:24.591Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v25.2.6
+                      hash: eec3527a72122438afc5a3c33e19f540ba4cf3fa
+                      body: |
+                        Update balena-io/balena-cli from 25.1.10 to 25.2.6
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.130
+                  title: ""
+                  date: 2026-09-01T15:00:10.320Z
+                - commits:
+                    - subject: Update debian:bullseye-slim Docker digest to e5b6442
+                      hash: b66da6609226bd658c82a52dd6874de712e0b503
+                      body: |
+                        Update debian
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.129
+                  title: ""
+                  date: 2026-09-01T13:01:41.531Z
+                - commits:
+                    - subject: Update flowzonify to v0.4.2
+                      hash: 9758f79bf7a641855e31e223f3cd1652a923a7ca
+                      body: |
+                        Update flowzonify from 0.0.0 to 0.4.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.128
+                  title: ""
+                  date: 2026-09-01T12:07:02.931Z
+                - commits:
+                    - subject: Update core/contracts digest to 93b3001
+                      hash: 7dbf89eccf51f79c8877a6c42a9f836d9c7ea510
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.127
+                  title: ""
+                  date: 2026-08-31T22:46:41.702Z
+                - commits:
+                    - subject: Update GitHub Actions
+                      hash: 038a052c3f755ff2427e28668cc97c70b3c5891d
+                      body: |
+                        Update actions/checkout
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.126
+                  title: ""
+                  date: 2026-08-31T20:48:24.022Z
+                - commits:
+                    - subject: Update docker/dockerfile:1 Docker digest to ecfaec9
+                      hash: fc64fb88bbb075153064a80145255e1df46817c2
+                      body: |
+                        Update docker/dockerfile
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.125
+                  title: ""
+                  date: 2026-08-31T18:47:38.756Z
+          version: meta-balena-8.0.6
+          title: ""
+          date: 2026-09-02T13:32:16.473Z
+        - commits:
+            - subject: Update flowzonify to v0.4.2
+              hash: 96c841e02785a6c15ee37fb672b316542315ad27
+              body: |
+                Update flowzonify from 0.0.0 to 0.4.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-8.0.5
+          title: ""
+          date: 2026-08-31T19:52:43.673Z
+        - commits:
+            - subject: "hostapp.yml: Set network_mode none on the hostapp service"
+              hash: 81c16302ee5f63da19081bc04ab04066d58d5532
+              body: >
+                Without it, compose-go adds a default network to the published
+
+                composition and the supervisor creates a real bridge whose
+                subnet can
+
+                collide with the device's LAN.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Christina Ying Wang <christina@balena.io>
+                signed-off-by: Christina Ying Wang <christina@balena.io>
+              author: Christina Ying Wang
+              nested: []
+          version: meta-balena-8.0.4
+          title: ""
+          date: 2026-08-26T21:32:57.241Z
+        - commits:
+            - subject: "balena-bootloader.bbclass: Move common bits from devices to class"
+              hash: f0b0c9843b896451123a6e41e7d8e5421608b20b
+              body: >
+                After adding the balena bootloader to a handful of devices, some
+                stuff
+
+                keeps getting copy/pasted into the bootloader recipes.
+
+
+                This patch moves the common bits to balena-bootloader.bbclass to
+                avoid
+
+                duplication and make it easier to use.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-8.0.3
+          title: ""
+          date: 2026-08-24T19:29:40.404Z
+        - commits:
+            - subject: "distro:balena-os.inc: Remove gobject-introspection-data from
+                DISTRO_FEATURES"
+              hash: 049d1a5bf38786fa1d2d50ac563234d4aa742645
+              body: >
+                We do not use GObject Introspection typelib files in the hostOS
+                so let's
+
+                remove them in order to help shrink the rootfs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-8.0.2
+          title: ""
+          date: 2026-08-21T20:43:55.785Z
+        - commits:
+            - subject: "balena: use AtomicWriteFile to save volume options"
+              hash: 130aa0d717e5a2eaf970718a819fb44d86d53a2d
+              body: |
+                Backport moby/moby#48034 to balenaEngine v25
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-8.0.1
+          title: ""
+          date: 2026-08-20T16:35:41.933Z
+        - commits:
+            - subject: "image_types_balena: force 4K block size for resin-state ext4"
+              hash: f7006438a12450fe579aa2a53b1c926ee1a78409
+              body: >
+                mkfs.ext4 defaults to 1K blocks for small filesystems like
+                resin-state
+
+                (~40 MiB). When the partition is later LUKS2-formatted for
+                secure
+
+                boot, dm-crypt exposes a hard 4096-byte block size with no
+                legacy 512e
+
+                compatibility, and the kernel refuses to mount an ext4
+                filesystem
+
+                whose block size is smaller than the underlying device's. Force
+                4K
+
+                blocks to match.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: guille-vega <guillermo.vega@balena.io>
+                signed-off-by: guille-vega <guillermo.vega@balena.io>
+              author: guille-vega
+              nested: []
+            - subject: Increase default boot, root and state partition sizes
+              hash: 1712a927ff527235c15410c02efb438da1c3b64e
+              body: >
+                Double the default root A/B partition size (320 MiB -> 640 MiB)
+                and
+
+                grow the boot (40 MiB -> 100 MiB) and state (20 MiB -> 80 MiB)
+
+                partitions, keeping the total raw image budget in sync
+
+                (700 MiB -> 1460 MiB) in balena_rootfs_size().
+              footer:
+                Change-type: major
+                change-type: major
+                Changelog-entry: Increase default boot, root and state partition sizes
+                changelog-entry: Increase default boot, root and state partition sizes
+                Signed-off-by: guille-vega <guillermo.vega@balena.io>
+                signed-off-by: guille-vega <guillermo.vega@balena.io>
+              author: guille-vega
+              nested: []
+          version: meta-balena-8.0.0
+          title: ""
+          date: 2026-08-17T20:28:57.966Z
+        - commits:
+            - subject: Update tests/leviathan digest to 4ae6a0e
+              hash: af2f3adea6d73d7ae36d205de78e78f90fc31ff8
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update debian:bullseye-slim Docker digest to f313b4b
+                      hash: 6f3ff3ca4c85254bb08941b74b1e91953f4a9f7e
+                      body: |
+                        Update debian
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.124
+                  title: ""
+                  date: 2026-08-15T03:01:13.603Z
+                - commits:
+                    - subject: Update core/contracts digest to 410a252
+                      hash: 8a21458fb5fd4dafdb707807dbf8c280e639abe9
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.123
+                  title: ""
+                  date: 2026-08-15T01:41:19.777Z
+                - commits:
+                    - subject: Update alpine Docker tag to v3.24.1
+                      hash: 4f2b145b0cfeede1cc8711015794b6c9cccd390a
+                      body: |
+                        Update alpine from 3.18.12 to 3.24.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.122
+                  title: ""
+                  date: 2026-08-15T00:05:18.689Z
+                - commits:
+                    - subject: "Core: worker: fix error with custom DT"
+                      hash: 0c91241eb7be4a12fec38d5922d0b872977b143c
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: Ryan Cooke
+                      nested: []
+                  version: leviathan-2.36.121
+                  title: ""
+                  date: 2026-08-14T22:12:01.578Z
+          version: meta-balena-7.9.6
+          title: ""
+          date: 2026-08-17T07:43:58.900Z
+        - commits:
+            - subject: "workflows: Pin yocto-scripts submodule to master"
+              hash: 259a2085fd44d313007071cedbf4876ac6672746
+              body: |
+                Release v1.42.0 has a dependency on the yocto-scripts submodule
+                being updated in the device repo to match.
+
+                Fixes "prepare-image.py: No such file or directory"
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-7.9.5
+          title: ""
+          date: 2026-08-16T16:28:57.591Z
+        - commits:
+            - subject: "hostapp: Add deploy assets to hostapp composition"
+              hash: 5b522aebe5d66c0da950d6fd3543c0d1c34333b4
+              body: >
+                These assets must exist relative to the build/tmp/deploy path
+
+                and will be deployed as resources on the release.
+
+
+                For the hostapp only, some of these resources get
+                transformations
+
+                before being uploaded:
+
+                - cyclonedx-export/ is renamed to cyclonedx/
+
+                - licenses/ is tarred
+
+                - secure-boot-lock/ is tarred
+
+                - images/__MACHINE__/ subdirs are flattened
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-7.9.4
+          title: ""
+          date: 2026-08-11T19:07:41.208Z
+    - subject: "networkmanager_%.bbappend: Disable Wi-Fi power save mode"
+      hash: d7c29e0d08a8257ac1d36a83ec1b1eed6fbbfac6
+      body: |
+        Disable Wi-Fi power save mode to prevent SDIO bus drops
+      footer:
+        Changelog-entry: "networkmanager_%.bbappend: Disable Wi-Fi power save mode"
+        changelog-entry: "networkmanager_%.bbappend: Disable Wi-Fi power save mode"
+        Signed-off-by: guille-vega <guillermo.vega@balena.io>
+        signed-off-by: guille-vega <guillermo.vega@balena.io>
+      author: guille-vega
+      nested: []
+  version: 8.0.10
+  title: ""
+  date: 2026-09-28T07:47:40.110Z
+- commits:
     - subject: Update balena-yocto-scripts to 41fe121711c72f671c4b756f3e19f89f0d9561cc
       hash: 7cf586bfc4d9ce97881918b026f9f0c66977dac4
       body: Update balena-yocto-scripts
