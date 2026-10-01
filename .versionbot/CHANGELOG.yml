@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update flowzonify to 0.4.14
+      hash: d4a539a7871d776558768b6ff476acd38e3d358e
+      body: Update flowzonify
+      footer:
+        Changelog-entry: Update flowzonify to 0.4.14
+        changelog-entry: Update flowzonify to 0.4.14
+      author: balena-renovate[bot]
+      nested: []
+  version: 8.0.13+rev1
+  title: ""
+  date: 2026-10-01T06:52:08.012Z
+- commits:
     - subject: unpin flowzone, track @master
       hash: b98251a3645d4d64a59b815b52fbe2d270a61864
       body: |
