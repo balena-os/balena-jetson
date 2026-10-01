@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v8.0.14
+## (2026-10-01)
+
+
+<details>
+<summary> Update layers/meta-balena to be8adc6aa97c0ade2ae77f5034e2f8f5f2dc5754 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-8.0.14
+> ### (2026-10-01)
+> 
+> * os-extra-firmware.service: use bash instead of sh [guille-vega]
+> 
+
+</details>
+
 # v8.0.13+rev1
 ## (2026-10-01)
 

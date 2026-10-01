@@ -1,4 +1,34 @@
 - commits:
+    - subject: Update layers/meta-balena to be8adc6aa97c0ade2ae77f5034e2f8f5f2dc5754
+      hash: 0e62fe02da4c67a03345115daa3e4e674a1b9ee3
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to be8adc6aa97c0ade2ae77f5034e2f8f5f2dc5754
+        changelog-entry: Update layers/meta-balena to be8adc6aa97c0ade2ae77f5034e2f8f5f2dc5754
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "os-extra-firmware.service: use bash instead of sh"
+              hash: b863800280e307f9c123713d3a35e91417e99568
+              body: >
+                Specify bash instead of sh to avoid running bash in shell
+                compatibility mode, as
+
+                some helper functions contain unsupported bashisms.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: guille-vega <guillermo.vega@balena.io>
+                signed-off-by: guille-vega <guillermo.vega@balena.io>
+              author: guille-vega
+              nested: []
+          version: meta-balena-8.0.14
+          title: ""
+          date: 2026-10-01T10:53:34.643Z
+  version: 8.0.14
+  title: ""
+  date: 2026-10-01T19:12:04.954Z
+- commits:
     - subject: Update flowzonify to 0.4.14
       hash: d4a539a7871d776558768b6ff476acd38e3d358e
       body: Update flowzonify
