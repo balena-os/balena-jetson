@@ -1,4 +1,68 @@
 - commits:
+    - subject: Update contracts to 3b3e3a334e5aa3f67b99ee900b2d738f2fcf8574
+      hash: 4066fc5ca26185b001f980927c6f516e7f023317
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 3b3e3a334e5aa3f67b99ee900b2d738f2fcf8574
+        changelog-entry: Update contracts to 3b3e3a334e5aa3f67b99ee900b2d738f2fcf8574
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "edgeai-orn-nx: Add contract for new public device-type"
+              hash: 2893c63d4cdee4ddadcc286baa67c6a33aa79d82
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+            - subject: "hw.device-type: Re-word provisioning instructions for Orin and Thor
+                boards"
+              hash: f6dae1c2e78acb448749e187c7b8f697847c0e4e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.150
+          title: ""
+          date: 2026-09-16T08:08:52.752Z
+        - commits:
+            - subject: "revpi-connect-4: remove led"
+              hash: a6cc5e7131ccc62e886d95f16001d98a59ad3303
+              body: |
+                This device type has no LED.
+              footer:
+                Relates-to: https://balena.zulipchat.com/#narrow/channel/345889-balena-io.2Fos/topic/raspberrypi.20pipeline/near/619759972
+                relates-to: https://balena.zulipchat.com/#narrow/channel/345889-balena-io.2Fos/topic/raspberrypi.20pipeline/near/619759972
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+          version: contracts-2.0.149
+          title: ""
+          date: 2026-08-28T11:23:48.697Z
+        - commits:
+            - subject: "hw.device-type: Update Orin boards L4T version to 39.2.0"
+              hash: ebae4da834d1e4efe16b41718189ae26005af527
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.148
+          title: ""
+          date: 2026-08-24T18:52:54.835Z
+  version: 8.0.14+rev3
+  title: ""
+  date: 2026-10-02T22:45:54.283Z
+- commits:
     - subject: Update balena-os/github-workflows to
         08a88ee3ca2a070d59140fa334be2784f17918e0
       hash: 0f74b6f0cff4fd0ddce1571b367acf8a248557c5

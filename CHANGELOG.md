@@ -1,6 +1,32 @@
 Change log
 -----------
 
+# v8.0.14+rev3
+## (2026-10-02)
+
+
+<details>
+<summary> Update contracts to 3b3e3a334e5aa3f67b99ee900b2d738f2fcf8574 [balena-renovate[bot]] </summary>
+
+> ## contracts-2.0.150
+> ### (2026-09-16)
+> 
+> * edgeai-orn-nx: Add contract for new public device-type [Alexandru Costache]
+> * hw.device-type: Re-word provisioning instructions for Orin and Thor boards [Alexandru Costache]
+> 
+> ## contracts-2.0.149
+> ### (2026-08-28)
+> 
+> * revpi-connect-4: remove led [Alex Gonzalez]
+> 
+> ## contracts-2.0.148
+> ### (2026-08-24)
+> 
+> * hw.device-type: Update Orin boards L4T version to 39.2.0 [Alexandru Costache]
+> 
+
+</details>
+
 # v8.0.14+rev2
 ## (2026-10-02)
 
