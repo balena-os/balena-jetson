@@ -1,4 +1,34 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 436cae1eb39b15b2c74bac1450162eba0855eb0d
+      hash: 6a2be248039ec007c1387b38e6c19d5d919ffa10
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 436cae1eb39b15b2c74bac1450162eba0855eb0d
+        changelog-entry: Update balena-yocto-scripts to 436cae1eb39b15b2c74bac1450162eba0855eb0d
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "hostapp-composition(overlays): extend schema to check for runtime"
+              hash: 29a5adcbec208f1f723d464c5dcce3ae81ac0b75
+              body: >
+                An image declaring io.balena.image.class as overlay needs to
+                define
+
+                what runtime to use.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.42.17
+          title: ""
+          date: 2026-10-13T20:35:35.076Z
+  version: 8.0.14+rev5
+  title: ""
+  date: 2026-10-14T02:23:37.716Z
+- commits:
     - subject: Update layers/meta-tegra to 94e3db3146dc273ec1df463426c0fcaeacc51b5f
       hash: c2193fbe25973c8658d900b9c090db52f8141753
       body: Update layers/meta-tegra
