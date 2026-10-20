@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v9.0.1
+## (2026-10-20)
+
+
+<details>
+<summary> Update layers/meta-balena to bd83921b7554c820109e78d30d5567c1c9aa2dc7 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-9.0.1
+> ### (2026-10-20)
+> 
+> * redsocks: Fix segfault on startup with 64-bit time_t [guille-vega]
+> 
+
+</details>
+
 # v9.0.0
 ## (2026-10-17)
 

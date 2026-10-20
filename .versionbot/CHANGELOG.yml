@@ -1,4 +1,44 @@
 - commits:
+    - subject: Update layers/meta-balena to bd83921b7554c820109e78d30d5567c1c9aa2dc7
+      hash: 326c1edaf0cb5824add438eeed3d7a713f128e1d
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to bd83921b7554c820109e78d30d5567c1c9aa2dc7
+        changelog-entry: Update layers/meta-balena to bd83921b7554c820109e78d30d5567c1c9aa2dc7
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "redsocks: Fix segfault on startup with 64-bit time_t"
+              hash: db149444a60ab040986264f1eee707ebb41298d7
+              body: >
+                Since Yocto 4.3, 32-bit ARM is built with 64-bit time_t, so the
+
+                "%lu"/"%ld" conversions used for struct timeval members shift
+                the
+
+                remaining arguments and crash on the first log message. Print
+                tv_sec as
+
+                (unsigned) long long with %llu/%lld and tv_usec as (unsigned)
+                long,
+
+                which is correct for both 32 and 64-bit time_t.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: "redsocks: Fix segfault on startup with 64-bit time_t"
+                changelog-entry: "redsocks: Fix segfault on startup with 64-bit time_t"
+                Signed-off-by: guille-vega <guillermo.vega@balena.io>
+                signed-off-by: guille-vega <guillermo.vega@balena.io>
+              author: guille-vega
+              nested: []
+          version: meta-balena-9.0.1
+          title: ""
+          date: 2026-10-20T13:02:30.714Z
+  version: 9.0.1
+  title: ""
+  date: 2026-10-20T21:12:27.568Z
+- commits:
     - subject: Update layers/meta-balena to 0bef00cc5172f3252d07d04943cf835b10b1fc96
       hash: a39177ff8cf294e8edd6555266cff7c08d1c9322
       body: Update layers/meta-balena
