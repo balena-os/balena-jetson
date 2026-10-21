@@ -1,4 +1,91 @@
 - commits:
+    - subject: Update layers/meta-balena to 16e45e384145977bf3ea1c70947238f41f9e4c7f
+      hash: 6a180288f7faee4509e6fb22c904c0b3697fc528
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 16e45e384145977bf3ea1c70947238f41f9e4c7f
+        changelog-entry: Update layers/meta-balena to 16e45e384145977bf3ea1c70947238f41f9e4c7f
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "extract-balena-ca: Rebuild the CA bundle when its inputs change"
+              hash: 1ddb6cbaada5cc0c18861b5c520b921c7e9426b2
+              body: >
+                When /usr/share/ca-certificates/balena is not empty,
+                /etc/ssl/certs is
+
+                bind mounted from the state partition. The bundle was only
+                rebuilt when
+
+                the custom CA in config.json changed, so a hostOS update never
+
+                refreshed the system roots in it. Removing the CA from
+                config.json
+
+                skipped the rebuild entirely.
+
+
+                Hash the system roots, ca-certificates.conf and the custom CA,
+                and
+
+                rebuild when the hash differs from the one stored next to the
+                bundle.
+
+                A failed rebuild logs an error but doesn't fail the unit, since
+
+                balena-supervisor requires it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "ca-certificates: Distrust roots chaining to compromised eMudhra CAs"
+              hash: 04623c3b487fad25ab672c6717cdd74a8d6dd8f3
+              body: >
+                The private keys of eight eMudhra intermediates are compromised
+
+                (CVE-2026-111943). They are revoked, but nothing in balenaOS
+                checks
+
+                revocation, so any client using the system bundle still accepts
+                them.
+
+
+                The intermediates chain to emSign ECC Root CA - G3 via a
+                cross-sign,
+
+                and to Comodo AAA Services root via a Sectigo cross-sign. Both
+                roots
+
+                are trusted in ca-certificates 20211016 (kirkstone). Only the
+                emSign
+
+                root is still trusted in 20260816 (scarthgap and later).
+
+
+                Delete both roots after do_compile so no bundle includes them.
+                That
+
+                covers native too, which the signing classes use to reach
+                SIGN_API.
+              footer:
+                See: https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE
+                see: https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-9.0.2
+          title: ""
+          date: 2026-10-21T00:16:50.983Z
+  version: 9.0.2
+  title: ""
+  date: 2026-10-21T09:53:05.652Z
+- commits:
     - subject: Update layers/meta-balena to bd83921b7554c820109e78d30d5567c1c9aa2dc7
       hash: 326c1edaf0cb5824add438eeed3d7a713f128e1d
       body: Update layers/meta-balena

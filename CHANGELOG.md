@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v9.0.2
+## (2026-10-21)
+
+
+<details>
+<summary> Update layers/meta-balena to 16e45e384145977bf3ea1c70947238f41f9e4c7f [balena-renovate[bot]] </summary>
+
+> ## meta-balena-9.0.2
+> ### (2026-10-21)
+> 
+> * extract-balena-ca: Rebuild the CA bundle when its inputs change [Kyle Harding]
+> * ca-certificates: Distrust roots chaining to compromised eMudhra CAs [Kyle Harding]
+> 
+
+</details>
+
 # v9.0.1
 ## (2026-10-20)
 
