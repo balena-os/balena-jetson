@@ -1,4 +1,1033 @@
 - commits:
+    - subject: Update layers/meta-balena to 2699378ed65350144dc250607adfe538c5f275ac
+      hash: c6bb63f23f9e2489f3b3d74c1bdc2790227f5ac5
+      body: |
+        Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 2699378ed65350144dc250607adfe538c5f275ac
+        changelog-entry: Update layers/meta-balena to 2699378ed65350144dc250607adfe538c5f275ac
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Update layers/poky to 445a6223929b9a7a62b575093659e3d9e1aba982
+      hash: 9ef6314b1960162a3b2bc7fa941a2ca4c02821fb
+      body: |
+        Update layers/poky
+      footer:
+        Changelog-entry: Update layers/poky to 445a6223929b9a7a62b575093659e3d9e1aba982
+        changelog-entry: Update layers/poky to 445a6223929b9a7a62b575093659e3d9e1aba982
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Update balena-yocto-scripts to 436cae1eb39b15b2c74bac1450162eba0855eb0d
+      hash: a6bf9235e1782504067e67b342449c6307071ccc
+      body: |
+        Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 436cae1eb39b15b2c74bac1450162eba0855eb0d
+        changelog-entry: Update balena-yocto-scripts to 436cae1eb39b15b2c74bac1450162eba0855eb0d
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested:
+        - commits:
+            - subject: "hostapp-composition(overlays): extend schema to check for runtime"
+              hash: 29a5adcbec208f1f723d464c5dcce3ae81ac0b75
+              body: >
+                An image declaring io.balena.image.class as overlay needs to
+                define
+
+                what runtime to use.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.42.17
+          title: ""
+          date: 2026-10-13T20:35:35.076Z
+        - commits:
+            - subject: Update ubuntu:22.04 Docker digest to b8b6ee6
+              hash: 13d81e84787dfd8d7f090de65c38faeade4af4f8
+              body: |
+                Update ubuntu
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.16
+          title: ""
+          date: 2026-10-02T08:34:42.921Z
+        - commits:
+            - subject: Update actions/download-artifact action to v8
+              hash: 6889fb775db182554bfc6299f6c4656f61b0271f
+              body: |
+                Update actions/download-artifact from 7.0.0 to 8.0.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.15
+          title: ""
+          date: 2026-09-15T00:23:21.877Z
+        - commits:
+            - subject: Fix ESR tagging step
+              hash: f2c61d1131f1e65491cc00970f669b742121295e
+              body: >
+                THere was a flaw in the ESR tagging logic that would tag the
+                most recently published ESR release as next etc. even if it was
+                an older base version - this could happen in the case of
+                backports
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: balena-yocto-scripts-1.42.14
+          title: ""
+          date: 2026-09-14T19:03:42.788Z
+        - commits:
+            - subject: "yocto-build-deploy: Use authenticated user to update submodules"
+              hash: 2d810521a03200ae0ef9c4e61419ac408be32592
+              body: >
+                Avoid GitHub rate-limiting of self-hosted runners by using an
+                authenticated
+
+                user when updating submodules.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.42.13
+          title: ""
+          date: 2026-09-03T20:30:42.658Z
+        - commits:
+            - subject: Update actions/upload-artifact action to v7
+              hash: 9b783d47dc1b0409e2bed7c0b30d98f3306b68ed
+              body: |
+                Update actions/upload-artifact from 6.0.0 to 7.0.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.12
+          title: ""
+          date: 2026-09-02T17:42:27.336Z
+        - commits:
+            - subject: Update GitHub Actions
+              hash: c8b1539cc32bc97e88c6827d0f90d70965987fec
+              body: |
+                Update aws-actions/configure-aws-credentials from 6.2.2 to 6.2.3
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.11
+          title: ""
+          date: 2026-08-30T15:29:48.255Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.36.33
+              hash: 8df2ae0cd1f46dc92049cf95024fc330ea4c0589
+              body: |
+                Update aws/aws-cli from 2.34.61 to 2.36.33
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.10
+          title: ""
+          date: 2026-08-28T21:15:33.933Z
+        - commits:
+            - subject: Update flowzonify to v0.4.2
+              hash: e2691a502ca964f83922e704328844a87eb16adf
+              body: |
+                Update flowzonify from 0.0.0 to 0.4.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.9
+          title: ""
+          date: 2026-08-28T13:50:44.967Z
+        - commits:
+            - subject: Update balena-io/upload-balena-release-asset action to v0.2.0
+              hash: 83044a0832a0266c65e0f8bd75c077743e228aab
+              body: |
+                Update balena-io/upload-balena-release-asset from 0.1.6 to 0.2.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.8
+          title: ""
+          date: 2026-08-20T14:34:17.825Z
+        - commits:
+            - subject: Update lodash to v4.18.1 [SECURITY]
+              hash: 0e53b8f952a12c1c928443d57c097c36684eb66e
+              body: |
+                Update lodash from 4.17.21 to 4.18.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.7
+          title: ""
+          date: 2026-08-19T21:52:37.501Z
+        - commits:
+            - subject: Update actions/github-script action to v9
+              hash: eef1c91a266b5c4e00de200fe65a46cfca305af0
+              body: |
+                Update actions/github-script from 8.0.0 to 9.0.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.6
+          title: ""
+          date: 2026-08-19T15:33:17.799Z
+        - commits:
+            - subject: "yocto-build-deploy: Drop container-path license symlinks before
+                upload"
+              hash: 5d93f21159fafb8867189e797ec5356743b9b94a
+              body: >
+                license_image.bbclass writes licenses/<arch>/<IMAGE_LINK_NAME>
+                as an absolute
+
+                symlink under the build container's /work mount, so the link
+                text is
+
+                /work/build/tmp/deploy/... on every build. Whether it resolves
+                on the runner
+
+                depends on the /work -> workspace symlink, which is created as a
+                side effect of
+
+                "Sync shared downloads to S3" and is skipped for private device
+                types.
+
+
+                Both outcomes are wrong for "Upload release assets", which
+                archives licenses/**
+
+                with tar --dereference. Without /work the link dangles, GNU tar
+                exits 1 ("File
+
+                removed before we read it") and the composite action's pipefail
+                fails the step
+
+                even though 7-Zip wrote a complete archive. With /work present
+                tar follows the
+
+                link and stores every license manifest twice.
+
+
+                Match on the link text rather than on reachability, so public
+                and private device
+
+                types produce the same archive. The links only alias the
+                timestamped manifest
+
+                directories, which are archived in their own right.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.42.5
+          title: ""
+          date: 2026-08-19T08:33:45.321Z
+        - commits:
+            - subject: Deploy the hostApp with `os-profiles` draft release channel
+              hash: 772f3cc8b5203605857dd148a3cd9c556004c170
+              body: |
+                Bump setup-balena-action to v0.1.0, which adds `cli-channel`.
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Christina Ying Wang
+              nested: []
+          version: balena-yocto-scripts-1.42.4
+          title: ""
+          date: 2026-08-12T18:12:59.907Z
+        - commits:
+            - subject: Update GitHub Actions
+              hash: 72fa14c6875acd783a5251cf7b9deeb7b90979da
+              body: |
+                Update actions/checkout from 6.0.3 to 6.1.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.3
+          title: ""
+          date: 2026-08-12T05:19:09.347Z
+        - commits:
+            - subject: Add source-mirror-setup dependency to All Jobs
+              hash: cfd9b04da5abda6e8495ded8796b27b22eed9626
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.42.2
+          title: ""
+          date: 2026-08-12T00:49:58.776Z
+        - commits:
+            - subject: Update Pin ubuntu Docker tag to 3b06811
+              hash: a1231bad9f7e5f67f481d1904fe8a39cc5c833ac
+              body: |
+                Update ubuntu
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.1
+          title: ""
+          date: 2026-08-11T01:38:01.933Z
+        - commits:
+            - subject: "yocto-build-deploy: Transport artifacts via lzma-artifact-action"
+              hash: c3aaf0e52128824c8dbefbe13adb792318cb5a97
+              body: >
+                Replace actions/upload-artifact + actions/download-artifact and
+                the hand-rolled
+
+                openssl encrypt/decrypt steps with
+                product-os/lzma-artifact-action, which
+
+                LZMA-compresses each artifact into a single archive and, for
+                private or
+
+                secure-boot device types, AES-256 encrypts it (whole archive,
+                headers included).
+
+                Its base-directory input keeps the stored paths flat, so
+                downloads restore files
+
+                at the same locations the consumers already expect - the swap is
+                transport-only,
+
+                no path reshuffling.
+
+
+                Raw .img files are uploaded directly instead of pre-zipped: lzma
+                compresses them
+
+                in transit, so the .img.zip loop in balena_deploy_artifacts is
+                dropped and the
+
+                Leviathan/AMI consumers read the raw image (no unzip).
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "hostapp-deploy: Verify required release assets before finalizing"
+              hash: e1d2974ed7c70a27f2d65d441b963a2defa89763
+              body: >
+                Adds a pre-finalize check that queries the release's attached
+                assets via the
+
+                API and fails if any contractually-required asset (consumed by
+                image-maker)
+
+                is missing. Requirements are derived from device-type.json so
+                flasher/raw
+
+                variants are only demanded when the device type produces them,
+                and edge,
+
+                docker-image and archive types are exempt from the
+                image.json/compressed
+
+                requirement.
+
+
+                Documents the contract in docs/specs/hostapp-release-assets.md.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "hostapp-deploy: Group extension release assets by service"
+              hash: 548462df767eebc277b98857cc1c51ee511fdac8
+              body: >
+                Extension image archives and release assets are now uploaded as
+                separate
+
+                build artifacts (extension-image-<service> and
+                extension-assets-<service>).
+
+                The deploy job downloads each extension's assets into its own
+                folder and
+
+                uploads them wholesale, keyed as <service>/<file>, so
+                identically named
+
+                assets from different extensions no longer overwrite each other
+                on download
+
+                or collide as release resources.
+
+
+                This drops the composition-coupled asset staging step in favour
+                of a plain
+
+                download-and-upload, gated by a new has_extension_assets output.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "hostapp-deploy: Always deploy as draft and finalize after asset
+                upload"
+              hash: 3499b48a39ee4ee47034cd27b5c6f78f8f135d30
+              body: >
+                The hostapp release is now always deployed as a draft, and
+                finalized in a
+
+                separate step only after all release assets have been uploaded.
+                This closes
+
+                the window where a finalized release was presented to devices
+                before its
+
+                CHANGELOG, VERSION, manifests, and compressed images were
+                attached.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "hostapp-deploy: Run on ubuntu-24.04 instead of self-hosted"
+              hash: 1c406b483d22fa56a93fd2b566853359d8d9f36e
+              body: >
+                We don't need self-hosted runners for these download and deploy
+                jobs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "deploy: Create deflates via python script during deploy"
+              hash: a2b48f295639ac0b3803463f8384db285be7446d
+              body: |
+                Removes the legacy call to the private DockerHub balena-img tag
+                that was pinned to an old release for compatibility.
+
+                Instead a local python script will create the deflates after
+                the build and remove the need for the custom S3 paths.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.42.0
+          title: ""
+          date: 2026-08-10T19:09:35.449Z
+        - commits:
+            - subject: Update docker/login-action action to v4
+              hash: 215d51d8a9266bf3b6a23111be920d3f3f47a126
+              body: |
+                Update docker/login-action from 3.7.0 to 4.5.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.41.9
+          title: ""
+          date: 2026-07-24T15:12:10.086Z
+        - commits:
+            - subject: Update GitHub Actions
+              hash: 4514bea4032abfdacbb32c4e0363d69249c3ca3b
+              body: |
+                Update aws-actions/configure-aws-credentials from 6.0.0 to 6.2.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.41.8
+          title: ""
+          date: 2026-07-15T14:03:30.093Z
+        - commits:
+            - subject: Update product-os/review-commit-action action to v0.3.2
+              hash: d60f358679df56824fd0a24bfb5959e029152ab1
+              body: |
+                Update product-os/review-commit-action from 0.3.0 to 0.3.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.41.7
+          title: ""
+          date: 2026-07-14T15:56:52.158Z
+        - commits:
+            - subject: Update balena-io/balena-cli to v25
+              hash: 8dd6bdbcf9024a7b9cdbbaa91ee4c2080a396b61
+              body: |
+                Update balena-io/balena-cli from 24.0.3 to 25.1.10
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.41.6
+          title: ""
+          date: 2026-07-13T13:20:06.104Z
+        - commits:
+            - subject: "yocto-build-deploy: replace pattern based all history first parent
+                match"
+              hash: b3c08ee1850c7013706a2e945f529aa28f329b1d
+              body: >
+                Instead, resolve the PR commit by walking the pushed ref's own
+
+                first-parent history.
+
+
+                Pattern search returns the youngest match reachable from ANY
+                ref,
+
+                so it can jump onto an unrelated branch (e.g. an ESR PR) whose
+                commit is
+
+                not even an ancestor of this tag.
+
+
+                Also,  match any `#<num>` instead of the literal "Merge pull
+                request"
+
+                prefix, so squash merged and custom titled merges
+
+                (like "Update GitHub Actions (#759)") are found, but not
+                version-bump
+
+                commits made by bots.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.41.5
+          title: ""
+          date: 2026-06-29T15:55:45.595Z
+        - commits:
+            - subject: Decode base64-encoded GitHub App private key before token generation
+              hash: dd490e2aa8ec393f4b0d3fd97cb2f68568234ad8
+              body: >
+                The BALENAOS_CI_APP_PRIVATE_KEY secret can now be stored raw or
+
+                base64-encoded. base64 avoids the newline mangling that
+                multi-line PEM
+
+                secrets are prone to in GitHub secret storage.
+
+
+                Each job gets a decode step that passes the key through
+                unchanged if it
+
+                already looks like a PEM (-----BEGIN), otherwise base64-decodes
+                it and
+
+                masks the decoded lines. The six create-github-app-token steps
+                now read
+
+                the decoded output instead of the secret directly.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Update actions/create-github-app-token action to v3
+              hash: 87341be50b5fabca1c3c42499c49c30b0ed40ea7
+              body: |
+                Update actions/create-github-app-token from 2.2.2 to 3.2.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.41.4
+          title: ""
+          date: 2026-06-23T13:27:23.760Z
+        - commits:
+            - subject: Update GitHub Actions
+              hash: 8a391b84283820e3d2d77894b0773abc0c3e9d73
+              body: |
+                Update actions/checkout from 6.0.2 to 6.0.3
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.41.3
+          title: ""
+          date: 2026-06-10T18:36:53.250Z
+        - commits:
+            - subject: "yocto-build-deploy: soft-skip schema validation when not in checkout"
+              hash: 385217067b8f8fa79c79954adfc794ddd15f6163
+              body: >
+                The schema path is relative to the workflow's checkout,
+                requiring device
+
+                repos to carry the balena-yocto-scripts submodule pointer at a
+                ref that
+
+                contains schemas/hostapp-composition.json. Adopters haven't all
+                bumped
+
+                yet. Skip with a ::warning:: annotation when the schema isn't
+                available;
+
+                once submodules bump, validation activates automatically.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "yocto-build-deploy: normalize composition placeholders to __VAR__
+                form"
+              hash: ba4c2f615ffa847d29a0c3a6fd1a16ca317b3be3
+              body: >
+                The composition supported two substitution placeholders with
+                inconsistent
+
+                shapes — __BUILD_OUTPUT__ (sentinel) and $DEVICE_REPO_REV
+                (shell-var). The
+
+                latter collides with compose-spec's documented variable
+                interpolation
+
+                (`$VAR` / `${VAR}`), so it survived to the deploy step only by
+                accident
+
+                of nothing else setting DEVICE_REPO_REV in that environment.
+
+
+                Rename to __DEVICE_REPO_REV__ so both placeholders share one
+                shape that
+
+                compose parsers can't interpret. Add a Placeholders section to
+                the spec
+
+                documenting the contract.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.41.2
+          title: ""
+          date: 2026-06-04T17:32:20.272Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.34.61
+              hash: 2758ddc6dbefcbc1b6792763cb7d2ce78d0162a7
+              body: |
+                Update aws/aws-cli from 2.34.23 to 2.34.61
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.41.1
+          title: ""
+          date: 2026-06-03T23:19:16.674Z
+        - commits:
+            - subject: Add hostapp composition build pipeline
+              hash: 2ad1221c707874f7ed85dc69f62125384d62ccef
+              body: |
+                Build a balenaOS hostapp from a Docker Compose composition declared by
+                the device repo. Services declaring x-build are built in parallel via
+                a matrix job; outputs and registry images are assembled into a single
+                release at deploy time.
+
+                See docs/specs/hostapp-composition.md for the contract.
+
+                Connects to https://balena.fibery.io/Work/Improvement/POC-Build-Pipeline-4069
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.41.0
+          title: ""
+          date: 2026-06-03T17:11:50.990Z
+        - commits:
+            - subject: Make release asset upload step required
+              hash: e23ba4eee20843a54f278e7b720c2894f2e018cc
+              body: |
+                Release assets are now the primary artifact format and direct S3
+                is deprecated pending future removal.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.40.0
+          title: ""
+          date: 2026-06-02T17:11:29.468Z
+        - commits:
+            - subject: "build/barys: Add Wrynose build support"
+              hash: 4c079e100c23f13adf3826fc68cc928a9aaef9e2
+              body: |
+                When building with Poky Wrynose,
+                the oe-init-build-env script needs
+                to be called from the openembedded-core
+                layer, instead of poky.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: balena-yocto-scripts-1.39.35
+          title: ""
+          date: 2026-05-16T15:06:07.890Z
+        - commits:
+            - subject: "Dockerfile_yocto-build-env: Switch to docker-ce, pin 28.5.2"
+              hash: afd7b9b8e70f348317a3107103a6bb19303d3a7c
+              body: >
+                PR #899 pinned docker.io=27.* from jammy-security to fix the
+                API-1.41
+
+                client incompatibility introduced when Ubuntu pushed docker.io
+                29.1.3
+
+                to jammy-updates (Docker 29 raised MIN_API_VERSION from 1.24 to
+                1.44).
+
+
+                Ubuntu has since replaced 27.5.1 in jammy-security with 29.1.3
+                too, so
+
+                the 27.* wildcard now resolves to nothing and image rebuilds
+                fail. Only
+
+                20.10.12 (frozen in jammy/universe) and 29.1.3 (both update
+                pockets)
+
+                remain available from Ubuntu's archive — neither serves us.
+
+
+                Switch to docker-ce from Docker's official APT repo. Docker
+                retains all
+
+                historical versions persistently. Pin
+                docker-ce=5:28.5.2-1~ubuntu.22.04~jammy
+
+                — the newest version where moby's MinSupportedAPIVersion is
+                still 1.24
+
+                (verified at the v28.5.2 tag in moby/moby). Includes 27.x and
+                28.x
+
+                security fixes Ubuntu won't backport now that they've moved on
+                to 29.
+
+
+                The version is held in DOCKER_CE_VERSION with a renovate
+                annotation so
+
+                patch and minor bumps within 28.x land as reviewable PRs rather
+                than
+
+                silent drift on each rebuild. A renovate.json packageRule caps
+                moby/moby
+
+                at <29.0.0 so renovate stops at the API-min boundary instead of
+
+                proposing 29.x bumps.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.39.34
+          title: ""
+          date: 2026-05-07T14:02:00.032Z
+        - commits:
+            - subject: "yocto-build-deploy.yml: Wait for self-CI helper image before Build"
+              hash: 795ee59c2538578adb96117dec045e1666a5711b
+              body: >
+                Flowzone bakes the per-PR helper image in parallel with the
+                build
+
+                workflow, so when self-CI runs against this repo, the Build step
+
+                would race Flowzone's publish job and try to pull a tag that may
+
+                not exist yet. Wait on Flowzone's "Publish docker" checks
+                against
+
+                the PR head SHA before running Build — using check-regexp to
+                match
+
+                the per-target Publish variants. Only applies in self-CI on this
+
+                repo; downstream device repos consuming this reusable workflow
+                are
+
+                unaffected.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "yocto-build-deploy.yml: Override helper image tag for self-CI"
+              hash: 0a2536c6c9adbc89e316e185ee9c87e35f8684b9
+              body: >
+                When a PR opens against this repo, the build steps default to
+                pulling
+
+                the helper image at the master-tip VERSION (read from the
+                VERSION
+
+                file), which doesn't reflect changes proposed by the PR.
+                Flowzone's
+
+                bake pushes a per-commit image at
+                build-<head.sha>-yocto-build-env,
+
+                so override BALENA_YOCTO_SCRIPTS_VERSION to that tag prefix when
+                this
+
+                workflow is running self-CI on a pull_request event. The
+                empty-string
+
+                fallback preserves the VERSION-file default for downstream
+                device
+
+                repos that consume this reusable workflow.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "Dockerfile_yocto-build-env: Pin docker.io to 27.x"
+              hash: c10ee4194b9ccb0ddc19ecd26d691df9fb2f6cba
+              body: >
+                Ubuntu recently pushed docker.io 29.1.3 to jammy-updates. Docker
+                29.x
+
+                raised MIN_API_VERSION from 1.24 to 1.44, dropping support for
+                any
+
+                client speaking API < 1.44. The apt install of docker.io in this
+
+                Dockerfile is unpinned, so every helper-image rebuild silently
+                picks
+
+                up the latest version from jammy-updates — once 29.1.3 landed,
+
+                freshly baked images broke the API-1.41 client invoked by
+
+                mkfs-hostapp-native:do_compile.
+
+
+                Released image tags before v1.39.32 baked docker.io 28.2.2,
+                which
+
+                still accepted API-1.41 clients (Docker 26-28 kept
+                MIN_API_VERSION
+
+                at 1.24; only the *latest* API moved to 1.44). v1.39.32 — and
+                any
+
+                image rebuilt for a dev branch in the last few days — bakes
+                29.1.3.
+
+
+                Pin docker.io=27.* — the newest major in jammy that still
+                accepts
+
+                API-1.41 clients (currently 27.5.1-0ubuntu3~22.04.2 from
+                jammy-security).
+
+                The wildcard absorbs Ubuntu's future security patches within the
+                27.x
+
+                line without re-introducing this regression. Re-evaluate the pin
+                when
+
+                balena-engine moves to a newer major; jammy ships only 20.10 /
+                27.5
+
+                / 29.1 of docker.io, so for anything else, switch to docker-ce
+                from
+
+                Docker's official APT repo.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.39.33
+          title: ""
+          date: 2026-05-01T17:03:35.767Z
+        - commits:
+            - subject: Set the default source-mirror environment to
+                balena-production.us-east-1
+              hash: fd1aeffff07c05339cc928e9a87595c9e7c9bd47
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Backup shared-downloads to S3 on build failure
+              hash: 0457daafd362362857bd8c4498cce3f0aa70dbe2
+              body: |
+                Avoid losing new downloaded files if the build
+                failed for unrelated reasons.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: ".github/workflows/yocto-build-deploy.yml: Add the rust crates to
+                MIRRORS"
+              hash: 9a9ee2ebc6140bf90ef87b5de937bea092a3b6b0
+              body: >
+                Lately fetching the rust crates has been rate limited so let's
+                make sure we
+
+                add our shared downloaded rust crates to MIRRORS in case we get
+                fetching errors
+
+                from upstream.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.39.32
+          title: ""
+          date: 2026-04-30T00:59:39.473Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.34.23
+              hash: 6dd4b0df079d84d31ea0157f30b086df6917de40
+              body: |
+                Update aws/aws-cli from 2.33.25 to 2.34.23
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.31
+          title: ""
+          date: 2026-04-03T08:24:34.624Z
+        - commits:
+            - subject: Update balena-io/balena-cli to v24
+              hash: e5c4beeab5837fda8514834663ede9098ccd6cea
+              body: |
+                Update balena-io/balena-cli from 23.2.30 to 24.0.3
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.30
+          title: ""
+          date: 2026-04-01T07:52:47.775Z
+        - commits:
+            - subject: stop running AMI delete on failure step if no AMI created, and stop AMI
+                deploy on non-finalised workflow-dispatch
+              hash: 703e2ddca64701f96903b8f0ec6d6e651847ae40
+              body: >
+                These 2 rules are there to stop accidental AMI creation or
+                deletion
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+            - subject: "workflows: simplify esr check to tag comparison"
+              hash: e4cbdbab03bdf05a8fcda27584efe7511a402e9e
+              body: >
+                The workflow dispatch ESR check was erroneously matching ESR
+                versions.
+
+                This commit uses the same match for both workflow and dispatch
+                runs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.39.29
+          title: ""
+          date: 2026-03-28T17:54:53.249Z
+  version: 2026.4.1
+  title: ""
+  date: 2026-10-27T16:36:18.250Z
+- commits:
     - subject: Update layers/meta-openembedded to
         9d8ef26a9693e2c70ae34abe1a753873d42ec588
       hash: 1de4ddcd3b98ef388dfbe5eab2e1336d6fbaa023

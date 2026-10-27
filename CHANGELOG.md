@@ -1,6 +1,210 @@
 Change log
 -----------
 
+# v2026.4.1
+## (2026-10-27)
+
+* Update layers/meta-balena to 2699378ed65350144dc250607adfe538c5f275ac [Kyle Harding]
+* Update layers/poky to 445a6223929b9a7a62b575093659e3d9e1aba982 [Kyle Harding]
+
+<details>
+<summary> Update balena-yocto-scripts to 436cae1eb39b15b2c74bac1450162eba0855eb0d [Kyle Harding] </summary>
+
+> ## balena-yocto-scripts-1.42.17
+> ### (2026-10-13)
+> 
+> * hostapp-composition(overlays): extend schema to check for runtime [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.42.16
+> ### (2026-10-02)
+> 
+> * Update ubuntu:22.04 Docker digest to b8b6ee6 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.15
+> ### (2026-09-15)
+> 
+> * Update actions/download-artifact action to v8 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.14
+> ### (2026-09-14)
+> 
+> * Fix ESR tagging step [Ryan Cooke]
+> 
+> ## balena-yocto-scripts-1.42.13
+> ### (2026-09-03)
+> 
+> * yocto-build-deploy: Use authenticated user to update submodules [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.42.12
+> ### (2026-09-02)
+> 
+> * Update actions/upload-artifact action to v7 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.11
+> ### (Invalid date)
+> 
+> * Update GitHub Actions [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.10
+> ### (2026-08-28)
+> 
+> * Update aws/aws-cli to v2.36.33 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.9
+> ### (2026-08-28)
+> 
+> * Update flowzonify to v0.4.2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.8
+> ### (2026-08-20)
+> 
+> * Update balena-io/upload-balena-release-asset action to v0.2.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.7
+> ### (2026-08-19)
+> 
+> * Update lodash to v4.18.1 [SECURITY] [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.6
+> ### (2026-08-19)
+> 
+> * Update actions/github-script action to v9 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.5
+> ### (2026-08-19)
+> 
+> * yocto-build-deploy: Drop container-path license symlinks before upload [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.42.4
+> ### (2026-08-12)
+> 
+> * Deploy the hostApp with `os-profiles` draft release channel [Christina Ying Wang]
+> 
+> ## balena-yocto-scripts-1.42.3
+> ### (2026-08-12)
+> 
+> * Update GitHub Actions [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.2
+> ### (2026-08-12)
+> 
+> * Add source-mirror-setup dependency to All Jobs [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.42.1
+> ### (2026-08-11)
+> 
+> * Update Pin ubuntu Docker tag to 3b06811 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.42.0
+> ### (2026-08-10)
+> 
+> * yocto-build-deploy: Transport artifacts via lzma-artifact-action [Kyle Harding]
+> * hostapp-deploy: Verify required release assets before finalizing [Kyle Harding]
+> * hostapp-deploy: Group extension release assets by service [Kyle Harding]
+> * hostapp-deploy: Always deploy as draft and finalize after asset upload [Kyle Harding]
+> * hostapp-deploy: Run on ubuntu-24.04 instead of self-hosted [Kyle Harding]
+> * deploy: Create deflates via python script during deploy [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.41.9
+> ### (2026-07-24)
+> 
+> * Update docker/login-action action to v4 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.8
+> ### (2026-07-15)
+> 
+> * Update GitHub Actions [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.7
+> ### (2026-07-14)
+> 
+> * Update product-os/review-commit-action action to v0.3.2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.6
+> ### (2026-07-13)
+> 
+> * Update balena-io/balena-cli to v25 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.5
+> ### (2026-06-29)
+> 
+> * yocto-build-deploy: replace pattern based all history first parent match [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.41.4
+> ### (2026-06-23)
+> 
+> * Decode base64-encoded GitHub App private key before token generation [Kyle Harding]
+> * Update actions/create-github-app-token action to v3 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.3
+> ### (2026-06-10)
+> 
+> * Update GitHub Actions [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.2
+> ### (2026-06-04)
+> 
+> * yocto-build-deploy: soft-skip schema validation when not in checkout [Kyle Harding]
+> * yocto-build-deploy: normalize composition placeholders to __VAR__ form [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.41.1
+> ### (2026-06-03)
+> 
+> * Update aws/aws-cli to v2.34.61 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.41.0
+> ### (2026-06-03)
+> 
+> * Add hostapp composition build pipeline [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.40.0
+> ### (2026-06-02)
+> 
+> * Make release asset upload step required [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.39.35
+> ### (2026-05-16)
+> 
+> * build/barys: Add Wrynose build support [Alexandru Costache]
+> 
+> ## balena-yocto-scripts-1.39.34
+> ### (2026-05-07)
+> 
+> * Dockerfile_yocto-build-env: Switch to docker-ce, pin 28.5.2 [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.39.33
+> ### (2026-05-01)
+> 
+> * yocto-build-deploy.yml: Wait for self-CI helper image before Build [Kyle Harding]
+> * yocto-build-deploy.yml: Override helper image tag for self-CI [Kyle Harding]
+> * Dockerfile_yocto-build-env: Pin docker.io to 27.x [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.39.32
+> ### (Invalid date)
+> 
+> * Set the default source-mirror environment to balena-production.us-east-1 [Kyle Harding]
+> * Backup shared-downloads to S3 on build failure [Kyle Harding]
+> * .github/workflows/yocto-build-deploy.yml: Add the rust crates to MIRRORS [Florin Sarbu]
+> 
+> ## balena-yocto-scripts-1.39.31
+> ### (2026-04-03)
+> 
+> * Update aws/aws-cli to v2.34.23 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.39.30
+> ### (2026-04-01)
+> 
+> * Update balena-io/balena-cli to v24 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.39.29
+> ### (2026-03-28)
+> 
+> * stop running AMI delete on failure step if no AMI created, and stop AMI deploy on non-finalised workflow-dispatch [Ryan Cooke]
+> * workflows: simplify esr check to tag comparison [Alex Gonzalez]
+> 
+
+</details>
+
 # 2026.4.0
 ## (2026-04-02)
 
