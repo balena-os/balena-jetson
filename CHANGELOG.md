@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v9.0.4
+## (2026-11-03)
+
+
+<details>
+<summary> Update layers/meta-balena to bcf48b44f9a35603274e06a2c663ddc5716d9d72 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-9.0.4
+> ### (2026-10-29)
+> 
+> * balena-os.inc: Derive the board VERSION path from COREBASE [Alex Gonzalez]
+> 
+
+</details>
+
 # v9.0.3+rev1
 ## (2026-11-03)
 

@@ -1,4 +1,51 @@
 - commits:
+    - subject: Update layers/meta-balena to bcf48b44f9a35603274e06a2c663ddc5716d9d72
+      hash: 5b0176375e3aec2beff0dfedcf047ef92e0c2cb9
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to bcf48b44f9a35603274e06a2c663ddc5716d9d72
+        changelog-entry: Update layers/meta-balena to bcf48b44f9a35603274e06a2c663ddc5716d9d72
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "balena-os.inc: Derive the board VERSION path from COREBASE"
+              hash: 2a2915b92799a09c9914cde7b267d4e39d4a35ca
+              body: >
+                The previous code searched BBLAYERS for a layer that ends in
+                poky/meta.
+
+                Yocto 6.0 Wrynose retires the poky combo repository. A Wrynose
+                build uses
+
+                openembedded-core, bitbake and meta-yocto directly. No layer
+                path then
+
+                ends in poky/meta, so HOSTOS_VERSION kept its default. COREBASE
+                points at
+
+                the core metadata directory in both layouts.
+
+
+                Fail the build when the VERSION file is missing or empty, or
+                when COREBASE
+
+                is unset.
+              footer:
+                See: https://www.yoctoproject.org/blog/2026/05/13/yocto-project-6-0-wrynose-is-here/
+                see: https://www.yoctoproject.org/blog/2026/05/13/yocto-project-6-0-wrynose-is-here/
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-9.0.4
+          title: ""
+          date: 2026-10-29T08:50:17.780Z
+  version: 9.0.4
+  title: ""
+  date: 2026-11-03T15:44:10.882Z
+- commits:
     - subject: Update contracts to 17d87d30099bcc7bbd457488c19e626dd658ac97
       hash: f1209e51713690595a09caf3bed2d1f76b46dccc
       body: Update contracts
