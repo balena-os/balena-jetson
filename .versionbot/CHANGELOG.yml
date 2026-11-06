@@ -1,4 +1,42 @@
 - commits:
+    - subject: Update layers/meta-balena to a89848c3869823b40be382158dc4ad3ac1ab20c4
+      hash: 63b5a99def33426fada355239900740c02bd7005
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to a89848c3869823b40be382158dc4ad3ac1ab20c4
+        changelog-entry: Update layers/meta-balena to a89848c3869823b40be382158dc4ad3ac1ab20c4
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 2444d08
+              hash: d148c1502131deb876a029745f15c6e42f2997bc
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: "core/contracts: Update to v2.0.151"
+                      hash: 29495b3b6effeee3eba7eb818ee6aa7c134d8346
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                      author: Alexandru Costache
+                      nested: []
+                  version: leviathan-2.36.134
+                  title: ""
+                  date: 2026-11-05T13:20:08.264Z
+          version: meta-balena-9.0.5
+          title: ""
+          date: 2026-11-05T20:37:35.534Z
+  version: 9.0.5
+  title: ""
+  date: 2026-11-06T04:33:20.815Z
+- commits:
     - subject: Update layers/meta-balena to bcf48b44f9a35603274e06a2c663ddc5716d9d72
       hash: 5b0176375e3aec2beff0dfedcf047ef92e0c2cb9
       body: Update layers/meta-balena
