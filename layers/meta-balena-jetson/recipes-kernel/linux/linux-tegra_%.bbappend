@@ -13,6 +13,7 @@ SRC_URI:append = " \
     file://fix-brcmfmac-compilation.patch \
     file://hardware-nvidia-platform-t210-porg.patch \
     file://0002-Update-qmi_wwan-to-kernel-4.14.patch \
+    file://0001-ipv4-free-inet_opt-and-ireq_opt-after-an-RCU-grace-p.patch \
 "
 
 SRC_URI:append:jetson-tx2 = " \
