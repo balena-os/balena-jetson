@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v9.1.0+rev1
+## (2026-11-18)
+
+
+<details>
+<summary> Update balena-yocto-scripts to d2ffdf35ad27c2e97c53ea54b301543cc97b3763 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.42.19
+> ### (2026-11-18)
+> 
+> * hostapp-deploy: Stop depending on s3-deploy [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.42.18
+> ### (2026-11-13)
+> 
+> * build/barys: Follow symlinks when looking for conf sample files [Florin Sarbu]
+> 
+
+</details>
+
 # v9.1.0
 ## (2026-11-14)
 

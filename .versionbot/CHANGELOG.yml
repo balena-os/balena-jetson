@@ -1,4 +1,60 @@
 - commits:
+    - subject: Update balena-yocto-scripts to d2ffdf35ad27c2e97c53ea54b301543cc97b3763
+      hash: 723b4b9dee5031db1e09e1ce47254407fe0ef500
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to d2ffdf35ad27c2e97c53ea54b301543cc97b3763
+        changelog-entry: Update balena-yocto-scripts to d2ffdf35ad27c2e97c53ea54b301543cc97b3763
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "hostapp-deploy: Stop depending on s3-deploy"
+              hash: 667d2aad52da867ba651c5169ac7e0e410e5e309
+              body: >
+                web-artifacts are now the required release artifact and fail the
+
+                deploy if missing. S3 is legacy and slated for deprecation, so
+                an S3
+
+                failure should no longer block the hostapp release.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.42.19
+          title: ""
+          date: 2026-11-18T17:07:59.256Z
+        - commits:
+            - subject: "build/barys: Follow symlinks when looking for conf sample files"
+              hash: 7ce9e549c2efc31a9c0058b49345a6a81d5da2f7
+              body: >
+                When using additional layers like the ones adding secure boot
+                support
+
+                (which would have conf/templates as symlink to conf/samples in
+                order to support
+
+                multiple Yocto releases at the same time) we need to make sure
+                the "find" command
+
+                is able to search into such symkinked directories.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.42.18
+          title: ""
+          date: 2026-11-13T19:35:23.517Z
+  version: 9.1.0+rev1
+  title: ""
+  date: 2026-11-18T21:57:35.531Z
+- commits:
     - subject: Update layers/meta-balena to 6ce4cc6078d2f518a7141afc18f1a131d61e9da6
       hash: 9a100b80780af4ca9db358581c4438f45207a543
       body: Update layers/meta-balena
