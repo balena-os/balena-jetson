@@ -1,0 +1,99 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Eric Dumazet <edumazet@kernel.org>
+Date: Thu, 1 Oct 2026 22:12:53 +0000
+Subject: [PATCH] ipv4: free inet_opt and ireq_opt after an RCU grace period
+
+Backport of upstream commit e3f33b0a1d89d738e2b913dab519226eaf76e15b
+("ipv4: free inet_opt and ireq_opt after an RCU grace period"), which
+fixes CVE-2026-98432.
+
+tcp_v4_syn_recv_sock() transfers ownership of ireq->ireq_opt to the
+child socket without copying it. Another cpu can concurrently send a
+SYNACK from tcp_check_req() for the same request socket. The readers
+in tcp_v4_send_synack() and inet_csk_route_req() hold only
+rcu_read_lock(), so the options can be freed under them, giving a
+use-after-free in ip_options_build(). IPv6 is not affected.
+
+Upstream uses kfree_rcu() directly. On 4.9 kfree_rcu() takes the
+address of the rcu_head member without a NULL check, and
+kfree_call_rcu() then passes it to __call_rcu(). Since rcu is the
+first member of struct ip_options_rcu, a NULL pointer would reach
+call_rcu() as a NULL rcu_head. Both call sites see NULL whenever the
+socket carries no IP options, which is the common case, so the frees
+are guarded here. This matches the existing idiom in
+cipso_v4_req_setattr().
+
+The request socket migration path described upstream does not exist
+on 4.9, so only the tcp_v4_syn_recv_sock() race applies.
+
+net/dccp/ipv4.c carries the same pattern. Upstream does not fix it
+because DCCP was removed from mainline. It is not built by
+tegra_defconfig, and is patched here only to keep the two paths
+consistent.
+
+Upstream-Status: Backport [e3f33b0a1d89d738e2b913dab519226eaf76e15b]
+CVE: CVE-2026-98432
+---
+diff --git a/net/dccp/ipv4.c b/net/dccp/ipv4.c
+index 322268b88fec..336c97d94e6e 100644
+--- a/net/dccp/ipv4.c
++++ b/net/dccp/ipv4.c
+@@ -552,8 +552,13 @@ static void dccp_v4_ctl_send_reset(const struct sock *sk, struct sk_buff *rxskb)
+ 
+ static void dccp_v4_reqsk_destructor(struct request_sock *req)
+ {
++	struct ip_options_rcu *ireq_opt;
++
+ 	dccp_feat_list_purge(&dccp_rsk(req)->dreq_featneg);
+-	kfree(rcu_dereference_protected(inet_rsk(req)->ireq_opt, 1));
++	ireq_opt = rcu_dereference_protected(inet_rsk(req)->ireq_opt, 1);
++	/* 4.9 kfree_rcu() dereferences the pointer unconditionally */
++	if (ireq_opt)
++		kfree_rcu(ireq_opt, rcu);
+ }
+ 
+ void dccp_syn_ack_timeout(const struct request_sock *req)
+diff --git a/net/ipv4/af_inet.c b/net/ipv4/af_inet.c
+index 0713d8a700da..2613ffab31a3 100644
+--- a/net/ipv4/af_inet.c
++++ b/net/ipv4/af_inet.c
+@@ -157,6 +157,7 @@ static DEFINE_SPINLOCK(inetsw_lock);
+ void inet_sock_destruct(struct sock *sk)
+ {
+ 	struct inet_sock *inet = inet_sk(sk);
++	struct ip_options_rcu *inet_opt;
+ 
+ 	__skb_queue_purge(&sk->sk_receive_queue);
+ 	__skb_queue_purge(&sk->sk_error_queue);
+@@ -178,7 +179,10 @@ void inet_sock_destruct(struct sock *sk)
+ 	WARN_ON(sk->sk_wmem_queued);
+ 	WARN_ON(sk->sk_forward_alloc);
+ 
+-	kfree(rcu_dereference_protected(inet->inet_opt, 1));
++	inet_opt = rcu_dereference_protected(inet->inet_opt, 1);
++	/* 4.9 kfree_rcu() dereferences the pointer unconditionally */
++	if (inet_opt)
++		kfree_rcu(inet_opt, rcu);
+ 	dst_release(rcu_dereference_check(sk->sk_dst_cache, 1));
+ 	dst_release(rcu_dereference_protected(sk->sk_rx_dst, 1));
+ 	sk_refcnt_debug_dec(sk);
+diff --git a/net/ipv4/tcp_ipv4.c b/net/ipv4/tcp_ipv4.c
+index 6c5f6c27b55a..b7a32cc03ad2 100644
+--- a/net/ipv4/tcp_ipv4.c
++++ b/net/ipv4/tcp_ipv4.c
+@@ -884,7 +884,12 @@ static int tcp_v4_send_synack(const struct sock *sk, struct dst_entry *dst,
+  */
+ static void tcp_v4_reqsk_destructor(struct request_sock *req)
+ {
+-	kfree(rcu_dereference_protected(inet_rsk(req)->ireq_opt, 1));
++	struct ip_options_rcu *ireq_opt;
++
++	ireq_opt = rcu_dereference_protected(inet_rsk(req)->ireq_opt, 1);
++	/* 4.9 kfree_rcu() dereferences the pointer unconditionally */
++	if (ireq_opt)
++		kfree_rcu(ireq_opt, rcu);
+ }
+ 
+ #ifdef CONFIG_TCP_MD5SIG
+-- 
+2.43.0
