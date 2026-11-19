@@ -1,17 +1,18 @@
-From f9756aeb7e5095f17cfbe6ec6cfac9ccf63554a5 Mon Sep 17 00:00:00 2001
-From: Pablo Rodriguez Quesada <pablo.rodriguez-quesada@windriver.com>
-Date: Thu, 6 Feb 2020 00:10:41 +0000
-Subject: [PATCH] Makefile: Fix RCP flags and change path definitions signs
+From 8fdbc558a8a3230899942fe2a8ce4b76cab40846 Mon Sep 17 00:00:00 2001
+From: Ilies CHERGUI <ilies.chergui@gmail.com>
+Date: Sun, 8 Aug 2021 21:18:48 +0100
+Subject: [PATCH 1/4] Makefile: Fix RCP flags and change path definitions signs
 
 Add RCP -ltirpc flag and fix equal signs on paths definitions.
 
 Signed-off-by: Pablo Rodriguez Quesada <pablo.rodriguez-quesada@windriver.com>
+Signed-off-by: Ilies CHERGUI <ilies.chergui@gmail.com>
 ---
  Makefile | 33 ++++++++++++++++++++-------------
  1 file changed, 20 insertions(+), 13 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 8f7f3b4..6150129 100644
+index 8f7f3b4..3f02b9d 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -13,14 +13,14 @@ WITH_SECCOMP ?= yes
@@ -49,7 +50,7 @@ index 8f7f3b4..6150129 100644
              -Wstrict-prototypes -Wunreachable-code -Wconversion -Wsign-conversion \
 -            -Wno-unknown-warning-option -Wno-format-extra-args -Wno-gnu-alignof-expression $(CFLAGS)
 +            -Wno-format-extra-args $(if $(filter clang,$(CCNAME)),-Wno-unknown-warning-option -Wno-gnu-alignof-expression,) \
-+	    -I=/usr/include/tirpc $(CFLAGS)
++            -I=/usr/include/tirpc $(CFLAGS)
  LDFLAGS  := -Wl,-zrelro -Wl,-znow -Wl,-zdefs -Wl,--gc-sections $(LDFLAGS)
  LDLIBS   := $(LDLIBS)
  
@@ -89,3 +90,6 @@ index 8f7f3b4..6150129 100644
  endif
  
  install: all
+-- 
+2.32.0
+
