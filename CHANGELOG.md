@@ -1,6 +1,42 @@
 Change log
 -----------
 
+# v9.1.0+rev2
+## (2026-11-24)
+
+
+<details>
+<summary> Update balena-yocto-scripts to ac62fde95212b8eb2c40b385b530fefbd765846f [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.44.0
+> ### (2026-11-24)
+> 
+> * yocto-build-deploy: Attach all service assets under flat keys [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.43.2
+> ### (2026-11-20)
+> 
+> * Update aws/aws-cli to v2.41.2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.43.1
+> ### (2026-11-20)
+> 
+> * Update ubuntu:22.04 Docker digest to f64b2ff [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.43.0
+> ### (2026-11-19)
+> 
+> * yocto-build-deploy: Build hostapp and extensions in one bitbake invocation [Kyle Harding]
+> * yocto-build-deploy: Match built images to services by name [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.42.20
+> ### (2026-11-18)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+
+</details>
+
 # v9.1.0+rev1
 ## (2026-11-18)
 

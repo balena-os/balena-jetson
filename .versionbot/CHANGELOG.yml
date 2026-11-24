@@ -1,4 +1,197 @@
 - commits:
+    - subject: Update balena-yocto-scripts to ac62fde95212b8eb2c40b385b530fefbd765846f
+      hash: 091d247df60bae64f41236b29a3633b420224c2d
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to ac62fde95212b8eb2c40b385b530fefbd765846f
+        changelog-entry: Update balena-yocto-scripts to ac62fde95212b8eb2c40b385b530fefbd765846f
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "yocto-build-deploy: Attach all service assets under flat keys"
+              hash: 2c9ac676f3f869de9df462dec3f877d181fe3175
+              body: >
+                The build job collects every service's assets into one
+                release-assets
+
+                artifact and applies the flat key transform there. Extension
+                assets get
+
+                the same keys as hostapp assets, and a PR build fails on a key
+                conflict
+
+                instead of the deploy overwriting or 409ing. Overlay asset lists
+                append
+
+                to the meta-balena base list instead of merging by index.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.44.0
+          title: ""
+          date: 2026-11-24T13:40:10.507Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.41.2
+              hash: b31c51d62cfa91c1337dcc27957dcc8b4126e04e
+              body: |
+                Update aws/aws-cli from 2.36.33 to 2.41.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.43.2
+          title: ""
+          date: 2026-11-20T19:28:27.130Z
+        - commits:
+            - subject: Update ubuntu:22.04 Docker digest to f64b2ff
+              hash: 8b8e3f01f2b96b189cd55d83b0e90e9606f05cd2
+              body: |
+                Update ubuntu
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.43.1
+          title: ""
+          date: 2026-11-20T15:58:37.452Z
+        - commits:
+            - subject: "yocto-build-deploy: Build hostapp and extensions in one bitbake
+                invocation"
+              hash: 8438f5f50e199a99208525b2c49c15a538e5bbb2
+              body: >
+                The build matrix ran one job per x-build service. Each job took
+                its own
+
+                runner, parsed every layer, and rebuilt the shared task graph
+                (toolchain,
+
+                kernel, libc) on a cold cache. The jobs also built from
+                different
+
+                configurations: signing vars and the caller's build-args reached
+                the
+
+                hostapp job only, so an extension could build against a kernel
+                that
+
+                differs from the hostapp kernel.
+
+
+                Replace the matrix with a single build job that passes every
+                target to
+
+                one bitbake call. The hostapp target now comes from the device
+                type's
+
+                yocto.image, as barys only falls back to it when no -i is given.
+
+
+                Per-service x-build.build_args become a top-level x-build-args
+                list,
+
+                since one build has one configuration. The meta-balena base list
+                comes
+
+                first, then the device overlay, then the caller's build-args
+                input, so
+
+                a later source overrides an earlier one. The old per-service
+                field
+
+                fails the parse. The caller's build-args input now also reaches
+                every
+
+                target.
+
+
+                The parse step moves to github-script so the logic stays inline
+                rather
+
+                than in a submodule script. It also fails when the hostapp
+                declares no
+
+                assets, when more than one service is a hostapp, or when an
+                extension
+
+                names no recipe.
+
+
+                Container images ship in one container-images artifact. The
+                build job
+
+                expands each extension's asset globs once, stages the matches
+                under
+
+                service/<name>/, and uploads them as one
+                release-assets-extensions
+
+                artifact that the deploy job extracts in place. The build job
+                also
+
+                checks every service's image and assets, so a missing extension
+                output
+
+                fails the PR rather than the deploy after merge.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "yocto-build-deploy: Match built images to services by name"
+              hash: 5575e6ffa3fbadbc187f3c97aaa77de51f2a075b
+              body: >
+                The deploy step re-derived each service's archive name in yq,
+
+                duplicating the rule from the composition parse. It also built
+                yq
+
+                paths by interpolation, so a dotted service name such as
+                my-ext.v2
+
+                resolved to a nested key and failed as an orphan archive.
+
+
+                Emit a service, archive and image class mapping from the parse
+                step
+
+                and drive the load loop from it, reading the service key with
+
+                strenv().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.43.0
+          title: ""
+          date: 2026-11-19T21:27:22.677Z
+        - commits:
+            - subject: Update Lock file maintenance
+              hash: 4be9cd19f94e88acd1c678fefbcf8a2159641f54
+              body: |
+                Update 
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.20
+          title: ""
+          date: 2026-11-18T23:33:26.645Z
+  version: 9.1.0+rev2
+  title: ""
+  date: 2026-11-24T18:22:21.914Z
+- commits:
     - subject: Update balena-yocto-scripts to d2ffdf35ad27c2e97c53ea54b301543cc97b3763
       hash: 723b4b9dee5031db1e09e1ce47254407fe0ef500
       body: Update balena-yocto-scripts
