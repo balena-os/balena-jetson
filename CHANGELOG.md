@@ -1,6 +1,24 @@
 Change log
 -----------
 
+# v9.1.2+rev3
+## (2026-11-26)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 6fb8bd255436e8e4d330e78bbce67fd08363558b [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.44.1
+> ### (2026-11-26)
+> 
+> * yocto-build-deploy: fail when the hostapp release lookup finds nothing [Alex Gonzalez]
+> * yocto-build-deploy: stage kernel headers in the extension suites [Alex Gonzalez]
+> * yocto-build-deploy: pass the hostapp release ids to the cloud suite [Alex Gonzalez]
+> * yocto-build-deploy: stage extension images for the hup suite [Alex Gonzalez]
+> 
+
+</details>
+
 # v9.1.2+rev2
 ## (2026-11-26)
 
