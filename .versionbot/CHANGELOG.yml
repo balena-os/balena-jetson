@@ -1,4 +1,57 @@
 - commits:
+    - subject: Update balena-yocto-scripts to d747b3b055f7db08aca18af0ad0eed9a3443e9f8
+      hash: e1ce287547166ca46f13f69d13c72331608546c1
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to d747b3b055f7db08aca18af0ad0eed9a3443e9f8
+        changelog-entry: Update balena-yocto-scripts to d747b3b055f7db08aca18af0ad0eed9a3443e9f8
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Change CLI channel to os-profiles-with-runtimes
+              hash: 85596207aca5072bc955d6a6b914c4fc02526847
+              body: >
+                This branch contains support for both profiles and custom
+                container runtimes via the CLI, which are needed to deploy OS
+                Blocks.
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.44.5
+          title: ""
+          date: 2026-11-27T17:43:30.263Z
+        - commits:
+            - subject: Update ubuntu:22.04 Docker digest to b000e69
+              hash: c14fb3244cd21272fd6b8f705e3f5a97a2b50f08
+              body: |
+                Update ubuntu
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.44.4
+          title: ""
+          date: 2026-11-27T07:27:22.474Z
+        - commits:
+            - subject: Update coffee-script to ~1.12.0
+              hash: 166f23a8d206a84a499be7b93be89465d00a4c7f
+              body: |
+                Update coffee-script from 1.10.0 to 1.12.7
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.44.3
+          title: ""
+          date: 2026-11-27T03:11:43.064Z
+  version: 9.1.2+rev5
+  title: ""
+  date: 2026-11-27T23:04:08.311Z
+- commits:
     - subject: Update balena-yocto-scripts to 2b61da2bf062e3395e7a660d622331d135b2091e
       hash: 41621845ff05f2c663de57b7fdeaad69028802ae
       body: Update balena-yocto-scripts
